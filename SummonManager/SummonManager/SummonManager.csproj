@@ -1,0 +1,796 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9A397353-E98B-416B-BCA6-B800415B4E0F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SummonManager</RootNamespace>
+    <AssemblyName>SummonManager</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <ManifestCertificateThumbprint>65A922E311190E68113409EC19CDFC7999572E89</ManifestCertificateThumbprint>
+    <ManifestKeyFile>SummonManager_TemporaryKey.pfx</ManifestKeyFile>
+    <GenerateManifests>true</GenerateManifests>
+    <TargetZone>LocalIntranet</TargetZone>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+    <SignManifests>true</SignManifests>
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.73.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Enterprise.Framework, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Enterprise.InfoStore, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Shared, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=10.5.3700.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Entity">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization">
+      <RequiredTargetFramework>3.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Windows\assembly\GAC_MSIL\System.Web.Services\2.0.0.0__b03f5f7f11d50a3a\System.Web.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="About.Designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Auth.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Auth.Designer.cs">
+      <DependentUpon>Auth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cause.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cause.Designer.cs">
+      <DependentUpon>Cause.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cable.Designer.cs">
+      <DependentUpon>Cable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ColorSelectControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ColorSelectControl.Designer.cs">
+      <DependentUpon>ColorSelectControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBPurchasedMaterials.cs" />
+    <Compile Include="DBNotifications.cs" />
+    <Compile Include="PurchasedMaterials.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PurchasedMaterials.Designer.cs">
+      <DependentUpon>PurchasedMaterials.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShowSummonINZHENER.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowSummonINZHENER.Designer.cs">
+      <DependentUpon>ShowSummonINZHENER.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShowSummonCONSTR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowSummonCONSTR.Designer.cs">
+      <DependentUpon>ShowSummonCONSTR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fAddNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fAddNote.Designer.cs">
+      <DependentUpon>fAddNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBSummonNotes.cs" />
+    <Compile Include="fEditNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fEditNote.Designer.cs">
+      <DependentUpon>fEditNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBPrivateNote.cs" />
+    <Compile Include="fEditPrivateNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fEditPrivateNote.Designer.cs">
+      <DependentUpon>fEditPrivateNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBPreferences.cs" />
+    <Compile Include="OTKComment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OTKComment.Designer.cs">
+      <DependentUpon>OTKComment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PathFileds.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PathFileds.Designer.cs">
+      <DependentUpon>PathFileds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Preferences.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Preferences.Designer.cs">
+      <DependentUpon>Preferences.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RefreshTimeSelectControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RefreshTimeSelectControl.Designer.cs">
+      <DependentUpon>RefreshTimeSelectControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShowSummonMONT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowSummonMONT.Designer.cs">
+      <DependentUpon>ShowSummonMONT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrystalReport2.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport2.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DBMountingKit.cs" />
+    <Compile Include="EditEXTCABLENAME.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditEXTCABLENAME.Designer.cs">
+      <DependentUpon>EditEXTCABLENAME.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fAddExtCableForPack.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fAddExtCableForPack.Designer.cs">
+      <DependentUpon>fAddExtCableForPack.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fAddCustomerDept.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fAddCustomerDept.Designer.cs">
+      <DependentUpon>fAddCustomerDept.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fAdminChangeStatus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fAdminChangeStatus.Designer.cs">
+      <DependentUpon>fAdminChangeStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fEditCustomersDept.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fEditCustomersDept.Designer.cs">
+      <DependentUpon>fEditCustomersDept.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fEditExtCablePack.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fEditExtCablePack.Designer.cs">
+      <DependentUpon>fEditExtCablePack.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fTimeInDeptPieChartStat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fTimeInDeptPieChartStat.Designer.cs">
+      <DependentUpon>fTimeInDeptPieChartStat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewEXTCABLENAME.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewEXTCABLENAME.Designer.cs">
+      <DependentUpon>NewEXTCABLENAME.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBEXTCABLE.cs" />
+    <Compile Include="Copy of RepSummon.cs">
+      <DependentUpon>Copy of RepSummon.rpt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <SubType>Component</SubType>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="EXTCABLEName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EXTCABLEName.Designer.cs">
+      <DependentUpon>EXTCABLEName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBSearch.cs" />
+    <Compile Include="EditCable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditCable.Designer.cs">
+      <DependentUpon>EditCable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fEditNotePDB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fEditNotePDB.Designer.cs">
+      <DependentUpon>fEditNotePDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fSearchConditions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fSearchConditions.Designer.cs">
+      <DependentUpon>fSearchConditions.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fSearchResults.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="fSearchResults.Designer.cs">
+      <DependentUpon>fSearchResults.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewCable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewCable.Designer.cs">
+      <DependentUpon>NewCable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditPacking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditPacking.Designer.cs">
+      <DependentUpon>EditPacking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewPacking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewPacking.Designer.cs">
+      <DependentUpon>NewPacking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Packing.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Packing.Designer.cs">
+      <DependentUpon>Packing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBCable.cs" />
+    <Compile Include="DBPacking.cs" />
+    <Compile Include="ShowSummonWSH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowSummonWSH.Designer.cs">
+      <DependentUpon>ShowSummonWSH.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditWPN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditWPN.Designer.cs">
+      <DependentUpon>EditWPN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditUser.Designer.cs">
+      <DependentUpon>EditUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewUser.Designer.cs">
+      <DependentUpon>NewUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewWPN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewWPN.Designer.cs">
+      <DependentUpon>NewWPN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SummonNotes.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SummonNotes.Designer.cs">
+      <DependentUpon>SummonNotes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SummonTransfer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SummonTransfer.Designer.cs">
+      <DependentUpon>SummonTransfer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UIProc.cs" />
+    <Compile Include="Users.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Users.Designer.cs">
+      <DependentUpon>Users.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CrystalReport1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CrystalReport1.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="PreviousStateOfDGW.cs" />
+    <Compile Include="ShowReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowReport.Designer.cs">
+      <DependentUpon>ShowReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShowSummonDIR.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowSummonDIR.Designer.cs">
+      <DependentUpon>ShowSummonDIR.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBAccept.cs" />
+    <Compile Include="DBWPName.cs" />
+    <Compile Include="Finished.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Finished.Designer.cs">
+      <DependentUpon>Finished.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PrintSummon.cs" />
+    <Compile Include="RepSummon.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RepSummon.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ShowSummonLOG.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowSummonLOG.Designer.cs">
+      <DependentUpon>ShowSummonLOG.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShowSummonWare.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowSummonWare.Designer.cs">
+      <DependentUpon>ShowSummonWare.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShowSummonOTK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowSummonOTK.Designer.cs">
+      <DependentUpon>ShowSummonOTK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RNumericUpDown.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RNumericUpDown.Designer.cs">
+      <DependentUpon>RNumericUpDown.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShowSummonPROD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowSummonPROD.Designer.cs">
+      <DependentUpon>ShowSummonPROD.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShowSummonOZIS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowSummonOZIS.Designer.cs">
+      <DependentUpon>ShowSummonOZIS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RComboBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RComboBox.Designer.cs">
+      <DependentUpon>RComboBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShowSummon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowSummon.Designer.cs">
+      <DependentUpon>ShowSummon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DBCurStatus.cs" />
+    <Compile Include="DBPayStatus.cs" />
+    <Compile Include="DBSummon.cs" />
+    <Compile Include="DBUser.cs" />
+    <Compile Include="EditCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditCustomer.Designer.cs">
+      <DependentUpon>EditCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customers.Designer.cs">
+      <DependentUpon>Customers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DB.cs" />
+    <Compile Include="DBCustomer.cs" />
+    <Compile Include="DBMain.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewCustomer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewCustomer.Designer.cs">
+      <DependentUpon>NewCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewSummon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewSummon.Designer.cs">
+      <DependentUpon>NewSummon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="About.resx">
+      <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Auth.resx">
+      <DependentUpon>Auth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cause.resx">
+      <DependentUpon>Cause.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cable.resx">
+      <DependentUpon>Cable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PurchasedMaterials.resx">
+      <DependentUpon>PurchasedMaterials.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowSummonINZHENER.resx">
+      <DependentUpon>ShowSummonINZHENER.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowSummonCONSTR.resx">
+      <DependentUpon>ShowSummonCONSTR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fAddNote.resx">
+      <DependentUpon>fAddNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fEditNote.resx">
+      <DependentUpon>fEditNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fEditPrivateNote.resx">
+      <DependentUpon>fEditPrivateNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OTKComment.resx">
+      <DependentUpon>OTKComment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PathFileds.resx">
+      <DependentUpon>PathFileds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Preferences.resx">
+      <DependentUpon>Preferences.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowSummonMONT.resx">
+      <DependentUpon>ShowSummonMONT.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReport2.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport2.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditEXTCABLENAME.resx">
+      <DependentUpon>EditEXTCABLENAME.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fAddExtCableForPack.resx">
+      <DependentUpon>fAddExtCableForPack.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fAddCustomerDept.resx">
+      <DependentUpon>fAddCustomerDept.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fAdminChangeStatus.resx">
+      <DependentUpon>fAdminChangeStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fEditCustomersDept.resx">
+      <DependentUpon>fEditCustomersDept.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fEditExtCablePack.resx">
+      <DependentUpon>fEditExtCablePack.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fTimeInDeptPieChartStat.resx">
+      <DependentUpon>fTimeInDeptPieChartStat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewEXTCABLENAME.resx">
+      <DependentUpon>NewEXTCABLENAME.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Copy of RepSummon.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>Copy of RepSummon.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EXTCABLEName.resx">
+      <DependentUpon>EXTCABLEName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditCable.resx">
+      <DependentUpon>EditCable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fEditNotePDB.resx">
+      <DependentUpon>fEditNotePDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fSearchConditions.resx">
+      <DependentUpon>fSearchConditions.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="fSearchResults.resx">
+      <DependentUpon>fSearchResults.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewCable.resx">
+      <DependentUpon>NewCable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditPacking.resx">
+      <DependentUpon>EditPacking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewPacking.resx">
+      <DependentUpon>NewPacking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Packing.resx">
+      <DependentUpon>Packing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowSummonWSH.resx">
+      <DependentUpon>ShowSummonWSH.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditWPN.resx">
+      <DependentUpon>EditWPN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditUser.resx">
+      <DependentUpon>EditUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewUser.resx">
+      <DependentUpon>NewUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewWPN.resx">
+      <DependentUpon>NewWPN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SummonNotes.resx">
+      <DependentUpon>SummonNotes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SummonTransfer.resx">
+      <DependentUpon>SummonTransfer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users.resx">
+      <DependentUpon>Users.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CrystalReport1.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>CrystalReport1.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowReport.resx">
+      <DependentUpon>ShowReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowSummonDIR.resx">
+      <DependentUpon>ShowSummonDIR.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Finished.resx">
+      <DependentUpon>Finished.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RepSummon.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RepSummon.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowSummonLOG.resx">
+      <DependentUpon>ShowSummonLOG.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowSummonWare.resx">
+      <DependentUpon>ShowSummonWare.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowSummonOTK.resx">
+      <DependentUpon>ShowSummonOTK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowSummonPROD.resx">
+      <DependentUpon>ShowSummonPROD.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowSummonOZIS.resx">
+      <DependentUpon>ShowSummonOZIS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowSummon.resx">
+      <DependentUpon>ShowSummon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditCustomer.resx">
+      <DependentUpon>EditCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customers.resx">
+      <DependentUpon>Customers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewCustomer.resx">
+      <DependentUpon>NewCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewSummon.resx">
+      <DependentUpon>NewSummon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="StatusHistory.resx">
+      <DependentUpon>StatusHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="VersionHistory.resx">
+      <DependentUpon>VersionHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WPName.resx">
+      <DependentUpon>WPName.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="App.Config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <EntityDeploy Include="SM.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SM.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="SM.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SM.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="StatusHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="StatusHistory.Designer.cs">
+      <DependentUpon>StatusHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SummonVO.cs" />
+    <Compile Include="SummonVOForReport.cs" />
+    <Compile Include="UserVO.cs" />
+    <Compile Include="VersionHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="VersionHistory.Designer.cs">
+      <DependentUpon>VersionHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WPName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WPName.Designer.cs">
+      <DependentUpon>WPName.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ico\new_7633.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ico\old-edit-find_3642.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ico\endturn_9113.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ico\history_3610.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ico\fileprint_7424.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ico\document_new.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ico\binoculars_8272.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ico\edit.png" />
+    <None Include="ico\edit.ico" />
+    <None Include="ico\1437083235_user.png" />
+    <None Include="ico\1437084170_emblem-people.png" />
+    <None Include="ico\DeleteRed.png" />
+    <Content Include="ico\Refresh.ico" />
+    <None Include="Resources\Список изменений.txt" />
+    <None Include="Properties\app.manifest" />
+    <None Include="ico\search2_5458.png" />
+    <None Include="SummonManager_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 2.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.0">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.0 %28x86%29</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Debug\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
