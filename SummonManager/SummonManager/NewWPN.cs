@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SummonManager.CLASSES;
 
 namespace SummonManager
 {
@@ -15,10 +16,26 @@ namespace SummonManager
         {
             InitializeComponent();
         }
-        public NewWPN(string clone)
+        WPNameVO Clone;
+        public NewWPN(WPNameVO clone)
         {
             InitializeComponent();
-            textBox1.Text = clone;
+            if (clone.WPName != "")
+            {
+                this.Clone = clone;
+                tbName.Text = clone.WPName;
+                cbCategory.SelectedValue = clone.IDCat;
+                tbDecNum.Text = clone.DecNum;
+                tbPowerSupply.Text = clone.PowerSupply;
+                tbConfiguration.Text = clone.Configuration;
+                tbNote.Text = clone.Note;
+
+                tbComposition.Text = clone.Composition.Substring(clone.Composition.LastIndexOf("\\") + 1);
+                tbComposition.Tag = clone.Composition;
+
+                tbDimDraw.Text = clone.DimenDrawing.Substring(clone.DimenDrawing.LastIndexOf("\\") + 1);
+                tbDimDraw.Tag = clone.DimenDrawing;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -28,15 +45,42 @@ namespace SummonManager
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text == "")
+            if (tbName.Text == "")
             {
                 MessageBox.Show("Введите наименование!");
                 return;
             }
+            WPNameVO wp = new WPNameVO();
+            wp.WPName = tbName.Text;
+            wp.IDCat = Convert.ToInt32(cbCategory.SelectedValue);
+            wp.DecNum = tbDecNum.Text;
+            wp.Composition = tbComposition.Tag.ToString();
+            wp.DimenDrawing = tbDimDraw.Tag.ToString();
+            wp.PowerSupply = tbPowerSupply.Text;
+            wp.Configuration = tbConfiguration.Text;
+            wp.Note = tbNote.Text;
             DBWPName dbwp = new DBWPName();
-            dbwp.AddNewWP(textBox1.Text);
+            dbwp.AddNewWP(wp);
             MessageBox.Show("Наименование успешно добавлено!");
             Close();
+        }
+
+        private void NewWPN_Load(object sender, EventArgs e)
+        {
+            DBCategory dbc = new DBCategory();
+            cbCategory.ValueMember = "ID";
+            cbCategory.DisplayMember = "CATEGORYNAME";
+            cbCategory.DataSource = dbc.GetAll();
+
+            if (Clone.IDCat != 0)
+            {
+                cbCategory.SelectedValue = Clone.IDCat;
+            }
+            else
+            {
+                cbCategory.SelectedValue = 1;
+            }
+
         }
     }
 }

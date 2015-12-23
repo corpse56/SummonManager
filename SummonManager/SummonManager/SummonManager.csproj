@@ -113,14 +113,22 @@
     <Compile Include="Cable.Designer.cs">
       <DependentUpon>Cable.cs</DependentUpon>
     </Compile>
+    <Compile Include="CLASSES\DBCategory.cs" />
+    <Compile Include="CLASSES\WPNameVO.cs" />
     <Compile Include="ColorSelectControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="ColorSelectControl.Designer.cs">
       <DependentUpon>ColorSelectControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="DBPurchasedMaterials.cs" />
-    <Compile Include="DBNotifications.cs" />
+    <Compile Include="CLASSES\DBPurchasedMaterials.cs" />
+    <Compile Include="CLASSES\DBNotifications.cs" />
+    <Compile Include="Controls\PathField.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\PathField.Designer.cs">
+      <DependentUpon>PathField.cs</DependentUpon>
+    </Compile>
     <Compile Include="PurchasedMaterials.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,31 +153,31 @@
     <Compile Include="fAddNote.Designer.cs">
       <DependentUpon>fAddNote.cs</DependentUpon>
     </Compile>
-    <Compile Include="DBSummonNotes.cs" />
+    <Compile Include="CLASSES\DBSummonNotes.cs" />
     <Compile Include="fEditNote.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="fEditNote.Designer.cs">
       <DependentUpon>fEditNote.cs</DependentUpon>
     </Compile>
-    <Compile Include="DBPrivateNote.cs" />
+    <Compile Include="CLASSES\DBPrivateNote.cs" />
     <Compile Include="fEditPrivateNote.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="fEditPrivateNote.Designer.cs">
       <DependentUpon>fEditPrivateNote.cs</DependentUpon>
     </Compile>
-    <Compile Include="DBPreferences.cs" />
+    <Compile Include="CLASSES\DBPreferences.cs" />
     <Compile Include="OTKComment.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="OTKComment.Designer.cs">
       <DependentUpon>OTKComment.cs</DependentUpon>
     </Compile>
-    <Compile Include="PathFileds.cs">
+    <Compile Include="Controls\PathFileds.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="PathFileds.Designer.cs">
+    <Compile Include="Controls\PathFileds.Designer.cs">
       <DependentUpon>PathFileds.cs</DependentUpon>
     </Compile>
     <Compile Include="Preferences.cs">
@@ -178,10 +186,10 @@
     <Compile Include="Preferences.Designer.cs">
       <DependentUpon>Preferences.cs</DependentUpon>
     </Compile>
-    <Compile Include="RefreshTimeSelectControl.cs">
+    <Compile Include="Controls\RefreshTimeSelectControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="RefreshTimeSelectControl.Designer.cs">
+    <Compile Include="Controls\RefreshTimeSelectControl.Designer.cs">
       <DependentUpon>RefreshTimeSelectControl.cs</DependentUpon>
     </Compile>
     <Compile Include="ShowSummonMONT.cs">
@@ -196,7 +204,7 @@
       <DependentUpon>CrystalReport2.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="DBMountingKit.cs" />
+    <Compile Include="CLASSES\DBMountingKit.cs" />
     <Compile Include="EditEXTCABLENAME.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -245,7 +253,7 @@
     <Compile Include="NewEXTCABLENAME.Designer.cs">
       <DependentUpon>NewEXTCABLENAME.cs</DependentUpon>
     </Compile>
-    <Compile Include="DBEXTCABLE.cs" />
+    <Compile Include="CLASSES\DBEXTCABLE.cs" />
     <Compile Include="Copy of RepSummon.cs">
       <DependentUpon>Copy of RepSummon.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
@@ -258,7 +266,7 @@
     <Compile Include="EXTCABLEName.Designer.cs">
       <DependentUpon>EXTCABLEName.cs</DependentUpon>
     </Compile>
-    <Compile Include="DBSearch.cs" />
+    <Compile Include="CLASSES\DBSearch.cs" />
     <Compile Include="EditCable.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -307,8 +315,8 @@
     <Compile Include="Packing.Designer.cs">
       <DependentUpon>Packing.cs</DependentUpon>
     </Compile>
-    <Compile Include="DBCable.cs" />
-    <Compile Include="DBPacking.cs" />
+    <Compile Include="CLASSES\DBCable.cs" />
+    <Compile Include="CLASSES\DBPacking.cs" />
     <Compile Include="ShowSummonWSH.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -339,19 +347,19 @@
     <Compile Include="NewWPN.Designer.cs">
       <DependentUpon>NewWPN.cs</DependentUpon>
     </Compile>
-    <Compile Include="SummonNotes.cs">
+    <Compile Include="Controls\SummonNotes.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SummonNotes.Designer.cs">
+    <Compile Include="Controls\SummonNotes.Designer.cs">
       <DependentUpon>SummonNotes.cs</DependentUpon>
     </Compile>
-    <Compile Include="SummonTransfer.cs">
+    <Compile Include="Controls\SummonTransfer.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SummonTransfer.Designer.cs">
+    <Compile Include="Controls\SummonTransfer.Designer.cs">
       <DependentUpon>SummonTransfer.cs</DependentUpon>
     </Compile>
-    <Compile Include="UIProc.cs" />
+    <Compile Include="CLASSES\UIProc.cs" />
     <Compile Include="Users.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -364,7 +372,7 @@
       <DependentUpon>CrystalReport1.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="PreviousStateOfDGW.cs" />
+    <Compile Include="CLASSES\PreviousStateOfDGW.cs" />
     <Compile Include="ShowReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -377,15 +385,15 @@
     <Compile Include="ShowSummonDIR.Designer.cs">
       <DependentUpon>ShowSummonDIR.cs</DependentUpon>
     </Compile>
-    <Compile Include="DBAccept.cs" />
-    <Compile Include="DBWPName.cs" />
+    <Compile Include="CLASSES\DBAccept.cs" />
+    <Compile Include="CLASSES\DBWPName.cs" />
     <Compile Include="Finished.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Finished.Designer.cs">
       <DependentUpon>Finished.cs</DependentUpon>
     </Compile>
-    <Compile Include="PrintSummon.cs" />
+    <Compile Include="CLASSES\PrintSummon.cs" />
     <Compile Include="RepSummon.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -410,10 +418,10 @@
     <Compile Include="ShowSummonOTK.Designer.cs">
       <DependentUpon>ShowSummonOTK.cs</DependentUpon>
     </Compile>
-    <Compile Include="RNumericUpDown.cs">
+    <Compile Include="Controls\RNumericUpDown.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="RNumericUpDown.Designer.cs">
+    <Compile Include="Controls\RNumericUpDown.Designer.cs">
       <DependentUpon>RNumericUpDown.cs</DependentUpon>
     </Compile>
     <Compile Include="ShowSummonPROD.cs">
@@ -428,10 +436,10 @@
     <Compile Include="ShowSummonOZIS.Designer.cs">
       <DependentUpon>ShowSummonOZIS.cs</DependentUpon>
     </Compile>
-    <Compile Include="RComboBox.cs">
+    <Compile Include="Controls\RComboBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="RComboBox.Designer.cs">
+    <Compile Include="Controls\RComboBox.Designer.cs">
       <DependentUpon>RComboBox.cs</DependentUpon>
     </Compile>
     <Compile Include="ShowSummon.cs">
@@ -440,10 +448,10 @@
     <Compile Include="ShowSummon.Designer.cs">
       <DependentUpon>ShowSummon.cs</DependentUpon>
     </Compile>
-    <Compile Include="DBCurStatus.cs" />
-    <Compile Include="DBPayStatus.cs" />
-    <Compile Include="DBSummon.cs" />
-    <Compile Include="DBUser.cs" />
+    <Compile Include="CLASSES\DBCurStatus.cs" />
+    <Compile Include="CLASSES\DBPayStatus.cs" />
+    <Compile Include="CLASSES\DBSummon.cs" />
+    <Compile Include="CLASSES\DBUser.cs" />
     <Compile Include="EditCustomer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -456,9 +464,9 @@
     <Compile Include="Customers.Designer.cs">
       <DependentUpon>Customers.cs</DependentUpon>
     </Compile>
-    <Compile Include="DB.cs" />
-    <Compile Include="DBCustomer.cs" />
-    <Compile Include="DBMain.cs" />
+    <Compile Include="CLASSES\DB.cs" />
+    <Compile Include="CLASSES\DBCustomer.cs" />
+    <Compile Include="CLASSES\DBMain.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -491,6 +499,9 @@
     <EmbeddedResource Include="Cable.resx">
       <DependentUpon>Cable.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Controls\PathField.resx">
+      <DependentUpon>PathField.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="PurchasedMaterials.resx">
       <DependentUpon>PurchasedMaterials.cs</DependentUpon>
     </EmbeddedResource>
@@ -512,7 +523,7 @@
     <EmbeddedResource Include="OTKComment.resx">
       <DependentUpon>OTKComment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PathFileds.resx">
+    <EmbeddedResource Include="Controls\PathFileds.resx">
       <DependentUpon>PathFileds.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Preferences.resx">
@@ -595,10 +606,10 @@
     <EmbeddedResource Include="NewWPN.resx">
       <DependentUpon>NewWPN.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SummonNotes.resx">
+    <EmbeddedResource Include="Controls\SummonNotes.resx">
       <DependentUpon>SummonNotes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SummonTransfer.resx">
+    <EmbeddedResource Include="Controls\SummonTransfer.resx">
       <DependentUpon>SummonTransfer.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users.resx">
@@ -698,9 +709,9 @@
     <Compile Include="StatusHistory.Designer.cs">
       <DependentUpon>StatusHistory.cs</DependentUpon>
     </Compile>
-    <Compile Include="SummonVO.cs" />
-    <Compile Include="SummonVOForReport.cs" />
-    <Compile Include="UserVO.cs" />
+    <Compile Include="CLASSES\SummonVO.cs" />
+    <Compile Include="CLASSES\SummonVOForReport.cs" />
+    <Compile Include="CLASSES\UserVO.cs" />
     <Compile Include="VersionHistory.cs">
       <SubType>Form</SubType>
     </Compile>

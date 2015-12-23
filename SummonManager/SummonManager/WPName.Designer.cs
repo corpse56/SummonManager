@@ -34,6 +34,8 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
+            this.cbCAT = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgWP)).BeginInit();
             this.SuspendLayout();
             // 
@@ -41,18 +43,22 @@
             // 
             this.dgWP.AllowUserToAddRows = false;
             this.dgWP.AllowUserToDeleteRows = false;
+            this.dgWP.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.dgWP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgWP.Location = new System.Drawing.Point(12, 12);
+            this.dgWP.Location = new System.Drawing.Point(12, 77);
             this.dgWP.MultiSelect = false;
             this.dgWP.Name = "dgWP";
             this.dgWP.RowHeadersVisible = false;
             this.dgWP.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgWP.Size = new System.Drawing.Size(579, 281);
+            this.dgWP.Size = new System.Drawing.Size(1189, 281);
             this.dgWP.TabIndex = 0;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(516, 301);
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.Location = new System.Drawing.Point(1126, 364);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
@@ -62,7 +68,8 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(12, 299);
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button2.Location = new System.Drawing.Point(12, 364);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(86, 23);
             this.button2.TabIndex = 1;
@@ -72,7 +79,8 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(218, 299);
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button3.Location = new System.Drawing.Point(218, 364);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(88, 23);
             this.button3.TabIndex = 1;
@@ -82,7 +90,8 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(104, 299);
+            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button4.Location = new System.Drawing.Point(104, 364);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(108, 23);
             this.button4.TabIndex = 2;
@@ -92,7 +101,8 @@
             // 
             // button5
             // 
-            this.button5.Location = new System.Drawing.Point(312, 299);
+            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button5.Location = new System.Drawing.Point(312, 364);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(75, 23);
             this.button5.TabIndex = 3;
@@ -100,11 +110,32 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
+            // cbCAT
+            // 
+            this.cbCAT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCAT.FormattingEnabled = true;
+            this.cbCAT.Location = new System.Drawing.Point(164, 44);
+            this.cbCAT.Name = "cbCAT";
+            this.cbCAT.Size = new System.Drawing.Size(441, 24);
+            this.cbCAT.TabIndex = 4;
+            this.cbCAT.SelectedIndexChanged += new System.EventHandler(this.cbCAT_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(12, 47);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(146, 16);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Выберите категорию";
+            // 
             // WPName
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(603, 331);
+            this.ClientSize = new System.Drawing.Size(1213, 391);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cbCAT);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -112,14 +143,14 @@
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dgWP);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MaximizeBox = false;
             this.Name = "WPName";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Наименование изделия";
+            this.Load += new System.EventHandler(this.WPName_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgWP)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -131,5 +162,7 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.ComboBox cbCAT;
+        private System.Windows.Forms.Label label1;
     }
 }

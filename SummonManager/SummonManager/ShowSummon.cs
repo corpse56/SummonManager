@@ -44,7 +44,7 @@ namespace SummonManager
             cbAccept.DropDownStyle = ComboBoxStyle.DropDown;
             tbCONTRACT.ReadOnly = true;
             tbDELIVERY.ReadOnly = true;
-            tbNote.ReadOnly = true;
+            //tbNote.ReadOnly = true;
             cbCustomers.DropDownStyle = ComboBoxStyle.DropDown;
             cbCustomers.ReadOnly = true;
             tbPayStatus.ReadOnly = true;
@@ -53,10 +53,10 @@ namespace SummonManager
             bEdit.Enabled = true;
             bSave.Enabled = false;
             bPrint.Enabled = true;
-            bAdd.Enabled = false;
+            //bAdd.Enabled = false;
             chbDeterm.Enabled = false;
             dtpAPPROX.Enabled = false;
-            button1.Enabled = true;
+            //button1.Enabled = true;
             cbPacking.DropDownStyle = ComboBoxStyle.DropDown;
             cbPacking.ReadOnly = true;
             //cbExtCable.DropDownStyle = ComboBoxStyle.DropDown;
@@ -65,7 +65,7 @@ namespace SummonManager
             cbMountingKit.ReadOnly = true;
             bEditExtCablePack.Enabled = false;
             cbCustDept.ReadOnly = true;
-            tbPrivateNote.ReadOnly = true;
+            //tbPrivateNote.ReadOnly = true;
         }
         private void EnableAll()
         {
@@ -80,7 +80,7 @@ namespace SummonManager
             cbAccept.DropDownStyle = ComboBoxStyle.DropDownList;
             tbCONTRACT.ReadOnly = false;
             tbDELIVERY.ReadOnly = false;
-            tbNote.ReadOnly = false;
+            //tbNote.ReadOnly = false;
             cbCustomers.ReadOnly = false;
             cbCustomers.DropDownStyle = ComboBoxStyle.DropDownList;
             tbPayStatus.ReadOnly = false;
@@ -89,13 +89,13 @@ namespace SummonManager
             bEdit.Enabled = false;
             bSave.Enabled = true;
             bPrint.Enabled = true;
-            bAdd.Enabled = true;
+            //bAdd.Enabled = true;
             chbDeterm.Enabled = true;
             if (chbDeterm.Checked)
                 dtpAPPROX.Enabled = false;
             else
                 dtpAPPROX.Enabled = true;
-            button1.Enabled = false;
+            //button1.Enabled = false;
             cbPacking.DropDownStyle = ComboBoxStyle.DropDownList;
             cbPacking.ReadOnly = false;
             //cbExtCable.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -159,8 +159,8 @@ namespace SummonManager
 
             tbCONTRACT.Text = SVO.CONTRACT;
             tbDELIVERY.Text = SVO.DELIVERY;
-            tbNote.Text = SVO.NOTE;
-            tbNOTEPDB.Text = SVO.NOTEPDB;
+            //tbNote.Text = SVO.NOTE;
+            //tbNOTEPDB.Text = SVO.NOTEPDB;
             tbQUANTITY.Value = SVO.QUANTITY;
             tbSHIPPING.Text = SVO.SHIPPING;
             tbTECHREQPATH.Text = SVO.TECHREQPATH.Substring(SVO.TECHREQPATH.LastIndexOf("\\") + 1);
@@ -185,8 +185,8 @@ namespace SummonManager
             UIProc ui = new UIProc();
             ui.LoadExtCables(dgv, this.IDSUMMON.ToString());
 
-            DBPrivateNote dbpn = new DBPrivateNote();
-            tbPrivateNote.Text = dbpn.GetPrivateNote(UVO.id, SVO.ID);
+            //DBPrivateNote dbpn = new DBPrivateNote();
+            //tbPrivateNote.Text = dbpn.GetPrivateNote(UVO.id, SVO.ID);
 
             summonNotes1.Init(SVO.ID, UVO, SVO);
             summonNotes1.Reload();
@@ -234,62 +234,62 @@ namespace SummonManager
 
         }
 
-        private void bAdd_Click(object sender, EventArgs e)//сохранить и передать на подготовку в производство
-        {
-            if ((this.SVO.IDSTATUS == 2))
-            {
-                MessageBox.Show("Вы не можете передать на подготовку в производство это извещение, так как оно уже на подготовке к производству!");
-                return;
-            }
-            if ((this.SVO.IDSTATUS == 11))
-            {
-                MessageBox.Show("Вы не можете передать на подготовку в производство это извещение, так как оно уже готово к отгрузке!");
-                return;
-            }
+        //private void bAdd_Click(object sender, EventArgs e)//сохранить и передать на подготовку в производство
+        //{
+        //    if ((this.SVO.IDSTATUS == 2))
+        //    {
+        //        MessageBox.Show("Вы не можете передать на подготовку в производство это извещение, так как оно уже на подготовке к производству!");
+        //        return;
+        //    }
+        //    if ((this.SVO.IDSTATUS == 11))
+        //    {
+        //        MessageBox.Show("Вы не можете передать на подготовку в производство это извещение, так как оно уже готово к отгрузке!");
+        //        return;
+        //    }
 
-            if (tbQUANTITY.Value == 0)
-            {
-                MessageBox.Show("Введите количество изделий!");
-                return;
-            }
-            if (MessageBox.Show("Вы действительно хотите сохранить и передать на подготовку в производство?", "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-            {
-                return;
-            }
-            DBSummon dbs = new DBSummon();
-            SummonVO SVO = new SummonVO();
-            SVO.ID = this.IDSUMMON;
-            SVO.IDS = tbIDS.Text;
-            SVO.ACCEPTANCE = cbAccept.Text;
-            SVO.CONTRACT = tbCONTRACT.Text;
-            SVO.CREATED = this.SVO.CREATED;
-            SVO.DELIVERY = tbDELIVERY.Text;
-            SVO.IDCUSTOMER = cbCustomers.SelectedValue.ToString();
-            SVO.IDCUSTOMERDEPT = (int)cbCustDept.SelectedValue;
-            SVO.PAYSTATUS = tbPayStatus.Text;
-            //SVO.IDSTATUS = 2;
-            SVO.NOTE = tbNote.Text;
-            SVO.NOTEPDB = tbNOTEPDB.Text;
-            SVO.PTIME = dtpPTIME.Value;
-            SVO.QUANTITY = (int)tbQUANTITY.Value;
-            SVO.SHIPPING = tbSHIPPING.Text;
-            if (cbSISP.SelectedIndex == 0)
-                SVO.SISP = false;
-            else
-                SVO.SISP = true;
-            SVO.TECHREQPATH = tbTECHREQPATH.Tag.ToString();
-            SVO.WPNAME = cbWPNAME.Text;
+        //    if (tbQUANTITY.Value == 0)
+        //    {
+        //        MessageBox.Show("Введите количество изделий!");
+        //        return;
+        //    }
+        //    if (MessageBox.Show("Вы действительно хотите сохранить и передать на подготовку в производство?", "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+        //    {
+        //        return;
+        //    }
+        //    DBSummon dbs = new DBSummon();
+        //    SummonVO SVO = new SummonVO();
+        //    SVO.ID = this.IDSUMMON;
+        //    SVO.IDS = tbIDS.Text;
+        //    SVO.ACCEPTANCE = cbAccept.Text;
+        //    SVO.CONTRACT = tbCONTRACT.Text;
+        //    SVO.CREATED = this.SVO.CREATED;
+        //    SVO.DELIVERY = tbDELIVERY.Text;
+        //    SVO.IDCUSTOMER = cbCustomers.SelectedValue.ToString();
+        //    SVO.IDCUSTOMERDEPT = (int)cbCustDept.SelectedValue;
+        //    SVO.PAYSTATUS = tbPayStatus.Text;
+        //    //SVO.IDSTATUS = 2;
+        //    //SVO.NOTE = tbNote.Text;
+        //    //SVO.NOTEPDB = tbNOTEPDB.Text;
+        //    SVO.PTIME = dtpPTIME.Value;
+        //    SVO.QUANTITY = (int)tbQUANTITY.Value;
+        //    SVO.SHIPPING = tbSHIPPING.Text;
+        //    if (cbSISP.SelectedIndex == 0)
+        //        SVO.SISP = false;
+        //    else
+        //        SVO.SISP = true;
+        //    SVO.TECHREQPATH = tbTECHREQPATH.Tag.ToString();
+        //    SVO.WPNAME = cbWPNAME.Text;
             
-            SVO.IDWPNAME = (int)cbWPNAME.SelectedValue;
-            SVO.IDACCEPT = (int)cbAccept.SelectedValue;
-            SVO.PASSDATE = null;
-            SVO.IDPACKING = (int)cbPacking.SelectedValue;
-            SVO.IDMOUNTINGKIT = (int)cbMountingKit.SelectedValue;
-            SVO.VIEWED = false;
-            dbs.PassToPrepProduction(SVO,UVO.id);
-            //MessageBox.Show("Извещение успешно передано в ОЗиС!");
-            this.Close();
-        }
+        //    SVO.IDWPNAME = (int)cbWPNAME.SelectedValue;
+        //    SVO.IDACCEPT = (int)cbAccept.SelectedValue;
+        //    SVO.PASSDATE = null;
+        //    SVO.IDPACKING = (int)cbPacking.SelectedValue;
+        //    SVO.IDMOUNTINGKIT = (int)cbMountingKit.SelectedValue;
+        //    SVO.VIEWED = false;
+        //    dbs.PassToPrepProduction(SVO,UVO.id);
+        //    //MessageBox.Show("Извещение успешно передано в ОЗиС!");
+        //    this.Close();
+        //}
 
         private void bPATH_Click(object sender, EventArgs e)
         {
@@ -330,8 +330,8 @@ namespace SummonManager
             SVO.IDCUSTOMERDEPT = (int)cbCustDept.SelectedValue;
             SVO.PAYSTATUS = tbPayStatus.Text;
             SVO.IDSTATUS = 1;
-            SVO.NOTE = tbNote.Text;
-            SVO.NOTEPDB = tbNOTEPDB.Text;
+            //SVO.NOTE = tbNote.Text;
+            //SVO.NOTEPDB = tbNOTEPDB.Text;
             SVO.PTIME = dtpPTIME.Value;
             SVO.QUANTITY = (int)tbQUANTITY.Value;
             SVO.SHIPPING = tbSHIPPING.Text;
@@ -540,8 +540,8 @@ namespace SummonManager
             fEditPrivateNote fepn = new fEditPrivateNote(SVO.ID, UVO.id);
             fepn.ShowDialog();
 
-            DBPrivateNote dbpn = new DBPrivateNote();
-            tbPrivateNote.Text = dbpn.GetPrivateNote(UVO.id, SVO.ID);
+            //DBPrivateNote dbpn = new DBPrivateNote();
+            //tbPrivateNote.Text = dbpn.GetPrivateNote(UVO.id, SVO.ID);
         }
 
         private void ShowSummon_Scroll(object sender, ScrollEventArgs e)
