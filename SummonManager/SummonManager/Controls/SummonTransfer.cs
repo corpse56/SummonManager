@@ -26,7 +26,6 @@ namespace SummonManager
             this.UVO = uvo;
             this.FORM = form;
             cbStatus.Enabled = false;
-            textBox1.Enabled = false;
             done = false;
 
             DBCurStatus dbcs = new DBCurStatus();
@@ -77,12 +76,10 @@ namespace SummonManager
             if (checkBox1.Checked)
             {
                 cbStatus.Enabled = true;
-                textBox1.Enabled = true;
             }
             else
             {
                 cbStatus.Enabled = false;
-                textBox1.Enabled = false;
                 SetDefaults();
             }
         }
@@ -186,7 +183,7 @@ namespace SummonManager
                 return false;
             }
             DBCurStatus dbcs = new DBCurStatus();
-            dbcs.ChangeStatus(SVO, (int)cbStatus.SelectedValue, textBox1.Text, UVO.id);
+            dbcs.ChangeStatus(SVO, (int)cbStatus.SelectedValue, "", UVO.id);
             if ((int)cbStatus.SelectedValue == 3)//вставить оповещение для ОТК, чтоб заполняли серийные номера!
             {
                 Notification n = new Notification();
