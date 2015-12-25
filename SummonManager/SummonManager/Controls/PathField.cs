@@ -53,6 +53,13 @@ namespace SummonManager.Controls
             tbPath.ForeColor = Color.Black;
         }
 
+        private void bPathDel_Click(object sender, EventArgs e)
+        {
+            tbPath.Tag = "";
+            tbPath.Text = "";
+
+        }
+
 
 
 

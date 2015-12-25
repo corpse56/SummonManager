@@ -44,6 +44,7 @@
             this.bPathDel.Size = new System.Drawing.Size(26, 23);
             this.bPathDel.TabIndex = 25;
             this.bPathDel.UseVisualStyleBackColor = true;
+            this.bPathDel.Click += new System.EventHandler(this.bPathDel_Click);
             // 
             // bPath
             // 

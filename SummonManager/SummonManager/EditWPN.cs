@@ -25,12 +25,13 @@ namespace SummonManager
             tbPowerSupply.Text = wp.PowerSupply;
             tbConfiguration.Text = wp.Configuration;
             tbNote.Text = wp.Note;
+            
 
-            //tbComposition.Text = wp.Composition.Substring(wp.Composition.LastIndexOf("\\") + 1);
-            //tbComposition.Tag = wp.Composition;
+            pfComposition.tbPath.Text = wp.Composition.Substring(wp.Composition.LastIndexOf("\\") + 1);
+            pfComposition.tbPath.Tag = wp.Composition;
 
-            tbDimDraw.Text = wp.DimenDrawing.Substring(wp.DimenDrawing.LastIndexOf("\\") + 1);
-            tbDimDraw.Tag = wp.DimenDrawing;
+            pfDimDrawing.tbPath.Text = wp.DimenDrawing.Substring(wp.DimenDrawing.LastIndexOf("\\") + 1);
+            pfDimDrawing.tbPath.Tag = wp.DimenDrawing;
 
         }
 
@@ -52,8 +53,8 @@ namespace SummonManager
             wp.WPName = tbName.Text;
             wp.IDCat = Convert.ToInt32(cbCategory.SelectedValue);
             wp.DecNum = tbDecNum.Text;
-            //wp.Composition = tbComposition.Tag.ToString();
-            wp.DimenDrawing = tbDimDraw.Tag.ToString();
+            wp.Composition = pfComposition.tbPath.Tag.ToString();
+            wp.DimenDrawing = pfDimDrawing.tbPath.Tag.ToString();
             wp.PowerSupply = tbPowerSupply.Text;
             wp.Configuration = tbConfiguration.Text;
             wp.Note = tbNote.Text;
@@ -88,8 +89,8 @@ namespace SummonManager
             dialog.Multiselect = false;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                //tbComposition.Text = dialog.FileName.Substring(dialog.FileName.LastIndexOf(@"\") + 1); ;
-                //tbComposition.Tag = dialog.FileName;
+                pfComposition.tbPath.Text = dialog.FileName.Substring(dialog.FileName.LastIndexOf(@"\") + 1); ;
+                pfComposition.tbPath.Tag = dialog.FileName;
             }
         }
 
@@ -103,23 +104,23 @@ namespace SummonManager
             dialog.Multiselect = false;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                tbDimDraw.Text = dialog.FileName.Substring(dialog.FileName.LastIndexOf(@"\") + 1); ;
-                tbDimDraw.Tag = dialog.FileName;
+                pfDimDrawing.tbPath.Text = dialog.FileName.Substring(dialog.FileName.LastIndexOf(@"\") + 1); ;
+                pfDimDrawing.tbPath.Tag = dialog.FileName;
             }
         }
 
         private void bCompositionDel_Click(object sender, EventArgs e)
         {
-            //tbComposition.Tag = "";
-            //tbComposition.Text = "";
+            pfComposition.tbPath.Tag = "";
+            pfComposition.tbPath.Text = "";
 
         }
 
         private void bDimDrawingDel_Click(object sender, EventArgs e)
         {
-            tbDimDraw.Tag = "";
-            tbDimDraw.Text = "";
-
+            pfDimDrawing.tbPath.Tag = "";
+            pfDimDrawing.tbPath.Text = "";
+            
         }
 
         private void label4_Click(object sender, EventArgs e)

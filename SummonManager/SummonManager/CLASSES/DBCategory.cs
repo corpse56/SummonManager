@@ -37,5 +37,12 @@ namespace SummonManager
             DA.UpdateCommand.ExecuteNonQuery();
             DA.UpdateCommand.Connection.Close();
         }
+
+        internal object GetAllExceptAll()
+        {
+            DA.SelectCommand.CommandText = "select ID,CATEGORYNAME from " + Base.BaseName + "..CATEGORYLIST where ID != 2";
+            DA.Fill(DS, "t");
+            return DS.Tables["t"];
+        }
     }
 }

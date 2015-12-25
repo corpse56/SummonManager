@@ -34,12 +34,13 @@ namespace SummonManager
             DA.InsertCommand.Parameters.AddWithValue("WPNAME", p.WPName);
             DA.InsertCommand.Parameters.AddWithValue("IDCATEGORY", p.IDCat);
             DA.InsertCommand.Parameters.AddWithValue("DECNUM", p.DecNum);
+            DA.InsertCommand.Parameters.AddWithValue("CONFIGURATION", p.Configuration);
             DA.InsertCommand.Parameters.AddWithValue("COMPOSITION", p.Composition);
             DA.InsertCommand.Parameters.AddWithValue("DIMENSIONALDRAWING", p.DimenDrawing);
             DA.InsertCommand.Parameters.AddWithValue("POWERSUPPLY", p.PowerSupply);
             DA.InsertCommand.Parameters.AddWithValue("NOTE", p.Note);
             DA.InsertCommand.CommandText = "insert into " + Base.BaseName + "..WPNAMELIST (WPNAME,IDCATEGORY,DECNUM,COMPOSITION,DIMENSIONALDRAWING,POWERSUPPLY, " +
-                                            "NOTE) values (@WPNAME,@IDCATEGORY,@DECNUM,@COMPOSITION,@DIMENSIONALDRAWING,@POWERSUPPLY,@NOTE)";
+                                            "NOTE,CONFIGURATION) values (@WPNAME,@IDCATEGORY,@DECNUM,@COMPOSITION,@DIMENSIONALDRAWING,@POWERSUPPLY,@NOTE,@CONFIGURATION)";
             DA.InsertCommand.Connection.Open();
             DA.InsertCommand.ExecuteNonQuery();
             DA.InsertCommand.Connection.Close();
@@ -70,13 +71,14 @@ namespace SummonManager
             DA.UpdateCommand.Parameters.AddWithValue("IDCATEGORY", p.IDCat);
             DA.UpdateCommand.Parameters.AddWithValue("DECNUM", p.DecNum);
             DA.UpdateCommand.Parameters.AddWithValue("COMPOSITION", p.Composition);
+            DA.UpdateCommand.Parameters.AddWithValue("CONFIGURATION", p.Configuration);
             DA.UpdateCommand.Parameters.AddWithValue("DIMENSIONALDRAWING", p.DimenDrawing);
             DA.UpdateCommand.Parameters.AddWithValue("POWERSUPPLY", p.PowerSupply);
             DA.UpdateCommand.Parameters.AddWithValue("NOTE", p.Note);
             DA.UpdateCommand.Parameters.AddWithValue("ID", p.ID);
 
             DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..WPNAMELIST set WPNAME  = @WPNAME,IDCATEGORY = @IDCATEGORY,DECNUM = @DECNUM,COMPOSITION = @COMPOSITION,"+
-                                            " DIMENSIONALDRAWING = @DIMENSIONALDRAWING,POWERSUPPLY=@POWERSUPPLY,NOTE = @NOTE" +
+                                            " DIMENSIONALDRAWING = @DIMENSIONALDRAWING,POWERSUPPLY=@POWERSUPPLY,NOTE = @NOTE,CONFIGURATION = @CONFIGURATION " +
                                             " where ID = @ID";
             DA.UpdateCommand.Connection.Open();
             DA.UpdateCommand.ExecuteNonQuery();

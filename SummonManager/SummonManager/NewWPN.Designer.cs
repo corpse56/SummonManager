@@ -36,8 +36,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tbDecNum = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.tbComposition = new System.Windows.Forms.TextBox();
-            this.tbDimDraw = new System.Windows.Forms.TextBox();
             this.tbPowerSupply = new System.Windows.Forms.TextBox();
             this.tbConfiguration = new System.Windows.Forms.TextBox();
             this.tbNote = new System.Windows.Forms.TextBox();
@@ -46,6 +44,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.pfComposition = new SummonManager.Controls.PathField();
+            this.pfDimDrawing = new SummonManager.Controls.PathField();
             this.SuspendLayout();
             // 
             // tbName
@@ -118,20 +118,6 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Децимальный номер";
             // 
-            // tbComposition
-            // 
-            this.tbComposition.Location = new System.Drawing.Point(217, 98);
-            this.tbComposition.Name = "tbComposition";
-            this.tbComposition.Size = new System.Drawing.Size(520, 22);
-            this.tbComposition.TabIndex = 1;
-            // 
-            // tbDimDraw
-            // 
-            this.tbDimDraw.Location = new System.Drawing.Point(217, 126);
-            this.tbDimDraw.Name = "tbDimDraw";
-            this.tbDimDraw.Size = new System.Drawing.Size(520, 22);
-            this.tbDimDraw.TabIndex = 1;
-            // 
             // tbPowerSupply
             // 
             this.tbPowerSupply.Location = new System.Drawing.Point(217, 154);
@@ -199,11 +185,31 @@
             this.label8.TabIndex = 3;
             this.label8.Text = "Примечание";
             // 
+            // pfComposition
+            // 
+            this.pfComposition.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pfComposition.Location = new System.Drawing.Point(213, 93);
+            this.pfComposition.Margin = new System.Windows.Forms.Padding(4);
+            this.pfComposition.Name = "pfComposition";
+            this.pfComposition.Size = new System.Drawing.Size(605, 32);
+            this.pfComposition.TabIndex = 5;
+            // 
+            // pfDimDrawing
+            // 
+            this.pfDimDrawing.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pfDimDrawing.Location = new System.Drawing.Point(214, 121);
+            this.pfDimDrawing.Margin = new System.Windows.Forms.Padding(4);
+            this.pfDimDrawing.Name = "pfDimDrawing";
+            this.pfDimDrawing.Size = new System.Drawing.Size(604, 32);
+            this.pfDimDrawing.TabIndex = 6;
+            // 
             // NewWPN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(824, 309);
+            this.Controls.Add(this.pfDimDrawing);
+            this.Controls.Add(this.pfComposition);
             this.Controls.Add(this.cbCategory);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -218,8 +224,6 @@
             this.Controls.Add(this.tbNote);
             this.Controls.Add(this.tbConfiguration);
             this.Controls.Add(this.tbPowerSupply);
-            this.Controls.Add(this.tbDimDraw);
-            this.Controls.Add(this.tbComposition);
             this.Controls.Add(this.tbDecNum);
             this.Controls.Add(this.tbName);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -245,8 +249,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbDecNum;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox tbComposition;
-        private System.Windows.Forms.TextBox tbDimDraw;
         private System.Windows.Forms.TextBox tbPowerSupply;
         private System.Windows.Forms.TextBox tbConfiguration;
         private System.Windows.Forms.TextBox tbNote;
@@ -255,5 +257,7 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
+        private SummonManager.Controls.PathField pfComposition;
+        private SummonManager.Controls.PathField pfDimDrawing;
     }
 }

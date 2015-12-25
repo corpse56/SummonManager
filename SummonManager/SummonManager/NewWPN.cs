@@ -30,11 +30,13 @@ namespace SummonManager
                 tbConfiguration.Text = clone.Configuration;
                 tbNote.Text = clone.Note;
 
-                tbComposition.Text = clone.Composition.Substring(clone.Composition.LastIndexOf("\\") + 1);
-                tbComposition.Tag = clone.Composition;
 
-                tbDimDraw.Text = clone.DimenDrawing.Substring(clone.DimenDrawing.LastIndexOf("\\") + 1);
-                tbDimDraw.Tag = clone.DimenDrawing;
+                pfComposition.tbPath.Text = clone.Composition.Substring(clone.Composition.LastIndexOf("\\") + 1);
+                pfComposition.tbPath.Tag = clone.Composition;
+
+                pfDimDrawing.tbPath.Text = clone.DimenDrawing.Substring(clone.DimenDrawing.LastIndexOf("\\") + 1);
+                pfDimDrawing.tbPath.Tag = clone.DimenDrawing;
+
             }
         }
 
@@ -54,8 +56,8 @@ namespace SummonManager
             wp.WPName = tbName.Text;
             wp.IDCat = Convert.ToInt32(cbCategory.SelectedValue);
             wp.DecNum = tbDecNum.Text;
-            wp.Composition = tbComposition.Tag.ToString();
-            wp.DimenDrawing = tbDimDraw.Tag.ToString();
+            wp.Composition = pfComposition.tbPath.Tag.ToString();
+            wp.DimenDrawing = pfDimDrawing.tbPath.Tag.ToString();
             wp.PowerSupply = tbPowerSupply.Text;
             wp.Configuration = tbConfiguration.Text;
             wp.Note = tbNote.Text;
@@ -70,7 +72,7 @@ namespace SummonManager
             DBCategory dbc = new DBCategory();
             cbCategory.ValueMember = "ID";
             cbCategory.DisplayMember = "CATEGORYNAME";
-            cbCategory.DataSource = dbc.GetAll();
+            cbCategory.DataSource = dbc.GetAllExceptAll();
 
             if (Clone.IDCat != 0)
             {
