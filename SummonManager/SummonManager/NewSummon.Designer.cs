@@ -264,7 +264,7 @@
             this.bAdd.Name = "bAdd";
             this.bAdd.Size = new System.Drawing.Size(225, 42);
             this.bAdd.TabIndex = 5;
-            this.bAdd.Text = "Сохранить и передать в производство для подготовки";
+            this.bAdd.Text = "Сохранить и передать в ПДБ";
             this.bAdd.UseVisualStyleBackColor = true;
             this.bAdd.Click += new System.EventHandler(this.bAdd_Click);
             // 

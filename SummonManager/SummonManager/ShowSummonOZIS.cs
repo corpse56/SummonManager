@@ -41,8 +41,6 @@ namespace SummonManager
             cbAccept.DropDownStyle = ComboBoxStyle.DropDown;
             tbCONTRACT.ReadOnly = true;
             tbDELIVERY.ReadOnly = true;
-            tbNote.ReadOnly = true;
-            tbNotePDB.ReadOnly = true;
             cbCustomers.DropDownStyle = ComboBoxStyle.DropDown;
             cbCustomers.ReadOnly = true;
             tbPAYSTATUS.ReadOnly = true;
@@ -59,22 +57,17 @@ namespace SummonManager
             cbMountingKit.ReadOnly = true;
             bEditExtCablePack.Enabled = false;
             cbCustDept.ReadOnly = true;
-            //pathFileds1.bCOMPOSITION.Enabled = false;
             chbShildOrdered.Enabled = false;
             bPurchMat.Enabled = true;
 
         }
         private void EnableAll()
         {
-            //pathFileds1.bCOMPOSITION.Enabled = true;
             chbShildOrdered.Enabled = true;
             summonTransfer1.Enabled = false;
-            tbNote.ReadOnly = false;
-            tbNotePDB.ReadOnly = false;
             bEdit.Enabled = false;
             bSave.Enabled = true;
             bPrint.Enabled = true;
-           // bBack.Enabled = false;
             chbDeterm.Enabled = true;
             if (chbDeterm.Checked)
                 dtpAPPROX.Enabled = false;
@@ -127,8 +120,6 @@ namespace SummonManager
 
             tbCONTRACT.Text = SVO.CONTRACT;
             tbDELIVERY.Text = SVO.DELIVERY;
-            tbNote.Text = SVO.NOTE;
-            tbNotePDB.Text = SVO.NOTEPDB;
             tbQUANTITY.Value = SVO.QUANTITY;
             tbSHIPPING.Text = SVO.SHIPPING;
             tbTECHREQPATH.Text = SVO.TECHREQPATH.Substring(SVO.TECHREQPATH.LastIndexOf("\\") + 1);
@@ -150,13 +141,11 @@ namespace SummonManager
             UIProc ui = new UIProc();
             ui.LoadExtCables(dgv, this.IDSUMMON.ToString());
 
-            DBPrivateNote dbpn = new DBPrivateNote();
-            tbPrivateNote.Text = dbpn.GetPrivateNote(UVO.id, SVO.ID);
-
             summonNotes1.Init(SVO.ID, UVO, SVO);
             summonNotes1.Reload();
 
             summonTransfer1.Init(SVO, UVO, this);
+            summonTransfer2.InitSub(SVO, UVO, this);
 
             pathFileds1.Init(SVO, UVO);
 
@@ -211,8 +200,6 @@ namespace SummonManager
             SVO.IDCUSTOMERDEPT = (int)cbCustDept.SelectedValue;
             SVO.PAYSTATUS = tbPAYSTATUS.Text;
             SVO.IDSTATUS = 1;
-            SVO.NOTE = tbNote.Text;
-            SVO.NOTEPDB = tbNotePDB.Text;
             SVO.PTIME = dtpPTIME.Value;
             SVO.QUANTITY = (int)tbQUANTITY.Value;
             SVO.SHIPPING = tbSHIPPING.Text;
@@ -350,8 +337,6 @@ namespace SummonManager
             SVO.IDCUSTOMERDEPT = (int)cbCustDept.SelectedValue;
             SVO.PAYSTATUS = tbPAYSTATUS.Text;
             SVO.IDSTATUS = 2;
-            SVO.NOTEPDB = tbNotePDB.Text;
-            SVO.NOTE = tbNote.Text;
             SVO.PTIME = dtpPTIME.Value;
             SVO.QUANTITY = (int)tbQUANTITY.Value;
             SVO.SHIPPING = tbSHIPPING.Text;
@@ -453,7 +438,7 @@ namespace SummonManager
             fepn.ShowDialog();
 
             DBPrivateNote dbpn = new DBPrivateNote();
-            tbPrivateNote.Text = dbpn.GetPrivateNote(UVO.id, SVO.ID);
+            //tbPrivateNote.Text = dbpn.GetPrivateNote(UVO.id, SVO.ID);
 
         }
 

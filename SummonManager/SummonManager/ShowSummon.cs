@@ -30,8 +30,8 @@ namespace SummonManager
         private void DisableAll()
         {
 
-            pathFileds1.bCOMPOSITION.Enabled = false;
-            pathFileds1.bCompositionDel.Enabled = false;
+           // pathFileds1.bCOMPOSITION.Enabled = false;
+          //  pathFileds1.bCompositionDel.Enabled = false;
 
             summonTransfer1.Enabled = true;
             cbWPNAME.ReadOnly = true;
@@ -104,8 +104,8 @@ namespace SummonManager
             cbMountingKit.ReadOnly = false;
             bEditExtCablePack.Enabled = true;
             cbCustDept.ReadOnly = false;
-            pathFileds1.bCOMPOSITION.Enabled = true;
-            pathFileds1.bCompositionDel.Enabled = true;
+           // pathFileds1.bCOMPOSITION.Enabled = true;
+           // pathFileds1.bCompositionDel.Enabled = true;
         }
 
         private void LoadSummon()
@@ -410,25 +410,6 @@ namespace SummonManager
                 dtpAPPROX.Enabled = true;
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            if ((SVO.IDSTATUS != 11))
-            {
-                MessageBox.Show("Вы не можете пометить это извещение как отгружаемое, так как оно либо еще не готово к отгрузке, либо уже отгружается!");
-                return;
-            }
-            if (MessageBox.Show("Вы действительно хотите отгрузить изделие?", "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-            {
-                return;
-            }
-            DBCurStatus dbcs = new DBCurStatus();
-            SummonVO SVO_ = new SummonVO();
-            SVO_.IDS = tbIDS.Text;
-            dbcs.ChangeStatus(SVO_, 12, "-", UVO.id);
-            //MessageBox.Show("Извещение успешно возвращено в коммерческий отдел на доработку!");
-            Close();
-
-        }
 
         private void bPrint_Click(object sender, EventArgs e)
         {

@@ -119,7 +119,7 @@ namespace SummonManager
                 MessageBox.Show("Необходиом добавить хотя бы один отдел заказчика!");
                 return;
             }
-            if (MessageBox.Show("Вы действительно хотите сохранить и передать в производство для подготовки?", "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            if (MessageBox.Show("Вы действительно хотите сохранить и передать в ПДБ?", "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
                 return;
             }

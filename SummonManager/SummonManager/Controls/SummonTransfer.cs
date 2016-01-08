@@ -15,6 +15,7 @@ namespace SummonManager
         SummonVO SVO;
         UserVO UVO;
         Form FORM;
+        bool sub = false;
         public SummonTransfer()
         {
             InitializeComponent();
@@ -31,11 +32,53 @@ namespace SummonManager
             DBCurStatus dbcs = new DBCurStatus();
             cbStatus.ValueMember = "ID";
             cbStatus.DisplayMember = "SNAME";
-            cbStatus.DataSource = dbcs.GetAllStatuses(UVO.Role);
+            cbStatus.DataSource = dbcs.GetAllStatuses(UVO,SVO);
             cbStatus.SelectedValue = SVO.IDSTATUS;
 
             SetDefaults();
 
+        }
+        internal void InitSub(SummonVO SVO, UserVO UVO, ShowSummonOZIS form)
+        {
+            this.SVO = SVO;
+            this.UVO = UVO;
+            this.FORM = form;
+            cbStatus.Enabled = false;
+            done = false;
+            if ((UVO.Role != Roles.OTK) && (UVO.Role != Roles.Montage) && (UVO.Role != Roles.Ozis))
+            {
+                this.Visible = false;
+                return;
+            }
+
+            DBCurStatus dbcs = new DBCurStatus();
+            cbStatus.ValueMember = "ID";
+            cbStatus.DisplayMember = "SNAME";
+            cbStatus.DataSource = dbcs.GetAllSubStatuses(UVO, SVO);
+            cbStatus.SelectedValue = SVO.IDSTATUS;
+
+            SetDefaultsSub();
+            groupBox1.Text = "Смена субстатуса";
+            button3.Text = "Сменить субстатус";
+            label1.Text = "Выберите субстатус";
+            sub = true;
+        }
+
+        private void SetDefaultsSub()
+        {
+            switch (UVO.Role)//ставим умолчания
+            {
+                case Roles.OTK:
+                    cbStatus.SelectedValue = 17;
+                    break;
+                case Roles.Ozis:
+                    cbStatus.SelectedValue = 15;
+                    break;
+                case Roles.Montage:
+                    cbStatus.SelectedValue = 16;
+                    break;
+
+            }
         }
         private void SetDefaults()
         {
@@ -45,28 +88,31 @@ namespace SummonManager
                     cbStatus.SelectedValue = 13;
                     break;
                 case Roles.Manager:
-                    if (SVO.IDSTATUS == 11)
-                        cbStatus.SelectedValue = 12;
-                    else
-                        cbStatus.SelectedValue = 3;
+                    cbStatus.SelectedValue = 3;
                     break;
                 case Roles.Montage:
                     cbStatus.SelectedValue = 16;
                     break;
                 case Roles.OTK:
-                    cbStatus.SelectedValue = 9;
+                    cbStatus.SelectedValue = 99;
                     break;
                 case Roles.Ozis:
                     cbStatus.SelectedValue = 4;
                     break;
                 case Roles.Prod:
-                    cbStatus.SelectedValue = 5;
+                    if (SVO.SISP)
+                        cbStatus.SelectedValue = 19;
+                    else
+                        cbStatus.SelectedValue = 5;
                     break;
                 case Roles.Ware:
-                    cbStatus.SelectedValue = 11;
+                    cbStatus.SelectedValue = 12;
                     break;
                 case Roles.Wsh:
-                    cbStatus.SelectedValue = 7;
+                    if (SVO.SISP)
+                        cbStatus.SelectedValue = 20;
+                    else
+                        cbStatus.SelectedValue = 7;
                     break;
 
             }
@@ -86,93 +132,146 @@ namespace SummonManager
 
         private void button3_Click(object sender, EventArgs e)
         {
-            switch (UVO.Role)
+            if (!sub)
             {
-                case Roles.Logist:
-                    if (LogistSwitch())
-                    {
-                        if (!Change())
+                switch (UVO.Role)
+                {
+                    case Roles.Logist:
+                        if (LogistSwitch())
                         {
-                            return;
+                            if (!Change())
+                            {
+                                return;
+                            }
                         }
-                    }
-                    else return;
-                    break;
-                case Roles.Manager:
-                    if (ManagerSwitch())
-                    {
-                        if (!Change())
+                        else return;
+                        break;
+                    case Roles.Manager:
+                        if (ManagerSwitch())
                         {
-                            return;
+                            if (!Change())
+                            {
+                                return;
+                            }
                         }
-                    }
-                    else return;
-                    break;
-                case Roles.Montage:
-                    if (MontageSwitch())
-                    {
-                        if (!Change())
+                        else return;
+                        break;
+                    case Roles.Montage:
+                        if (MontageSwitch())
                         {
-                            return;
+                            if (!Change())
+                            {
+                                return;
+                            }
                         }
-                    }
-                    else return;
-                    break;
-                case Roles.OTK:
-                    if (OTKSwitch())
-                    {
-                        if (!Change())
+                        else return;
+                        break;
+                    case Roles.OTK:
+                        if (OTKSwitch())
                         {
-                            return;
+                            if (!Change())
+                            {
+                                return;
+                            }
                         }
-                    }
-                    else return;
-                    break;
-                case Roles.Ozis:
-                    if (OzisSwitch())
-                    {
-                        if (!Change())
+                        else return;
+                        break;
+                    case Roles.Ozis:
+                        if (OzisSwitch())
                         {
-                            return;
+                            if (!Change())
+                            {
+                                return;
+                            }
                         }
-                    }
-                    else return;
-                    break;
-                case Roles.Prod:
-                    if (ProdSwitch())
-                    {
-                        if (!Change())
+                        else return;
+                        break;
+                    case Roles.Prod:
+                        if (ProdSwitch())
                         {
-                            return;
+                            if (!Change())
+                            {
+                                return;
+                            }
                         }
-                    }
-                    else return;
-                    break;
-                case Roles.Ware:
-                    if (WareSwitch())
-                    {
-                        if (!Change())
+                        else return;
+                        break;
+                    case Roles.Ware:
+                        if (WareSwitch())
                         {
-                            return;
+                            if (!Change())
+                            {
+                                return;
+                            }
                         }
-                    }
-                    else return;
-                    break;
-                case Roles.Wsh:
-                    if (WshSwitch())
-                    {
-                        if (!Change())
+                        else return;
+                        break;
+                    case Roles.Wsh:
+                        if (WshSwitch())
                         {
-                            return;
+                            if (!Change())
+                            {
+                                return;
+                            }
                         }
-                    }
-                    else return;
-                    break;
+                        else return;
+                        break;
+                }
+                MessageBox.Show("Извещение успешно передано!");
+                done = true;
+                FORM.Close();
             }
-            MessageBox.Show("Извещение успешно передано!");
-            done = true;
-            FORM.Close();
-            
+            else//======================================================SUBSTATUS==============================================
+            {
+                switch (UVO.Role)
+                {
+                    case Roles.OTK:
+                        if (OTKSubSwitch())
+                        {
+                            if (!ChangeSub())
+                            {
+                                return;
+                            }
+                        }
+                        else return;
+                        break;
+                    case Roles.Ozis:
+                        if (OzisSubSwitch())
+                        {
+                            if (!ChangeSub())
+                            {
+                                return;
+                            }
+                        }
+                        else return;
+                        break;
+                    case Roles.Montage:
+                        if (MontageSubSwitch())
+                        {
+                            if (!ChangeSub())
+                            {
+                                return;
+                            }
+                        }
+                        else return;
+                        break;
+                }
+            }
+        }
+
+
+
+
+        private bool ChangeSub()
+        {
+            if (MessageBox.Show("Вы действительно хотите изменить субстатус этого извещения на '" + cbStatus.Text + "'?",
+                "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
+                return false;
+            }
+            DBCurStatus dbcs = new DBCurStatus();
+            dbcs.ChangeSubStatus(SVO, (int)cbStatus.SelectedValue, UVO.id);
+            return true;
         }
         public bool done = false;
         private bool Change()
@@ -183,7 +282,7 @@ namespace SummonManager
                 return false;
             }
             DBCurStatus dbcs = new DBCurStatus();
-            dbcs.ChangeStatus(SVO, (int)cbStatus.SelectedValue, "", UVO.id);
+            dbcs.ChangeStatus(SVO, (int)cbStatus.SelectedValue, UVO.id);
             if ((int)cbStatus.SelectedValue == 3)//вставить оповещение для ОТК, чтоб заполняли серийные номера!
             {
                 Notification n = new Notification();
@@ -191,6 +290,34 @@ namespace SummonManager
                 n.IDSUMMON = SVO.ID;
                 DBNotification dbn = new DBNotification();
                 dbn.AddNew(n);
+            }
+            return true;
+        }
+        private bool OTKSubSwitch()
+        {
+            if (SVO.IDSUBST != 16)
+            {
+                MessageBox.Show("Вы не можете изменить субстатус, так как не являетесь в данный момент ответственным лицом за текущий субстатус!");
+                return false;
+            }
+            return true;
+        }
+        private bool MontageSubSwitch()
+        {
+            if (SVO.IDSUBST != 15)
+            {
+                MessageBox.Show("Вы не можете изменить субстатус, так как не являетесь в данный момент ответственным лицом за текущий субстатус!");
+                return false;
+            }
+            return true;
+        }
+
+        private bool OzisSubSwitch()
+        {
+            if ((SVO.IDSUBST != 0) && (SVO.IDSUBST != 17))
+            {
+                MessageBox.Show("Вы не можете изменить субстатус, так как не являетесь в данный момент ответственным лицом за текущий субстатус!");
+                return false;
             }
             return true;
         }
@@ -368,6 +495,8 @@ namespace SummonManager
             }
             return true;
         }
+
+
 
     }
 }

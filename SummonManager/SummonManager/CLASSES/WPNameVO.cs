@@ -7,6 +7,11 @@ namespace SummonManager.CLASSES
 {
     public struct WPNameVO
     {
+        public WPNameVO(int ID)
+        {
+            DBWPName dbwp = new DBWPName();
+            this = dbwp.GetWP(ID);
+        }
         public int ID;
         public string WPName;
         public int IDCat;

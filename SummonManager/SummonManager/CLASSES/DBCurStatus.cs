@@ -17,10 +17,10 @@ namespace SummonManager
             DA.InsertCommand.Connection.Open();
             DA.InsertCommand.ExecuteNonQuery();
             DA.InsertCommand.CommandText = "insert into " + Base.BaseName + "..CURSTATUS (IDS,STATID,CAUSE,CHANGED,IDUSER) " +
-                                           " values ('" + IDS + "',2,'-','" + DateTime.Now.ToString("yyyyMMdd HH:mm") + "'," + iduser + ")";
+                                           " values ('" + IDS + "',3,'-','" + DateTime.Now.ToString("yyyyMMdd HH:mm") + "'," + iduser + ")";
             DA.InsertCommand.ExecuteNonQuery();
             DA.InsertCommand.Connection.Close();
-            DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..SUMMON set IDSTATUS = 2 where IDS = '" + IDS + "'";
+            DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..SUMMON set IDSTATUS = 3 where IDS = '" + IDS + "'";
             DA.UpdateCommand.Connection.Open();
             DA.UpdateCommand.ExecuteNonQuery();
             DA.UpdateCommand.Connection.Close();
@@ -41,17 +41,32 @@ namespace SummonManager
 
         }
 
-        internal void ChangeStatus(SummonVO SVO, int idstatus,string cause,string iduser)
+        internal void ChangeStatus(SummonVO SVO, int idstatus, string cause, string iduser)
         {
             DA.InsertCommand.CommandText = "insert into " + Base.BaseName + "..CURSTATUS (IDS,STATID,CAUSE,CHANGED,IDUSER) " +
-                      " values ('" + SVO.IDS + "',"+idstatus.ToString()+",@cause,'" + DateTime.Now.ToString("yyyyMMdd HH:mm") + "'," + iduser + ")";
+                      " values ('" + SVO.IDS + "'," + idstatus.ToString() + ",@cause,'" + DateTime.Now.ToString("yyyyMMdd HH:mm") + "'," + iduser + ")";
             DA.InsertCommand.Parameters.Add("cause", System.Data.SqlDbType.NVarChar);
             DA.InsertCommand.Parameters["cause"].Value = cause;
             DA.InsertCommand.Connection.Open();
             DA.InsertCommand.ExecuteNonQuery();
             DA.InsertCommand.Connection.Close();
             DA.InsertCommand.Parameters.Remove(DA.InsertCommand.Parameters["cause"]);
-            DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..SUMMON set VIEWED = 0,IDSTATUS = "+idstatus.ToString()+" where IDS = '" + SVO.IDS + "'";
+            DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..SUMMON set VIEWED = 0,IDSTATUS = " + idstatus.ToString() + " where IDS = '" + SVO.IDS + "'";
+            DA.UpdateCommand.Connection.Open();
+            DA.UpdateCommand.ExecuteNonQuery();
+            DA.UpdateCommand.Connection.Close();
+        }
+        internal void ChangeStatus(SummonVO SVO, int idstatus, string iduser)
+        {
+            DA.InsertCommand.CommandText = "insert into " + Base.BaseName + "..CURSTATUS (IDS,STATID,CAUSE,CHANGED,IDUSER) " +
+                      " values ('" + SVO.IDS + "'," + idstatus.ToString() + ",@cause,'" + DateTime.Now.ToString("yyyyMMdd HH:mm") + "'," + iduser + ")";
+            DA.InsertCommand.Parameters.Add("cause", System.Data.SqlDbType.NVarChar);
+            DA.InsertCommand.Parameters["cause"].Value = "";
+            DA.InsertCommand.Connection.Open();
+            DA.InsertCommand.ExecuteNonQuery();
+            DA.InsertCommand.Connection.Close();
+            DA.InsertCommand.Parameters.Remove(DA.InsertCommand.Parameters["cause"]);
+            DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..SUMMON set VIEWED = 0,IDSTATUS = " + idstatus.ToString() + " where IDS = '" + SVO.IDS + "'";
             DA.UpdateCommand.Connection.Open();
             DA.UpdateCommand.ExecuteNonQuery();
             DA.UpdateCommand.Connection.Close();
@@ -60,7 +75,7 @@ namespace SummonManager
         public DataTable GetAllStatuses()
         {
             DS = new DataSet();
-            DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..STATUSLIST where ID != 14";
+            DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..STATUSLIST where ID != 14,2,6,8,11";
             DA.Fill(DS, "t");
             return DS.Tables["t"];
         }
@@ -75,8 +90,8 @@ namespace SummonManager
                         "..STATUSLIST where ID != 14 and (ID = 13)";
                     break;
                 case Roles.Manager:
-                    DA.SelectCommand.CommandText = "select ID,case when ID = 3 then 'ПДБ' else 'Отдел логистики' end SNAME from " + Base.BaseName +
-                        "..STATUSLIST where ID != 14 and ID in(3)";
+                    DA.SelectCommand.CommandText = "select ID,'ПДБ' SNAME from " + Base.BaseName +
+                        "..STATUSLIST where ID != 14 and ID in (3)";
                     break;
                 case Roles.Montage:
                     DA.SelectCommand.CommandText = "select ID,case when ID = 16 then 'ОТК' else 'Цех' end SNAME from " + Base.BaseName +
@@ -126,6 +141,154 @@ namespace SummonManager
             //DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..STATUSLIST where ID != 14";
             DA.Fill(DS, "t");
             return DS.Tables["t"];
+        }
+        internal object GetAllStatuses(UserVO UVO, SummonVO SVO)
+        {
+            DS = new DataSet();
+            switch (UVO.Role)
+            {
+                case Roles.Logist:
+                    DA.SelectCommand.CommandText = "select ID,'Закрыть извещение' SNAME from " + Base.BaseName +
+                        "..STATUSLIST where ID != 14 and (ID = 13)";
+                    break;
+                case Roles.Manager:
+                    DA.SelectCommand.CommandText = "select ID,'ПДБ' SNAME from " + Base.BaseName +
+                        "..STATUSLIST where ID != 14 and ID in (3)";
+                    break;
+                case Roles.Montage:
+                    DA.SelectCommand.CommandText = "select ID,case when ID = 16 then 'ОТК' else 'Цех' end SNAME from " + Base.BaseName +
+                        "..STATUSLIST where ID != 14 and ID in (16,5)";
+                    break;
+                case Roles.OTK:
+                    if (SVO.WPNAMEVO.IDCat == 4)
+                    {
+                        DA.SelectCommand.CommandText = "select ID,case when ID = 9 then 'Коммерческий отдел' else 'Возвращено монтажникам из ОТК' end SNAME from " + Base.BaseName +
+                        "..STATUSLIST where ID != 14 and ID in (9,18)";
+
+                    }
+                    else
+                    {
+                        if (SVO.SISP)
+                        {
+                            if (SVO.IDSUBST == 19)
+                            {
+                                DA.SelectCommand.CommandText = "select ID,'Производство после СИ и СП' SNAME from " + Base.BaseName +
+                                "..STATUSLIST where ID != 14 and ID in (21)";
+                            }
+                            if (SVO.IDSUBST == 20)
+                            {
+                                DA.SelectCommand.CommandText = "select ID,'Цех после СИ и СП' SNAME from " + Base.BaseName +
+                                "..STATUSLIST where ID != 14 and ID in (22)";
+                            }
+
+                        }
+                        else
+                        {
+                            DA.SelectCommand.CommandText = "select ID,'Коммерческий отдел' SNAME from " + Base.BaseName +
+                            "..STATUSLIST where ID != 14 and ID in (9)";
+
+                        }
+                    }
+                    break;
+                case Roles.Ozis:
+                    if (SVO.WPNAMEVO.IDCat == 4) //если кабель
+                    {
+                        DA.SelectCommand.CommandText = "select ID, 'Монтажники' SNAME " +
+                                                                " from " + Base.BaseName +
+                            "..STATUSLIST where ID != 14 and ID in (15)";
+                    }
+                    else
+                    {
+                        DA.SelectCommand.CommandText = "select ID, 'Производство' SNAME " +
+                                                                " from " + Base.BaseName +
+                            "..STATUSLIST where ID != 14 and ID in (4)";
+
+                    }
+
+                    break;
+                case Roles.Prod:
+                    if (SVO.SISP)
+                    {
+                        DA.SelectCommand.CommandText = "select ID, 'СИ и СП (ОТК - Произ-во)' SNAME" +
+                                                                " from " + Base.BaseName +
+                            "..STATUSLIST where ID != 14 and ID in (19)";
+                    }
+                    else
+                    {
+                        DA.SelectCommand.CommandText = "select ID, 'Цех' SNAME" +
+                                        " from " + Base.BaseName +
+                        "..STATUSLIST where ID != 14 and ID in (5)";
+
+                    }
+                    break;
+                case Roles.Ware:
+                    DA.SelectCommand.CommandText = "select ID,'Отдел логистики' SNAME from " + Base.BaseName +
+                        "..STATUSLIST where ID != 14 and ID in (11)";
+                    break;
+                case Roles.Wsh:
+                    if (SVO.SISP)
+                    {
+                        DA.SelectCommand.CommandText = "select ID, 'СИ и СП (ОТК - Цех)' SNAME" +
+                                                                " from " + Base.BaseName +
+                            "..STATUSLIST where ID != 14 and ID in (20)";
+                    }
+                    else
+                    {
+                        DA.SelectCommand.CommandText = "select ID, 'ОТК' SNAME" +
+                                        " from " + Base.BaseName +
+                        "..STATUSLIST where ID != 14 and ID in (7)";
+
+                    }
+                    break;
+            }
+            //DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..STATUSLIST where ID != 14";
+            DA.Fill(DS, "t");
+            return DS.Tables["t"];
+        }
+
+
+        internal object GetAllSubStatuses(UserVO UVO, SummonVO SVO)
+        {
+            DS = new DataSet();
+            switch (UVO.Role)
+            {
+                case Roles.OTK:
+                    //DA.SelectCommand.CommandText = "select ID,case when ID = 2 then 'Менеджер' else 'Коммерческий отдел' end SNAME from " + Base.BaseName +
+                    DA.SelectCommand.CommandText = "select ID,case when ID = 17 then 'В ПДБ из монтажа' else " +
+                                                            " 'Возвращено монтажникам из ОТК'  end SNAME" +
+                                                            " from " + Base.BaseName +
+                        "..STATUSLIST where ID != 14 and ID in (17,18)";
+                    break;
+                case Roles.Ozis:
+                        DA.SelectCommand.CommandText = "select ID, 'Монтажники' SNAME " +
+                                                                " from " + Base.BaseName +
+                            "..STATUSLIST where ID != 14 and ID in (15)";
+                    break;
+                case Roles.Montage:
+                    DA.SelectCommand.CommandText = "select ID, 'ОТК' SNAME from " + Base.BaseName +
+                        "..STATUSLIST where ID != 14 and ID in (16)";
+                    break;
+
+            }
+            DA.Fill(DS, "t");
+            return DS.Tables["t"];
+
+        }
+
+        internal void ChangeSubStatus(SummonVO SVO, int idstatus, string iduser)
+        {
+            DA.InsertCommand.CommandText = "insert into " + Base.BaseName + "..CURSUBSTATUS (IDS,STATID,CAUSE,CHANGED,IDUSER) " +
+                      " values ('" + SVO.IDS + "'," + idstatus.ToString() + ",@cause,'" + DateTime.Now.ToString("yyyyMMdd HH:mm") + "'," + iduser + ")";
+            DA.InsertCommand.Parameters.Add("cause", System.Data.SqlDbType.NVarChar);
+            DA.InsertCommand.Parameters["cause"].Value = "";
+            DA.InsertCommand.Connection.Open();
+            DA.InsertCommand.ExecuteNonQuery();
+            DA.InsertCommand.Connection.Close();
+            DA.InsertCommand.Parameters.Remove(DA.InsertCommand.Parameters["cause"]);
+            DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..SUMMON set VIEWED = 0,IDSUBST = " + idstatus.ToString() + " where IDS = '" + SVO.IDS + "'";
+            DA.UpdateCommand.Connection.Open();
+            DA.UpdateCommand.ExecuteNonQuery();
+            DA.UpdateCommand.Connection.Close();
         }
     }
 }

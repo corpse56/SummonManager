@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data;
 using System.Data.SqlTypes;
+using SummonManager.CLASSES;
 
 namespace SummonManager
 {
@@ -199,8 +200,9 @@ namespace SummonManager
             SVO.SHIPPING = DS.Tables["t"].Rows[0]["SHIPPING"].ToString();
             SVO.SISP = (bool)DS.Tables["t"].Rows[0]["SISP"];
             SVO.TECHREQPATH = DS.Tables["t"].Rows[0]["TECHREQPATH"].ToString();
-            SVO.WPNAME = DS.Tables["t"].Rows[0]["WPNAME"].ToString();
             SVO.IDWPNAME = (int)DS.Tables["t"].Rows[0]["IDWP"];
+            SVO.WPNAMEVO = new WPNameVO(SVO.IDWPNAME);
+            SVO.WPNAME = SVO.WPNAMEVO.WPName + SVO.WPNAMEVO.DecNum;
             SVO.IDACCEPT = (int)DS.Tables["t"].Rows[0]["IDACCEPT"];
             SVO.IDPACKING = (int)DS.Tables["t"].Rows[0]["IDPACKING"];
             SVO.IDEXTCABLE = (int)DS.Tables["t"].Rows[0]["IDEXTCABLE"];
@@ -231,7 +233,7 @@ namespace SummonManager
                 SVO.PASSDATE = (DateTime)DS.Tables["t"].Rows[0]["PASSDATE"];
                 SVO.PASSDATETEXT = ((DateTime)DS.Tables["t"].Rows[0]["PASSDATE"]).ToString("dd.MM.yyyy");
             }
-
+            SVO.IDSUBST = (int)DS.Tables["t"].Rows[0]["IDSUBST"];
             return SVO;            
         }
 
@@ -272,7 +274,7 @@ namespace SummonManager
             DA.UpdateCommand.Parameters.Add("TECHREQPATH", SqlDbType.NVarChar);
             DA.UpdateCommand.Parameters["TECHREQPATH"].Value = SVO.TECHREQPATH;
             DA.UpdateCommand.Parameters.Add("WPNAME", SqlDbType.NVarChar);
-            DA.UpdateCommand.Parameters["WPNAME"].Value = SVO.WPNAME;
+            DA.UpdateCommand.Parameters["WPNAME"].Value = SVO.WPNAMEVO.WPName+" "+SVO.WPNAMEVO.DecNum;
             DA.UpdateCommand.Parameters.Add("IDWP", SqlDbType.Int);
             DA.UpdateCommand.Parameters["IDWP"].Value = SVO.IDWPNAME;
             DA.UpdateCommand.Parameters.Add("IDACCEPT", SqlDbType.Int);
@@ -321,13 +323,16 @@ namespace SummonManager
                 DA.UpdateCommand.Parameters["PASSDATE"].Value = SqlDateTime.Null;
             else
                 DA.UpdateCommand.Parameters["PASSDATE"].Value = SVO.PASSDATE;
+            DA.UpdateCommand.Parameters.Add("IDSUBST", SqlDbType.Int);
+            DA.UpdateCommand.Parameters["IDSUBST"].Value = SVO.IDSUBST;
 
             DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..SUMMON set ACCEPTANCE=@ACCEPTANCE,CONTRACT=@CONTRACT,DELIVERY=@DELIVERY,IDCUSTOMER=@IDCUSTOMER,PAYSTATUS=@PAYSTATUS, " +
             "NOTE=@NOTE,PTIME=@PTIME,QUANTITY=@QUANTITY,SHIPPING=@SHIPPING,SISP=@SISP,TECHREQPATH=@TECHREQPATH,WPNAME=@WPNAME  " +
             ", IDWP = @IDWP,IDACCEPT = @IDACCEPT,PASSDATE = @PASSDATE,IDPACKING = @IDPACKING, NOTEPDB = @NOTEPDB, CREATED = @CREATED " +
             " , IDMOUNTINGKIT = @IDMOUNTINGKIT, IDCUSTOMERDEPT = @IDCUSTOMERDEPT, IDEXTCABLE = @IDEXTCABLE, VIEWED = @VIEWED , IDS = @IDS " +
             " , SHILD=@SHILD, PLANKA=@PLANKA, SBORKA3D=@SBORKA3D, ZHGUT=@ZHGUT, SERIAL=@SERIAL,COMPOSITION = @COMPOSITION, METAL = @METAL " +
-            " , SHILDREQ=@SHILDREQ, PLANKAREQ=@PLANKAREQ, SBORKA3DREQ=@SBORKA3DREQ, SERIALREQ=@SERIALREQ,COMPOSITIONREQ = @COMPOSITIONREQ, METALREQ = @METALREQ " +
+            " , SHILDREQ=@SHILDREQ, PLANKAREQ=@PLANKAREQ, SBORKA3DREQ=@SBORKA3DREQ, SERIALREQ=@SERIALREQ,COMPOSITIONREQ = @COMPOSITIONREQ,"+
+            " METALREQ = @METALREQ,IDSUBST = @IDSUBST " +
             " where ID = @ID";
             DA.UpdateCommand.Connection.Open();
             DA.UpdateCommand.ExecuteNonQuery();

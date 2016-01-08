@@ -254,6 +254,7 @@
             this.bCOMPOSITION.TabIndex = 16;
             this.bCOMPOSITION.Text = "Путь";
             this.bCOMPOSITION.UseVisualStyleBackColor = true;
+            this.bCOMPOSITION.Visible = false;
             this.bCOMPOSITION.Click += new System.EventHandler(this.bCOMPOSITION_Click);
             // 
             // label3
@@ -336,6 +337,7 @@
             this.chCOMPOSITION.Size = new System.Drawing.Size(15, 14);
             this.chCOMPOSITION.TabIndex = 19;
             this.chCOMPOSITION.UseVisualStyleBackColor = true;
+            this.chCOMPOSITION.Visible = false;
             this.chCOMPOSITION.CheckedChanged += new System.EventHandler(this.chCOMPOSITION_CheckedChanged);
             // 
             // chMETAL
@@ -412,6 +414,7 @@
             this.bCompositionDel.Size = new System.Drawing.Size(35, 24);
             this.bCompositionDel.TabIndex = 20;
             this.bCompositionDel.UseVisualStyleBackColor = true;
+            this.bCompositionDel.Visible = false;
             this.bCompositionDel.Click += new System.EventHandler(this.bCompositionDel_Click);
             // 
             // bMetalDel

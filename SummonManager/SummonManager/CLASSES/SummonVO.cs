@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using SummonManager.CLASSES;
 
 namespace SummonManager
 {
@@ -60,6 +61,8 @@ namespace SummonManager
         public bool SERIALREQ;
         public bool COMPOSITIONREQ;
         public bool METALREQ;
+        public WPNameVO WPNAMEVO;
+        public int IDSUBST;
         public SummonVO() { }
 
         public SummonVO FillReportFields()
