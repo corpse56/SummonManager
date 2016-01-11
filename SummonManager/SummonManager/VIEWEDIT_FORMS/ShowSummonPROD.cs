@@ -10,14 +10,14 @@ using System.Diagnostics;
 
 namespace SummonManager
 {
-    public partial class ShowSummonOZIS : Form
+    public partial class ShowSummonPROD : Form
     {
         private DBSummon dbs;
         private SummonVO SVO;
         private string IDS;
         private string IDSUMMON;
         private UserVO UVO;
-        public ShowSummonOZIS(string ids,UserVO uvo,string idsummon)
+        public ShowSummonPROD(string ids, UserVO uvo, string idsummon)
         {
             InitializeComponent();
             this.UVO = uvo;
@@ -25,7 +25,6 @@ namespace SummonManager
             this.IDSUMMON = idsummon;
             LoadSummon();
             DisableAll();
-
         }
 
         private void DisableAll()
@@ -57,13 +56,10 @@ namespace SummonManager
             cbMountingKit.ReadOnly = true;
             bEditExtCablePack.Enabled = false;
             cbCustDept.ReadOnly = true;
-            chbShildOrdered.Enabled = false;
-            bPurchMat.Enabled = true;
 
         }
         private void EnableAll()
         {
-            chbShildOrdered.Enabled = true;
             summonTransfer1.Enabled = false;
             bEdit.Enabled = false;
             bSave.Enabled = true;
@@ -73,7 +69,6 @@ namespace SummonManager
                 dtpAPPROX.Enabled = false;
             else
                 dtpAPPROX.Enabled = true;
-            bPurchMat.Enabled = false;
         }
 
         private void LoadSummon()
@@ -145,14 +140,8 @@ namespace SummonManager
             summonNotes1.Reload();
 
             summonTransfer1.Init(SVO, UVO, this);
-            summonTransfer2.InitSub(SVO, UVO, this);
 
             pathFileds1.Init(SVO, UVO);
-
-            DBPURCHASEDMATERIALS dbpm = new DBPURCHASEDMATERIALS();
-            PurchMaterials pm = dbpm.Get(SVO.ID);
-            chbShildOrdered.Checked = pm.SHILDORDERED;
-
         }
 
         private void cbCustomers_SelectedIndexChanged(object sender, EventArgs e)
@@ -190,6 +179,7 @@ namespace SummonManager
             }
             DBSummon dbs = new DBSummon();
             SummonVO SVO = new SummonVO();
+            SVO = SummonVO.SummonVOByID(this.IDSUMMON);
             SVO.ID = this.IDSUMMON;
             SVO.IDS = tbIDS.Text;
             SVO.ACCEPTANCE = cbAccept.Text;
@@ -241,61 +231,20 @@ namespace SummonManager
                 dbs.PassDateChanged(SVO.ID);
             }
             dbs.SaveSummon(SVO);
-
-            //сохраняем заказные материалы
-            DBPURCHASEDMATERIALS dbpm = new DBPURCHASEDMATERIALS();
-            PurchMaterials pm = new PurchMaterials();
-            pm = dbpm.Get(SVO.ID);
-            pm.SHILDORDERED = chbShildOrdered.Checked;
-            dbpm.Save(pm, SVO.ID);
             MessageBox.Show("Извещение успешно сохранено!");
             DisableAll();
         }
 
         private void bEdit_Click(object sender, EventArgs e)
         {
-            if ((SVO.IDSTATUS != 2) && (SVO.IDSTATUS != 3) && (SVO.IDSTATUS != 17))
+            if ((SVO.IDSTATUS != 2) && (SVO.IDSTATUS != 4) && (SVO.IDSTATUS != 6))
             {
-                //MessageBox.Show("Вы не можете редактировать это извещение, так как не являетесь в данный момент ответственным лицом за это извещение!");
-                MessageBox.Show("Вы можете редактировать только поле \"Шильды заказаны\", так как не являетесь в данный момент ответственным лицом за это извещение или оно пришло от монтажников!");
-                //return;
-                EnablebSHILDORDERED();
-
-               // MessageBox.Show("Вы можете редактировать только поле \"Состав изделия\", так как не являетесь в данный момент ответственным лицом за это извещение!");
-               // EnableComposition();
-
+                MessageBox.Show("Вы не можете редактировать это извещение, так как не являетесь в данный момент ответственным лицом за это извещение!");
+                return;
             }
-            else
-            {
-                EnableAll();
-            }
+            EnableAll();
         }
 
-        private void EnablebSHILDORDERED()
-        {
-            chbShildOrdered.Enabled = true;
-            bEdit.Enabled = false;
-            bSave.Enabled = true;
-            bPurchMat.Enabled = false;
-
-        }
-
-        private void EnableComposition()
-        {
-            pathFileds1.bCOMPOSITION.Enabled = true;
-            bSave.Enabled = true;
-            bEdit.Enabled = false;
-
-        }
-
-
-        private void chbDeterm_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chbDeterm.Checked)
-                dtpAPPROX.Enabled = false;
-            else
-                dtpAPPROX.Enabled = true;
-        }
 
         private void bPrint_Click(object sender, EventArgs e)
         {
@@ -308,66 +257,16 @@ namespace SummonManager
             sr.ShowDialog();
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+        private void chbDeterm_CheckedChanged(object sender, EventArgs e)
         {
-            if (tbQUANTITY.Value == 0)
-            {
-                MessageBox.Show("Введите количество изделий!");
-                return;
-            }
-            if (MessageBox.Show("Вы действительно хотите сохранить и вернуть менеджеру?", "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-            {
-                return;
-            }
-            Cause c = new Cause();
-            c.ShowDialog();
-            if (!c.result)
-            {
-                return;
-            }
-            DBSummon dbs = new DBSummon();
-            SummonVO SVO = new SummonVO();
-            SVO.ID = this.IDSUMMON;
-            SVO.IDS = tbIDS.Text;
-            SVO.ACCEPTANCE = cbAccept.Text;
-            SVO.CONTRACT = tbCONTRACT.Text;
-            SVO.CREATED = this.SVO.CREATED;
-            SVO.DELIVERY = tbDELIVERY.Text;
-            SVO.IDCUSTOMER = cbCustomers.SelectedValue.ToString();
-            SVO.IDCUSTOMERDEPT = (int)cbCustDept.SelectedValue;
-            SVO.PAYSTATUS = tbPAYSTATUS.Text;
-            SVO.IDSTATUS = 2;
-            SVO.PTIME = dtpPTIME.Value;
-            SVO.QUANTITY = (int)tbQUANTITY.Value;
-            SVO.SHIPPING = tbSHIPPING.Text;
-            if (cbSISP.SelectedIndex == 1)
-                SVO.SISP = true;
+            if (chbDeterm.Checked)
+                dtpAPPROX.Enabled = false;
             else
-                SVO.SISP = false;
-            SVO.TECHREQPATH = tbTECHREQPATH.Tag.ToString();
-            SVO.WPNAME = cbWPNAME.Text;
-
-            SVO.IDWPNAME = (int)cbWPNAME.SelectedValue;
-            SVO.IDACCEPT = (int)cbAccept.SelectedValue;
-            SVO.PASSDATE = null;
-            SVO.IDPACKING = (int)cbPacking.SelectedValue;
-            SVO.IDMOUNTINGKIT = (int)cbMountingKit.SelectedValue;
-            SVO.VIEWED = false;
-
-            dbs.PassBackToManager(SVO, UVO.id, c.cause);
-            this.Close();
-        }
-
-        private void button1_Click_3(object sender, EventArgs e)
-        {
-            fEditNotePDB fe = new fEditNotePDB(tbIDS.Text);
-            fe.ShowDialog();
-            DisableAll();
-            LoadSummon();
+                dtpAPPROX.Enabled = true;
 
         }
 
-        private void ShowSummonOZIS_Load(object sender, EventArgs e)
+        private void ShowSummonPROD_Load(object sender, EventArgs e)
         {
             DBCustomer dbc = new DBCustomer();
             //cbCustomers.ValueMember = "ID";
@@ -381,11 +280,12 @@ namespace SummonManager
 
             DBSummon dbs = new DBSummon();
 
-            if ((SVO.IDSTATUS == 2) || (SVO.IDSTATUS == 3) || (SVO.IDSTATUS == 17))
+            if ((SVO.IDSTATUS == 2) || (SVO.IDSTATUS == 4) || (SVO.IDSTATUS == 6))
             {
                 dbs.SetViewed(this.IDSUMMON);
             }
             dbs.AddSummonView(SVO, UVO);
+
             dtpApproxAtLoad = SVO.PASSDATE;
         }
         private DateTime? dtpApproxAtLoad;
@@ -412,36 +312,7 @@ namespace SummonManager
             tbTECHREQPATH.ForeColor = Color.Black;
         }
 
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-            if ((SVO.IDSTATUS != 3) && (SVO.IDSTATUS != 17))
-            {
-                MessageBox.Show("Вы не можете передать это извещение монтажникам, не являетесь в данный момент ответственным за это извещение!");
-                return;
-            }
-            if (MessageBox.Show("Вы действительно хотите передать это извещение монтажникам?", "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-            {
-                return;
-            }
-
-            DBCurStatus dbcs = new DBCurStatus();
-            SummonVO SVO_ = new SummonVO();
-            SVO_.IDS = tbIDS.Text;
-            dbcs.ChangeStatus(SVO_, 15, "", UVO.id);
-            //MessageBox.Show("Извещение успешно возвращено в производство на доработку!");
-            Close();
-        }
-
-        private void bAddPrivateNote_Click(object sender, EventArgs e)
-        {
-            fEditPrivateNote fepn = new fEditPrivateNote(SVO.ID, UVO.id);
-            fepn.ShowDialog();
-
-            DBPrivateNote dbpn = new DBPrivateNote();
-            //tbPrivateNote.Text = dbpn.GetPrivateNote(UVO.id, SVO.ID);
-
-        }
-
+       
         private void tbTECHREQPATH_Click(object sender, EventArgs e)
         {
             if (tbTECHREQPATH.Tag != null)
@@ -453,16 +324,6 @@ namespace SummonManager
                 }
             }
         }
-
-        private void bPurchMat_Click(object sender, EventArgs e)
-        {
-            PurchasedMaterials fpm = new PurchasedMaterials(SVO.ID);
-            fpm.ShowDialog();
-        }
-
-      
-
-    
 
     }
 }

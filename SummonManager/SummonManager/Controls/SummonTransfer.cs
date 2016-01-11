@@ -55,7 +55,7 @@ namespace SummonManager
             cbStatus.ValueMember = "ID";
             cbStatus.DisplayMember = "SNAME";
             cbStatus.DataSource = dbcs.GetAllSubStatuses(UVO, SVO);
-            cbStatus.SelectedValue = SVO.IDSTATUS;
+            cbStatus.SelectedValue = SVO.IDSUBST;
 
             SetDefaultsSub();
             groupBox1.Text = "Смена субстатуса";
@@ -456,9 +456,14 @@ namespace SummonManager
                 case 13:
                     if (this.SVO.IDSTATUS != 12)
                     {
-                        MessageBox.Show("Вы не можете редактировать это извещение, так как не являетесь в данный момент ответственным лицом за это извещение!");
+                        MessageBox.Show("Вы не можете передавать это извещение, так как не являетесь в данный момент ответственным лицом за это извещение!");
                         return false;
                     }
+                    else //if (SVO.BILLPAYED) 
+                    {
+
+                    }
+                    
                     break;
             }
             return true;
@@ -466,33 +471,33 @@ namespace SummonManager
 
         private bool ManagerSwitch()
         {
-            if ((SVO.IDSTATUS != 1) && (SVO.IDSTATUS != 11) && (SVO.IDSTATUS != 2))
+            if ((SVO.IDSTATUS != 1))
             {
                 MessageBox.Show("Вы не можете передавать это извещение, так как не являетесь в данный момент ответственным лицом за это извещение!");
                 return false;
             }
-            switch ((int)cbStatus.SelectedValue)
-            {
-                case 3:
-                    if ((SVO.IDSTATUS == 3))
-                    {
-                        MessageBox.Show("Вы не можете передать в ПДБ это извещение, так как оно уже в ПДБ !");
-                        return false;
-                    }
-                    if ((SVO.IDSTATUS == 11))
-                    {
-                        MessageBox.Show("Вы не можете передать в ПДБ это извещение, так как оно уже готово к отгрузке!");
-                        return false;
-                    }
-                    break;
-                case 12:
-                    if ((SVO.IDSTATUS != 11))
-                    {
-                        MessageBox.Show("Вы не можете пометить это извещение как отгружаемое, так как оно либо еще не готово к отгрузке, либо уже отгружается!");
-                        return false;
-                    }
-                    break;
-            }
+            //switch ((int)cbStatus.SelectedValue)
+            //{
+            //    case 3:
+            //        if ((SVO.IDSTATUS == 3))
+            //        {
+            //            MessageBox.Show("Вы не можете передать в ПДБ это извещение, так как оно уже в ПДБ !");
+            //            return false;
+            //        }
+            //        if ((SVO.IDSTATUS == 11))
+            //        {
+            //            MessageBox.Show("Вы не можете передать в ПДБ это извещение, так как оно уже готово к отгрузке!");
+            //            return false;
+            //        }
+            //        break;
+            //    case 12:
+            //        if ((SVO.IDSTATUS != 11))
+            //        {
+            //            MessageBox.Show("Вы не можете пометить это извещение как отгружаемое, так как оно либо еще не готово к отгрузке, либо уже отгружается!");
+            //            return false;
+            //        }
+            //        break;
+            //}
             return true;
         }
 

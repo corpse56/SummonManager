@@ -40,201 +40,101 @@ namespace SummonManager
 
         internal void AddNewSummon(SummonVO SVO,UserVO UVO)
         {
-            /*DA.InsertCommand.Parameters.Add("ACCEPTANCE", SqlDbType.NVarChar);
-            DA.InsertCommand.Parameters["ACCEPTANCE"].Value = SVO.ACCEPTANCE;
-            DA.InsertCommand.Parameters.Add("CONTRACT", SqlDbType.NVarChar);
-            DA.InsertCommand.Parameters["CONTRACT"].Value = SVO.CONTRACT;
-            DA.InsertCommand.Parameters.Add("CREATED", SqlDbType.DateTime);
-            DA.InsertCommand.Parameters["CREATED"].Value = SVO.CREATED;
-            DA.InsertCommand.Parameters.Add("DELIVERY", SqlDbType.NVarChar);
-            DA.InsertCommand.Parameters["DELIVERY"].Value = SVO.DELIVERY;
-            //DA.InsertCommand.Parameters.Add("IDCURSTATUS", SqlDbType.Int);
-            //DA.InsertCommand.Parameters["IDCURSTATUS"].Value = SVO.IDCURSTATUS;
-            DA.InsertCommand.Parameters.Add("IDCUSTOMER", SqlDbType.Int);
-            DA.InsertCommand.Parameters["IDCUSTOMER"].Value = SVO.IDCUSTOMER;
-            DA.InsertCommand.Parameters.Add("PAYSTATUS", SqlDbType.NVarChar);
-            DA.InsertCommand.Parameters["PAYSTATUS"].Value = SVO.PAYSTATUS;
-            DA.InsertCommand.Parameters.Add("IDS", SqlDbType.NVarChar);
-            DA.InsertCommand.Parameters["IDS"].Value = SVO.IDS;
-            DA.InsertCommand.Parameters.Add("IDSTATUS", SqlDbType.Int);
-            DA.InsertCommand.Parameters["IDSTATUS"].Value = SVO.IDSTATUS;
-            DA.InsertCommand.Parameters.Add("NOTE", SqlDbType.NVarChar);
-            DA.InsertCommand.Parameters["NOTE"].Value = SVO.NOTE;
-            DA.InsertCommand.Parameters.Add("PTIME", SqlDbType.DateTime);
-            DA.InsertCommand.Parameters["PTIME"].Value = SVO.PTIME;
-            DA.InsertCommand.Parameters.Add("QUANTITY", SqlDbType.Int);
-            DA.InsertCommand.Parameters["QUANTITY"].Value = SVO.QUANTITY;
-            DA.InsertCommand.Parameters.Add("SHIPPING", SqlDbType.NVarChar);
-            DA.InsertCommand.Parameters["SHIPPING"].Value = SVO.SHIPPING;
-            DA.InsertCommand.Parameters.Add("SISP", SqlDbType.Bit);
-            DA.InsertCommand.Parameters["SISP"].Value = SVO.SISP;
-            DA.InsertCommand.Parameters.Add("TECHREQPATH", SqlDbType.NVarChar);
-            DA.InsertCommand.Parameters["TECHREQPATH"].Value = SVO.TECHREQPATH;
-            DA.InsertCommand.Parameters.Add("WPNAME", SqlDbType.NVarChar);
-            DA.InsertCommand.Parameters["WPNAME"].Value = SVO.WPNAME;
-            DA.InsertCommand.Parameters.Add("IDWP", SqlDbType.Int);
-            DA.InsertCommand.Parameters["IDWP"].Value = SVO.IDWPNAME;
-            DA.InsertCommand.Parameters.Add("IDACCEPT", SqlDbType.Int);
-            DA.InsertCommand.Parameters["IDACCEPT"].Value = SVO.IDACCEPT;
-            DA.InsertCommand.Parameters.Add("IDPACKING", SqlDbType.Int);
-            DA.InsertCommand.Parameters["IDPACKING"].Value = SVO.IDPACKING;
-            DA.InsertCommand.Parameters.Add("IDEXTCABLE", SqlDbType.Int);
-            DA.InsertCommand.Parameters["IDEXTCABLE"].Value = SVO.IDEXTCABLE;
-            DA.InsertCommand.Parameters.Add("IDMOUNTINGKIT", SqlDbType.Int);
-            DA.InsertCommand.Parameters["IDMOUNTINGKIT"].Value = SVO.IDMOUNTINGKIT;
-            DA.InsertCommand.Parameters.Add("IDCUSTOMERDEPT", SqlDbType.Int);
-            DA.InsertCommand.Parameters["IDCUSTOMERDEPT"].Value = SVO.IDCUSTOMERDEPT;
-            DA.InsertCommand.Parameters.Add("VIEWED", SqlDbType.Bit);
-            DA.InsertCommand.Parameters["VIEWED"].Value = SVO.VIEWED;
-            DA.InsertCommand.Parameters.Add("PASSDATE", SqlDbType.DateTime);
-            if (SVO.PASSDATE == null)
-                DA.InsertCommand.Parameters["PASSDATE"].Value = SqlDateTime.Null;
-            else
-                DA.InsertCommand.Parameters["PASSDATE"].Value = SVO.PASSDATE;
-
-            DA.InsertCommand.CommandText = "insert into " + Base.BaseName + "..SUMMON (ACCEPTANCE,CONTRACT,CREATED,DELIVERY,IDCUSTOMER,PAYSTATUS,IDS, "+
-            " IDSTATUS,NOTE,PTIME,QUANTITY,SHIPPING,SISP,TECHREQPATH,WPNAME,IDWP,IDACCEPT,PASSDATE,IDPACKING,IDEXTCABLE,IDMOUNTINGKIT,IDCUSTOMERDEPT,VIEWED) " +
-            " values (@ACCEPTANCE,@CONTRACT,@CREATED,@DELIVERY,@IDCUSTOMER,@PAYSTATUS,@IDS, " +
-            " @IDSTATUS,@NOTE,@PTIME,@QUANTITY,@SHIPPING,@SISP,@TECHREQPATH,@WPNAME,@IDWP,@IDACCEPT,@PASSDATE,@IDPACKING, "+
-            " @IDEXTCABLE,@IDMOUNTINGKIT,@IDCUSTOMERDEPT,@VIEWED)";
-            DA.InsertCommand.Connection.Open();
-            DA.InsertCommand.ExecuteNonQuery();
-            DA.InsertCommand.Connection.Close();*/
-
             this.SaveSummon(SVO);
-
             DBCurStatus dbcs = new DBCurStatus();
             dbcs.AddNewCurstatus(SVO.IDS, UVO.id);
-
         }
 
         internal void SaveNewSummon(SummonVO SVO,UserVO UVO)
         {
-            /*
-            DA.InsertCommand.Parameters.Add("ACCEPTANCE", SqlDbType.NVarChar);
-            DA.InsertCommand.Parameters["ACCEPTANCE"].Value = SVO.ACCEPTANCE;
-            DA.InsertCommand.Parameters.Add("CONTRACT", SqlDbType.NVarChar);
-            DA.InsertCommand.Parameters["CONTRACT"].Value = SVO.CONTRACT;
-            DA.InsertCommand.Parameters.Add("CREATED", SqlDbType.DateTime);
-            DA.InsertCommand.Parameters["CREATED"].Value = SVO.CREATED;
-            DA.InsertCommand.Parameters.Add("DELIVERY", SqlDbType.NVarChar);
-            DA.InsertCommand.Parameters["DELIVERY"].Value = SVO.DELIVERY;
-            //DA.InsertCommand.Parameters.Add("IDCURSTATUS", SqlDbType.Int);
-            //DA.InsertCommand.Parameters["IDCURSTATUS"].Value = SVO.IDCURSTATUS;
-            DA.InsertCommand.Parameters.Add("IDCUSTOMER", SqlDbType.Int);
-            DA.InsertCommand.Parameters["IDCUSTOMER"].Value = SVO.IDCUSTOMER;
-            DA.InsertCommand.Parameters.Add("PAYSTATUS", SqlDbType.NVarChar);
-            DA.InsertCommand.Parameters["PAYSTATUS"].Value = SVO.PAYSTATUS;
-            DA.InsertCommand.Parameters.Add("IDS", SqlDbType.NVarChar);
-            DA.InsertCommand.Parameters["IDS"].Value = SVO.IDS;
-            DA.InsertCommand.Parameters.Add("IDSTATUS", SqlDbType.Int);
-            DA.InsertCommand.Parameters["IDSTATUS"].Value = SVO.IDSTATUS;
-            DA.InsertCommand.Parameters.Add("NOTE", SqlDbType.NVarChar);
-            DA.InsertCommand.Parameters["NOTE"].Value = SVO.NOTE;
-            DA.InsertCommand.Parameters.Add("PTIME", SqlDbType.DateTime);
-            DA.InsertCommand.Parameters["PTIME"].Value = SVO.PTIME;
-            DA.InsertCommand.Parameters.Add("QUANTITY", SqlDbType.Int);
-            DA.InsertCommand.Parameters["QUANTITY"].Value = SVO.QUANTITY;
-            DA.InsertCommand.Parameters.Add("SHIPPING", SqlDbType.NVarChar);
-            DA.InsertCommand.Parameters["SHIPPING"].Value = SVO.SHIPPING;
-            DA.InsertCommand.Parameters.Add("SISP", SqlDbType.Bit);
-            DA.InsertCommand.Parameters["SISP"].Value = SVO.SISP;
-            DA.InsertCommand.Parameters.Add("TECHREQPATH", SqlDbType.NVarChar);
-            DA.InsertCommand.Parameters["TECHREQPATH"].Value = SVO.TECHREQPATH;
-            DA.InsertCommand.Parameters.Add("WPNAME", SqlDbType.NVarChar);
-            DA.InsertCommand.Parameters["WPNAME"].Value = SVO.WPNAME;
-            DA.InsertCommand.Parameters.Add("IDWP", SqlDbType.Int);
-            DA.InsertCommand.Parameters["IDWP"].Value = SVO.IDWPNAME;
-            DA.InsertCommand.Parameters.Add("IDACCEPT", SqlDbType.Int);
-            DA.InsertCommand.Parameters["IDACCEPT"].Value = SVO.IDACCEPT;
-            DA.InsertCommand.Parameters.Add("IDPACKING", SqlDbType.Int);
-            DA.InsertCommand.Parameters["IDPACKING"].Value = SVO.IDPACKING;
-            DA.InsertCommand.Parameters.Add("IDEXTCABLE", SqlDbType.Int);
-            DA.InsertCommand.Parameters["IDEXTCABLE"].Value = SVO.IDEXTCABLE;
-            DA.InsertCommand.Parameters.Add("IDMOUNTINGKIT", SqlDbType.Int);
-            DA.InsertCommand.Parameters["IDMOUNTINGKIT"].Value = SVO.IDMOUNTINGKIT;
-            DA.InsertCommand.Parameters.Add("IDCUSTOMERDEPT", SqlDbType.Int);
-            DA.InsertCommand.Parameters["IDCUSTOMERDEPT"].Value = SVO.IDCUSTOMERDEPT;
-            DA.InsertCommand.Parameters.Add("VIEWED", SqlDbType.Bit);
-            DA.InsertCommand.Parameters["VIEWED"].Value = SVO.VIEWED;
-            DA.InsertCommand.Parameters.Add("PASSDATE", SqlDbType.DateTime);
-            if (SVO.PASSDATE == null)
-                DA.InsertCommand.Parameters["PASSDATE"].Value = SqlDateTime.Null;
-            else
-                DA.InsertCommand.Parameters["PASSDATE"].Value = SVO.PASSDATE;
-
-            DA.InsertCommand.CommandText = "insert into " + Base.BaseName + "..SUMMON (ACCEPTANCE,CONTRACT,CREATED,DELIVERY,IDCUSTOMER,PAYSTATUS,IDS, " +
-            "IDSTATUS,NOTE,PTIME,QUANTITY,SHIPPING,SISP,TECHREQPATH,WPNAME,IDWP,IDACCEPT,PASSDATE,IDPACKING,IDEXTCABLE,IDMOUNTINGKIT,IDCUSTOMERDEPT,VIEWED) values (@ACCEPTANCE,@CONTRACT,@CREATED,@DELIVERY,@IDCUSTOMER,@PAYSTATUS,@IDS, " +
-            "@IDSTATUS,@NOTE,@PTIME,@QUANTITY,@SHIPPING,@SISP,@TECHREQPATH,@WPNAME,@IDWP,@IDACCEPT,@PASSDATE,@IDPACKING,@IDEXTCABLE,@IDMOUNTINGKIT,@IDCUSTOMERDEPT,@VIEWED)";
-            DA.InsertCommand.Connection.Open();
-            DA.InsertCommand.ExecuteNonQuery();
-            DA.InsertCommand.Connection.Close();
-            */
             this.SaveSummon(SVO);
-
             DBCurStatus dbcs = new DBCurStatus();
             dbcs.SaveNewCurstatus(SVO.IDS, UVO.id);
-
         }
 
         internal SummonVO GetSummonByIDS(string ids)
         {
             DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..SUMMON where IDS = '" + ids + "'";
             DA.Fill(DS, "t");
+
+            SummonVO SVO = FillSVO(DS.Tables["t"].Rows[0]);
+            return SVO;
+        }
+        internal SummonVO GetSummonByID(int id)
+        {
+            DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..SUMMON where ID = " + id;
+            DA.Fill(DS, "t");
+
+            SummonVO SVO = FillSVO(DS.Tables["t"].Rows[0]);
+            return SVO;
+        }
+        internal SummonVO GetSummonByID(string id)
+        {
+            DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..SUMMON where ID = " + id;
+            DA.Fill(DS, "t");
+
+            SummonVO SVO = FillSVO(DS.Tables["t"].Rows[0]);
+            return SVO;
+        }
+
+        private SummonVO FillSVO(DataRow dataRow)
+        {
             SummonVO SVO = new SummonVO();
-            SVO.ID = DS.Tables["t"].Rows[0]["ID"].ToString();
-            SVO.ACCEPTANCE = DS.Tables["t"].Rows[0]["ACCEPTANCE"].ToString();
-            SVO.CONTRACT = DS.Tables["t"].Rows[0]["CONTRACT"].ToString();
-            SVO.CREATED = (DateTime)DS.Tables["t"].Rows[0]["CREATED"];
-            SVO.DELIVERY = DS.Tables["t"].Rows[0]["DELIVERY"].ToString();
-            //string tmp = DS.Tables["t"].Rows[0]["IDCURSTATUS"].ToString();
-            //SVO.IDCURSTATUS = int.Parse(DS.Tables["t"].Rows[0]["IDCURSTATUS"].ToString());
-            SVO.IDCUSTOMER = DS.Tables["t"].Rows[0]["IDCUSTOMER"].ToString();
-            SVO.PAYSTATUS = DS.Tables["t"].Rows[0]["PAYSTATUS"].ToString();
-            SVO.IDS = DS.Tables["t"].Rows[0]["IDS"].ToString();
-            SVO.IDSTATUS = (int)(DS.Tables["t"].Rows[0]["IDSTATUS"]);
-            SVO.NOTE = DS.Tables["t"].Rows[0]["NOTE"].ToString();
-            SVO.NOTEPDB = DS.Tables["t"].Rows[0]["NOTEPDB"].ToString();
-            SVO.PTIME = (DateTime)DS.Tables["t"].Rows[0]["PTIME"];
-            SVO.QUANTITY = (int)DS.Tables["t"].Rows[0]["QUANTITY"];
-            SVO.SHIPPING = DS.Tables["t"].Rows[0]["SHIPPING"].ToString();
-            SVO.SISP = (bool)DS.Tables["t"].Rows[0]["SISP"];
-            SVO.TECHREQPATH = DS.Tables["t"].Rows[0]["TECHREQPATH"].ToString();
-            SVO.IDWPNAME = (int)DS.Tables["t"].Rows[0]["IDWP"];
+            SVO.ID = dataRow["ID"].ToString();
+            SVO.ACCEPTANCE = dataRow["ACCEPTANCE"].ToString();
+            SVO.CONTRACT = dataRow["CONTRACT"].ToString();
+            SVO.CREATED = (DateTime)dataRow["CREATED"];
+            SVO.DELIVERY = dataRow["DELIVERY"].ToString();
+            //string tmp = dataRow["IDCURSTATUS"].ToString();
+            //SVO.IDCURSTATUS = int.Parse(dataRow["IDCURSTATUS"].ToString());
+            SVO.IDCUSTOMER = dataRow["IDCUSTOMER"].ToString();
+            SVO.PAYSTATUS = dataRow["PAYSTATUS"].ToString();
+            SVO.IDS = dataRow["IDS"].ToString();
+            SVO.IDSTATUS = (int)(dataRow["IDSTATUS"]);
+            SVO.NOTE = dataRow["NOTE"].ToString();
+            SVO.NOTEPDB = dataRow["NOTEPDB"].ToString();
+            SVO.PTIME = (DateTime)dataRow["PTIME"];
+            SVO.QUANTITY = (int)dataRow["QUANTITY"];
+            SVO.SHIPPING = dataRow["SHIPPING"].ToString();
+            SVO.SISP = (bool)dataRow["SISP"];
+            SVO.TECHREQPATH = dataRow["TECHREQPATH"].ToString();
+            SVO.IDWPNAME = (int)dataRow["IDWP"];
             SVO.WPNAMEVO = new WPNameVO(SVO.IDWPNAME);
             SVO.WPNAME = SVO.WPNAMEVO.WPName + SVO.WPNAMEVO.DecNum;
-            SVO.IDACCEPT = (int)DS.Tables["t"].Rows[0]["IDACCEPT"];
-            SVO.IDPACKING = (int)DS.Tables["t"].Rows[0]["IDPACKING"];
-            SVO.IDEXTCABLE = (int)DS.Tables["t"].Rows[0]["IDEXTCABLE"];
-            SVO.IDMOUNTINGKIT = (int)DS.Tables["t"].Rows[0]["IDMOUNTINGKIT"];
-            SVO.IDCUSTOMERDEPT = (int)DS.Tables["t"].Rows[0]["IDCUSTOMERDEPT"];
-            SVO.OTKCOMMENT = DS.Tables["t"].Rows[0]["otkcomment"].ToString();
-            SVO.VIEWED = (bool)DS.Tables["t"].Rows[0]["VIEWED"];
-            SVO.SHILD = DS.Tables["t"].Rows[0]["SHILD"].ToString();
-            SVO.PLANKA = DS.Tables["t"].Rows[0]["PLANKA"].ToString();
-            SVO.SBORKA3D = DS.Tables["t"].Rows[0]["SBORKA3D"].ToString();
-            SVO.ZHGUT = DS.Tables["t"].Rows[0]["ZHGUT"].ToString();
-            SVO.SERIAL = DS.Tables["t"].Rows[0]["SERIAL"].ToString();
-            SVO.COMPOSITION = DS.Tables["t"].Rows[0]["COMPOSITION"].ToString();
-            SVO.METAL = DS.Tables["t"].Rows[0]["METAL"].ToString();
-            SVO.SHILDREQ = (bool)DS.Tables["t"].Rows[0]["SHILDREQ"];
-            SVO.PLANKAREQ = (bool)DS.Tables["t"].Rows[0]["PLANKAREQ"];
-            SVO.SBORKA3DREQ = (bool)DS.Tables["t"].Rows[0]["SBORKA3DREQ"];
-            SVO.SERIALREQ = (bool)DS.Tables["t"].Rows[0]["SERIALREQ"];
-            SVO.COMPOSITIONREQ = (bool)DS.Tables["t"].Rows[0]["COMPOSITIONREQ"];
-            SVO.METALREQ = (bool)DS.Tables["t"].Rows[0]["METALREQ"];
-            if (DS.Tables["t"].Rows[0]["PASSDATE"] == DBNull.Value)
+            SVO.IDACCEPT = (int)dataRow["IDACCEPT"];
+            SVO.IDPACKING = (int)dataRow["IDPACKING"];
+            SVO.IDEXTCABLE = (int)dataRow["IDEXTCABLE"];
+            SVO.IDMOUNTINGKIT = (int)dataRow["IDMOUNTINGKIT"];
+            SVO.IDCUSTOMERDEPT = (int)dataRow["IDCUSTOMERDEPT"];
+            SVO.OTKCOMMENT = dataRow["otkcomment"].ToString();
+            SVO.VIEWED = (bool)dataRow["VIEWED"];
+            SVO.SHILD = dataRow["SHILD"].ToString();
+            SVO.PLANKA = dataRow["PLANKA"].ToString();
+            SVO.SBORKA3D = dataRow["SBORKA3D"].ToString();
+            SVO.ZHGUT = dataRow["ZHGUT"].ToString();
+            SVO.SERIAL = dataRow["SERIAL"].ToString();
+            SVO.COMPOSITION = dataRow["COMPOSITION"].ToString();
+            SVO.METAL = dataRow["METAL"].ToString();
+            SVO.SHILDREQ = (bool)dataRow["SHILDREQ"];
+            SVO.PLANKAREQ = (bool)dataRow["PLANKAREQ"];
+            SVO.SBORKA3DREQ = (bool)dataRow["SBORKA3DREQ"];
+            SVO.SERIALREQ = (bool)dataRow["SERIALREQ"];
+            SVO.COMPOSITIONREQ = (bool)dataRow["COMPOSITIONREQ"];
+            SVO.METALREQ = (bool)dataRow["METALREQ"];
+            if (dataRow["PASSDATE"] == DBNull.Value)
             {
                 SVO.PASSDATE = null;
                 SVO.PASSDATETEXT = "Не определено";
             }
             else
             {
-                SVO.PASSDATE = (DateTime)DS.Tables["t"].Rows[0]["PASSDATE"];
-                SVO.PASSDATETEXT = ((DateTime)DS.Tables["t"].Rows[0]["PASSDATE"]).ToString("dd.MM.yyyy");
+                SVO.PASSDATE = (DateTime)dataRow["PASSDATE"];
+                SVO.PASSDATETEXT = ((DateTime)dataRow["PASSDATE"]).ToString("dd.MM.yyyy");
             }
-            SVO.IDSUBST = (int)DS.Tables["t"].Rows[0]["IDSUBST"];
-            return SVO;            
+            SVO.IDSUBST = (int)dataRow["IDSUBST"];
+            SVO.BILLPAYED = (bool)dataRow["BILLPAYED"];
+            SVO.DOCSREADY = (bool)dataRow["DOCSREADY"];
+            return SVO;
         }
 
         internal void SaveSummon(SummonVO SVO)
@@ -323,58 +223,28 @@ namespace SummonManager
                 DA.UpdateCommand.Parameters["PASSDATE"].Value = SqlDateTime.Null;
             else
                 DA.UpdateCommand.Parameters["PASSDATE"].Value = SVO.PASSDATE;
+            
             DA.UpdateCommand.Parameters.Add("IDSUBST", SqlDbType.Int);
             DA.UpdateCommand.Parameters["IDSUBST"].Value = SVO.IDSUBST;
+            DA.UpdateCommand.Parameters.Add("BILLPAYED", SqlDbType.Bit);
+            DA.UpdateCommand.Parameters["BILLPAYED"].Value = SVO.BILLPAYED;
+            DA.UpdateCommand.Parameters.Add("DOCSREADY", SqlDbType.Bit);
+            DA.UpdateCommand.Parameters["DOCSREADY"].Value = SVO.BILLPAYED;
 
+            //если что-то добавляешь сюда , то добавь и в функцию get summon by ids
             DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..SUMMON set ACCEPTANCE=@ACCEPTANCE,CONTRACT=@CONTRACT,DELIVERY=@DELIVERY,IDCUSTOMER=@IDCUSTOMER,PAYSTATUS=@PAYSTATUS, " +
             "NOTE=@NOTE,PTIME=@PTIME,QUANTITY=@QUANTITY,SHIPPING=@SHIPPING,SISP=@SISP,TECHREQPATH=@TECHREQPATH,WPNAME=@WPNAME  " +
             ", IDWP = @IDWP,IDACCEPT = @IDACCEPT,PASSDATE = @PASSDATE,IDPACKING = @IDPACKING, NOTEPDB = @NOTEPDB, CREATED = @CREATED " +
             " , IDMOUNTINGKIT = @IDMOUNTINGKIT, IDCUSTOMERDEPT = @IDCUSTOMERDEPT, IDEXTCABLE = @IDEXTCABLE, VIEWED = @VIEWED , IDS = @IDS " +
             " , SHILD=@SHILD, PLANKA=@PLANKA, SBORKA3D=@SBORKA3D, ZHGUT=@ZHGUT, SERIAL=@SERIAL,COMPOSITION = @COMPOSITION, METAL = @METAL " +
             " , SHILDREQ=@SHILDREQ, PLANKAREQ=@PLANKAREQ, SBORKA3DREQ=@SBORKA3DREQ, SERIALREQ=@SERIALREQ,COMPOSITIONREQ = @COMPOSITIONREQ,"+
-            " METALREQ = @METALREQ,IDSUBST = @IDSUBST " +
+            " METALREQ = @METALREQ,IDSUBST = @IDSUBST,BILLPAYED=@BILLPAYED,DOCSREADY=@DOCSREADY " +
             " where ID = @ID";
             DA.UpdateCommand.Connection.Open();
             DA.UpdateCommand.ExecuteNonQuery();
             DA.UpdateCommand.Connection.Close();
         }
-
-        internal void PassToOZIS(SummonVO SVO,string userid)
-        {
-            this.SaveSummon(SVO);
-            DBCurStatus dbcs = new DBCurStatus();
-            dbcs.ChangeStatus(SVO,2,"-",userid);
-        }
-
-        internal void PassToProd(SummonVO SVO, string userid)
-        {
-            this.SaveSummon(SVO);
-            DBCurStatus dbcs = new DBCurStatus();
-            dbcs.ChangeStatus(SVO, 3, "-", userid);
-        }
-
-        internal void PassToOTK(SummonVO SVO, string userid)
-        {
-            this.SaveSummon(SVO);
-            DBCurStatus dbcs = new DBCurStatus();
-            dbcs.ChangeStatus(SVO, 7, "-", userid);
-        }
-
-        internal void PassToWare(SummonVO SVO, string userid)
-        {
-            this.SaveSummon(SVO);
-            DBCurStatus dbcs = new DBCurStatus();
-            dbcs.ChangeStatus(SVO, 9, "-", userid);
-        }
-
-
-        internal void PassToFinish(SummonVO SVO, string userid)
-        {
-            this.SaveSummon(SVO);
-            DBCurStatus dbcs = new DBCurStatus();
-            dbcs.ChangeStatus(SVO, 13, "-", userid);
-        }
-
+       
         internal string GetCustomerName(string p)
         {
             DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..CUSTOMERS where ID = " + p;
@@ -477,49 +347,6 @@ namespace SummonManager
             DS = new DataSet();
             DA.Fill(DS, "t");
             return DS.Tables["t"];
-        }
-
-
-
-        internal void PassToPrepProduction(SummonVO SVO, string userid)
-        {
-            this.SaveSummon(SVO);
-            DBCurStatus dbcs = new DBCurStatus();
-            dbcs.ChangeStatus(SVO, 2, "-", userid);
-        }
-
-        internal void PassToPDB(SummonVO SVO, string userid)
-        {
-            this.SaveSummon(SVO);
-            DBCurStatus dbcs = new DBCurStatus();
-            dbcs.ChangeStatus(SVO, 3, "-", userid);
-        }
-
-        internal void PassToWorkshop(SummonVO SVO, string userid)
-        {
-            this.SaveSummon(SVO);
-            DBCurStatus dbcs = new DBCurStatus();
-            dbcs.ChangeStatus(SVO, 5, "-", userid);
-        }
-
-        internal void PassToProdFromWorkshop(SummonVO SVO, string userid)
-        {
-            this.SaveSummon(SVO);
-            DBCurStatus dbcs = new DBCurStatus();
-            dbcs.ChangeStatus(SVO, 4, "-", userid);
-        }
-
-        internal void PassToManagerFinish(SummonVO SVO, string userid)
-        {
-            this.SaveSummon(SVO);
-            DBCurStatus dbcs = new DBCurStatus();
-            dbcs.ChangeStatus(SVO, 11, "-", userid);
-        }
-        internal void PassBackToManager(SummonVO SVO, string userid, string cause)
-        {
-            this.SaveSummon(SVO);
-            DBCurStatus dbcs = new DBCurStatus();
-            dbcs.ChangeStatus(SVO, 1, cause, userid);
         }
 
         internal string GetCustomerAddress(string p)

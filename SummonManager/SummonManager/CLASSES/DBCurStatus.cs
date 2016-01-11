@@ -149,43 +149,47 @@ namespace SummonManager
             {
                 case Roles.Logist:
                     DA.SelectCommand.CommandText = "select ID,'Закрыть извещение' SNAME from " + Base.BaseName +
-                        "..STATUSLIST where ID != 14 and (ID = 13)";
+                        "..STATUSLIST where  (ID = 13)";
                     break;
                 case Roles.Manager:
                     DA.SelectCommand.CommandText = "select ID,'ПДБ' SNAME from " + Base.BaseName +
-                        "..STATUSLIST where ID != 14 and ID in (3)";
+                        "..STATUSLIST where  ID in (3)";
                     break;
                 case Roles.Montage:
                     DA.SelectCommand.CommandText = "select ID,case when ID = 16 then 'ОТК' else 'Цех' end SNAME from " + Base.BaseName +
-                        "..STATUSLIST where ID != 14 and ID in (16,5)";
+                        "..STATUSLIST where ID in (16,5)";
                     break;
                 case Roles.OTK:
                     if (SVO.WPNAMEVO.IDCat == 4)
                     {
                         DA.SelectCommand.CommandText = "select ID,case when ID = 9 then 'Коммерческий отдел' else 'Возвращено монтажникам из ОТК' end SNAME from " + Base.BaseName +
-                        "..STATUSLIST where ID != 14 and ID in (9,18)";
-
+                        "..STATUSLIST where ID in (9,18)";
                     }
                     else
                     {
                         if (SVO.SISP)
                         {
-                            if (SVO.IDSUBST == 19)
+                            if (SVO.IDSTATUS == 19)
                             {
                                 DA.SelectCommand.CommandText = "select ID,'Производство после СИ и СП' SNAME from " + Base.BaseName +
-                                "..STATUSLIST where ID != 14 and ID in (21)";
+                                "..STATUSLIST where ID in (21)";
                             }
-                            if (SVO.IDSUBST == 20)
+                            else if (SVO.IDSTATUS == 20)
                             {
                                 DA.SelectCommand.CommandText = "select ID,'Цех после СИ и СП' SNAME from " + Base.BaseName +
-                                "..STATUSLIST where ID != 14 and ID in (22)";
+                                "..STATUSLIST where ID in (22)";
+                            }
+                            else
+                            {
+                                DA.SelectCommand.CommandText = "select ID,'Коммерческий отдел' SNAME from " + Base.BaseName +
+                                                                "..STATUSLIST where ID in (9)";
                             }
 
                         }
                         else
                         {
                             DA.SelectCommand.CommandText = "select ID,'Коммерческий отдел' SNAME from " + Base.BaseName +
-                            "..STATUSLIST where ID != 14 and ID in (9)";
+                            "..STATUSLIST where ID in (9)";
 
                         }
                     }
@@ -195,13 +199,13 @@ namespace SummonManager
                     {
                         DA.SelectCommand.CommandText = "select ID, 'Монтажники' SNAME " +
                                                                 " from " + Base.BaseName +
-                            "..STATUSLIST where ID != 14 and ID in (15)";
+                            "..STATUSLIST where  ID in (15)";
                     }
                     else
                     {
                         DA.SelectCommand.CommandText = "select ID, 'Производство' SNAME " +
                                                                 " from " + Base.BaseName +
-                            "..STATUSLIST where ID != 14 and ID in (4)";
+                            "..STATUSLIST where ID in (4)";
 
                     }
 
@@ -211,32 +215,32 @@ namespace SummonManager
                     {
                         DA.SelectCommand.CommandText = "select ID, 'СИ и СП (ОТК - Произ-во)' SNAME" +
                                                                 " from " + Base.BaseName +
-                            "..STATUSLIST where ID != 14 and ID in (19)";
+                            "..STATUSLIST where ID in (19)";
                     }
                     else
                     {
                         DA.SelectCommand.CommandText = "select ID, 'Цех' SNAME" +
                                         " from " + Base.BaseName +
-                        "..STATUSLIST where ID != 14 and ID in (5)";
+                        "..STATUSLIST where ID in (5)";
 
                     }
                     break;
                 case Roles.Ware:
-                    DA.SelectCommand.CommandText = "select ID,'Отдел логистики' SNAME from " + Base.BaseName +
-                        "..STATUSLIST where ID != 14 and ID in (11)";
+                    DA.SelectCommand.CommandText = "select ID,'Отгружается' SNAME from " + Base.BaseName +
+                        "..STATUSLIST where ID in (12)";
                     break;
                 case Roles.Wsh:
                     if (SVO.SISP)
                     {
                         DA.SelectCommand.CommandText = "select ID, 'СИ и СП (ОТК - Цех)' SNAME" +
                                                                 " from " + Base.BaseName +
-                            "..STATUSLIST where ID != 14 and ID in (20)";
+                            "..STATUSLIST where  ID in (20)";
                     }
                     else
                     {
                         DA.SelectCommand.CommandText = "select ID, 'ОТК' SNAME" +
                                         " from " + Base.BaseName +
-                        "..STATUSLIST where ID != 14 and ID in (7)";
+                        "..STATUSLIST where ID in (7)";
 
                     }
                     break;
@@ -257,12 +261,12 @@ namespace SummonManager
                     DA.SelectCommand.CommandText = "select ID,case when ID = 17 then 'В ПДБ из монтажа' else " +
                                                             " 'Возвращено монтажникам из ОТК'  end SNAME" +
                                                             " from " + Base.BaseName +
-                        "..STATUSLIST where ID != 14 and ID in (17,18)";
+                                                    "..STATUSLIST where ID in (17,18)";
                     break;
                 case Roles.Ozis:
                         DA.SelectCommand.CommandText = "select ID, 'Монтажники' SNAME " +
                                                                 " from " + Base.BaseName +
-                            "..STATUSLIST where ID != 14 and ID in (15)";
+                                                        "..STATUSLIST where ID in (15)";
                     break;
                 case Roles.Montage:
                     DA.SelectCommand.CommandText = "select ID, 'ОТК' SNAME from " + Base.BaseName +

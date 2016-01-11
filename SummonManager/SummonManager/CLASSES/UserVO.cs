@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SummonManager
 {
-    public enum Roles { nol, Manager, Ozis, Prod, OTK, Ware, Logist, Admin, Director, Wsh, Montage, Constructor,Inzhener}
+    public enum Roles { nol, Manager, Ozis, Prod, OTK, Ware, Logist, Admin, Director, Wsh, Montage, Constructor,Inzhener, Buhgalter}
     public class UserVO
     {
         public UserVO() 
@@ -47,6 +47,8 @@ namespace SummonManager
                     return "Цех";
                 case Roles.Inzhener:
                     return "Главный инженер";
+                case Roles.Buhgalter:
+                    return "Бухгалтер";
 
                 default:
                     return "не определено";

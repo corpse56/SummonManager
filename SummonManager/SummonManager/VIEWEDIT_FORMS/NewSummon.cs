@@ -165,6 +165,8 @@ namespace SummonManager
             SVO.SERIALREQ = true;
             SVO.COMPOSITIONREQ = true;
             SVO.METALREQ = true;
+            SVO.DOCSREADY = false;
+            SVO.BILLPAYED = false;
             dbs.AddNewSummon(SVO,UVO);
             alow_delete_cablepack = false;
             //MessageBox.Show("Извещение успешно создано и передано в ОЗиС!");
@@ -241,6 +243,8 @@ namespace SummonManager
             SVO.SERIALREQ = true;
             SVO.COMPOSITIONREQ = true;
             SVO.METALREQ = true;
+            SVO.BILLPAYED = false;
+            SVO.DOCSREADY = false;
             if (chbDeterm.Checked)
                 SVO.PASSDATE = null;
             else

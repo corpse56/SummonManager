@@ -63,7 +63,26 @@ namespace SummonManager
         public bool METALREQ;
         public WPNameVO WPNAMEVO;
         public int IDSUBST;
-        public SummonVO() { }
+        public bool BILLPAYED;
+        public bool DOCSREADY;
+        public SummonVO()
+        {
+
+        }
+        public static SummonVO SummonVOByIDS(string ids)
+        {
+            return new DBSummon().GetSummonByIDS(ids);
+        }
+
+        internal static SummonVO SummonVOByID(string id)
+        {
+            return new DBSummon().GetSummonByID(id);
+        }
+
+        internal static SummonVO SummonVOByID(int id)
+        {
+            return new DBSummon().GetSummonByID(id);
+        }
 
         public SummonVO FillReportFields()
         {
@@ -84,6 +103,8 @@ namespace SummonManager
             this.MOUNTINGKITNAME = new DBMountingKit().GetMOUNTINGKIT(this.IDMOUNTINGKIT.ToString());
             return this;
         }
+
+
 
     }
 }

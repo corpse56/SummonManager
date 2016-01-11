@@ -25,26 +25,15 @@ namespace SummonManager
         public UserVO UVO;
         public int PrivateNoteColor;
         public int RefreshTime;
-        public static string ProgramVersion = "1.76";
-        public MainF(UserVO UVO_)
-        {
-            
-            InitializeComponent();
-            this.UVO = UVO_;
-            DBPreferences dbp = new DBPreferences(int.Parse(UVO.id));
-            this.PrivateNoteColor = dbp.NoteColor;
-            this.RefreshTime = dbp.RefreshTime;
-            timer1.Interval = this.RefreshTime;
-            ReloadData();
-            AllocateRoles();
-            toolStripStatusLabel1.Text = "v"+MainF.ProgramVersion;
-            SetStatusBarForPDBNOTVisible();
-        }
+        public static string ProgramVersion = "1.77";
+        ToolStripStatusLabel tslBillPayedColor;
+        
         public MainF()
         {
             InitializeComponent();
-            toolStripStatusLabel1.Text = "v" + MainF.ProgramVersion;
+            
             SetStatusBarForPDBNOTVisible();
+
 
         }
         private void AllocateRoles()
@@ -135,6 +124,12 @@ namespace SummonManager
                     toolStripButton1.Enabled = false;
                     MySummonsTSB.Enabled = true;
 
+                    break;
+                case Roles.Buhgalter:
+                    SpravochnikiDisable();
+                    NewMenuItem.Enabled = false;
+                    toolStripButton1.Enabled = false;
+                    MySummonsTSB.Enabled = false;
                     break;
             }
         }
@@ -414,6 +409,10 @@ namespace SummonManager
                     ShowSummonINZHENER ssinzh = new ShowSummonINZHENER(svo.IDS, UVO, svo.ID);
                     ssinzh.ShowDialog();
                     break;
+                case Roles.Buhgalter:
+                    ShowSummonBUH ssbuh = new ShowSummonBUH(svo.IDS, UVO, svo.ID);
+                    ssbuh.ShowDialog();
+                    break;
             }
             ReloadData();
             ps.Restore();
@@ -521,7 +520,11 @@ namespace SummonManager
                 AllocateRoles();
                 this.Text = "Менеджер извещений ("+this.UVO.Fio+" - "+this.UVO.ToString()+")";
                 this.BringToFront();
+                InitStatusBar();
+                toolStripStatusLabel1.Text = "v" + MainF.ProgramVersion;
             }
+            
+
         }
 
         
@@ -1032,25 +1035,66 @@ namespace SummonManager
         PurchMaterials pm_s;
         private void dgSummon_SelectionChanged(object sender, EventArgs e)
         {
-            if (UVO.Role != Roles.Ozis)
+            if ((UVO.Role != Roles.Ozis) && (UVO.Role != Roles.Buhgalter))
             {
-
                 return;
             }
-            if (dgSummon.SelectedRows.Count == 0)
+            switch (UVO.Role)
             {
-                SetStatusBarForPDBNOTVisible();
-                return;
-            }
-            else
-            {
+                case Roles.Ozis:
+                    if (dgSummon.SelectedRows.Count == 0)
+                    {
+                        SetStatusBarForPDBNOTVisible();
+                        return;
+                    }
+                    else
+                    {
+                        SetStatusBarForPDBVisible();
+                        pm_s = dbpm_s.Get(dgSummon.SelectedRows[0].Cells["id"].Value.ToString());
+                        PaintStatusForPDB();
+                    }
+                    break;
+                case Roles.Buhgalter:
+                    if (dgSummon.SelectedRows.Count == 0)
+                    {
+                        return;
+                    }
+                    if (tslBillPayedColor == null)
+                    {
+                        return;
+                    }
+                    SummonVO s = SummonVO.SummonVOByID(dgSummon.SelectedRows[0].Cells["id"].Value.ToString());
+                    if (s.BILLPAYED)
+                        tslBillPayedColor.BackColor = System.Drawing.Color.Lime;
+                    else
+                        tslBillPayedColor.BackColor = System.Drawing.Color.Red;
 
-                SetStatusBarForPDBVisible();
-                pm_s = dbpm_s.Get(dgSummon.SelectedRows[0].Cells["id"].Value.ToString());
-                PaintStatusForPDB();
+
+                    break;
             }
         }
+        private void InitStatusBar()
+        {
+            switch (UVO.Role)
+            {
+                case Roles.Buhgalter:
+                    tslBillPayedColor = new ToolStripStatusLabel();
+                    tslBillPayedColor.Text = "   ";
+                    statusStrip1.Items.Insert(statusStrip1.Items.IndexOf(toolStripStatusLabel1), tslBillPayedColor);
 
+                    ToolStripStatusLabel tslSpace = new ToolStripStatusLabel();
+                    
+                    tslSpace.Text = " ";
+                    statusStrip1.Items.Insert(statusStrip1.Items.IndexOf(toolStripStatusLabel1), tslSpace);
+
+                    ToolStripStatusLabel tslBillPayedText = new ToolStripStatusLabel();
+                    tslBillPayedText.Text = "Счёт оплачен;";
+                    statusStrip1.Items.Insert(statusStrip1.Items.IndexOf(toolStripStatusLabel1),tslBillPayedText);
+
+                    break;
+            }
+
+        }
         private void PaintStatusForPDB()
         {
             tslConnectorsForOrder.BackColor = (pm_s.CONNECTORSFORORDER) ? Color.Green : Color.Red;

@@ -10,14 +10,14 @@ using System.Diagnostics;
 
 namespace SummonManager
 {
-    public partial class ShowSummonPROD : Form
+    public partial class ShowSummonLOG : Form
     {
         private DBSummon dbs;
         private SummonVO SVO;
         private string IDS;
         private string IDSUMMON;
         private UserVO UVO;
-        public ShowSummonPROD(string ids, UserVO uvo, string idsummon)
+        public ShowSummonLOG(string ids,UserVO uvo,string idsummon)
         {
             InitializeComponent();
             this.UVO = uvo;
@@ -40,7 +40,6 @@ namespace SummonManager
             cbAccept.DropDownStyle = ComboBoxStyle.DropDown;
             tbCONTRACT.ReadOnly = true;
             tbDELIVERY.ReadOnly = true;
-            tbNote.ReadOnly = true;
             cbCustomers.DropDownStyle = ComboBoxStyle.DropDown;
             cbCustomers.ReadOnly = true;
             tbPAYSTATUS.ReadOnly = true;
@@ -49,10 +48,8 @@ namespace SummonManager
             bEdit.Enabled = true;
             bSave.Enabled = false;
             bPrint.Enabled = true;
-            bAdd.Enabled = false;
             chbDeterm.Enabled = false;
             dtpAPPROX.Enabled = false;
-            bBack.Enabled = false;
             cbPacking.DropDownStyle = ComboBoxStyle.DropDown;
             cbPacking.ReadOnly = true;
             cbMountingKit.DropDownStyle = ComboBoxStyle.DropDown;
@@ -64,19 +61,16 @@ namespace SummonManager
         private void EnableAll()
         {
             summonTransfer1.Enabled = false;
-            tbNote.ReadOnly = false;
             bEdit.Enabled = false;
             bSave.Enabled = true;
             bPrint.Enabled = true;
-            bAdd.Enabled = true;
-            bBack.Enabled = false;
             chbDeterm.Enabled = true;
             if (chbDeterm.Checked)
                 dtpAPPROX.Enabled = false;
             else
                 dtpAPPROX.Enabled = true;
-            bBack.Enabled = true;
         }
+
 
         private void LoadSummon()
         {
@@ -107,7 +101,7 @@ namespace SummonManager
             cbWPNAME.DisplayMember = "WPNAME";
             cbWPNAME.DataSource = dbwp.GetAllWPNames();
             cbWPNAME.SelectedValue = SVO.IDWPNAME;
-
+            
             DBPacking dbp = new DBPacking();
             cbPacking.ValueMember = "ID";
             cbPacking.DisplayMember = "PNAME";
@@ -122,8 +116,6 @@ namespace SummonManager
 
             tbCONTRACT.Text = SVO.CONTRACT;
             tbDELIVERY.Text = SVO.DELIVERY;
-            tbNote.Text = SVO.NOTE;
-            tbNotePDB.Text = SVO.NOTEPDB;
             tbQUANTITY.Value = SVO.QUANTITY;
             tbSHIPPING.Text = SVO.SHIPPING;
             tbTECHREQPATH.Text = SVO.TECHREQPATH.Substring(SVO.TECHREQPATH.LastIndexOf("\\") + 1);
@@ -145,15 +137,12 @@ namespace SummonManager
             UIProc ui = new UIProc();
             ui.LoadExtCables(dgv, this.IDSUMMON.ToString());
 
-            DBPrivateNote dbpn = new DBPrivateNote();
-            tbPrivateNote.Text = dbpn.GetPrivateNote(UVO.id, SVO.ID);
-
-            summonNotes1.Init(SVO.ID, UVO, SVO);
+            summonNotes1.Init(SVO.ID, UVO,SVO);
             summonNotes1.Reload();
 
             summonTransfer1.Init(SVO, UVO, this);
 
-            pathFileds1.Init(SVO, UVO);
+            pathFileds1.Init(SVO,UVO);
         }
 
         private void cbCustomers_SelectedIndexChanged(object sender, EventArgs e)
@@ -166,56 +155,6 @@ namespace SummonManager
             
         }
 
-        private void bAdd_Click(object sender, EventArgs e)//сохранить и передать в ОТК
-        {
-            if (tbQUANTITY.Value == 0)
-            {
-                MessageBox.Show("Введите количество изделий!");
-                return;
-            }
-            if ((this.SVO.IDSTATUS != 2) && (this.SVO.IDSTATUS != 4) && (this.SVO.IDSTATUS != 6))
-            {
-                MessageBox.Show("Вы не можете передать это извещение в ПДБ. Несоответствие статуса.");
-                return;
-            }
-            if (MessageBox.Show("Вы действительно хотите сохранить и передать в ПДБ?", "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-            {
-                return;
-            }
-            DBSummon dbs = new DBSummon();
-            SummonVO SVO = new SummonVO();
-            SVO.ID = this.IDSUMMON;
-            SVO.IDS = tbIDS.Text;
-            SVO.ACCEPTANCE = cbAccept.Text;
-            SVO.CONTRACT = tbCONTRACT.Text;
-            SVO.CREATED = this.SVO.CREATED;
-            SVO.DELIVERY = tbDELIVERY.Text;
-            SVO.IDCUSTOMER = cbCustomers.SelectedValue.ToString();
-            SVO.IDCUSTOMERDEPT = (int)cbCustDept.SelectedValue;
-            SVO.PAYSTATUS = tbPAYSTATUS.Text;
-            //SVO.IDSTATUS = 2;
-            SVO.NOTEPDB = tbNotePDB.Text;
-            SVO.NOTE = tbNote.Text;
-            SVO.PTIME = dtpPTIME.Value;
-            SVO.QUANTITY = (int)tbQUANTITY.Value;
-            SVO.SHIPPING = tbSHIPPING.Text;
-            if (cbSISP.SelectedIndex == 1)
-                SVO.SISP = true;
-            else
-                SVO.SISP = false;
-            SVO.TECHREQPATH = tbTECHREQPATH.Tag.ToString();
-            SVO.WPNAME = cbWPNAME.Text;
-
-            SVO.IDWPNAME = (int)cbWPNAME.SelectedValue;
-            SVO.IDACCEPT = (int)cbAccept.SelectedValue;
-            SVO.PASSDATE = null;
-            SVO.IDPACKING = (int)cbPacking.SelectedValue;
-            SVO.IDMOUNTINGKIT = (int)cbMountingKit.SelectedValue;
-            SVO.VIEWED = false;
-
-            dbs.PassToPDB(SVO,UVO.id);
-            this.Close();
-        }
 
         private void bPATH_Click(object sender, EventArgs e)
         {
@@ -241,46 +180,45 @@ namespace SummonManager
             }
             DBSummon dbs = new DBSummon();
             SummonVO SVO = new SummonVO();
-            SVO.ID = this.IDSUMMON;
-            SVO.IDS = tbIDS.Text;
-            SVO.ACCEPTANCE = cbAccept.Text;
-            SVO.CONTRACT = tbCONTRACT.Text;
-            SVO.CREATED = this.SVO.CREATED;
-            SVO.DELIVERY = tbDELIVERY.Text;
-            SVO.IDCUSTOMER = cbCustomers.SelectedValue.ToString();
-            SVO.IDCUSTOMERDEPT = (int)cbCustDept.SelectedValue;
-            SVO.PAYSTATUS = tbPAYSTATUS.Text;
-            SVO.IDSTATUS = 1;
-            SVO.NOTE = tbNote.Text;
-            SVO.NOTEPDB = tbNotePDB.Text;
-            SVO.PTIME = dtpPTIME.Value;
-            SVO.QUANTITY = (int)tbQUANTITY.Value;
-            SVO.SHIPPING = tbSHIPPING.Text;
+            SVO                     = SummonVO.SummonVOByID(this.IDSUMMON);
+            SVO.ID                  = this.IDSUMMON;
+            SVO.IDS                 = tbIDS.Text;
+            SVO.ACCEPTANCE          = cbAccept.Text;
+            SVO.CONTRACT            = tbCONTRACT.Text;
+            SVO.CREATED             = this.SVO.CREATED;
+            SVO.DELIVERY            = tbDELIVERY.Text;
+            SVO.IDCUSTOMER          = cbCustomers.SelectedValue.ToString();
+            SVO.IDCUSTOMERDEPT      = (int)cbCustDept.SelectedValue;
+            SVO.PAYSTATUS           = tbPAYSTATUS.Text;
+            SVO.IDSTATUS            = 1;
+            SVO.PTIME               = dtpPTIME.Value;
+            SVO.QUANTITY            = (int)tbQUANTITY.Value;
+            SVO.SHIPPING            = tbSHIPPING.Text;
             if (cbSISP.SelectedIndex == 1)
                 SVO.SISP = true;
             else
                 SVO.SISP = false;
-            SVO.TECHREQPATH = tbTECHREQPATH.Tag.ToString();
-            SVO.WPNAME = cbWPNAME.Text;
-            SVO.IDWPNAME = (int)cbWPNAME.SelectedValue;
-            SVO.IDACCEPT = (int)cbAccept.SelectedValue;
-            SVO.IDPACKING = (int)cbPacking.SelectedValue;
-            SVO.IDMOUNTINGKIT = (int)cbMountingKit.SelectedValue;
-            SVO.VIEWED = true;
-            SVO.SHILD = pathFileds1.tbSHILD.Tag.ToString();
-            SVO.PLANKA = pathFileds1.tbPLANKA.Tag.ToString();
-            SVO.SBORKA3D = pathFileds1.tb3D.Tag.ToString();
+            SVO.TECHREQPATH         = tbTECHREQPATH.Tag.ToString();
+            SVO.WPNAME              = cbWPNAME.Text;
+            SVO.IDWPNAME            = (int)cbWPNAME.SelectedValue;
+            SVO.IDACCEPT            = (int)cbAccept.SelectedValue;
+            SVO.IDPACKING           = (int)cbPacking.SelectedValue;
+            SVO.IDMOUNTINGKIT       = (int)cbMountingKit.SelectedValue;
+            SVO.VIEWED              = true;
+            SVO.SHILD               = pathFileds1.tbSHILD.Tag.ToString();
+            SVO.PLANKA              = pathFileds1.tbPLANKA.Tag.ToString();
+            SVO.SBORKA3D            = pathFileds1.tb3D.Tag.ToString();
             SVO.ZHGUT = pathFileds1.tbZhgut.Tag.ToString();
             SVO.SERIAL = pathFileds1.tbSer.Tag.ToString();
             SVO.METAL = pathFileds1.tbMETAL.Tag.ToString();
             SVO.COMPOSITION = pathFileds1.tbCOMPOSITION.Tag.ToString();
+            
             SVO.SHILDREQ = pathFileds1.chSHILD.Checked;
             SVO.PLANKAREQ = pathFileds1.chPLANKA.Checked;
             SVO.SBORKA3DREQ = pathFileds1.ch3D.Checked;
             SVO.SERIALREQ = pathFileds1.chSERIAL.Checked;
             SVO.COMPOSITIONREQ = pathFileds1.chCOMPOSITION.Checked;
             SVO.METALREQ = pathFileds1.chMETAL.Checked;
-
             if (chbDeterm.Checked)
             {
                 SVO.PASSDATE = null;
@@ -289,6 +227,7 @@ namespace SummonManager
             {
                 SVO.PASSDATE = dtpAPPROX.Value;
             }
+
             if (dtpApproxAtLoad != SVO.PASSDATE)
             {
                 dbs.PassDateChanged(SVO.ID);
@@ -300,71 +239,12 @@ namespace SummonManager
 
         private void bEdit_Click(object sender, EventArgs e)
         {
-            if ((SVO.IDSTATUS != 2) && (SVO.IDSTATUS != 4) && (SVO.IDSTATUS != 6))
+            if (SVO.IDSTATUS != 12)
             {
                 MessageBox.Show("Вы не можете редактировать это извещение, так как не являетесь в данный момент ответственным лицом за это извещение!");
                 return;
             }
             EnableAll();
-        }
-
-        private void bBack_Click(object sender, EventArgs e)
-        {
-            if ((this.SVO.IDSTATUS != 4) && (this.SVO.IDSTATUS != 6))
-            {
-                MessageBox.Show("Вы не можете передать в цех это извещение, так как оно еще не было передано в ПДБ!");
-                return;
-            }
-            if (MessageBox.Show("Вы действительно хотите передать в цех это извещение?", "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-            {
-                return;
-            }
-            if (tbQUANTITY.Value == 0)
-            {
-                MessageBox.Show("Введите количество изделий!");
-                return;
-            }
-            DBSummon dbs = new DBSummon();
-            SummonVO SVO = new SummonVO();
-            SVO.ID = this.IDSUMMON;
-            SVO.IDS = tbIDS.Text;
-            SVO.ACCEPTANCE = cbAccept.Text;
-            SVO.CONTRACT = tbCONTRACT.Text;
-            SVO.CREATED = this.SVO.CREATED;
-            SVO.DELIVERY = tbDELIVERY.Text;
-            SVO.IDCUSTOMER = cbCustomers.SelectedValue.ToString();
-            SVO.IDCUSTOMERDEPT = (int)cbCustDept.SelectedValue;
-            SVO.PAYSTATUS = tbPAYSTATUS.Text;
-            SVO.IDSTATUS = 1;
-            SVO.NOTE = tbNote.Text;
-            SVO.NOTEPDB = tbNotePDB.Text;
-            SVO.PTIME = dtpPTIME.Value;
-            SVO.QUANTITY = (int)tbQUANTITY.Value;
-            SVO.SHIPPING = tbSHIPPING.Text;
-            if (cbSISP.SelectedIndex == 1)
-                SVO.SISP = true;
-            else
-                SVO.SISP = false;
-            SVO.TECHREQPATH = tbTECHREQPATH.Tag.ToString();
-            SVO.WPNAME = cbWPNAME.Text;
-            SVO.IDWPNAME = (int)cbWPNAME.SelectedValue;
-            SVO.IDACCEPT = (int)cbAccept.SelectedValue;
-            SVO.IDPACKING = (int)cbPacking.SelectedValue;
-            SVO.IDMOUNTINGKIT = (int)cbMountingKit.SelectedValue;
-            SVO.VIEWED = false;
-
-            if (chbDeterm.Checked)
-            {
-                SVO.PASSDATE = null;
-            }
-            else
-            {
-                SVO.PASSDATE = dtpAPPROX.Value;
-            }
-
-            dbs.PassToWorkshop(SVO, UVO.id);
-            //MessageBox.Show("Извещение успешно возвращено в ОЗиС на доработку!");
-            Close();
         }
 
         private void bPrint_Click(object sender, EventArgs e)
@@ -384,10 +264,9 @@ namespace SummonManager
                 dtpAPPROX.Enabled = false;
             else
                 dtpAPPROX.Enabled = true;
-
         }
 
-        private void ShowSummonPROD_Load(object sender, EventArgs e)
+        private void ShowSummonLOG_Load(object sender, EventArgs e)
         {
             DBCustomer dbc = new DBCustomer();
             //cbCustomers.ValueMember = "ID";
@@ -400,9 +279,9 @@ namespace SummonManager
             cbCustDept.SelectedValue = SVO.IDCUSTOMERDEPT;
 
             DBSummon dbs = new DBSummon();
-
-            if ((SVO.IDSTATUS == 2) || (SVO.IDSTATUS == 4) || (SVO.IDSTATUS == 6))
+            if (SVO.IDSTATUS == 12)
             {
+                
                 dbs.SetViewed(this.IDSUMMON);
             }
             dbs.AddSummonView(SVO, UVO);
@@ -411,17 +290,7 @@ namespace SummonManager
         }
         private DateTime? dtpApproxAtLoad;
 
-        private void tbTECHREQPATH_MouseClick(object sender, EventArgs e)
-        {
-            if (tbTECHREQPATH.Tag != null)
-            {
-                if (tbTECHREQPATH.Tag.ToString() != "")
-                {
-                    //Process.Start(tbTECHREQPATH.Tag.ToString().Substring(0, tbTECHREQPATH.Tag.ToString().LastIndexOf(@"\")), @"\\select, " + @"C:\Users\corps\Documents\gp4600.doc");//tbTECHREQPATH.Tag.ToString().Replace("\\","/"));
-                    Process.Start("explorer.exe", @"/select, " + tbTECHREQPATH.Tag.ToString());
-                }
-            }
-        }
+       
 
         private void tbTECHREQPATH_MouseEnter(object sender, EventArgs e)
         {
@@ -433,15 +302,12 @@ namespace SummonManager
             tbTECHREQPATH.ForeColor = Color.Black;
         }
 
-        private void bAddPrivateNote_Click(object sender, EventArgs e)
+        private void tbTECHREQPATH_MouseClick(object sender, MouseEventArgs e)
         {
-            fEditPrivateNote fepn = new fEditPrivateNote(SVO.ID, UVO.id);
-            fepn.ShowDialog();
-
-            DBPrivateNote dbpn = new DBPrivateNote();
-            tbPrivateNote.Text = dbpn.GetPrivateNote(UVO.id, SVO.ID);
 
         }
+
+       
 
         private void tbTECHREQPATH_Click(object sender, EventArgs e)
         {
