@@ -160,6 +160,18 @@ namespace SummonManager
 
         }
 
+        private void bArcShow_Click(object sender, EventArgs e)
+        {
+            if (dgWP.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Выберите строку!");
+                return;
+            }
+
+            WPCOMPOSITIONARCHIVE arc = new WPCOMPOSITIONARCHIVE(dgWP.SelectedRows[0].Cells["ID"].Value.ToString());
+            arc.ShowDialog();
+        }
+
 
 
     }

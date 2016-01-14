@@ -113,7 +113,6 @@ namespace SummonManager
             SVO.SBORKA3D = dataRow["SBORKA3D"].ToString();
             SVO.ZHGUT = dataRow["ZHGUT"].ToString();
             SVO.SERIAL = dataRow["SERIAL"].ToString();
-            SVO.COMPOSITION = dataRow["COMPOSITION"].ToString();
             SVO.METAL = dataRow["METAL"].ToString();
             SVO.SHILDREQ = (bool)dataRow["SHILDREQ"];
             SVO.PLANKAREQ = (bool)dataRow["PLANKAREQ"];
@@ -143,6 +142,10 @@ namespace SummonManager
             {
                 SVO.SUBSTATUSNAME = new DBCurStatus().GetStatusNameByID(SVO.IDSUBST);
             }
+
+            //SVO.COMPOSITION = dataRow["COMPOSITION"].ToString();
+            SVO.COMPOSITION = new DBCOMPARC().GetRightComposition(SVO.WPNAMEVO,SVO.ID);
+
             return SVO;
         }
 

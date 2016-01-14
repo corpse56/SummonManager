@@ -101,5 +101,12 @@ namespace SummonManager
             int i = DA.Fill(DS, "t");
             return (i>0) ? true:false;
         }
+
+        internal string GetCurrentComposition(string idwp)
+        {
+            DA.SelectCommand.CommandText = "select COMPOSITION from " + Base.BaseName + "..WPNAMELIST where ID = " + idwp;
+            int i = DA.Fill(DS, "t");
+            return DS.Tables["t"].Rows[0]["COMPOSITION"].ToString();
+        }
     }
 }

@@ -149,6 +149,7 @@
             this.bArcShow.TabIndex = 7;
             this.bArcShow.Text = "Показать архив составов изделия";
             this.bArcShow.UseVisualStyleBackColor = true;
+            this.bArcShow.Click += new System.EventHandler(this.bArcShow_Click);
             // 
             // WPName
             // 
