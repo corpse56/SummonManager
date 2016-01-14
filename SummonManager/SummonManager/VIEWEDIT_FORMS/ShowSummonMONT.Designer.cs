@@ -72,20 +72,13 @@ namespace SummonManager
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.bAddPrivateNote = new System.Windows.Forms.Button();
-            this.tbPrivateNote = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.tbNOTEPDB = new System.Windows.Forms.TextBox();
-            this.tbNote = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
             this.bEditExtCablePack = new System.Windows.Forms.Button();
+            this.tbSubStatus = new System.Windows.Forms.TextBox();
+            this.tbStatus = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.pathFileds1 = new SummonManager.PathFileds();
+            this.summonTransfer2 = new SummonManager.SummonTransfer();
             this.cbMountingKit = new SummonManager.RComboBox();
             this.cbCustDept = new SummonManager.RComboBox();
             this.cbPacking = new SummonManager.RComboBox();
@@ -96,9 +89,7 @@ namespace SummonManager
             this.cbCustomers = new SummonManager.RComboBox();
             this.summonNotes1 = new SummonManager.SummonNotes();
             this.summonTransfer1 = new SummonManager.SummonTransfer();
-            this.pathFileds1 = new SummonManager.PathFileds();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbQUANTITY)).BeginInit();
             this.SuspendLayout();
             // 
@@ -415,138 +406,6 @@ namespace SummonManager
             this.button2.Visible = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(712, 507);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(113, 42);
-            this.button3.TabIndex = 4;
-            this.button3.Text = "Передать в ОТК";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Visible = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.AutoScroll = true;
-            this.panel1.AutoScrollMargin = new System.Drawing.Size(0, 10);
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.button1);
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.bAddPrivateNote);
-            this.panel1.Controls.Add(this.tbPrivateNote);
-            this.panel1.Controls.Add(this.label19);
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Controls.Add(this.tbNOTEPDB);
-            this.panel1.Controls.Add(this.tbNote);
-            this.panel1.Controls.Add(this.label18);
-            this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.label14);
-            this.panel1.Location = new System.Drawing.Point(907, 505);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(140, 75);
-            this.panel1.TabIndex = 57;
-            this.panel1.Visible = false;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(15, 154);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(113, 42);
-            this.button1.TabIndex = 67;
-            this.button1.Text = "Комментарий для ОТК";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(6, 28);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(203, 23);
-            this.button4.TabIndex = 66;
-            this.button4.Text = "Редактировать примечание";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // bAddPrivateNote
-            // 
-            this.bAddPrivateNote.Location = new System.Drawing.Point(29, 234);
-            this.bAddPrivateNote.Name = "bAddPrivateNote";
-            this.bAddPrivateNote.Size = new System.Drawing.Size(119, 69);
-            this.bAddPrivateNote.TabIndex = 65;
-            this.bAddPrivateNote.Text = "Редактировать личное примечание";
-            this.bAddPrivateNote.UseVisualStyleBackColor = true;
-            this.bAddPrivateNote.Click += new System.EventHandler(this.bAddPrivateNote_Click);
-            // 
-            // tbPrivateNote
-            // 
-            this.tbPrivateNote.Location = new System.Drawing.Point(187, 196);
-            this.tbPrivateNote.Multiline = true;
-            this.tbPrivateNote.Name = "tbPrivateNote";
-            this.tbPrivateNote.ReadOnly = true;
-            this.tbPrivateNote.Size = new System.Drawing.Size(394, 110);
-            this.tbPrivateNote.TabIndex = 64;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(1, 199);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(141, 16);
-            this.label19.TabIndex = 63;
-            this.label19.Text = "Личное примечание";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(189, 127);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(396, 58);
-            this.textBox1.TabIndex = 62;
-            // 
-            // tbNOTEPDB
-            // 
-            this.tbNOTEPDB.Location = new System.Drawing.Point(189, 63);
-            this.tbNOTEPDB.Multiline = true;
-            this.tbNOTEPDB.Name = "tbNOTEPDB";
-            this.tbNOTEPDB.ReadOnly = true;
-            this.tbNOTEPDB.Size = new System.Drawing.Size(396, 58);
-            this.tbNOTEPDB.TabIndex = 60;
-            // 
-            // tbNote
-            // 
-            this.tbNote.Location = new System.Drawing.Point(215, 6);
-            this.tbNote.Multiline = true;
-            this.tbNote.Name = "tbNote";
-            this.tbNote.Size = new System.Drawing.Size(370, 51);
-            this.tbNote.TabIndex = 61;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(-2, 130);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(153, 16);
-            this.label18.TabIndex = 57;
-            this.label18.Text = "Комментарий для ОТК";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(1, 66);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(122, 16);
-            this.label8.TabIndex = 58;
-            this.label8.Text = "Примечание ПДБ";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(1, 9);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(91, 16);
-            this.label14.TabIndex = 59;
-            this.label14.Text = "Примечание";
-            // 
             // bEditExtCablePack
             // 
             this.bEditExtCablePack.Image = global::SummonManager.Properties.Resources.edit1;
@@ -559,6 +418,56 @@ namespace SummonManager
             this.bEditExtCablePack.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bEditExtCablePack.UseVisualStyleBackColor = true;
             this.bEditExtCablePack.Click += new System.EventHandler(this.bEditExtCablePack_Click);
+            // 
+            // tbSubStatus
+            // 
+            this.tbSubStatus.Location = new System.Drawing.Point(780, 630);
+            this.tbSubStatus.Name = "tbSubStatus";
+            this.tbSubStatus.Size = new System.Drawing.Size(284, 22);
+            this.tbSubStatus.TabIndex = 63;
+            // 
+            // tbStatus
+            // 
+            this.tbStatus.Location = new System.Drawing.Point(780, 595);
+            this.tbStatus.Name = "tbStatus";
+            this.tbStatus.Size = new System.Drawing.Size(284, 22);
+            this.tbStatus.TabIndex = 64;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(639, 633);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(135, 16);
+            this.label14.TabIndex = 61;
+            this.label14.Text = "Текущий субстатус";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(639, 601);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(112, 16);
+            this.label8.TabIndex = 62;
+            this.label8.Text = "Текущий статус";
+            // 
+            // pathFileds1
+            // 
+            this.pathFileds1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pathFileds1.Location = new System.Drawing.Point(7, 587);
+            this.pathFileds1.Margin = new System.Windows.Forms.Padding(4);
+            this.pathFileds1.Name = "pathFileds1";
+            this.pathFileds1.Size = new System.Drawing.Size(608, 211);
+            this.pathFileds1.TabIndex = 60;
+            // 
+            // summonTransfer2
+            // 
+            this.summonTransfer2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.summonTransfer2.Location = new System.Drawing.Point(670, 757);
+            this.summonTransfer2.Margin = new System.Windows.Forms.Padding(4);
+            this.summonTransfer2.Name = "summonTransfer2";
+            this.summonTransfer2.Size = new System.Drawing.Size(477, 96);
+            this.summonTransfer2.TabIndex = 59;
             // 
             // cbMountingKit
             // 
@@ -645,35 +554,30 @@ namespace SummonManager
             this.summonNotes1.Location = new System.Drawing.Point(617, 13);
             this.summonNotes1.Margin = new System.Windows.Forms.Padding(4);
             this.summonNotes1.Name = "summonNotes1";
-            this.summonNotes1.Size = new System.Drawing.Size(550, 694);
+            this.summonNotes1.Size = new System.Drawing.Size(550, 575);
             this.summonNotes1.TabIndex = 58;
             // 
             // summonTransfer1
             // 
             this.summonTransfer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.summonTransfer1.Location = new System.Drawing.Point(680, 714);
+            this.summonTransfer1.Location = new System.Drawing.Point(670, 673);
             this.summonTransfer1.Margin = new System.Windows.Forms.Padding(4);
             this.summonTransfer1.Name = "summonTransfer1";
-            this.summonTransfer1.Size = new System.Drawing.Size(477, 153);
-            this.summonTransfer1.TabIndex = 59;
-            // 
-            // pathFileds1
-            // 
-            this.pathFileds1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.pathFileds1.Location = new System.Drawing.Point(7, 587);
-            this.pathFileds1.Margin = new System.Windows.Forms.Padding(4);
-            this.pathFileds1.Name = "pathFileds1";
-            this.pathFileds1.Size = new System.Drawing.Size(608, 211);
-            this.pathFileds1.TabIndex = 60;
+            this.summonTransfer1.Size = new System.Drawing.Size(477, 87);
+            this.summonTransfer1.TabIndex = 65;
             // 
             // ShowSummonMONT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1170, 895);
-            this.Controls.Add(this.pathFileds1);
             this.Controls.Add(this.summonTransfer1);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.tbSubStatus);
+            this.Controls.Add(this.tbStatus);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.pathFileds1);
+            this.Controls.Add(this.summonTransfer2);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.bEditExtCablePack);
             this.Controls.Add(this.dgv);
@@ -697,7 +601,6 @@ namespace SummonManager
             this.Controls.Add(this.bPrint);
             this.Controls.Add(this.cbSISP);
             this.Controls.Add(this.cbCustomers);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.bCancel);
             this.Controls.Add(this.tbDELIVERY);
             this.Controls.Add(this.tbSHIPPING);
@@ -727,8 +630,6 @@ namespace SummonManager
             this.Text = "Просмотр извещения монтажники";
             this.Load += new System.EventHandler(this.ShowSummonMONT_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbQUANTITY)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -779,21 +680,13 @@ namespace SummonManager
         private Label label21;
         private RComboBox cbMountingKit;
         private Button button2;
-        private Button button3;
-        private Panel panel1;
-        private TextBox textBox1;
-        private TextBox tbNOTEPDB;
-        private TextBox tbNote;
-        private Label label18;
-        private Label label8;
-        private Label label14;
-        private Button bAddPrivateNote;
-        private TextBox tbPrivateNote;
-        private Label label19;
         private SummonNotes summonNotes1;
-        private Button button1;
-        private Button button4;
-        private SummonTransfer summonTransfer1;
         private PathFileds pathFileds1;
+        private TextBox tbSubStatus;
+        private TextBox tbStatus;
+        private Label label14;
+        private Label label8;
+        private SummonTransfer summonTransfer2;
+        private SummonTransfer summonTransfer1;
     }
 }

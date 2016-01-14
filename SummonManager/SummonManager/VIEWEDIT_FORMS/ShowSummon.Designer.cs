@@ -460,7 +460,7 @@ namespace SummonManager
             this.summonTransfer1.Location = new System.Drawing.Point(661, 717);
             this.summonTransfer1.Margin = new System.Windows.Forms.Padding(4);
             this.summonTransfer1.Name = "summonTransfer1";
-            this.summonTransfer1.Size = new System.Drawing.Size(477, 153);
+            this.summonTransfer1.Size = new System.Drawing.Size(477, 92);
             this.summonTransfer1.TabIndex = 33;
             this.summonTransfer1.Load += new System.EventHandler(this.summonTransfer1_Load);
             // 

@@ -38,7 +38,7 @@ namespace SummonManager
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.tbIDS = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -85,6 +85,11 @@ namespace SummonManager
             this.summonNotes1 = new SummonManager.SummonNotes();
             this.summonTransfer1 = new SummonManager.SummonTransfer();
             this.pathFileds1 = new SummonManager.PathFileds();
+            this.tbSubStatus = new System.Windows.Forms.TextBox();
+            this.tbStatus = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.summonTransfer2 = new SummonManager.SummonTransfer();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbQUANTITY)).BeginInit();
             this.SuspendLayout();
@@ -375,14 +380,14 @@ namespace SummonManager
             this.dgv.AllowUserToDeleteRows = false;
             this.dgv.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgv.Location = new System.Drawing.Point(201, 136);
             this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";
@@ -507,7 +512,7 @@ namespace SummonManager
             this.summonNotes1.Location = new System.Drawing.Point(691, 13);
             this.summonNotes1.Margin = new System.Windows.Forms.Padding(4);
             this.summonNotes1.Name = "summonNotes1";
-            this.summonNotes1.Size = new System.Drawing.Size(550, 694);
+            this.summonNotes1.Size = new System.Drawing.Size(509, 592);
             this.summonNotes1.TabIndex = 61;
             // 
             // summonTransfer1
@@ -516,7 +521,7 @@ namespace SummonManager
             this.summonTransfer1.Location = new System.Drawing.Point(740, 702);
             this.summonTransfer1.Margin = new System.Windows.Forms.Padding(4);
             this.summonTransfer1.Name = "summonTransfer1";
-            this.summonTransfer1.Size = new System.Drawing.Size(477, 153);
+            this.summonTransfer1.Size = new System.Drawing.Size(477, 86);
             this.summonTransfer1.TabIndex = 68;
             // 
             // pathFileds1
@@ -528,11 +533,57 @@ namespace SummonManager
             this.pathFileds1.Size = new System.Drawing.Size(609, 219);
             this.pathFileds1.TabIndex = 69;
             // 
+            // tbSubStatus
+            // 
+            this.tbSubStatus.Location = new System.Drawing.Point(856, 647);
+            this.tbSubStatus.Name = "tbSubStatus";
+            this.tbSubStatus.Size = new System.Drawing.Size(284, 22);
+            this.tbSubStatus.TabIndex = 72;
+            // 
+            // tbStatus
+            // 
+            this.tbStatus.Location = new System.Drawing.Point(856, 612);
+            this.tbStatus.Name = "tbStatus";
+            this.tbStatus.Size = new System.Drawing.Size(284, 22);
+            this.tbStatus.TabIndex = 73;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(715, 650);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(135, 16);
+            this.label14.TabIndex = 70;
+            this.label14.Text = "Текущий субстатус";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(715, 618);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(112, 16);
+            this.label8.TabIndex = 71;
+            this.label8.Text = "Текущий статус";
+            // 
+            // summonTransfer2
+            // 
+            this.summonTransfer2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.summonTransfer2.Location = new System.Drawing.Point(740, 795);
+            this.summonTransfer2.Margin = new System.Windows.Forms.Padding(4);
+            this.summonTransfer2.Name = "summonTransfer2";
+            this.summonTransfer2.Size = new System.Drawing.Size(477, 96);
+            this.summonTransfer2.TabIndex = 74;
+            // 
             // ShowSummonOTK
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1230, 895);
+            this.Controls.Add(this.summonTransfer2);
+            this.Controls.Add(this.tbSubStatus);
+            this.Controls.Add(this.tbStatus);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.pathFileds1);
             this.Controls.Add(this.summonTransfer1);
             this.Controls.Add(this.bEditExtCablePack);
@@ -642,5 +693,10 @@ namespace SummonManager
         private SummonNotes summonNotes1;
         private SummonTransfer summonTransfer1;
         private PathFileds pathFileds1;
+        private TextBox tbSubStatus;
+        private TextBox tbStatus;
+        private Label label14;
+        private Label label8;
+        private SummonTransfer summonTransfer2;
     }
 }

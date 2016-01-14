@@ -38,7 +38,7 @@ namespace SummonManager
             SetDefaults();
 
         }
-        internal void InitSub(SummonVO SVO, UserVO UVO, ShowSummonOZIS form)
+        internal void InitSub(SummonVO SVO, UserVO UVO, Form form)
         {
             this.SVO = SVO;
             this.UVO = UVO;
@@ -94,14 +94,53 @@ namespace SummonManager
                     cbStatus.SelectedValue = 16;
                     break;
                 case Roles.OTK:
-                    cbStatus.SelectedValue = 99;
+                    if (SVO.WPNAMEVO.IDCat == 4)
+                    {
+                        cbStatus.SelectedValue = 9;
+                    }
+                    if (SVO.SISP)
+                    {
+                        if (SVO.IDSTATUS == 19)
+                        {
+                            cbStatus.SelectedValue = 21;
+                        } 
+                        else
+                        if (SVO.IDSTATUS == 20)
+                        {
+                            cbStatus.SelectedValue = 22;
+                        }
+                        else
+                        {
+                            cbStatus.SelectedValue = 9;
+                        }
+                    }
+                    else
+                    {
+                        cbStatus.SelectedValue = 9;
+                    }
                     break;
                 case Roles.Ozis:
-                    cbStatus.SelectedValue = 4;
+                    if (SVO.WPNAMEVO.IDCat == 4)
+                    {
+                        cbStatus.SelectedValue = 15;
+                    }
+                    else
+                    {
+                        cbStatus.SelectedValue = 4;
+                    }
                     break;
                 case Roles.Prod:
                     if (SVO.SISP)
-                        cbStatus.SelectedValue = 19;
+                    {
+                        if (SVO.IDSTATUS == 21)
+                        {
+                            cbStatus.SelectedValue = 5;
+                        }
+                        else
+                        {
+                            cbStatus.SelectedValue = 19;
+                        }
+                    }
                     else
                         cbStatus.SelectedValue = 5;
                     break;
@@ -110,7 +149,16 @@ namespace SummonManager
                     break;
                 case Roles.Wsh:
                     if (SVO.SISP)
-                        cbStatus.SelectedValue = 20;
+                    {
+                        if (SVO.IDSTATUS == 22)
+                        {
+                            cbStatus.SelectedValue = 7;
+                        }
+                        else
+                        {
+                            cbStatus.SelectedValue = 20;
+                        }
+                    }
                     else
                         cbStatus.SelectedValue = 7;
                     break;
@@ -132,7 +180,7 @@ namespace SummonManager
 
         private void button3_Click(object sender, EventArgs e)
         {
-            if (!sub)
+            if (!sub)//если по основному пути, включая кабеля
             {
                 switch (UVO.Role)
                 {
@@ -221,7 +269,7 @@ namespace SummonManager
                 done = true;
                 FORM.Close();
             }
-            else//======================================================SUBSTATUS==============================================
+            else//==SUBSTATUS== это субстатусы по ветке монтирования кабелей. если есть в извещении кабели ПДБ передаёт монтажникам
             {
                 switch (UVO.Role)
                 {
@@ -256,7 +304,11 @@ namespace SummonManager
                         else return;
                         break;
                 }
+                MessageBox.Show("Субстатус успешно изменён!");
+                done = true;
+                FORM.Close();
             }
+
         }
 
 
@@ -276,6 +328,29 @@ namespace SummonManager
         public bool done = false;
         private bool Change()
         {
+            
+
+            if ((SVO.IDSTATUS == 12) && ((SVO.IDSUBST != 0) && (SVO.IDSUBST != 17)))
+            {
+                if (MessageBox.Show("Субстатус ещё не закрыт! Вы действительно хотите закрыть извещение?",
+                    "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                    return false;
+            }
+            else
+                if ((SVO.IDSTATUS == 12) && (!SVO.BILLPAYED))
+            {
+                if (MessageBox.Show("Счёт по этому извещению ещё не оплачен! Вы действительно хотите закрыть извещение?",
+                    "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                    return false;
+            }
+            else
+            if ((SVO.IDSTATUS == 12) && (!SVO.DOCSREADY))
+            {
+                if (MessageBox.Show("Документы по этому извещению ещё не готовы! Вы действительно хотите закрыть извещение?",
+                    "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+                    return false;
+            }
+            else
             if (MessageBox.Show("Вы действительно хотите изменить статус этого извещения на '" + cbStatus.Text + "'?",
                 "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
             {
@@ -283,7 +358,7 @@ namespace SummonManager
             }
             DBCurStatus dbcs = new DBCurStatus();
             dbcs.ChangeStatus(SVO, (int)cbStatus.SelectedValue, UVO.id);
-            if ((int)cbStatus.SelectedValue == 3)//вставить оповещение для ОТК, чтоб заполняли серийные номера!
+            if ((int)cbStatus.SelectedValue == 3)//вставляем оповещение для ОТК, чтоб заполняли серийные номера!
             {
                 Notification n = new Notification();
                 n.IDNTYPE = "1";
@@ -291,8 +366,13 @@ namespace SummonManager
                 DBNotification dbn = new DBNotification();
                 dbn.AddNew(n);
             }
+            if ((int)cbStatus.SelectedValue == 9)//вставляем оповещение для бухгалтеров "Необходимо сделать документы для извещения №№"
+            {
+            }
+
             return true;
         }
+//============================================субстатусы===================================
         private bool OTKSubSwitch()
         {
             if (SVO.IDSUBST != 16)
@@ -321,10 +401,10 @@ namespace SummonManager
             }
             return true;
         }
-
+//================================================================основные статусы==========================
         private bool WshSwitch()
         {
-            if ((SVO.IDSTATUS != 5) && (SVO.IDSTATUS != 8))
+            if ((SVO.IDSTATUS != 5) && (SVO.IDSTATUS != 22))
             {
                 MessageBox.Show("Вы не можете передавать это извещение, так как не являетесь в данный момент ответственным лицом за это извещение!");
                 return false;
@@ -346,61 +426,66 @@ namespace SummonManager
 
         private bool ProdSwitch()
         {
-            if ((SVO.IDSTATUS != 2) && (SVO.IDSTATUS != 4) && (SVO.IDSTATUS != 6))
+            if ((SVO.IDSTATUS != 4) && (SVO.IDSTATUS != 21))
             {
                 MessageBox.Show("Вы не можете передавать это извещение, так как не являетесь в данный момент ответственным лицом за это извещение!");
                 return false;
             }
-            switch ((int)cbStatus.SelectedValue)
-            {
-                case 5:
-                    if ((this.SVO.IDSTATUS != 4) && (this.SVO.IDSTATUS != 6))
-                    {
-                        MessageBox.Show("Вы не можете передать в цех это извещение, так как оно еще не было передано в ПДБ!");
-                        return false;
-                    }
-                    break;
-                case 3:
-                    if ((this.SVO.IDSTATUS != 2) && (this.SVO.IDSTATUS != 4) && (this.SVO.IDSTATUS != 6))
-                    {
-                        MessageBox.Show("Вы не можете передать это извещение в ПДБ. Несоответствие статуса.");
-                        return false;
-                    }
-                    break;
-            }
+            //switch ((int)cbStatus.SelectedValue)
+            //{
+            //    case 5:
+            //        if ((this.SVO.IDSTATUS != 4) && (this.SVO.IDSTATUS != 6))
+            //        {
+            //            MessageBox.Show("Вы не можете передать в цех это извещение, так как оно еще не было передано в ПДБ!");
+            //            return false;
+            //        }
+            //        break;
+            //    case 3:
+            //        if ((this.SVO.IDSTATUS != 2) && (this.SVO.IDSTATUS != 4) && (this.SVO.IDSTATUS != 6))
+            //        {
+            //            MessageBox.Show("Вы не можете передать это извещение в ПДБ. Несоответствие статуса.");
+            //            return false;
+            //        }
+            //        break;
+            //}
             return true;
         }
 
         private bool OzisSwitch()
         {
-            if ( (SVO.IDSTATUS != 3) && (SVO.IDSTATUS != 17))
+            if ( (SVO.IDSTATUS != 3))
             {
                 MessageBox.Show("Вы не можете передавать это извещение, так как не являетесь в данный момент ответственным лицом за это извещение!");
                 return false;
             } 
-            switch ((int)cbStatus.SelectedValue)
-            {
-                case 4:
-                    if ((SVO.IDSTATUS != 3) && (SVO.IDSTATUS != 17))
-                    {
-                        MessageBox.Show("Вы не можете передать это извещение монтажникам, не являетесь в данный момент ответственным за это извещение!");
-                        return false;
-                    }
-                    break;
-                case 15:
-                    if ((SVO.IDSTATUS != 3) && (SVO.IDSTATUS != 17))
-                    {
-                        MessageBox.Show("Вы не можете передать это извещение монтажникам, не являетесь в данный момент ответственным за это извещение!");
-                        return false;
-                    }
-                    break;
-            }
+            //switch ((int)cbStatus.SelectedValue)
+            //{
+            //    case 4:
+            //        if ((SVO.IDSTATUS != 3) && (SVO.IDSTATUS != 17))
+            //        {
+            //            MessageBox.Show("Вы не можете передать это извещение монтажникам, не являетесь в данный момент ответственным за это извещение!");
+            //            return false;
+            //        }
+            //        break;
+            //    case 15:
+            //        if ((SVO.IDSTATUS != 3) && (SVO.IDSTATUS != 17))
+            //        {
+            //            MessageBox.Show("Вы не можете передать это извещение монтажникам, не являетесь в данный момент ответственным за это извещение!");
+            //            return false;
+            //        }
+            //        break;
+            //}
             return true;
         }
 
         private bool OTKSwitch()
         {
-           
+            if ((SVO.IDSTATUS != 7) && (SVO.IDSTATUS != 19) && (SVO.IDSTATUS != 20) && (SVO.IDSTATUS != 16))
+            {
+                MessageBox.Show("Вы не можете передавать это извещение, так как не являетесь в данный момент ответственным лицом за это извещение!");
+                return false;
+            } 
+
             switch ((int)cbStatus.SelectedValue)
             {
                 case 18:
@@ -451,21 +536,13 @@ namespace SummonManager
 
         private bool LogistSwitch()
         {
-            switch ((int)cbStatus.SelectedValue)
+            if ((SVO.IDSTATUS != 12))
             {
-                case 13:
-                    if (this.SVO.IDSTATUS != 12)
-                    {
-                        MessageBox.Show("Вы не можете передавать это извещение, так как не являетесь в данный момент ответственным лицом за это извещение!");
-                        return false;
-                    }
-                    else //if (SVO.BILLPAYED) 
-                    {
+                MessageBox.Show("Вы не можете передавать это извещение, так как не являетесь в данный момент ответственным лицом за это извещение!");
+                return false;
+            } 
 
-                    }
-                    
-                    break;
-            }
+             //if (SVO.BILLPAYED) 
             return true;
         }
 

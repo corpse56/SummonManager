@@ -65,6 +65,7 @@ namespace SummonManager
         public int IDSUBST;
         public bool BILLPAYED;
         public bool DOCSREADY;
+        public string SUBSTATUSNAME;
         public SummonVO()
         {
 

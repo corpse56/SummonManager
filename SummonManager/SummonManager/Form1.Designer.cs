@@ -69,45 +69,16 @@
             this.TStbs = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.tslHardwareForOrder = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel9 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tslHardwareInStock = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tslHardware = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel14 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tslHardwareForeignForOrder = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel8 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tslHardwareForeignInStock = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tslHardwareForeign = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel13 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tslConnectorsForOrder = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel7 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tslConnectorsInStock = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tslConnectors = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel12 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tslFastenersForOrder = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel6 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tslFastenersInStock = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tslFasteners = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel11 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tslShildForOrder = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel5 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tslShildInStock = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tslShild = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel10 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tslPackingForOrder = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel4 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tslPackingInStock = new System.Windows.Forms.ToolStripStatusLabel();
-            this.tslPacking = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tslVersionLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.dgSummon = new System.Windows.Forms.DataGridView();
             this.ContMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.просмотрИРедактированиеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.печатьToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.просмотрИсторииСтатусовToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.открытьТТToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.открытьТТToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -460,236 +431,21 @@
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tslHardwareForOrder,
-            this.toolStripStatusLabel9,
-            this.tslHardwareInStock,
-            this.tslHardware,
-            this.toolStripStatusLabel14,
-            this.tslHardwareForeignForOrder,
-            this.toolStripStatusLabel8,
-            this.tslHardwareForeignInStock,
-            this.tslHardwareForeign,
-            this.toolStripStatusLabel13,
-            this.tslConnectorsForOrder,
-            this.toolStripStatusLabel7,
-            this.tslConnectorsInStock,
-            this.tslConnectors,
-            this.toolStripStatusLabel12,
-            this.tslFastenersForOrder,
-            this.toolStripStatusLabel6,
-            this.tslFastenersInStock,
-            this.tslFasteners,
-            this.toolStripStatusLabel11,
-            this.tslShildForOrder,
-            this.toolStripStatusLabel5,
-            this.tslShildInStock,
-            this.tslShild,
-            this.toolStripStatusLabel10,
-            this.tslPackingForOrder,
-            this.toolStripStatusLabel4,
-            this.tslPackingInStock,
-            this.tslPacking,
-            this.toolStripStatusLabel1});
+            this.tslVersionLabel});
             this.statusStrip1.Location = new System.Drawing.Point(0, 613);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1264, 22);
             this.statusStrip1.TabIndex = 2;
             // 
-            // tslHardwareForOrder
+            // tslVersionLabel
             // 
-            this.tslHardwareForOrder.BackColor = System.Drawing.Color.Red;
-            this.tslHardwareForOrder.Name = "tslHardwareForOrder";
-            this.tslHardwareForOrder.Size = new System.Drawing.Size(16, 17);
-            this.tslHardwareForOrder.Text = "   ";
-            // 
-            // toolStripStatusLabel9
-            // 
-            this.toolStripStatusLabel9.Name = "toolStripStatusLabel9";
-            this.toolStripStatusLabel9.Size = new System.Drawing.Size(10, 17);
-            this.toolStripStatusLabel9.Text = " ";
-            // 
-            // tslHardwareInStock
-            // 
-            this.tslHardwareInStock.BackColor = System.Drawing.Color.Lime;
-            this.tslHardwareInStock.Name = "tslHardwareInStock";
-            this.tslHardwareInStock.Size = new System.Drawing.Size(16, 17);
-            this.tslHardwareInStock.Text = "   ";
-            // 
-            // tslHardware
-            // 
-            this.tslHardware.Name = "tslHardware";
-            this.tslHardware.Size = new System.Drawing.Size(104, 17);
-            this.tslHardware.Text = "Комплектующие;";
-            // 
-            // toolStripStatusLabel14
-            // 
-            this.toolStripStatusLabel14.Name = "toolStripStatusLabel14";
-            this.toolStripStatusLabel14.Size = new System.Drawing.Size(19, 17);
-            this.toolStripStatusLabel14.Text = "    ";
-            // 
-            // tslHardwareForeignForOrder
-            // 
-            this.tslHardwareForeignForOrder.BackColor = System.Drawing.Color.Red;
-            this.tslHardwareForeignForOrder.Name = "tslHardwareForeignForOrder";
-            this.tslHardwareForeignForOrder.Size = new System.Drawing.Size(16, 17);
-            this.tslHardwareForeignForOrder.Text = "   ";
-            // 
-            // toolStripStatusLabel8
-            // 
-            this.toolStripStatusLabel8.Name = "toolStripStatusLabel8";
-            this.toolStripStatusLabel8.Size = new System.Drawing.Size(10, 17);
-            this.toolStripStatusLabel8.Text = " ";
-            // 
-            // tslHardwareForeignInStock
-            // 
-            this.tslHardwareForeignInStock.BackColor = System.Drawing.Color.Lime;
-            this.tslHardwareForeignInStock.Name = "tslHardwareForeignInStock";
-            this.tslHardwareForeignInStock.Size = new System.Drawing.Size(16, 17);
-            this.tslHardwareForeignInStock.Text = "   ";
-            // 
-            // tslHardwareForeign
-            // 
-            this.tslHardwareForeign.Name = "tslHardwareForeign";
-            this.tslHardwareForeign.Size = new System.Drawing.Size(181, 17);
-            this.tslHardwareForeign.Text = "Комплектующие иностранные;";
-            // 
-            // toolStripStatusLabel13
-            // 
-            this.toolStripStatusLabel13.Name = "toolStripStatusLabel13";
-            this.toolStripStatusLabel13.Size = new System.Drawing.Size(19, 17);
-            this.toolStripStatusLabel13.Text = "    ";
-            // 
-            // tslConnectorsForOrder
-            // 
-            this.tslConnectorsForOrder.BackColor = System.Drawing.Color.Red;
-            this.tslConnectorsForOrder.Name = "tslConnectorsForOrder";
-            this.tslConnectorsForOrder.Size = new System.Drawing.Size(16, 17);
-            this.tslConnectorsForOrder.Text = "   ";
-            // 
-            // toolStripStatusLabel7
-            // 
-            this.toolStripStatusLabel7.Name = "toolStripStatusLabel7";
-            this.toolStripStatusLabel7.Size = new System.Drawing.Size(10, 17);
-            this.toolStripStatusLabel7.Text = " ";
-            // 
-            // tslConnectorsInStock
-            // 
-            this.tslConnectorsInStock.BackColor = System.Drawing.Color.Lime;
-            this.tslConnectorsInStock.Name = "tslConnectorsInStock";
-            this.tslConnectorsInStock.Size = new System.Drawing.Size(16, 17);
-            this.tslConnectorsInStock.Text = "   ";
-            // 
-            // tslConnectors
-            // 
-            this.tslConnectors.Name = "tslConnectors";
-            this.tslConnectors.Size = new System.Drawing.Size(83, 17);
-            this.tslConnectors.Text = "Соединители;";
-            // 
-            // toolStripStatusLabel12
-            // 
-            this.toolStripStatusLabel12.Name = "toolStripStatusLabel12";
-            this.toolStripStatusLabel12.Size = new System.Drawing.Size(19, 17);
-            this.toolStripStatusLabel12.Text = "    ";
-            // 
-            // tslFastenersForOrder
-            // 
-            this.tslFastenersForOrder.BackColor = System.Drawing.Color.Red;
-            this.tslFastenersForOrder.Name = "tslFastenersForOrder";
-            this.tslFastenersForOrder.Size = new System.Drawing.Size(16, 17);
-            this.tslFastenersForOrder.Text = "   ";
-            // 
-            // toolStripStatusLabel6
-            // 
-            this.toolStripStatusLabel6.Name = "toolStripStatusLabel6";
-            this.toolStripStatusLabel6.Size = new System.Drawing.Size(10, 17);
-            this.toolStripStatusLabel6.Text = " ";
-            // 
-            // tslFastenersInStock
-            // 
-            this.tslFastenersInStock.BackColor = System.Drawing.Color.Lime;
-            this.tslFastenersInStock.Name = "tslFastenersInStock";
-            this.tslFastenersInStock.Size = new System.Drawing.Size(16, 17);
-            this.tslFastenersInStock.Text = "   ";
-            // 
-            // tslFasteners
-            // 
-            this.tslFasteners.Name = "tslFasteners";
-            this.tslFasteners.Size = new System.Drawing.Size(128, 17);
-            this.tslFasteners.Text = "Материалы и крепёж;";
-            // 
-            // toolStripStatusLabel11
-            // 
-            this.toolStripStatusLabel11.Name = "toolStripStatusLabel11";
-            this.toolStripStatusLabel11.Size = new System.Drawing.Size(19, 17);
-            this.toolStripStatusLabel11.Text = "    ";
-            // 
-            // tslShildForOrder
-            // 
-            this.tslShildForOrder.BackColor = System.Drawing.Color.Red;
-            this.tslShildForOrder.Name = "tslShildForOrder";
-            this.tslShildForOrder.Size = new System.Drawing.Size(16, 17);
-            this.tslShildForOrder.Text = "   ";
-            // 
-            // toolStripStatusLabel5
-            // 
-            this.toolStripStatusLabel5.Name = "toolStripStatusLabel5";
-            this.toolStripStatusLabel5.Size = new System.Drawing.Size(10, 17);
-            this.toolStripStatusLabel5.Text = " ";
-            // 
-            // tslShildInStock
-            // 
-            this.tslShildInStock.BackColor = System.Drawing.Color.Lime;
-            this.tslShildInStock.Name = "tslShildInStock";
-            this.tslShildInStock.Size = new System.Drawing.Size(16, 17);
-            this.tslShildInStock.Text = "   ";
-            // 
-            // tslShild
-            // 
-            this.tslShild.Name = "tslShild";
-            this.tslShild.Size = new System.Drawing.Size(56, 17);
-            this.tslShild.Text = "Шильды;";
-            // 
-            // toolStripStatusLabel10
-            // 
-            this.toolStripStatusLabel10.Name = "toolStripStatusLabel10";
-            this.toolStripStatusLabel10.Size = new System.Drawing.Size(19, 17);
-            this.toolStripStatusLabel10.Text = "    ";
-            // 
-            // tslPackingForOrder
-            // 
-            this.tslPackingForOrder.BackColor = System.Drawing.Color.Red;
-            this.tslPackingForOrder.Name = "tslPackingForOrder";
-            this.tslPackingForOrder.Size = new System.Drawing.Size(16, 17);
-            this.tslPackingForOrder.Text = "   ";
-            // 
-            // toolStripStatusLabel4
-            // 
-            this.toolStripStatusLabel4.Name = "toolStripStatusLabel4";
-            this.toolStripStatusLabel4.Size = new System.Drawing.Size(10, 17);
-            this.toolStripStatusLabel4.Text = " ";
-            // 
-            // tslPackingInStock
-            // 
-            this.tslPackingInStock.BackColor = System.Drawing.Color.Lime;
-            this.tslPackingInStock.Name = "tslPackingInStock";
-            this.tslPackingInStock.Size = new System.Drawing.Size(16, 17);
-            this.tslPackingInStock.Text = "   ";
-            // 
-            // tslPacking
-            // 
-            this.tslPacking.Name = "tslPacking";
-            this.tslPacking.Size = new System.Drawing.Size(61, 17);
-            this.tslPacking.Text = "Упаковка;";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(289, 17);
-            this.toolStripStatusLabel1.Spring = true;
-            this.toolStripStatusLabel1.Text = "v";
-            this.toolStripStatusLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.toolStripStatusLabel1.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
+            this.tslVersionLabel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tslVersionLabel.Name = "tslVersionLabel";
+            this.tslVersionLabel.Size = new System.Drawing.Size(1218, 17);
+            this.tslVersionLabel.Spring = true;
+            this.tslVersionLabel.Text = "v";
+            this.tslVersionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tslVersionLabel.TextDirection = System.Windows.Forms.ToolStripTextDirection.Horizontal;
             // 
             // dgSummon
             // 
@@ -719,7 +475,7 @@
             this.просмотрИсторииСтатусовToolStripMenuItem,
             this.открытьТТToolStripMenuItem});
             this.ContMenu.Name = "ContMenu";
-            this.ContMenu.Size = new System.Drawing.Size(234, 114);
+            this.ContMenu.Size = new System.Drawing.Size(234, 92);
             // 
             // просмотрИРедактированиеToolStripMenuItem
             // 
@@ -742,6 +498,13 @@
             this.просмотрИсторииСтатусовToolStripMenuItem.Text = "Просмотр истории статусов";
             this.просмотрИсторииСтатусовToolStripMenuItem.Click += new System.EventHandler(this.просмотрИсторииСтатусовToolStripMenuItem_Click);
             // 
+            // открытьТТToolStripMenuItem
+            // 
+            this.открытьТТToolStripMenuItem.Name = "открытьТТToolStripMenuItem";
+            this.открытьТТToolStripMenuItem.Size = new System.Drawing.Size(233, 22);
+            this.открытьТТToolStripMenuItem.Text = "Открыть ТТ";
+            this.открытьТТToolStripMenuItem.Click += new System.EventHandler(this.открытьТТToolStripMenuItem_Click);
+            // 
             // notifyIcon1
             // 
             this.notifyIcon1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
@@ -759,13 +522,6 @@
             // 
             this.timer2.Interval = 5000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
-            // 
-            // открытьТТToolStripMenuItem
-            // 
-            this.открытьТТToolStripMenuItem.Name = "открытьТТToolStripMenuItem";
-            this.открытьТТToolStripMenuItem.Size = new System.Drawing.Size(233, 22);
-            this.открытьТТToolStripMenuItem.Text = "Открыть ТТ";
-            this.открытьТТToolStripMenuItem.Click += new System.EventHandler(this.открытьТТToolStripMenuItem_Click);
             // 
             // MainF
             // 
@@ -839,7 +595,7 @@
         private System.Windows.Forms.ToolStripMenuItem статистикаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem общаяПродолжительностьПребыванияИзвещенияПоОтделамToolStripMenuItem;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
+        private System.Windows.Forms.ToolStripStatusLabel tslVersionLabel;
         private System.Windows.Forms.ToolStripMenuItem настройкиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сменитьПользователяToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton MySummonsTSB;
@@ -848,35 +604,6 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.Timer timer2;
-        private System.Windows.Forms.ToolStripStatusLabel tslHardware;
-        private System.Windows.Forms.ToolStripStatusLabel tslHardwareForOrder;
-        private System.Windows.Forms.ToolStripStatusLabel tslHardwareInStock;
-        private System.Windows.Forms.ToolStripStatusLabel tslHardwareForeignForOrder;
-        private System.Windows.Forms.ToolStripStatusLabel tslHardwareForeignInStock;
-        private System.Windows.Forms.ToolStripStatusLabel tslHardwareForeign;
-        private System.Windows.Forms.ToolStripStatusLabel tslConnectorsForOrder;
-        private System.Windows.Forms.ToolStripStatusLabel tslConnectorsInStock;
-        private System.Windows.Forms.ToolStripStatusLabel tslConnectors;
-        private System.Windows.Forms.ToolStripStatusLabel tslFastenersForOrder;
-        private System.Windows.Forms.ToolStripStatusLabel tslFastenersInStock;
-        private System.Windows.Forms.ToolStripStatusLabel tslFasteners;
-        private System.Windows.Forms.ToolStripStatusLabel tslShildForOrder;
-        private System.Windows.Forms.ToolStripStatusLabel tslShildInStock;
-        private System.Windows.Forms.ToolStripStatusLabel tslShild;
-        private System.Windows.Forms.ToolStripStatusLabel tslPackingForOrder;
-        private System.Windows.Forms.ToolStripStatusLabel tslPackingInStock;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel9;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel8;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel7;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel6;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel5;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel4;
-        private System.Windows.Forms.ToolStripStatusLabel tslPacking;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel14;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel13;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel12;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel11;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel10;
         private System.Windows.Forms.ToolStripMenuItem историяВерсийToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem открытьТТToolStripMenuItem;
     }

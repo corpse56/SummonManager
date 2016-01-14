@@ -134,6 +134,15 @@ namespace SummonManager
             SVO.IDSUBST = (int)dataRow["IDSUBST"];
             SVO.BILLPAYED = (bool)dataRow["BILLPAYED"];
             SVO.DOCSREADY = (bool)dataRow["DOCSREADY"];
+            SVO.STATUSNAME = new DBCurStatus().GetStatusNameByID(SVO.IDSTATUS);
+            if (SVO.IDSUBST == 0)
+            {
+                SVO.SUBSTATUSNAME = "Не присвоено";
+            }
+            else
+            {
+                SVO.SUBSTATUSNAME = new DBCurStatus().GetStatusNameByID(SVO.IDSUBST);
+            }
             return SVO;
         }
 
@@ -229,7 +238,7 @@ namespace SummonManager
             DA.UpdateCommand.Parameters.Add("BILLPAYED", SqlDbType.Bit);
             DA.UpdateCommand.Parameters["BILLPAYED"].Value = SVO.BILLPAYED;
             DA.UpdateCommand.Parameters.Add("DOCSREADY", SqlDbType.Bit);
-            DA.UpdateCommand.Parameters["DOCSREADY"].Value = SVO.BILLPAYED;
+            DA.UpdateCommand.Parameters["DOCSREADY"].Value = SVO.DOCSREADY;
 
             //если что-то добавляешь сюда , то добавь и в функцию get summon by ids
             DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..SUMMON set ACCEPTANCE=@ACCEPTANCE,CONTRACT=@CONTRACT,DELIVERY=@DELIVERY,IDCUSTOMER=@IDCUSTOMER,PAYSTATUS=@PAYSTATUS, " +

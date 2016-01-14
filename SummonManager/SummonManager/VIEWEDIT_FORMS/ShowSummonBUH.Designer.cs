@@ -74,6 +74,10 @@ namespace SummonManager
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.bEditExtCablePack = new System.Windows.Forms.Button();
+            this.chbBillPayed = new System.Windows.Forms.CheckBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.chbDocsRdy = new System.Windows.Forms.CheckBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.pathFileds1 = new SummonManager.PathFileds();
             this.cbMountingKit = new SummonManager.RComboBox();
             this.cbCustDept = new SummonManager.RComboBox();
@@ -84,10 +88,6 @@ namespace SummonManager
             this.cbSISP = new SummonManager.RComboBox();
             this.cbCustomers = new SummonManager.RComboBox();
             this.summonNotes1 = new SummonManager.SummonNotes();
-            this.chbBillPayed = new System.Windows.Forms.CheckBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.chbDocsRdy = new System.Windows.Forms.CheckBox();
-            this.label14 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbQUANTITY)).BeginInit();
             this.SuspendLayout();
@@ -426,6 +426,48 @@ namespace SummonManager
             this.bEditExtCablePack.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bEditExtCablePack.UseVisualStyleBackColor = true;
             // 
+            // chbBillPayed
+            // 
+            this.chbBillPayed.AutoSize = true;
+            this.chbBillPayed.Checked = true;
+            this.chbBillPayed.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chbBillPayed.Location = new System.Drawing.Point(812, 712);
+            this.chbBillPayed.Name = "chbBillPayed";
+            this.chbBillPayed.Size = new System.Drawing.Size(118, 20);
+            this.chbBillPayed.TabIndex = 33;
+            this.chbBillPayed.Text = "Счёт оплачен";
+            this.chbBillPayed.UseVisualStyleBackColor = true;
+            this.chbBillPayed.CheckedChanged += new System.EventHandler(this.chbDeterm_CheckedChanged);
+            // 
+            // label8
+            // 
+            this.label8.Location = new System.Drawing.Point(646, 741);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(174, 18);
+            this.label8.TabIndex = 31;
+            this.label8.Text = "Состояние документов";
+            // 
+            // chbDocsRdy
+            // 
+            this.chbDocsRdy.AutoSize = true;
+            this.chbDocsRdy.Checked = true;
+            this.chbDocsRdy.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chbDocsRdy.Location = new System.Drawing.Point(812, 740);
+            this.chbDocsRdy.Name = "chbDocsRdy";
+            this.chbDocsRdy.Size = new System.Drawing.Size(149, 20);
+            this.chbDocsRdy.TabIndex = 33;
+            this.chbDocsRdy.Text = "Документы готовы";
+            this.chbDocsRdy.UseVisualStyleBackColor = true;
+            this.chbDocsRdy.CheckedChanged += new System.EventHandler(this.chbDeterm_CheckedChanged);
+            // 
+            // label14
+            // 
+            this.label14.Location = new System.Drawing.Point(12, 798);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(186, 36);
+            this.label14.TabIndex = 72;
+            this.label14.Text = "Ориентировочная дата сдачи";
+            // 
             // pathFileds1
             // 
             this.pathFileds1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -521,48 +563,6 @@ namespace SummonManager
             this.summonNotes1.Name = "summonNotes1";
             this.summonNotes1.Size = new System.Drawing.Size(550, 694);
             this.summonNotes1.TabIndex = 69;
-            // 
-            // chbBillPayed
-            // 
-            this.chbBillPayed.AutoSize = true;
-            this.chbBillPayed.Checked = true;
-            this.chbBillPayed.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbBillPayed.Location = new System.Drawing.Point(848, 713);
-            this.chbBillPayed.Name = "chbBillPayed";
-            this.chbBillPayed.Size = new System.Drawing.Size(118, 20);
-            this.chbBillPayed.TabIndex = 33;
-            this.chbBillPayed.Text = "Счёт оплачен";
-            this.chbBillPayed.UseVisualStyleBackColor = true;
-            this.chbBillPayed.CheckedChanged += new System.EventHandler(this.chbDeterm_CheckedChanged);
-            // 
-            // label8
-            // 
-            this.label8.Location = new System.Drawing.Point(646, 741);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(174, 18);
-            this.label8.TabIndex = 31;
-            this.label8.Text = "Состояние документов";
-            // 
-            // chbDocsRdy
-            // 
-            this.chbDocsRdy.AutoSize = true;
-            this.chbDocsRdy.Checked = true;
-            this.chbDocsRdy.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbDocsRdy.Location = new System.Drawing.Point(848, 740);
-            this.chbDocsRdy.Name = "chbDocsRdy";
-            this.chbDocsRdy.Size = new System.Drawing.Size(149, 20);
-            this.chbDocsRdy.TabIndex = 33;
-            this.chbDocsRdy.Text = "Документы готовы";
-            this.chbDocsRdy.UseVisualStyleBackColor = true;
-            this.chbDocsRdy.CheckedChanged += new System.EventHandler(this.chbDeterm_CheckedChanged);
-            // 
-            // label14
-            // 
-            this.label14.Location = new System.Drawing.Point(12, 798);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(186, 36);
-            this.label14.TabIndex = 72;
-            this.label14.Text = "Ориентировочная дата сдачи";
             // 
             // ShowSummonBUH
             // 

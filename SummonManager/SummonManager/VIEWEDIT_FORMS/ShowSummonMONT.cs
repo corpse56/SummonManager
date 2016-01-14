@@ -30,7 +30,6 @@ namespace SummonManager
 
         private void DisableAll()
         {
-            summonTransfer1.Enabled = true;
             cbWPNAME.ReadOnly = true;
             cbWPNAME.DropDownStyle = ComboBoxStyle.DropDown;
             bPATH.Enabled = false;
@@ -41,7 +40,6 @@ namespace SummonManager
             cbAccept.DropDownStyle = ComboBoxStyle.DropDown;
             tbCONTRACT.ReadOnly = true;
             tbDELIVERY.ReadOnly = true;
-            tbNote.ReadOnly = true;
             cbCustomers.DropDownStyle = ComboBoxStyle.DropDown;
             cbCustomers.ReadOnly = true;
             tbPAYSTATUS.ReadOnly = true;
@@ -66,7 +64,6 @@ namespace SummonManager
             cbAccept.DropDownStyle = ComboBoxStyle.DropDown;
             tbCONTRACT.ReadOnly = true;
             tbDELIVERY.ReadOnly = true;
-            tbNote.ReadOnly = true;
             cbCustomers.DropDownStyle = ComboBoxStyle.DropDown;
             cbCustomers.ReadOnly = true;
             tbPAYSTATUS.ReadOnly = true;
@@ -85,12 +82,11 @@ namespace SummonManager
             cbMountingKit.ReadOnly = true;
             bEditExtCablePack.Enabled = false;
             cbCustDept.ReadOnly = true;
-            button1.Enabled = true;
-            textBox1.Enabled = false;
+            tbStatus.Enabled = false;
+            tbSubStatus.Enabled = false;
         }
         private void EnableAll()
         {
-            summonTransfer1.Enabled = false;
             cbWPNAME.ReadOnly = false;
             cbWPNAME.DropDownStyle = ComboBoxStyle.DropDownList;
             bPATH.Enabled = true;
@@ -101,7 +97,6 @@ namespace SummonManager
             cbAccept.DropDownStyle = ComboBoxStyle.DropDownList;
             tbCONTRACT.ReadOnly = false;
             tbDELIVERY.ReadOnly = false;
-            tbNote.ReadOnly = false;
             cbCustomers.ReadOnly = false;
             cbCustomers.DropDownStyle = ComboBoxStyle.DropDownList;
             tbPAYSTATUS.ReadOnly = false;
@@ -123,7 +118,6 @@ namespace SummonManager
             cbMountingKit.ReadOnly = false;
             bEditExtCablePack.Enabled = true;
             cbCustDept.ReadOnly = false;
-            button1.Enabled = false;
 
         }
         private void LoadSummon()
@@ -177,8 +171,6 @@ namespace SummonManager
 
             tbCONTRACT.Text = SVO.CONTRACT;
             tbDELIVERY.Text = SVO.DELIVERY;
-            tbNote.Text = SVO.NOTE;
-            tbNOTEPDB.Text = SVO.NOTEPDB;
             tbQUANTITY.Value = SVO.QUANTITY;
             tbSHIPPING.Text = SVO.SHIPPING;
             tbTECHREQPATH.Text = SVO.TECHREQPATH.Substring(SVO.TECHREQPATH.LastIndexOf("\\") + 1);
@@ -186,7 +178,6 @@ namespace SummonManager
             dtpCREATED.Value = SVO.CREATED;
             dtpPTIME.Value = SVO.PTIME;
             tbPAYSTATUS.Text = SVO.PAYSTATUS;
-            textBox1.Text = SVO.OTKCOMMENT;
             if (SVO.PASSDATE == null)
             {
                 chbDeterm.Checked = true;
@@ -198,18 +189,21 @@ namespace SummonManager
                 dtpAPPROX.Enabled = true;
                 dtpAPPROX.Value = (DateTime)SVO.PASSDATE;
             }
-
+            tbStatus.Text = SVO.STATUSNAME;
+            tbSubStatus.Text = SVO.SUBSTATUSNAME;
 
             //LoadExtCables();
             UIProc ui = new UIProc();
             ui.LoadExtCables(dgv, this.IDSUMMON.ToString());
 
-            DBPrivateNote dbpn = new DBPrivateNote();
-            tbPrivateNote.Text = dbpn.GetPrivateNote(UVO.id, SVO.ID);
             summonNotes1.Init(SVO.ID, UVO, SVO);
             summonNotes1.Reload();
 
+            if (SVO.WPNAMEVO.IDCat == 4)
+                summonTransfer2.Visible = false;
             summonTransfer1.Init(SVO, UVO, this);
+            summonTransfer2.InitSub(SVO, UVO, this);
+
             pathFileds1.Init(SVO, UVO);
 
 
@@ -246,8 +240,6 @@ namespace SummonManager
             SVO.IDCUSTOMERDEPT = (int)cbCustDept.SelectedValue;
             SVO.PAYSTATUS = tbPAYSTATUS.Text;
             SVO.IDSTATUS = 1;
-            SVO.NOTE = tbNote.Text;
-            SVO.NOTEPDB = tbNOTEPDB.Text;
             SVO.PTIME = dtpPTIME.Value;
             SVO.QUANTITY = (int)tbQUANTITY.Value;
             SVO.SHIPPING = tbSHIPPING.Text;
@@ -396,20 +388,7 @@ namespace SummonManager
             tbTECHREQPATH.ForeColor = Color.Black;
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            if ((SVO.IDSTATUS != 15) && (SVO.IDSTATUS != 18))
-            {
-                MessageBox.Show("Вы не можете добавить комментарий, так как не являетесь в данный момент ответственным лицом за это извещение!");
-                return;
-            }
-            OTKComment comm = new OTKComment(SVO.ID, textBox1.Text);
-            comm.ShowDialog();
-            if (comm.result)
-            {
-                textBox1.Text = comm.comtext;
-            }
-        }
+       
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -430,41 +409,5 @@ namespace SummonManager
             //MessageBox.Show("Извещение успешно возвращено в производство на доработку!");
             Close();
         }
-
-        private void bAddPrivateNote_Click(object sender, EventArgs e)
-        {
-            fEditPrivateNote fepn = new fEditPrivateNote(SVO.ID, UVO.id);
-            fepn.ShowDialog();
-
-            DBPrivateNote dbpn = new DBPrivateNote();
-            tbPrivateNote.Text = dbpn.GetPrivateNote(UVO.id, SVO.ID);
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-            if ((SVO.IDSTATUS != 15) && (SVO.IDSTATUS != 18))
-            {
-                MessageBox.Show("Вы не можете добавить комментарий, так как не являетесь в данный момент ответственным лицом за это извещение!");
-                return;
-            }
-            fEditNote comm = new fEditNote(SVO.IDS);
-            comm.ShowDialog();
-            if (comm.result)
-            {
-                tbNote.Text = comm.notetext;
-            }
-        }
-
-
-
-
-
-
-
-
-
-
-
-
     }
 }

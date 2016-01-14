@@ -129,6 +129,37 @@ namespace SummonManager
 
         }
 
+        private void bArchive_Click(object sender, EventArgs e)
+        {
+            int cat = (int)cbCAT.SelectedValue;
+            if (dgWP.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Выберите строку!");
+                return;
+            }
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "All files (*.*)|*.*";
+            dialog.InitialDirectory = @"c:\";
+            dialog.Title = "Перед архивированием выберите новый состав изделия!";
+            dialog.Multiselect = false;
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                WPNameVO wpVO = new WPNameVO((int)dgWP.SelectedRows[0].Cells["ID"].Value);
+                DBCOMPARC dbarc = new DBCOMPARC();
+                dbarc.AddNew(wpVO, dialog.FileName);
+                MessageBox.Show("Состав изделия успешно заархивирован!");
+                DBWPName dbwp = new DBWPName();
+                dgWP.DataSource = dbwp.GetAllWPNames();
+                ShowDGV();
+                cbCAT.SelectedValue = cat;
+            }
+            else
+            {
+                return;
+            }
+
+        }
+
 
 
     }

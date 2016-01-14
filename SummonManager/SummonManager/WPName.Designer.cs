@@ -36,6 +36,8 @@
             this.button5 = new System.Windows.Forms.Button();
             this.cbCAT = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.bArchive = new System.Windows.Forms.Button();
+            this.bArcShow = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgWP)).BeginInit();
             this.SuspendLayout();
             // 
@@ -129,11 +131,32 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Выберите категорию";
             // 
+            // bArchive
+            // 
+            this.bArchive.Location = new System.Drawing.Point(393, 364);
+            this.bArchive.Name = "bArchive";
+            this.bArchive.Size = new System.Drawing.Size(264, 23);
+            this.bArchive.TabIndex = 6;
+            this.bArchive.Text = "Архивировать состав изделия";
+            this.bArchive.UseVisualStyleBackColor = true;
+            this.bArchive.Click += new System.EventHandler(this.bArchive_Click);
+            // 
+            // bArcShow
+            // 
+            this.bArcShow.Location = new System.Drawing.Point(663, 364);
+            this.bArcShow.Name = "bArcShow";
+            this.bArcShow.Size = new System.Drawing.Size(260, 23);
+            this.bArcShow.TabIndex = 7;
+            this.bArcShow.Text = "Показать архив составов изделия";
+            this.bArcShow.UseVisualStyleBackColor = true;
+            // 
             // WPName
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1213, 391);
+            this.Controls.Add(this.bArcShow);
+            this.Controls.Add(this.bArchive);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbCAT);
             this.Controls.Add(this.button5);
@@ -164,5 +187,7 @@
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.ComboBox cbCAT;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button bArchive;
+        private System.Windows.Forms.Button bArcShow;
     }
 }

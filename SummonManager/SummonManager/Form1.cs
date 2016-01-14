@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using SummonManager.CLASSES;
 
 namespace SummonManager
 {
@@ -26,15 +27,10 @@ namespace SummonManager
         public int PrivateNoteColor;
         public int RefreshTime;
         public static string ProgramVersion = "1.77";
-        ToolStripStatusLabel tslBillPayedColor;
-        
+
         public MainF()
         {
             InitializeComponent();
-            
-            SetStatusBarForPDBNOTVisible();
-
-
         }
         private void AllocateRoles()
         {
@@ -171,9 +167,8 @@ namespace SummonManager
             dgSummon.Columns["wname"].HeaderText = "Наименование изделия";
             dgSummon.Columns["cust"].HeaderText = "Заказчик";
             dgSummon.Columns["sts"].HeaderText = "Статус";
-            dgSummon.Columns["dt"].HeaderText = "Дата смены статуса";
-            //dgSummon.Columns["dt"].ValueType = typeof(DateTime);
-            dgSummon.Columns["dt"].DefaultCellStyle.Format = "dd.MM.yyyy HH:mm";
+            dgSummon.Columns["subst"].HeaderText = "Субстатус";
+            dgSummon.Columns["sisp"].HeaderText = "СИ и СП";
             dgSummon.Columns["note"].HeaderText = "Примечание";
             dgSummon.Columns["ptime"].HeaderText = "Срок сдачи изделия";
             dgSummon.Columns["ptime"].DefaultCellStyle.Format = "dd.MM.yyyy HH:mm";
@@ -212,22 +207,24 @@ namespace SummonManager
             dgSummon.Columns["passd"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgSummon.Columns["ptime"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgSummon.Columns["note"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgSummon.Columns["dt"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgSummon.Columns["sisp"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgSummon.Columns["ids"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgSummon.Columns["wname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgSummon.Columns["cust"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgSummon.Columns["sts"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgSummon.Columns["subst"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             dgSummon.Columns["qty"].FillWeight = 50;
             dgSummon.Columns["cause"].FillWeight = 130;
             dgSummon.Columns["passd"].FillWeight = 85;
-            dgSummon.Columns["ptime"].FillWeight = 130;
+            dgSummon.Columns["ptime"].FillWeight = 100;
             dgSummon.Columns["note"].FillWeight = 250;
-            dgSummon.Columns["dt"].FillWeight = 130;
+            dgSummon.Columns["sisp"].FillWeight = 50;
             dgSummon.Columns["ids"].FillWeight = 80;
             dgSummon.Columns["wname"].FillWeight = 140;
             dgSummon.Columns["cust"].FillWeight = 190;
             dgSummon.Columns["sts"].FillWeight = 100;
+            dgSummon.Columns["subst"].FillWeight = 100;
 
             foreach (DataGridViewRow r in dgSummon.Rows)
             {
@@ -297,11 +294,6 @@ namespace SummonManager
             p.ShowDialog();
         }
 
-        private void кабелиToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Cable c = new Cable();
-            c.ShowDialog();
-        }
 
         private void dgSummon_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -500,6 +492,7 @@ namespace SummonManager
                 notifyIcon1.Visible = false;
             }
         }
+        StatusStripIndicator SSI;
         private void Main_Load(object sender, EventArgs e)
         {
 
@@ -516,12 +509,14 @@ namespace SummonManager
                 this.PrivateNoteColor = dbp.NoteColor;
                 this.RefreshTime = dbp.RefreshTime;
                 timer1.Interval = this.RefreshTime;
+                tslVersionLabel.Text = "v" + MainF.ProgramVersion;
+
+                SSI = new StatusStripIndicator(statusStrip1, UVO.Role, tslVersionLabel);
                 ReloadData();
                 AllocateRoles();
                 this.Text = "Менеджер извещений ("+this.UVO.Fio+" - "+this.UVO.ToString()+")";
                 this.BringToFront();
-                InitStatusBar();
-                toolStripStatusLabel1.Text = "v" + MainF.ProgramVersion;
+                
             }
             
 
@@ -560,7 +555,7 @@ namespace SummonManager
                     {
                         string idst = r.Cells["idstatus"].Value.ToString();
                         bool vw = (bool)r.Cells["vw"].Value;
-                        if ((idst == "2") || (idst == "4") || (idst == "6"))
+                        if ((idst == "2") || (idst == "4") || (idst == "6") || (idst == "21"))
                         {
                             r.DefaultCellStyle.BackColor = Color.LightGreen;
                             if (!vw)
@@ -607,7 +602,7 @@ namespace SummonManager
                     {
                         string idst = r.Cells["idstatus"].Value.ToString();
                         bool vw = (bool)r.Cells["vw"].Value;
-                        if ((idst == "5") || (idst == "8"))
+                        if ((idst == "5") || (idst == "8") || (idst == "22"))
                         {
                             r.DefaultCellStyle.BackColor = Color.LightGreen;
                             if (!vw)
@@ -656,7 +651,7 @@ namespace SummonManager
                         }
                         string idst = r.Cells["idstatus"].Value.ToString();
                         bool vw = (bool)r.Cells["vw"].Value;
-                        if ((idst == "7") || (idst == "16") || (idst == "2"))
+                        if ((idst == "7") || (idst == "16") || (idst == "2") || (idst == "19") || (idst == "20"))
                         {
                             r.DefaultCellStyle.BackColor = Color.LightGreen;
                             if (!vw)
@@ -664,10 +659,10 @@ namespace SummonManager
                                 r.DefaultCellStyle.BackColor = Color.Orange;
                                 ntfy += r.Cells["ids"].Value.ToString() + ", ";
                             }
-                            if (idst == "16")
-                            {
-                                r.DefaultCellStyle.BackColor = Color.Orchid;
-                            }
+                            //if (idst == "16")
+                            //{
+                            //    r.DefaultCellStyle.BackColor = Color.Orchid;
+                            //}
                         }
                     }
                     if (ntfy.TrimEnd().LastIndexOf("№") != ntfy.Length - 2)
@@ -1031,127 +1026,128 @@ namespace SummonManager
         }
 
 
-        DBPURCHASEDMATERIALS dbpm_s = new DBPURCHASEDMATERIALS();
-        PurchMaterials pm_s;
         private void dgSummon_SelectionChanged(object sender, EventArgs e)
         {
             if ((UVO.Role != Roles.Ozis) && (UVO.Role != Roles.Buhgalter))
             {
                 return;
             }
-            switch (UVO.Role)
+            if (SSI == null) return;
+            if (dgSummon.SelectedRows.Count == 0)
             {
-                case Roles.Ozis:
-                    if (dgSummon.SelectedRows.Count == 0)
-                    {
-                        SetStatusBarForPDBNOTVisible();
-                        return;
-                    }
-                    else
-                    {
-                        SetStatusBarForPDBVisible();
-                        pm_s = dbpm_s.Get(dgSummon.SelectedRows[0].Cells["id"].Value.ToString());
-                        PaintStatusForPDB();
-                    }
-                    break;
-                case Roles.Buhgalter:
-                    if (dgSummon.SelectedRows.Count == 0)
-                    {
-                        return;
-                    }
-                    if (tslBillPayedColor == null)
-                    {
-                        return;
-                    }
-                    SummonVO s = SummonVO.SummonVOByID(dgSummon.SelectedRows[0].Cells["id"].Value.ToString());
-                    if (s.BILLPAYED)
-                        tslBillPayedColor.BackColor = System.Drawing.Color.Lime;
-                    else
-                        tslBillPayedColor.BackColor = System.Drawing.Color.Red;
-
-
-                    break;
+                SSI.Visible = false;
+                return;
+            }
+            else
+            {
+                SSI.Visible = true;
+                SSI.Paint(dgSummon.SelectedRows[0].Cells["id"].Value.ToString());
             }
         }
-        private void InitStatusBar()
-        {
-            switch (UVO.Role)
-            {
-                case Roles.Buhgalter:
-                    tslBillPayedColor = new ToolStripStatusLabel();
-                    tslBillPayedColor.Text = "   ";
-                    statusStrip1.Items.Insert(statusStrip1.Items.IndexOf(toolStripStatusLabel1), tslBillPayedColor);
 
-                    ToolStripStatusLabel tslSpace = new ToolStripStatusLabel();
-                    
-                    tslSpace.Text = " ";
-                    statusStrip1.Items.Insert(statusStrip1.Items.IndexOf(toolStripStatusLabel1), tslSpace);
 
-                    ToolStripStatusLabel tslBillPayedText = new ToolStripStatusLabel();
-                    tslBillPayedText.Text = "Счёт оплачен;";
-                    statusStrip1.Items.Insert(statusStrip1.Items.IndexOf(toolStripStatusLabel1),tslBillPayedText);
+        //private void PaintStatusStrip()
+        //{
+        //    if (dgSummon.SelectedRows.Count == 0)
+        //    {
+        //        SetStatusBarForPDBNOTVisible();
+        //        return;
+        //    }
+        //    switch (UVO.Role)
+        //    {
+        //        case Roles.Ozis:
+        //            SetStatusBarForPDBVisible();
+        //            pm_s = dbpm_s.Get(dgSummon.SelectedRows[0].Cells["id"].Value.ToString());
+        //            PaintStatusForPDB();
+        //            break;
+        //        case Roles.Buhgalter:
+        //            if (tslBillPayedColor == null)
+        //            {
+        //                return;
+        //            }
+        //            SummonVO s = SummonVO.SummonVOByID(dgSummon.SelectedRows[0].Cells["id"].Value.ToString());
+        //            tslBillPayedColor.BackColor = (s.BILLPAYED) ? System.Drawing.Color.Lime : System.Drawing.Color.Red;
+        //            tslDocsReadyColor.BackColor = (s.DOCSREADY) ? System.Drawing.Color.Lime : System.Drawing.Color.Red;
+        //            //ToolStripItem[] FindItem = statusStrip1.Items.Find("tslBillPayedColor", true);
+        //            //FindItem[0].BackColor = (s.BILLPAYED) ? System.Drawing.Color.Lime : System.Drawing.Color.Red;
+        //            //ToolStripItem[] FindItem1 = statusStrip1.Items.Find("tslDocsReadyColor", true);
+        //            //FindItem[0].BackColor = (s.DOCSREADY) ? System.Drawing.Color.Lime : System.Drawing.Color.Red;
+        //            break;
+        //        case Roles.Manager:
+        //            if (tslBillPayedColor == null)
+        //            {
+        //                return;
+        //            }
+        //            s = SummonVO.SummonVOByID(dgSummon.SelectedRows[0].Cells["id"].Value.ToString());
+        //            tslBillPayedColor.BackColor = (s.BILLPAYED) ? System.Drawing.Color.Lime : System.Drawing.Color.Red;
+        //            break;
+        //    }
+        //}
+        //private void InitStatusBar()
+        //{
+        //    switch (UVO.Role)
+        //    {
+        //        case Roles.Buhgalter:
+        //            tslBillPayedColor = new ToolStripStatusLabel();
+        //            tslBillPayedColor.Text = "   ";
+        //            statusStrip1.Items.Insert(statusStrip1.Items.IndexOf(tslVersionLabel), tslBillPayedColor);
+        //            ToolStripStatusLabel tslSpace = new ToolStripStatusLabel();
+        //            tslSpace.Text = " ";
+        //            statusStrip1.Items.Insert(statusStrip1.Items.IndexOf(tslVersionLabel), tslSpace);
+        //            ToolStripStatusLabel tslBillPayedText = new ToolStripStatusLabel();
+        //            tslBillPayedText.Text = "Счёт оплачен;";
+        //            statusStrip1.Items.Insert(statusStrip1.Items.IndexOf(tslVersionLabel), tslBillPayedText);
 
-                    break;
-            }
+        //            tslDocsReadyColor = new ToolStripStatusLabel();
+        //            tslDocsReadyColor.Text = "   ";
+        //            statusStrip1.Items.Insert(statusStrip1.Items.IndexOf(tslVersionLabel), tslDocsReadyColor);
+        //            //ToolStripStatusLabel tslSpace = new ToolStripStatusLabel();
+        //            //tslSpace.Text = " ";
+        //            statusStrip1.Items.Insert(statusStrip1.Items.IndexOf(tslVersionLabel), tslSpace);
+        //            ToolStripStatusLabel tslDocsReadyText = new ToolStripStatusLabel();
+        //            tslDocsReadyText.Text = "Документы готовы;";
+        //            statusStrip1.Items.Insert(statusStrip1.Items.IndexOf(tslVersionLabel), tslDocsReadyText);
 
-        }
-        private void PaintStatusForPDB()
-        {
-            tslConnectorsForOrder.BackColor = (pm_s.CONNECTORSFORORDER) ? Color.Green : Color.Red;
-            tslConnectorsInStock.BackColor = (pm_s.CONNECTORSINSTOCK) ? Color.Green : Color.Red;
-            tslFastenersForOrder.BackColor = (pm_s.MATERIALSANDFASTENERSFORORDER) ? Color.Green : Color.Red;
-            tslFastenersInStock.BackColor = (pm_s.MATERIALSANDFASTENERSINSTOCK) ? Color.Green : Color.Red;
-            tslHardwareForeignForOrder.BackColor = (pm_s.HARWAREFOREIGNFORORDER) ? Color.Green : Color.Red;
-            tslHardwareForeignInStock.BackColor = (pm_s.HARWAREFOREIGNINSTOCK) ? Color.Green : Color.Red;
-            tslHardwareForOrder.BackColor = (pm_s.HARDWAREFORORDER) ? Color.Green : Color.Red;
-            tslHardwareInStock.BackColor = (pm_s.HARDWAREINSTOCK) ? Color.Green : Color.Red;
-            tslPackingForOrder.BackColor = (pm_s.PACKINGFORORDER) ? Color.Green : Color.Red;
-            tslPackingInStock.BackColor = (pm_s.PACKINGINSTOCK) ? Color.Green : Color.Red;
-            tslShildForOrder.BackColor = (pm_s.SHILDSFORORDER) ? Color.Green : Color.Red;
-            tslShildInStock.BackColor = (pm_s.SHILDSINSTOCK) ? Color.Green : Color.Red;
-        }
-        public void SetStatusBarForPDBVisible()
-        {
-            tslConnectors.Visible = true;
-            tslConnectorsForOrder.Visible = true;
-            tslConnectorsInStock.Visible = true;
-            tslFasteners.Visible = true;
-            tslFastenersForOrder.Visible = true;
-            tslFastenersInStock.Visible = true;
-            tslHardwareForeign.Visible = true;
-            tslHardwareForeignForOrder.Visible = true;
-            tslHardwareForeignInStock.Visible = true;
-            tslHardware.Visible = true;
-            tslHardwareForOrder.Visible = true;
-            tslHardwareInStock.Visible = true;
-            tslPacking.Visible = true;
-            tslPackingForOrder.Visible = true;
-            tslPackingInStock.Visible = true;
-            tslShild.Visible = true;
-            tslShildForOrder.Visible = true;
-            tslShildInStock.Visible = true;
-        }
-        public void SetStatusBarForPDBNOTVisible()
-        {
-            tslConnectors.Visible = false;
-            tslConnectorsForOrder.Visible = false;
-            tslConnectorsInStock.Visible = false;
-            tslFasteners.Visible = false;
-            tslFastenersForOrder.Visible = false;
-            tslFastenersInStock.Visible = false;
-            tslHardwareForeign.Visible = false;
-            tslHardwareForeignForOrder.Visible = false;
-            tslHardwareForeignInStock.Visible = false;
-            tslHardware.Visible = false;
-            tslHardwareForOrder.Visible = false;
-            tslHardwareInStock.Visible = false;
-            tslPacking.Visible = false;
-            tslPackingForOrder.Visible = false;
-            tslPackingInStock.Visible = false;
-            tslShild.Visible = false;
-            tslShildForOrder.Visible = false;
-            tslShildInStock.Visible = false;
-        }
+        //            if (dgSummon.SelectedRows.Count != 0)
+        //            {
+        //                SummonVO s = SummonVO.SummonVOByID(dgSummon.SelectedRows[0].Cells["id"].Value.ToString());
+        //                tslBillPayedColor.BackColor = (s.BILLPAYED) ? System.Drawing.Color.Lime : System.Drawing.Color.Red;
+        //                tslDocsReadyColor.BackColor = (s.DOCSREADY) ? System.Drawing.Color.Lime : System.Drawing.Color.Red;
+        //                tslBillPayedColor.Visible = true;
+        //                tslBillPayedText.Visible = true;
+        //                tslDocsReadyColor.Visible = true;
+        //                tslDocsReadyText.Visible = true;
+        //                tslSpace.Visible = true;
+        //            }
+        //            else
+        //            {
+        //                tslSpace.Visible = false;
+        //                tslBillPayedColor.Visible = false;
+        //                tslBillPayedText.Visible = false;
+        //                tslDocsReadyColor.Visible = false;
+        //                tslDocsReadyText.Visible = false;
+        //            }
+        //            break;
+        //        case Roles.Manager:
+        //            tslBillPayedColor = new ToolStripStatusLabel();
+        //            tslBillPayedColor.Text = "   ";
+        //            statusStrip1.Items.Insert(statusStrip1.Items.IndexOf(tslVersionLabel), tslBillPayedColor);
+        //            tslSpace = new ToolStripStatusLabel();
+        //            tslSpace.Text = " ";
+        //            statusStrip1.Items.Insert(statusStrip1.Items.IndexOf(tslVersionLabel), tslSpace);
+        //            tslBillPayedText = new ToolStripStatusLabel();
+        //            tslBillPayedText.Text = "Счёт оплачен;";
+        //            statusStrip1.Items.Insert(statusStrip1.Items.IndexOf(tslVersionLabel), tslBillPayedText);
+        //            break;
+        //    }
+
+        //}
+        //private void PaintStatusForPDB()
+        //{
+            
+
+        //}
+       
 
         private void историяВерсийToolStripMenuItem_Click(object sender, EventArgs e)
         {

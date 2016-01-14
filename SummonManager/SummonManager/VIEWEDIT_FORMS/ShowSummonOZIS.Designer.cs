@@ -74,6 +74,12 @@ namespace SummonManager
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.bEditExtCablePack = new System.Windows.Forms.Button();
+            this.chbShildOrdered = new System.Windows.Forms.CheckBox();
+            this.bPurchMat = new System.Windows.Forms.Button();
+            this.label19 = new System.Windows.Forms.Label();
+            this.pathFileds1 = new SummonManager.PathFileds();
+            this.summonTransfer2 = new SummonManager.SummonTransfer();
+            this.summonTransfer1 = new SummonManager.SummonTransfer();
             this.cbCustDept = new SummonManager.RComboBox();
             this.cbMountingKit = new SummonManager.RComboBox();
             this.cbPacking = new SummonManager.RComboBox();
@@ -83,12 +89,10 @@ namespace SummonManager
             this.cbSISP = new SummonManager.RComboBox();
             this.cbCustomers = new SummonManager.RComboBox();
             this.summonNotes1 = new SummonManager.SummonNotes();
-            this.summonTransfer1 = new SummonManager.SummonTransfer();
-            this.pathFileds1 = new SummonManager.PathFileds();
-            this.chbShildOrdered = new System.Windows.Forms.CheckBox();
-            this.bPurchMat = new System.Windows.Forms.Button();
-            this.label19 = new System.Windows.Forms.Label();
-            this.summonTransfer2 = new SummonManager.SummonTransfer();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.tbStatus = new System.Windows.Forms.TextBox();
+            this.tbSubStatus = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbQUANTITY)).BeginInit();
             this.SuspendLayout();
@@ -426,6 +430,62 @@ namespace SummonManager
             this.bEditExtCablePack.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bEditExtCablePack.UseVisualStyleBackColor = true;
             // 
+            // chbShildOrdered
+            // 
+            this.chbShildOrdered.AutoSize = true;
+            this.chbShildOrdered.Location = new System.Drawing.Point(200, 828);
+            this.chbShildOrdered.Name = "chbShildOrdered";
+            this.chbShildOrdered.Size = new System.Drawing.Size(145, 20);
+            this.chbShildOrdered.TabIndex = 55;
+            this.chbShildOrdered.Text = "Шильды заказаны";
+            this.chbShildOrdered.UseVisualStyleBackColor = true;
+            // 
+            // bPurchMat
+            // 
+            this.bPurchMat.Location = new System.Drawing.Point(255, 854);
+            this.bPurchMat.Name = "bPurchMat";
+            this.bPurchMat.Size = new System.Drawing.Size(90, 42);
+            this.bPurchMat.TabIndex = 56;
+            this.bPurchMat.Text = "Покупные материалы";
+            this.bPurchMat.UseVisualStyleBackColor = true;
+            this.bPurchMat.Click += new System.EventHandler(this.bPurchMat_Click);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(14, 828);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(59, 16);
+            this.label19.TabIndex = 2;
+            this.label19.Text = "Шильды";
+            // 
+            // pathFileds1
+            // 
+            this.pathFileds1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pathFileds1.Location = new System.Drawing.Point(13, 580);
+            this.pathFileds1.Margin = new System.Windows.Forms.Padding(4);
+            this.pathFileds1.Name = "pathFileds1";
+            this.pathFileds1.Size = new System.Drawing.Size(617, 211);
+            this.pathFileds1.TabIndex = 54;
+            // 
+            // summonTransfer2
+            // 
+            this.summonTransfer2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.summonTransfer2.Location = new System.Drawing.Point(734, 797);
+            this.summonTransfer2.Margin = new System.Windows.Forms.Padding(4);
+            this.summonTransfer2.Name = "summonTransfer2";
+            this.summonTransfer2.Size = new System.Drawing.Size(477, 87);
+            this.summonTransfer2.TabIndex = 53;
+            // 
+            // summonTransfer1
+            // 
+            this.summonTransfer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.summonTransfer1.Location = new System.Drawing.Point(734, 704);
+            this.summonTransfer1.Margin = new System.Windows.Forms.Padding(4);
+            this.summonTransfer1.Name = "summonTransfer1";
+            this.summonTransfer1.Size = new System.Drawing.Size(477, 87);
+            this.summonTransfer1.TabIndex = 53;
+            // 
             // cbCustDept
             // 
             this.cbCustDept.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -508,67 +568,43 @@ namespace SummonManager
             // summonNotes1
             // 
             this.summonNotes1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.summonNotes1.Location = new System.Drawing.Point(731, 12);
+            this.summonNotes1.Location = new System.Drawing.Point(731, 15);
             this.summonNotes1.Margin = new System.Windows.Forms.Padding(4);
             this.summonNotes1.Name = "summonNotes1";
-            this.summonNotes1.Size = new System.Drawing.Size(550, 694);
+            this.summonNotes1.Size = new System.Drawing.Size(536, 564);
             this.summonNotes1.TabIndex = 48;
             // 
-            // summonTransfer1
+            // label8
             // 
-            this.summonTransfer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.summonTransfer1.Location = new System.Drawing.Point(734, 704);
-            this.summonTransfer1.Margin = new System.Windows.Forms.Padding(4);
-            this.summonTransfer1.Name = "summonTransfer1";
-            this.summonTransfer1.Size = new System.Drawing.Size(477, 87);
-            this.summonTransfer1.TabIndex = 53;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(749, 597);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(112, 16);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "Текущий статус";
             // 
-            // pathFileds1
+            // label14
             // 
-            this.pathFileds1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.pathFileds1.Location = new System.Drawing.Point(13, 580);
-            this.pathFileds1.Margin = new System.Windows.Forms.Padding(4);
-            this.pathFileds1.Name = "pathFileds1";
-            this.pathFileds1.Size = new System.Drawing.Size(617, 211);
-            this.pathFileds1.TabIndex = 54;
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(749, 629);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(135, 16);
+            this.label14.TabIndex = 2;
+            this.label14.Text = "Текущий субстатус";
             // 
-            // chbShildOrdered
+            // tbStatus
             // 
-            this.chbShildOrdered.AutoSize = true;
-            this.chbShildOrdered.Location = new System.Drawing.Point(200, 828);
-            this.chbShildOrdered.Name = "chbShildOrdered";
-            this.chbShildOrdered.Size = new System.Drawing.Size(145, 20);
-            this.chbShildOrdered.TabIndex = 55;
-            this.chbShildOrdered.Text = "Шильды заказаны";
-            this.chbShildOrdered.UseVisualStyleBackColor = true;
+            this.tbStatus.Location = new System.Drawing.Point(890, 591);
+            this.tbStatus.Name = "tbStatus";
+            this.tbStatus.Size = new System.Drawing.Size(284, 22);
+            this.tbStatus.TabIndex = 3;
             // 
-            // bPurchMat
+            // tbSubStatus
             // 
-            this.bPurchMat.Location = new System.Drawing.Point(255, 854);
-            this.bPurchMat.Name = "bPurchMat";
-            this.bPurchMat.Size = new System.Drawing.Size(90, 42);
-            this.bPurchMat.TabIndex = 56;
-            this.bPurchMat.Text = "Покупные материалы";
-            this.bPurchMat.UseVisualStyleBackColor = true;
-            this.bPurchMat.Click += new System.EventHandler(this.bPurchMat_Click);
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(14, 828);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(59, 16);
-            this.label19.TabIndex = 2;
-            this.label19.Text = "Шильды";
-            // 
-            // summonTransfer2
-            // 
-            this.summonTransfer2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.summonTransfer2.Location = new System.Drawing.Point(734, 797);
-            this.summonTransfer2.Margin = new System.Windows.Forms.Padding(4);
-            this.summonTransfer2.Name = "summonTransfer2";
-            this.summonTransfer2.Size = new System.Drawing.Size(477, 87);
-            this.summonTransfer2.TabIndex = 53;
+            this.tbSubStatus.Location = new System.Drawing.Point(890, 626);
+            this.tbSubStatus.Name = "tbSubStatus";
+            this.tbSubStatus.Size = new System.Drawing.Size(284, 22);
+            this.tbSubStatus.TabIndex = 3;
             // 
             // ShowSummonOZIS
             // 
@@ -604,6 +640,8 @@ namespace SummonManager
             this.Controls.Add(this.cbSISP);
             this.Controls.Add(this.cbCustomers);
             this.Controls.Add(this.bCancel);
+            this.Controls.Add(this.tbSubStatus);
+            this.Controls.Add(this.tbStatus);
             this.Controls.Add(this.tbDELIVERY);
             this.Controls.Add(this.tbSHIPPING);
             this.Controls.Add(this.tbPAYSTATUS);
@@ -611,6 +649,8 @@ namespace SummonManager
             this.Controls.Add(this.tbTECHREQPATH);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label13);
+            this.Controls.Add(this.label14);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
@@ -692,5 +732,9 @@ namespace SummonManager
         private Button bPurchMat;
         private Label label19;
         private SummonTransfer summonTransfer2;
+        private Label label8;
+        private Label label14;
+        private TextBox tbStatus;
+        private TextBox tbSubStatus;
     }
 }

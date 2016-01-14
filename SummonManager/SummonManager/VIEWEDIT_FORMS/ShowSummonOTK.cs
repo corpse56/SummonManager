@@ -61,6 +61,8 @@ namespace SummonManager
             cbMountingKit.ReadOnly = true;
             bEditExtCablePack.Enabled = false;
             cbCustDept.ReadOnly = true;
+            tbStatus.Enabled = false;
+            tbSubStatus.Enabled = false;
         }
         private void EnableAll()
         {
@@ -142,12 +144,20 @@ namespace SummonManager
                 dtpAPPROX.Enabled = true;
                 dtpAPPROX.Value = (DateTime)SVO.PASSDATE;
             }
+            tbStatus.Text = SVO.STATUSNAME;
+            tbSubStatus.Text = SVO.SUBSTATUSNAME;
+
             UIProc ui = new UIProc();
             ui.LoadExtCables(dgv, this.IDSUMMON.ToString());
 
             summonNotes1.Init(SVO.ID, UVO, SVO);
             summonNotes1.Reload();
             summonTransfer1.Init(SVO, UVO, this);
+            if (SVO.WPNAMEVO.IDCat == 4)
+            {
+                summonTransfer2.Visible = false;
+            }
+            summonTransfer2.InitSub(SVO, UVO, this);
 
             pathFileds1.Init(SVO, UVO);
         }

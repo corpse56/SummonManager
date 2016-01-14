@@ -59,7 +59,8 @@ namespace SummonManager
             cbCustDept.ReadOnly = true;
             chbShildOrdered.Enabled = false;
             bPurchMat.Enabled = true;
-
+            tbStatus.Enabled = false;
+            tbSubStatus.Enabled = false;
         }
         private void EnableAll()
         {
@@ -138,6 +139,8 @@ namespace SummonManager
                 dtpAPPROX.Enabled = true;
                 dtpAPPROX.Value = (DateTime)SVO.PASSDATE;
             }
+            tbStatus.Text = SVO.STATUSNAME;
+            tbSubStatus.Text = SVO.SUBSTATUSNAME;
             UIProc ui = new UIProc();
             ui.LoadExtCables(dgv, this.IDSUMMON.ToString());
 
@@ -145,6 +148,8 @@ namespace SummonManager
             summonNotes1.Reload();
 
             summonTransfer1.Init(SVO, UVO, this);
+            if (SVO.WPNAMEVO.IDCat == 4)
+                summonTransfer2.Visible = false;
             summonTransfer2.InitSub(SVO, UVO, this);
 
             pathFileds1.Init(SVO, UVO);
@@ -413,6 +418,7 @@ namespace SummonManager
             fpm.ShowDialog();
         }
 
+       
       
 
     
