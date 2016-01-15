@@ -88,7 +88,6 @@
             this.tbPass.PasswordChar = '*';
             this.tbPass.Size = new System.Drawing.Size(221, 22);
             this.tbPass.TabIndex = 1;
-            this.tbPass.Text = "...";
             // 
             // Auth
             // 
