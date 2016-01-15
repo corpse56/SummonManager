@@ -1,6 +1,6 @@
 ﻿namespace SummonManager
 {
-    partial class WPCOMPOSITIONARCHIVE
+    partial class EditWPCategory
     {
         /// <summary>
         /// Required designer variable.
@@ -45,13 +45,12 @@
             this.dgWP.Name = "dgWP";
             this.dgWP.RowHeadersVisible = false;
             this.dgWP.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgWP.Size = new System.Drawing.Size(1088, 281);
+            this.dgWP.Size = new System.Drawing.Size(370, 281);
             this.dgWP.TabIndex = 0;
-            this.dgWP.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgWP_CellMouseDoubleClick);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1025, 299);
+            this.button1.Location = new System.Drawing.Point(307, 299);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 1;
@@ -61,19 +60,19 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(944, 299);
+            this.button2.Location = new System.Drawing.Point(214, 299);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.Size = new System.Drawing.Size(87, 23);
             this.button2.TabIndex = 2;
-            this.button2.Text = "Открыть";
+            this.button2.Text = "Добавить";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // WPCOMPOSITIONARCHIVE
+            // EditWPCategory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1112, 331);
+            this.ClientSize = new System.Drawing.Size(392, 331);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dgWP);
@@ -81,9 +80,9 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
-            this.Name = "WPCOMPOSITIONARCHIVE";
+            this.Name = "EditWPCategory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Архив составов изделия";
+            this.Text = "Категории изделия";
             ((System.ComponentModel.ISupportInitialize)(this.dgWP)).EndInit();
             this.ResumeLayout(false);
 

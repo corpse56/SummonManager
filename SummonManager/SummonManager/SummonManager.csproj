@@ -693,6 +693,12 @@
     <EmbeddedResource Include="WPCOMPOSITIONARCHIVE.resx">
       <DependentUpon>WPCOMPOSITIONARCHIVE.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EditWPCategory.resx">
+      <DependentUpon>EditWPCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewCategory.resx">
+      <DependentUpon>NewCategory.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -743,6 +749,18 @@
     </Compile>
     <Compile Include="WPCOMPOSITIONARCHIVE.Designer.cs">
       <DependentUpon>WPCOMPOSITIONARCHIVE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditWPCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditWPCategory.Designer.cs">
+      <DependentUpon>EditWPCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewCategory.Designer.cs">
+      <DependentUpon>NewCategory.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

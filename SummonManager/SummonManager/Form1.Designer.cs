@@ -441,7 +441,7 @@
             // 
             this.tslVersionLabel.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.tslVersionLabel.Name = "tslVersionLabel";
-            this.tslVersionLabel.Size = new System.Drawing.Size(1218, 17);
+            this.tslVersionLabel.Size = new System.Drawing.Size(1249, 17);
             this.tslVersionLabel.Spring = true;
             this.tslVersionLabel.Text = "v";
             this.tslVersionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;

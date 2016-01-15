@@ -38,6 +38,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.bArchive = new System.Windows.Forms.Button();
             this.bArcShow = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgWP)).BeginInit();
             this.SuspendLayout();
             // 
@@ -151,11 +152,22 @@
             this.bArcShow.UseVisualStyleBackColor = true;
             this.bArcShow.Click += new System.EventHandler(this.bArcShow_Click);
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(611, 44);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(224, 23);
+            this.button6.TabIndex = 8;
+            this.button6.Text = "Редактировать категории";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
             // WPName
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1213, 391);
+            this.Controls.Add(this.button6);
             this.Controls.Add(this.bArcShow);
             this.Controls.Add(this.bArchive);
             this.Controls.Add(this.label1);
@@ -190,5 +202,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button bArchive;
         private System.Windows.Forms.Button bArcShow;
+        private System.Windows.Forms.Button button6;
     }
 }

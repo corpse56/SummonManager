@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using SummonManager.CLASSES;
+using System.Diagnostics;
 
 namespace SummonManager
 {
@@ -33,6 +34,32 @@ namespace SummonManager
         private void button1_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void dgWP_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            string path = dgWP.Rows[e.RowIndex].Cells["ARCPATH"].Value.ToString();
+            
+            if (path.ToString() != "")
+            {
+                Process.Start(@"explorer.exe", @path.ToString());
+            }
+        
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (dgWP.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Выберите строку!");
+                return;
+            }
+            string path = dgWP.SelectedRows[0].Cells["ARCPATH"].Value.ToString();
+
+            if (path.ToString() != "")
+            {
+                Process.Start(@"explorer.exe", @path.ToString());
+            }
         }
 
        

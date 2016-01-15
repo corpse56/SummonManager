@@ -60,6 +60,11 @@ namespace SummonManager.Controls
 
         }
 
+        private void tbPath_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
 
 
 

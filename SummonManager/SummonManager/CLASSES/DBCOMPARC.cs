@@ -16,7 +16,8 @@ namespace SummonManager.CLASSES
             DA.SelectCommand.CommandText = "select max(DATEARC) arc from " + Base.BaseName + "..WPCOMPOSITIONARCHIVE where IDWP = "+wp.ID;
             int i = DA.Fill(DS, "t");
             DateTime fromdate;
-            if (i == 0)
+            object o = DS.Tables["t"].Rows[0]["arc"];
+            if (o == DBNull.Value)
             {
                 fromdate = new DateTime(2010, 1, 1);
             }
@@ -28,7 +29,7 @@ namespace SummonManager.CLASSES
             DA.InsertCommand.Parameters.AddWithValue("comp", wp.Composition);
             DA.InsertCommand.Parameters.AddWithValue("from", fromdate);
             DA.InsertCommand.CommandText = "insert into " + Base.BaseName + "..WPCOMPOSITIONARCHIVE (IDWP,ARCPATH,DATEARC,FROMDATE) values (" + wp.ID + 
-                                                                                        ",@comp,getdate(),@fromdate)";
+                                                                                        ",@comp,getdate(),@from)";
             DA.InsertCommand.Connection.Open();
             DA.InsertCommand.ExecuteNonQuery();
             DA.InsertCommand.Connection.Close();

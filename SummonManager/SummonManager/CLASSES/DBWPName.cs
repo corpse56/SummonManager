@@ -39,8 +39,9 @@ namespace SummonManager
             DA.InsertCommand.Parameters.AddWithValue("DIMENSIONALDRAWING", p.DimenDrawing);
             DA.InsertCommand.Parameters.AddWithValue("POWERSUPPLY", p.PowerSupply);
             DA.InsertCommand.Parameters.AddWithValue("NOTE", p.Note);
+            DA.InsertCommand.Parameters.AddWithValue("CREATED", DateTime.Now);
             DA.InsertCommand.CommandText = "insert into " + Base.BaseName + "..WPNAMELIST (WPNAME,IDCATEGORY,DECNUM,COMPOSITION,DIMENSIONALDRAWING,POWERSUPPLY, " +
-                                            "NOTE,CONFIGURATION) values (@WPNAME,@IDCATEGORY,@DECNUM,@COMPOSITION,@DIMENSIONALDRAWING,@POWERSUPPLY,@NOTE,@CONFIGURATION)";
+                                            "NOTE,CONFIGURATION,CREATED) values (@WPNAME,@IDCATEGORY,@DECNUM,@COMPOSITION,@DIMENSIONALDRAWING,@POWERSUPPLY,@NOTE,@CONFIGURATION,@CREATED)";
             DA.InsertCommand.Connection.Open();
             DA.InsertCommand.ExecuteNonQuery();
             DA.InsertCommand.Connection.Close();

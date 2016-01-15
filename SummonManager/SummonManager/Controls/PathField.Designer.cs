@@ -69,6 +69,7 @@
             this.tbPath.ReadOnly = true;
             this.tbPath.Size = new System.Drawing.Size(423, 22);
             this.tbPath.TabIndex = 22;
+            this.tbPath.TextChanged += new System.EventHandler(this.tbPath_TextChanged);
             this.tbPath.MouseLeave += new System.EventHandler(this.tbPath_MouseLeave);
             this.tbPath.Click += new System.EventHandler(this.tbPath_Click);
             this.tbPath.MouseEnter += new System.EventHandler(this.tbPath_MouseEnter);

@@ -172,6 +172,12 @@ namespace SummonManager
             arc.ShowDialog();
         }
 
+        private void button6_Click(object sender, EventArgs e)
+        {
+            EditWPCategory ed = new EditWPCategory();
+            ed.ShowDialog();
+        }
+
 
 
     }
