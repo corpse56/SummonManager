@@ -45,7 +45,7 @@ namespace SummonManager
             this.FORM = form;
             cbStatus.Enabled = false;
             done = false;
-            if ((UVO.Role != Roles.OTK) && (UVO.Role != Roles.Montage) && (UVO.Role != Roles.Ozis))
+            if ((UVO.Role != Roles.OTK) && (UVO.Role != Roles.Montage) && (UVO.Role != Roles.Ozis) && (UVO.Role != Roles.Admin))
             {
                 this.Visible = false;
                 return;

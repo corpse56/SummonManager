@@ -30,7 +30,9 @@ namespace SummonManager
             {
                 button2.Enabled = false;
                 bEdit.Enabled = false;
-                button1.Enabled = false;
+                //button1.Enabled = false;
+                summonTransfer1.Enabled = false;
+                summonTransfer2.Enabled = false;
                 bDel.Enabled = false;
                 summonNotes1.button1.Enabled = false;
                 this.Text = "Просмотр завершённого извещения";
@@ -46,7 +48,9 @@ namespace SummonManager
                     case Roles.Director:
                         button2.Enabled = false;
                         bEdit.Enabled = false;
-                        button1.Enabled = false;
+                       // button1.Enabled = false;
+                        summonTransfer1.Enabled = false;
+                        summonTransfer2.Enabled = false;
                         bDel.Enabled = false;
                         summonNotes1.button1.Enabled = false;
                         break;
@@ -132,7 +136,7 @@ namespace SummonManager
             cbMountingKit.ReadOnly = true;
             bEditExtCablePack.Enabled = false;
             cbCustDept.ReadOnly = true;
-            button1.Enabled = true;
+            //button1.Enabled = true;
         }
         private void EnableAll()
         {
@@ -168,7 +172,7 @@ namespace SummonManager
             cbMountingKit.ReadOnly = false;
             bEditExtCablePack.Enabled = true;
             cbCustDept.ReadOnly = false;
-            button1.Enabled = false;
+            //button1.Enabled = false;
             pathFileds1.bPATH1.Enabled = true;
             pathFileds1.bPATH2.Enabled = true;
             pathFileds1.bPATH3.Enabled = true;
@@ -274,6 +278,13 @@ namespace SummonManager
             summonNotes1.Init(SVO.ID, UVO, SVO);
             summonNotes1.Reload();
             pathFileds1.Init(SVO, UVO);
+
+            summonTransfer1.Init(SVO, UVO, this);
+            if (SVO.WPNAMEVO.IDCat == 4)
+            {
+                summonTransfer2.Visible = false;
+            }
+            summonTransfer2.InitSub(SVO, UVO, this);
 
 
         }

@@ -12,7 +12,10 @@ namespace SummonManager
 
         public UserVO Login(string login,string pass)
         {
-            DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..USERS where LOGIN = '" + login + "' and PASS = '" + pass + "'";
+            DA.SelectCommand.Parameters.Clear();
+            DA.SelectCommand.Parameters.AddWithValue("login", login);
+            DA.SelectCommand.Parameters.AddWithValue("pass", pass);
+            DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..USERS where [LOGIN] = @login and [PASS] = @pass";
             if (DA.Fill(DS, "t") == 0)
                 return null;
             UserVO UVO = new UserVO();
@@ -22,6 +25,7 @@ namespace SummonManager
             UVO.Pass = DS.Tables["t"].Rows[0]["PASS"].ToString();
             int i = int.Parse(DS.Tables["t"].Rows[0]["ROLE"].ToString());
             UVO.Role = (Roles)i;
+            DA.SelectCommand.Parameters.Clear();
             return UVO;
         }
         public DataTable GetAllUsers()

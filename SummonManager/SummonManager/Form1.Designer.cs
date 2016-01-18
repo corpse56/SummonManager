@@ -403,6 +403,7 @@
             this.MySummonsTSB.Name = "MySummonsTSB";
             this.MySummonsTSB.Size = new System.Drawing.Size(36, 36);
             this.MySummonsTSB.Text = "MySummonsToolStripButton";
+            this.MySummonsTSB.ToolTipText = "Мои извещения";
             this.MySummonsTSB.Click += new System.EventHandler(this.MySummonsTSB_Click);
             // 
             // toolStripSeparator2

@@ -26,7 +26,7 @@ namespace SummonManager
         public UserVO UVO;
         public int PrivateNoteColor;
         public int RefreshTime;
-        public static string ProgramVersion = "1.77";
+        public static string ProgramVersion = "1.78";
 
         public MainF()
         {
@@ -190,7 +190,8 @@ namespace SummonManager
             dgSummon.Columns["paint_inzh"].Visible = false;
             dgSummon.Columns["paint_otk"].Visible = false;
             dgSummon.Columns["shild_ordered"].Visible = false;
-
+            dgSummon.Columns["idsubst"].Visible = false;
+            
             //dgSummon.Columns["qty"].Width = 50;
             //dgSummon.Columns["cause"].Width = 130;
             //dgSummon.Columns["passd"].Width = 85;
@@ -201,7 +202,7 @@ namespace SummonManager
             //dgSummon.Columns["wname"].Width = 140;
             //dgSummon.Columns["cust"].Width = 190;
             //dgSummon.Columns["sts"].Width = 100;
-
+            
             dgSummon.Columns["qty"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgSummon.Columns["cause"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgSummon.Columns["passd"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;

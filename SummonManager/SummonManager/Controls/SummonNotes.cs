@@ -67,5 +67,7 @@ namespace SummonManager
             dbs.AddSummonView(SVO, UVO);
         }
 
+
+
     }
 }

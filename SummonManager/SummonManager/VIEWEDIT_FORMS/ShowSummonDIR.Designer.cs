@@ -74,7 +74,6 @@ namespace SummonManager
             this.bEdit = new System.Windows.Forms.Button();
             this.bSave = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.bDel = new System.Windows.Forms.Button();
             this.bEditExtCablePack = new System.Windows.Forms.Button();
             this.cbMountingKit = new SummonManager.RComboBox();
@@ -87,6 +86,8 @@ namespace SummonManager
             this.cbCustomers = new SummonManager.RComboBox();
             this.summonNotes1 = new SummonManager.SummonNotes();
             this.pathFileds1 = new SummonManager.PathFileds();
+            this.summonTransfer1 = new SummonManager.SummonTransfer();
+            this.summonTransfer2 = new SummonManager.SummonTransfer();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbQUANTITY)).BeginInit();
             this.SuspendLayout();
@@ -423,16 +424,6 @@ namespace SummonManager
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(313, 855);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(129, 42);
-            this.button1.TabIndex = 55;
-            this.button1.Text = "Изменить статус извещения";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
             // bDel
             // 
             this.bDel.Location = new System.Drawing.Point(448, 855);
@@ -553,15 +544,34 @@ namespace SummonManager
             this.pathFileds1.Size = new System.Drawing.Size(608, 218);
             this.pathFileds1.TabIndex = 58;
             // 
+            // summonTransfer1
+            // 
+            this.summonTransfer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.summonTransfer1.Location = new System.Drawing.Point(679, 714);
+            this.summonTransfer1.Margin = new System.Windows.Forms.Padding(4);
+            this.summonTransfer1.Name = "summonTransfer1";
+            this.summonTransfer1.Size = new System.Drawing.Size(475, 87);
+            this.summonTransfer1.TabIndex = 59;
+            // 
+            // summonTransfer2
+            // 
+            this.summonTransfer2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.summonTransfer2.Location = new System.Drawing.Point(679, 806);
+            this.summonTransfer2.Margin = new System.Windows.Forms.Padding(4);
+            this.summonTransfer2.Name = "summonTransfer2";
+            this.summonTransfer2.Size = new System.Drawing.Size(475, 87);
+            this.summonTransfer2.TabIndex = 60;
+            // 
             // ShowSummonDIR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1167, 906);
+            this.Controls.Add(this.summonTransfer2);
+            this.Controls.Add(this.summonTransfer1);
             this.Controls.Add(this.pathFileds1);
             this.Controls.Add(this.summonNotes1);
             this.Controls.Add(this.bDel);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.bSave);
             this.Controls.Add(this.bEdit);
@@ -667,9 +677,10 @@ namespace SummonManager
         private Button bEdit;
         private Button bSave;
         private Button button2;
-        private Button button1;
         private Button bDel;
         private SummonNotes summonNotes1;
         private PathFileds pathFileds1;
+        private SummonTransfer summonTransfer1;
+        private SummonTransfer summonTransfer2;
     }
 }

@@ -148,6 +148,10 @@ namespace SummonManager
             DS = new DataSet();
             switch (UVO.Role)
             {
+                case Roles.Admin:
+                    DA.SelectCommand.CommandText = "select ID,SNAME from " + Base.BaseName +
+                        "..STATUSLIST where  ID not in (2,6,8,11,13,14,15,16,17,18)";
+                    break;
                 case Roles.Logist:
                     DA.SelectCommand.CommandText = "select ID,'Закрыть извещение' SNAME from " + Base.BaseName +
                         "..STATUSLIST where  (ID = 13)";
@@ -290,6 +294,10 @@ namespace SummonManager
                 case Roles.Montage:
                     DA.SelectCommand.CommandText = "select ID, 'ОТК' SNAME from " + Base.BaseName +
                         "..STATUSLIST where ID in (16)";
+                    break;
+                case Roles.Admin:
+                    DA.SelectCommand.CommandText = "select ID, SNAME from " + Base.BaseName +
+                        "..STATUSLIST where ID in (15,16,17,18)";
                     break;
 
             }

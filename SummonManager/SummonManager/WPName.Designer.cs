@@ -134,6 +134,7 @@
             // 
             // bArchive
             // 
+            this.bArchive.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.bArchive.Location = new System.Drawing.Point(393, 364);
             this.bArchive.Name = "bArchive";
             this.bArchive.Size = new System.Drawing.Size(264, 23);
@@ -144,6 +145,7 @@
             // 
             // bArcShow
             // 
+            this.bArcShow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.bArcShow.Location = new System.Drawing.Point(663, 364);
             this.bArcShow.Name = "bArcShow";
             this.bArcShow.Size = new System.Drawing.Size(260, 23);
