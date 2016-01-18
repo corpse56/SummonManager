@@ -264,9 +264,16 @@ namespace SummonManager
                         }
                         else return;
                         break;
+                    case Roles.Admin:
+                        if (!Change())
+                        {
+                            return;
+                        }
+                        break;
                 }
                 MessageBox.Show("Извещение успешно передано!");
                 done = true;
+                if (UVO.Role != Roles.Admin)
                 FORM.Close();
             }
             else//==SUBSTATUS== это субстатусы по ветке монтирования кабелей. если есть в извещении кабели ПДБ передаёт монтажникам
@@ -303,9 +310,16 @@ namespace SummonManager
                         }
                         else return;
                         break;
+                    case Roles.Admin:
+                        if (!ChangeSub())
+                        {
+                            return;
+                        }
+                        break;
                 }
                 MessageBox.Show("Субстатус успешно изменён!");
                 done = true;
+                if (UVO.Role !=  Roles.Admin)
                 FORM.Close();
             }
 
