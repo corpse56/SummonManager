@@ -34,8 +34,8 @@ namespace SummonManager
           //  pathFileds1.bCompositionDel.Enabled = false;
 
             summonTransfer1.Enabled = true;
-            cbWPNAME.ReadOnly = true;
-            cbWPNAME.DropDownStyle = ComboBoxStyle.DropDown;
+            //cbWPNAME.ReadOnly = true;
+            //cbWPNAME.DropDownStyle = ComboBoxStyle.DropDown;
             bPATH.Enabled = false;
             tbQUANTITY.ReadOnly = true;
             dtpPTIME.Enabled = false;
@@ -70,8 +70,8 @@ namespace SummonManager
         private void EnableAll()
         {
             summonTransfer1.Enabled = false;
-            cbWPNAME.ReadOnly = false;
-            cbWPNAME.DropDownStyle = ComboBoxStyle.DropDownList;
+            //cbWPNAME.ReadOnly = false;
+            //cbWPNAME.DropDownStyle = ComboBoxStyle.DropDownList;
             bPATH.Enabled = true;
             tbQUANTITY.ReadOnly = false;
             dtpPTIME.Enabled = true;
@@ -132,11 +132,11 @@ namespace SummonManager
             cbAccept.DataSource = dbacc.GetAllAccept();
             cbAccept.SelectedValue = SVO.IDACCEPT;
 
-            DBWPName dbwp = new DBWPName();
+            /*DBWPName dbwp = new DBWPName();
             cbWPNAME.ValueMember = "ID";
             cbWPNAME.DisplayMember = "WPNAME";
             cbWPNAME.DataSource = dbwp.GetAllWPNames();
-            cbWPNAME.SelectedValue = SVO.IDWPNAME;
+            cbWPNAME.SelectedValue = SVO.IDWPNAME;*/
 
             DBPacking dbp = new DBPacking();
             cbPacking.ValueMember = "ID";
@@ -341,8 +341,8 @@ namespace SummonManager
             else
                 SVO.SISP = true;
             SVO.TECHREQPATH = tbTECHREQPATH.Tag.ToString();
-            SVO.WPNAME = cbWPNAME.Text;
-            SVO.IDWPNAME = (int)cbWPNAME.SelectedValue;
+            //SVO.WPNAME = cbWPNAME.Text;
+            //SVO.IDWPNAME = (int)cbWPNAME.SelectedValue;
             SVO.IDACCEPT = (int)cbAccept.SelectedValue;
             SVO.IDPACKING = (int)cbPacking.SelectedValue;
             //SVO.IDEXTCABLE = (int)cbExtCable.SelectedValue;
@@ -487,6 +487,7 @@ namespace SummonManager
             dbs.AddSummonView(SVO, UVO);
             dtpApproxAtLoad = SVO.PASSDATE;
 
+            wpNameView1.Init(SVO.IDWPNAME);
         }
 
 

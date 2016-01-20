@@ -39,6 +39,7 @@
             this.bArchive = new System.Windows.Forms.Button();
             this.bArcShow = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgWP)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,13 +51,15 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.dgWP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgWP.Location = new System.Drawing.Point(12, 77);
+            this.dgWP.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgWP.Location = new System.Drawing.Point(12, 42);
             this.dgWP.MultiSelect = false;
             this.dgWP.Name = "dgWP";
             this.dgWP.RowHeadersVisible = false;
             this.dgWP.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgWP.Size = new System.Drawing.Size(1189, 281);
+            this.dgWP.Size = new System.Drawing.Size(1189, 316);
             this.dgWP.TabIndex = 0;
+            this.dgWP.DoubleClick += new System.EventHandler(this.dgWP_DoubleClick);
             // 
             // button1
             // 
@@ -117,7 +120,7 @@
             // 
             this.cbCAT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCAT.FormattingEnabled = true;
-            this.cbCAT.Location = new System.Drawing.Point(164, 44);
+            this.cbCAT.Location = new System.Drawing.Point(164, 12);
             this.cbCAT.Name = "cbCAT";
             this.cbCAT.Size = new System.Drawing.Size(441, 24);
             this.cbCAT.TabIndex = 4;
@@ -126,7 +129,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 47);
+            this.label1.Location = new System.Drawing.Point(12, 15);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(146, 16);
             this.label1.TabIndex = 5;
@@ -156,7 +159,7 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(611, 44);
+            this.button6.Location = new System.Drawing.Point(611, 12);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(224, 23);
             this.button6.TabIndex = 8;
@@ -164,11 +167,22 @@
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
             // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(1043, 364);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(77, 23);
+            this.button7.TabIndex = 9;
+            this.button7.Text = "Выбрать";
+            this.button7.UseVisualStyleBackColor = true;
+            this.button7.Click += new System.EventHandler(this.button7_Click);
+            // 
             // WPName
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1213, 391);
+            this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.bArcShow);
             this.Controls.Add(this.bArchive);
@@ -205,5 +219,6 @@
         private System.Windows.Forms.Button bArchive;
         private System.Windows.Forms.Button bArcShow;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
     }
 }

@@ -79,11 +79,11 @@ namespace SummonManager
             this.cbMountingKit = new SummonManager.RComboBox();
             this.cbPacking = new SummonManager.RComboBox();
             this.cbAccept = new SummonManager.RComboBox();
-            this.cbWPNAME = new SummonManager.RComboBox();
             this.tbQUANTITY = new SummonManager.RNumericUpDown();
             this.cbSISP = new SummonManager.RComboBox();
             this.cbCustomers = new SummonManager.RComboBox();
             this.summonNotes1 = new SummonManager.SummonNotes();
+            this.wpNameView1 = new SummonManager.Controls.WPNameView();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbQUANTITY)).BeginInit();
             this.SuspendLayout();
@@ -467,14 +467,6 @@ namespace SummonManager
             this.cbAccept.Size = new System.Drawing.Size(416, 24);
             this.cbAccept.TabIndex = 29;
             // 
-            // cbWPNAME
-            // 
-            this.cbWPNAME.FormattingEnabled = true;
-            this.cbWPNAME.Location = new System.Drawing.Point(200, 76);
-            this.cbWPNAME.Name = "cbWPNAME";
-            this.cbWPNAME.Size = new System.Drawing.Size(414, 24);
-            this.cbWPNAME.TabIndex = 28;
-            // 
             // tbQUANTITY
             // 
             this.tbQUANTITY.Location = new System.Drawing.Point(198, 298);
@@ -518,11 +510,21 @@ namespace SummonManager
             this.summonNotes1.Size = new System.Drawing.Size(550, 694);
             this.summonNotes1.TabIndex = 65;
             // 
+            // wpNameView1
+            // 
+            this.wpNameView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.wpNameView1.Location = new System.Drawing.Point(196, 75);
+            this.wpNameView1.Margin = new System.Windows.Forms.Padding(4);
+            this.wpNameView1.Name = "wpNameView1";
+            this.wpNameView1.Size = new System.Drawing.Size(417, 28);
+            this.wpNameView1.TabIndex = 68;
+            // 
             // ShowSummonCONSTR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1174, 878);
+            this.Controls.Add(this.wpNameView1);
             this.Controls.Add(this.pathFileds1);
             this.Controls.Add(this.cbCustDept);
             this.Controls.Add(this.label22);
@@ -534,7 +536,6 @@ namespace SummonManager
             this.Controls.Add(this.cbPacking);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.cbAccept);
-            this.Controls.Add(this.cbWPNAME);
             this.Controls.Add(this.chbDeterm);
             this.Controls.Add(this.dtpAPPROX);
             this.Controls.Add(this.label16);
@@ -617,7 +618,6 @@ namespace SummonManager
         private DateTimePicker dtpAPPROX;
         private Label label16;
         private RComboBox cbAccept;
-        private RComboBox cbWPNAME;
         private RComboBox cbPacking;
         private Label label17;
         private TextBox tbPAYSTATUS;
@@ -630,5 +630,6 @@ namespace SummonManager
         private Label label22;
         private SummonNotes summonNotes1;
         private PathFileds pathFileds1;
+        private SummonManager.Controls.WPNameView wpNameView1;
     }
 }

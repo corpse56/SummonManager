@@ -142,7 +142,8 @@ namespace SummonManager
         //    DA.Fill(DS, "t");
         //    return DS.Tables["t"];
         //}
-
+        public int DefaultStatus = 0;
+        public int DefaultSubStatus = 0;
         internal object GetAllStatuses(UserVO UVO, SummonVO SVO)
         {
             DS = new DataSet();
@@ -151,24 +152,29 @@ namespace SummonManager
                 case Roles.Admin:
                     DA.SelectCommand.CommandText = "select ID,SNAME from " + Base.BaseName +
                         "..STATUSLIST where  ID not in (2,6,8,11,13,14,15,16,17,18)";
+                    DefaultStatus = 2;
                     break;
                 case Roles.Logist:
                     DA.SelectCommand.CommandText = "select ID,'Закрыть извещение' SNAME from " + Base.BaseName +
                         "..STATUSLIST where  (ID = 13)";
+                    DefaultStatus = 13;
                     break;
                 case Roles.Manager:
                     DA.SelectCommand.CommandText = "select ID,'ПДБ' SNAME from " + Base.BaseName +
                         "..STATUSLIST where  ID in (3)";
+                    DefaultStatus = 3;
                     break;
                 case Roles.Montage:
                     DA.SelectCommand.CommandText = "select ID,'В ОТК от монтажников' SNAME from " + Base.BaseName +
                     "..STATUSLIST where ID in (16)";
+                    DefaultStatus = 16;
                     break;
                 case Roles.OTK:
                     if (SVO.WPNAMEVO.IDCat == 4)
                     {
                         DA.SelectCommand.CommandText = "select ID,case when ID = 9 then 'Коммерческий отдел' else 'Возвращено монтажникам из ОТК' end SNAME from " + Base.BaseName +
                         "..STATUSLIST where ID in (9,18)";
+                        DefaultStatus = 9;
                     }
                     else
                     {
@@ -178,16 +184,19 @@ namespace SummonManager
                             {
                                 DA.SelectCommand.CommandText = "select ID,'Производство после СИ и СП' SNAME from " + Base.BaseName +
                                 "..STATUSLIST where ID in (21)";
+                                DefaultStatus = 21;
                             }
                             else if (SVO.IDSTATUS == 20)
                             {
                                 DA.SelectCommand.CommandText = "select ID,'Цех после СИ и СП' SNAME from " + Base.BaseName +
                                 "..STATUSLIST where ID in (22)";
+                                DefaultStatus = 22;
                             }
                             else
                             {
                                 DA.SelectCommand.CommandText = "select ID,'Коммерческий отдел' SNAME from " + Base.BaseName +
                                                                 "..STATUSLIST where ID in (9)";
+                                DefaultStatus = 9;
                             }
 
                         }
@@ -195,7 +204,7 @@ namespace SummonManager
                         {
                             DA.SelectCommand.CommandText = "select ID,'Коммерческий отдел' SNAME from " + Base.BaseName +
                             "..STATUSLIST where ID in (9)";
-
+                            DefaultStatus = 9;
                         }
                     }
                     break;
@@ -205,12 +214,14 @@ namespace SummonManager
                         DA.SelectCommand.CommandText = "select ID, 'Монтажники' SNAME " +
                                                                 " from " + Base.BaseName +
                             "..STATUSLIST where  ID in (15)";
+                        DefaultStatus = 15;
                     }
                     else
                     {
                         DA.SelectCommand.CommandText = "select ID, 'Производство' SNAME " +
                                                                 " from " + Base.BaseName +
                             "..STATUSLIST where ID in (4)";
+                        DefaultStatus = 4;
 
                     }
 
@@ -223,12 +234,14 @@ namespace SummonManager
                             DA.SelectCommand.CommandText = "select ID, 'Цех' SNAME" +
                                                                     " from " + Base.BaseName +
                                 "..STATUSLIST where ID in (5)";
+                            DefaultStatus = 5;
                         }
                         else
                         {
                             DA.SelectCommand.CommandText = "select ID, 'СИ и СП (ОТК - Произ-во)' SNAME" +
                                                                     " from " + Base.BaseName +
                                 "..STATUSLIST where ID in (19)";
+                            DefaultStatus = 19;
                         }
                     }
                     else
@@ -236,12 +249,13 @@ namespace SummonManager
                         DA.SelectCommand.CommandText = "select ID, 'Цех' SNAME" +
                                         " from " + Base.BaseName +
                         "..STATUSLIST where ID in (5)";
-
+                        DefaultStatus = 5;
                     }
                     break;
                 case Roles.Ware:
                     DA.SelectCommand.CommandText = "select ID,'Отгружается' SNAME from " + Base.BaseName +
                         "..STATUSLIST where ID in (12)";
+                    DefaultStatus = 12;
                     break;
                 case Roles.Wsh:
                     if (SVO.SISP)
@@ -251,12 +265,14 @@ namespace SummonManager
                             DA.SelectCommand.CommandText = "select ID, 'OTK' SNAME" +
                                                                     " from " + Base.BaseName +
                                 "..STATUSLIST where  ID in (7)";
+                            DefaultStatus = 7;
                         }
                         else
                         {
                             DA.SelectCommand.CommandText = "select ID, 'СИ и СП (ОТК - Цех)' SNAME" +
                                                                     " from " + Base.BaseName +
                                 "..STATUSLIST where  ID in (20)";
+                            DefaultStatus = 20;
                         }
                     }
                     else
@@ -264,7 +280,7 @@ namespace SummonManager
                         DA.SelectCommand.CommandText = "select ID, 'ОТК' SNAME" +
                                         " from " + Base.BaseName +
                         "..STATUSLIST where ID in (7)";
-
+                        DefaultStatus = 7;
                     }
                     break;
             }
@@ -280,24 +296,27 @@ namespace SummonManager
             switch (UVO.Role)
             {
                 case Roles.OTK:
-                    //DA.SelectCommand.CommandText = "select ID,case when ID = 2 then 'Менеджер' else 'Коммерческий отдел' end SNAME from " + Base.BaseName +
                     DA.SelectCommand.CommandText = "select ID,case when ID = 17 then 'Субстатус закрыт' else " +
                                                             " 'Возвращено монтажникам из ОТК'  end SNAME" +
                                                             " from " + Base.BaseName +
                                                     "..STATUSLIST where ID in (17,18)";
+                    DefaultSubStatus = 17;
                     break;
                 case Roles.Ozis:
-                        DA.SelectCommand.CommandText = "select ID, 'Монтажники' SNAME " +
-                                                                " from " + Base.BaseName +
-                                                        "..STATUSLIST where ID in (15)";
+                    DA.SelectCommand.CommandText = "select ID, 'Монтажники' SNAME " +
+                                                            " from " + Base.BaseName +
+                                                    "..STATUSLIST where ID in (15)";
+                    DefaultSubStatus = 15;
                     break;
                 case Roles.Montage:
                     DA.SelectCommand.CommandText = "select ID, 'ОТК' SNAME from " + Base.BaseName +
                         "..STATUSLIST where ID in (16)";
+                    DefaultSubStatus = 16;
                     break;
                 case Roles.Admin:
                     DA.SelectCommand.CommandText = "select ID, SNAME from " + Base.BaseName +
                         "..STATUSLIST where ID in (15,16,17,18)";
+                    DefaultSubStatus = 18;
                     break;
 
             }

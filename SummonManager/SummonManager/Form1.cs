@@ -26,7 +26,7 @@ namespace SummonManager
         public UserVO UVO;
         public int PrivateNoteColor;
         public int RefreshTime;
-        public static string ProgramVersion = "1.78";
+        public static string ProgramVersion = "1.79";
 
         public MainF()
         {
@@ -232,7 +232,7 @@ namespace SummonManager
                 r.Cells["cause"].Tag = r.Cells["cause"].Value;
                 r.Cells["cause"].Value = r.Cells["cause"].Tag.ToString().Substring(r.Cells["cause"].Tag.ToString().LastIndexOf("\\") + 1); 
             }
-
+            InitialSort();//это надо потом убрать и заняться восстановлением предыдущего состояния грид
             PaintDG();
 
 ///////////////////////////////////////////////
@@ -285,7 +285,7 @@ namespace SummonManager
 
         private void наименованиеИзделияToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            WPName wp = new WPName();
+            WPName wp = new WPName(false);
             wp.ShowDialog();
         }
 
@@ -535,7 +535,7 @@ namespace SummonManager
                     {
                         string idst = r.Cells["idstatus"].Value.ToString();
                         bool vw = (bool)r.Cells["vw"].Value;
-                        if ((idst == "1") || (idst == "2") || (idst == "11"))
+                        if ((idst == "1"))
                         {
                             r.DefaultCellStyle.BackColor = Color.LightGreen;
                             if ((!vw) && (idst == "11"))
@@ -556,7 +556,7 @@ namespace SummonManager
                     {
                         string idst = r.Cells["idstatus"].Value.ToString();
                         bool vw = (bool)r.Cells["vw"].Value;
-                        if ((idst == "2") || (idst == "4") || (idst == "6") || (idst == "21"))
+                        if ((idst == "4") || (idst == "21"))
                         {
                             r.DefaultCellStyle.BackColor = Color.LightGreen;
                             if (!vw)
@@ -577,7 +577,7 @@ namespace SummonManager
                     {
                         string idst = r.Cells["idstatus"].Value.ToString();
                         bool vw = (bool)r.Cells["vw"].Value;
-                        if ((idst == "3") || (idst == "17"))
+                        if ((idst == "3"))
                         {
                             r.DefaultCellStyle.BackColor = Color.LightGreen;
                             if (!vw)
@@ -603,7 +603,7 @@ namespace SummonManager
                     {
                         string idst = r.Cells["idstatus"].Value.ToString();
                         bool vw = (bool)r.Cells["vw"].Value;
-                        if ((idst == "5") || (idst == "8") || (idst == "22"))
+                        if ((idst == "5") || (idst == "22"))
                         {
                             r.DefaultCellStyle.BackColor = Color.LightGreen;
                             if (!vw)
@@ -651,8 +651,9 @@ namespace SummonManager
                             //r.DefaultCellStyle.BackColor = Color.Red;
                         }
                         string idst = r.Cells["idstatus"].Value.ToString();
+                        string idsubst = r.Cells["idsubst"].Value.ToString();
                         bool vw = (bool)r.Cells["vw"].Value;
-                        if ((idst == "7") || (idst == "16") || (idst == "2") || (idst == "19") || (idst == "20"))
+                        if ((idst == "7") || (idsubst == "16") || (idst == "19") || (idst == "20"))
                         {
                             r.DefaultCellStyle.BackColor = Color.LightGreen;
                             if (!vw)
@@ -697,8 +698,9 @@ namespace SummonManager
                     foreach (DataGridViewRow r in dgSummon.Rows)
                     {
                         string idst = r.Cells["idstatus"].Value.ToString();
+                        string idsubst = r.Cells["idsubst"].Value.ToString();
                         bool vw = (bool)r.Cells["vw"].Value;
-                        if ((idst == "15") || (idst == "18"))
+                        if ((idsubst == "15") || (idsubst == "18"))
                         {
                             r.DefaultCellStyle.BackColor = Color.LightGreen;
                             if (!vw)
@@ -833,6 +835,20 @@ namespace SummonManager
             ReloadData();
         }
         bool lastSortAscending = false;
+        private void InitialSort()
+        {
+            //lastSortAscending = !lastSortAscending;
+            if (true)
+            {
+                dgSummon.Sort(dgSummon.Columns["ids_srt"], ListSortDirection.Ascending);
+                
+            }
+            else
+            {
+                //dgSummon.Sort(dgSummon.Columns["ids_srt"], ListSortDirection.Descending);
+            }
+            PaintDG();
+        }
         private void dgSummon_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             if (e.ColumnIndex == 1)

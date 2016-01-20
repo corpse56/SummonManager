@@ -12,10 +12,25 @@ namespace SummonManager
 {
     public partial class WPName : Form
     {
-        public WPName()
+
+        public WPName(bool pick)
         {
             InitializeComponent();
-
+            if (pick)
+            {
+                button7.Visible = true;
+                button2.Visible = false;
+                button3.Visible = false;
+                button4.Visible = false;
+                button5.Visible = false;
+                button6.Visible = false;
+                bArchive.Visible = false;
+                bArcShow.Visible = false;
+            }
+            else
+            {
+                button7.Visible = false;
+            }
 
         }
 
@@ -35,7 +50,7 @@ namespace SummonManager
 
         private void button3_Click(object sender, EventArgs e)
         {
-            EditWPN ew = new EditWPN(Convert.ToInt32(dgWP.SelectedRows[0].Cells["ID"].Value));
+            EditWPN ew = new EditWPN(Convert.ToInt32(dgWP.SelectedRows[0].Cells["ID"].Value),false);
             ew.ShowDialog();
             DBWPName dbwp = new DBWPName();
             dgWP.DataSource = dbwp.GetAllWPNames();
@@ -176,6 +191,27 @@ namespace SummonManager
         {
             EditWPCategory ed = new EditWPCategory();
             ed.ShowDialog();
+        }
+        public int PickedID;
+        private void button7_Click(object sender, EventArgs e)
+        {
+            if (dgWP.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Выберите изделие!");
+                return;
+            }
+            PickedID = (int)dgWP.SelectedRows[0].Cells["ID"].Value;
+            Close();
+        }
+
+        private void dgWP_DoubleClick(object sender, EventArgs e)
+        {
+            if (button7.Visible == true)
+            {
+                PickedID = (int)dgWP.SelectedRows[0].Cells["ID"].Value;
+                Close();
+            }
+
         }
 
 

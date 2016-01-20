@@ -13,9 +13,24 @@ namespace SummonManager
     public partial class EditWPN : Form
     {
         int IDW;
-        public EditWPN(int idw)
+        public EditWPN(int idw,bool viewOnly)
         {
             InitializeComponent();
+            if (viewOnly)
+            {
+                button2.Visible = false;
+                pfComposition.bPath.Enabled = false;
+                pfComposition.bPathDel.Enabled = false;
+                pfDimDrawing.bPath.Enabled = false;
+                pfDimDrawing.bPathDel.Enabled = false;
+                this.Text = "Просмотр сведений об изделии";
+                tbName.ReadOnly = true;
+                tbNote.ReadOnly = true;
+                tbPowerSupply.ReadOnly = true;
+                tbDecNum.ReadOnly = true;
+                tbConfiguration.ReadOnly = true;
+                cbCategory.Enabled = false;
+            }
             this.IDW = idw;
             DBWPName dbwp = new DBWPName();
             WPNameVO wp = dbwp.GetWP(this.IDW);

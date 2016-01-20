@@ -38,7 +38,7 @@ namespace SummonManager
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.tbIDS = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -76,12 +76,12 @@ namespace SummonManager
             this.dgv = new System.Windows.Forms.DataGridView();
             this.label20 = new System.Windows.Forms.Label();
             this.bEditExtCablePack = new System.Windows.Forms.Button();
+            this.wpNameView1 = new SummonManager.Controls.WPNameView();
             this.pathFileds1 = new SummonManager.PathFileds();
             this.summonTransfer1 = new SummonManager.SummonTransfer();
             this.cbCustDept = new SummonManager.RComboBox();
             this.cbPacking = new SummonManager.RComboBox();
             this.cbAccept = new SummonManager.RComboBox();
-            this.cbWPNAME = new SummonManager.RComboBox();
             this.tbQUANTITY = new SummonManager.RNumericUpDown();
             this.cbMountingKit = new SummonManager.RComboBox();
             this.cbSISP = new SummonManager.RComboBox();
@@ -406,14 +406,14 @@ namespace SummonManager
             this.dgv.AllowUserToDeleteRows = false;
             this.dgv.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgv.Location = new System.Drawing.Point(199, 141);
             this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";
@@ -444,6 +444,15 @@ namespace SummonManager
             this.bEditExtCablePack.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bEditExtCablePack.UseVisualStyleBackColor = true;
             this.bEditExtCablePack.Click += new System.EventHandler(this.bEditExtCablePack_Click);
+            // 
+            // wpNameView1
+            // 
+            this.wpNameView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.wpNameView1.Location = new System.Drawing.Point(197, 76);
+            this.wpNameView1.Margin = new System.Windows.Forms.Padding(4);
+            this.wpNameView1.Name = "wpNameView1";
+            this.wpNameView1.Size = new System.Drawing.Size(417, 31);
+            this.wpNameView1.TabIndex = 35;
             // 
             // pathFileds1
             // 
@@ -489,14 +498,6 @@ namespace SummonManager
             this.cbAccept.Name = "cbAccept";
             this.cbAccept.Size = new System.Drawing.Size(416, 24);
             this.cbAccept.TabIndex = 15;
-            // 
-            // cbWPNAME
-            // 
-            this.cbWPNAME.FormattingEnabled = true;
-            this.cbWPNAME.Location = new System.Drawing.Point(199, 80);
-            this.cbWPNAME.Name = "cbWPNAME";
-            this.cbWPNAME.Size = new System.Drawing.Size(414, 24);
-            this.cbWPNAME.TabIndex = 14;
             // 
             // tbQUANTITY
             // 
@@ -558,6 +559,7 @@ namespace SummonManager
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1175, 919);
+            this.Controls.Add(this.wpNameView1);
             this.Controls.Add(this.pathFileds1);
             this.Controls.Add(this.summonTransfer1);
             this.Controls.Add(this.cbCustDept);
@@ -573,7 +575,6 @@ namespace SummonManager
             this.Controls.Add(this.dtpAPPROX);
             this.Controls.Add(this.label16);
             this.Controls.Add(this.cbAccept);
-            this.Controls.Add(this.cbWPNAME);
             this.Controls.Add(this.bEdit);
             this.Controls.Add(this.bSave);
             this.Controls.Add(this.tbQUANTITY);
@@ -651,7 +652,6 @@ namespace SummonManager
         private System.Windows.Forms.DateTimePicker dtpPTIME;
         private System.Windows.Forms.Button bSave;
         private System.Windows.Forms.Button bEdit;
-        private RComboBox cbWPNAME;
         private RNumericUpDown tbQUANTITY;
         private RComboBox cbAccept;
         private CheckBox chbDeterm;
@@ -672,5 +672,6 @@ namespace SummonManager
         private SummonNotes summonNotes1;
         private SummonTransfer summonTransfer1;
         private PathFileds pathFileds1;
+        private SummonManager.Controls.WPNameView wpNameView1;
     }
 }

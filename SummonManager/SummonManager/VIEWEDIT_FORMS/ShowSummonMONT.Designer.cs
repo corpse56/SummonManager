@@ -38,7 +38,7 @@ namespace SummonManager
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.tbIDS = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -83,12 +83,12 @@ namespace SummonManager
             this.cbCustDept = new SummonManager.RComboBox();
             this.cbPacking = new SummonManager.RComboBox();
             this.cbAccept = new SummonManager.RComboBox();
-            this.cbWPNAME = new SummonManager.RComboBox();
             this.tbQUANTITY = new SummonManager.RNumericUpDown();
             this.cbSISP = new SummonManager.RComboBox();
             this.cbCustomers = new SummonManager.RComboBox();
             this.summonNotes1 = new SummonManager.SummonNotes();
             this.summonTransfer1 = new SummonManager.SummonTransfer();
+            this.wpNameView1 = new SummonManager.Controls.WPNameView();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbQUANTITY)).BeginInit();
             this.SuspendLayout();
@@ -360,14 +360,14 @@ namespace SummonManager
             this.dgv.AllowUserToDeleteRows = false;
             this.dgv.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgv.Location = new System.Drawing.Point(197, 137);
             this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";
@@ -506,14 +506,6 @@ namespace SummonManager
             this.cbAccept.Size = new System.Drawing.Size(416, 24);
             this.cbAccept.TabIndex = 35;
             // 
-            // cbWPNAME
-            // 
-            this.cbWPNAME.FormattingEnabled = true;
-            this.cbWPNAME.Location = new System.Drawing.Point(199, 76);
-            this.cbWPNAME.Name = "cbWPNAME";
-            this.cbWPNAME.Size = new System.Drawing.Size(414, 24);
-            this.cbWPNAME.TabIndex = 34;
-            // 
             // tbQUANTITY
             // 
             this.tbQUANTITY.Location = new System.Drawing.Point(197, 303);
@@ -566,11 +558,21 @@ namespace SummonManager
             this.summonTransfer1.Size = new System.Drawing.Size(477, 87);
             this.summonTransfer1.TabIndex = 65;
             // 
+            // wpNameView1
+            // 
+            this.wpNameView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.wpNameView1.Location = new System.Drawing.Point(195, 75);
+            this.wpNameView1.Margin = new System.Windows.Forms.Padding(4);
+            this.wpNameView1.Name = "wpNameView1";
+            this.wpNameView1.Size = new System.Drawing.Size(417, 26);
+            this.wpNameView1.TabIndex = 66;
+            // 
             // ShowSummonMONT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1170, 895);
+            this.Controls.Add(this.wpNameView1);
             this.Controls.Add(this.summonTransfer1);
             this.Controls.Add(this.tbSubStatus);
             this.Controls.Add(this.tbStatus);
@@ -590,7 +592,6 @@ namespace SummonManager
             this.Controls.Add(this.cbPacking);
             this.Controls.Add(this.label17);
             this.Controls.Add(this.cbAccept);
-            this.Controls.Add(this.cbWPNAME);
             this.Controls.Add(this.chbDeterm);
             this.Controls.Add(this.dtpAPPROX);
             this.Controls.Add(this.label16);
@@ -668,7 +669,6 @@ namespace SummonManager
         private DateTimePicker dtpAPPROX;
         private Label label16;
         private RComboBox cbAccept;
-        private RComboBox cbWPNAME;
         private Label label17;
         private RComboBox cbPacking;
         private TextBox tbPAYSTATUS;
@@ -688,5 +688,6 @@ namespace SummonManager
         private Label label8;
         private SummonTransfer summonTransfer2;
         private SummonTransfer summonTransfer1;
+        private SummonManager.Controls.WPNameView wpNameView1;
     }
 }

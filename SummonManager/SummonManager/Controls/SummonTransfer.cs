@@ -33,9 +33,10 @@ namespace SummonManager
             cbStatus.ValueMember = "ID";
             cbStatus.DisplayMember = "SNAME";
             cbStatus.DataSource = dbcs.GetAllStatuses(UVO,SVO);
-            cbStatus.SelectedValue = SVO.IDSTATUS;
+            //cbStatus.SelectedValue = SVO.IDSTATUS;
+            cbStatus.SelectedValue = dbcs.DefaultStatus;
 
-            SetDefaults();
+            //SetDefaults();
 
         }
         internal void InitSub(SummonVO SVO, UserVO UVO, Form form)
@@ -55,9 +56,10 @@ namespace SummonManager
             cbStatus.ValueMember = "ID";
             cbStatus.DisplayMember = "SNAME";
             cbStatus.DataSource = dbcs.GetAllSubStatuses(UVO, SVO);
-            cbStatus.SelectedValue = SVO.IDSUBST;
+            //cbStatus.SelectedValue = SVO.IDSUBST;
+            cbStatus.SelectedValue = dbcs.DefaultSubStatus;
 
-            SetDefaultsSub();
+            //SetDefaultsSub();
             groupBox1.Text = "Смена субстатуса";
             button3.Text = "Сменить субстатус";
             label1.Text = "Выберите субстатус";
@@ -372,6 +374,11 @@ namespace SummonManager
             }
             DBCurStatus dbcs = new DBCurStatus();
             dbcs.ChangeStatus(SVO, (int)cbStatus.SelectedValue, UVO.id);
+            if (SVO.IDSTATUS == 12)
+            {
+                DBCurStatus dbsub = new DBCurStatus();
+                dbsub.ChangeSubStatus(SVO, 17, UVO.id);
+            }
             if ((int)cbStatus.SelectedValue == 3)//вставляем оповещение для ОТК, чтоб заполняли серийные номера!
             {
                 Notification n = new Notification();

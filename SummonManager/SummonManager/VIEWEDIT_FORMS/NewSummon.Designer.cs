@@ -58,7 +58,6 @@
             this.dtpPTIME = new System.Windows.Forms.DateTimePicker();
             this.tbQUANTITY = new System.Windows.Forms.NumericUpDown();
             this.bSave = new System.Windows.Forms.Button();
-            this.cbWPNAME = new System.Windows.Forms.ComboBox();
             this.cbAccept = new System.Windows.Forms.ComboBox();
             this.dtpAPPROX = new System.Windows.Forms.DateTimePicker();
             this.label16 = new System.Windows.Forms.Label();
@@ -74,6 +73,7 @@
             this.cbCustDept = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.cbPacking = new SummonManager.RComboBox();
+            this.pickWPName1 = new SummonManager.Controls.PickWPName();
             ((System.ComponentModel.ISupportInitialize)(this.tbQUANTITY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();
@@ -346,15 +346,6 @@
             this.bSave.UseVisualStyleBackColor = true;
             this.bSave.Click += new System.EventHandler(this.bSave_Click);
             // 
-            // cbWPNAME
-            // 
-            this.cbWPNAME.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbWPNAME.FormattingEnabled = true;
-            this.cbWPNAME.Location = new System.Drawing.Point(200, 78);
-            this.cbWPNAME.Name = "cbWPNAME";
-            this.cbWPNAME.Size = new System.Drawing.Size(414, 24);
-            this.cbWPNAME.TabIndex = 13;
-            // 
             // cbAccept
             // 
             this.cbAccept.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -513,11 +504,21 @@
             this.cbPacking.Size = new System.Drawing.Size(413, 24);
             this.cbPacking.TabIndex = 24;
             // 
+            // pickWPName1
+            // 
+            this.pickWPName1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pickWPName1.Location = new System.Drawing.Point(197, 72);
+            this.pickWPName1.Margin = new System.Windows.Forms.Padding(4);
+            this.pickWPName1.Name = "pickWPName1";
+            this.pickWPName1.Size = new System.Drawing.Size(417, 36);
+            this.pickWPName1.TabIndex = 30;
+            // 
             // NewSummon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(627, 798);
+            this.Controls.Add(this.pickWPName1);
             this.Controls.Add(this.bEditExtCablePack);
             this.Controls.Add(this.dgv);
             this.Controls.Add(this.button2);
@@ -525,7 +526,6 @@
             this.Controls.Add(this.label17);
             this.Controls.Add(this.chbDeterm);
             this.Controls.Add(this.cbAccept);
-            this.Controls.Add(this.cbWPNAME);
             this.Controls.Add(this.bSave);
             this.Controls.Add(this.tbQUANTITY);
             this.Controls.Add(this.dtpAPPROX);
@@ -610,7 +610,6 @@
         private System.Windows.Forms.DateTimePicker dtpPTIME;
         private System.Windows.Forms.NumericUpDown tbQUANTITY;
         private System.Windows.Forms.Button bSave;
-        private System.Windows.Forms.ComboBox cbWPNAME;
         private System.Windows.Forms.ComboBox cbAccept;
         private System.Windows.Forms.DateTimePicker dtpAPPROX;
         private System.Windows.Forms.Label label16;
@@ -626,5 +625,6 @@
         private System.Windows.Forms.DataGridView dgv;
         private System.Windows.Forms.ComboBox cbCustDept;
         private System.Windows.Forms.Label label8;
+        private SummonManager.Controls.PickWPName pickWPName1;
     }
 }

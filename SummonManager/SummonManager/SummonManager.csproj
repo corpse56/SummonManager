@@ -131,6 +131,18 @@
     <Compile Include="Controls\PathField.Designer.cs">
       <DependentUpon>PathField.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\PickWPName.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\PickWPName.Designer.cs">
+      <DependentUpon>PickWPName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\WPNameView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\WPNameView.Designer.cs">
+      <DependentUpon>WPNameView.cs</DependentUpon>
+    </Compile>
     <Compile Include="PurchasedMaterials.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -509,6 +521,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\PathField.resx">
       <DependentUpon>PathField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\PickWPName.resx">
+      <DependentUpon>PickWPName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\WPNameView.resx">
+      <DependentUpon>WPNameView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PurchasedMaterials.resx">
       <DependentUpon>PurchasedMaterials.cs</DependentUpon>

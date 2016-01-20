@@ -33,10 +33,10 @@ namespace SummonManager
             cbCustomers.DisplayMember = "CNAME";
             cbCustomers.DataSource = dbc.GetAllCustomers();
 
-            DBWPName dbwp = new DBWPName();
+            /*DBWPName dbwp = new DBWPName();
             cbWPNAME.ValueMember = "ID";
             cbWPNAME.DisplayMember = "WPNAME";
-            cbWPNAME.DataSource = dbwp.GetAllWPNames();
+            cbWPNAME.DataSource = dbwp.GetAllWPNames();*/
 
             DBAccept dbacc = new DBAccept();
             cbAccept.ValueMember = "ID";
@@ -143,9 +143,10 @@ namespace SummonManager
             else
                 SVO.SISP = true;
             SVO.TECHREQPATH = tbTECHREQPATH.Tag.ToString();
-            SVO.WPNAME = cbWPNAME.Text;
+            SVO.WPNAME = pickWPName1.textBox1.Text;//cbWPNAME.Text;
             SVO.IDACCEPT = (int)cbAccept.SelectedValue;
-            SVO.IDWPNAME = (int)cbWPNAME.SelectedValue;
+            //SVO.IDWPNAME = (int)cbWPNAME.SelectedValue;
+            SVO.IDWPNAME = pickWPName1.PickedID;
             SVO.IDPACKING = (int)cbPacking.SelectedValue;
             SVO.IDMOUNTINGKIT = (int)cbMountingKit.SelectedValue;
             SVO.IDCUSTOMERDEPT = (int)cbCustDept.SelectedValue;
@@ -221,9 +222,10 @@ namespace SummonManager
             else
                 SVO.SISP = true;
             SVO.TECHREQPATH = tbTECHREQPATH.Tag.ToString();
-            SVO.WPNAME = cbWPNAME.Text;
+            SVO.WPNAME = pickWPName1.textBox1.Text;//cbWPNAME.Text;
             SVO.IDACCEPT = (int)cbAccept.SelectedValue;
-            SVO.IDWPNAME = (int)cbWPNAME.SelectedValue;
+            //SVO.IDWPNAME = (int)cbWPNAME.SelectedValue;
+            SVO.IDWPNAME = pickWPName1.PickedID;
             SVO.IDPACKING = (int)cbPacking.SelectedValue;
             //SVO.IDEXTCABLE = (int)cbExtCable.SelectedValue;
             SVO.IDMOUNTINGKIT = (int)cbMountingKit.SelectedValue;
