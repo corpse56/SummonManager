@@ -40,6 +40,9 @@
             this.bArcShow = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
+            this.cbSubCat = new System.Windows.Forms.ComboBox();
+            this.button8 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgWP)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,12 +55,12 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.dgWP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgWP.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgWP.Location = new System.Drawing.Point(12, 42);
+            this.dgWP.Location = new System.Drawing.Point(12, 79);
             this.dgWP.MultiSelect = false;
             this.dgWP.Name = "dgWP";
             this.dgWP.RowHeadersVisible = false;
             this.dgWP.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgWP.Size = new System.Drawing.Size(1189, 316);
+            this.dgWP.Size = new System.Drawing.Size(1189, 279);
             this.dgWP.TabIndex = 0;
             this.dgWP.DoubleClick += new System.EventHandler(this.dgWP_DoubleClick);
             // 
@@ -120,9 +123,9 @@
             // 
             this.cbCAT.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCAT.FormattingEnabled = true;
-            this.cbCAT.Location = new System.Drawing.Point(164, 12);
+            this.cbCAT.Location = new System.Drawing.Point(194, 12);
             this.cbCAT.Name = "cbCAT";
-            this.cbCAT.Size = new System.Drawing.Size(441, 24);
+            this.cbCAT.Size = new System.Drawing.Size(291, 24);
             this.cbCAT.TabIndex = 4;
             this.cbCAT.SelectedIndexChanged += new System.EventHandler(this.cbCAT_SelectedIndexChanged);
             // 
@@ -159,9 +162,9 @@
             // 
             // button6
             // 
-            this.button6.Location = new System.Drawing.Point(611, 12);
+            this.button6.Location = new System.Drawing.Point(491, 12);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(224, 23);
+            this.button6.Size = new System.Drawing.Size(214, 23);
             this.button6.TabIndex = 8;
             this.button6.Text = "Редактировать категории";
             this.button6.UseVisualStyleBackColor = true;
@@ -169,6 +172,7 @@
             // 
             // button7
             // 
+            this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button7.Location = new System.Drawing.Point(1043, 364);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(77, 23);
@@ -177,16 +181,47 @@
             this.button7.UseVisualStyleBackColor = true;
             this.button7.Click += new System.EventHandler(this.button7_Click);
             // 
+            // cbSubCat
+            // 
+            this.cbSubCat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSubCat.FormattingEnabled = true;
+            this.cbSubCat.Location = new System.Drawing.Point(194, 49);
+            this.cbSubCat.Name = "cbSubCat";
+            this.cbSubCat.Size = new System.Drawing.Size(291, 24);
+            this.cbSubCat.TabIndex = 4;
+            this.cbSubCat.SelectedIndexChanged += new System.EventHandler(this.cbCAT_SelectedIndexChanged);
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(491, 50);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(214, 23);
+            this.button8.TabIndex = 10;
+            this.button8.Text = "Редактировать подкатегории";
+            this.button8.UseVisualStyleBackColor = true;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(12, 52);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(170, 16);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Выберите подкатегорию";
+            // 
             // WPName
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1213, 391);
+            this.Controls.Add(this.button8);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.button6);
             this.Controls.Add(this.bArcShow);
             this.Controls.Add(this.bArchive);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.cbSubCat);
             this.Controls.Add(this.cbCAT);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
@@ -220,5 +255,8 @@
         private System.Windows.Forms.Button bArcShow;
         private System.Windows.Forms.Button button6;
         private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.ComboBox cbSubCat;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Label label2;
     }
 }

@@ -117,6 +117,7 @@
     <Compile Include="CLASSES\DBCOMPARC.cs" />
     <Compile Include="CLASSES\StatusStripIndicator.cs" />
     <Compile Include="CLASSES\WPNameVO.cs" />
+    <Compile Include="CLASSES\DBSubCategory.cs" />
     <Compile Include="Controls\ColorSelectControl.cs">
       <SubType>UserControl</SubType>
     </Compile>

@@ -141,7 +141,7 @@ namespace SummonManager
             DBWPName dbwp = new DBWPName();
             dgWP.DataSource = dbwp.GetCategoryWPNames(Convert.ToInt32(cbCAT.SelectedValue));
             ShowDGV();
-
+            //cbSubCat.DataSource
         }
 
         private void bArchive_Click(object sender, EventArgs e)
