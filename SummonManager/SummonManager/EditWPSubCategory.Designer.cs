@@ -1,6 +1,6 @@
 ﻿namespace SummonManager
 {
-    partial class EditWPCategory
+    partial class EditWPSubCategory
     {
         /// <summary>
         /// Required designer variable.
@@ -106,7 +106,7 @@
             this.MaximizeBox = false;
             this.Name = "EditWPCategory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Категории изделия";
+            this.Text = "Подкатегории";
             ((System.ComponentModel.ISupportInitialize)(this.dgWP)).EndInit();
             this.ResumeLayout(false);
 

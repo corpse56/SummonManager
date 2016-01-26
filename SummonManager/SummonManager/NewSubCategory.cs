@@ -9,22 +9,24 @@ using System.Windows.Forms;
 
 namespace SummonManager
 {
-    public partial class NewCategory : Form
+    public partial class NewSubCategory : Form
     {
-        public NewCategory()
-        {
-            InitializeComponent();
-        }
         bool edit = false;
-        int editID;
-        public NewCategory(string cat,int id)
+        int editID, IDSubCat,IDCat;
+        public NewSubCategory(int idCat)
         {
             InitializeComponent();
-            textBox1.Text = cat;
-            this.Text = "Изменение категории";
+            IDCat = idCat;
+        }
+        public NewSubCategory(string subcat, int IDSubCat, int idCat)
+        {
+            InitializeComponent();
+            textBox1.Text = subcat;
+            this.Text = "Изменение подкатегории";
             edit = true;
-            editID = id;
+            editID = IDSubCat;
             button2.Text = "Изменить";
+            IDCat = idCat;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -42,15 +44,15 @@ namespace SummonManager
 
             if (edit)
             {
-                DBCategory dbwp = new DBCategory();
+                DBSubCategory dbwp = new DBSubCategory();
                 dbwp.Edit(textBox1.Text, editID.ToString());
-                MessageBox.Show("Категория успешно изменена!");
+                MessageBox.Show("Подкатегория успешно изменена!");
             }
             else
             {
-                DBCategory dbwp = new DBCategory();
-                dbwp.AddNew(textBox1.Text);
-                MessageBox.Show("Категория успешно добавлена!");
+                DBSubCategory dbwp = new DBSubCategory();
+                dbwp.AddNew(textBox1.Text,IDCat);
+                MessageBox.Show("Подкатегория успешно добавлена!");
             }
             Close();
         }

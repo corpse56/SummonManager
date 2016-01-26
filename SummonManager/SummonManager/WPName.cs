@@ -103,7 +103,8 @@ namespace SummonManager
         {
             dgWP.Columns["ID"].Visible = false;
             dgWP.Columns["WPNAME"].HeaderText = "Наименование изделия";
-            dgWP.Columns["CATEGORYNAME"].HeaderText = "Наименование категории";
+            dgWP.Columns["CATEGORYNAME"].HeaderText = "Категория";
+            dgWP.Columns["SUBCATNAME"].HeaderText = "Подкатегория";
             dgWP.Columns["DECNUM"].HeaderText = "Децимальный номер";
             dgWP.Columns["COMPOSITION"].HeaderText = "Состав изделия";
             dgWP.Columns["DIMENSIONALDRAWING"].HeaderText = "Габаритный чертёж";
@@ -118,6 +119,7 @@ namespace SummonManager
                 r.Cells["DIMENSIONALDRAWING"].Value = r.Cells["DIMENSIONALDRAWING"].Tag.ToString().Substring(r.Cells["DIMENSIONALDRAWING"].Tag.ToString().LastIndexOf("\\") + 1);
             }
             dgWP.Columns["WPNAME"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgWP.Columns["SUBCATNAME"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgWP.Columns["CATEGORYNAME"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgWP.Columns["DECNUM"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgWP.Columns["COMPOSITION"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -125,8 +127,9 @@ namespace SummonManager
             dgWP.Columns["POWERSUPPLY"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgWP.Columns["CONFIGURATION"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgWP.Columns["NOTE"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgWP.Columns["WPNAME"].FillWeight = 350;
+            dgWP.Columns["WPNAME"].FillWeight = 250;
             dgWP.Columns["CATEGORYNAME"].FillWeight = 100;
+            dgWP.Columns["SUBCATNAME"].FillWeight = 100;
             dgWP.Columns["DECNUM"].FillWeight = 200;
             dgWP.Columns["COMPOSITION"].FillWeight = 100;
             dgWP.Columns["DIMENSIONALDRAWING"].FillWeight = 100;
@@ -136,13 +139,7 @@ namespace SummonManager
 
         }
 
-        private void cbCAT_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            DBWPName dbwp = new DBWPName();
-            dgWP.DataSource = dbwp.GetCategoryWPNames(Convert.ToInt32(cbCAT.SelectedValue));
-            ShowDGV();
-            //cbSubCat.DataSource
-        }
+
 
         private void bArchive_Click(object sender, EventArgs e)
         {
@@ -191,6 +188,9 @@ namespace SummonManager
         {
             EditWPCategory ed = new EditWPCategory();
             ed.ShowDialog();
+            dgWP.DataSource = new DBWPName().GetAllWPNames();
+
+
         }
         public int PickedID;
         private void button7_Click(object sender, EventArgs e)
@@ -211,6 +211,51 @@ namespace SummonManager
                 PickedID = (int)dgWP.SelectedRows[0].Cells["ID"].Value;
                 Close();
             }
+
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            int id = (int)cbCAT.SelectedValue;
+            if ((id == 1) || (id == 2))
+            {
+                MessageBox.Show("У выбранной категории не может быть подкатегорий, т.к. она является системной");
+                return;
+            }
+            EditWPSubCategory ed = new EditWPSubCategory(id);
+            ed.ShowDialog();
+            dgWP.DataSource = new DBWPName().GetAllWPNames();
+
+        }
+        private void cbCAT_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if ((Convert.ToInt32(cbCAT.SelectedValue) == 1) || (Convert.ToInt32(cbCAT.SelectedValue) == 2))
+            {
+                cbSubCat.Text = "";
+                cbSubCat.Enabled = false;
+            }
+            else
+            {
+                cbSubCat.Enabled = true;
+                DBSubCategory dbs = new DBSubCategory();
+                cbSubCat.ValueMember = "ID";
+                cbSubCat.DisplayMember = "SUBCATNAME";
+                cbSubCat.DataSource = dbs.GetAll(Convert.ToInt32(cbCAT.SelectedValue));
+                cbSubCat.SelectedItem = cbCAT.Items[0];
+            }
+            if (cbSubCat.Enabled)
+            {
+                dgWP.DataSource = new DBWPName().GetCategoryWPNames(Convert.ToInt32(cbCAT.SelectedValue), Convert.ToInt32(cbSubCat.SelectedValue));
+            }
+            else
+            {
+                dgWP.DataSource = new DBWPName().GetCategoryWPNames(Convert.ToInt32(cbCAT.SelectedValue));
+            }
+
+        }
+        private void cbSubCat_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            dgWP.DataSource = new DBWPName().GetCategoryWPNames(Convert.ToInt32(cbCAT.SelectedValue), Convert.ToInt32(cbSubCat.SelectedValue));
 
         }
 

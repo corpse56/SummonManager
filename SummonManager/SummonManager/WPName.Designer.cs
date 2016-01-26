@@ -189,16 +189,17 @@
             this.cbSubCat.Name = "cbSubCat";
             this.cbSubCat.Size = new System.Drawing.Size(291, 24);
             this.cbSubCat.TabIndex = 4;
-            this.cbSubCat.SelectedIndexChanged += new System.EventHandler(this.cbCAT_SelectedIndexChanged);
+            this.cbSubCat.SelectedIndexChanged += new System.EventHandler(this.cbSubCat_SelectedIndexChanged);
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(491, 50);
+            this.button8.Location = new System.Drawing.Point(711, 12);
             this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(214, 23);
+            this.button8.Size = new System.Drawing.Size(368, 23);
             this.button8.TabIndex = 10;
-            this.button8.Text = "Редактировать подкатегории";
+            this.button8.Text = "Редактировать подкатегории выбранной категории";
             this.button8.UseVisualStyleBackColor = true;
+            this.button8.Click += new System.EventHandler(this.button8_Click);
             // 
             // label2
             // 

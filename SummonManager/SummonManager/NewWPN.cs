@@ -55,6 +55,7 @@ namespace SummonManager
             WPNameVO wp = new WPNameVO();
             wp.WPName = tbName.Text;
             wp.IDCat = Convert.ToInt32(cbCategory.SelectedValue);
+            wp.IDSubCat = (int)cbSubCategory.SelectedValue;
             wp.DecNum = tbDecNum.Text;
             wp.Composition = pfComposition.tbPath.Tag.ToString();
             wp.DimenDrawing = pfDimDrawing.tbPath.Tag.ToString();
@@ -82,6 +83,32 @@ namespace SummonManager
             {
                 cbCategory.SelectedValue = 1;
             }
+
+            LoadSubs((int)cbCategory.SelectedValue);
+
+
+
+        }
+        private void LoadSubs(int idCat)
+        {
+            if ((idCat == 1) || (idCat == 2))
+            {
+                cbSubCategory.Text = "";
+                cbSubCategory.Enabled = false;
+            }
+            cbSubCategory.Enabled = true;
+            DBSubCategory dbs = new DBSubCategory();
+            cbSubCategory.ValueMember = "ID";
+            cbSubCategory.DisplayMember = "SUBCATNAME";
+            cbSubCategory.DataSource = dbs.GetAll(idCat);
+        }
+        private void cbCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadSubs((int)cbCategory.SelectedValue);
+        }
+
+        private void cbSubCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
     }

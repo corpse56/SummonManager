@@ -46,5 +46,20 @@ namespace SummonManager
         //    DA.Fill(DS, "t");
         //    return DS.Tables["t"];
         //}
+
+        internal void Delete(string ID)
+        {
+            DA.DeleteCommand.CommandText = "delete from " + Base.BaseName + "..SUBCATEGORYLIST where ID = " + ID;
+            DA.DeleteCommand.Connection.Open();
+            DA.DeleteCommand.ExecuteNonQuery();
+            DA.DeleteCommand.Connection.Close();
+        }
+
+        internal string GetNameByID(int IDSUBCAT)
+        {
+            DA.SelectCommand.CommandText = "select ID,SUBCATNAME from " + Base.BaseName + "..SUBCATEGORYLIST where ID = " + IDSUBCAT;
+            DA.Fill(DS, "t");
+            return DS.Tables["t"].Rows[0]["SUBCATNAME"].ToString();
+        }
     }
 }

@@ -718,6 +718,12 @@
     <EmbeddedResource Include="NewCategory.resx">
       <DependentUpon>NewCategory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NewSubCategory.resx">
+      <DependentUpon>NewSubCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditWPSubCategory.resx">
+      <DependentUpon>EditWPSubCategory.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -780,6 +786,18 @@
     </Compile>
     <Compile Include="NewCategory.Designer.cs">
       <DependentUpon>NewCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewSubCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewSubCategory.Designer.cs">
+      <DependentUpon>NewSubCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditWPSubCategory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditWPSubCategory.Designer.cs">
+      <DependentUpon>EditWPSubCategory.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

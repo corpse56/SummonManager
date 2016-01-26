@@ -30,12 +30,14 @@ namespace SummonManager
                 tbDecNum.ReadOnly = true;
                 tbConfiguration.ReadOnly = true;
                 cbCategory.Enabled = false;
+                cbSubCategory.Enabled = false;
             }
             this.IDW = idw;
             DBWPName dbwp = new DBWPName();
             WPNameVO wp = dbwp.GetWP(this.IDW);
             tbName.Text = wp.WPName;
             cbCategory.SelectedValue = wp.IDCat;
+            cbSubCategory.SelectedValue = wp.IDSubCat;
             tbDecNum.Text = wp.DecNum;
             tbPowerSupply.Text = wp.PowerSupply;
             tbConfiguration.Text = wp.Configuration;
@@ -67,6 +69,7 @@ namespace SummonManager
             WPNameVO wp = new WPNameVO();
             wp.WPName = tbName.Text;
             wp.IDCat = Convert.ToInt32(cbCategory.SelectedValue);
+            wp.IDSubCat = Convert.ToInt32(cbSubCategory.SelectedValue);
             wp.DecNum = tbDecNum.Text;
             wp.Composition = pfComposition.tbPath.Tag.ToString();
             wp.DimenDrawing = pfDimDrawing.tbPath.Tag.ToString();
@@ -91,8 +94,23 @@ namespace SummonManager
 
             cbCategory.SelectedValue = wp.IDCat;
 
-        }
+            LoadSubs((int)cbCategory.SelectedValue);
 
+
+        }
+        private void LoadSubs(int idCat)
+        {
+            if ((idCat == 1) || (idCat == 2))
+            {
+                cbSubCategory.Text = "";
+                cbSubCategory.Enabled = false;
+            }
+            cbSubCategory.Enabled = true;
+            DBSubCategory dbs = new DBSubCategory();
+            cbSubCategory.ValueMember = "ID";
+            cbSubCategory.DisplayMember = "SUBCATNAME";
+            cbSubCategory.DataSource = dbs.GetAll(idCat);
+        }
 
         private void bComposition_Click(object sender, EventArgs e)
         {
@@ -140,6 +158,12 @@ namespace SummonManager
 
         private void label4_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void cbCategory_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadSubs((int)cbCategory.SelectedValue);
 
         }
 

@@ -39,6 +39,42 @@ namespace SummonManager
             dgWP.DataSource = new DBCategory().GetAll();
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (dgWP.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Выберите строку!");
+                return;
+            }
+            NewCategory n = new NewCategory(dgWP.SelectedRows[0].Cells["CATEGORYNAME"].Value.ToString(), (int)dgWP.SelectedRows[0].Cells["ID"].Value);
+            n.ShowDialog();
+            dgWP.DataSource = new DBCategory().GetAll();
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (dgWP.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Выберите строку!");
+                return;
+            }
+            if ((dgWP.SelectedRows[0].Cells["CATEGORYNAME"].Value.ToString() == "ВСЕ") || (dgWP.SelectedRows[0].Cells["CATEGORYNAME"].Value.ToString() == "Не присвоено"))
+            {
+                MessageBox.Show("Вы не можете удалить эту категорию, так как она является системной!");
+                return;
+            }
+
+            DialogResult dr = MessageBox.Show("После удаления категории все изделия этой категории получат категорию \"Не присвоено\", а также удалятся все подкатегории этой категории! Вы действительно хотите удалить категорию?", "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            if (dr == DialogResult.Yes)
+            {
+                new DBCategory().Delete(dgWP.SelectedRows[0].Cells["ID"].Value.ToString());
+                MessageBox.Show("Подкатегория успешно удалена!");
+            }
+            dgWP.DataSource = new DBCategory().GetAll();
+
+        }
+
         
 
         

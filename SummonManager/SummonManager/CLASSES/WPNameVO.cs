@@ -21,5 +21,6 @@ namespace SummonManager.CLASSES
         public string PowerSupply;
         public string Configuration;
         public string Note;
+        public int IDSubCat;
     }
 }

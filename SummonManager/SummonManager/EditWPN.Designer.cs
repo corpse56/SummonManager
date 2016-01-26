@@ -46,11 +46,13 @@
             this.tbName = new System.Windows.Forms.TextBox();
             this.pfComposition = new SummonManager.Controls.PathField();
             this.pfDimDrawing = new SummonManager.Controls.PathField();
+            this.cbSubCategory = new System.Windows.Forms.ComboBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(751, 294);
+            this.button1.Location = new System.Drawing.Point(751, 324);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 2;
@@ -60,7 +62,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(660, 294);
+            this.button2.Location = new System.Drawing.Point(660, 324);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(85, 23);
             this.button2.TabIndex = 2;
@@ -76,11 +78,12 @@
             this.cbCategory.Name = "cbCategory";
             this.cbCategory.Size = new System.Drawing.Size(601, 24);
             this.cbCategory.TabIndex = 20;
+            this.cbCategory.SelectedIndexChanged += new System.EventHandler(this.cbCategory_SelectedIndexChanged);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(20, 246);
+            this.label8.Location = new System.Drawing.Point(20, 276);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(91, 16);
             this.label8.TabIndex = 15;
@@ -89,7 +92,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(20, 208);
+            this.label7.Location = new System.Drawing.Point(20, 238);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(104, 16);
             this.label7.TabIndex = 14;
@@ -98,7 +101,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(20, 180);
+            this.label6.Location = new System.Drawing.Point(20, 210);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(119, 16);
             this.label6.TabIndex = 13;
@@ -107,7 +110,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(20, 145);
+            this.label5.Location = new System.Drawing.Point(20, 175);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(138, 16);
             this.label5.TabIndex = 16;
@@ -116,7 +119,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(20, 106);
+            this.label4.Location = new System.Drawing.Point(20, 136);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(113, 16);
             this.label4.TabIndex = 19;
@@ -126,7 +129,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(20, 73);
+            this.label3.Location = new System.Drawing.Point(20, 103);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(142, 16);
             this.label3.TabIndex = 18;
@@ -152,7 +155,7 @@
             // 
             // tbNote
             // 
-            this.tbNote.Location = new System.Drawing.Point(225, 230);
+            this.tbNote.Location = new System.Drawing.Point(225, 260);
             this.tbNote.Multiline = true;
             this.tbNote.Name = "tbNote";
             this.tbNote.Size = new System.Drawing.Size(601, 58);
@@ -160,21 +163,21 @@
             // 
             // tbConfiguration
             // 
-            this.tbConfiguration.Location = new System.Drawing.Point(225, 202);
+            this.tbConfiguration.Location = new System.Drawing.Point(225, 232);
             this.tbConfiguration.Name = "tbConfiguration";
             this.tbConfiguration.Size = new System.Drawing.Size(601, 22);
             this.tbConfiguration.TabIndex = 6;
             // 
             // tbPowerSupply
             // 
-            this.tbPowerSupply.Location = new System.Drawing.Point(225, 174);
+            this.tbPowerSupply.Location = new System.Drawing.Point(225, 204);
             this.tbPowerSupply.Name = "tbPowerSupply";
             this.tbPowerSupply.Size = new System.Drawing.Size(601, 22);
             this.tbPowerSupply.TabIndex = 5;
             // 
             // tbDecNum
             // 
-            this.tbDecNum.Location = new System.Drawing.Point(225, 70);
+            this.tbDecNum.Location = new System.Drawing.Point(225, 100);
             this.tbDecNum.Name = "tbDecNum";
             this.tbDecNum.Size = new System.Drawing.Size(601, 22);
             this.tbDecNum.TabIndex = 10;
@@ -189,7 +192,7 @@
             // pfComposition
             // 
             this.pfComposition.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.pfComposition.Location = new System.Drawing.Point(225, 99);
+            this.pfComposition.Location = new System.Drawing.Point(225, 129);
             this.pfComposition.Margin = new System.Windows.Forms.Padding(4);
             this.pfComposition.Name = "pfComposition";
             this.pfComposition.Size = new System.Drawing.Size(601, 28);
@@ -198,17 +201,37 @@
             // pfDimDrawing
             // 
             this.pfDimDrawing.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.pfDimDrawing.Location = new System.Drawing.Point(225, 135);
+            this.pfDimDrawing.Location = new System.Drawing.Point(225, 165);
             this.pfDimDrawing.Margin = new System.Windows.Forms.Padding(4);
             this.pfDimDrawing.Name = "pfDimDrawing";
             this.pfDimDrawing.Size = new System.Drawing.Size(601, 32);
             this.pfDimDrawing.TabIndex = 24;
             // 
+            // cbSubCategory
+            // 
+            this.cbSubCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSubCategory.FormattingEnabled = true;
+            this.cbSubCategory.Location = new System.Drawing.Point(225, 70);
+            this.cbSubCategory.Name = "cbSubCategory";
+            this.cbSubCategory.Size = new System.Drawing.Size(601, 24);
+            this.cbSubCategory.TabIndex = 26;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(20, 73);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(101, 16);
+            this.label9.TabIndex = 25;
+            this.label9.Text = "Подкатегория";
+            // 
             // EditWPN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(834, 325);
+            this.ClientSize = new System.Drawing.Size(834, 356);
+            this.Controls.Add(this.cbSubCategory);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.pfDimDrawing);
             this.Controls.Add(this.pfComposition);
             this.Controls.Add(this.cbCategory);
@@ -260,5 +283,7 @@
         private System.Windows.Forms.TextBox tbName;
         private SummonManager.Controls.PathField pfComposition;
         private SummonManager.Controls.PathField pfDimDrawing;
+        private System.Windows.Forms.ComboBox cbSubCategory;
+        private System.Windows.Forms.Label label9;
     }
 }
