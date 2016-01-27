@@ -13,7 +13,7 @@ namespace SummonManager
 
         public DataTable GetAllWPNames()
         {
-            DA.SelectCommand.CommandText = "select A.ID,A.WPNAME,B.CATEGORYNAME,C.SUBCATNAME,A.DECNUM,A.COMPOSITION,A.DIMENSIONALDRAWING,A.POWERSUPPLY,A.CONFIGURATION,A.NOTE from " 
+            DA.SelectCommand.CommandText = "select A.ID,A.WPNAME,B.CATEGORYNAME,isnull(C.SUBCATNAME,'Не присвоено') SUBCATNAME,A.DECNUM,A.COMPOSITION,A.DIMENSIONALDRAWING,A.POWERSUPPLY,A.CONFIGURATION,A.NOTE from " 
                                             + Base.BaseName + "..WPNAMELIST A left join " + Base.BaseName + "..CATEGORYLIST B on B.ID = IDCATEGORY "+
                                            " left join " + Base.BaseName + "..SUBCATEGORYLIST C on C.ID = A.IDSUBCAT " +
                                            " order by WPNAME";
@@ -27,18 +27,26 @@ namespace SummonManager
             string sub = new DBSubCategory().GetNameByID(IDSUBCAT);
             if (sub == "Все")
             {
-                DA.SelectCommand.CommandText = "select A.ID,A.WPNAME,B.CATEGORYNAME,C.SUBCATNAME,A.DECNUM,A.COMPOSITION,A.DIMENSIONALDRAWING,A.POWERSUPPLY,A.CONFIGURATION,A.NOTE from "
+                DA.SelectCommand.CommandText = "select A.ID,A.WPNAME,B.CATEGORYNAME,isnull(C.SUBCATNAME,'Не присвоено') SUBCATNAME,A.DECNUM,A.COMPOSITION,A.DIMENSIONALDRAWING,A.POWERSUPPLY,A.CONFIGURATION,A.NOTE from "
                                                 + Base.BaseName + "..WPNAMELIST A left join " + Base.BaseName + "..CATEGORYLIST B on B.ID = IDCATEGORY " +
                                                " left join " + Base.BaseName + "..SUBCATEGORYLIST C on C.ID = A.IDSUBCAT " +
                                                " where A.IDCATEGORY = " + IDCAT + " order by WPNAME";
             }
-            else
+            else if (sub.ToUpper() == "НЕ ПРИСВОЕНО")
             {
-                DA.SelectCommand.CommandText = "select A.ID,A.WPNAME,B.CATEGORYNAME,C.SUBCATNAME,A.DECNUM,A.COMPOSITION,A.DIMENSIONALDRAWING,A.POWERSUPPLY,A.CONFIGURATION,A.NOTE from "
+                DA.SelectCommand.CommandText = "select A.ID,A.WPNAME,B.CATEGORYNAME,isnull(C.SUBCATNAME,'Не присвоено') SUBCATNAME,A.DECNUM,A.COMPOSITION,A.DIMENSIONALDRAWING,A.POWERSUPPLY,A.CONFIGURATION,A.NOTE from "
                                                 + Base.BaseName + "..WPNAMELIST A left join " + Base.BaseName + "..CATEGORYLIST B on B.ID = IDCATEGORY " +
                                                " left join " + Base.BaseName + "..SUBCATEGORYLIST C on C.ID = A.IDSUBCAT " +
-                                               " where A.IDCATEGORY = " + IDCAT + " and (A.IDSUBCAT = " + IDSUBCAT + " or A.IDSUBCAT is null)  order by WPNAME";
+                                               " where A.IDCATEGORY = " + IDCAT + " and (A.IDSUBCAT is null)  order by WPNAME";
             }
+            else
+            {
+                DA.SelectCommand.CommandText = "select A.ID,A.WPNAME,B.CATEGORYNAME,isnull(C.SUBCATNAME,'Не присвоено') SUBCATNAME,A.DECNUM,A.COMPOSITION,A.DIMENSIONALDRAWING,A.POWERSUPPLY,A.CONFIGURATION,A.NOTE from "
+                                                + Base.BaseName + "..WPNAMELIST A left join " + Base.BaseName + "..CATEGORYLIST B on B.ID = IDCATEGORY " +
+                                               " left join " + Base.BaseName + "..SUBCATEGORYLIST C on C.ID = A.IDSUBCAT " +
+                                               " where A.IDCATEGORY = " + IDCAT + " and (A.IDSUBCAT = " + IDSUBCAT + ")  order by WPNAME";
+            }
+
             DS = new DataSet();
             int h = DA.Fill(DS, "t");
             return DS.Tables["t"];
@@ -46,7 +54,7 @@ namespace SummonManager
         public DataTable GetCategoryWPNames(int IDCAT)
         {
             if (IDCAT == 2) return this.GetAllWPNames();
-            DA.SelectCommand.CommandText = "select A.ID,A.WPNAME,B.CATEGORYNAME,C.SUBCATNAME,A.DECNUM,A.COMPOSITION,A.DIMENSIONALDRAWING,A.POWERSUPPLY,A.CONFIGURATION,A.NOTE from "
+            DA.SelectCommand.CommandText = "select A.ID,A.WPNAME,B.CATEGORYNAME,isnull(C.SUBCATNAME,'Не присвоено') SUBCATNAME,A.DECNUM,A.COMPOSITION,A.DIMENSIONALDRAWING,A.POWERSUPPLY,A.CONFIGURATION,A.NOTE from "
                                             + Base.BaseName + "..WPNAMELIST A left join " + Base.BaseName + "..CATEGORYLIST B on B.ID = IDCATEGORY " +
                                            " left join " + Base.BaseName + "..SUBCATEGORYLIST C on C.ID = A.IDSUBCAT " +
                                            " where A.IDCATEGORY = " + IDCAT + " order by WPNAME";

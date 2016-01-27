@@ -25,6 +25,7 @@ namespace SummonManager
                 this.Clone = clone;
                 tbName.Text = clone.WPName;
                 cbCategory.SelectedValue = clone.IDCat;
+                cbSubCategory.SelectedValue = clone.IDSubCat;
                 tbDecNum.Text = clone.DecNum;
                 tbPowerSupply.Text = clone.PowerSupply;
                 tbConfiguration.Text = clone.Configuration;
@@ -57,8 +58,8 @@ namespace SummonManager
             wp.IDCat = Convert.ToInt32(cbCategory.SelectedValue);
             wp.IDSubCat = (int)cbSubCategory.SelectedValue;
             wp.DecNum = tbDecNum.Text;
-            wp.Composition = pfComposition.tbPath.Tag.ToString();
-            wp.DimenDrawing = pfDimDrawing.tbPath.Tag.ToString();
+            wp.Composition = (pfComposition.tbPath.Tag == null) ? "" : pfComposition.tbPath.Tag.ToString();
+            wp.DimenDrawing = (pfDimDrawing.tbPath.Tag == null) ? "" : pfDimDrawing.tbPath.Tag.ToString();
             wp.PowerSupply = tbPowerSupply.Text;
             wp.Configuration = tbConfiguration.Text;
             wp.Note = tbNote.Text;
@@ -100,7 +101,8 @@ namespace SummonManager
             DBSubCategory dbs = new DBSubCategory();
             cbSubCategory.ValueMember = "ID";
             cbSubCategory.DisplayMember = "SUBCATNAME";
-            cbSubCategory.DataSource = dbs.GetAll(idCat);
+            cbSubCategory.DataSource = dbs.GetAllExceptAll(idCat);
+            cbSubCategory.SelectedValue = Clone.IDSubCat;
         }
         private void cbCategory_SelectedIndexChanged(object sender, EventArgs e)
         {

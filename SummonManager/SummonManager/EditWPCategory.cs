@@ -46,6 +46,11 @@ namespace SummonManager
                 MessageBox.Show("Выберите строку!");
                 return;
             }
+            if ((dgWP.SelectedRows[0].Cells["CATEGORYNAME"].Value.ToString().ToUpper() == "ВСЕ") || (dgWP.SelectedRows[0].Cells["CATEGORYNAME"].Value.ToString() == "Не присвоено"))
+            {
+                MessageBox.Show("Вы не можете удалить эту категорию, так как она является системной!");
+                return;
+            }
             NewCategory n = new NewCategory(dgWP.SelectedRows[0].Cells["CATEGORYNAME"].Value.ToString(), (int)dgWP.SelectedRows[0].Cells["ID"].Value);
             n.ShowDialog();
             dgWP.DataSource = new DBCategory().GetAll();
@@ -59,7 +64,7 @@ namespace SummonManager
                 MessageBox.Show("Выберите строку!");
                 return;
             }
-            if ((dgWP.SelectedRows[0].Cells["CATEGORYNAME"].Value.ToString() == "ВСЕ") || (dgWP.SelectedRows[0].Cells["CATEGORYNAME"].Value.ToString() == "Не присвоено"))
+            if ((dgWP.SelectedRows[0].Cells["CATEGORYNAME"].Value.ToString().ToUpper() == "ВСЕ") || (dgWP.SelectedRows[0].Cells["CATEGORYNAME"].Value.ToString() == "Не присвоено"))
             {
                 MessageBox.Show("Вы не можете удалить эту категорию, так как она является системной!");
                 return;

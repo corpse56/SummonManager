@@ -21,12 +21,12 @@ namespace SummonManager
         //public static string EConnectionString = "metadata=res://*/SM.csdl|res://*/SM.ssdl|res://*/SM.msl;provider=System.Data.SqlClient;provider connection string=\"Data Source=CORPS-ПК\\SQLEXPRESS;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True\"";
         //public static string ConnectionString = "Data Source=CORPS-ПК\\SQLEXPRESS;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
         //public static string ConnectionString = "Data Source=127.0.0.1;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
-        public static string ConnectionString = "Data Source=127.0.0.1\\SQL2008R2;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
-        //public static string ConnectionString = "Data Source=10.177.100.7,2301;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
+        //public static string ConnectionString = "Data Source=127.0.0.1\\SQL2008R2;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
+        public static string ConnectionString = "Data Source=10.177.100.7,2301;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
         public UserVO UVO;
         public int PrivateNoteColor;
         public int RefreshTime;
-        public static string ProgramVersion = "1.79";
+        public static string ProgramVersion = "1.80";
 
         public MainF()
         {
@@ -1045,7 +1045,7 @@ namespace SummonManager
 
         private void dgSummon_SelectionChanged(object sender, EventArgs e)
         {
-            if ((UVO.Role != Roles.Ozis) && (UVO.Role != Roles.Buhgalter))
+            if ((UVO.Role != Roles.Ozis) && (UVO.Role != Roles.Buhgalter) && (UVO.Role != Roles.Manager))
             {
                 return;
             }

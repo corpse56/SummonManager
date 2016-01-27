@@ -13,11 +13,13 @@ namespace SummonManager
     public partial class EditWPN : Form
     {
         int IDW;
+        bool viewonly = false;
         public EditWPN(int idw,bool viewOnly)
         {
             InitializeComponent();
             if (viewOnly)
             {
+                this.viewonly = viewOnly;
                 button2.Visible = false;
                 pfComposition.bPath.Enabled = false;
                 pfComposition.bPathDel.Enabled = false;
@@ -87,7 +89,7 @@ namespace SummonManager
             DBCategory dbc = new DBCategory();
             cbCategory.ValueMember = "ID";
             cbCategory.DisplayMember = "CATEGORYNAME";
-            cbCategory.DataSource = dbc.GetAll();
+            cbCategory.DataSource = dbc.GetAllExceptAll();
 
             DBWPName dbwp = new DBWPName();
             WPNameVO wp = dbwp.GetWP(this.IDW);
@@ -105,11 +107,19 @@ namespace SummonManager
                 cbSubCategory.Text = "";
                 cbSubCategory.Enabled = false;
             }
-            cbSubCategory.Enabled = true;
+            if (!viewonly)
+            {
+                cbSubCategory.Enabled = true;
+            }
             DBSubCategory dbs = new DBSubCategory();
             cbSubCategory.ValueMember = "ID";
             cbSubCategory.DisplayMember = "SUBCATNAME";
-            cbSubCategory.DataSource = dbs.GetAll(idCat);
+            cbSubCategory.DataSource = dbs.GetAllExceptAll(idCat);
+
+            DBWPName dbwp = new DBWPName();
+            WPNameVO wp = dbwp.GetWP(this.IDW);
+            cbSubCategory.SelectedValue = wp.IDSubCat;
+            
         }
 
         private void bComposition_Click(object sender, EventArgs e)

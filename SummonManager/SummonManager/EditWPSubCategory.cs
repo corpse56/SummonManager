@@ -22,6 +22,7 @@ namespace SummonManager
             DBSubCategory dbc = new DBSubCategory();
             dgWP.DataSource = dbc.GetAll(IDCat);
             dgWP.Columns["ID"].Visible = false;
+            dgWP.Columns["IDCATEGORY"].Visible = false;
             dgWP.Columns["SUBCATNAME"].HeaderText = "Наименование подкатегории";
             dgWP.Columns["SUBCATNAME"].Width = 200;
 
@@ -43,7 +44,7 @@ namespace SummonManager
                 return;
             }
 
-            NewSubCategory n = new NewSubCategory((int)dgWP.SelectedRows[0].Cells["ID"].Value);
+            NewSubCategory n = new NewSubCategory((int)dgWP.SelectedRows[0].Cells["IDCATEGORY"].Value);
             n.ShowDialog();
             dgWP.DataSource = new DBSubCategory().GetAll(IDCat);
         }
@@ -53,6 +54,11 @@ namespace SummonManager
             if (dgWP.SelectedRows.Count == 0)
             {
                 MessageBox.Show("Выберите строку!");
+                return;
+            }
+            if ((dgWP.SelectedRows[0].Cells["SUBCATNAME"].Value.ToString().ToUpper() == "ВСЕ") || (dgWP.SelectedRows[0].Cells["SUBCATNAME"].Value.ToString() == "Не присвоено"))
+            {
+                MessageBox.Show("Вы не можете изменить эту подкатегорию, так как она является системной!");
                 return;
             }
             NewSubCategory n = new NewSubCategory(dgWP.SelectedRows[0].Cells["SUBCATNAME"].Value.ToString(), (int)dgWP.SelectedRows[0].Cells["ID"].Value, IDCat);
@@ -68,7 +74,7 @@ namespace SummonManager
                 MessageBox.Show("Выберите строку!");
                 return;
             }
-            if ((dgWP.SelectedRows[0].Cells["SUBCATNAME"].Value.ToString() == "ВСЕ") || (dgWP.SelectedRows[0].Cells["SUBCATNAME"].Value.ToString() == "Не присвоено"))
+            if ((dgWP.SelectedRows[0].Cells["SUBCATNAME"].Value.ToString().ToUpper() == "ВСЕ") || (dgWP.SelectedRows[0].Cells["SUBCATNAME"].Value.ToString() == "Не присвоено"))
             {
                 MessageBox.Show("Вы не можете удалить эту подкатегорию, так как она является системной!");
                 return;

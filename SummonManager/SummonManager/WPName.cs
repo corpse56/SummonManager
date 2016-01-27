@@ -44,7 +44,9 @@ namespace SummonManager
             NewWPN nwp = new NewWPN();
             nwp.ShowDialog();
             DBWPName dbwp = new DBWPName();
-            dgWP.DataSource = dbwp.GetAllWPNames();
+            int idsub = (cbSubCat.SelectedValue != null) ? (int)cbSubCat.SelectedValue : 0;
+            cbCAT_SelectedIndexChanged(sender, e);
+            cbSubCat.SelectedValue = idsub;
 
         }
 
@@ -52,8 +54,11 @@ namespace SummonManager
         {
             EditWPN ew = new EditWPN(Convert.ToInt32(dgWP.SelectedRows[0].Cells["ID"].Value),false);
             ew.ShowDialog();
-            DBWPName dbwp = new DBWPName();
-            dgWP.DataSource = dbwp.GetAllWPNames();
+            //DBWPName dbwp = new DBWPName();
+            //dgWP.DataSource = dbwp.GetAllWPNames();
+            int idsub = (cbSubCat.SelectedValue != null)? (int)cbSubCat.SelectedValue : 0;
+            cbCAT_SelectedIndexChanged(sender, e);
+            cbSubCat.SelectedValue = idsub;
 
         }
 
@@ -64,7 +69,9 @@ namespace SummonManager
             wp = dbwp.GetWP(Convert.ToInt32(dgWP.SelectedRows[0].Cells["ID"].Value));
             NewWPN nwp = new NewWPN(wp);
             nwp.ShowDialog();
-            dgWP.DataSource = dbwp.GetAllWPNames();
+            int idsub = (cbSubCat.SelectedValue != null) ? (int)cbSubCat.SelectedValue : 0;
+            cbCAT_SelectedIndexChanged(sender, e);
+            cbSubCat.SelectedValue = idsub;
 
         }
 
@@ -82,7 +89,7 @@ namespace SummonManager
                 return;
             }
             dbwp.DeleteByID(dgWP.SelectedRows[0].Cells["ID"].Value.ToString());
-            dgWP.DataSource = dbwp.GetAllWPNames();
+            cbCAT_SelectedIndexChanged(sender, e);
         }
 
         private void WPName_Load(object sender, EventArgs e)
@@ -186,10 +193,15 @@ namespace SummonManager
 
         private void button6_Click(object sender, EventArgs e)
         {
+            int selval = (int)cbCAT.SelectedValue;
             EditWPCategory ed = new EditWPCategory();
             ed.ShowDialog();
-            dgWP.DataSource = new DBWPName().GetAllWPNames();
-
+            DBCategory dbc = new DBCategory();
+            cbCAT.ValueMember = "ID";
+            cbCAT.DisplayMember = "CATEGORYNAME";
+            cbCAT.DataSource = dbc.GetAll();
+            cbCAT.SelectedValue = selval;
+            cbCAT_SelectedIndexChanged(sender, e);
 
         }
         public int PickedID;
@@ -224,7 +236,10 @@ namespace SummonManager
             }
             EditWPSubCategory ed = new EditWPSubCategory(id);
             ed.ShowDialog();
-            dgWP.DataSource = new DBWPName().GetAllWPNames();
+            //dgWP.DataSource = new DBWPName().GetAllWPNames();
+            int idsub = (cbSubCat.SelectedValue != null) ? (int)cbSubCat.SelectedValue : 0;
+            cbCAT_SelectedIndexChanged(sender, e);
+            cbSubCat.SelectedValue = idsub;
 
         }
         private void cbCAT_SelectedIndexChanged(object sender, EventArgs e)
