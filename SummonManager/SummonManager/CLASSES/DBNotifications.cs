@@ -12,6 +12,7 @@ namespace SummonManager
         public string IDNTYPE;
         public string IDSUMMON;
         public string IDS;
+        public DateTime CREATED;
     }
     class DBNotification :DB
     {
@@ -39,10 +40,11 @@ namespace SummonManager
             foreach (DataRow r in DS.Tables["t"].Rows)
             {
                 Notification n = new Notification();
-                n.ID = r["ID"].ToString();
+                //n.ID = r["ID"].ToString();
                 n.IDSUMMON = r["IDSUMMON"].ToString();
                 n.IDNTYPE = r["IDNTYPE"].ToString();
                 n.IDS = r["IDS"].ToString();
+                n.CREATED = (r["CREATED"] == DBNull.Value) ? DateTime.Now : (DateTime)r["CREATED"];
                 ln.Add(n);
             }
 
@@ -51,27 +53,32 @@ namespace SummonManager
         internal void Delete(Notification n)
         {
             DA.DeleteCommand.CommandText = "delete from " + Base.BaseName + "..NOTIFICATIONS " +
-                                            " where ID = " + n.ID;
+                                            " where IDNTYPE = " + n.IDNTYPE +" and IDSUMMON = "+n.IDSUMMON;
             DA.DeleteCommand.Connection.Open();
             DA.DeleteCommand.ExecuteNonQuery();
             DA.DeleteCommand.Connection.Close();
         }
 
-        internal bool IsOTKRight(string id)
-        {
-            DS.Clear();
-            DA.SelectCommand.CommandText = "select cast(case when (SERIAL is null or SERIAL = '') and SERIALREQ = 1 then 1 else 0 end as bit) paint_otk "+
-                                            " from " + Base.BaseName + "..SUMMON where ID = " + id + " and IDSTATUS not in (1,2,13,14) ";
-            int i = DA.Fill(DS, "t");
-            if (i == 0)
-            {
-                return false;
-            }
-            return (bool)DS.Tables["t"].Rows[0]["paint_otk"];
-        }
+        //internal bool IsOTKRight(string id)
+        //{
+        //    DS.Clear();
+        //    DA.SelectCommand.CommandText = "select cast(case when (SERIAL is null or SERIAL = '') and SERIALREQ = 1 then 1 else 0 end as bit) paint_otk "+
+        //                                    " from " + Base.BaseName + "..SUMMON where ID = " + id + " and IDSTATUS not in (1,2,13,14) ";
+        //    int i = DA.Fill(DS, "t");
+        //    if (i == 0)
+        //    {
+        //        return false;
+        //    }
+        //    return (bool)DS.Tables["t"].Rows[0]["paint_otk"];
+        //}
 
         internal void FillNotifications()
         {
+            DA.DeleteCommand.CommandText = "delete from " + Base.BaseName + "..NOTIFICATIONS where IDNTYPE in (1,2,3,4)";
+            DA.DeleteCommand.Connection.Open();
+            DA.DeleteCommand.ExecuteNonQuery();
+            DA.DeleteCommand.Connection.Close();
+
 
             DA.InsertCommand.CommandText =  "  insert into [ALPHA].[dbo].[NOTIFICATIONS] (IDNTYPE,IDSUMMON) " +
                           "select 1,ID from [ALPHA].[dbo].SUMMON A where (SERIAL is null or SERIAL = '') and SERIALREQ = 1 " +
@@ -79,7 +86,7 @@ namespace SummonManager
                          " and NOT exists (select 1 from [ALPHA].[dbo].[NOTIFICATIONS] B " +
 					                      "  where B.IDNTYPE = 1 and B.IDSUMMON = A.ID)";
             DA.InsertCommand.Connection.Open();
-            DA.InsertCommand.ExecuteNonQuery();
+            DA.InsertCommand.ExecuteNonQuery();//вставляем оповещения для OTK
             //DA.InsertCommand.Connection.Close();
 
             DA.InsertCommand.CommandText = "  insert into [ALPHA].[dbo].[NOTIFICATIONS] (IDNTYPE,IDSUMMON) " +
@@ -89,7 +96,7 @@ namespace SummonManager
             " and NOT exists (select 1 from [ALPHA].[dbo].[NOTIFICATIONS] B " +
                              "  where B.IDNTYPE = 2 and B.IDSUMMON = A.ID)";
             //DA.InsertCommand.Connection.Open();
-            DA.InsertCommand.ExecuteNonQuery();
+            DA.InsertCommand.ExecuteNonQuery();//вставляем оповещения для конструктора
 
             DA.InsertCommand.CommandText = "  insert into [ALPHA].[dbo].[NOTIFICATIONS] (IDNTYPE,IDSUMMON) " +
              "select 3,A.ID from [ALPHA].[dbo].SUMMON A left join [ALPHA].[dbo].PURCHASEDMATERIALS pm on A.ID = pm.IDS where  " +
@@ -99,37 +106,57 @@ namespace SummonManager
             " and NOT exists (select 1 from [ALPHA].[dbo].[NOTIFICATIONS] B " +
                              "  where B.IDNTYPE = 3 and B.IDSUMMON = A.ID)";
             //DA.InsertCommand.Connection.Open();
-            DA.InsertCommand.ExecuteNonQuery();
+            DA.InsertCommand.ExecuteNonQuery();//вставляем оповещения для ПДБ
+
+            DA.InsertCommand.CommandText = "  insert into [ALPHA].[dbo].[NOTIFICATIONS] (IDNTYPE,IDSUMMON) " +
+             "select 4,A.ID from [ALPHA].[dbo].SUMMON A where  " +
+             " A.DOCSREADY = 0 " +
+             " and A.IDSTATUS in (9,12) " +
+            " and NOT exists (select 1 from [ALPHA].[dbo].[NOTIFICATIONS] B " +
+                             "  where B.IDNTYPE = 4 and B.IDSUMMON = A.ID)";
+            //DA.InsertCommand.Connection.Open();
+            DA.InsertCommand.ExecuteNonQuery();//вставляем оповещения для Бухгалтера
+
             DA.InsertCommand.Connection.Close();
         }
 
-        internal bool IsCONSTRRight(string id)
-        {
-            DS.Clear();
-            DA.SelectCommand.CommandText = "select cast(case when (((SERIAL is not null and SERIAL != '') and SERIALREQ = 1)) and (((SHILD is null or SHILD = '')and SHILDREQ=1 or (PLANKA is null or PLANKA = '') and PLANKAREQ = 1)) then 1 else 0 end as bit) paint_constr " +
-                                            " from " + Base.BaseName + "..SUMMON where ID = " + id + " and IDSTATUS not in (1,2,13,14) " ;
-            int i = DA.Fill(DS, "t");
-            if (i == 0)
-            {
-                return false;
-            }
-            return (bool)DS.Tables["t"].Rows[0]["paint_constr"];
-        }
+        //internal bool IsCONSTRRight(string id)
+        //{
+        //    DS.Clear();
+        //    DA.SelectCommand.CommandText = "select cast(case when (((SERIAL is not null and SERIAL != '') and SERIALREQ = 1)) and (((SHILD is null or SHILD = '')and SHILDREQ=1 or (PLANKA is null or PLANKA = '') and PLANKAREQ = 1)) then 1 else 0 end as bit) paint_constr " +
+        //                                    " from " + Base.BaseName + "..SUMMON where ID = " + id + " and IDSTATUS not in (1,2,13,14) " ;
+        //    int i = DA.Fill(DS, "t");
+        //    if (i == 0)
+        //    {
+        //        return false;
+        //    }
+        //    return (bool)DS.Tables["t"].Rows[0]["paint_constr"];
+        //}
 
-        internal bool IsPDBRight(string id)
+        //internal bool IsPDBRight(string id)
+        //{
+        //    DS.Clear();
+        //    DA.SelectCommand.CommandText = "select cast(case when (((SHILD is not null and SHILD != '') and SHILDREQ=1 "+
+        //                                   " and (PLANKA is not null and PLANKA != '') and PLANKAREQ = 1) and (pm.SHILDORDERED = 0 or pm.SHILDORDERED is null) ) " +
+        //                                   " then 1 else 0 end as bit) paint_pdb from [ALPHA].[dbo].SUMMON A " +
+        //     "left join [ALPHA].[dbo].PURCHASEDMATERIALS pm on A.ID = pm.IDS " +
+        //     " where A.IDSTATUS not in (1,2,13,14) and A.ID = "+id;
+        //    int i = DA.Fill(DS, "t");
+        //    if (i == 0)
+        //    {
+        //        return false;
+        //    }
+        //    return (bool)DS.Tables["t"].Rows[0]["paint_pdb"];
+        //}
+
+        internal void FillBillPayedNtf(string id)
         {
-            DS.Clear();
-            DA.SelectCommand.CommandText = "select cast(case when (((SHILD is not null and SHILD != '') and SHILDREQ=1 "+
-                                           " and (PLANKA is not null and PLANKA != '') and PLANKAREQ = 1) and (pm.SHILDORDERED = 0 or pm.SHILDORDERED is null) ) " +
-                                           " then 1 else 0 end as bit) paint_pdb from [ALPHA].[dbo].SUMMON A " +
-             "left join [ALPHA].[dbo].PURCHASEDMATERIALS pm on A.ID = pm.IDS " +
-             " where A.IDSTATUS not in (1,2,13,14) and A.ID = "+id;
-            int i = DA.Fill(DS, "t");
-            if (i == 0)
-            {
-                return false;
-            }
-            return (bool)DS.Tables["t"].Rows[0]["paint_pdb"];
+            DA.InsertCommand.CommandText = "  insert into [ALPHA].[dbo].[NOTIFICATIONS] (IDNTYPE,IDSUMMON,CREATED) " +
+                          "select 5,ID,getdate() from [ALPHA].[dbo].SUMMON A where ID = " + id + 
+                         " and NOT exists (select 1 from [ALPHA].[dbo].[NOTIFICATIONS] B " +
+                                          "  where B.IDNTYPE = 5 and B.IDSUMMON = A.ID)";
+            DA.InsertCommand.Connection.Open();
+            DA.InsertCommand.ExecuteNonQuery();//вставляем оповещения для менеджера
         }
     }
 }

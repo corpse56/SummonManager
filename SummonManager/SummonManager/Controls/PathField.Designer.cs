@@ -31,6 +31,7 @@
             this.bPathDel = new System.Windows.Forms.Button();
             this.bPath = new System.Windows.Forms.Button();
             this.tbPath = new System.Windows.Forms.TextBox();
+            this.bOpen = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // bPathDel
@@ -67,17 +68,31 @@
             this.tbPath.Margin = new System.Windows.Forms.Padding(4);
             this.tbPath.Name = "tbPath";
             this.tbPath.ReadOnly = true;
-            this.tbPath.Size = new System.Drawing.Size(423, 22);
+            this.tbPath.Size = new System.Drawing.Size(167, 22);
             this.tbPath.TabIndex = 22;
             this.tbPath.TextChanged += new System.EventHandler(this.tbPath_TextChanged);
             this.tbPath.MouseLeave += new System.EventHandler(this.tbPath_MouseLeave);
             this.tbPath.Click += new System.EventHandler(this.tbPath_Click);
             this.tbPath.MouseEnter += new System.EventHandler(this.tbPath_MouseEnter);
             // 
+            // bOpen
+            // 
+            this.bOpen.Image = global::SummonManager.Properties.Resources.document_open1;
+            this.bOpen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bOpen.Location = new System.Drawing.Point(335, 5);
+            this.bOpen.Name = "bOpen";
+            this.bOpen.Size = new System.Drawing.Size(91, 24);
+            this.bOpen.TabIndex = 26;
+            this.bOpen.Text = "Открыть";
+            this.bOpen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bOpen.UseVisualStyleBackColor = true;
+            this.bOpen.Click += new System.EventHandler(this.bOpen_Click);
+            // 
             // PathField
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.bOpen);
             this.Controls.Add(this.bPathDel);
             this.Controls.Add(this.bPath);
             this.Controls.Add(this.tbPath);
@@ -95,5 +110,6 @@
         public System.Windows.Forms.Button bPathDel;
         public System.Windows.Forms.Button bPath;
         public System.Windows.Forms.TextBox tbPath;
+        private System.Windows.Forms.Button bOpen;
     }
 }

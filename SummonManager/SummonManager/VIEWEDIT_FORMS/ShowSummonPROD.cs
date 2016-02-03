@@ -204,13 +204,14 @@ namespace SummonManager
             SVO.IDPACKING = (int)cbPacking.SelectedValue;
             SVO.IDMOUNTINGKIT = (int)cbMountingKit.SelectedValue;
             SVO.VIEWED = true;
-            SVO.SHILD = pathFileds1.tbSHILD.Tag.ToString();
-            SVO.PLANKA = pathFileds1.tbPLANKA.Tag.ToString();
-            SVO.SBORKA3D = pathFileds1.tb3D.Tag.ToString();
-            SVO.ZHGUT = pathFileds1.tbZhgut.Tag.ToString();
-            SVO.SERIAL = pathFileds1.tbSer.Tag.ToString();
-            SVO.METAL = pathFileds1.tbMETAL.Tag.ToString();
-            SVO.COMPOSITION = pathFileds1.tbCOMPOSITION.Tag.ToString();
+            
+            SVO.SHILD = pathFileds1.bSHILDOpen.Tag.ToString();
+            SVO.PLANKA = pathFileds1.bPLANKAOpen.Tag.ToString();
+            SVO.SBORKA3D = pathFileds1.b3DOpen.Tag.ToString();
+            SVO.ZHGUT = pathFileds1.bZHGUTOpen.Tag.ToString();
+            SVO.SERIAL = pathFileds1.bSERIALOpen.Tag.ToString();
+            SVO.METAL = pathFileds1.bMETALOpen.Tag.ToString();
+            SVO.COMPOSITION = pathFileds1.bCOMPOSITIONOpen.Tag.ToString();
             SVO.SHILDREQ = pathFileds1.chSHILD.Checked;
             SVO.PLANKAREQ = pathFileds1.chPLANKA.Checked;
             SVO.SBORKA3DREQ = pathFileds1.ch3D.Checked;

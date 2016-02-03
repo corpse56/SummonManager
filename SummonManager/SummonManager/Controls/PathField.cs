@@ -27,36 +27,30 @@ namespace SummonManager.Controls
             dialog.Multiselect = false;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                tbPath.Text = dialog.FileName.Substring(dialog.FileName.LastIndexOf(@"\") + 1); ;
-                tbPath.Tag = dialog.FileName;
+                //tbPath.Text = dialog.FileName.Substring(dialog.FileName.LastIndexOf(@"\") + 1); ;
+                bOpen.Tag = dialog.FileName;
             }
         }
 
         private void tbPath_Click(object sender, EventArgs e)
         {
-            if (tbPath.Tag != null)
-            {
-                if (tbPath.Tag.ToString() != "")
-                {
-                    Process.Start(@"explorer.exe", @tbPath.Tag.ToString());
-                }
-            }
+
         }
 
         private void tbPath_MouseEnter(object sender, EventArgs e)
         {
-            tbPath.ForeColor = Color.Blue;
+            //tbPath.ForeColor = Color.Blue;
         }
 
         private void tbPath_MouseLeave(object sender, EventArgs e)
         {
-            tbPath.ForeColor = Color.Black;
+           // tbPath.ForeColor = Color.Black;
         }
 
         private void bPathDel_Click(object sender, EventArgs e)
         {
-            tbPath.Tag = "";
-            tbPath.Text = "";
+            bOpen.Tag = "";
+            //tbPath.Text = "";
 
         }
 
@@ -64,6 +58,19 @@ namespace SummonManager.Controls
         {
 
         }
+
+        private void bOpen_Click(object sender, EventArgs e)
+        {
+            if (bOpen.Tag != null)
+            {
+                if (bOpen.Tag.ToString() != "")
+                {
+                    Process.Start(@"explorer.exe", @bOpen.Tag.ToString());
+                }
+            }
+        }
+
+   
 
 
 

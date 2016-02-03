@@ -26,7 +26,7 @@ namespace SummonManager
         public UserVO UVO;
         public int PrivateNoteColor;
         public int RefreshTime;
-        public static string ProgramVersion = "1.80";
+        public static string ProgramVersion = "1.81";
 
         public MainF()
         {
@@ -250,9 +250,19 @@ namespace SummonManager
                 case Roles.Ozis:
                     NotifyMePDB();
                     break;
+                case Roles.Buhgalter:
+                    NotifyMeBUH();
+                    break;
+                case Roles.Manager:
+                    NotifyMeMANAGER();
+                    break;
             }
 /////////////////////////////////////////////// это нужно рефакторить
         }
+
+
+
+
 
         private void выходToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -742,6 +752,18 @@ namespace SummonManager
                     break;
             }
             PaintNotesAndPassDateChanged();
+            PaintSISP();
+        }
+
+        private void PaintSISP()
+        {
+            foreach (DataGridViewRow r in dgSummon.Rows)
+            {
+                if (r.Cells["sisp"].Value.ToString() == "Да")
+                {
+                    r.Cells["sisp"].Style.BackColor = Color.Plum;
+                }
+            }
         }
 
         private void PaintNotesAndPassDateChanged()
@@ -893,7 +915,6 @@ namespace SummonManager
         private void timer1_Tick(object sender, EventArgs e)
         {
             ReloadData();
-            //FillNotifications();
 
 
         }
@@ -902,6 +923,65 @@ namespace SummonManager
         {
             DBNotification dbn = new DBNotification();
             dbn.FillNotifications();
+        }
+        private void NotifyMeMANAGER()
+        {
+            DBNotification dbn = new DBNotification();
+
+            List<Notification> ln = dbn.GetNotByTYPE("5");
+            if (ln.Count == 0) return;
+
+            string message = "Счёт оплачен для извещения(ий): ";
+            foreach (Notification n in ln)
+            {
+                message += n.IDS + "; ";
+                if (n.CREATED.AddDays(7) < DateTime.Now)
+                {
+                    dbn.Delete(n);
+                }
+            }
+            if (message == "Счёт оплачен для извещения(ий): ") return;
+            message = message.Remove(message.Length - 2);
+            message += ".";
+            notifyIcon1.Visible = true;
+            notifyIcon1.ShowBalloonTip(25000, "Внимание!", message, ToolTipIcon.Warning);
+            
+        }
+        private void NotifyMeBUH()
+        {
+            DBNotification dbn = new DBNotification();
+
+            List<Notification> ln = dbn.GetNotByTYPE("4");
+            if (ln.Count == 0) return;
+
+            string message = "Необходимо сделать документы по извещению(ям): ";
+            foreach (Notification n in ln)
+            {
+                message += n.IDS + "; ";
+            }
+            if (message == "Необходимо сделать документы по извещению(ям): ") return;
+            message = message.Remove(message.Length - 2);
+            message += ".";
+            notifyIcon1.Visible = true;
+            notifyIcon1.ShowBalloonTip(25000, "Внимание!", message, ToolTipIcon.Warning);
+        }
+        private void NotifyMePDB()
+        {
+            DBNotification dbn = new DBNotification();
+
+            List<Notification> ln = dbn.GetNotByTYPE("3");
+            if (ln.Count == 0) return;
+
+            string message = "Шильды готовы для заказа по извещению(ям): ";
+            foreach (Notification n in ln)
+            {
+                    message += n.IDS + "; ";
+            }
+            if (message == "Шильды готовы для заказа по извещению(ям): ") return;
+            message = message.Remove(message.Length - 2);
+            message += ".";
+            notifyIcon1.Visible = true;
+            notifyIcon1.ShowBalloonTip(25000, "Внимание!", message, ToolTipIcon.Warning);
         }
         private void NotifyMeOTK()
         {
@@ -913,16 +993,7 @@ namespace SummonManager
             string message = "Просьба присвоить серийные номера в извещении(ях): ";
             foreach (Notification n in ln)
             {
-                if (dbn.IsOTKRight(n.IDSUMMON))
-                {
-
                     message += n.IDS + "; ";
-                }
-                else
-                {
-                    dbn.Delete(n);
-                }
-
             }
             if (message == "Просьба присвоить серийные номера в извещении(ях): ") return;
 
@@ -941,16 +1012,7 @@ namespace SummonManager
             string message = "Просьба заполнить поля \"Шильды\" и \"Планка\" в извещении(ях): ";
             foreach (Notification n in ln)
             {
-                if (dbn.IsCONSTRRight(n.IDSUMMON))
-                {
-
                     message += n.IDS + "; ";
-                }
-                else
-                {
-                    dbn.Delete(n);
-                }
-
             }
             if (message == "Просьба заполнить поля \"Шильды\" и \"Планка\" в извещении(ях): ") return;
             message = message.Remove(message.Length - 2);
@@ -963,33 +1025,6 @@ namespace SummonManager
             
         }
 
-        private void NotifyMePDB()
-        {
-            DBNotification dbn = new DBNotification();
-
-            List<Notification> ln = dbn.GetNotByTYPE("3");
-            if (ln.Count == 0) return;
-
-            string message = "Шильды готовы для заказа по извещению(ям): ";
-            foreach (Notification n in ln)
-            {
-                if (dbn.IsPDBRight(n.IDSUMMON))
-                {
-
-                    message += n.IDS + "; ";
-                }
-                else
-                {
-                    dbn.Delete(n);
-                }
-
-            }
-            if (message == "Шильды готовы для заказа по извещению(ям): ") return;
-            message = message.Remove(message.Length - 2);
-            message += ".";
-            notifyIcon1.Visible = true;
-            notifyIcon1.ShowBalloonTip(25000, "Внимание!", message, ToolTipIcon.Warning);
-        }
 
         private void настройкиToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -1183,6 +1218,11 @@ namespace SummonManager
                     Process.Start(@"explorer.exe", @"/select, " + dgSummon.SelectedRows[0].Cells["cause"].Tag.ToString());
                 }
             }
+        }
+
+        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
        
 

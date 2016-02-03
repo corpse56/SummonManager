@@ -830,6 +830,7 @@
     <None Include="ico\1437083235_user.png" />
     <None Include="ico\1437084170_emblem-people.png" />
     <None Include="ico\DeleteRed.png" />
+    <Content Include="ico\document-open.ico" />
     <Content Include="ico\Refresh.ico" />
     <None Include="Resources\Список изменений.txt" />
     <None Include="Properties\app.manifest" />

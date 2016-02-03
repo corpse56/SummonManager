@@ -31,23 +31,16 @@
             this.bPATH3 = new System.Windows.Forms.Button();
             this.bPATH2 = new System.Windows.Forms.Button();
             this.bPATH1 = new System.Windows.Forms.Button();
-            this.tb3D = new System.Windows.Forms.TextBox();
-            this.tbPLANKA = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
-            this.tbSHILD = new System.Windows.Forms.TextBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.tbZhgut = new System.Windows.Forms.TextBox();
             this.bPATH4 = new System.Windows.Forms.Button();
             this.tbSerial = new System.Windows.Forms.Label();
-            this.tbSer = new System.Windows.Forms.TextBox();
             this.bPATH5 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.tbCOMPOSITION = new System.Windows.Forms.TextBox();
             this.bCOMPOSITION = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.tbMETAL = new System.Windows.Forms.TextBox();
             this.bMETAL = new System.Windows.Forms.Button();
             this.chSERIAL = new System.Windows.Forms.CheckBox();
             this.ch3D = new System.Windows.Forms.CheckBox();
@@ -62,11 +55,18 @@
             this.bSerialDel = new System.Windows.Forms.Button();
             this.bCompositionDel = new System.Windows.Forms.Button();
             this.bMetalDel = new System.Windows.Forms.Button();
+            this.bSHILDOpen = new System.Windows.Forms.Button();
+            this.bPLANKAOpen = new System.Windows.Forms.Button();
+            this.b3DOpen = new System.Windows.Forms.Button();
+            this.bZHGUTOpen = new System.Windows.Forms.Button();
+            this.bSERIALOpen = new System.Windows.Forms.Button();
+            this.bCOMPOSITIONOpen = new System.Windows.Forms.Button();
+            this.bMETALOpen = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // bPATH3
             // 
-            this.bPATH3.Location = new System.Drawing.Point(503, 67);
+            this.bPATH3.Location = new System.Drawing.Point(284, 67);
             this.bPATH3.Name = "bPATH3";
             this.bPATH3.Size = new System.Drawing.Size(60, 25);
             this.bPATH3.TabIndex = 16;
@@ -76,7 +76,7 @@
             // 
             // bPATH2
             // 
-            this.bPATH2.Location = new System.Drawing.Point(503, 36);
+            this.bPATH2.Location = new System.Drawing.Point(284, 36);
             this.bPATH2.Name = "bPATH2";
             this.bPATH2.Size = new System.Drawing.Size(60, 25);
             this.bPATH2.TabIndex = 17;
@@ -86,39 +86,13 @@
             // 
             // bPATH1
             // 
-            this.bPATH1.Location = new System.Drawing.Point(504, 5);
+            this.bPATH1.Location = new System.Drawing.Point(285, 5);
             this.bPATH1.Name = "bPATH1";
             this.bPATH1.Size = new System.Drawing.Size(60, 25);
             this.bPATH1.TabIndex = 18;
             this.bPATH1.Text = "Путь";
             this.bPATH1.UseVisualStyleBackColor = true;
             this.bPATH1.Click += new System.EventHandler(this.bPATH1_Click);
-            // 
-            // tb3D
-            // 
-            this.tb3D.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.tb3D.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.tb3D.Location = new System.Drawing.Point(188, 68);
-            this.tb3D.Name = "tb3D";
-            this.tb3D.ReadOnly = true;
-            this.tb3D.Size = new System.Drawing.Size(310, 22);
-            this.tb3D.TabIndex = 15;
-            this.tb3D.MouseLeave += new System.EventHandler(this.tb3D_MouseLeave);
-            this.tb3D.Click += new System.EventHandler(this.tb3D_Click);
-            this.tb3D.MouseEnter += new System.EventHandler(this.tb3D_MouseEnter);
-            // 
-            // tbPLANKA
-            // 
-            this.tbPLANKA.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.tbPLANKA.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.tbPLANKA.Location = new System.Drawing.Point(188, 37);
-            this.tbPLANKA.Name = "tbPLANKA";
-            this.tbPLANKA.ReadOnly = true;
-            this.tbPLANKA.Size = new System.Drawing.Size(310, 22);
-            this.tbPLANKA.TabIndex = 14;
-            this.tbPLANKA.MouseLeave += new System.EventHandler(this.tbPLANKA_MouseLeave);
-            this.tbPLANKA.Click += new System.EventHandler(this.tbPLANKA_Click);
-            this.tbPLANKA.MouseEnter += new System.EventHandler(this.tbPLANKA_MouseEnter);
             // 
             // label24
             // 
@@ -128,19 +102,6 @@
             this.label24.Size = new System.Drawing.Size(74, 16);
             this.label24.TabIndex = 10;
             this.label24.Text = "3D сборка";
-            // 
-            // tbSHILD
-            // 
-            this.tbSHILD.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.tbSHILD.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.tbSHILD.Location = new System.Drawing.Point(189, 6);
-            this.tbSHILD.Name = "tbSHILD";
-            this.tbSHILD.ReadOnly = true;
-            this.tbSHILD.Size = new System.Drawing.Size(309, 22);
-            this.tbSHILD.TabIndex = 13;
-            this.tbSHILD.MouseLeave += new System.EventHandler(this.tbSHILD_MouseLeave);
-            this.tbSHILD.Click += new System.EventHandler(this.tbSHILD_Click);
-            this.tbSHILD.MouseEnter += new System.EventHandler(this.tbSHILD_MouseEnter);
             // 
             // label23
             // 
@@ -169,22 +130,9 @@
             this.label1.TabIndex = 10;
             this.label1.Text = "Жгуты";
             // 
-            // tbZhgut
-            // 
-            this.tbZhgut.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.tbZhgut.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.tbZhgut.Location = new System.Drawing.Point(188, 96);
-            this.tbZhgut.Name = "tbZhgut";
-            this.tbZhgut.ReadOnly = true;
-            this.tbZhgut.Size = new System.Drawing.Size(310, 22);
-            this.tbZhgut.TabIndex = 15;
-            this.tbZhgut.MouseLeave += new System.EventHandler(this.tbZhgut_MouseLeave);
-            this.tbZhgut.Click += new System.EventHandler(this.tbZhgut_Click);
-            this.tbZhgut.MouseEnter += new System.EventHandler(this.tbZhgut_MouseEnter);
-            // 
             // bPATH4
             // 
-            this.bPATH4.Location = new System.Drawing.Point(503, 95);
+            this.bPATH4.Location = new System.Drawing.Point(284, 95);
             this.bPATH4.Name = "bPATH4";
             this.bPATH4.Size = new System.Drawing.Size(60, 25);
             this.bPATH4.TabIndex = 16;
@@ -201,22 +149,9 @@
             this.tbSerial.TabIndex = 10;
             this.tbSerial.Text = "Серийные номера";
             // 
-            // tbSer
-            // 
-            this.tbSer.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.tbSer.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.tbSer.Location = new System.Drawing.Point(188, 124);
-            this.tbSer.Name = "tbSer";
-            this.tbSer.ReadOnly = true;
-            this.tbSer.Size = new System.Drawing.Size(310, 22);
-            this.tbSer.TabIndex = 15;
-            this.tbSer.MouseLeave += new System.EventHandler(this.tbSer_MouseLeave);
-            this.tbSer.Click += new System.EventHandler(this.tbSer_Click);
-            this.tbSer.MouseEnter += new System.EventHandler(this.tbSer_MouseEnter);
-            // 
             // bPATH5
             // 
-            this.bPATH5.Location = new System.Drawing.Point(503, 123);
+            this.bPATH5.Location = new System.Drawing.Point(284, 123);
             this.bPATH5.Name = "bPATH5";
             this.bPATH5.Size = new System.Drawing.Size(60, 25);
             this.bPATH5.TabIndex = 16;
@@ -233,22 +168,9 @@
             this.label2.TabIndex = 10;
             this.label2.Text = "Состав изделия";
             // 
-            // tbCOMPOSITION
-            // 
-            this.tbCOMPOSITION.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.tbCOMPOSITION.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.tbCOMPOSITION.Location = new System.Drawing.Point(188, 152);
-            this.tbCOMPOSITION.Name = "tbCOMPOSITION";
-            this.tbCOMPOSITION.ReadOnly = true;
-            this.tbCOMPOSITION.Size = new System.Drawing.Size(310, 22);
-            this.tbCOMPOSITION.TabIndex = 15;
-            this.tbCOMPOSITION.MouseLeave += new System.EventHandler(this.tbCOMPOSITION_MouseLeave);
-            this.tbCOMPOSITION.Click += new System.EventHandler(this.tbCOMPOSITION_Click);
-            this.tbCOMPOSITION.MouseEnter += new System.EventHandler(this.tbCOMPOSITION_MouseEnter);
-            // 
             // bCOMPOSITION
             // 
-            this.bCOMPOSITION.Location = new System.Drawing.Point(503, 151);
+            this.bCOMPOSITION.Location = new System.Drawing.Point(284, 151);
             this.bCOMPOSITION.Name = "bCOMPOSITION";
             this.bCOMPOSITION.Size = new System.Drawing.Size(60, 25);
             this.bCOMPOSITION.TabIndex = 16;
@@ -266,22 +188,9 @@
             this.label3.TabIndex = 10;
             this.label3.Text = "Металл для заказа";
             // 
-            // tbMETAL
-            // 
-            this.tbMETAL.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.tbMETAL.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.tbMETAL.Location = new System.Drawing.Point(188, 180);
-            this.tbMETAL.Name = "tbMETAL";
-            this.tbMETAL.ReadOnly = true;
-            this.tbMETAL.Size = new System.Drawing.Size(310, 22);
-            this.tbMETAL.TabIndex = 15;
-            this.tbMETAL.MouseLeave += new System.EventHandler(this.tbMETAL_MouseLeave);
-            this.tbMETAL.Click += new System.EventHandler(this.tbMETAL_Click);
-            this.tbMETAL.MouseEnter += new System.EventHandler(this.tbMETAL_MouseEnter);
-            // 
             // bMETAL
             // 
-            this.bMETAL.Location = new System.Drawing.Point(503, 179);
+            this.bMETAL.Location = new System.Drawing.Point(284, 179);
             this.bMETAL.Name = "bMETAL";
             this.bMETAL.Size = new System.Drawing.Size(60, 25);
             this.bMETAL.TabIndex = 16;
@@ -354,7 +263,7 @@
             // 
             this.bShildDel.BackgroundImage = global::SummonManager.Properties.Resources.DeleteRed;
             this.bShildDel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bShildDel.Location = new System.Drawing.Point(570, 5);
+            this.bShildDel.Location = new System.Drawing.Point(351, 5);
             this.bShildDel.Name = "bShildDel";
             this.bShildDel.Size = new System.Drawing.Size(35, 24);
             this.bShildDel.TabIndex = 20;
@@ -365,7 +274,7 @@
             // 
             this.bPlankaDel.BackgroundImage = global::SummonManager.Properties.Resources.DeleteRed;
             this.bPlankaDel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bPlankaDel.Location = new System.Drawing.Point(569, 36);
+            this.bPlankaDel.Location = new System.Drawing.Point(350, 36);
             this.bPlankaDel.Name = "bPlankaDel";
             this.bPlankaDel.Size = new System.Drawing.Size(35, 24);
             this.bPlankaDel.TabIndex = 20;
@@ -376,7 +285,7 @@
             // 
             this.b3DDel.BackgroundImage = global::SummonManager.Properties.Resources.DeleteRed;
             this.b3DDel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.b3DDel.Location = new System.Drawing.Point(570, 67);
+            this.b3DDel.Location = new System.Drawing.Point(351, 67);
             this.b3DDel.Name = "b3DDel";
             this.b3DDel.Size = new System.Drawing.Size(35, 24);
             this.b3DDel.TabIndex = 20;
@@ -387,7 +296,7 @@
             // 
             this.bZhgutDel.BackgroundImage = global::SummonManager.Properties.Resources.DeleteRed;
             this.bZhgutDel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bZhgutDel.Location = new System.Drawing.Point(569, 95);
+            this.bZhgutDel.Location = new System.Drawing.Point(350, 95);
             this.bZhgutDel.Name = "bZhgutDel";
             this.bZhgutDel.Size = new System.Drawing.Size(35, 24);
             this.bZhgutDel.TabIndex = 20;
@@ -398,7 +307,7 @@
             // 
             this.bSerialDel.BackgroundImage = global::SummonManager.Properties.Resources.DeleteRed;
             this.bSerialDel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bSerialDel.Location = new System.Drawing.Point(570, 123);
+            this.bSerialDel.Location = new System.Drawing.Point(351, 123);
             this.bSerialDel.Name = "bSerialDel";
             this.bSerialDel.Size = new System.Drawing.Size(35, 24);
             this.bSerialDel.TabIndex = 20;
@@ -409,7 +318,7 @@
             // 
             this.bCompositionDel.BackgroundImage = global::SummonManager.Properties.Resources.DeleteRed;
             this.bCompositionDel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bCompositionDel.Location = new System.Drawing.Point(569, 151);
+            this.bCompositionDel.Location = new System.Drawing.Point(350, 151);
             this.bCompositionDel.Name = "bCompositionDel";
             this.bCompositionDel.Size = new System.Drawing.Size(35, 24);
             this.bCompositionDel.TabIndex = 20;
@@ -421,17 +330,115 @@
             // 
             this.bMetalDel.BackgroundImage = global::SummonManager.Properties.Resources.DeleteRed;
             this.bMetalDel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bMetalDel.Location = new System.Drawing.Point(569, 179);
+            this.bMetalDel.Location = new System.Drawing.Point(350, 179);
             this.bMetalDel.Name = "bMetalDel";
             this.bMetalDel.Size = new System.Drawing.Size(35, 24);
             this.bMetalDel.TabIndex = 20;
             this.bMetalDel.UseVisualStyleBackColor = true;
             this.bMetalDel.Click += new System.EventHandler(this.bMetalDel_Click);
             // 
+            // bSHILDOpen
+            // 
+            this.bSHILDOpen.Image = global::SummonManager.Properties.Resources.document_open1;
+            this.bSHILDOpen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bSHILDOpen.Location = new System.Drawing.Point(188, 6);
+            this.bSHILDOpen.Name = "bSHILDOpen";
+            this.bSHILDOpen.Size = new System.Drawing.Size(91, 24);
+            this.bSHILDOpen.TabIndex = 27;
+            this.bSHILDOpen.Text = "Открыть";
+            this.bSHILDOpen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bSHILDOpen.UseVisualStyleBackColor = true;
+            this.bSHILDOpen.Click += new System.EventHandler(this.bSHILDOpen_Click);
+            // 
+            // bPLANKAOpen
+            // 
+            this.bPLANKAOpen.Image = global::SummonManager.Properties.Resources.document_open1;
+            this.bPLANKAOpen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bPLANKAOpen.Location = new System.Drawing.Point(188, 36);
+            this.bPLANKAOpen.Name = "bPLANKAOpen";
+            this.bPLANKAOpen.Size = new System.Drawing.Size(91, 24);
+            this.bPLANKAOpen.TabIndex = 27;
+            this.bPLANKAOpen.Text = "Открыть";
+            this.bPLANKAOpen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bPLANKAOpen.UseVisualStyleBackColor = true;
+            this.bPLANKAOpen.Click += new System.EventHandler(this.bPLANKAOpen_Click);
+            // 
+            // b3DOpen
+            // 
+            this.b3DOpen.Image = global::SummonManager.Properties.Resources.document_open1;
+            this.b3DOpen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.b3DOpen.Location = new System.Drawing.Point(188, 68);
+            this.b3DOpen.Name = "b3DOpen";
+            this.b3DOpen.Size = new System.Drawing.Size(91, 24);
+            this.b3DOpen.TabIndex = 27;
+            this.b3DOpen.Text = "Открыть";
+            this.b3DOpen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.b3DOpen.UseVisualStyleBackColor = true;
+            this.b3DOpen.Click += new System.EventHandler(this.b3DOpen_Click);
+            // 
+            // bZHGUTOpen
+            // 
+            this.bZHGUTOpen.Image = global::SummonManager.Properties.Resources.document_open1;
+            this.bZHGUTOpen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bZHGUTOpen.Location = new System.Drawing.Point(188, 96);
+            this.bZHGUTOpen.Name = "bZHGUTOpen";
+            this.bZHGUTOpen.Size = new System.Drawing.Size(91, 24);
+            this.bZHGUTOpen.TabIndex = 27;
+            this.bZHGUTOpen.Text = "Открыть";
+            this.bZHGUTOpen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bZHGUTOpen.UseVisualStyleBackColor = true;
+            this.bZHGUTOpen.Click += new System.EventHandler(this.bZHGUTOpen_Click);
+            // 
+            // bSERIALOpen
+            // 
+            this.bSERIALOpen.Image = global::SummonManager.Properties.Resources.document_open1;
+            this.bSERIALOpen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bSERIALOpen.Location = new System.Drawing.Point(188, 124);
+            this.bSERIALOpen.Name = "bSERIALOpen";
+            this.bSERIALOpen.Size = new System.Drawing.Size(91, 24);
+            this.bSERIALOpen.TabIndex = 27;
+            this.bSERIALOpen.Text = "Открыть";
+            this.bSERIALOpen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bSERIALOpen.UseVisualStyleBackColor = true;
+            this.bSERIALOpen.Click += new System.EventHandler(this.bSERIALOpen_Click);
+            // 
+            // bCOMPOSITIONOpen
+            // 
+            this.bCOMPOSITIONOpen.Image = global::SummonManager.Properties.Resources.document_open1;
+            this.bCOMPOSITIONOpen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bCOMPOSITIONOpen.Location = new System.Drawing.Point(188, 152);
+            this.bCOMPOSITIONOpen.Name = "bCOMPOSITIONOpen";
+            this.bCOMPOSITIONOpen.Size = new System.Drawing.Size(91, 24);
+            this.bCOMPOSITIONOpen.TabIndex = 27;
+            this.bCOMPOSITIONOpen.Text = "Открыть";
+            this.bCOMPOSITIONOpen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bCOMPOSITIONOpen.UseVisualStyleBackColor = true;
+            this.bCOMPOSITIONOpen.Click += new System.EventHandler(this.bCOMPOSITIONOpen_Click);
+            // 
+            // bMETALOpen
+            // 
+            this.bMETALOpen.Image = global::SummonManager.Properties.Resources.document_open1;
+            this.bMETALOpen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bMETALOpen.Location = new System.Drawing.Point(188, 180);
+            this.bMETALOpen.Name = "bMETALOpen";
+            this.bMETALOpen.Size = new System.Drawing.Size(91, 24);
+            this.bMETALOpen.TabIndex = 27;
+            this.bMETALOpen.Text = "Открыть";
+            this.bMETALOpen.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bMETALOpen.UseVisualStyleBackColor = true;
+            this.bMETALOpen.Click += new System.EventHandler(this.bMETALOpen_Click);
+            // 
             // PathFileds
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.bMETALOpen);
+            this.Controls.Add(this.bCOMPOSITIONOpen);
+            this.Controls.Add(this.bSERIALOpen);
+            this.Controls.Add(this.bZHGUTOpen);
+            this.Controls.Add(this.b3DOpen);
+            this.Controls.Add(this.bPLANKAOpen);
+            this.Controls.Add(this.bSHILDOpen);
             this.Controls.Add(this.bMetalDel);
             this.Controls.Add(this.bCompositionDel);
             this.Controls.Add(this.bSerialDel);
@@ -452,24 +459,17 @@
             this.Controls.Add(this.bPATH3);
             this.Controls.Add(this.bPATH2);
             this.Controls.Add(this.bPATH1);
-            this.Controls.Add(this.tbMETAL);
-            this.Controls.Add(this.tbCOMPOSITION);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.tbSer);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.tbZhgut);
             this.Controls.Add(this.tbSerial);
-            this.Controls.Add(this.tb3D);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.tbPLANKA);
             this.Controls.Add(this.label24);
-            this.Controls.Add(this.tbSHILD);
             this.Controls.Add(this.label23);
             this.Controls.Add(this.label22);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "PathFileds";
-            this.Size = new System.Drawing.Size(614, 216);
+            this.Size = new System.Drawing.Size(394, 216);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -480,23 +480,16 @@
         public System.Windows.Forms.Button bPATH3;
         public System.Windows.Forms.Button bPATH2;
         public System.Windows.Forms.Button bPATH1;
-        public System.Windows.Forms.TextBox tb3D;
-        public System.Windows.Forms.TextBox tbPLANKA;
         private System.Windows.Forms.Label label24;
-        public System.Windows.Forms.TextBox tbSHILD;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label22;
         private System.Windows.Forms.Label label1;
-        public System.Windows.Forms.TextBox tbZhgut;
         public System.Windows.Forms.Button bPATH4;
         private System.Windows.Forms.Label tbSerial;
-        public System.Windows.Forms.TextBox tbSer;
         public System.Windows.Forms.Button bPATH5;
         private System.Windows.Forms.Label label2;
-        public System.Windows.Forms.TextBox tbCOMPOSITION;
         public System.Windows.Forms.Button bCOMPOSITION;
         private System.Windows.Forms.Label label3;
-        public System.Windows.Forms.TextBox tbMETAL;
         public System.Windows.Forms.Button bMETAL;
         public System.Windows.Forms.CheckBox chSERIAL;
         public System.Windows.Forms.CheckBox ch3D;
@@ -511,5 +504,12 @@
         public System.Windows.Forms.Button bSerialDel;
         public System.Windows.Forms.Button bCompositionDel;
         public System.Windows.Forms.Button bMetalDel;
+        public System.Windows.Forms.Button bSHILDOpen;
+        public System.Windows.Forms.Button bPLANKAOpen;
+        public System.Windows.Forms.Button b3DOpen;
+        public System.Windows.Forms.Button bZHGUTOpen;
+        public System.Windows.Forms.Button bSERIALOpen;
+        public System.Windows.Forms.Button bCOMPOSITIONOpen;
+        public System.Windows.Forms.Button bMETALOpen;
     }
 }
