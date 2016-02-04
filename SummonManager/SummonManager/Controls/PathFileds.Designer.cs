@@ -352,7 +352,7 @@
             // 
             // bPLANKAOpen
             // 
-            this.bPLANKAOpen.Image = global::SummonManager.Properties.Resources.document_open1;
+            this.bPLANKAOpen.Image = global::SummonManager.Properties.Resources.document_open;
             this.bPLANKAOpen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.bPLANKAOpen.Location = new System.Drawing.Point(188, 36);
             this.bPLANKAOpen.Name = "bPLANKAOpen";

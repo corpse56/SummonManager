@@ -149,7 +149,7 @@ namespace SummonManager
             DS = new DataSet();
             switch (UVO.Role)
             {
-                case Roles.Admin:
+                case Roles.Admin: case Roles.Director:
                     DA.SelectCommand.CommandText = "select ID,SNAME from " + Base.BaseName +
                         "..STATUSLIST where  ID not in (2,6,8,11,13,14,15,16,17,18)";
                     DefaultStatus = 2;

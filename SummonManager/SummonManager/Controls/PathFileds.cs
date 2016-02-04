@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
 using System.IO;
+using SummonManager.Properties;
 
 namespace SummonManager
 {
@@ -46,6 +47,20 @@ namespace SummonManager
             bCOMPOSITIONOpen.Tag = SVO.COMPOSITION;
             //tbMETAL.Text = SVO.METAL.Substring(SVO.METAL.LastIndexOf("\\") + 1);
             bMETALOpen.Tag = SVO.METAL;
+            SetIcons();
+            if (SVO.SHILD == "")
+            {
+                bSHILDOpen.Image = Resources.document_open_disabled;
+                bSHILDOpen.Text = "<нет>";
+                bSHILDOpen.Enabled = false;
+            }
+            if (SVO.PLANKA == "")
+            {
+                bPLANKAOpen.Image = Resources.document_open_disabled;
+                bPLANKAOpen.Text = "<нет>";
+                bPLANKAOpen.Enabled = false;
+            }
+
 
             chSHILD.Checked = SVO.SHILDREQ;
             chPLANKA.Checked = SVO.PLANKAREQ;
@@ -53,55 +68,120 @@ namespace SummonManager
             chCOMPOSITION.Checked = SVO.COMPOSITIONREQ;
             chMETAL.Checked = SVO.METALREQ;
             chSERIAL.Checked = SVO.SERIALREQ;
+            bPATH1.Enabled = false;
+            bPATH2.Enabled = false;
+            bPATH3.Enabled = false;
+            bPATH4.Enabled = false;
+            bPATH5.Enabled = false;
+            bMETAL.Enabled = false;
+            bCOMPOSITION.Enabled = false;
 
-            //if (UVO_.Role != Roles.Constructor)
+            bShildDel.Enabled = false;
+            bPlankaDel.Enabled = false;
+            b3DDel.Enabled = false;
+            bZhgutDel.Enabled = false;
+            bSerialDel.Enabled = false;
+            bCompositionDel.Enabled = false;
+            bMetalDel.Enabled = false;
+
+
+           
+            chSHILD.Enabled = false;
+            chPLANKA.Enabled = false;
+            ch3D.Enabled = false;
+            chCOMPOSITION.Enabled = false;
+            chMETAL.Enabled = false;
+            chSERIAL.Enabled = false;
+
+        }
+
+        private void SetIcons()
+        {
+            if (bSHILDOpen.Tag.ToString() == "")
             {
-                bPATH1.Enabled = false;
-                bPATH2.Enabled = false;
-                bPATH3.Enabled = false;
-                bPATH4.Enabled = false;
-                bPATH5.Enabled = false;
-                bMETAL.Enabled = false;
-                bCOMPOSITION.Enabled = false;
-
-                bShildDel.Enabled = false;
-                bPlankaDel.Enabled = false;
-                b3DDel.Enabled = false;
-                bZhgutDel.Enabled = false;
-                bSerialDel.Enabled = false;
-                bCompositionDel.Enabled = false;
-                bMetalDel.Enabled = false;
-
+                bSHILDOpen.Image = Resources.document_open_disabled;
+                bSHILDOpen.Text = "<нет>";
+                bSHILDOpen.Enabled = false;
             }
-            //switch (UVO.Role)
-            //{
-            //    case Roles.OTK:
-            //        chSHILD.Enabled = false;
-            //        chPLANKA.Enabled = false;
-            //        ch3D.Enabled = false;
-            //        chCOMPOSITION.Enabled = false;
-            //        chMETAL.Enabled = false;
-            //        chSERIAL.Enabled = true;
-            //        break;
-            //    case Roles.Constructor:
-            //        chSHILD.Enabled = true;
-            //        chPLANKA.Enabled = true;
-            //        ch3D.Enabled = true;
-            //        chCOMPOSITION.Enabled = false;
-            //        chMETAL.Enabled = true;
-            //        chSERIAL.Enabled = false;
-            //        break;
-            //    default:
-                    chSHILD.Enabled = false;
-                    chPLANKA.Enabled = false;
-                    ch3D.Enabled = false;
-                    chCOMPOSITION.Enabled = false;
-                    chMETAL.Enabled = false;
-                    chSERIAL.Enabled = false;
-            //        break;
+            else
+            {
+                bSHILDOpen.Image = Resources.document_open;
+                bSHILDOpen.Text = "Открыть";
+                bSHILDOpen.Enabled = true;
+            }
+            if (bPLANKAOpen.Tag.ToString() == "")
+            {
+                bPLANKAOpen.Image = Resources.document_open_disabled;
+                bPLANKAOpen.Text = "<нет>";
+                bPLANKAOpen.Enabled = false;
+            }
+            else
+            {
+                bPLANKAOpen.Image = Resources.document_open;
+                bPLANKAOpen.Text = "Открыть";
+                bPLANKAOpen.Enabled = true;
+            }
 
-            //}
-
+            if (b3DOpen.Tag.ToString() == "")
+            {
+                b3DOpen.Image = Resources.document_open_disabled;
+                b3DOpen.Text = "<нет>";
+                b3DOpen.Enabled = false;
+            }
+            else
+            {
+                b3DOpen.Image = Resources.document_open;
+                b3DOpen.Text = "Открыть";
+                b3DOpen.Enabled = true;
+            }
+            if (bZHGUTOpen.Tag.ToString() == "")
+            {
+                bZHGUTOpen.Image = Resources.document_open_disabled;
+                bZHGUTOpen.Text = "<нет>";
+                bZHGUTOpen.Enabled = false;
+            }
+            else
+            {
+                bZHGUTOpen.Image = Resources.document_open;
+                bZHGUTOpen.Text = "Открыть";
+                bZHGUTOpen.Enabled = true;
+            }
+            if (bSERIALOpen.Tag.ToString() == "")
+            {
+                bSERIALOpen.Image = Resources.document_open_disabled;
+                bSERIALOpen.Text = "<нет>";
+                bSERIALOpen.Enabled = false;
+            }
+            else
+            {
+                bSERIALOpen.Image = Resources.document_open;
+                bSERIALOpen.Text = "Открыть";
+                bSERIALOpen.Enabled = true;
+            }
+            if (bCOMPOSITIONOpen.Tag.ToString() == "")
+            {
+                bCOMPOSITIONOpen.Image = Resources.document_open_disabled;
+                bCOMPOSITIONOpen.Text = "<нет>";
+                bCOMPOSITIONOpen.Enabled = false;
+            }
+            else
+            {
+                bCOMPOSITIONOpen.Image = Resources.document_open;
+                bCOMPOSITIONOpen.Text = "Открыть";
+                bCOMPOSITIONOpen.Enabled = true;
+            }
+            if (bMETALOpen.Tag.ToString() == "")
+            {
+                bMETALOpen.Image = Resources.document_open_disabled;
+                bMETALOpen.Text = "<нет>";
+                bMETALOpen.Enabled = false;
+            }
+            else
+            {
+                bMETALOpen.Image = Resources.document_open;
+                bMETALOpen.Text = "Открыть";
+                bMETALOpen.Enabled = true;
+            }
         }
 
         private void bPATH1_Click(object sender, EventArgs e)
@@ -116,7 +196,9 @@ namespace SummonManager
             {
                 //tbSHILD.Text = dialog.FileName.Substring(dialog.FileName.LastIndexOf(@"\") + 1); ;
                 bSHILDOpen.Tag = dialog.FileName;
+                SetIcons();
             }
+
         }
 
         private void bPATH2_Click(object sender, EventArgs e)
@@ -131,6 +213,7 @@ namespace SummonManager
             {
                 //tbPLANKA.Text = dialog.FileName.Substring(dialog.FileName.LastIndexOf(@"\") + 1); ;
                 bPLANKAOpen.Tag = dialog.FileName;
+                SetIcons();
             }
         }
 
@@ -146,6 +229,7 @@ namespace SummonManager
             {
                 //tb3D.Text = dialog.FileName.Substring(dialog.FileName.LastIndexOf(@"\") + 1); ;
                 b3DOpen.Tag = dialog.FileName;
+                SetIcons();
             }
         }
         private void bPATH4_Click(object sender, EventArgs e)
@@ -160,6 +244,7 @@ namespace SummonManager
             {
                 //tbZhgut.Text = dialog.FileName.Substring(dialog.FileName.LastIndexOf(@"\") + 1); ;
                 bZHGUTOpen.Tag = dialog.FileName;
+                SetIcons();
             }
         }
         private void bPATH5_Click(object sender, EventArgs e)
@@ -174,6 +259,7 @@ namespace SummonManager
             {
                 //tbSer.Text = dialog.FileName.Substring(dialog.FileName.LastIndexOf(@"\") + 1); ;
                 bSERIALOpen.Tag = dialog.FileName;
+                SetIcons();
             }
         }
         private void tbSHILD_Click(object sender, EventArgs e)
@@ -288,6 +374,7 @@ namespace SummonManager
             {
                 //tbCOMPOSITION.Text = dialog.FileName.Substring(dialog.FileName.LastIndexOf(@"\") + 1); ;
                 bCOMPOSITIONOpen.Tag = dialog.FileName;
+                SetIcons();
             }
         }
 
@@ -322,6 +409,7 @@ namespace SummonManager
                 //tbMETAL.Text = di.Name; ;
                 //tbMETAL.Text = dialog.SelectedPath.Substring(dialog.SelectedPath.LastIndexOf(@"\") + 1); ;
                 bMETALOpen.Tag = dialog.SelectedPath;
+                SetIcons();
             }
         }
         private void tb3D_Click(object sender, EventArgs e)
@@ -364,42 +452,49 @@ namespace SummonManager
         private void bShildDel_Click(object sender, EventArgs e)
         {
             bSHILDOpen.Tag = "";
+            SetIcons();
             //tbSHILD.Text = "";
         }
 
         private void bPlankaDel_Click(object sender, EventArgs e)
         {
             bPLANKAOpen.Tag = "";
+            SetIcons();
             //tbPLANKA.Text = "";
         }
 
         private void b3DDel_Click(object sender, EventArgs e)
         {
             b3DOpen.Tag = "";
+            SetIcons();
             //tb3D.Text = "";
         }
 
         private void bZhgutDel_Click(object sender, EventArgs e)
         {
             bZHGUTOpen.Tag = "";
+            SetIcons();
             //tbZhgut.Text = "";
         }
 
         private void bSerialDel_Click(object sender, EventArgs e)
         {
             bSERIALOpen.Tag = "";
+            SetIcons();
             //tbSer.Text = "";
         }
 
         private void bCompositionDel_Click(object sender, EventArgs e)
         {
             bCOMPOSITIONOpen.Tag = "";
+            SetIcons();
             //tbCOMPOSITION.Text = "";
         }
 
         private void bMetalDel_Click(object sender, EventArgs e)
         {
             bMETALOpen.Tag = "";
+            SetIcons();
             //tbMETAL.Text = "";
         }
 

@@ -26,7 +26,7 @@ namespace SummonManager
         public UserVO UVO;
         public int PrivateNoteColor;
         public int RefreshTime;
-        public static string ProgramVersion = "1.81";
+        public static string ProgramVersion = "1.82";
 
         public MainF()
         {
@@ -125,7 +125,7 @@ namespace SummonManager
                     SpravochnikiDisable();
                     NewMenuItem.Enabled = false;
                     toolStripButton1.Enabled = false;
-                    MySummonsTSB.Enabled = false;
+                    //MySummonsTSB.Enabled = false;
                     break;
             }
         }
