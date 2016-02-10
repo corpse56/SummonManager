@@ -44,10 +44,10 @@
             this.tbPowerSupply = new System.Windows.Forms.TextBox();
             this.tbDecNum = new System.Windows.Forms.TextBox();
             this.tbName = new System.Windows.Forms.TextBox();
-            this.pfComposition = new SummonManager.Controls.PathField();
-            this.pfDimDrawing = new SummonManager.Controls.PathField();
             this.cbSubCategory = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.pfDimDrawing = new SummonManager.Controls.PathField();
+            this.pfComposition = new SummonManager.Controls.PathField();
             this.SuspendLayout();
             // 
             // button1
@@ -189,24 +189,6 @@
             this.tbName.Size = new System.Drawing.Size(601, 22);
             this.tbName.TabIndex = 9;
             // 
-            // pfComposition
-            // 
-            this.pfComposition.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.pfComposition.Location = new System.Drawing.Point(225, 129);
-            this.pfComposition.Margin = new System.Windows.Forms.Padding(4);
-            this.pfComposition.Name = "pfComposition";
-            this.pfComposition.Size = new System.Drawing.Size(601, 28);
-            this.pfComposition.TabIndex = 23;
-            // 
-            // pfDimDrawing
-            // 
-            this.pfDimDrawing.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.pfDimDrawing.Location = new System.Drawing.Point(225, 165);
-            this.pfDimDrawing.Margin = new System.Windows.Forms.Padding(4);
-            this.pfDimDrawing.Name = "pfDimDrawing";
-            this.pfDimDrawing.Size = new System.Drawing.Size(601, 32);
-            this.pfDimDrawing.TabIndex = 24;
-            // 
             // cbSubCategory
             // 
             this.cbSubCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -224,6 +206,25 @@
             this.label9.Size = new System.Drawing.Size(101, 16);
             this.label9.TabIndex = 25;
             this.label9.Text = "Подкатегория";
+            // 
+            // pfDimDrawing
+            // 
+            this.pfDimDrawing.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pfDimDrawing.Location = new System.Drawing.Point(225, 165);
+            this.pfDimDrawing.Margin = new System.Windows.Forms.Padding(4);
+            this.pfDimDrawing.Name = "pfDimDrawing";
+            this.pfDimDrawing.Size = new System.Drawing.Size(225, 32);
+            this.pfDimDrawing.TabIndex = 24;
+            this.pfDimDrawing.Load += new System.EventHandler(this.pfDimDrawing_Load);
+            // 
+            // pfComposition
+            // 
+            this.pfComposition.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pfComposition.Location = new System.Drawing.Point(225, 129);
+            this.pfComposition.Margin = new System.Windows.Forms.Padding(4);
+            this.pfComposition.Name = "pfComposition";
+            this.pfComposition.Size = new System.Drawing.Size(225, 28);
+            this.pfComposition.TabIndex = 23;
             // 
             // EditWPN
             // 

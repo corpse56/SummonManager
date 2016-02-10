@@ -48,19 +48,6 @@ namespace SummonManager
             //tbMETAL.Text = SVO.METAL.Substring(SVO.METAL.LastIndexOf("\\") + 1);
             bMETALOpen.Tag = SVO.METAL;
             SetIcons();
-            if (SVO.SHILD == "")
-            {
-                bSHILDOpen.Image = Resources.document_open_disabled;
-                bSHILDOpen.Text = "<нет>";
-                bSHILDOpen.Enabled = false;
-            }
-            if (SVO.PLANKA == "")
-            {
-                bPLANKAOpen.Image = Resources.document_open_disabled;
-                bPLANKAOpen.Text = "<нет>";
-                bPLANKAOpen.Enabled = false;
-            }
-
 
             chSHILD.Checked = SVO.SHILDREQ;
             chPLANKA.Checked = SVO.PLANKAREQ;

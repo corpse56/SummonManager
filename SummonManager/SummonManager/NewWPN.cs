@@ -15,6 +15,8 @@ namespace SummonManager
         public NewWPN()
         {
             InitializeComponent();
+            pfComposition.Init("");
+            pfDimDrawing.Init("");
         }
         WPNameVO Clone;
         public NewWPN(WPNameVO clone)
@@ -32,13 +34,17 @@ namespace SummonManager
                 tbNote.Text = clone.Note;
 
 
-                pfComposition.tbPath.Text = clone.Composition.Substring(clone.Composition.LastIndexOf("\\") + 1);
-                pfComposition.tbPath.Tag = clone.Composition;
-
-                pfDimDrawing.tbPath.Text = clone.DimenDrawing.Substring(clone.DimenDrawing.LastIndexOf("\\") + 1);
-                pfDimDrawing.tbPath.Tag = clone.DimenDrawing;
+                //pfComposition.tbPath.Text = clone.Composition.Substring(clone.Composition.LastIndexOf("\\") + 1);
+                //pfComposition.tbPath.Tag = clone.Composition;
+                //pfComposition.bOpen.Tag = clone.Composition;
+                //pfDimDrawing.tbPath.Text = clone.DimenDrawing.Substring(clone.DimenDrawing.LastIndexOf("\\") + 1);
+               // pfDimDrawing.tbPath.Tag = clone.DimenDrawing;
+               // pfDimDrawing.bOpen.Tag = clone.DimenDrawing;
+                pfComposition.Init(clone.Composition);
+                pfDimDrawing.Init(clone.DimenDrawing);
 
             }
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -56,10 +62,10 @@ namespace SummonManager
             WPNameVO wp = new WPNameVO();
             wp.WPName = tbName.Text;
             wp.IDCat = Convert.ToInt32(cbCategory.SelectedValue);
-            wp.IDSubCat = (int)cbSubCategory.SelectedValue;
+            wp.IDSubCat = (cbSubCategory.SelectedValue == null)? 0:(int)cbSubCategory.SelectedValue;
             wp.DecNum = tbDecNum.Text;
-            wp.Composition = (pfComposition.tbPath.Tag == null) ? "" : pfComposition.tbPath.Tag.ToString();
-            wp.DimenDrawing = (pfDimDrawing.tbPath.Tag == null) ? "" : pfDimDrawing.tbPath.Tag.ToString();
+            wp.Composition = (pfComposition.bOpen.Tag == null) ? "" : pfComposition.bOpen.Tag.ToString();
+            wp.DimenDrawing = (pfDimDrawing.bOpen.Tag == null) ? "" : pfDimDrawing.bOpen.Tag.ToString();
             wp.PowerSupply = tbPowerSupply.Text;
             wp.Configuration = tbConfiguration.Text;
             wp.Note = tbNote.Text;
@@ -97,12 +103,15 @@ namespace SummonManager
                 cbSubCategory.Text = "";
                 cbSubCategory.Enabled = false;
             }
-            cbSubCategory.Enabled = true;
-            DBSubCategory dbs = new DBSubCategory();
-            cbSubCategory.ValueMember = "ID";
-            cbSubCategory.DisplayMember = "SUBCATNAME";
-            cbSubCategory.DataSource = dbs.GetAllExceptAll(idCat);
-            cbSubCategory.SelectedValue = Clone.IDSubCat;
+            else
+            {
+                cbSubCategory.Enabled = true;
+                DBSubCategory dbs = new DBSubCategory();
+                cbSubCategory.ValueMember = "ID";
+                cbSubCategory.DisplayMember = "SUBCATNAME";
+                cbSubCategory.DataSource = dbs.GetAllExceptAll(idCat);
+                cbSubCategory.SelectedValue = Clone.IDSubCat;
+            }
         }
         private void cbCategory_SelectedIndexChanged(object sender, EventArgs e)
         {

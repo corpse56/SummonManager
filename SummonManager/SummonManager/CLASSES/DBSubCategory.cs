@@ -65,7 +65,7 @@ namespace SummonManager
         internal object GetAllExceptAll(int idCat)
         {
             DA.SelectCommand.CommandText = "select ID,SUBCATNAME,IDCATEGORY from " + Base.BaseName + "..SUBCATEGORYLIST where SUBCATNAME != 'Все' and IDCATEGORY = " + idCat;
-            DA.Fill(DS, "t");
+            int i = DA.Fill(DS, "t");
             return DS.Tables["t"];
         }
     }

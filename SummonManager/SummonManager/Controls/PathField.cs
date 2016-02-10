@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
+using SummonManager.Properties;
 
 namespace SummonManager.Controls
 {
@@ -16,7 +17,13 @@ namespace SummonManager.Controls
         {
             InitializeComponent();
         }
-
+        string PATH;
+        public void Init(string path)
+        {
+            this.PATH = path;
+            bOpen.Tag = path;
+            SetIcons();
+        }
         private void bPath_Click(object sender, EventArgs e)
         {
             OpenFileDialog dialog = new OpenFileDialog();
@@ -29,9 +36,24 @@ namespace SummonManager.Controls
             {
                 //tbPath.Text = dialog.FileName.Substring(dialog.FileName.LastIndexOf(@"\") + 1); ;
                 bOpen.Tag = dialog.FileName;
+                SetIcons();
             }
         }
-
+        private void SetIcons()
+        {
+            if (bOpen.Tag.ToString() == "")
+            {
+                bOpen.Image = Resources.document_open_disabled;
+                bOpen.Text = "<нет>";
+                bOpen.Enabled = false;
+            }
+            else
+            {
+                bOpen.Image = Resources.document_open;
+                bOpen.Text = "Открыть";
+                bOpen.Enabled = true;
+            }
+        }
         private void tbPath_Click(object sender, EventArgs e)
         {
 
@@ -51,7 +73,7 @@ namespace SummonManager.Controls
         {
             bOpen.Tag = "";
             //tbPath.Text = "";
-
+            SetIcons();
         }
 
         private void tbPath_TextChanged(object sender, EventArgs e)

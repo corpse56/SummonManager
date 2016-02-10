@@ -30,7 +30,6 @@
         {
             this.bPathDel = new System.Windows.Forms.Button();
             this.bPath = new System.Windows.Forms.Button();
-            this.tbPath = new System.Windows.Forms.TextBox();
             this.bOpen = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -39,7 +38,7 @@
             this.bPathDel.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.bPathDel.BackgroundImage = global::SummonManager.Properties.Resources.DeleteRed;
             this.bPathDel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bPathDel.Location = new System.Drawing.Point(521, 5);
+            this.bPathDel.Location = new System.Drawing.Point(196, 5);
             this.bPathDel.Margin = new System.Windows.Forms.Padding(4);
             this.bPathDel.Name = "bPathDel";
             this.bPathDel.Size = new System.Drawing.Size(26, 23);
@@ -50,7 +49,7 @@
             // bPath
             // 
             this.bPath.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.bPath.Location = new System.Drawing.Point(433, 4);
+            this.bPath.Location = new System.Drawing.Point(108, 4);
             this.bPath.Margin = new System.Windows.Forms.Padding(4);
             this.bPath.Name = "bPath";
             this.bPath.Size = new System.Drawing.Size(80, 24);
@@ -59,27 +58,12 @@
             this.bPath.UseVisualStyleBackColor = true;
             this.bPath.Click += new System.EventHandler(this.bPath_Click);
             // 
-            // tbPath
-            // 
-            this.tbPath.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.tbPath.BackColor = System.Drawing.SystemColors.ButtonFace;
-            this.tbPath.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.tbPath.Location = new System.Drawing.Point(4, 4);
-            this.tbPath.Margin = new System.Windows.Forms.Padding(4);
-            this.tbPath.Name = "tbPath";
-            this.tbPath.ReadOnly = true;
-            this.tbPath.Size = new System.Drawing.Size(167, 22);
-            this.tbPath.TabIndex = 22;
-            this.tbPath.TextChanged += new System.EventHandler(this.tbPath_TextChanged);
-            this.tbPath.MouseLeave += new System.EventHandler(this.tbPath_MouseLeave);
-            this.tbPath.Click += new System.EventHandler(this.tbPath_Click);
-            this.tbPath.MouseEnter += new System.EventHandler(this.tbPath_MouseEnter);
-            // 
             // bOpen
             // 
+            this.bOpen.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.bOpen.Image = global::SummonManager.Properties.Resources.document_open1;
             this.bOpen.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bOpen.Location = new System.Drawing.Point(335, 5);
+            this.bOpen.Location = new System.Drawing.Point(10, 5);
             this.bOpen.Name = "bOpen";
             this.bOpen.Size = new System.Drawing.Size(91, 24);
             this.bOpen.TabIndex = 26;
@@ -95,13 +79,11 @@
             this.Controls.Add(this.bOpen);
             this.Controls.Add(this.bPathDel);
             this.Controls.Add(this.bPath);
-            this.Controls.Add(this.tbPath);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "PathField";
-            this.Size = new System.Drawing.Size(556, 32);
+            this.Size = new System.Drawing.Size(231, 32);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -109,7 +91,8 @@
 
         public System.Windows.Forms.Button bPathDel;
         public System.Windows.Forms.Button bPath;
-        public System.Windows.Forms.TextBox tbPath;
-        private System.Windows.Forms.Button bOpen;
+        public System.Windows.Forms.Button bOpen;
+
+
     }
 }
