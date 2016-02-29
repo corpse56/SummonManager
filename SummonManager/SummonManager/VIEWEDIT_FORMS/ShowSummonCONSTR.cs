@@ -30,13 +30,19 @@ namespace SummonManager
 
         private void DisableAll()
         {
-            pathFileds1.bPATH1.Enabled = false;
-            pathFileds1.bPATH2.Enabled = false;
-            pathFileds1.bPATH3.Enabled = false;
-            pathFileds1.bPATH4.Enabled = false;
-            pathFileds1.bMETAL.Enabled = false;
-            
-            pathFileds1.chSHILD.Enabled = false;
+            //pathFileds1.bPATH1.Enabled = false;
+            //pathFileds1.bPATH2.Enabled = false;
+            //pathFileds1.bPATH3.Enabled = false;
+            //pathFileds1.bPATH4.Enabled = false;
+            //pathFileds1.bMETAL.Enabled = false;
+
+            pfSHILD.Enabled = false;
+            pfPLANKA.Enabled = false;
+            pf3D.Enabled = false;
+            pfZHGUT.Enabled = false;
+            pfMETAL.Enabled = false;
+
+            /*pathFileds1.chSHILD.Enabled = false;
             pathFileds1.ch3D.Enabled = false;
             pathFileds1.chPLANKA.Enabled = false;
             pathFileds1.chMETAL.Enabled = false;
@@ -45,7 +51,7 @@ namespace SummonManager
             pathFileds1.bPlankaDel.Enabled = false;
             pathFileds1.b3DDel.Enabled = false;
             pathFileds1.bZhgutDel.Enabled = false;
-            pathFileds1.bMETAL.Enabled = false;
+            pathFileds1.bMETAL.Enabled = false;*/
 
             //summonTransfer1.Enabled = true;
             //cbWPNAME.ReadOnly = true;
@@ -87,21 +93,27 @@ namespace SummonManager
                 dtpAPPROX.Enabled = false;
             else
                 dtpAPPROX.Enabled = true;
-            pathFileds1.bPATH1.Enabled = true;
-            pathFileds1.bPATH2.Enabled = true;
-            pathFileds1.bPATH3.Enabled = true;
-            pathFileds1.bPATH4.Enabled = true;
-            pathFileds1.bMETAL.Enabled = true;
-            pathFileds1.chSHILD.Enabled = true;
-            pathFileds1.ch3D.Enabled = true;
-            pathFileds1.chPLANKA.Enabled = true;
-            pathFileds1.chMETAL.Enabled = true;
+            //pathFileds1.bPATH1.Enabled = true;
+            //pathFileds1.bPATH2.Enabled = true;
+            //pathFileds1.bPATH3.Enabled = true;
+            //pathFileds1.bPATH4.Enabled = true;
+            //pathFileds1.bMETAL.Enabled = true;
+            //pathFileds1.chSHILD.Enabled = true;
+            //pathFileds1.ch3D.Enabled = true;
+            //pathFileds1.chPLANKA.Enabled = true;
+            //pathFileds1.chMETAL.Enabled = true;
 
-            pathFileds1.bShildDel.Enabled = true;
-            pathFileds1.bPlankaDel.Enabled = true;
-            pathFileds1.b3DDel.Enabled = true;
-            pathFileds1.bZhgutDel.Enabled = true;
-            pathFileds1.bMETAL.Enabled = true;
+            //pathFileds1.bShildDel.Enabled = true;
+            //pathFileds1.bPlankaDel.Enabled = true;
+            //pathFileds1.b3DDel.Enabled = true;
+            //pathFileds1.bZhgutDel.Enabled = true;
+            //pathFileds1.bMETAL.Enabled = true;
+            pfSHILD.Enabled = true;
+            pfPLANKA.Enabled = true;
+            pf3D.Enabled = true;
+            pfZHGUT.Enabled = true;
+            pfMETAL.Enabled = true;
+
 
         }
 
@@ -177,6 +189,16 @@ namespace SummonManager
             //summonTransfer1.Init(SVO, UVO, this);
 
             pathFileds1.Init(SVO, UVO);
+            pfSHILD.Init(SVO.SHILD, SVO.SHILDREQ, false, true);
+            pfPLANKA.Init(SVO.PLANKA, SVO.PLANKAREQ, false, true);
+            pf3D.Init(SVO.SBORKA3D, SVO.SBORKA3DREQ, false, true);
+            pfZHGUT.Init(SVO.ZHGUT, false, false, false);
+            pfSERIAL.Init(SVO.SERIAL, SVO.SERIALREQ, false, true);
+            pfCOMPOSITION.Init(SVO.COMPOSITION, SVO.COMPOSITIONREQ, false, true);
+            pfCOMPOSITION.ValueFromArchive = true;
+            pfMETAL.Init(SVO.METAL, SVO.METALREQ, false, true);
+            pfMETAL.IsPath = true;
+
         }
 
         private void cbCustomers_SelectedIndexChanged(object sender, EventArgs e)
@@ -239,19 +261,19 @@ namespace SummonManager
             SVO.IDPACKING = (int)cbPacking.SelectedValue;
             SVO.IDMOUNTINGKIT = (int)cbMountingKit.SelectedValue;
             SVO.VIEWED = true;
-            SVO.SHILD = pathFileds1.bSHILDOpen.Tag.ToString();
-            SVO.PLANKA = pathFileds1.bPLANKAOpen.Tag.ToString();
-            SVO.SBORKA3D = pathFileds1.b3DOpen.Tag.ToString();
-            SVO.ZHGUT = pathFileds1.bZHGUTOpen.Tag.ToString();
-            SVO.SERIAL = pathFileds1.bSERIALOpen.Tag.ToString();
-            SVO.METAL = pathFileds1.bMETALOpen.Tag.ToString();
-            SVO.COMPOSITION = pathFileds1.bCOMPOSITIONOpen.Tag.ToString();
-            SVO.SHILDREQ = pathFileds1.chSHILD.Checked;
-            SVO.PLANKAREQ = pathFileds1.chPLANKA.Checked;
-            SVO.SBORKA3DREQ = pathFileds1.ch3D.Checked;
-            SVO.SERIALREQ = pathFileds1.chSERIAL.Checked;
-            SVO.COMPOSITIONREQ = pathFileds1.chCOMPOSITION.Checked;
-            SVO.METALREQ = pathFileds1.chMETAL.Checked;
+            SVO.SHILD = pfSHILD.FullPath;//pathFileds1.bSHILDOpen.Tag.ToString();
+            SVO.PLANKA = pfPLANKA.FullPath;//pathFileds1.bPLANKAOpen.Tag.ToString();
+            SVO.SBORKA3D = pf3D.FullPath;//pathFileds1.b3DOpen.Tag.ToString();
+            SVO.ZHGUT = pfZHGUT.FullPath;//pathFileds1.bZHGUTOpen.Tag.ToString();
+            SVO.SERIAL = pfSERIAL.FullPath;//pathFileds1.bSERIALOpen.Tag.ToString();
+            SVO.METAL = pfMETAL.FullPath;//pathFileds1.bMETALOpen.Tag.ToString();
+            SVO.COMPOSITION = pfCOMPOSITION.FullPath;//pathFileds1.bCOMPOSITIONOpen.Tag.ToString();
+            SVO.SHILDREQ = pfSHILD.Required;//pathFileds1.chSHILD.Checked;
+            SVO.PLANKAREQ = pfPLANKA.Required;//pathFileds1.chPLANKA.Checked;
+            SVO.SBORKA3DREQ = pf3D.Required;//pathFileds1.ch3D.Checked;
+            SVO.SERIALREQ = pfSERIAL.Required;//pathFileds1.chSERIAL.Checked;
+            SVO.COMPOSITIONREQ = pfCOMPOSITION.Required;//pathFileds1.chCOMPOSITION.Checked;
+            SVO.METALREQ = pfMETAL.Required;//pathFileds1.chMETAL.Checked;
             if (chbDeterm.Checked)
             {
                 SVO.PASSDATE = null;

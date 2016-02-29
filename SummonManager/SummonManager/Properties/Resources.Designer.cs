@@ -81,9 +81,23 @@ namespace SummonManager.Properties {
             }
         }
         
-        internal static System.Drawing.Bitmap DeleteRed {
+        internal static System.Drawing.Bitmap delete_disable {
             get {
-                object obj = ResourceManager.GetObject("DeleteRed", resourceCulture);
+                object obj = ResourceManager.GetObject("delete_disable", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap delete_disable1 {
+            get {
+                object obj = ResourceManager.GetObject("delete_disable1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        internal static System.Drawing.Bitmap delete_ok {
+            get {
+                object obj = ResourceManager.GetObject("delete_ok", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -174,10 +188,12 @@ namespace SummonManager.Properties {
         
         /// <summary>
         ///   Ищет локализованную строку, похожую на ============================================================================
-        ///1.81
-        ///-Если извещение СИиСП, то колокна на главной форме окрашивается в светлосиреневый
-        ///-Роль бухгалтер оповещается о том, что нужно подготовить документы для извещения. Оповещение появляется в правом нижнем углу экрана, у извещений, которые имеют статус &quot;Коммерческий отдел&quot; или &quot;Отгружается&quot;. Оповещение будет появлятся пока бухгалтер не поставит галочку что документы готовы.
-        ///-Роль менеджер оповещается о том, что счёт оплачен у  [остаток строки не уместился]&quot;;.
+        ///1.83
+        ///-исправлены ошибки с путями в наименовании изделия.
+        ///============================================================================
+        ///1.82
+        ///-Роль &quot;бухгалтер&quot; теперь видит все извещения. Галочки &quot;Документы готовы&quot; и &quot;Счёт оплачен&quot; может проставить в любом извещении. Теперь для бухгалтера работает кнопка &quot;Мои извещения&quot;, которая отображает извещения со статусом &quot;Коммерческий отдел&quot; и &quot;Отгружается&quot;.
+        ///-Кнопка &quot;Открыть&quot; в полях-путя [остаток строки не уместился]&quot;;.
         /// </summary>
         internal static string Version_History {
             get {

@@ -831,6 +831,9 @@
     <None Include="ico\1437084170_emblem-people.png" />
     <None Include="ico\DeleteRed.png" />
     <None Include="ico\document-open-disabled.ico" />
+    <None Include="ico\delete_disable.png" />
+    <None Include="ico\delete_ok.png" />
+    <None Include="ico\delete_ok.ico" />
     <Content Include="ico\document-open.ico" />
     <Content Include="ico\Refresh.ico" />
     <None Include="Resources\Список изменений.txt" />

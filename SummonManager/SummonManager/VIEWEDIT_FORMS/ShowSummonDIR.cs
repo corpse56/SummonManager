@@ -60,28 +60,36 @@ namespace SummonManager
 
         private void DisableAll()
         {
-            pathFileds1.bPATH1.Enabled = false;
-            pathFileds1.bPATH2.Enabled = false;
-            pathFileds1.bPATH3.Enabled = false;
-            pathFileds1.bCOMPOSITION.Enabled = false;
-            pathFileds1.bMETAL.Enabled = false;
-            pathFileds1.bPATH4.Enabled = false;
-            pathFileds1.bPATH5.Enabled = false;
-            pathFileds1.chSHILD.Enabled = false;
-            pathFileds1.ch3D.Enabled = false;
-            pathFileds1.chPLANKA.Enabled = false;
-            pathFileds1.chMETAL.Enabled = false;
-            pathFileds1.chCOMPOSITION.Enabled = false;
-            pathFileds1.chSERIAL.Enabled = false;
+            //pathFileds1.bPATH1.Enabled = false;
+            //pathFileds1.bPATH2.Enabled = false;
+            //pathFileds1.bPATH3.Enabled = false;
+            //pathFileds1.bCOMPOSITION.Enabled = false;
+            //pathFileds1.bMETAL.Enabled = false;
+            //pathFileds1.bPATH4.Enabled = false;
+            //pathFileds1.bPATH5.Enabled = false;
+            //pathFileds1.chSHILD.Enabled = false;
+            //pathFileds1.ch3D.Enabled = false;
+            //pathFileds1.chPLANKA.Enabled = false;
+            //pathFileds1.chMETAL.Enabled = false;
+            //pathFileds1.chCOMPOSITION.Enabled = false;
+            //pathFileds1.chSERIAL.Enabled = false;
 
-            pathFileds1.bShildDel.Enabled = false;
-            pathFileds1.bPlankaDel.Enabled = false;
-            pathFileds1.b3DDel.Enabled = false;
-            pathFileds1.bZhgutDel.Enabled = false;
-            pathFileds1.bSerialDel.Enabled = false;
-            pathFileds1.bCompositionDel.Enabled = false;
-            pathFileds1.bMetalDel.Enabled = false;
+            //pathFileds1.bShildDel.Enabled = false;
+            //pathFileds1.bPlankaDel.Enabled = false;
+            //pathFileds1.b3DDel.Enabled = false;
+            //pathFileds1.bZhgutDel.Enabled = false;
+            //pathFileds1.bSerialDel.Enabled = false;
+            //pathFileds1.bCompositionDel.Enabled = false;
+            //pathFileds1.bMetalDel.Enabled = false;
 
+            pfSHILD.Enabled = false;
+            pfPLANKA.Enabled = false;
+            pf3D.Enabled = false;
+            pfZHGUT.Enabled = false;
+            pfMETAL.Enabled = false;
+            pfCOMPOSITION.Enabled = false;
+            pfMETAL.Enabled = false;
+            
             //cbWPNAME.ReadOnly = true;
             //cbWPNAME.DropDownStyle = ComboBoxStyle.DropDown;
             bPATH.Enabled = false;
@@ -173,28 +181,35 @@ namespace SummonManager
             bEditExtCablePack.Enabled = true;
             cbCustDept.ReadOnly = false;
             //button1.Enabled = false;
-            pathFileds1.bPATH1.Enabled = true;
-            pathFileds1.bPATH2.Enabled = true;
-            pathFileds1.bPATH3.Enabled = true;
-            pathFileds1.bCOMPOSITION.Enabled = true;
-            pathFileds1.bMETAL.Enabled = true;
-            pathFileds1.bPATH4.Enabled = true;
-            pathFileds1.bPATH5.Enabled = true;
+            //pathFileds1.bPATH1.Enabled = true;
+            //pathFileds1.bPATH2.Enabled = true;
+            //pathFileds1.bPATH3.Enabled = true;
+            //pathFileds1.bCOMPOSITION.Enabled = true;
+            //pathFileds1.bMETAL.Enabled = true;
+            //pathFileds1.bPATH4.Enabled = true;
+            //pathFileds1.bPATH5.Enabled = true;
 
-            pathFileds1.chSHILD.Enabled = true;
-            pathFileds1.ch3D.Enabled = true;
-            pathFileds1.chPLANKA.Enabled = true;
-            pathFileds1.chMETAL.Enabled = true;
-            pathFileds1.chCOMPOSITION.Enabled = true;
-            pathFileds1.chSERIAL.Enabled = true;
+            //pathFileds1.chSHILD.Enabled = true;
+            //pathFileds1.ch3D.Enabled = true;
+            //pathFileds1.chPLANKA.Enabled = true;
+            //pathFileds1.chMETAL.Enabled = true;
+            //pathFileds1.chCOMPOSITION.Enabled = true;
+            //pathFileds1.chSERIAL.Enabled = true;
 
-            pathFileds1.bShildDel.Enabled = true;
-            pathFileds1.bPlankaDel.Enabled = true;
-            pathFileds1.b3DDel.Enabled = true;
-            pathFileds1.bZhgutDel.Enabled = true;
-            pathFileds1.bSerialDel.Enabled = true;
-            pathFileds1.bCompositionDel.Enabled = true;
-            pathFileds1.bMetalDel.Enabled = true;
+            //pathFileds1.bShildDel.Enabled = true;
+            //pathFileds1.bPlankaDel.Enabled = true;
+            //pathFileds1.b3DDel.Enabled = true;
+            //pathFileds1.bZhgutDel.Enabled = true;
+            //pathFileds1.bSerialDel.Enabled = true;
+            //pathFileds1.bCompositionDel.Enabled = true;
+            //pathFileds1.bMetalDel.Enabled = true;
+            pfSHILD.Enabled = true;
+            pfPLANKA.Enabled = true;
+            pf3D.Enabled = true;
+            pfZHGUT.Enabled = true;
+            pfMETAL.Enabled = true;
+            pfCOMPOSITION.Enabled = true;
+            pfMETAL.Enabled = true;
 
 
         }
@@ -286,6 +301,16 @@ namespace SummonManager
             }
             summonTransfer2.InitSub(SVO, UVO, this);
 
+            pfSHILD.Init(SVO.SHILD, SVO.SHILDREQ, false, true);
+            pfPLANKA.Init(SVO.PLANKA, SVO.PLANKAREQ, false, true);
+            pf3D.Init(SVO.SBORKA3D, SVO.SBORKA3DREQ, false, true);
+            pfZHGUT.Init(SVO.ZHGUT, false, false, false);
+            pfSERIAL.Init(SVO.SERIAL, SVO.SERIALREQ, false, true);
+            pfCOMPOSITION.Init(SVO.COMPOSITION, SVO.COMPOSITIONREQ, false, true);
+            pfCOMPOSITION.ValueFromArchive = true;
+            pfMETAL.Init(SVO.METAL, SVO.METALREQ, false, true);
+            pfMETAL.IsPath = true;
+
 
         }
 
@@ -336,19 +361,33 @@ namespace SummonManager
             SVO.IDPACKING = (int)cbPacking.SelectedValue;
             //SVO.IDEXTCABLE = (int)cbExtCable.SelectedValue;
             SVO.IDMOUNTINGKIT = (int)cbMountingKit.SelectedValue;
-            SVO.SHILD = pathFileds1.bSHILDOpen.Tag.ToString();
-            SVO.PLANKA = pathFileds1.bPLANKAOpen.Tag.ToString();
-            SVO.SBORKA3D = pathFileds1.b3DOpen.Tag.ToString();
-            SVO.ZHGUT = pathFileds1.bZHGUTOpen.Tag.ToString();
-            SVO.SERIAL = pathFileds1.bSERIALOpen.Tag.ToString();
-            SVO.METAL = pathFileds1.bMETALOpen.Tag.ToString();
-            SVO.COMPOSITION = pathFileds1.bCOMPOSITIONOpen.Tag.ToString();
-            SVO.SHILDREQ = pathFileds1.chSHILD.Checked;
-            SVO.PLANKAREQ = pathFileds1.chPLANKA.Checked;
-            SVO.SBORKA3DREQ = pathFileds1.ch3D.Checked;
-            SVO.SERIALREQ = pathFileds1.chSERIAL.Checked;
-            SVO.COMPOSITIONREQ = pathFileds1.chCOMPOSITION.Checked;
-            SVO.METALREQ = pathFileds1.chMETAL.Checked;
+            
+            //SVO.SHILD = pathFileds1.bSHILDOpen.Tag.ToString();
+            //SVO.PLANKA = pathFileds1.bPLANKAOpen.Tag.ToString();
+            //SVO.SBORKA3D = pathFileds1.b3DOpen.Tag.ToString();
+            //SVO.ZHGUT = pathFileds1.bZHGUTOpen.Tag.ToString();
+            //SVO.SERIAL = pathFileds1.bSERIALOpen.Tag.ToString();
+            //SVO.METAL = pathFileds1.bMETALOpen.Tag.ToString();
+            //SVO.COMPOSITION = pathFileds1.bCOMPOSITIONOpen.Tag.ToString();
+            //SVO.SHILDREQ = pathFileds1.chSHILD.Checked;
+            //SVO.PLANKAREQ = pathFileds1.chPLANKA.Checked;
+            //SVO.SBORKA3DREQ = pathFileds1.ch3D.Checked;
+            //SVO.SERIALREQ = pathFileds1.chSERIAL.Checked;
+            //SVO.COMPOSITIONREQ = pathFileds1.chCOMPOSITION.Checked;
+            //SVO.METALREQ = pathFileds1.chMETAL.Checked;
+            SVO.SHILD = pfSHILD.FullPath;
+            SVO.PLANKA = pfPLANKA.FullPath;
+            SVO.SBORKA3D = pf3D.FullPath;
+            SVO.ZHGUT = pfZHGUT.FullPath;
+            SVO.SERIAL = pfSERIAL.FullPath;
+            SVO.METAL = pfMETAL.FullPath;
+            SVO.COMPOSITION = pfCOMPOSITION.FullPath;
+            SVO.SHILDREQ = pfSHILD.Required;
+            SVO.PLANKAREQ = pfPLANKA.Required;
+            SVO.SBORKA3DREQ = pf3D.Required;
+            SVO.SERIALREQ = pfSERIAL.Required;
+            SVO.COMPOSITIONREQ = pfCOMPOSITION.Required;
+            SVO.METALREQ = pfMETAL.Required;
 
             if (chbDeterm.Checked)
             {

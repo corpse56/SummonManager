@@ -44,16 +44,11 @@ namespace SummonManager
             tbPowerSupply.Text = wp.PowerSupply;
             tbConfiguration.Text = wp.Configuration;
             tbNote.Text = wp.Note;
-            
 
-            //pfComposition.tbPath.Text = wp.Composition.Substring(wp.Composition.LastIndexOf("\\") + 1);
-            //pfComposition.tbPath.Tag = wp.Composition;
-            //pfComposition.bOpen.Tag = wp.Composition;
-            pfComposition.Init(wp.Composition);
-            //pfDimDrawing.tbPath.Text = wp.DimenDrawing.Substring(wp.DimenDrawing.LastIndexOf("\\") + 1);
-            //pfDimDrawing.tbPath.Tag = wp.DimenDrawing;
-            //pfDimDrawing.bOpen.Tag = wp.DimenDrawing;
-            pfDimDrawing.Init(wp.DimenDrawing);
+
+            pfComposition.Init(wp.Composition, false, true, false);
+            pfDimDrawing.Init(wp.DimenDrawing, false, true, false);
+
 
         }
 
@@ -76,8 +71,8 @@ namespace SummonManager
             wp.IDCat = Convert.ToInt32(cbCategory.SelectedValue);
             wp.IDSubCat = Convert.ToInt32(cbSubCategory.SelectedValue);
             wp.DecNum = tbDecNum.Text;
-            wp.Composition = pfComposition.bOpen.Tag.ToString();
-            wp.DimenDrawing = pfDimDrawing.bOpen.Tag.ToString();
+            wp.Composition = pfComposition.FullPath;//.bOpen.Tag.ToString();
+            wp.DimenDrawing = pfDimDrawing.FullPath;//.bOpen.Tag.ToString();
             wp.PowerSupply = tbPowerSupply.Text;
             wp.Configuration = tbConfiguration.Text;
             wp.Note = tbNote.Text;
@@ -125,68 +120,11 @@ namespace SummonManager
             
         }
 
-        private void bComposition_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "All files (*.*)|*.*";
-            //dialog.InitialDirectory = @"\\10.177.150.135\server\поездки\карта";
-            dialog.InitialDirectory = @"c:\";
-            dialog.Title = "Выберите файл";
-            dialog.Multiselect = false;
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                //pfComposition.tbPath.Text = dialog.FileName.Substring(dialog.FileName.LastIndexOf(@"\") + 1); ;
-                pfComposition.bOpen.Tag = dialog.FileName;
-            }
-        }
-
-        private void bDimDrawing_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "All files (*.*)|*.*";
-            //dialog.InitialDirectory = @"\\10.177.150.135\server\поездки\карта";
-            dialog.InitialDirectory = @"c:\";
-            dialog.Title = "Выберите файл";
-            dialog.Multiselect = false;
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                //pfDimDrawing.tbPath.Text = dialog.FileName.Substring(dialog.FileName.LastIndexOf(@"\") + 1); ;
-                pfDimDrawing.bOpen.Tag = dialog.FileName;
-            }
-        }
-
-        //private void bCompositionDel_Click(object sender, EventArgs e)
-        //{
-        //    pfComposition.bOpen.Tag = "";
-        //    //pfComposition.tbPath.Text = "";
-
-        //}
-
-        //private void bDimDrawingDel_Click(object sender, EventArgs e)
-        //{
-        //    pfDimDrawing.bOpen.Tag = "";
-        //    //pfDimDrawing.tbPath.Text = "";
-            
-        //}
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void cbCategory_SelectedIndexChanged(object sender, EventArgs e)
         {
             LoadSubs((int)cbCategory.SelectedValue);
 
         }
-
-        private void pfDimDrawing_Load(object sender, EventArgs e)
-        {
-
-        }
-
-
-
 
     }
 }

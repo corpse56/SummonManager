@@ -30,10 +30,10 @@ namespace SummonManager
 
         private void DisableAll()
         {
-            pathFileds1.bCOMPOSITION.Enabled = false;
-            pathFileds1.chCOMPOSITION.Enabled = false;
-            pathFileds1.bCompositionDel.Enabled = false;
-
+            //pathFileds1.bCOMPOSITION.Enabled = false;
+            //pathFileds1.chCOMPOSITION.Enabled = false;
+            //pathFileds1.bCompositionDel.Enabled = false;
+            pfCOMPOSITION.Enabled = false;
             //summonTransfer1.Enabled = true;
             //cbWPNAME.ReadOnly = true;
             //cbWPNAME.DropDownStyle = ComboBoxStyle.DropDown;
@@ -75,9 +75,10 @@ namespace SummonManager
             else
                 dtpAPPROX.Enabled = true;
 
-            pathFileds1.bCOMPOSITION.Enabled = true;
-            pathFileds1.chCOMPOSITION.Enabled = true;
-            pathFileds1.bCompositionDel.Enabled = true;
+            //pathFileds1.bCOMPOSITION.Enabled = true;
+            //pathFileds1.chCOMPOSITION.Enabled = true;
+            //pathFileds1.bCompositionDel.Enabled = true;
+            pfCOMPOSITION.Enabled = true;
         }
 
         private void LoadSummon()
@@ -152,6 +153,16 @@ namespace SummonManager
             //summonTransfer1.Init(SVO, UVO, this);
 
             pathFileds1.Init(SVO, UVO);
+            pfSHILD.Init(SVO.SHILD, SVO.SHILDREQ, false, true);
+            pfPLANKA.Init(SVO.PLANKA, SVO.PLANKAREQ, false, true);
+            pf3D.Init(SVO.SBORKA3D, SVO.SBORKA3DREQ, false, true);
+            pfZHGUT.Init(SVO.ZHGUT, false, false, false);
+            pfSERIAL.Init(SVO.SERIAL, SVO.SERIALREQ, false, true);
+            pfCOMPOSITION.Init(SVO.COMPOSITION, SVO.COMPOSITIONREQ, false, true);
+            pfCOMPOSITION.ValueFromArchive = true;
+            pfMETAL.Init(SVO.METAL, SVO.METALREQ, false, true);
+            pfMETAL.IsPath = true;
+
         }
 
         private void cbCustomers_SelectedIndexChanged(object sender, EventArgs e)
@@ -214,19 +225,19 @@ namespace SummonManager
             SVO.IDPACKING = (int)cbPacking.SelectedValue;
             SVO.IDMOUNTINGKIT = (int)cbMountingKit.SelectedValue;
             SVO.VIEWED = true;
-            SVO.SHILD = pathFileds1.bSHILDOpen.Tag.ToString();
-            SVO.PLANKA = pathFileds1.bPLANKAOpen.Tag.ToString();
-            SVO.SBORKA3D = pathFileds1.b3DOpen.Tag.ToString();
-            SVO.ZHGUT = pathFileds1.bZHGUTOpen.Tag.ToString();
-            SVO.SERIAL = pathFileds1.bSERIALOpen.Tag.ToString();
-            SVO.METAL = pathFileds1.bMETALOpen.Tag.ToString();
-            SVO.COMPOSITION = pathFileds1.bCOMPOSITIONOpen.Tag.ToString();
-            SVO.SHILDREQ = pathFileds1.chSHILD.Checked;
-            SVO.PLANKAREQ = pathFileds1.chPLANKA.Checked;
-            SVO.SBORKA3DREQ = pathFileds1.ch3D.Checked;
-            SVO.SERIALREQ = pathFileds1.chSERIAL.Checked;
-            SVO.COMPOSITIONREQ = pathFileds1.chCOMPOSITION.Checked;
-            SVO.METALREQ = pathFileds1.chMETAL.Checked;
+            SVO.SHILD = pfSHILD.FullPath;
+            SVO.PLANKA = pfPLANKA.FullPath;
+            SVO.SBORKA3D = pf3D.FullPath;
+            SVO.ZHGUT = pfZHGUT.FullPath;
+            SVO.SERIAL = pfSERIAL.FullPath;
+            SVO.METAL = pfMETAL.FullPath;
+            SVO.COMPOSITION = pfCOMPOSITION.FullPath;
+            SVO.SHILDREQ = pfSHILD.Required;
+            SVO.PLANKAREQ = pfPLANKA.Required;
+            SVO.SBORKA3DREQ = pf3D.Required;
+            SVO.SERIALREQ = pfSERIAL.Required;
+            SVO.COMPOSITIONREQ = pfCOMPOSITION.Required;
+            SVO.METALREQ = pfMETAL.Required;
 
 
             if (chbDeterm.Checked)

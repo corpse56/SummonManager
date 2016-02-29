@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
 using SummonManager.Properties;
+using System.IO;
 
 namespace SummonManager.Controls
 {
@@ -16,82 +17,212 @@ namespace SummonManager.Controls
         public PathField()
         {
             InitializeComponent();
+            //this.PATH = "<нет>";
+            //tbPath.Text = "<нет>";
         }
         string PATH;
-        public void Init(string path)
+        public string FullPath
         {
-            this.PATH = path;
-            bOpen.Tag = path;
-            SetIcons();
-        }
-        private void bPath_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "All files (*.*)|*.*";
-            //dialog.InitialDirectory = @"\\10.177.150.135\server\поездки\карта";
-            dialog.InitialDirectory = @"c:\";
-            dialog.Title = "Выберите файл";
-            dialog.Multiselect = false;
-            if (dialog.ShowDialog() == DialogResult.OK)
+            get { return this.PATH; }
+            set 
             {
-                //tbPath.Text = dialog.FileName.Substring(dialog.FileName.LastIndexOf(@"\") + 1); ;
-                bOpen.Tag = dialog.FileName;
-                SetIcons();
+                if ((value == null) || (value.ToString() == ""))
+                {
+                    this.PATH = "<нет>";
+                    tbPath.Text = "<нет>";
+                }
+                else
+                {
+                    this.PATH = value;
+                    tbPath.Text = this.FileName;
+                }
             }
         }
-        private void SetIcons()
+        public string FileName
         {
-            if (bOpen.Tag.ToString() == "")
+            get 
             {
-                bOpen.Image = Resources.document_open_disabled;
-                bOpen.Text = "<нет>";
-                bOpen.Enabled = false;
+                if ((this.PATH == "<нет>") || (this.PATH == null))
+                {
+                    return "<нет>";
+                }
+                else
+                {
+                    return this.PATH.Substring(this.PATH.LastIndexOf("\\") + 1);
+                }
+            }
+        }
+        bool EnabledPF = true;
+        public new bool Enabled
+        {
+            get { return EnabledPF; }
+            set
+            {
+                if (value)
+                {
+                    this.EnabledPF = value;
+                    bPath.Enabled = true;
+                    bPathDel.Enabled = true;
+                    bPathDel.BackgroundImage = Resources.delete_ok;
+                    chRequired.Enabled = true;
+                }
+                else
+                {
+                    this.EnabledPF = value;
+                    bPath.Enabled = false;
+                    bPathDel.Enabled = false;
+                    bPathDel.BackgroundImage = Resources.delete_disable;
+                    chRequired.Enabled = false;
+                }
+            }
+        }
+        bool REQ;
+        public bool Required
+        {
+            get { return REQ; }
+            set
+            {
+                this.REQ = value;
+                chRequired.Checked = this.REQ;
+            }
+        }
+        public bool RequiredVisible
+        {
+            set
+            {
+                if (value)
+                {
+                    chRequired.Visible = true;
+                }
+                else
+                {
+                    chRequired.Visible = false;
+                }
+            }
+        }
+        public bool ValueFromArchive
+        {
+            set
+            {
+                if (value)
+                {
+                    chRequired.Visible = false;
+                    bPath.Visible = false;
+                    bPathDel.Visible = false;
+                }
+                else
+                {
+                    chRequired.Visible = false;
+                    bPath.Visible = false;
+                    bPathDel.Visible = false;
+                }
+            }
+        }
+        public void Init(string path,bool req, bool enbl, bool reqvis)
+        {
+            //this.PATH = path;
+            //tbPath.Tag = path;
+
+            this.FullPath = path;
+            this.Enabled = enbl;
+            this.Required = req;
+            this.RequiredVisible = reqvis;
+            //tbPath.Text = this.FileName;
+            //SetIcons();
+        }
+        public bool IsPath = false;
+        private void bPath_Click(object sender, EventArgs e)
+        {
+            if (IsPath)
+            {
+                FolderBrowserDialog dialog = new FolderBrowserDialog();
+                dialog.Description = "Выберите директорию с составом металла";
+                dialog.SelectedPath = @"X:\Fileserver\Конструкторский отдел\ЗАКАЗ МЕТАЛЛА";
+                //dialog.SelectedPath = @"G:\torrent\харламов\ХАРЛАМОВ Листья";
+                SendKeys.Send("{TAB}{TAB}{DOWN}{DOWN}{UP}{UP}");
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    DirectoryInfo di = new DirectoryInfo(dialog.SelectedPath);
+                    string str = di.Name;
+                    //tbMETAL.Text = di.Name; ;
+                    //tbMETAL.Text = dialog.SelectedPath.Substring(dialog.SelectedPath.LastIndexOf(@"\") + 1); ;
+                    //bMETALOpen.Tag = dialog.SelectedPath;
+                    //SetIcons();
+                    this.FullPath = dialog.SelectedPath;
+                }
             }
             else
             {
-                bOpen.Image = Resources.document_open;
-                bOpen.Text = "Открыть";
-                bOpen.Enabled = true;
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Filter = "All files (*.*)|*.*";
+                //dialog.InitialDirectory = @"\\10.177.150.135\server\поездки\карта";
+                dialog.InitialDirectory = @"c:\";
+                dialog.Title = "Выберите файл";
+                dialog.Multiselect = false;
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    this.FullPath = dialog.FileName;
+                    tbPath.Text = this.FileName;
+                    //SetIcons();
+                }
             }
         }
+        //private void SetIcons()
+        //{
+        //    if (tbPath.Tag.ToString() == "")
+        //    {
+        //        tbPath.Text = "<нет>";
+        //        this.FullPath = "<нет>";
+        //    }
+        //    else
+        //    {
+        //        //this.PATH = 
+        //        tbPath.Text = this.FileName;// 
+
+        //    }
+        //}
+        
+        private void bPathDel_Click(object sender, EventArgs e)
+        {
+            this.FullPath = "<нет>";
+            //tbPath.Tag = "";
+            //tbPath.Text = "";
+            //SetIcons();
+        }
+
+        private void textBox1_MouseLeave(object sender, EventArgs e)
+        {
+            tbPath.ForeColor = Color.Black;
+        }
+
         private void tbPath_Click(object sender, EventArgs e)
         {
-
+            if (this.FullPath != "<нет>")
+            {
+                Process.Start(@"explorer.exe", this.FullPath);
+            }
         }
 
         private void tbPath_MouseEnter(object sender, EventArgs e)
         {
-            //tbPath.ForeColor = Color.Blue;
+            tbPath.ForeColor = Color.Blue;
+            
         }
 
         private void tbPath_MouseLeave(object sender, EventArgs e)
         {
-           // tbPath.ForeColor = Color.Black;
+            tbPath.ForeColor = Color.Black;
         }
 
-        private void bPathDel_Click(object sender, EventArgs e)
+        private void chRequired_CheckedChanged(object sender, EventArgs e)
         {
-            bOpen.Tag = "";
-            //tbPath.Text = "";
-            SetIcons();
+            this.Required = chRequired.Checked;
         }
 
-        private void tbPath_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void bOpen_Click(object sender, EventArgs e)
-        {
-            if (bOpen.Tag != null)
-            {
-                if (bOpen.Tag.ToString() != "")
-                {
-                    Process.Start(@"explorer.exe", @bOpen.Tag.ToString());
-                }
-            }
-        }
-
+        //tbPath.Image = Resources.document_open_disabled;
+        //tbPath.Enabled = false;
+        //tbPath.Image = Resources.document_open;
+        //tbPath.Enabled = true;
    
 
 

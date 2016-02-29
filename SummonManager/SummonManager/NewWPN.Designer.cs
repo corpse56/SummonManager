@@ -210,6 +210,7 @@
             // pfDimDrawing
             // 
             this.pfDimDrawing.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pfDimDrawing.FullPath = null;
             this.pfDimDrawing.Location = new System.Drawing.Point(214, 151);
             this.pfDimDrawing.Margin = new System.Windows.Forms.Padding(4);
             this.pfDimDrawing.Name = "pfDimDrawing";
@@ -219,10 +220,11 @@
             // pfComposition
             // 
             this.pfComposition.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.pfComposition.Location = new System.Drawing.Point(213, 123);
+            this.pfComposition.FullPath = null;
+            this.pfComposition.Location = new System.Drawing.Point(217, 123);
             this.pfComposition.Margin = new System.Windows.Forms.Padding(4);
             this.pfComposition.Name = "pfComposition";
-            this.pfComposition.Size = new System.Drawing.Size(605, 32);
+            this.pfComposition.Size = new System.Drawing.Size(601, 32);
             this.pfComposition.TabIndex = 5;
             // 
             // NewWPN

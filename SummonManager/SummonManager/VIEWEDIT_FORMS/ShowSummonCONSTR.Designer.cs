@@ -38,7 +38,7 @@ namespace SummonManager
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.tbIDS = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -84,6 +84,20 @@ namespace SummonManager
             this.cbCustomers = new SummonManager.RComboBox();
             this.summonNotes1 = new SummonManager.SummonNotes();
             this.wpNameView1 = new SummonManager.Controls.WPNameView();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.tbSerial = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.pfMETAL = new SummonManager.Controls.PathField();
+            this.pfCOMPOSITION = new SummonManager.Controls.PathField();
+            this.pfSERIAL = new SummonManager.Controls.PathField();
+            this.pfZHGUT = new SummonManager.Controls.PathField();
+            this.pf3D = new SummonManager.Controls.PathField();
+            this.pfPLANKA = new SummonManager.Controls.PathField();
+            this.pfSHILD = new SummonManager.Controls.PathField();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbQUANTITY)).BeginInit();
             this.SuspendLayout();
@@ -365,14 +379,14 @@ namespace SummonManager
             this.dgv.AllowUserToDeleteRows = false;
             this.dgv.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgv.Location = new System.Drawing.Point(200, 135);
             this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";
@@ -424,11 +438,12 @@ namespace SummonManager
             // pathFileds1
             // 
             this.pathFileds1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.pathFileds1.Location = new System.Drawing.Point(7, 574);
+            this.pathFileds1.Location = new System.Drawing.Point(713, 136);
             this.pathFileds1.Margin = new System.Windows.Forms.Padding(4);
             this.pathFileds1.Name = "pathFileds1";
-            this.pathFileds1.Size = new System.Drawing.Size(608, 212);
+            this.pathFileds1.Size = new System.Drawing.Size(404, 212);
             this.pathFileds1.TabIndex = 67;
+            this.pathFileds1.Visible = false;
             // 
             // cbCustDept
             // 
@@ -519,11 +534,165 @@ namespace SummonManager
             this.wpNameView1.Size = new System.Drawing.Size(417, 28);
             this.wpNameView1.TabIndex = 68;
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(9, 762);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(134, 16);
+            this.label18.TabIndex = 98;
+            this.label18.Text = "Металл для заказа";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(9, 734);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(113, 16);
+            this.label19.TabIndex = 99;
+            this.label19.Text = "Состав изделия";
+            // 
+            // tbSerial
+            // 
+            this.tbSerial.AutoSize = true;
+            this.tbSerial.Location = new System.Drawing.Point(9, 706);
+            this.tbSerial.Name = "tbSerial";
+            this.tbSerial.Size = new System.Drawing.Size(126, 16);
+            this.tbSerial.TabIndex = 97;
+            this.tbSerial.Text = "Серийные номера";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(9, 678);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(51, 16);
+            this.label23.TabIndex = 95;
+            this.label23.Text = "Жгуты";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(9, 650);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(74, 16);
+            this.label24.TabIndex = 96;
+            this.label24.Text = "3D сборка";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(9, 619);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(135, 16);
+            this.label25.TabIndex = 100;
+            this.label25.Text = "Планка фирменная";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(9, 588);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(130, 16);
+            this.label26.TabIndex = 101;
+            this.label26.Text = "Комплект шильдов";
+            // 
+            // pfMETAL
+            // 
+            this.pfMETAL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pfMETAL.FullPath = "<нет>";
+            this.pfMETAL.Location = new System.Drawing.Point(196, 750);
+            this.pfMETAL.Margin = new System.Windows.Forms.Padding(4);
+            this.pfMETAL.Name = "pfMETAL";
+            this.pfMETAL.Required = false;
+            this.pfMETAL.Size = new System.Drawing.Size(414, 28);
+            this.pfMETAL.TabIndex = 91;
+            // 
+            // pfCOMPOSITION
+            // 
+            this.pfCOMPOSITION.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pfCOMPOSITION.FullPath = "<нет>";
+            this.pfCOMPOSITION.Location = new System.Drawing.Point(196, 722);
+            this.pfCOMPOSITION.Margin = new System.Windows.Forms.Padding(4);
+            this.pfCOMPOSITION.Name = "pfCOMPOSITION";
+            this.pfCOMPOSITION.Required = false;
+            this.pfCOMPOSITION.Size = new System.Drawing.Size(414, 28);
+            this.pfCOMPOSITION.TabIndex = 90;
+            // 
+            // pfSERIAL
+            // 
+            this.pfSERIAL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pfSERIAL.FullPath = "<нет>";
+            this.pfSERIAL.Location = new System.Drawing.Point(196, 694);
+            this.pfSERIAL.Margin = new System.Windows.Forms.Padding(4);
+            this.pfSERIAL.Name = "pfSERIAL";
+            this.pfSERIAL.Required = false;
+            this.pfSERIAL.Size = new System.Drawing.Size(414, 28);
+            this.pfSERIAL.TabIndex = 92;
+            // 
+            // pfZHGUT
+            // 
+            this.pfZHGUT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pfZHGUT.FullPath = "<нет>";
+            this.pfZHGUT.Location = new System.Drawing.Point(196, 666);
+            this.pfZHGUT.Margin = new System.Windows.Forms.Padding(4);
+            this.pfZHGUT.Name = "pfZHGUT";
+            this.pfZHGUT.Required = false;
+            this.pfZHGUT.Size = new System.Drawing.Size(414, 28);
+            this.pfZHGUT.TabIndex = 88;
+            // 
+            // pf3D
+            // 
+            this.pf3D.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pf3D.FullPath = "<нет>";
+            this.pf3D.Location = new System.Drawing.Point(197, 638);
+            this.pf3D.Margin = new System.Windows.Forms.Padding(4);
+            this.pf3D.Name = "pf3D";
+            this.pf3D.Required = false;
+            this.pf3D.Size = new System.Drawing.Size(414, 28);
+            this.pf3D.TabIndex = 89;
+            // 
+            // pfPLANKA
+            // 
+            this.pfPLANKA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pfPLANKA.FullPath = "<нет>";
+            this.pfPLANKA.Location = new System.Drawing.Point(196, 607);
+            this.pfPLANKA.Margin = new System.Windows.Forms.Padding(4);
+            this.pfPLANKA.Name = "pfPLANKA";
+            this.pfPLANKA.Required = false;
+            this.pfPLANKA.Size = new System.Drawing.Size(414, 28);
+            this.pfPLANKA.TabIndex = 94;
+            // 
+            // pfSHILD
+            // 
+            this.pfSHILD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pfSHILD.FullPath = "<нет>";
+            this.pfSHILD.Location = new System.Drawing.Point(196, 580);
+            this.pfSHILD.Margin = new System.Windows.Forms.Padding(4);
+            this.pfSHILD.Name = "pfSHILD";
+            this.pfSHILD.Required = false;
+            this.pfSHILD.Size = new System.Drawing.Size(414, 28);
+            this.pfSHILD.TabIndex = 93;
+            // 
             // ShowSummonCONSTR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1174, 878);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.tbSerial);
+            this.Controls.Add(this.label23);
+            this.Controls.Add(this.label24);
+            this.Controls.Add(this.label25);
+            this.Controls.Add(this.label26);
+            this.Controls.Add(this.pfMETAL);
+            this.Controls.Add(this.pfCOMPOSITION);
+            this.Controls.Add(this.pfSERIAL);
+            this.Controls.Add(this.pfZHGUT);
+            this.Controls.Add(this.pf3D);
+            this.Controls.Add(this.pfPLANKA);
+            this.Controls.Add(this.pfSHILD);
             this.Controls.Add(this.wpNameView1);
             this.Controls.Add(this.pathFileds1);
             this.Controls.Add(this.cbCustDept);
@@ -631,5 +800,19 @@ namespace SummonManager
         private SummonNotes summonNotes1;
         private PathFileds pathFileds1;
         private SummonManager.Controls.WPNameView wpNameView1;
+        private Label label18;
+        private Label label19;
+        private Label tbSerial;
+        private Label label23;
+        private Label label24;
+        private Label label25;
+        private Label label26;
+        private SummonManager.Controls.PathField pfMETAL;
+        private SummonManager.Controls.PathField pfCOMPOSITION;
+        private SummonManager.Controls.PathField pfSERIAL;
+        private SummonManager.Controls.PathField pfZHGUT;
+        private SummonManager.Controls.PathField pf3D;
+        private SummonManager.Controls.PathField pfPLANKA;
+        private SummonManager.Controls.PathField pfSHILD;
     }
 }

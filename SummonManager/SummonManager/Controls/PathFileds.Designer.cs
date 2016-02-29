@@ -261,7 +261,7 @@
             // 
             // bShildDel
             // 
-            this.bShildDel.BackgroundImage = global::SummonManager.Properties.Resources.DeleteRed;
+            this.bShildDel.BackgroundImage = global::SummonManager.Properties.Resources.delete_ok;
             this.bShildDel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bShildDel.Location = new System.Drawing.Point(351, 5);
             this.bShildDel.Name = "bShildDel";
@@ -272,7 +272,7 @@
             // 
             // bPlankaDel
             // 
-            this.bPlankaDel.BackgroundImage = global::SummonManager.Properties.Resources.DeleteRed;
+            this.bPlankaDel.BackgroundImage = global::SummonManager.Properties.Resources.delete_ok;
             this.bPlankaDel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bPlankaDel.Location = new System.Drawing.Point(350, 36);
             this.bPlankaDel.Name = "bPlankaDel";
@@ -283,7 +283,7 @@
             // 
             // b3DDel
             // 
-            this.b3DDel.BackgroundImage = global::SummonManager.Properties.Resources.DeleteRed;
+            this.b3DDel.BackgroundImage = global::SummonManager.Properties.Resources.delete_ok;
             this.b3DDel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.b3DDel.Location = new System.Drawing.Point(351, 67);
             this.b3DDel.Name = "b3DDel";
@@ -294,7 +294,7 @@
             // 
             // bZhgutDel
             // 
-            this.bZhgutDel.BackgroundImage = global::SummonManager.Properties.Resources.DeleteRed;
+            this.bZhgutDel.BackgroundImage = global::SummonManager.Properties.Resources.delete_ok;
             this.bZhgutDel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bZhgutDel.Location = new System.Drawing.Point(350, 95);
             this.bZhgutDel.Name = "bZhgutDel";
@@ -305,7 +305,7 @@
             // 
             // bSerialDel
             // 
-            this.bSerialDel.BackgroundImage = global::SummonManager.Properties.Resources.DeleteRed;
+            this.bSerialDel.BackgroundImage = global::SummonManager.Properties.Resources.delete_ok;
             this.bSerialDel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bSerialDel.Location = new System.Drawing.Point(351, 123);
             this.bSerialDel.Name = "bSerialDel";
@@ -316,7 +316,7 @@
             // 
             // bCompositionDel
             // 
-            this.bCompositionDel.BackgroundImage = global::SummonManager.Properties.Resources.DeleteRed;
+            this.bCompositionDel.BackgroundImage = global::SummonManager.Properties.Resources.delete_ok;
             this.bCompositionDel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bCompositionDel.Location = new System.Drawing.Point(350, 151);
             this.bCompositionDel.Name = "bCompositionDel";
@@ -328,7 +328,7 @@
             // 
             // bMetalDel
             // 
-            this.bMetalDel.BackgroundImage = global::SummonManager.Properties.Resources.DeleteRed;
+            this.bMetalDel.BackgroundImage = global::SummonManager.Properties.Resources.delete_ok;
             this.bMetalDel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.bMetalDel.Location = new System.Drawing.Point(350, 179);
             this.bMetalDel.Name = "bMetalDel";

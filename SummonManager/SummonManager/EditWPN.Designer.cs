@@ -124,7 +124,6 @@
             this.label4.Size = new System.Drawing.Size(113, 16);
             this.label4.TabIndex = 19;
             this.label4.Text = "Состав изделия";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label3
             // 
@@ -210,20 +209,21 @@
             // pfDimDrawing
             // 
             this.pfDimDrawing.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pfDimDrawing.FullPath = null;
             this.pfDimDrawing.Location = new System.Drawing.Point(225, 165);
             this.pfDimDrawing.Margin = new System.Windows.Forms.Padding(4);
             this.pfDimDrawing.Name = "pfDimDrawing";
-            this.pfDimDrawing.Size = new System.Drawing.Size(225, 32);
+            this.pfDimDrawing.Size = new System.Drawing.Size(596, 32);
             this.pfDimDrawing.TabIndex = 24;
-            this.pfDimDrawing.Load += new System.EventHandler(this.pfDimDrawing_Load);
             // 
             // pfComposition
             // 
             this.pfComposition.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pfComposition.FullPath = null;
             this.pfComposition.Location = new System.Drawing.Point(225, 129);
             this.pfComposition.Margin = new System.Windows.Forms.Padding(4);
             this.pfComposition.Name = "pfComposition";
-            this.pfComposition.Size = new System.Drawing.Size(225, 28);
+            this.pfComposition.Size = new System.Drawing.Size(596, 28);
             this.pfComposition.TabIndex = 23;
             // 
             // EditWPN

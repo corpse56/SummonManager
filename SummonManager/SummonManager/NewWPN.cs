@@ -15,8 +15,8 @@ namespace SummonManager
         public NewWPN()
         {
             InitializeComponent();
-            pfComposition.Init("");
-            pfDimDrawing.Init("");
+            pfComposition.Init("",false,true,false);
+            pfDimDrawing.Init("", false, true, false);
         }
         WPNameVO Clone;
         public NewWPN(WPNameVO clone)
@@ -40,8 +40,8 @@ namespace SummonManager
                 //pfDimDrawing.tbPath.Text = clone.DimenDrawing.Substring(clone.DimenDrawing.LastIndexOf("\\") + 1);
                // pfDimDrawing.tbPath.Tag = clone.DimenDrawing;
                // pfDimDrawing.bOpen.Tag = clone.DimenDrawing;
-                pfComposition.Init(clone.Composition);
-                pfDimDrawing.Init(clone.DimenDrawing);
+                pfComposition.Init(clone.Composition, false, true, false);
+                pfDimDrawing.Init(clone.DimenDrawing, false, true, false);
 
             }
 
@@ -64,8 +64,8 @@ namespace SummonManager
             wp.IDCat = Convert.ToInt32(cbCategory.SelectedValue);
             wp.IDSubCat = (cbSubCategory.SelectedValue == null)? 0:(int)cbSubCategory.SelectedValue;
             wp.DecNum = tbDecNum.Text;
-            wp.Composition = (pfComposition.bOpen.Tag == null) ? "" : pfComposition.bOpen.Tag.ToString();
-            wp.DimenDrawing = (pfDimDrawing.bOpen.Tag == null) ? "" : pfDimDrawing.bOpen.Tag.ToString();
+            wp.Composition = pfComposition.FullPath;//(pfComposition.bOpen.Tag == null) ? "" : pfComposition.bOpen.Tag.ToString();
+            wp.DimenDrawing = pfDimDrawing.FullPath;//(pfDimDrawing.bOpen.Tag == null) ? "" : pfDimDrawing.bOpen.Tag.ToString();
             wp.PowerSupply = tbPowerSupply.Text;
             wp.Configuration = tbConfiguration.Text;
             wp.Note = tbNote.Text;

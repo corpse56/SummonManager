@@ -74,6 +74,28 @@ namespace SummonManager
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.bEditExtCablePack = new System.Windows.Forms.Button();
+            this.tbSubStatus = new System.Windows.Forms.TextBox();
+            this.tbStatus = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.tbSerial = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.pfMETAL = new SummonManager.Controls.PathField();
+            this.pfCOMPOSITION = new SummonManager.Controls.PathField();
+            this.pfSERIAL = new SummonManager.Controls.PathField();
+            this.pfZHGUT = new SummonManager.Controls.PathField();
+            this.pf3D = new SummonManager.Controls.PathField();
+            this.pfPLANKA = new SummonManager.Controls.PathField();
+            this.pfSHILD = new SummonManager.Controls.PathField();
+            this.wpNameView1 = new SummonManager.Controls.WPNameView();
+            this.summonTransfer2 = new SummonManager.SummonTransfer();
+            this.pathFileds1 = new SummonManager.PathFileds();
+            this.summonTransfer1 = new SummonManager.SummonTransfer();
             this.cbMountingKit = new SummonManager.RComboBox();
             this.cbCustDept = new SummonManager.RComboBox();
             this.cbPacking = new SummonManager.RComboBox();
@@ -82,14 +104,6 @@ namespace SummonManager
             this.cbSISP = new SummonManager.RComboBox();
             this.cbCustomers = new SummonManager.RComboBox();
             this.summonNotes1 = new SummonManager.SummonNotes();
-            this.summonTransfer1 = new SummonManager.SummonTransfer();
-            this.pathFileds1 = new SummonManager.PathFileds();
-            this.tbSubStatus = new System.Windows.Forms.TextBox();
-            this.tbStatus = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.summonTransfer2 = new SummonManager.SummonTransfer();
-            this.wpNameView1 = new SummonManager.Controls.WPNameView();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbQUANTITY)).BeginInit();
             this.SuspendLayout();
@@ -427,6 +441,215 @@ namespace SummonManager
             this.bEditExtCablePack.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bEditExtCablePack.UseVisualStyleBackColor = true;
             // 
+            // tbSubStatus
+            // 
+            this.tbSubStatus.Location = new System.Drawing.Point(856, 647);
+            this.tbSubStatus.Name = "tbSubStatus";
+            this.tbSubStatus.Size = new System.Drawing.Size(284, 22);
+            this.tbSubStatus.TabIndex = 72;
+            // 
+            // tbStatus
+            // 
+            this.tbStatus.Location = new System.Drawing.Point(856, 612);
+            this.tbStatus.Name = "tbStatus";
+            this.tbStatus.Size = new System.Drawing.Size(284, 22);
+            this.tbStatus.TabIndex = 73;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(715, 650);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(135, 16);
+            this.label14.TabIndex = 70;
+            this.label14.Text = "Текущий субстатус";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(715, 618);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(112, 16);
+            this.label8.TabIndex = 71;
+            this.label8.Text = "Текущий статус";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(13, 768);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(134, 16);
+            this.label18.TabIndex = 112;
+            this.label18.Text = "Металл для заказа";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(13, 740);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(113, 16);
+            this.label19.TabIndex = 113;
+            this.label19.Text = "Состав изделия";
+            // 
+            // tbSerial
+            // 
+            this.tbSerial.AutoSize = true;
+            this.tbSerial.Location = new System.Drawing.Point(13, 712);
+            this.tbSerial.Name = "tbSerial";
+            this.tbSerial.Size = new System.Drawing.Size(126, 16);
+            this.tbSerial.TabIndex = 111;
+            this.tbSerial.Text = "Серийные номера";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(13, 684);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(51, 16);
+            this.label23.TabIndex = 109;
+            this.label23.Text = "Жгуты";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(13, 656);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(74, 16);
+            this.label24.TabIndex = 110;
+            this.label24.Text = "3D сборка";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(13, 625);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(135, 16);
+            this.label25.TabIndex = 114;
+            this.label25.Text = "Планка фирменная";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(13, 594);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(130, 16);
+            this.label26.TabIndex = 115;
+            this.label26.Text = "Комплект шильдов";
+            // 
+            // pfMETAL
+            // 
+            this.pfMETAL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pfMETAL.FullPath = "<нет>";
+            this.pfMETAL.Location = new System.Drawing.Point(200, 756);
+            this.pfMETAL.Margin = new System.Windows.Forms.Padding(4);
+            this.pfMETAL.Name = "pfMETAL";
+            this.pfMETAL.Required = false;
+            this.pfMETAL.Size = new System.Drawing.Size(414, 28);
+            this.pfMETAL.TabIndex = 105;
+            // 
+            // pfCOMPOSITION
+            // 
+            this.pfCOMPOSITION.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pfCOMPOSITION.FullPath = "<нет>";
+            this.pfCOMPOSITION.Location = new System.Drawing.Point(200, 728);
+            this.pfCOMPOSITION.Margin = new System.Windows.Forms.Padding(4);
+            this.pfCOMPOSITION.Name = "pfCOMPOSITION";
+            this.pfCOMPOSITION.Required = false;
+            this.pfCOMPOSITION.Size = new System.Drawing.Size(414, 28);
+            this.pfCOMPOSITION.TabIndex = 104;
+            // 
+            // pfSERIAL
+            // 
+            this.pfSERIAL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pfSERIAL.FullPath = "<нет>";
+            this.pfSERIAL.Location = new System.Drawing.Point(200, 700);
+            this.pfSERIAL.Margin = new System.Windows.Forms.Padding(4);
+            this.pfSERIAL.Name = "pfSERIAL";
+            this.pfSERIAL.Required = false;
+            this.pfSERIAL.Size = new System.Drawing.Size(414, 28);
+            this.pfSERIAL.TabIndex = 106;
+            // 
+            // pfZHGUT
+            // 
+            this.pfZHGUT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pfZHGUT.FullPath = "<нет>";
+            this.pfZHGUT.Location = new System.Drawing.Point(200, 672);
+            this.pfZHGUT.Margin = new System.Windows.Forms.Padding(4);
+            this.pfZHGUT.Name = "pfZHGUT";
+            this.pfZHGUT.Required = false;
+            this.pfZHGUT.Size = new System.Drawing.Size(414, 28);
+            this.pfZHGUT.TabIndex = 102;
+            // 
+            // pf3D
+            // 
+            this.pf3D.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pf3D.FullPath = "<нет>";
+            this.pf3D.Location = new System.Drawing.Point(201, 644);
+            this.pf3D.Margin = new System.Windows.Forms.Padding(4);
+            this.pf3D.Name = "pf3D";
+            this.pf3D.Required = false;
+            this.pf3D.Size = new System.Drawing.Size(414, 28);
+            this.pf3D.TabIndex = 103;
+            // 
+            // pfPLANKA
+            // 
+            this.pfPLANKA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pfPLANKA.FullPath = "<нет>";
+            this.pfPLANKA.Location = new System.Drawing.Point(200, 613);
+            this.pfPLANKA.Margin = new System.Windows.Forms.Padding(4);
+            this.pfPLANKA.Name = "pfPLANKA";
+            this.pfPLANKA.Required = false;
+            this.pfPLANKA.Size = new System.Drawing.Size(414, 28);
+            this.pfPLANKA.TabIndex = 108;
+            // 
+            // pfSHILD
+            // 
+            this.pfSHILD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pfSHILD.FullPath = "<нет>";
+            this.pfSHILD.Location = new System.Drawing.Point(200, 586);
+            this.pfSHILD.Margin = new System.Windows.Forms.Padding(4);
+            this.pfSHILD.Name = "pfSHILD";
+            this.pfSHILD.Required = false;
+            this.pfSHILD.Size = new System.Drawing.Size(414, 28);
+            this.pfSHILD.TabIndex = 107;
+            // 
+            // wpNameView1
+            // 
+            this.wpNameView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.wpNameView1.Location = new System.Drawing.Point(197, 76);
+            this.wpNameView1.Margin = new System.Windows.Forms.Padding(4);
+            this.wpNameView1.Name = "wpNameView1";
+            this.wpNameView1.Size = new System.Drawing.Size(493, 27);
+            this.wpNameView1.TabIndex = 75;
+            // 
+            // summonTransfer2
+            // 
+            this.summonTransfer2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.summonTransfer2.Location = new System.Drawing.Point(740, 795);
+            this.summonTransfer2.Margin = new System.Windows.Forms.Padding(4);
+            this.summonTransfer2.Name = "summonTransfer2";
+            this.summonTransfer2.Size = new System.Drawing.Size(477, 96);
+            this.summonTransfer2.TabIndex = 74;
+            // 
+            // pathFileds1
+            // 
+            this.pathFileds1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pathFileds1.Location = new System.Drawing.Point(718, 129);
+            this.pathFileds1.Margin = new System.Windows.Forms.Padding(4);
+            this.pathFileds1.Name = "pathFileds1";
+            this.pathFileds1.Size = new System.Drawing.Size(412, 219);
+            this.pathFileds1.TabIndex = 69;
+            this.pathFileds1.Visible = false;
+            // 
+            // summonTransfer1
+            // 
+            this.summonTransfer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.summonTransfer1.Location = new System.Drawing.Point(740, 702);
+            this.summonTransfer1.Margin = new System.Windows.Forms.Padding(4);
+            this.summonTransfer1.Name = "summonTransfer1";
+            this.summonTransfer1.Size = new System.Drawing.Size(477, 86);
+            this.summonTransfer1.TabIndex = 68;
+            // 
             // cbMountingKit
             // 
             this.cbMountingKit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -507,79 +730,25 @@ namespace SummonManager
             this.summonNotes1.Size = new System.Drawing.Size(509, 592);
             this.summonNotes1.TabIndex = 61;
             // 
-            // summonTransfer1
-            // 
-            this.summonTransfer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.summonTransfer1.Location = new System.Drawing.Point(740, 702);
-            this.summonTransfer1.Margin = new System.Windows.Forms.Padding(4);
-            this.summonTransfer1.Name = "summonTransfer1";
-            this.summonTransfer1.Size = new System.Drawing.Size(477, 86);
-            this.summonTransfer1.TabIndex = 68;
-            // 
-            // pathFileds1
-            // 
-            this.pathFileds1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.pathFileds1.Location = new System.Drawing.Point(13, 586);
-            this.pathFileds1.Margin = new System.Windows.Forms.Padding(4);
-            this.pathFileds1.Name = "pathFileds1";
-            this.pathFileds1.Size = new System.Drawing.Size(609, 219);
-            this.pathFileds1.TabIndex = 69;
-            // 
-            // tbSubStatus
-            // 
-            this.tbSubStatus.Location = new System.Drawing.Point(856, 647);
-            this.tbSubStatus.Name = "tbSubStatus";
-            this.tbSubStatus.Size = new System.Drawing.Size(284, 22);
-            this.tbSubStatus.TabIndex = 72;
-            // 
-            // tbStatus
-            // 
-            this.tbStatus.Location = new System.Drawing.Point(856, 612);
-            this.tbStatus.Name = "tbStatus";
-            this.tbStatus.Size = new System.Drawing.Size(284, 22);
-            this.tbStatus.TabIndex = 73;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(715, 650);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(135, 16);
-            this.label14.TabIndex = 70;
-            this.label14.Text = "Текущий субстатус";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(715, 618);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(112, 16);
-            this.label8.TabIndex = 71;
-            this.label8.Text = "Текущий статус";
-            // 
-            // summonTransfer2
-            // 
-            this.summonTransfer2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.summonTransfer2.Location = new System.Drawing.Point(740, 795);
-            this.summonTransfer2.Margin = new System.Windows.Forms.Padding(4);
-            this.summonTransfer2.Name = "summonTransfer2";
-            this.summonTransfer2.Size = new System.Drawing.Size(477, 96);
-            this.summonTransfer2.TabIndex = 74;
-            // 
-            // wpNameView1
-            // 
-            this.wpNameView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.wpNameView1.Location = new System.Drawing.Point(197, 76);
-            this.wpNameView1.Margin = new System.Windows.Forms.Padding(4);
-            this.wpNameView1.Name = "wpNameView1";
-            this.wpNameView1.Size = new System.Drawing.Size(493, 27);
-            this.wpNameView1.TabIndex = 75;
-            // 
             // ShowSummonOTK
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1230, 895);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.label19);
+            this.Controls.Add(this.tbSerial);
+            this.Controls.Add(this.label23);
+            this.Controls.Add(this.label24);
+            this.Controls.Add(this.label25);
+            this.Controls.Add(this.label26);
+            this.Controls.Add(this.pfMETAL);
+            this.Controls.Add(this.pfCOMPOSITION);
+            this.Controls.Add(this.pfSERIAL);
+            this.Controls.Add(this.pfZHGUT);
+            this.Controls.Add(this.pf3D);
+            this.Controls.Add(this.pfPLANKA);
+            this.Controls.Add(this.pfSHILD);
             this.Controls.Add(this.wpNameView1);
             this.Controls.Add(this.summonTransfer2);
             this.Controls.Add(this.tbSubStatus);
@@ -699,5 +868,19 @@ namespace SummonManager
         private Label label8;
         private SummonTransfer summonTransfer2;
         private SummonManager.Controls.WPNameView wpNameView1;
+        private Label label18;
+        private Label label19;
+        private Label tbSerial;
+        private Label label23;
+        private Label label24;
+        private Label label25;
+        private Label label26;
+        private SummonManager.Controls.PathField pfMETAL;
+        private SummonManager.Controls.PathField pfCOMPOSITION;
+        private SummonManager.Controls.PathField pfSERIAL;
+        private SummonManager.Controls.PathField pfZHGUT;
+        private SummonManager.Controls.PathField pf3D;
+        private SummonManager.Controls.PathField pfPLANKA;
+        private SummonManager.Controls.PathField pfSHILD;
     }
 }
