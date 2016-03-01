@@ -41,7 +41,7 @@ namespace SummonManager.CLASSES
         public StatusStripIndicator(StatusStrip ss, Roles role, ToolStripStatusLabel tslVersion)
         {
             SS = ss;
-            tslVersionLabel = (ToolStripStatusLabel)SS.Items["tslVersionLabel"];
+            tslVersionLabel = tslVersion;// (ToolStripStatusLabel)SS.Items["tslVersionLabel"];
             ClearStatusStrip();
             ROLE = role;
             switch (role)

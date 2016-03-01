@@ -76,7 +76,7 @@ namespace SummonManager
             }
             DBSummon dbs = new DBSummon();
             SummonVO svo = dbs.GetSummonByIDS(dgSummon.SelectedRows[0].Cells["ids"].Value.ToString());
-            PreviousState ps = new PreviousState(dgSummon);
+            PreviousState ps = new PreviousState(dgSummon,"");
             switch (mf.UVO.Role)
             {
                 case Roles.Manager:

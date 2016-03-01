@@ -21,13 +21,13 @@ namespace SummonManager
         //public static string EConnectionString = "metadata=res://*/SM.csdl|res://*/SM.ssdl|res://*/SM.msl;provider=System.Data.SqlClient;provider connection string=\"Data Source=CORPS-ПК\\SQLEXPRESS;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True\"";
         //public static string ConnectionString = "Data Source=CORPS-ПК\\SQLEXPRESS;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
         //public static string ConnectionString = "Data Source=127.0.0.1;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
-        //public static string ConnectionString = "Data Source=127.0.0.1\\SQL2008R2;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
-        public static string ConnectionString = "Data Source=10.177.100.7,2301;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
+        public static string ConnectionString = "Data Source=127.0.0.1\\SQL2008R2;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
+        //public static string ConnectionString = "Data Source=10.177.100.7,2301;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
         public UserVO UVO;
         public int PrivateNoteColor;
         public int RefreshTime;
-        public static string ProgramVersion = "1.84";
-
+        public static string ProgramVersion = "1.85";
+        public static int VersionNumber = 185;
         public MainF()
         {
             InitializeComponent();
@@ -147,9 +147,15 @@ namespace SummonManager
             упаковкаToolStripMenuItem.Enabled = true;
             внешниеКабелиToolStripMenuItem.Enabled = true;
         }
-
+        PreviousState ps = null;
+        bool InitialReload = true;
         private void ReloadData()
         {
+            if (!InitialReload)
+            {
+                ps = new PreviousState(dgSummon,TStbs.Text);
+            }
+
             DBMain dbMain = new DBMain();
             dgSummon.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             dgSummon.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
@@ -258,6 +264,11 @@ namespace SummonManager
                     break;
             }
 /////////////////////////////////////////////// это нужно рефакторить
+            if (!InitialReload)
+            {
+                ps.Restore();
+            }
+            InitialReload = false;
         }
 
 
@@ -361,7 +372,7 @@ namespace SummonManager
             }
             DBSummon dbs = new DBSummon();
             SummonVO svo = dbs.GetSummonByIDS(dgSummon.SelectedRows[0].Cells["ids"].Value.ToString());
-            PreviousState ps = new PreviousState(dgSummon);
+            PreviousState ps = new PreviousState(dgSummon,TStbs.Text);
             switch (UVO.Role)
             {
                 case Roles.Manager:
@@ -859,17 +870,10 @@ namespace SummonManager
         bool lastSortAscending = false;
         private void InitialSort()
         {
-            //lastSortAscending = !lastSortAscending;
-            if (true)
-            {
-                dgSummon.Sort(dgSummon.Columns["ids_srt"], ListSortDirection.Ascending);
-                
-            }
-            else
-            {
-                //dgSummon.Sort(dgSummon.Columns["ids_srt"], ListSortDirection.Descending);
-            }
-            PaintDG();
+            dgSummon.Sort(dgSummon.Columns["ids_srt"], ListSortDirection.Ascending);
+            dgSummon.Columns["ids"].HeaderCell.SortGlyphDirection = System.Windows.Forms.SortOrder.Ascending;
+            lastSortAscending = true;
+            //PaintDG();
         }
         private void dgSummon_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -879,15 +883,20 @@ namespace SummonManager
                 if (lastSortAscending)
                 {
                     dgSummon.Sort(dgSummon.Columns["ids_srt"], ListSortDirection.Ascending);
-                    
+                    dgSummon.Columns["ids"].HeaderCell.SortGlyphDirection = System.Windows.Forms.SortOrder.Ascending;
                 }
                 else
                 {
                     dgSummon.Sort(dgSummon.Columns["ids_srt"], ListSortDirection.Descending);
-                    
+                    dgSummon.Columns["ids"].HeaderCell.SortGlyphDirection = System.Windows.Forms.SortOrder.Descending;
                 }
             }
+            else
+            {
+                
+            }
             PaintDG();
+            TStbs_TextChanged(sender, e);
         }
 
         private void dgSummon_SortCompare(object sender, DataGridViewSortCompareEventArgs e)
@@ -945,7 +954,21 @@ namespace SummonManager
             message += ".";
             notifyIcon1.Visible = true;
             notifyIcon1.ShowBalloonTip(25000, "Внимание!", message, ToolTipIcon.Warning);
+
+            notifyIcon1.Tag = ln[0].IDSUMMON.ToString();
             
+        }
+
+        void notifyIcon1_BalloonTipClicked(object sender, EventArgs e)
+        {
+            foreach (DataGridViewRow r in dgSummon.Rows)
+            {
+                if (r.Cells[0].Value.ToString() == notifyIcon1.Tag.ToString())
+                {
+                    r.Selected = true;
+                }
+            }
+            viewedittoolStripButton_Click(sender, e);
         }
         private void NotifyMeBUH()
         {
@@ -964,6 +987,8 @@ namespace SummonManager
             message += ".";
             notifyIcon1.Visible = true;
             notifyIcon1.ShowBalloonTip(25000, "Внимание!", message, ToolTipIcon.Warning);
+
+            notifyIcon1.Tag = ln[0].IDSUMMON.ToString();
         }
         private void NotifyMePDB()
         {
@@ -982,6 +1007,8 @@ namespace SummonManager
             message += ".";
             notifyIcon1.Visible = true;
             notifyIcon1.ShowBalloonTip(25000, "Внимание!", message, ToolTipIcon.Warning);
+
+            notifyIcon1.Tag = ln[0].IDSUMMON.ToString();
         }
         private void NotifyMeOTK()
         {
@@ -1001,6 +1028,7 @@ namespace SummonManager
             message += ".";
             notifyIcon1.Visible = true;
             notifyIcon1.ShowBalloonTip(25000, "Внимание!", message, ToolTipIcon.Warning);
+            notifyIcon1.Tag = ln[0].IDSUMMON.ToString();
         }
         private void NotifyMeCONSTR()
         {
@@ -1019,10 +1047,21 @@ namespace SummonManager
             message += ".";
             notifyIcon1.Visible = true;
             notifyIcon1.ShowBalloonTip(25000, "Внимание!", message, ToolTipIcon.Warning);
+            notifyIcon1.Tag = ln[0].IDSUMMON.ToString();
         }
         private void timer2_Tick(object sender, EventArgs e)
         {
-            
+            DBVersion dbv = new DBVersion();
+            int LastVersion = dbv.GetVersionNumber();
+            if (LastVersion > VersionNumber)
+            {
+                //MessageBox.Show("Появилась новая версия программы!");
+                this.Text = "Менеджер извещений ("+UVO.Role.ToString()+" - "+UVO.Fio+") (эта версия программы устарела)";
+            }
+            if (LastVersion < VersionNumber)
+            {
+                dbv.UpdateVersion(LastVersion);
+            }
         }
 
 

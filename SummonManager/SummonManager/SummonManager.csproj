@@ -115,6 +115,7 @@
     </Compile>
     <Compile Include="CLASSES\DBCategory.cs" />
     <Compile Include="CLASSES\DBCOMPARC.cs" />
+    <Compile Include="CLASSES\DBVersion.cs" />
     <Compile Include="CLASSES\StatusStripIndicator.cs" />
     <Compile Include="CLASSES\WPNameVO.cs" />
     <Compile Include="CLASSES\DBSubCategory.cs" />

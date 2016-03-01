@@ -30,5 +30,15 @@ namespace SummonManager
             DA.InsertCommand.Connection.Close();
 
         }
+
+        internal void UpdateNote(string idnote, string note)
+        {
+            DA.UpdateCommand.Parameters.AddWithValue("note", note);
+            DA.UpdateCommand.Parameters.AddWithValue("idnote", idnote);
+            DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..NOTES set NOTE = @note where ID = @idnote";
+            DA.UpdateCommand.Connection.Open();
+            DA.UpdateCommand.ExecuteNonQuery();
+            DA.UpdateCommand.Connection.Close();
+        }
     }
 }

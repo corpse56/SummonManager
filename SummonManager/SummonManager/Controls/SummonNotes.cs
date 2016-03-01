@@ -19,6 +19,10 @@ namespace SummonManager
             this.ID = ID_;
             this.UVO = UVO_;
             this.SVO = SVO_;
+            if (UVO.Role != Roles.Admin)
+            {
+                button3.Visible = false;
+            }
         }
         public SummonNotes()
         {
@@ -65,6 +69,19 @@ namespace SummonManager
             this.Reload();
             DBSummon dbs = new DBSummon();
             dbs.AddSummonView(SVO, UVO);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (dgNote.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Выберите строку!");
+                return;
+            }
+
+            fEditNote fen = new fEditNote(dgNote.SelectedRows[0].Cells["ID"].Value.ToString(),dgNote.SelectedRows[0].Cells["NOTE"].Value.ToString());
+            fen.ShowDialog();
+            Reload();
         }
 
 

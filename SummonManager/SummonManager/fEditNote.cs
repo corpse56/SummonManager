@@ -11,18 +11,20 @@ namespace SummonManager
 {
     public partial class fEditNote : Form
     {
-        string ids;
+        string idnote;
         DBSummon dbs;
         SummonVO SVO;
         public string notetext = "";
         public bool result = false;
-        public fEditNote(string ids_)
+        public fEditNote(string idnote_,string notetext_)
         {
             InitializeComponent();
-            this.ids = ids_;
-            dbs = new DBSummon();
-            SVO = dbs.GetSummonByIDS(ids);
-            textBox1.Text = SVO.NOTE;
+            this.idnote = idnote_;
+            this.notetext = notetext_;
+            textBox1.Text = notetext_;
+            //dbs = new DBSummon();
+            //SVO = dbs.GetSummonByIDS(ids);
+            //textBox1.Text = SVO.NOTE;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -32,10 +34,19 @@ namespace SummonManager
 
         private void button2_Click(object sender, EventArgs e)
         {
-            result = true;
-            SVO.NOTE = textBox1.Text;
+            
+            /*SVO.NOTE = textBox1.Text;
             dbs.SaveSummon(SVO);
-            notetext = textBox1.Text;
+            notetext = textBox1.Text;*/
+
+            if (textBox1.Text == "")
+            {
+                MessageBox.Show("Введите текст!");
+                return;
+            }
+            DBSummonNotes dbsn = new DBSummonNotes();
+            dbsn.UpdateNote(idnote, textBox1.Text);
+            result = true;
             MessageBox.Show("Сохранено успешно!");
             Close();
         }

@@ -79,9 +79,6 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.menuStrip1.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgSummon)).BeginInit();
             this.ContMenu.SuspendLayout();
             this.SuspendLayout();
@@ -298,22 +295,9 @@
             this.toolStrip1.BackColor = System.Drawing.SystemColors.ControlLight;
             this.toolStrip1.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.toolStrip1.ImageScalingSize = new System.Drawing.Size(32, 32);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
-            this.viewedittoolStripButton,
-            this.FinishedtoolStripButton,
-            this.HistorytoolStripButton,
-            this.PrinttoolStripButton,
-            this.toolStripButton2,
-            this.toolStripButton3,
-            this.MySummonsTSB,
-            this.toolStripSeparator2,
-            this.toolStripLabel1,
-            this.TStbs,
-            this.toolStripSeparator3});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1264, 39);
+            this.toolStrip1.Size = new System.Drawing.Size(1264, 25);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
@@ -422,7 +406,7 @@
             // 
             this.TStbs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TStbs.Name = "TStbs";
-            this.TStbs.Size = new System.Drawing.Size(150, 39);
+            this.TStbs.Size = new System.Drawing.Size(150, 23);
             this.TStbs.TextChanged += new System.EventHandler(this.TStbs_TextChanged);
             // 
             // toolStripSeparator3
@@ -432,8 +416,6 @@
             // 
             // statusStrip1
             // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tslVersionLabel});
             this.statusStrip1.Location = new System.Drawing.Point(0, 613);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1264, 22);
@@ -455,13 +437,13 @@
             this.dgSummon.AllowUserToDeleteRows = false;
             this.dgSummon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgSummon.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgSummon.Location = new System.Drawing.Point(0, 63);
+            this.dgSummon.Location = new System.Drawing.Point(0, 49);
             this.dgSummon.MultiSelect = false;
             this.dgSummon.Name = "dgSummon";
             this.dgSummon.ReadOnly = true;
             this.dgSummon.RowHeadersVisible = false;
             this.dgSummon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgSummon.Size = new System.Drawing.Size(1264, 550);
+            this.dgSummon.Size = new System.Drawing.Size(1264, 564);
             this.dgSummon.TabIndex = 3;
             this.dgSummon.SortCompare += new System.Windows.Forms.DataGridViewSortCompareEventHandler(this.dgSummon_SortCompare);
             this.dgSummon.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgSummon_ColumnHeaderMouseClick);
@@ -512,6 +494,7 @@
             this.notifyIcon1.BalloonTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
             this.notifyIcon1.Text = "Менеджер извещений";
+            this.notifyIcon1.BalloonTipClicked += new System.EventHandler(this.notifyIcon1_BalloonTipClicked);
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
             // 
             // timer1
@@ -522,7 +505,8 @@
             // 
             // timer2
             // 
-            this.timer2.Interval = 5000;
+            this.timer2.Enabled = true;
+            this.timer2.Interval = 3600000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // MainF
@@ -544,12 +528,6 @@
             this.Load += new System.EventHandler(this.Main_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.Resize += new System.EventHandler(this.Main_Resize);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgSummon)).EndInit();
             this.ContMenu.ResumeLayout(false);
             this.ResumeLayout(false);
