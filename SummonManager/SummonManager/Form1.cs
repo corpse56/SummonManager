@@ -21,8 +21,8 @@ namespace SummonManager
         //public static string EConnectionString = "metadata=res://*/SM.csdl|res://*/SM.ssdl|res://*/SM.msl;provider=System.Data.SqlClient;provider connection string=\"Data Source=CORPS-ПК\\SQLEXPRESS;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True\"";
         //public static string ConnectionString = "Data Source=CORPS-ПК\\SQLEXPRESS;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
         //public static string ConnectionString = "Data Source=127.0.0.1;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
-        public static string ConnectionString = "Data Source=127.0.0.1\\SQL2008R2;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
-        //public static string ConnectionString = "Data Source=10.177.100.7,2301;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
+        //public static string ConnectionString = "Data Source=127.0.0.1\\SQL2008R2;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
+        public static string ConnectionString = "Data Source=10.177.100.7,2301;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
         public UserVO UVO;
         public int PrivateNoteColor;
         public int RefreshTime;
@@ -538,7 +538,7 @@ namespace SummonManager
                 AllocateRoles();
                 this.Text = "Менеджер извещений ("+this.UVO.Fio+" - "+this.UVO.ToString()+")";
                 this.BringToFront();
-                
+                CheckVersion();
             }
             
 
@@ -1049,19 +1049,23 @@ namespace SummonManager
             notifyIcon1.ShowBalloonTip(25000, "Внимание!", message, ToolTipIcon.Warning);
             notifyIcon1.Tag = ln[0].IDSUMMON.ToString();
         }
-        private void timer2_Tick(object sender, EventArgs e)
+        private void CheckVersion()
         {
             DBVersion dbv = new DBVersion();
             int LastVersion = dbv.GetVersionNumber();
             if (LastVersion > VersionNumber)
             {
                 //MessageBox.Show("Появилась новая версия программы!");
-                this.Text = "Менеджер извещений ("+UVO.Role.ToString()+" - "+UVO.Fio+") (эта версия программы устарела)";
+                this.Text = "Менеджер извещений (" + UVO.Role.ToString() + " - " + UVO.Fio + ") (эта версия программы устарела)";
             }
             if (LastVersion < VersionNumber)
             {
                 dbv.UpdateVersion(LastVersion);
             }
+        }
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            CheckVersion();
         }
 
 
@@ -1119,10 +1123,10 @@ namespace SummonManager
 
         private void dgSummon_SelectionChanged(object sender, EventArgs e)
         {
-            if ((UVO.Role != Roles.Ozis) && (UVO.Role != Roles.Buhgalter) && (UVO.Role != Roles.Manager))
+            /*if ((UVO.Role != Roles.Ozis) && (UVO.Role != Roles.Buhgalter) && (UVO.Role != Roles.Manager))
             {
                 return;
-            }
+            }*/
             if (SSI == null) return;
             if (dgSummon.SelectedRows.Count == 0)
             {

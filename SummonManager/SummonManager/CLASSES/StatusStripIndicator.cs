@@ -41,30 +41,30 @@ namespace SummonManager.CLASSES
         public StatusStripIndicator(StatusStrip ss, Roles role, ToolStripStatusLabel tslVersion)
         {
             SS = ss;
-            tslVersionLabel = tslVersion;// (ToolStripStatusLabel)SS.Items["tslVersionLabel"];
+            tslVersionLabel = (ToolStripStatusLabel)SS.Items["tslVersionLabel"];
             ClearStatusStrip();
             ROLE = role;
+                //case Roles.Buhgalter: case Roles.Manager:
+            tslBillPayedColor = new ToolStripStatusLabel();
+            tslBillPayedColor.Text = "   ";
+            SS.Items.Insert(SS.Items.IndexOf(tslVersionLabel), tslBillPayedColor);
+            tslBillPayedText = new ToolStripStatusLabel();
+            tslBillPayedText.Text = "Счёт оплачен 100%;";
+            SS.Items.Add(tslBillPayedText);
+            SS.Items.Insert(SS.Items.IndexOf(tslVersionLabel), tslBillPayedText);
+
+            tslDocsReadyColor = new ToolStripStatusLabel();
+            tslDocsReadyColor.Text = "   ";
+            SS.Items.Insert(SS.Items.IndexOf(tslVersionLabel), tslDocsReadyColor);
+            tslWideSpace = new ToolStripStatusLabel();
+            tslWideSpace.Text = "    ";
+            SS.Items.Insert(SS.Items.IndexOf(tslVersionLabel), tslWideSpace);
+            tslDocsReadyText = new ToolStripStatusLabel();
+            tslDocsReadyText.Text = "Документы готовы;";
+            SS.Items.Insert(SS.Items.IndexOf(tslVersionLabel), tslDocsReadyText);
+                    //break;
             switch (role)
             {
-                case Roles.Buhgalter: case Roles.Manager:
-                    tslBillPayedColor = new ToolStripStatusLabel();
-                    tslBillPayedColor.Text = "   ";
-                    SS.Items.Insert(SS.Items.IndexOf(tslVersionLabel), tslBillPayedColor);
-                    tslBillPayedText = new ToolStripStatusLabel();
-                    tslBillPayedText.Text = "Счёт оплачен;";
-                    SS.Items.Add(tslBillPayedText);
-                    SS.Items.Insert(SS.Items.IndexOf(tslVersionLabel), tslBillPayedText);
-
-                    tslDocsReadyColor = new ToolStripStatusLabel();
-                    tslDocsReadyColor.Text = "   ";
-                    SS.Items.Insert(SS.Items.IndexOf(tslVersionLabel), tslDocsReadyColor);
-                    tslWideSpace = new ToolStripStatusLabel();
-                    tslWideSpace.Text = "    ";
-                    SS.Items.Insert(SS.Items.IndexOf(tslVersionLabel), tslWideSpace);
-                    tslDocsReadyText = new ToolStripStatusLabel();
-                    tslDocsReadyText.Text = "Документы готовы;";
-                    SS.Items.Insert(SS.Items.IndexOf(tslVersionLabel), tslDocsReadyText);
-                    break;
                 case Roles.Ozis:
                     tslWideSpace = new ToolStripStatusLabel();
                     tslWideSpace.Text = "    ";
@@ -242,11 +242,12 @@ namespace SummonManager.CLASSES
             {
                 if (value)
                 {
+                    BuhManVisible();
                     switch (ROLE)
                     {
-                        case Roles.Manager: case Roles.Buhgalter:
-                            BuhManVisible();
-                            break;
+                        //case Roles.Manager: case Roles.Buhgalter:
+                        //    BuhManVisible();
+                        //    break;
                         case Roles.Ozis:
                             PDBVisible();
                             break;
@@ -254,11 +255,12 @@ namespace SummonManager.CLASSES
                 }
                 else
                 {
+                    BuhManNotVisible();
                     switch (ROLE)
                     {
-                        case Roles.Manager: case Roles.Buhgalter:
-                            BuhManNotVisible();
-                            break;
+                        //case Roles.Manager: case Roles.Buhgalter:
+                        //    BuhManNotVisible();
+                        //    break;
                         case Roles.Ozis:
                             PDBNOTVisible();
                             break;
@@ -268,14 +270,16 @@ namespace SummonManager.CLASSES
         }
         public void Paint(string IDSUMMON)
         {
-            
+            SummonVO SVO = SummonVO.SummonVOByID(IDSUMMON);
+            tslBillPayedColor.BackColor = (SVO.BILLPAYED) ? Color.Green : Color.Red;
+            tslDocsReadyColor.BackColor = (SVO.DOCSREADY) ? Color.Green : Color.Red;
             switch (ROLE)
             {
-                case Roles.Manager: case Roles.Buhgalter:
-                    SummonVO SVO = SummonVO.SummonVOByID(IDSUMMON);
-                    tslBillPayedColor.BackColor = (SVO.BILLPAYED) ? Color.Green : Color.Red;
-                    tslDocsReadyColor.BackColor = (SVO.DOCSREADY) ? Color.Green : Color.Red;
-                    break;
+                //case Roles.Manager: case Roles.Buhgalter:
+                    //SummonVO SVO = SummonVO.SummonVOByID(IDSUMMON);
+                    //tslBillPayedColor.BackColor = (SVO.BILLPAYED) ? Color.Green : Color.Red;
+                    //tslDocsReadyColor.BackColor = (SVO.DOCSREADY) ? Color.Green : Color.Red;
+                    //break;
                 case Roles.Ozis:
                     DBPURCHASEDMATERIALS dbpm_s = new DBPURCHASEDMATERIALS();
                     PurchMaterials pm_s;

@@ -118,6 +118,7 @@ namespace SummonManager.Controls
                 }
             }
         }
+        ToolTip tt;
         public void Init(string path,bool req, bool enbl, bool reqvis)
         {
             //this.PATH = path;
@@ -127,6 +128,9 @@ namespace SummonManager.Controls
             this.Enabled = enbl;
             this.Required = req;
             this.RequiredVisible = reqvis;
+            tt = new ToolTip();
+            tt.SetToolTip(this.tbPath, this.FullPath);
+            //this.tbPath.
             //tbPath.Text = this.FileName;
             //SetIcons();
         }
@@ -199,7 +203,8 @@ namespace SummonManager.Controls
         {
             if (this.FullPath != "<нет>")
             {
-                Process.Start(@"explorer.exe", this.FullPath);
+                //Process.Start(@"explorer.exe", this.FullPath);
+                Process.Start(@"explorer.exe", @"/select, " + this.FullPath);
             }
         }
 

@@ -90,8 +90,8 @@ namespace SummonManager
             //DA.InsertCommand.Connection.Close();
 
             DA.InsertCommand.CommandText = "  insert into [ALPHA].[dbo].[NOTIFICATIONS] (IDNTYPE,IDSUMMON) " +
-             "select 2,ID from [ALPHA].[dbo].SUMMON A where ((SERIAL is not null and SERIAL != '') or SERIALREQ = 0) " +
-             " and ((SHILD is null or SHILD = '')and SHILDREQ=1 or (PLANKA is null or PLANKA = '') and PLANKAREQ = 1)" +
+             "select 2,ID from [ALPHA].[dbo].SUMMON A where ((SERIAL is not null and SERIAL != '' and SERIAL != '<нет>') or SERIALREQ = 0) " +
+             " and ((SHILD is null or SHILD = '' and SHILD != '<нет>') and SHILDREQ=1 or (PLANKA is null or PLANKA = '' and PLANKA != '<нет>') and PLANKAREQ = 1)" +
              " and A.IDSTATUS not in (1,2,13,14) " +
             " and NOT exists (select 1 from [ALPHA].[dbo].[NOTIFICATIONS] B " +
                              "  where B.IDNTYPE = 2 and B.IDSUMMON = A.ID)";
@@ -100,7 +100,7 @@ namespace SummonManager
 
             DA.InsertCommand.CommandText = "  insert into [ALPHA].[dbo].[NOTIFICATIONS] (IDNTYPE,IDSUMMON) " +
              "select 3,A.ID from [ALPHA].[dbo].SUMMON A left join [ALPHA].[dbo].PURCHASEDMATERIALS pm on A.ID = pm.IDS where  " +
-             " ((SHILD is not null and SHILD != '') and SHILDREQ=1 and (PLANKA is not null and PLANKA != '') and PLANKAREQ = 1)" +
+             " ((SHILD is not null and SHILD != '' and SHILD != '<нет>') and SHILDREQ=1 and (PLANKA is not null and PLANKA != ''  and PLANKA != '<нет>') and PLANKAREQ = 1)" +
              " and (pm.SHILDORDERED = 0 or pm.SHILDORDERED is null) " +
              " and A.IDSTATUS not in (1,2,13,14) " +
             " and NOT exists (select 1 from [ALPHA].[dbo].[NOTIFICATIONS] B " +
