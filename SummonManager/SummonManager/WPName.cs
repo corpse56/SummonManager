@@ -12,26 +12,29 @@ namespace SummonManager
 {
     public partial class WPName : Form
     {
-
-        public WPName(bool pick)
+        UserVO UVO;
+        bool PICK = false;
+        public WPName(bool pick,UserVO uvo)
         {
             InitializeComponent();
             if (pick)
             {
-                button7.Visible = true;
-                button2.Visible = false;
-                button3.Visible = false;
-                button4.Visible = false;
-                button5.Visible = false;
-                button6.Visible = false;
+                bChoose.Visible = true;
+                bAdd.Visible = false;
+                bEdit.Visible = false;
+                bClone.Visible = false;
+                bDelete.Visible = false;
+                bEditCategory.Visible = false;
+                bEditSubCategory.Visible = false;
                 bArchive.Visible = false;
                 bArcShow.Visible = false;
             }
             else
             {
-                button7.Visible = false;
+                bChoose.Visible = false;
             }
-
+            this.UVO = uvo;
+            this.PICK = pick;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -103,6 +106,36 @@ namespace SummonManager
             DBWPName dbwp = new DBWPName();
             dgWP.DataSource = dbwp.GetAllWPNames();
             ShowDGV();
+            if (!PICK)
+            {
+                if ((UVO.Role == Roles.Admin) || (UVO.Role == Roles.Inzhener) || (UVO.Role == Roles.Constructor))
+                {
+                    bAdd.Enabled = true;
+                    bEdit.Enabled = true;
+                    bClone.Enabled = true;
+                    bDelete.Enabled = true;
+                    bArchive.Enabled = true;
+                    bArcShow.Enabled = true;
+                    bChoose.Enabled = false;
+                    bEditCategory.Enabled = true;
+                    bEditSubCategory.Enabled = true;
+                    bView.Enabled = true;
+                }
+                else
+                {
+                    bAdd.Enabled = false;
+                    bEdit.Enabled = false;
+                    bClone.Enabled = false;
+                    bDelete.Enabled = false;
+                    bArchive.Enabled = false;
+                    bArcShow.Enabled = false;
+                    bChoose.Enabled = false;
+                    bEditCategory.Enabled = false;
+                    bEditSubCategory.Enabled = false;
+                    bView.Enabled = true;
+                }
+            }
+
 
         }
 
@@ -218,7 +251,7 @@ namespace SummonManager
 
         private void dgWP_DoubleClick(object sender, EventArgs e)
         {
-            if (button7.Visible == true)
+            if (bChoose.Visible == true)
             {
                 PickedID = (int)dgWP.SelectedRows[0].Cells["ID"].Value;
                 Close();
@@ -271,6 +304,15 @@ namespace SummonManager
         private void cbSubCat_SelectedIndexChanged(object sender, EventArgs e)
         {
             dgWP.DataSource = new DBWPName().GetCategoryWPNames(Convert.ToInt32(cbCAT.SelectedValue), Convert.ToInt32(cbSubCat.SelectedValue));
+
+        }
+
+        private void bView_Click(object sender, EventArgs e)
+        {
+            EditWPN ew = new EditWPN(Convert.ToInt32(dgWP.SelectedRows[0].Cells["ID"].Value), false);
+            ew.Text = "Просмотр сведений об изделии";
+            ew.button2.Visible = false;
+            ew.ShowDialog();
 
         }
 

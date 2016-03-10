@@ -26,8 +26,8 @@ namespace SummonManager
         public UserVO UVO;
         public int PrivateNoteColor;
         public int RefreshTime;
-        public static string ProgramVersion = "1.86";
-        public static int VersionNumber = 186;
+        public static string ProgramVersion = "1.87";
+        public static int VersionNumber = 187;
         public MainF()
         {
             InitializeComponent();
@@ -104,7 +104,6 @@ namespace SummonManager
                     NewMenuItem.Enabled = false;
                     toolStripButton1.Enabled = false;
                     MySummonsTSB.Enabled = true;
-
                     break;
                 case Roles.Inzhener:
 
@@ -119,7 +118,6 @@ namespace SummonManager
                     NewMenuItem.Enabled = false;
                     toolStripButton1.Enabled = false;
                     MySummonsTSB.Enabled = true;
-
                     break;
                 case Roles.Buhgalter:
                     SpravochnikiDisable();
@@ -131,10 +129,10 @@ namespace SummonManager
         }
         public void SpravochnikiDisable()
         {
-            справочникиToolStripMenuItem.Enabled = false;
+            справочникиToolStripMenuItem.Enabled = true;
             заказчикиToolStripMenuItem.Enabled = false;
             пользователиToolStripMenuItem.Enabled = false;
-            наименованиеИзделияToolStripMenuItem.Enabled = false;
+            наименованиеИзделияToolStripMenuItem.Enabled = true;//открыто всем на чтение
             упаковкаToolStripMenuItem.Enabled = false;
             внешниеКабелиToolStripMenuItem.Enabled = false;
         }
@@ -306,7 +304,7 @@ namespace SummonManager
 
         private void наименованиеИзделияToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            WPName wp = new WPName(false);
+            WPName wp = new WPName(false,this.UVO);
             wp.ShowDialog();
         }
 
@@ -1266,6 +1264,12 @@ namespace SummonManager
         private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
+        }
+
+        private void tsbWorkPart_Click(object sender, EventArgs e)
+        {
+            WPName wp = new WPName(false, this.UVO);
+            wp.ShowDialog();
         }
        
 

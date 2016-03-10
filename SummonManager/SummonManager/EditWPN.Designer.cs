@@ -209,20 +209,22 @@
             // pfDimDrawing
             // 
             this.pfDimDrawing.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.pfDimDrawing.FullPath = null;
+            this.pfDimDrawing.FullPath = "<нет>";
             this.pfDimDrawing.Location = new System.Drawing.Point(225, 165);
             this.pfDimDrawing.Margin = new System.Windows.Forms.Padding(4);
             this.pfDimDrawing.Name = "pfDimDrawing";
+            this.pfDimDrawing.Required = false;
             this.pfDimDrawing.Size = new System.Drawing.Size(596, 32);
             this.pfDimDrawing.TabIndex = 24;
             // 
             // pfComposition
             // 
             this.pfComposition.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.pfComposition.FullPath = null;
+            this.pfComposition.FullPath = "<нет>";
             this.pfComposition.Location = new System.Drawing.Point(225, 129);
             this.pfComposition.Margin = new System.Windows.Forms.Padding(4);
             this.pfComposition.Name = "pfComposition";
+            this.pfComposition.Required = false;
             this.pfComposition.Size = new System.Drawing.Size(596, 28);
             this.pfComposition.TabIndex = 23;
             // 
@@ -267,7 +269,6 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.ComboBox cbCategory;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
@@ -286,5 +287,6 @@
         private SummonManager.Controls.PathField pfDimDrawing;
         private System.Windows.Forms.ComboBox cbSubCategory;
         private System.Windows.Forms.Label label9;
+        public System.Windows.Forms.Button button2;
     }
 }

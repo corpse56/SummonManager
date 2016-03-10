@@ -73,7 +73,7 @@
             this.cbCustDept = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.cbPacking = new SummonManager.RComboBox();
-            this.pickWPName1 = new SummonManager.Controls.PickWPName();
+            this.pickWPName1 = new SummonManager.Controls.PickWPName(this.UVO);
             ((System.ComponentModel.ISupportInitialize)(this.tbQUANTITY)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             this.SuspendLayout();

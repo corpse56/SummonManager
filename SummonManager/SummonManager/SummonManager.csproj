@@ -836,6 +836,7 @@
     <None Include="ico\delete_ok.png" />
     <None Include="ico\delete_ok.ico" />
     <Content Include="ico\document-open.ico" />
+    <None Include="ico\product.png" />
     <Content Include="ico\Refresh.ico" />
     <None Include="Resources\Список изменений.txt" />
     <None Include="Properties\app.manifest" />

@@ -68,6 +68,7 @@
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.TStbs = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbWorkPart = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tslVersionLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.dgSummon = new System.Windows.Forms.DataGridView();
@@ -79,6 +80,9 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.menuStrip1.SuspendLayout();
+            this.toolStrip1.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgSummon)).BeginInit();
             this.ContMenu.SuspendLayout();
             this.SuspendLayout();
@@ -304,13 +308,14 @@
             this.toolStripButton2,
             this.toolStripButton3,
             this.MySummonsTSB,
+            this.tsbWorkPart,
             this.toolStripSeparator2,
             this.toolStripLabel1,
             this.TStbs,
             this.toolStripSeparator3});
             this.toolStrip1.Location = new System.Drawing.Point(0, 24);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1264, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1264, 39);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
@@ -419,13 +424,23 @@
             // 
             this.TStbs.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TStbs.Name = "TStbs";
-            this.TStbs.Size = new System.Drawing.Size(150, 23);
+            this.TStbs.Size = new System.Drawing.Size(150, 39);
             this.TStbs.TextChanged += new System.EventHandler(this.TStbs_TextChanged);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 39);
+            // 
+            // tsbWorkPart
+            // 
+            this.tsbWorkPart.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbWorkPart.Image = global::SummonManager.Properties.Resources.product;
+            this.tsbWorkPart.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbWorkPart.Name = "tsbWorkPart";
+            this.tsbWorkPart.Size = new System.Drawing.Size(36, 36);
+            this.tsbWorkPart.Text = "Изделия";
+            this.tsbWorkPart.Click += new System.EventHandler(this.tsbWorkPart_Click);
             // 
             // statusStrip1
             // 
@@ -452,13 +467,13 @@
             this.dgSummon.AllowUserToDeleteRows = false;
             this.dgSummon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgSummon.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgSummon.Location = new System.Drawing.Point(0, 49);
+            this.dgSummon.Location = new System.Drawing.Point(0, 63);
             this.dgSummon.MultiSelect = false;
             this.dgSummon.Name = "dgSummon";
             this.dgSummon.ReadOnly = true;
             this.dgSummon.RowHeadersVisible = false;
             this.dgSummon.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgSummon.Size = new System.Drawing.Size(1264, 564);
+            this.dgSummon.Size = new System.Drawing.Size(1264, 550);
             this.dgSummon.TabIndex = 3;
             this.dgSummon.SortCompare += new System.Windows.Forms.DataGridViewSortCompareEventHandler(this.dgSummon_SortCompare);
             this.dgSummon.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgSummon_ColumnHeaderMouseClick);
@@ -543,6 +558,12 @@
             this.Load += new System.EventHandler(this.Main_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             this.Resize += new System.EventHandler(this.Main_Resize);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgSummon)).EndInit();
             this.ContMenu.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -601,6 +622,7 @@
         private System.Windows.Forms.Timer timer2;
         private System.Windows.Forms.ToolStripMenuItem историяВерсийToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem открытьТТToolStripMenuItem;
+        private System.Windows.Forms.ToolStripButton tsbWorkPart;
     }
 }
 

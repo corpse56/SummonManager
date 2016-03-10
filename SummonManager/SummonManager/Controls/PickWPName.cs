@@ -12,14 +12,16 @@ namespace SummonManager.Controls
 {
     public partial class PickWPName : UserControl
     {
-        public PickWPName()
+        UserVO UVO;
+        public PickWPName(UserVO UVO_)
         {
             InitializeComponent();
+            this.UVO = UVO_;
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            WPName wp = new WPName(true);
+            WPName wp = new WPName(true,UVO);
             wp.ShowDialog();
             if (wp.PickedID == 0)
             {

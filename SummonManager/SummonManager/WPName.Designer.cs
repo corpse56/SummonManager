@@ -29,20 +29,21 @@
         private void InitializeComponent()
         {
             this.dgWP = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
+            this.bClose = new System.Windows.Forms.Button();
+            this.bAdd = new System.Windows.Forms.Button();
+            this.bEdit = new System.Windows.Forms.Button();
+            this.bClone = new System.Windows.Forms.Button();
+            this.bDelete = new System.Windows.Forms.Button();
             this.cbCAT = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.bArchive = new System.Windows.Forms.Button();
             this.bArcShow = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
+            this.bEditCategory = new System.Windows.Forms.Button();
+            this.bChoose = new System.Windows.Forms.Button();
             this.cbSubCat = new System.Windows.Forms.ComboBox();
-            this.button8 = new System.Windows.Forms.Button();
+            this.bEditSubCategory = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
+            this.bView = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgWP)).BeginInit();
             this.SuspendLayout();
             // 
@@ -64,60 +65,60 @@
             this.dgWP.TabIndex = 0;
             this.dgWP.DoubleClick += new System.EventHandler(this.dgWP_DoubleClick);
             // 
-            // button1
+            // bClose
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Location = new System.Drawing.Point(1126, 364);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Закрыть";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.bClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bClose.Location = new System.Drawing.Point(1126, 364);
+            this.bClose.Name = "bClose";
+            this.bClose.Size = new System.Drawing.Size(75, 23);
+            this.bClose.TabIndex = 1;
+            this.bClose.Text = "Закрыть";
+            this.bClose.UseVisualStyleBackColor = true;
+            this.bClose.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // bAdd
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button2.Location = new System.Drawing.Point(12, 364);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(86, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Добавить";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.bAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.bAdd.Location = new System.Drawing.Point(12, 364);
+            this.bAdd.Name = "bAdd";
+            this.bAdd.Size = new System.Drawing.Size(86, 23);
+            this.bAdd.TabIndex = 1;
+            this.bAdd.Text = "Добавить";
+            this.bAdd.UseVisualStyleBackColor = true;
+            this.bAdd.Click += new System.EventHandler(this.button2_Click);
             // 
-            // button3
+            // bEdit
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button3.Location = new System.Drawing.Point(218, 364);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(88, 23);
-            this.button3.TabIndex = 1;
-            this.button3.Text = "Изменить";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.bEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.bEdit.Location = new System.Drawing.Point(218, 364);
+            this.bEdit.Name = "bEdit";
+            this.bEdit.Size = new System.Drawing.Size(88, 23);
+            this.bEdit.TabIndex = 1;
+            this.bEdit.Text = "Изменить";
+            this.bEdit.UseVisualStyleBackColor = true;
+            this.bEdit.Click += new System.EventHandler(this.button3_Click);
             // 
-            // button4
+            // bClone
             // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button4.Location = new System.Drawing.Point(104, 364);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(108, 23);
-            this.button4.TabIndex = 2;
-            this.button4.Text = "Клонировать";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.bClone.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.bClone.Location = new System.Drawing.Point(104, 364);
+            this.bClone.Name = "bClone";
+            this.bClone.Size = new System.Drawing.Size(108, 23);
+            this.bClone.TabIndex = 2;
+            this.bClone.Text = "Клонировать";
+            this.bClone.UseVisualStyleBackColor = true;
+            this.bClone.Click += new System.EventHandler(this.button4_Click);
             // 
-            // button5
+            // bDelete
             // 
-            this.button5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button5.Location = new System.Drawing.Point(312, 364);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 3;
-            this.button5.Text = "Удалить";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.bDelete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.bDelete.Location = new System.Drawing.Point(312, 364);
+            this.bDelete.Name = "bDelete";
+            this.bDelete.Size = new System.Drawing.Size(75, 23);
+            this.bDelete.TabIndex = 3;
+            this.bDelete.Text = "Удалить";
+            this.bDelete.UseVisualStyleBackColor = true;
+            this.bDelete.Click += new System.EventHandler(this.button5_Click);
             // 
             // cbCAT
             // 
@@ -141,9 +142,9 @@
             // bArchive
             // 
             this.bArchive.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.bArchive.Location = new System.Drawing.Point(393, 364);
+            this.bArchive.Location = new System.Drawing.Point(571, 364);
             this.bArchive.Name = "bArchive";
-            this.bArchive.Size = new System.Drawing.Size(264, 23);
+            this.bArchive.Size = new System.Drawing.Size(217, 23);
             this.bArchive.TabIndex = 6;
             this.bArchive.Text = "Архивировать состав изделия";
             this.bArchive.UseVisualStyleBackColor = true;
@@ -152,34 +153,34 @@
             // bArcShow
             // 
             this.bArcShow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.bArcShow.Location = new System.Drawing.Point(663, 364);
+            this.bArcShow.Location = new System.Drawing.Point(794, 364);
             this.bArcShow.Name = "bArcShow";
-            this.bArcShow.Size = new System.Drawing.Size(260, 23);
+            this.bArcShow.Size = new System.Drawing.Size(129, 23);
             this.bArcShow.TabIndex = 7;
             this.bArcShow.Text = "Показать архив составов изделия";
             this.bArcShow.UseVisualStyleBackColor = true;
             this.bArcShow.Click += new System.EventHandler(this.bArcShow_Click);
             // 
-            // button6
+            // bEditCategory
             // 
-            this.button6.Location = new System.Drawing.Point(491, 12);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(214, 23);
-            this.button6.TabIndex = 8;
-            this.button6.Text = "Редактировать категории";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.bEditCategory.Location = new System.Drawing.Point(491, 12);
+            this.bEditCategory.Name = "bEditCategory";
+            this.bEditCategory.Size = new System.Drawing.Size(214, 23);
+            this.bEditCategory.TabIndex = 8;
+            this.bEditCategory.Text = "Редактировать категории";
+            this.bEditCategory.UseVisualStyleBackColor = true;
+            this.bEditCategory.Click += new System.EventHandler(this.button6_Click);
             // 
-            // button7
+            // bChoose
             // 
-            this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button7.Location = new System.Drawing.Point(1043, 364);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(77, 23);
-            this.button7.TabIndex = 9;
-            this.button7.Text = "Выбрать";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.bChoose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.bChoose.Location = new System.Drawing.Point(1043, 364);
+            this.bChoose.Name = "bChoose";
+            this.bChoose.Size = new System.Drawing.Size(77, 23);
+            this.bChoose.TabIndex = 9;
+            this.bChoose.Text = "Выбрать";
+            this.bChoose.UseVisualStyleBackColor = true;
+            this.bChoose.Click += new System.EventHandler(this.button7_Click);
             // 
             // cbSubCat
             // 
@@ -191,15 +192,15 @@
             this.cbSubCat.TabIndex = 4;
             this.cbSubCat.SelectedIndexChanged += new System.EventHandler(this.cbSubCat_SelectedIndexChanged);
             // 
-            // button8
+            // bEditSubCategory
             // 
-            this.button8.Location = new System.Drawing.Point(711, 12);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(368, 23);
-            this.button8.TabIndex = 10;
-            this.button8.Text = "Редактировать подкатегории выбранной категории";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.bEditSubCategory.Location = new System.Drawing.Point(711, 12);
+            this.bEditSubCategory.Name = "bEditSubCategory";
+            this.bEditSubCategory.Size = new System.Drawing.Size(368, 23);
+            this.bEditSubCategory.TabIndex = 10;
+            this.bEditSubCategory.Text = "Редактировать подкатегории выбранной категории";
+            this.bEditSubCategory.UseVisualStyleBackColor = true;
+            this.bEditSubCategory.Click += new System.EventHandler(this.button8_Click);
             // 
             // label2
             // 
@@ -210,25 +211,37 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "Выберите подкатегорию";
             // 
+            // bView
+            // 
+            this.bView.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.bView.Location = new System.Drawing.Point(393, 364);
+            this.bView.Name = "bView";
+            this.bView.Size = new System.Drawing.Size(92, 23);
+            this.bView.TabIndex = 11;
+            this.bView.Text = "Просмотр";
+            this.bView.UseVisualStyleBackColor = true;
+            this.bView.Click += new System.EventHandler(this.bView_Click);
+            // 
             // WPName
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1213, 391);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
+            this.Controls.Add(this.bView);
+            this.Controls.Add(this.bEditSubCategory);
+            this.Controls.Add(this.bChoose);
+            this.Controls.Add(this.bEditCategory);
             this.Controls.Add(this.bArcShow);
             this.Controls.Add(this.bArchive);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbSubCat);
             this.Controls.Add(this.cbCAT);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.bDelete);
+            this.Controls.Add(this.bClone);
+            this.Controls.Add(this.bEdit);
+            this.Controls.Add(this.bAdd);
+            this.Controls.Add(this.bClose);
             this.Controls.Add(this.dgWP);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -245,19 +258,20 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgWP;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button bClose;
+        private System.Windows.Forms.Button bAdd;
+        private System.Windows.Forms.Button bEdit;
+        private System.Windows.Forms.Button bClone;
+        private System.Windows.Forms.Button bDelete;
         private System.Windows.Forms.ComboBox cbCAT;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button bArchive;
         private System.Windows.Forms.Button bArcShow;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button bEditCategory;
+        private System.Windows.Forms.Button bChoose;
         private System.Windows.Forms.ComboBox cbSubCat;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button bEditSubCategory;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button bView;
     }
 }
