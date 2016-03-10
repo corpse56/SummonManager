@@ -102,7 +102,7 @@ namespace SummonManager
                     DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..f_MAINVIEW(" + uvo.id + ") where idstatus in (1) order by ids";
                     break;
                 case Roles.OTK:
-                    DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..f_MAINVIEW(" + uvo.id + ") where idstatus in (2,19,20) or idsubst in (16) order by ids";
+                    DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..f_MAINVIEW(" + uvo.id + ") where idstatus in (7,19,20) or idsubst in (16) order by ids";
                     break;
                 case Roles.Ozis:
                     DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..f_MAINVIEW(" + uvo.id + ") where idstatus in (3) order by ids";

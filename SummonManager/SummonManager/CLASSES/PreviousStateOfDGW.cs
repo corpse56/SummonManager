@@ -53,7 +53,11 @@ namespace SummonManager
                 //DGVUI ui = new DGVUI(dgv);
                 //ui.Sort(this.indexOfSortedColumn, (List<TaskVO>)dgv.DataSource, soOfSortedColumn);
             }
-            if (idOfFirstRow != -1) dgv.FirstDisplayedScrollingRowIndex = idOfFirstRow;
+            if (idOfFirstRow != -1)
+            {
+                if (idOfFirstRow < dgv.Rows.Count)
+                    dgv.FirstDisplayedScrollingRowIndex = idOfFirstRow;
+            }
             foreach (DataGridViewRow r in dgv.Rows)
             {
                 

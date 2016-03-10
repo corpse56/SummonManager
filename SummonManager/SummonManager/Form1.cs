@@ -26,8 +26,8 @@ namespace SummonManager
         public UserVO UVO;
         public int PrivateNoteColor;
         public int RefreshTime;
-        public static string ProgramVersion = "1.85";
-        public static int VersionNumber = 185;
+        public static string ProgramVersion = "1.86";
+        public static int VersionNumber = 186;
         public MainF()
         {
             InitializeComponent();
