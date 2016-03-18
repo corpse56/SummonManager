@@ -114,7 +114,7 @@ namespace SummonManager
                     DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..f_MAINVIEW(" + uvo.id + ") where idstatus in (9) order by ids";
                     break;
                 case Roles.Wsh:
-                    DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..f_MAINVIEW(" + uvo.id + ") where idstatus in (5,22) order by ids";
+                    DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..f_MAINVIEW(" + uvo.id + ") where idstatus in (5,8,22) order by ids";
                     break;
                 case Roles.Director:
                     DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..f_MAINVIEW(" + uvo.id + ") where idstatus != 13 and idstatus != 14 order by ids";

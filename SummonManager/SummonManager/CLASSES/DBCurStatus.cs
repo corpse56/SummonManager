@@ -151,7 +151,7 @@ namespace SummonManager
             {
                 case Roles.Admin: case Roles.Director:
                     DA.SelectCommand.CommandText = "select ID,SNAME from " + Base.BaseName +
-                        "..STATUSLIST where  ID not in (2,6,8,11,13,14,15,16,17,18)";
+                        "..STATUSLIST where  ID not in (2,6,11,14,15,16,17,18)";
                     DefaultStatus = 2;
                     break;
                 case Roles.Logist:
@@ -172,8 +172,8 @@ namespace SummonManager
                 case Roles.OTK:
                     if (SVO.WPNAMEVO.IDCat == 4)
                     {
-                        DA.SelectCommand.CommandText = "select ID,case when ID = 9 then 'Коммерческий отдел' else 'Возвращено монтажникам из ОТК' end SNAME from " + Base.BaseName +
-                        "..STATUSLIST where ID in (9,18)";
+                        DA.SelectCommand.CommandText = "select ID, SNAME from " + Base.BaseName +
+                        "..STATUSLIST where ID in (8,9,18)";
                         DefaultStatus = 9;
                     }
                     else
@@ -202,8 +202,8 @@ namespace SummonManager
                         }
                         else
                         {
-                            DA.SelectCommand.CommandText = "select ID,'Коммерческий отдел' SNAME from " + Base.BaseName +
-                            "..STATUSLIST where ID in (9)";
+                            DA.SelectCommand.CommandText = "select ID, SNAME from " + Base.BaseName +
+                            "..STATUSLIST where ID in (8,9)";
                             DefaultStatus = 9;
                         }
                     }

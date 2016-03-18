@@ -64,11 +64,11 @@
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.MySummonsTSB = new System.Windows.Forms.ToolStripButton();
+            this.tsbWorkPart = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.TStbs = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbWorkPart = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tslVersionLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.dgSummon = new System.Windows.Forms.DataGridView();
@@ -210,35 +210,35 @@
             // заказчикиToolStripMenuItem
             // 
             this.заказчикиToolStripMenuItem.Name = "заказчикиToolStripMenuItem";
-            this.заказчикиToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.заказчикиToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.заказчикиToolStripMenuItem.Text = "Заказчики";
             this.заказчикиToolStripMenuItem.Click += new System.EventHandler(this.заказчикиToolStripMenuItem_Click);
             // 
             // пользователиToolStripMenuItem
             // 
             this.пользователиToolStripMenuItem.Name = "пользователиToolStripMenuItem";
-            this.пользователиToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.пользователиToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.пользователиToolStripMenuItem.Text = "Пользователи";
             this.пользователиToolStripMenuItem.Click += new System.EventHandler(this.пользователиToolStripMenuItem_Click);
             // 
             // наименованиеИзделияToolStripMenuItem
             // 
             this.наименованиеИзделияToolStripMenuItem.Name = "наименованиеИзделияToolStripMenuItem";
-            this.наименованиеИзделияToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
-            this.наименованиеИзделияToolStripMenuItem.Text = "Наименование изделия";
+            this.наименованиеИзделияToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.наименованиеИзделияToolStripMenuItem.Text = "Изделия";
             this.наименованиеИзделияToolStripMenuItem.Click += new System.EventHandler(this.наименованиеИзделияToolStripMenuItem_Click);
             // 
             // упаковкаToolStripMenuItem
             // 
             this.упаковкаToolStripMenuItem.Name = "упаковкаToolStripMenuItem";
-            this.упаковкаToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.упаковкаToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.упаковкаToolStripMenuItem.Text = "Упаковка";
             this.упаковкаToolStripMenuItem.Click += new System.EventHandler(this.упаковкаToolStripMenuItem_Click);
             // 
             // внешниеКабелиToolStripMenuItem
             // 
             this.внешниеКабелиToolStripMenuItem.Name = "внешниеКабелиToolStripMenuItem";
-            this.внешниеКабелиToolStripMenuItem.Size = new System.Drawing.Size(204, 22);
+            this.внешниеКабелиToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
             this.внешниеКабелиToolStripMenuItem.Text = "Внешние кабели";
             this.внешниеКабелиToolStripMenuItem.Click += new System.EventHandler(this.ExtCableToolStripMenuItem_Click);
             // 
@@ -409,6 +409,16 @@
             this.MySummonsTSB.ToolTipText = "Мои извещения";
             this.MySummonsTSB.Click += new System.EventHandler(this.MySummonsTSB_Click);
             // 
+            // tsbWorkPart
+            // 
+            this.tsbWorkPart.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbWorkPart.Image = global::SummonManager.Properties.Resources.product;
+            this.tsbWorkPart.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbWorkPart.Name = "tsbWorkPart";
+            this.tsbWorkPart.Size = new System.Drawing.Size(36, 36);
+            this.tsbWorkPart.Text = "Изделия";
+            this.tsbWorkPart.Click += new System.EventHandler(this.tsbWorkPart_Click);
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
@@ -431,16 +441,6 @@
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(6, 39);
-            // 
-            // tsbWorkPart
-            // 
-            this.tsbWorkPart.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbWorkPart.Image = global::SummonManager.Properties.Resources.product;
-            this.tsbWorkPart.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbWorkPart.Name = "tsbWorkPart";
-            this.tsbWorkPart.Size = new System.Drawing.Size(36, 36);
-            this.tsbWorkPart.Text = "Изделия";
-            this.tsbWorkPart.Click += new System.EventHandler(this.tsbWorkPart_Click);
             // 
             // statusStrip1
             // 

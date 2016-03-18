@@ -13,18 +13,33 @@ namespace SummonManager
 {
     public partial class EditWPCategory: Form
     {
-        public EditWPCategory()
+        string ENTITY;
+        public EditWPCategory(string ENTITY_)
         {
-            
+            this.ENTITY = ENTITY_;
             InitializeComponent();
             
             DBCOMPARC dbarc = new DBCOMPARC();
-            DBCategory dbc = new DBCategory();
+            DBCategory dbc = new DBCategory(this.ENTITY);
             dgWP.DataSource = dbc.GetAll();
             dgWP.Columns["ID"].Visible = false;
             dgWP.Columns["CATEGORYNAME"].HeaderText = "Наименование категории";
             dgWP.Columns["CATEGORYNAME"].Width = 200;
-            
+            switch (this.ENTITY)
+            {
+                case "WPNAMELIST":
+                    this.Text = "Категории изделия";
+                    break;
+                case "CABLELIST":
+                    this.Text = "Категории кабелей";
+                    break;
+                case "ZHGUTLIST":
+                    this.Text = "Категории жгутов";
+                    break;
+                case "RUNCARDLIST":
+                    this.Text = "Категории технологических карт";
+                    break;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -34,9 +49,9 @@ namespace SummonManager
 
         private void button2_Click(object sender, EventArgs e)
         {
-            NewCategory n = new NewCategory();
+            NewCategory n = new NewCategory(this.ENTITY);
             n.ShowDialog();
-            dgWP.DataSource = new DBCategory().GetAll();
+            dgWP.DataSource = new DBCategory(this.ENTITY).GetAll();
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -53,7 +68,7 @@ namespace SummonManager
             }
             NewCategory n = new NewCategory(dgWP.SelectedRows[0].Cells["CATEGORYNAME"].Value.ToString(), (int)dgWP.SelectedRows[0].Cells["ID"].Value);
             n.ShowDialog();
-            dgWP.DataSource = new DBCategory().GetAll();
+            dgWP.DataSource = new DBCategory(this.ENTITY).GetAll();
 
         }
 
@@ -73,10 +88,10 @@ namespace SummonManager
             DialogResult dr = MessageBox.Show("После удаления категории все изделия этой категории получат категорию \"Не присвоено\", а также удалятся все подкатегории этой категории! Вы действительно хотите удалить категорию?", "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
             if (dr == DialogResult.Yes)
             {
-                new DBCategory().Delete(dgWP.SelectedRows[0].Cells["ID"].Value.ToString());
+                new DBCategory(this.ENTITY).Delete(dgWP.SelectedRows[0].Cells["ID"].Value.ToString());
                 MessageBox.Show("Подкатегория успешно удалена!");
             }
-            dgWP.DataSource = new DBCategory().GetAll();
+            dgWP.DataSource = new DBCategory(this.ENTITY).GetAll();
 
         }
 

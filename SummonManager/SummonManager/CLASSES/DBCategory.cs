@@ -8,17 +8,24 @@ namespace SummonManager
 {
     class DBCategory :DB
     {
-        public DBCategory() { }
+        string ENTITY;
+        public DBCategory(string ENTITY_)
+        {
+            this.ENTITY = ENTITY_;
+        }
 
         public DataTable GetAll()
         {
-            DA.SelectCommand.CommandText = "select ID,CATEGORYNAME from " + Base.BaseName + "..CATEGORYLIST";
+            DA.SelectCommand.Parameters.AddWithValue("Entity", this.ENTITY);
+            DA.SelectCommand.CommandText = "select ID,CATEGORYNAME from " + Base.BaseName + "..CATEGORYLIST where ENTITY = @Entity";
             DA.Fill(DS, "t");
             return DS.Tables["t"];
         }
         public void AddNew(string CatName)
         {
-            DA.InsertCommand.CommandText = "insert into " + Base.BaseName + "..CATEGORYLIST (CATEGORYNAME) values ('" + CatName + "')";
+            DA.InsertCommand.Parameters.AddWithValue("CatName", CatName);
+            DA.InsertCommand.Parameters.AddWithValue("Entity", this.ENTITY);
+            DA.InsertCommand.CommandText = "insert into " + Base.BaseName + "..CATEGORYLIST (CATEGORYNAME,ENTITY) values (@CatName,@Entity)";
             DA.InsertCommand.Connection.Open();
             DA.InsertCommand.ExecuteNonQuery();
             DA.InsertCommand.Connection.Close();
@@ -46,7 +53,8 @@ namespace SummonManager
         }
         internal object GetAllExceptAll()
         {
-            DA.SelectCommand.CommandText = "select ID,CATEGORYNAME from " + Base.BaseName + "..CATEGORYLIST where ID != 2";
+            DA.SelectCommand.Parameters.AddWithValue("Entity", this.ENTITY);
+            DA.SelectCommand.CommandText = "select ID,CATEGORYNAME from " + Base.BaseName + "..CATEGORYLIST where CATEGORYNAME != 'ВСЕ' and ENTITY = @Entity";
             DA.Fill(DS, "t");
             return DS.Tables["t"];
         }

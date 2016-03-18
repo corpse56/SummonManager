@@ -70,9 +70,9 @@ namespace SummonManager
             DA.InsertCommand.Parameters.AddWithValue("IDCATEGORY", p.IDCat);
             DA.InsertCommand.Parameters.AddWithValue("IDSUBCAT", p.IDSubCat);
             DA.InsertCommand.Parameters.AddWithValue("DECNUM", p.DecNum);
-            DA.InsertCommand.Parameters.AddWithValue("CONFIGURATION", p.Configuration);
-            DA.InsertCommand.Parameters.AddWithValue("COMPOSITION", p.Composition);
-            DA.InsertCommand.Parameters.AddWithValue("DIMENSIONALDRAWING", p.DimenDrawing);
+            DA.InsertCommand.Parameters.AddWithValue("CONFIGURATION", ((object)p.Configuration) ?? DBNull.Value);
+            DA.InsertCommand.Parameters.AddWithValue("COMPOSITION", ((object)p.Composition ) ?? DBNull.Value);
+            DA.InsertCommand.Parameters.AddWithValue("DIMENSIONALDRAWING", ((object)p.DimenDrawing) ?? DBNull.Value);
             DA.InsertCommand.Parameters.AddWithValue("POWERSUPPLY", p.PowerSupply);
             DA.InsertCommand.Parameters.AddWithValue("NOTE", p.Note);
             DA.InsertCommand.Parameters.AddWithValue("CREATED", DateTime.Now);

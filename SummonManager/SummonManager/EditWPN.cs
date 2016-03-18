@@ -84,7 +84,7 @@ namespace SummonManager
 
         private void EditWPN_Load(object sender, EventArgs e)
         {
-            DBCategory dbc = new DBCategory();
+            DBCategory dbc = new DBCategory("WPNAMELIST");
             cbCategory.ValueMember = "ID";
             cbCategory.DisplayMember = "CATEGORYNAME";
             cbCategory.DataSource = dbc.GetAllExceptAll();

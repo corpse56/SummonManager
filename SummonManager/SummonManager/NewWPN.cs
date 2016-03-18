@@ -64,8 +64,8 @@ namespace SummonManager
             wp.IDCat = Convert.ToInt32(cbCategory.SelectedValue);
             wp.IDSubCat = (cbSubCategory.SelectedValue == null)? 0:(int)cbSubCategory.SelectedValue;
             wp.DecNum = tbDecNum.Text;
-            wp.Composition = pfComposition.FullPath;//(pfComposition.bOpen.Tag == null) ? "" : pfComposition.bOpen.Tag.ToString();
-            wp.DimenDrawing = pfDimDrawing.FullPath;//(pfDimDrawing.bOpen.Tag == null) ? "" : pfDimDrawing.bOpen.Tag.ToString();
+            wp.Composition = (pfComposition.FullPath == "<нет>") ? null : pfComposition.FullPath;
+            wp.DimenDrawing = (pfDimDrawing.FullPath == "<нет>") ? null : pfDimDrawing.FullPath;;
             wp.PowerSupply = tbPowerSupply.Text;
             wp.Configuration = tbConfiguration.Text;
             wp.Note = tbNote.Text;
@@ -77,7 +77,7 @@ namespace SummonManager
 
         private void NewWPN_Load(object sender, EventArgs e)
         {
-            DBCategory dbc = new DBCategory();
+            DBCategory dbc = new DBCategory("WPNAMELIST");
             cbCategory.ValueMember = "ID";
             cbCategory.DisplayMember = "CATEGORYNAME";
             cbCategory.DataSource = dbc.GetAllExceptAll();

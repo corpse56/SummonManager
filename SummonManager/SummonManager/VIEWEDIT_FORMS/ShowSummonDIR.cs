@@ -292,7 +292,6 @@ namespace SummonManager
 
             summonNotes1.Init(SVO.ID, UVO, SVO);
             summonNotes1.Reload();
-            pathFileds1.Init(SVO, UVO);
 
             summonTransfer1.Init(SVO, UVO, this);
             if (SVO.WPNAMEVO.IDCat == 4)

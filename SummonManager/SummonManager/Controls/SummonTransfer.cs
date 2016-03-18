@@ -425,7 +425,7 @@ namespace SummonManager
 //================================================================основные статусы==========================
         private bool WshSwitch()
         {
-            if ((SVO.IDSTATUS != 5) && (SVO.IDSTATUS != 22))
+            if ((SVO.IDSTATUS != 5) && (SVO.IDSTATUS != 8) && (SVO.IDSTATUS != 22))
             {
                 MessageBox.Show("Вы не можете передавать это извещение, так как не являетесь в данный момент ответственным лицом за это извещение!");
                 return false;
@@ -597,6 +597,11 @@ namespace SummonManager
             //        break;
             //}
             return true;
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
 
 

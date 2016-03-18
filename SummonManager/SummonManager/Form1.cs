@@ -21,8 +21,8 @@ namespace SummonManager
         //public static string EConnectionString = "metadata=res://*/SM.csdl|res://*/SM.ssdl|res://*/SM.msl;provider=System.Data.SqlClient;provider connection string=\"Data Source=CORPS-ПК\\SQLEXPRESS;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True\"";
         //public static string ConnectionString = "Data Source=CORPS-ПК\\SQLEXPRESS;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
         //public static string ConnectionString = "Data Source=127.0.0.1;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
-        //public static string ConnectionString = "Data Source=127.0.0.1\\SQL2008R2;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
-        public static string ConnectionString = "Data Source=10.177.100.7,2301;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
+        public static string ConnectionString = "Data Source=127.0.0.1\\SQL2008R2;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
+       // public static string ConnectionString = "Data Source=10.177.100.7,2301;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
         public UserVO UVO;
         public int PrivateNoteColor;
         public int RefreshTime;
@@ -179,7 +179,7 @@ namespace SummonManager
             dgSummon.Columns["passd"].HeaderText = "Ориенти ровочная дата передачи";
             dgSummon.Columns["passd"].ValueType = typeof(string);
             dgSummon.Columns["passd"].DefaultCellStyle.Format = "dd.MM.yyyy";
-            dgSummon.Columns["cause"].HeaderText = "Технические требования";
+            dgSummon.Columns["techreq"].HeaderText = "Технические требования";
             dgSummon.Columns["qty"].HeaderText = "Кол-во";
             dgSummon.Columns["idstatus"].Visible = false;
             dgSummon.Columns["ids_srt"].Visible = false;
@@ -208,7 +208,7 @@ namespace SummonManager
             //dgSummon.Columns["sts"].Width = 100;
             
             dgSummon.Columns["qty"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgSummon.Columns["cause"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgSummon.Columns["techreq"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgSummon.Columns["passd"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgSummon.Columns["ptime"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgSummon.Columns["note"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -220,7 +220,7 @@ namespace SummonManager
             dgSummon.Columns["subst"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             dgSummon.Columns["qty"].FillWeight = 50;
-            dgSummon.Columns["cause"].FillWeight = 130;
+            dgSummon.Columns["techreq"].FillWeight = 130;
             dgSummon.Columns["passd"].FillWeight = 85;
             dgSummon.Columns["ptime"].FillWeight = 100;
             dgSummon.Columns["note"].FillWeight = 250;
@@ -233,8 +233,8 @@ namespace SummonManager
 
             foreach (DataGridViewRow r in dgSummon.Rows)
             {
-                r.Cells["cause"].Tag = r.Cells["cause"].Value;
-                r.Cells["cause"].Value = r.Cells["cause"].Tag.ToString().Substring(r.Cells["cause"].Tag.ToString().LastIndexOf("\\") + 1); 
+                r.Cells["techreq"].Tag = r.Cells["techreq"].Value;
+                r.Cells["techreq"].Value = r.Cells["techreq"].Tag.ToString().Substring(r.Cells["techreq"].Tag.ToString().LastIndexOf("\\") + 1); 
             }
             InitialSort();//это надо потом убрать и заняться восстановлением предыдущего состояния грид
             PaintDG();
@@ -622,7 +622,7 @@ namespace SummonManager
                     {
                         string idst = r.Cells["idstatus"].Value.ToString();
                         bool vw = (bool)r.Cells["vw"].Value;
-                        if ((idst == "5") || (idst == "22"))
+                        if ((idst == "5") || (idst == "8") || (idst == "22"))
                         {
                             r.DefaultCellStyle.BackColor = Color.LightGreen;
                             if (!vw)
@@ -1056,10 +1056,10 @@ namespace SummonManager
                 //MessageBox.Show("Появилась новая версия программы!");
                 this.Text = "Менеджер извещений (" + UVO.Role.ToString() + " - " + UVO.Fio + ") (эта версия программы устарела)";
             }
-            if (LastVersion < VersionNumber)
-            {
-                dbv.UpdateVersion(LastVersion);
-            }
+            //if (LastVersion < VersionNumber)
+            //{
+             //   dbv.UpdateVersion(LastVersion);
+            //}
         }
         private void timer2_Tick(object sender, EventArgs e)
         {
@@ -1252,11 +1252,11 @@ namespace SummonManager
         {
             if (dgSummon.SelectedRows.Count == 0) return;
 
-            if ((dgSummon.SelectedRows[0].Cells["cause"].Tag != null) && (dgSummon.SelectedRows[0].Cells["cause"].Tag.ToString() != string.Empty))
+            if ((dgSummon.SelectedRows[0].Cells["techreq"].Tag != null) && (dgSummon.SelectedRows[0].Cells["techreq"].Tag.ToString() != string.Empty))
             {
-                if (dgSummon.SelectedRows[0].Cells["cause"].Tag.ToString() != "")
+                if (dgSummon.SelectedRows[0].Cells["techreq"].Tag.ToString() != "")
                 {
-                    Process.Start(@"explorer.exe", @"/select, " + dgSummon.SelectedRows[0].Cells["cause"].Tag.ToString());
+                    Process.Start(@"explorer.exe", @"/select, " + dgSummon.SelectedRows[0].Cells["techreq"].Tag.ToString());
                 }
             }
         }

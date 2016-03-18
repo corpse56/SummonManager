@@ -48,6 +48,8 @@
             this.cbSubCategory = new System.Windows.Forms.ComboBox();
             this.pfDimDrawing = new SummonManager.Controls.PathField();
             this.pfComposition = new SummonManager.Controls.PathField();
+            this.pfWIRINGDIAGRAM = new SummonManager.Controls.PathField();
+            this.label10 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // tbName
@@ -59,7 +61,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(743, 304);
+            this.button1.Location = new System.Drawing.Point(743, 587);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 2;
@@ -69,7 +71,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(652, 304);
+            this.button2.Location = new System.Drawing.Point(652, 587);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(85, 23);
             this.button2.TabIndex = 2;
@@ -123,21 +125,21 @@
             // 
             // tbPowerSupply
             // 
-            this.tbPowerSupply.Location = new System.Drawing.Point(217, 184);
+            this.tbPowerSupply.Location = new System.Drawing.Point(217, 467);
             this.tbPowerSupply.Name = "tbPowerSupply";
             this.tbPowerSupply.Size = new System.Drawing.Size(601, 22);
             this.tbPowerSupply.TabIndex = 1;
             // 
             // tbConfiguration
             // 
-            this.tbConfiguration.Location = new System.Drawing.Point(217, 212);
+            this.tbConfiguration.Location = new System.Drawing.Point(217, 495);
             this.tbConfiguration.Name = "tbConfiguration";
             this.tbConfiguration.Size = new System.Drawing.Size(601, 22);
             this.tbConfiguration.TabIndex = 1;
             // 
             // tbNote
             // 
-            this.tbNote.Location = new System.Drawing.Point(217, 240);
+            this.tbNote.Location = new System.Drawing.Point(217, 523);
             this.tbNote.Multiline = true;
             this.tbNote.Name = "tbNote";
             this.tbNote.Size = new System.Drawing.Size(601, 58);
@@ -146,7 +148,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 131);
+            this.label4.Location = new System.Drawing.Point(12, 414);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(113, 16);
             this.label4.TabIndex = 3;
@@ -155,7 +157,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 159);
+            this.label5.Location = new System.Drawing.Point(12, 442);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(138, 16);
             this.label5.TabIndex = 3;
@@ -164,7 +166,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 187);
+            this.label6.Location = new System.Drawing.Point(12, 470);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(119, 16);
             this.label6.TabIndex = 3;
@@ -173,7 +175,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 215);
+            this.label7.Location = new System.Drawing.Point(12, 498);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(104, 16);
             this.label7.TabIndex = 3;
@@ -182,7 +184,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 243);
+            this.label8.Location = new System.Drawing.Point(12, 526);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(91, 16);
             this.label8.TabIndex = 3;
@@ -210,29 +212,51 @@
             // pfDimDrawing
             // 
             this.pfDimDrawing.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.pfDimDrawing.FullPath = null;
-            this.pfDimDrawing.Location = new System.Drawing.Point(214, 151);
+            this.pfDimDrawing.FullPath = "<нет>";
+            this.pfDimDrawing.Location = new System.Drawing.Point(214, 434);
             this.pfDimDrawing.Margin = new System.Windows.Forms.Padding(4);
             this.pfDimDrawing.Name = "pfDimDrawing";
+            this.pfDimDrawing.Required = false;
             this.pfDimDrawing.Size = new System.Drawing.Size(604, 32);
             this.pfDimDrawing.TabIndex = 6;
             // 
             // pfComposition
             // 
             this.pfComposition.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.pfComposition.FullPath = null;
-            this.pfComposition.Location = new System.Drawing.Point(217, 123);
+            this.pfComposition.FullPath = "<нет>";
+            this.pfComposition.Location = new System.Drawing.Point(217, 406);
             this.pfComposition.Margin = new System.Windows.Forms.Padding(4);
             this.pfComposition.Name = "pfComposition";
+            this.pfComposition.Required = false;
             this.pfComposition.Size = new System.Drawing.Size(601, 32);
             this.pfComposition.TabIndex = 5;
+            // 
+            // pfWIRINGDIAGRAM
+            // 
+            this.pfWIRINGDIAGRAM.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pfWIRINGDIAGRAM.FullPath = "<нет>";
+            this.pfWIRINGDIAGRAM.Location = new System.Drawing.Point(217, 129);
+            this.pfWIRINGDIAGRAM.Margin = new System.Windows.Forms.Padding(4);
+            this.pfWIRINGDIAGRAM.Name = "pfWIRINGDIAGRAM";
+            this.pfWIRINGDIAGRAM.Required = false;
+            this.pfWIRINGDIAGRAM.Size = new System.Drawing.Size(601, 32);
+            this.pfWIRINGDIAGRAM.TabIndex = 5;
+            // 
+            // label10
+            // 
+            this.label10.Location = new System.Drawing.Point(9, 132);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(197, 39);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "Схема электрическая (монтажная)";
             // 
             // NewWPN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(824, 333);
+            this.ClientSize = new System.Drawing.Size(849, 888);
             this.Controls.Add(this.pfDimDrawing);
+            this.Controls.Add(this.pfWIRINGDIAGRAM);
             this.Controls.Add(this.pfComposition);
             this.Controls.Add(this.cbSubCategory);
             this.Controls.Add(this.cbCategory);
@@ -240,6 +264,7 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label3);
@@ -287,5 +312,7 @@
         private SummonManager.Controls.PathField pfDimDrawing;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cbSubCategory;
+        private SummonManager.Controls.PathField pfWIRINGDIAGRAM;
+        private System.Windows.Forms.Label label10;
     }
 }

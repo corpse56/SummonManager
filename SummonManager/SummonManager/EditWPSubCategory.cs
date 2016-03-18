@@ -14,9 +14,10 @@ namespace SummonManager
     public partial class EditWPSubCategory: Form
     {
         int IDCat;
-        public EditWPSubCategory(int IDCat)
+        string ENTITY;//сущность, которой принадлежат категории
+        public EditWPSubCategory(int IDCat,string Entity_)
         {
-            
+            this.ENTITY = Entity_;
             InitializeComponent();
             this.IDCat = IDCat;
             DBSubCategory dbc = new DBSubCategory();
@@ -26,8 +27,22 @@ namespace SummonManager
             dgWP.Columns["SUBCATNAME"].HeaderText = "Наименование подкатегории";
             dgWP.Columns["SUBCATNAME"].Width = 200;
 
-            this.Text = "Подкатегории категории \""+new DBCategory().Get(IDCat)+"\"";
-
+            this.Text = "Подкатегории категории \"" + new DBCategory(this.ENTITY).Get(IDCat) + "\"";
+            switch (this.ENTITY)
+            {
+                case "WPNAMELIST":
+                    this.Text = "Подкатегории изделия";
+                    break;
+                case "CABLELIST":
+                    this.Text = "Подкатегории кабелей";
+                    break;
+                case "ZHGUTLIST":
+                    this.Text = "Подкатегории жгутов";
+                    break;
+                case "RUNCARDLIST":
+                    this.Text = "Подкатегории технологических карт";
+                    break;
+            }
             
         }
 

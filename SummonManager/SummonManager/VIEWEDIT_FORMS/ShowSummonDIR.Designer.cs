@@ -38,7 +38,7 @@ namespace SummonManager
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.tbIDS = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -76,18 +76,6 @@ namespace SummonManager
             this.button2 = new System.Windows.Forms.Button();
             this.bDel = new System.Windows.Forms.Button();
             this.bEditExtCablePack = new System.Windows.Forms.Button();
-            this.cbMountingKit = new SummonManager.RComboBox();
-            this.cbCustDept = new SummonManager.RComboBox();
-            this.cbPacking = new SummonManager.RComboBox();
-            this.cbAccept = new SummonManager.RComboBox();
-            this.tbQUANTITY = new SummonManager.RNumericUpDown();
-            this.cbSISP = new SummonManager.RComboBox();
-            this.cbCustomers = new SummonManager.RComboBox();
-            this.summonNotes1 = new SummonManager.SummonNotes();
-            this.pathFileds1 = new SummonManager.PathFileds();
-            this.summonTransfer1 = new SummonManager.SummonTransfer();
-            this.summonTransfer2 = new SummonManager.SummonTransfer();
-            this.wpNameView1 = new SummonManager.Controls.WPNameView();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.tbSerial = new System.Windows.Forms.Label();
@@ -95,6 +83,7 @@ namespace SummonManager
             this.label24 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
+            this.summonNotes1 = new SummonManager.SummonNotes();
             this.pfMETAL = new SummonManager.Controls.PathField();
             this.pfCOMPOSITION = new SummonManager.Controls.PathField();
             this.pfSERIAL = new SummonManager.Controls.PathField();
@@ -102,6 +91,16 @@ namespace SummonManager
             this.pf3D = new SummonManager.Controls.PathField();
             this.pfPLANKA = new SummonManager.Controls.PathField();
             this.pfSHILD = new SummonManager.Controls.PathField();
+            this.wpNameView1 = new SummonManager.Controls.WPNameView();
+            this.summonTransfer2 = new SummonManager.SummonTransfer();
+            this.summonTransfer1 = new SummonManager.SummonTransfer();
+            this.cbMountingKit = new SummonManager.RComboBox();
+            this.cbCustDept = new SummonManager.RComboBox();
+            this.cbPacking = new SummonManager.RComboBox();
+            this.cbAccept = new SummonManager.RComboBox();
+            this.tbQUANTITY = new SummonManager.RNumericUpDown();
+            this.cbSISP = new SummonManager.RComboBox();
+            this.cbCustomers = new SummonManager.RComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbQUANTITY)).BeginInit();
             this.SuspendLayout();
@@ -373,14 +372,14 @@ namespace SummonManager
             this.dgv.AllowUserToDeleteRows = false;
             this.dgv.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dgv.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgv.Location = new System.Drawing.Point(197, 137);
             this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";
@@ -461,123 +460,6 @@ namespace SummonManager
             this.bEditExtCablePack.UseVisualStyleBackColor = true;
             this.bEditExtCablePack.Click += new System.EventHandler(this.bEditExtCablePack_Click);
             // 
-            // cbMountingKit
-            // 
-            this.cbMountingKit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbMountingKit.FormattingEnabled = true;
-            this.cbMountingKit.Items.AddRange(new object[] {
-            "ДА",
-            "НЕТ"});
-            this.cbMountingKit.Location = new System.Drawing.Point(197, 106);
-            this.cbMountingKit.Name = "cbMountingKit";
-            this.cbMountingKit.Size = new System.Drawing.Size(415, 24);
-            this.cbMountingKit.TabIndex = 48;
-            // 
-            // cbCustDept
-            // 
-            this.cbCustDept.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbCustDept.FormattingEnabled = true;
-            this.cbCustDept.Location = new System.Drawing.Point(198, 416);
-            this.cbCustDept.Name = "cbCustDept";
-            this.cbCustDept.Size = new System.Drawing.Size(398, 24);
-            this.cbCustDept.TabIndex = 47;
-            // 
-            // cbPacking
-            // 
-            this.cbPacking.FormattingEnabled = true;
-            this.cbPacking.Location = new System.Drawing.Point(197, 244);
-            this.cbPacking.Name = "cbPacking";
-            this.cbPacking.Size = new System.Drawing.Size(413, 24);
-            this.cbPacking.TabIndex = 38;
-            // 
-            // cbAccept
-            // 
-            this.cbAccept.FormattingEnabled = true;
-            this.cbAccept.Location = new System.Drawing.Point(197, 357);
-            this.cbAccept.Name = "cbAccept";
-            this.cbAccept.Size = new System.Drawing.Size(416, 24);
-            this.cbAccept.TabIndex = 35;
-            // 
-            // tbQUANTITY
-            // 
-            this.tbQUANTITY.Location = new System.Drawing.Point(197, 303);
-            this.tbQUANTITY.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.tbQUANTITY.Name = "tbQUANTITY";
-            this.tbQUANTITY.Size = new System.Drawing.Size(201, 22);
-            this.tbQUANTITY.TabIndex = 11;
-            // 
-            // cbSISP
-            // 
-            this.cbSISP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbSISP.FormattingEnabled = true;
-            this.cbSISP.Items.AddRange(new object[] {
-            "НЕТ",
-            "ДА"});
-            this.cbSISP.Location = new System.Drawing.Point(197, 556);
-            this.cbSISP.Name = "cbSISP";
-            this.cbSISP.Size = new System.Drawing.Size(415, 24);
-            this.cbSISP.TabIndex = 6;
-            // 
-            // cbCustomers
-            // 
-            this.cbCustomers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbCustomers.FormattingEnabled = true;
-            this.cbCustomers.Location = new System.Drawing.Point(198, 386);
-            this.cbCustomers.Name = "cbCustomers";
-            this.cbCustomers.Size = new System.Drawing.Size(398, 24);
-            this.cbCustomers.TabIndex = 6;
-            this.cbCustomers.SelectedIndexChanged += new System.EventHandler(this.cbCustomers_SelectedIndexChanged);
-            // 
-            // summonNotes1
-            // 
-            this.summonNotes1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.summonNotes1.Location = new System.Drawing.Point(617, 12);
-            this.summonNotes1.Margin = new System.Windows.Forms.Padding(4);
-            this.summonNotes1.Name = "summonNotes1";
-            this.summonNotes1.Size = new System.Drawing.Size(550, 694);
-            this.summonNotes1.TabIndex = 57;
-            // 
-            // pathFileds1
-            // 
-            this.pathFileds1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.pathFileds1.Location = new System.Drawing.Point(667, 187);
-            this.pathFileds1.Margin = new System.Windows.Forms.Padding(4);
-            this.pathFileds1.Name = "pathFileds1";
-            this.pathFileds1.Size = new System.Drawing.Size(434, 218);
-            this.pathFileds1.TabIndex = 58;
-            this.pathFileds1.Visible = false;
-            // 
-            // summonTransfer1
-            // 
-            this.summonTransfer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.summonTransfer1.Location = new System.Drawing.Point(679, 714);
-            this.summonTransfer1.Margin = new System.Windows.Forms.Padding(4);
-            this.summonTransfer1.Name = "summonTransfer1";
-            this.summonTransfer1.Size = new System.Drawing.Size(475, 87);
-            this.summonTransfer1.TabIndex = 59;
-            // 
-            // summonTransfer2
-            // 
-            this.summonTransfer2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.summonTransfer2.Location = new System.Drawing.Point(679, 806);
-            this.summonTransfer2.Margin = new System.Windows.Forms.Padding(4);
-            this.summonTransfer2.Name = "summonTransfer2";
-            this.summonTransfer2.Size = new System.Drawing.Size(475, 87);
-            this.summonTransfer2.TabIndex = 60;
-            // 
-            // wpNameView1
-            // 
-            this.wpNameView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.wpNameView1.Location = new System.Drawing.Point(195, 73);
-            this.wpNameView1.Margin = new System.Windows.Forms.Padding(4);
-            this.wpNameView1.Name = "wpNameView1";
-            this.wpNameView1.Size = new System.Drawing.Size(417, 31);
-            this.wpNameView1.TabIndex = 61;
-            // 
             // label18
             // 
             this.label18.AutoSize = true;
@@ -640,6 +522,15 @@ namespace SummonManager
             this.label26.Size = new System.Drawing.Size(130, 16);
             this.label26.TabIndex = 101;
             this.label26.Text = "Комплект шильдов";
+            // 
+            // summonNotes2
+            // 
+            this.summonNotes1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.summonNotes1.Location = new System.Drawing.Point(622, 15);
+            this.summonNotes1.Margin = new System.Windows.Forms.Padding(4);
+            this.summonNotes1.Name = "summonNotes2";
+            this.summonNotes1.Size = new System.Drawing.Size(532, 686);
+            this.summonNotes1.TabIndex = 102;
             // 
             // pfMETAL
             // 
@@ -718,11 +609,110 @@ namespace SummonManager
             this.pfSHILD.Size = new System.Drawing.Size(414, 28);
             this.pfSHILD.TabIndex = 93;
             // 
+            // wpNameView1
+            // 
+            this.wpNameView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.wpNameView1.Location = new System.Drawing.Point(195, 73);
+            this.wpNameView1.Margin = new System.Windows.Forms.Padding(4);
+            this.wpNameView1.Name = "wpNameView1";
+            this.wpNameView1.Size = new System.Drawing.Size(417, 31);
+            this.wpNameView1.TabIndex = 61;
+            // 
+            // summonTransfer2
+            // 
+            this.summonTransfer2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.summonTransfer2.Location = new System.Drawing.Point(679, 806);
+            this.summonTransfer2.Margin = new System.Windows.Forms.Padding(4);
+            this.summonTransfer2.Name = "summonTransfer2";
+            this.summonTransfer2.Size = new System.Drawing.Size(475, 87);
+            this.summonTransfer2.TabIndex = 60;
+            // 
+            // summonTransfer1
+            // 
+            this.summonTransfer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.summonTransfer1.Location = new System.Drawing.Point(679, 714);
+            this.summonTransfer1.Margin = new System.Windows.Forms.Padding(4);
+            this.summonTransfer1.Name = "summonTransfer1";
+            this.summonTransfer1.Size = new System.Drawing.Size(475, 87);
+            this.summonTransfer1.TabIndex = 59;
+            // 
+            // cbMountingKit
+            // 
+            this.cbMountingKit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbMountingKit.FormattingEnabled = true;
+            this.cbMountingKit.Items.AddRange(new object[] {
+            "ДА",
+            "НЕТ"});
+            this.cbMountingKit.Location = new System.Drawing.Point(197, 106);
+            this.cbMountingKit.Name = "cbMountingKit";
+            this.cbMountingKit.Size = new System.Drawing.Size(415, 24);
+            this.cbMountingKit.TabIndex = 48;
+            // 
+            // cbCustDept
+            // 
+            this.cbCustDept.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCustDept.FormattingEnabled = true;
+            this.cbCustDept.Location = new System.Drawing.Point(198, 416);
+            this.cbCustDept.Name = "cbCustDept";
+            this.cbCustDept.Size = new System.Drawing.Size(398, 24);
+            this.cbCustDept.TabIndex = 47;
+            // 
+            // cbPacking
+            // 
+            this.cbPacking.FormattingEnabled = true;
+            this.cbPacking.Location = new System.Drawing.Point(197, 244);
+            this.cbPacking.Name = "cbPacking";
+            this.cbPacking.Size = new System.Drawing.Size(413, 24);
+            this.cbPacking.TabIndex = 38;
+            // 
+            // cbAccept
+            // 
+            this.cbAccept.FormattingEnabled = true;
+            this.cbAccept.Location = new System.Drawing.Point(197, 357);
+            this.cbAccept.Name = "cbAccept";
+            this.cbAccept.Size = new System.Drawing.Size(416, 24);
+            this.cbAccept.TabIndex = 35;
+            // 
+            // tbQUANTITY
+            // 
+            this.tbQUANTITY.Location = new System.Drawing.Point(197, 303);
+            this.tbQUANTITY.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.tbQUANTITY.Name = "tbQUANTITY";
+            this.tbQUANTITY.Size = new System.Drawing.Size(201, 22);
+            this.tbQUANTITY.TabIndex = 11;
+            // 
+            // cbSISP
+            // 
+            this.cbSISP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSISP.FormattingEnabled = true;
+            this.cbSISP.Items.AddRange(new object[] {
+            "НЕТ",
+            "ДА"});
+            this.cbSISP.Location = new System.Drawing.Point(197, 556);
+            this.cbSISP.Name = "cbSISP";
+            this.cbSISP.Size = new System.Drawing.Size(415, 24);
+            this.cbSISP.TabIndex = 6;
+            // 
+            // cbCustomers
+            // 
+            this.cbCustomers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCustomers.FormattingEnabled = true;
+            this.cbCustomers.Location = new System.Drawing.Point(198, 386);
+            this.cbCustomers.Name = "cbCustomers";
+            this.cbCustomers.Size = new System.Drawing.Size(398, 24);
+            this.cbCustomers.TabIndex = 6;
+            this.cbCustomers.SelectedIndexChanged += new System.EventHandler(this.cbCustomers_SelectedIndexChanged);
+            // 
             // ShowSummonDIR
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1167, 906);
+            this.Controls.Add(this.summonNotes1);
             this.Controls.Add(this.label18);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.tbSerial);
@@ -740,8 +730,6 @@ namespace SummonManager
             this.Controls.Add(this.wpNameView1);
             this.Controls.Add(this.summonTransfer2);
             this.Controls.Add(this.summonTransfer1);
-            this.Controls.Add(this.pathFileds1);
-            this.Controls.Add(this.summonNotes1);
             this.Controls.Add(this.bDel);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.bSave);
@@ -847,8 +835,6 @@ namespace SummonManager
         private Button bSave;
         private Button button2;
         private Button bDel;
-        private SummonNotes summonNotes1;
-        private PathFileds pathFileds1;
         private SummonTransfer summonTransfer1;
         private SummonTransfer summonTransfer2;
         private SummonManager.Controls.WPNameView wpNameView1;
@@ -866,5 +852,6 @@ namespace SummonManager
         private SummonManager.Controls.PathField pf3D;
         private SummonManager.Controls.PathField pfPLANKA;
         private SummonManager.Controls.PathField pfSHILD;
+        private SummonNotes summonNotes1;
     }
 }

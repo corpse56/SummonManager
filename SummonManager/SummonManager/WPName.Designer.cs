@@ -247,7 +247,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "WPName";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Наименование изделия";
+            this.Text = "Справочник изделий";
             this.Load += new System.EventHandler(this.WPName_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgWP)).EndInit();
             this.ResumeLayout(false);

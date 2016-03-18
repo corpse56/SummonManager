@@ -97,7 +97,7 @@ namespace SummonManager
 
         private void WPName_Load(object sender, EventArgs e)
         {
-            DBCategory dbc = new DBCategory();
+            DBCategory dbc = new DBCategory("WPNAMELIST");
             cbCAT.ValueMember = "ID";
             cbCAT.DisplayMember = "CATEGORYNAME";
             cbCAT.DataSource = dbc.GetAll();
@@ -227,9 +227,9 @@ namespace SummonManager
         private void button6_Click(object sender, EventArgs e)
         {
             int selval = (int)cbCAT.SelectedValue;
-            EditWPCategory ed = new EditWPCategory();
+            EditWPCategory ed = new EditWPCategory("WPNAMELIST");
             ed.ShowDialog();
-            DBCategory dbc = new DBCategory();
+            DBCategory dbc = new DBCategory("WPNAMELIST");
             cbCAT.ValueMember = "ID";
             cbCAT.DisplayMember = "CATEGORYNAME";
             cbCAT.DataSource = dbc.GetAll();
@@ -267,7 +267,7 @@ namespace SummonManager
                 MessageBox.Show("У выбранной категории не может быть подкатегорий, т.к. она является системной");
                 return;
             }
-            EditWPSubCategory ed = new EditWPSubCategory(id);
+            EditWPSubCategory ed = new EditWPSubCategory(id, "WPNAMELIST");
             ed.ShowDialog();
             //dgWP.DataSource = new DBWPName().GetAllWPNames();
             int idsub = (cbSubCat.SelectedValue != null) ? (int)cbSubCat.SelectedValue : 0;
