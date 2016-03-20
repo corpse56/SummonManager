@@ -30,7 +30,7 @@ namespace SummonManager
                 cbSubCategory.SelectedValue = clone.IDSubCat;
                 tbDecNum.Text = clone.DecNum;
                 tbPowerSupply.Text = clone.PowerSupply;
-                tbConfiguration.Text = clone.Configuration;
+                //tbConfiguration.Text = clone.Configuration;
                 tbNote.Text = clone.Note;
 
 
@@ -67,7 +67,7 @@ namespace SummonManager
             wp.Composition = (pfComposition.FullPath == "<нет>") ? null : pfComposition.FullPath;
             wp.DimenDrawing = (pfDimDrawing.FullPath == "<нет>") ? null : pfDimDrawing.FullPath;;
             wp.PowerSupply = tbPowerSupply.Text;
-            wp.Configuration = tbConfiguration.Text;
+            //wp.Configuration = tbConfiguration.Text;
             wp.Note = tbNote.Text;
             DBWPName dbwp = new DBWPName();
             dbwp.AddNewWP(wp);

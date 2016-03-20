@@ -1,3 +1,6 @@
+use ALPHA
+go
+
 alter table [WPNAMELIST] add WIRINGDIAGRAM	nvarchar(MAX)	
 alter table [WPNAMELIST] add TECHREQ	nvarchar(MAX)	
 alter table [WPNAMELIST] add SBORKA3D	nvarchar(MAX)	
@@ -40,15 +43,226 @@ alter table WPNAMELIST add CIRCUITBOARDLISTREQ		bit default(0)
 
 alter table CATEGORYLIST add ENTITY nvarchar(100)
 --потом добавить значения в ENTITY потом сделать его не нулл
+insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'Не присвоено',	'WPNAMELIST')
+insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'ВСЕ',	'WPNAMELIST')
+insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'ИБП',	'WPNAMELIST')
+insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'Кабели',	'WPNAMELIST')
+insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'Видеомонитор',	'WPNAMELIST')
+insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'Клавиатуры',	'WPNAMELIST')
+insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'Кабели к УМН',	'WPNAMELIST')
+insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'Рабочие станции',	'WPNAMELIST')
+insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'Монохромный монитор',	'WPNAMELIST')
+insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'Плоскопанельный вычислитель',	'WPNAMELIST')
+insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'Жгуты',	'WPNAMELIST')
+insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'Не присвоено',	'CABLELIST')
+insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'ВСЕ',	'CABLELIST')
+insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'Не присвоено',	'ZHGUTLIST')
+insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'ВСЕ',	'ZHGUTLIST')
+insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'Не присвоено',	'CIRCUITBOARDLIST')
+insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'ВСЕ',	'CIRCUITBOARDLIST')
+insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'Не присвоено',	'RUNCARDLIST')
+insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'ВСЕ',	'RUNCARDLIST')
 alter table CATEGORYLIST alter column ENTITY nvarchar(100) not null
 
 update STATUSLIST set SNAME = 'Рекламация (цех)' where ID = 8
 
---как перенести отношения?
 --новые таблицы:
 --RUNCARD,CIRCUITBOARDS,ZHGUTS,CABLES
 --CABLELIST,ZHGUTLIST
 --RUNCARDLIST и CIRCUITBOARDLIST отложим пока что
+USE [ALPHA]
+GO
+
+/****** Object:  Table [dbo].[CABLELIST]    Script Date: 03/20/2016 14:58:56 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[CABLELIST](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[CABLENAME] [nvarchar](max) NOT NULL,
+	[IDCATEGORY] [int] NULL,
+	[IDSUBCAT] [int] NULL,
+	[DECNUM] [nvarchar](500) NULL,
+	[DIMENSIONALDRAWING] [nvarchar](max) NULL,
+	[CONNECTORS] [nvarchar](max) NULL,
+	[CLENGTH] [nvarchar](1000) NULL,
+	[NOTE] [nvarchar](max) NULL,
+	[CREATED] [datetime] NULL,
+ CONSTRAINT [PK_CABLELIST] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+
+
+-----------------------------------------------------------------------------------------------
+
+USE [ALPHA]
+GO
+
+/****** Object:  Table [dbo].[CABLES]    Script Date: 03/20/2016 15:07:12 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[CABLES](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[IDWP] [int] NOT NULL,
+	[IDCABLE] [int] NOT NULL,
+ CONSTRAINT [PK_CABLES] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[CABLES]  WITH CHECK ADD  CONSTRAINT [FK_CABLES_WPNAMELIST] FOREIGN KEY([IDWP])
+REFERENCES [dbo].[WPNAMELIST] ([ID])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[CABLES] CHECK CONSTRAINT [FK_CABLES_WPNAMELIST]
+GO
+
+
+
+
+--------------------------------------------------------------------------------------------------
+
+USE [ALPHA]
+GO
+
+/****** Object:  Table [dbo].[CIRCUITBOARDS]    Script Date: 03/20/2016 15:00:47 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[CIRCUITBOARDS](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[IDWP] [int] NOT NULL,
+	[CIRCUITBOARD] [nvarchar](max) NOT NULL,
+ CONSTRAINT [PK_CIRCUITBOARDS] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[CIRCUITBOARDS]  WITH CHECK ADD  CONSTRAINT [FK_CIRCUITBOARDS_WPNAMELIST] FOREIGN KEY([IDWP])
+REFERENCES [dbo].[WPNAMELIST] ([ID])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[CIRCUITBOARDS] CHECK CONSTRAINT [FK_CIRCUITBOARDS_WPNAMELIST]
+GO
+
+
+-----------------------------------------------------------------------------------------
+USE [ALPHA]
+GO
+
+/****** Object:  Table [dbo].[RUNCARDS]    Script Date: 03/20/2016 15:01:30 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[RUNCARDS](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[IDWP] [int] NOT NULL,
+	[RUNCARD] [nvarchar](max) NOT NULL,
+ CONSTRAINT [PK_RUNCARDS] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[RUNCARDS]  WITH CHECK ADD  CONSTRAINT [FK_RUNCARDS_WPNAMELIST] FOREIGN KEY([IDWP])
+REFERENCES [dbo].[WPNAMELIST] ([ID])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[RUNCARDS] CHECK CONSTRAINT [FK_RUNCARDS_WPNAMELIST]
+GO
+
+
+----------------------------------------------------------------------------------------------
+USE [ALPHA]
+GO
+
+/****** Object:  Table [dbo].[ZHGUTLIST]    Script Date: 03/20/2016 15:02:05 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[ZHGUTLIST](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[ZHGUTNAME] [nvarchar](max) NOT NULL,
+	[IDCATEGORY] [int] NULL,
+	[IDSUBCAT] [int] NULL,
+	[DECNUM] [nvarchar](500) NULL,
+	[ZHUTPATH] [nvarchar](max) NULL,
+	[NOTE] [nvarchar](max) NULL,
+	[CREATED] [datetime] NULL,
+ CONSTRAINT [PK_ZHGUTLIST] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+
+GO
+
+
+---------------------------------------------------------------------------------------------------
+USE [ALPHA]
+GO
+
+/****** Object:  Table [dbo].[ZHGUTS]    Script Date: 03/20/2016 15:02:28 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[ZHGUTS](
+	[ID] [int] IDENTITY(1,1) NOT NULL,
+	[IDWP] [int] NOT NULL,
+	[IDZHGUT] [int] NOT NULL,
+ CONSTRAINT [PK_ZHGUTS] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+)WITH (PAD_INDEX  = OFF, STATISTICS_NORECOMPUTE  = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS  = ON, ALLOW_PAGE_LOCKS  = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE [dbo].[ZHGUTS]  WITH CHECK ADD  CONSTRAINT [FK_ZHGUTS_WPNAMELIST] FOREIGN KEY([IDWP])
+REFERENCES [dbo].[WPNAMELIST] ([ID])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[ZHGUTS] CHECK CONSTRAINT [FK_ZHGUTS_WPNAMELIST]
+GO
+
+
+
+
 update WPNAMELIST set
       [COMPOSITIONREQ] = 0
       ,[DIMENSIONALDRAWINGREQ] = 0
@@ -71,3 +285,366 @@ update WPNAMELIST set
       ,[RUNCARDLISTREQ] = 0
       ,[CIRCUITBOARDLISTREQ] = 0
       
+alter table WPNAMELIST alter column     [COMPOSITIONREQ] bit not null
+alter table WPNAMELIST alter column          [DIMENSIONALDRAWINGREQ]  bit not null
+      alter table WPNAMELIST alter column    [POWERSUPPLYREQ]  bit not null
+      alter table WPNAMELIST alter column    [CONFIGURATIONREQ]  bit not null
+      alter table WPNAMELIST alter column    [WIRINGDIAGRAMREQ]  bit not null
+      alter table WPNAMELIST alter column    [TECHREQREQ]  bit not null
+      alter table WPNAMELIST alter column    [SBORKA3DREQ]  bit not null
+      alter table WPNAMELIST alter column    [MECHPARTSREQ]  bit not null
+      alter table WPNAMELIST alter column    [SHILDSREQ]  bit not null
+      alter table WPNAMELIST alter column    [PLANKAREQ]  bit not null
+      alter table WPNAMELIST alter column    [SERIALREQ]  bit not null
+      alter table WPNAMELIST alter column    [PACKAGEREQ]  bit not null
+      alter table WPNAMELIST alter column    [PASSPORTREQ]  bit not null
+      alter table WPNAMELIST alter column    [MANUALREQ]  bit not null
+      alter table WPNAMELIST alter column    [PACKAGELISTREQ]  bit not null
+      alter table WPNAMELIST alter column    [SOFTWAREREQ]  bit not null
+      alter table WPNAMELIST alter column    [CABLELISTREQ]  bit not null
+      alter table WPNAMELIST alter column    [ZHGUTLISTREQ]  bit not null
+      alter table WPNAMELIST alter column    [RUNCARDLISTREQ]  bit not null
+      alter table WPNAMELIST alter column    [CIRCUITBOARDLISTREQ]  bit not null
+      
+      update [ALPHA].[dbo].[WPNAMELIST] set DIMENSIONALDRAWING = null 
+  where DIMENSIONALDRAWING = '' or DIMENSIONALDRAWING = '<нет>'
+  
+    update [ALPHA].[dbo].[WPNAMELIST] set CONFIGURATION = null 
+  where CONFIGURATION = '' or CONFIGURATION = '<нет>'
+  
+    update [ALPHA].[dbo].[WPNAMELIST] set COMPOSITION = null 
+  where COMPOSITION = '' or COMPOSITION = '<нет>'  
+   
+       update [ALPHA].[dbo].SUMMON set SHILD = null 
+  where SHILD = '' or SHILD = '<нет>'  
+       update [ALPHA].[dbo].SUMMON set PLANKA = null 
+  where PLANKA = '' or PLANKA = '<нет>'  
+       update [ALPHA].[dbo].SUMMON set SBORKA3D = null 
+  where SBORKA3D = '' or SBORKA3D = '<нет>'  
+       update [ALPHA].[dbo].SUMMON set ZHGUT = null 
+  where ZHGUT = '' or ZHGUT = '<нет>'  
+       update [ALPHA].[dbo].SUMMON set SERIAL = null 
+  where SERIAL = '' or SERIAL = '<нет>'  
+       update [ALPHA].[dbo].SUMMON set COMPOSITION = null 
+  where COMPOSITION = '' or COMPOSITION = '<нет>'  
+       update [ALPHA].[dbo].SUMMON set METAL = null 
+  where METAL = '' or METAL = '<нет>'  
+   
+   USE [ALPHA]
+GO
+
+/****** Object:  Trigger [dbo].[CATEGORY_DELETE]    Script Date: 03/20/2016 16:12:50 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+------------------------------------------------------------------------------
+
+ALTER TRIGGER [dbo].[CATEGORY_DELETE] ON [dbo].[CATEGORYLIST] 
+	AFTER DELETE
+AS 
+set nocount on;
+
+DECLARE @delid int
+DECLARE @entity nvarchar
+DECLARE @neprisvoeno int
+set @delid = (select top 1 deleted.ID from deleted)
+set @entity = (select top 1 deleted.ENTITY from deleted)
+
+delete SUBCATEGORYLIST from SUBCATEGORYLIST sc where IDCATEGORY = @delid;
+if @entity='WPNAMELIST'
+begin
+	update WPNAMELIST set IDSUBCAT = null 
+	where IDCATEGORY = @delid;--(select top 1 deleted.ID from deleted)
+	
+	
+	set @neprisvoeno = (select top 1 deleted.ID from deleted 
+						where deleted.CATEGORYNAME = 'Не присвоено'  and deleted.ENTITY = 'WPNAMELIST')
+
+	update WPNAMELIST set IDCATEGORY = 1 
+	where IDCATEGORY = @delid;--(select top 1 deleted.ID from deleted);
+end
+if @entity='CABLELIST'
+begin
+	update WPNAMELIST set IDSUBCAT = null 
+	where IDCATEGORY = @delid;--(select top 1 deleted.ID from deleted)
+	
+	set @neprisvoeno = (select top 1 deleted.ID from deleted 
+						where deleted.CATEGORYNAME = 'Не присвоено'  and deleted.ENTITY = 'CABLELIST')
+
+	update WPNAMELIST set IDCATEGORY = 1 
+	where IDCATEGORY = @delid;--(select top 1 deleted.ID from deleted);
+end
+if @entity='ZHGUTLIST'
+begin
+	update WPNAMELIST set IDSUBCAT = null 
+	where IDCATEGORY = @delid;--(select top 1 deleted.ID from deleted)
+	
+	set @neprisvoeno = (select top 1 deleted.ID from deleted 
+						where deleted.CATEGORYNAME = 'Не присвоено'  and deleted.ENTITY = 'ZHGUTLIST')
+
+	update WPNAMELIST set IDCATEGORY = 1 
+	where IDCATEGORY = @delid;--(select top 1 deleted.ID from deleted);
+end
+if @entity='RUNCARDLIST'
+begin
+	update WPNAMELIST set IDSUBCAT = null 
+	where IDCATEGORY = @delid;--(select top 1 deleted.ID from deleted)
+	
+	set @neprisvoeno = (select top 1 deleted.ID from deleted 
+						where deleted.CATEGORYNAME = 'Не присвоено'  and deleted.ENTITY = 'RUNCARDLIST')
+
+	update WPNAMELIST set IDCATEGORY = 1 
+	where IDCATEGORY = @delid;--(select top 1 deleted.ID from deleted);
+end
+if @entity='CIRCUITBOARDLIST'
+begin
+	update WPNAMELIST set IDSUBCAT = null 
+	where IDCATEGORY = @delid;--(select top 1 deleted.ID from deleted)
+	
+	set @neprisvoeno = (select top 1 deleted.ID from deleted 
+						where deleted.CATEGORYNAME = 'Не присвоено'  and deleted.ENTITY = 'CIRCUITBOARDLIST')
+
+	update WPNAMELIST set IDCATEGORY = 1 
+	where IDCATEGORY = @delid;--(select top 1 deleted.ID from deleted);
+end
+
+
+
+
+
+GO
+
+--------------------------------------------------------------------------------
+USE [ALPHA]
+GO
+
+/****** Object:  Trigger [dbo].[CATEGORY_INSERT]    Script Date: 03/20/2016 16:15:01 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+ALTER TRIGGER [dbo].[CATEGORY_INSERT] ON [dbo].[CATEGORYLIST] 
+	AFTER INSERT
+AS 
+set nocount on;
+insert into SUBCATEGORYLIST (IDCATEGORY,SUBCATNAME) 
+select inserted.ID,'ВСЕ' from inserted
+
+insert into SUBCATEGORYLIST (IDCATEGORY,SUBCATNAME) 
+select inserted.ID,'Не присвоено' from inserted
+
+
+GO
+
+----------------------------------------------------------------------------------
+USE [ALPHA]
+GO
+
+/****** Object:  Trigger [dbo].[SUBCATEGORY_DELETE]    Script Date: 03/20/2016 16:28:45 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+
+alter TRIGGER [dbo].[SUBCATEGORY_DELETE] ON [dbo].[SUBCATEGORYLIST] 
+	AFTER DELETE
+AS 
+set nocount on;
+
+DECLARE @delid int
+DECLARE @delidcat int
+
+set @delid = (select top 1 deleted.ID from deleted)
+set @delidcat = (select top 1 deleted.IDCATEGORY from deleted)
+
+update WPNAMELIST 
+set IDSUBCAT = (
+	select ID 
+	from SUBCATEGORYLIST 
+	where IDCATEGORY = @delidcat and SUBCATNAME = 'Не присвоено'
+) 
+where IDSUBCAT = @delid;--(select top 1 deleted.ID from deleted)
+
+
+
+GO
+------------------------------------------------------------------------------------------
+--добавим поле для оперделения типа справочника
+alter table SUMMON add WPTYPE NVARCHAR(50)
+update SUMMON set WPTYPE = 'WPNAMELIST'
+alter table SUMMON alter column WPTYPE NVARCHAR(50) not null
+---------------------------------------------------------------------------------------------
+--меняем в извещениях IDWP кабелей, поскольку справочник кабелей теперь отдельно
+--
+--удаляем подкатегории категории кабели
+delete from SUBCATEGORYLIST where ID in (3,4)
+--переносим подкатегории кабелей
+update SUBCATEGORYLIST set IDCATEGORY = 12 where IDCATEGORY = 4
+--удаляем категорию кабели
+delete from CATEGORYLIST where ID = 4
+--переносим текущие извещения по кабелям в таблицу, предназначенную для кабелей
+
+insert into CABLELIST (CABLENAME,IDCATEGORY,IDSUBCAT,DECNUM,DIMENSIONALDRAWING,NOTE,CREATED)
+select distinct WPNAME,12,31,DECNUM,COMPOSITION,NOTE,CREATED from WPNAMELIST where IDCATEGORY = 4
+
+update SUMMON set WPTYPE = 'CABLELIST' 
+where ID in (select A.ID from SUMMON A
+			left join WPNAMELIST B on A.IDWP = B.ID
+			where B.IDCATEGORY = 4)
+
+
+with F0 as (
+			select B.* from SUMMON A
+			left join WPNAMELIST B on A.IDWP = B.ID
+			where B.IDCATEGORY = 4),
+F1 as (			
+select distinct A.ID idwp,F0.ID id from F0
+left join CABLELIST A on A.DECNUM = F0.DECNUM and A.CABLENAME = F0.WPNAME			
+)
+update SUMMON set IDWP = (select idwp from F1 where SUMMON.IDWP = F1.id)
+where ID in (select A.ID from SUMMON A
+			left join WPNAMELIST B on A.IDWP = B.ID
+			where B.IDCATEGORY = 4)
+--на случай ошибки держим базу perenos		
+--update ALPHA..SUMMON set IDWP = (select IDWP from perenos..SUMMON A where SUMMON.ID = A.ID)
+
+
+
+---------------------------------------------------------------------------------------------
+--меняем в извещениях IDWP жгутов, поскольку справочник жгутов теперь отдельно
+--
+use ALPHA
+go
+
+--удаляем подкатегории категории кабели
+delete from ALPHA..SUBCATEGORYLIST where ID in (27,28)
+--переносим подкатегории кабелей
+update ALPHA..SUBCATEGORYLIST set IDCATEGORY = 14 where IDCATEGORY = 11
+--удаляем категорию кабели
+delete from ALPHA..CATEGORYLIST where ID = 11
+--переносим текущие извещения по кабелям в таблицу, предназначенную для кабелей
+insert into ALPHA..ZHGUTLIST (ZHGUTNAME,IDCATEGORY,IDSUBCAT,DECNUM,ZHGUTPATH,NOTE,CREATED)
+select distinct WPNAME,12,31,DECNUM,COMPOSITION,NOTE,CREATED from ALPHA..WPNAMELIST where IDCATEGORY = 11
+
+update SUMMON set WPTYPE = 'ZHGUTLIST' 
+where ID in (select A.ID from SUMMON A
+			left join WPNAMELIST B on A.IDWP = B.ID
+			where B.IDCATEGORY = 11)
+
+
+with F0 as (
+			select B.* from SUMMON A
+			left join WPNAMELIST B on A.IDWP = B.ID
+			where B.IDCATEGORY = 11)
+,F1 as (			
+select distinct A.ID idwp,F0.ID id from F0
+left join ZHGUTLIST A on A.DECNUM = F0.DECNUM and A.ZHGUTNAME = F0.WPNAME			
+)
+update ALPHA..SUMMON set IDWP = (select idwp from F1 where SUMMON.IDWP = F1.id)
+where ID in (select A.ID from SUMMON A
+			left join WPNAMELIST B on A.IDWP = B.ID
+			where B.IDCATEGORY = 11)
+--на случай ошибки держим базу perenos		
+--update ALPHA..SUMMON set IDWP = (select IDWP from perenos..SUMMON A where SUMMON.ID = A.ID)
+---------------------------------------------------------------------------------------------
+--переносим кабеля с неприсвоенной категорией в справочник кабелей и удаляем их
+insert into ALPHA..CABLELIST (CABLENAME,IDCATEGORY,IDSUBCAT,DECNUM,DIMENSIONALDRAWING,NOTE,CREATED)
+select  ALPHA..WPNAME,12,31,DECNUM,COMPOSITION,NOTE,CREATED 
+from ALPHA..WPNAMELIST 
+where ALPHA..WPNAME like lower('%кабел%')
+or ALPHA..WPNAME like lower('%удлини%')
+
+delete from ALPHA..WPNAMELIST where  WPNAME like lower('%кабел%')
+or WPNAME like lower('%удлини%')
+--------------------------------------------------------------------------------------------
+--переносим данные из сущности извещение в сущность изделие
+--потом как нибудь поля надо удалить лишние из сущности извещение
+update A
+set A.COMPOSITION = (select COMPOSITION 
+					 from ALPHA..SUMMON C
+					 where C.IDWP = A.ID and C.WPTYPE = 'WPNAMELIST'
+					 and C.CREATED = (select MAX(CREATED) from ALPHA..SUMMON D where D.IDWP = C.IDWP)
+					 )
+, A.SHILDS = (select  C.SHILD
+					 from ALPHA..SUMMON C
+					 where C.IDWP = A.ID and C.WPTYPE = 'WPNAMELIST'
+					 and C.CREATED = (select MAX(CREATED) from ALPHA..SUMMON D where D.IDWP = C.IDWP)
+					 )
+, A.PLANKA = (select  C.PLANKA
+					 from ALPHA..SUMMON C
+					 where C.IDWP = A.ID and C.WPTYPE = 'WPNAMELIST'
+					 and C.CREATED = (select MAX(CREATED) from ALPHA..SUMMON D where D.IDWP = C.IDWP)
+					 )
+, A.SBORKA3D = (select  C.SBORKA3D
+					 from ALPHA..SUMMON C
+					 where C.IDWP = A.ID and C.WPTYPE = 'WPNAMELIST'
+					 and C.CREATED = (select MAX(CREATED) from ALPHA..SUMMON D where D.IDWP = C.IDWP)
+					 )
+--, A.ZHGUT = (select  
+--					 from ALPHA..SUMMON C
+--					 where C.IDWP = A.ID and C.WPTYPE = 'WPNAMELIST'
+--					 and C.CREATED = (select MAX(CREATED) from ALPHA..SUMMON D where D.IDWP = C.IDWP)
+--					 )
+, A.SERIAL = (select  C.SERIAL
+					 from ALPHA..SUMMON C
+					 where C.IDWP = A.ID and C.WPTYPE = 'WPNAMELIST'
+					 and C.CREATED = (select MAX(CREATED) from ALPHA..SUMMON D where D.IDWP = C.IDWP)
+					 )
+, A.MECHPARTS = (select  C.METAL
+					 from ALPHA..SUMMON C
+					 where C.IDWP = A.ID and C.WPTYPE = 'WPNAMELIST'
+					 and C.CREATED = (select MAX(CREATED) from ALPHA..SUMMON D where D.IDWP = C.IDWP)
+					 )
+, A.TECHREQ = (select  C.TECHREQPATH
+					 from ALPHA..SUMMON C
+					 where C.IDWP = A.ID and C.WPTYPE = 'WPNAMELIST'
+					 and C.CREATED = (select MAX(CREATED) from ALPHA..SUMMON D where D.IDWP = C.IDWP)
+					 )
+					 
+from ALPHA..WPNAMELIST A
+ join ALPHA..SUMMON B on A.ID = B.IDWP and B.WPTYPE = 'WPNAMELIST'
+where A.ID = B.IDWP
+
+update ALPHA..WPNAMELIST
+set TECHREQ = null where TECHREQ = ''
+
+update ALPHA..WPNAMELIST
+set COMPOSITIONREQ = 1 where COMPOSITION is not null
+
+update ALPHA..WPNAMELIST
+set SHILDSREQ = 1 where SHILDS is not null
+
+update ALPHA..WPNAMELIST
+set PLANKAREQ = 1 where PLANKA is not null
+
+update ALPHA..WPNAMELIST
+set SBORKA3DREQ = 1 where SBORKA3D is not null
+
+update ALPHA..WPNAMELIST
+set SERIALREQ = 1 where SERIAL is not null
+
+update ALPHA..WPNAMELIST
+set MECHPARTSREQ = 1 where MECHPARTS is not null
+
+update ALPHA..WPNAMELIST
+set TECHREQREQ = 1 where TECHREQ is not null
+---------------------------------------------------------------------------------------------
+--добавляем новые роли
+insert into ALPHA..ROLES (ROLENAME) values ('Инженер')
+insert into ALPHA..ROLES (ROLENAME) values ('Схемотехник')
+insert into ALPHA..ROLES (ROLENAME) values ('Технолог')
+insert into ALPHA..ROLES (ROLENAME) values ('ОТД')
+---------------------------------------------------------------------------------------------
+alter table ALPHA..CABLES add CNT int not null
+alter table ALPHA..ZHGUTS add CNT int not null
+---------------------------------------------------------------------------------------------

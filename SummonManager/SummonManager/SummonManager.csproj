@@ -113,6 +113,7 @@
     <Compile Include="Cable.Designer.cs">
       <DependentUpon>Cable.cs</DependentUpon>
     </Compile>
+    <Compile Include="CLASSES\DBCableList.cs" />
     <Compile Include="CLASSES\DBCategory.cs" />
     <Compile Include="CLASSES\DBCOMPARC.cs" />
     <Compile Include="CLASSES\DBVersion.cs" />
@@ -127,6 +128,12 @@
     </Compile>
     <Compile Include="CLASSES\DBPurchasedMaterials.cs" />
     <Compile Include="CLASSES\DBNotifications.cs" />
+    <Compile Include="Controls\Package.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\Package.Designer.cs">
+      <DependentUpon>Package.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\PathField.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -520,6 +527,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Cable.resx">
       <DependentUpon>Cable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\Package.resx">
+      <DependentUpon>Package.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\PathField.resx">
       <DependentUpon>PathField.cs</DependentUpon>
