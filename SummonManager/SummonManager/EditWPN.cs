@@ -42,12 +42,12 @@ namespace SummonManager
             cbSubCategory.SelectedValue = wp.IDSubCat;
             tbDecNum.Text = wp.DecNum;
             tbPowerSupply.Text = wp.PowerSupply;
-            tbConfiguration.Text = wp.Configuration;
+            tbConfiguration.Text = wp.CONFIGURATION;
             tbNote.Text = wp.Note;
 
 
-            pfComposition.Init(wp.Composition, false, true, false);
-            pfDimDrawing.Init(wp.DimenDrawing, false, true, false);
+            pfComposition.Init(wp.COMPOSITION, false, true, false);
+            pfDimDrawing.Init(wp.DIMENDRAWING, false, true, false);
 
 
         }
@@ -71,10 +71,10 @@ namespace SummonManager
             wp.IDCat = Convert.ToInt32(cbCategory.SelectedValue);
             wp.IDSubCat = Convert.ToInt32(cbSubCategory.SelectedValue);
             wp.DecNum = tbDecNum.Text;
-            wp.Composition = pfComposition.FullPath;//.bOpen.Tag.ToString();
-            wp.DimenDrawing = pfDimDrawing.FullPath;//.bOpen.Tag.ToString();
+            wp.COMPOSITION = pfComposition.FullPath;//.bOpen.Tag.ToString();
+            wp.DIMENDRAWING = pfDimDrawing.FullPath;//.bOpen.Tag.ToString();
             wp.PowerSupply = tbPowerSupply.Text;
-            wp.Configuration = tbConfiguration.Text;
+            wp.CONFIGURATION = tbConfiguration.Text;
             wp.Note = tbNote.Text;
             wp.ID = this.IDW;
             dbwp.EditWP(wp);

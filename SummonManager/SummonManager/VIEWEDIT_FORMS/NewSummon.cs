@@ -269,15 +269,15 @@ namespace SummonManager
         }
 
 
-        private void bEditExtCablePack_Click(object sender, EventArgs e)
-        {
-            fEditExtCablePack fecp = new fEditExtCablePack(this.IDNEWSUMMON.ToString());
-            fecp.ShowDialog();
-            UIProc ui = new UIProc();
-            ui.LoadExtCables(dgv, this.IDNEWSUMMON.ToString());
+//        private void bEditExtCablePack_Click(object sender, EventArgs e)
+//        {
+//            fEditExtCablePack fecp = new fEditExtCablePack(this.IDNEWSUMMON.ToString());
+//            fecp.ShowDialog();
+//            UIProc ui = new UIProc();
+//            ui.LoadExtCables(dgv, this.IDNEWSUMMON.ToString());
 
-//            LoadExtCables();
-        }
+////            LoadExtCables();
+//        }
 
         private void NewSummon_FormClosing(object sender, FormClosingEventArgs e)
         {

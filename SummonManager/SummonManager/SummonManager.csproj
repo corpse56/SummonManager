@@ -113,6 +113,7 @@
     <Compile Include="Cable.Designer.cs">
       <DependentUpon>Cable.cs</DependentUpon>
     </Compile>
+    <Compile Include="CLASSES\CableVO.cs" />
     <Compile Include="CLASSES\DBCableList.cs" />
     <Compile Include="CLASSES\DBCategory.cs" />
     <Compile Include="CLASSES\DBCOMPARC.cs" />
@@ -120,6 +121,8 @@
     <Compile Include="CLASSES\StatusStripIndicator.cs" />
     <Compile Include="CLASSES\WPNameVO.cs" />
     <Compile Include="CLASSES\DBSubCategory.cs" />
+    <Compile Include="CLASSES\DBZhgutList.cs" />
+    <Compile Include="CLASSES\ZhgutVO.cs" />
     <Compile Include="Controls\ColorSelectControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -264,11 +267,11 @@
     <Compile Include="fEditCustomersDept.Designer.cs">
       <DependentUpon>fEditCustomersDept.cs</DependentUpon>
     </Compile>
-    <Compile Include="fEditExtCablePack.cs">
+    <Compile Include="fEditPackage.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="fEditExtCablePack.Designer.cs">
-      <DependentUpon>fEditExtCablePack.cs</DependentUpon>
+    <Compile Include="fEditPackage.Designer.cs">
+      <DependentUpon>fEditPackage.cs</DependentUpon>
     </Compile>
     <Compile Include="fTimeInDeptPieChartStat.cs">
       <SubType>Form</SubType>
@@ -344,7 +347,7 @@
     <Compile Include="Packing.Designer.cs">
       <DependentUpon>Packing.cs</DependentUpon>
     </Compile>
-    <Compile Include="CLASSES\DBCable.cs" />
+    <Compile Include="CLASSES\OLDDBCable.cs" />
     <Compile Include="CLASSES\DBPacking.cs" />
     <Compile Include="VIEWEDIT_FORMS\ShowSummonWSH.cs">
       <SubType>Form</SubType>
@@ -592,8 +595,8 @@
     <EmbeddedResource Include="fEditCustomersDept.resx">
       <DependentUpon>fEditCustomersDept.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="fEditExtCablePack.resx">
-      <DependentUpon>fEditExtCablePack.cs</DependentUpon>
+    <EmbeddedResource Include="fEditPackage.resx">
+      <DependentUpon>fEditPackage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fTimeInDeptPieChartStat.resx">
       <DependentUpon>fTimeInDeptPieChartStat.cs</DependentUpon>

@@ -241,9 +241,9 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(12, 20);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(99, 16);
+            this.label3.Size = new System.Drawing.Size(164, 16);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Выберите тип";
+            this.label3.Text = "Выберите тип продукта";
             // 
             // WPName
             // 
@@ -272,7 +272,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "WPName";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Справочник изделий";
+            this.Text = "Справочник продуктов";
             this.Load += new System.EventHandler(this.WPName_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgWP)).EndInit();
             this.ResumeLayout(false);

@@ -26,7 +26,7 @@ namespace SummonManager.CLASSES
                 fromdate = (DateTime)DS.Tables["t"].Rows[0]["arc"];
             }
 
-            DA.InsertCommand.Parameters.AddWithValue("comp", wp.Composition);
+            DA.InsertCommand.Parameters.AddWithValue("comp", wp.COMPOSITION);
             DA.InsertCommand.Parameters.AddWithValue("from", fromdate);
             DA.InsertCommand.CommandText = "insert into " + Base.BaseName + "..WPCOMPOSITIONARCHIVE (IDWP,ARCPATH,DATEARC,FROMDATE) values (" + wp.ID + 
                                                                                         ",@comp,getdate(),@from)";

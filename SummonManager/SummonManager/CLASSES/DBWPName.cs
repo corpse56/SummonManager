@@ -70,9 +70,9 @@ namespace SummonManager
             DA.InsertCommand.Parameters.AddWithValue("IDCATEGORY", p.IDCat);
             DA.InsertCommand.Parameters.AddWithValue("IDSUBCAT", p.IDSubCat);
             DA.InsertCommand.Parameters.AddWithValue("DECNUM", p.DecNum);
-            DA.InsertCommand.Parameters.AddWithValue("CONFIGURATION", ((object)p.Configuration) ?? DBNull.Value);
-            DA.InsertCommand.Parameters.AddWithValue("COMPOSITION", ((object)p.Composition ) ?? DBNull.Value);
-            DA.InsertCommand.Parameters.AddWithValue("DIMENSIONALDRAWING", ((object)p.DimenDrawing) ?? DBNull.Value);
+            DA.InsertCommand.Parameters.AddWithValue("CONFIGURATION", ((object)p.CONFIGURATION) ?? DBNull.Value);
+            DA.InsertCommand.Parameters.AddWithValue("COMPOSITION", ((object)p.COMPOSITION ) ?? DBNull.Value);
+            DA.InsertCommand.Parameters.AddWithValue("DIMENSIONALDRAWING", ((object)p.DIMENDRAWING) ?? DBNull.Value);
             DA.InsertCommand.Parameters.AddWithValue("POWERSUPPLY", p.PowerSupply);
             DA.InsertCommand.Parameters.AddWithValue("NOTE", p.Note);
             DA.InsertCommand.Parameters.AddWithValue("CREATED", DateTime.Now);
@@ -96,10 +96,10 @@ namespace SummonManager
             else
                 wp.IDSubCat = 0;
             wp.DecNum = DS.Tables["t"].Rows[0]["DECNUM"].ToString(); ;
-            wp.Composition = DS.Tables["t"].Rows[0]["COMPOSITION"].ToString();
-            wp.DimenDrawing = DS.Tables["t"].Rows[0]["DIMENSIONALDRAWING"].ToString();
+            wp.COMPOSITION = DS.Tables["t"].Rows[0]["COMPOSITION"].ToString();
+            wp.DIMENDRAWING = DS.Tables["t"].Rows[0]["DIMENSIONALDRAWING"].ToString();
             wp.PowerSupply = DS.Tables["t"].Rows[0]["POWERSUPPLY"].ToString();
-            wp.Configuration = DS.Tables["t"].Rows[0]["CONFIGURATION"].ToString();
+            wp.CONFIGURATION = DS.Tables["t"].Rows[0]["CONFIGURATION"].ToString();
             wp.Note = DS.Tables["t"].Rows[0]["NOTE"].ToString();
             return wp;
         }
@@ -111,9 +111,9 @@ namespace SummonManager
             DA.UpdateCommand.Parameters.AddWithValue("IDCATEGORY", p.IDCat);
             DA.UpdateCommand.Parameters.AddWithValue("IDSUBCAT", p.IDSubCat);
             DA.UpdateCommand.Parameters.AddWithValue("DECNUM", p.DecNum);
-            DA.UpdateCommand.Parameters.AddWithValue("COMPOSITION", p.Composition);
-            DA.UpdateCommand.Parameters.AddWithValue("CONFIGURATION", p.Configuration);
-            DA.UpdateCommand.Parameters.AddWithValue("DIMENSIONALDRAWING", p.DimenDrawing);
+            DA.UpdateCommand.Parameters.AddWithValue("COMPOSITION", p.COMPOSITION);
+            DA.UpdateCommand.Parameters.AddWithValue("CONFIGURATION", p.CONFIGURATION);
+            DA.UpdateCommand.Parameters.AddWithValue("DIMENSIONALDRAWING", p.DIMENDRAWING);
             DA.UpdateCommand.Parameters.AddWithValue("POWERSUPPLY", p.PowerSupply);
             DA.UpdateCommand.Parameters.AddWithValue("NOTE", p.Note);
             DA.UpdateCommand.Parameters.AddWithValue("ID", p.ID);
@@ -150,5 +150,71 @@ namespace SummonManager
             return DS.Tables["t"].Rows[0]["COMPOSITION"].ToString();
         }
 
+
+        internal object GetPackage(int idwp)
+        {
+            DA.SelectCommand.Parameters.AddWithValue("IDWP", idwp);
+            DA.SelectCommand.CommandText = " select A.ID id,A.ID nn,B.WPNAME,A.CNT " +
+                                           " left join " + Base.BaseName + "..WPNAMELIST B ON B.ID = A.IDZHGUT " +
+                                           " from " + Base.BaseName + "..WPNAMELIST A where IDWP = @IDWP ";
+            DA.Fill(DS, "t");
+            return DS.Tables["t"];
+        }
+
+        internal WPNameVO GetWPNameByID(int id)
+        {
+            WPNameVO wp = new WPNameVO();
+            DA.SelectCommand.Parameters.AddWithValue("ID", id);
+            DA.SelectCommand.CommandText = " select * from " + Base.BaseName + "..WPNAME A where ID = @ID";
+            DA.Fill(DS, "t");
+            DataRow r = DS.Tables["t"].Rows[0];
+            
+            wp.WPType = WPTYPE.WPNAMELIST; 
+            wp.ID = (int)r["ID"];
+            wp.WPName = r["WPNAME"].ToString();
+            wp.IDCat= (int)r["IDCATEGORY"];
+            wp.IDSubCat = (int)r["IDSUBCAT"];
+            wp.DecNum = r["DECNUM"].ToString();
+            wp.WIRINGDIAGRAM = r["WIRINGDIAGRAM"].ToString();
+            wp.TECHREQ = r["TECHREQ"].ToString();
+            wp.COMPOSITION = r["COMPOSITION"].ToString();
+            wp.CONFIGURATION = r["CONFIGURATION"].ToString();
+            wp.DIMENDRAWING = r["DIMENSIONALDRAWING"].ToString();
+            wp.SBORKA3D = r["SBORKA3D"].ToString();
+            wp.MECHPARTS = r["MECHPARTS"].ToString();
+            wp.ZHGUTS = new DBZhgutList().GetPackageForVO(wp.ID);
+            wp.CABLES = new DBCableList().GetPackageForVO(wp.ID);
+            wp.SHILDS = r["SHILDS"].ToString();
+            wp.PLANKA = r["PLANKA"].ToString();
+            wp.SERIAL = r["SERIAL"].ToString();
+            wp.PACKAGING = r["PACKAGING"].ToString();
+            wp.PASSPORT = r["PASSPORT"].ToString();
+            wp.MANUAL = r[""].ToString();
+            wp.PACKINGLIST = r["MANUAL"].ToString();
+            wp.PowerSupply = r["PACKINGLIST"].ToString();
+            wp.Note = r["NOTE"].ToString();
+
+            wp.COMPOSITIONREQ = (bool)r["COMPOSITIONREQ"];
+            wp.DIMENSIONALDRAWINGREQ = (bool)r["DIMENSIONALDRAWINGREQ"];
+            wp.POWERSUPPLYREQ = (bool)r["POWERSUPPLYREQ"];
+            wp.CONFIGURATIONREQ = (bool)r["CONFIGURATIONREQ"];
+            wp.WIRINGDIAGRAMREQ = (bool)r["WIRINGDIAGRAMREQ"];
+            wp.TECHREQREQ = (bool)r["TECHREQREQ"];
+            wp.SBORKA3DREQ = (bool)r["SBORKA3DREQ"];
+            wp.MECHPARTSREQ = (bool)r["MECHPARTSREQ"];
+            wp.SHILDSREQ = (bool)r["SHILDSREQ"];
+            wp.PLANKAREQ = (bool)r["PLANKAREQ"];
+            wp.SERIALREQ = (bool)r["SERIALREQ"];
+            wp.PACKAGEREQ = (bool)r["PACKAGEREQ"];
+            wp.PASSPORTREQ = (bool)r["PASSPORTREQ"];
+            wp.MANUALREQ = (bool)r["MANUALREQ"];
+            wp.PACKAGELISTREQ = (bool)r["PACKAGELISTREQ"];
+            wp.SOFTWAREREQ = (bool)r["SOFTWAREREQ"];
+            wp.CABLELISTREQ = (bool)r["CABLELISTREQ"];
+            wp.ZHGUTLISTREQ = (bool)r["ZHGUTLISTREQ"];
+            wp.RUNCARDLISTREQ = (bool)r["RUNCARDLISTREQ"];
+            wp.CIRCUITBOARDLISTREQ = (bool)r["CIRCUITBOARDLISTREQ"];
+            return wp;
+        }
     }
 }

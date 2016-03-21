@@ -475,7 +475,7 @@
             this.bEditExtCablePack.Text = "---->";
             this.bEditExtCablePack.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bEditExtCablePack.UseVisualStyleBackColor = true;
-            this.bEditExtCablePack.Click += new System.EventHandler(this.bEditExtCablePack_Click);
+            //this.bEditExtCablePack.Click += new System.EventHandler(this.bEditExtCablePack_Click);
             // 
             // cbCustDept
             // 

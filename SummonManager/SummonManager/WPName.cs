@@ -53,9 +53,10 @@ namespace SummonManager
 
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)//редактировать
         {
-            EditWPN ew = new EditWPN(Convert.ToInt32(dgWP.SelectedRows[0].Cells["ID"].Value),false);
+            
+            NewWPN ew = new NewWPN(WPNameVO.WPNameVOByID(Convert.ToInt32(dgWP.SelectedRows[0].Cells["ID"].Value)),"EDIT");
             ew.ShowDialog();
             //DBWPName dbwp = new DBWPName();
             //dgWP.DataSource = dbwp.GetAllWPNames();
@@ -65,11 +66,9 @@ namespace SummonManager
 
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void button4_Click(object sender, EventArgs e)//клонировать
         {
-            WPNameVO wp = new WPNameVO();
-            DBWPName dbwp = new DBWPName();
-            wp = dbwp.GetWP(Convert.ToInt32(dgWP.SelectedRows[0].Cells["ID"].Value));
+            WPNameVO wp = WPNameVO.WPNameVOByID(Convert.ToInt32(dgWP.SelectedRows[0].Cells["ID"].Value));
             NewWPN nwp = new NewWPN(wp);
             nwp.ShowDialog();
             int idsub = (cbSubCat.SelectedValue != null) ? (int)cbSubCat.SelectedValue : 0;

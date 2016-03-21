@@ -9,12 +9,12 @@ using System.Windows.Forms;
 
 namespace SummonManager
 {
-    public partial class Cable : Form
+    public partial class OldCable : Form
     {
-        public Cable()
+        public OldCable()
         {
             InitializeComponent();
-            DBCable dbwp = new DBCable();
+            OLDDBCable dbwp = new OLDDBCable();
             dgWP.DataSource = dbwp.GetAll();
             dgWP.Columns["ID"].Visible = false;
             dgWP.Columns["CNAME"].HeaderText = "Наименование кабеля";
@@ -30,7 +30,7 @@ namespace SummonManager
         {
             NewCable nwp = new NewCable();
             nwp.ShowDialog();
-            DBCable dbwp = new DBCable();
+            OLDDBCable dbwp = new OLDDBCable();
             dgWP.DataSource = dbwp.GetAll();
 
         }
@@ -39,7 +39,7 @@ namespace SummonManager
         {
             EditCable ew = new EditCable(dgWP.SelectedRows[0].Cells["ID"].Value.ToString());
             ew.ShowDialog();
-            DBCable dbwp = new DBCable();
+            OLDDBCable dbwp = new OLDDBCable();
             dgWP.DataSource = dbwp.GetAll();
 
         }

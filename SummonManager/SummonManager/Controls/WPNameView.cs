@@ -19,13 +19,13 @@ namespace SummonManager.Controls
 
         private void button1_Click(object sender, EventArgs e)
         {
-            EditWPN ewp = new EditWPN(SelectedWPNameID, true);
+            NewWPN ewp = new NewWPN(SelectedWPNameID, true);
             ewp.ShowDialog();
         }
         public void Init(int _SelectedWPNameID)
         {
             this.SelectedWPNameID = _SelectedWPNameID;
-            WPNameVO vo = new WPNameVO(_SelectedWPNameID);
+            WPNameVO vo = WPNameVO.WPNameVOByID(_SelectedWPNameID);
             textBox1.Text = vo.WPName + " " + vo.DecNum;
         }
         public int SelectedWPNameID;

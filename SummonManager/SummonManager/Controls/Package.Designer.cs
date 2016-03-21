@@ -52,19 +52,20 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgv.DefaultCellStyle = dataGridViewCellStyle1;
-            this.dgv.Location = new System.Drawing.Point(53, 3);
+            this.dgv.Location = new System.Drawing.Point(49, 8);
+            this.dgv.Margin = new System.Windows.Forms.Padding(5);
             this.dgv.MultiSelect = false;
             this.dgv.Name = "dgv";
             this.dgv.ReadOnly = true;
             this.dgv.RowHeadersVisible = false;
             this.dgv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv.Size = new System.Drawing.Size(544, 93);
+            this.dgv.Size = new System.Drawing.Size(549, 93);
             this.dgv.TabIndex = 28;
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(22, 13);
+            this.checkBox1.Location = new System.Drawing.Point(8, 8);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(15, 14);
             this.checkBox1.TabIndex = 29;
@@ -74,9 +75,9 @@
             // 
             this.button1.BackgroundImage = global::SummonManager.Properties.Resources.edit1;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.button1.Location = new System.Drawing.Point(4, 45);
+            this.button1.Location = new System.Drawing.Point(3, 23);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(43, 45);
+            this.button1.Size = new System.Drawing.Size(35, 45);
             this.button1.TabIndex = 30;
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -89,7 +90,8 @@
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.dgv);
             this.Name = "Package";
-            this.Size = new System.Drawing.Size(600, 99);
+            this.Padding = new System.Windows.Forms.Padding(5);
+            this.Size = new System.Drawing.Size(606, 109);
             ((System.ComponentModel.ISupportInitialize)(this.dgv)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

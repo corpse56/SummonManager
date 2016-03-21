@@ -16,7 +16,7 @@ namespace SummonManager
         {
             InitializeComponent();
             this.IDW = idw;
-            DBCable dbwp = new DBCable();
+            OLDDBCable dbwp = new OLDDBCable();
             textBox1.Text = dbwp.Get(this.IDW);
         }
 
@@ -32,7 +32,7 @@ namespace SummonManager
                 MessageBox.Show("Введите наименование!");
                 return;
             }
-            DBCable dbwp = new DBCable();
+            OLDDBCable dbwp = new OLDDBCable();
             dbwp.Edit(textBox1.Text,this.IDW);
             MessageBox.Show("Наименование успешно изменено!");
             Close();

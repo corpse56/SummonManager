@@ -486,14 +486,14 @@ namespace SummonManager
 
         }
 
-        private void bEditExtCablePack_Click(object sender, EventArgs e)
-        {
-            fEditExtCablePack fecp = new fEditExtCablePack(this.IDSUMMON);
-            fecp.ShowDialog();
-            UIProc ui = new UIProc();
-            ui.LoadExtCables(dgv, this.IDSUMMON);
+        //private void bEditExtCablePack_Click(object sender, EventArgs e)
+        //{
+        //    fEditExtCablePack fecp = new fEditExtCablePack(this.IDSUMMON);
+        //    fecp.ShowDialog();
+        //    UIProc ui = new UIProc();
+        //    ui.LoadExtCables(dgv, this.IDSUMMON);
 
-        }
+        //}
 
         private void button1_Click(object sender, EventArgs e)
         {

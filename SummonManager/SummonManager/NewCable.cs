@@ -28,7 +28,7 @@ namespace SummonManager
                 MessageBox.Show("Введите наименование!");
                 return;
             }
-            DBCable dbwp = new DBCable();
+            OLDDBCable dbwp = new OLDDBCable();
             dbwp.AddNew(textBox1.Text);
             MessageBox.Show("Наименование успешно добавлено!");
             Close();

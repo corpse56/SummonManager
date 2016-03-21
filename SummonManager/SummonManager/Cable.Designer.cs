@@ -1,6 +1,6 @@
 ﻿namespace SummonManager
 {
-    partial class Cable
+    partial class OldCable
     {
         /// <summary>
         /// Required designer variable.

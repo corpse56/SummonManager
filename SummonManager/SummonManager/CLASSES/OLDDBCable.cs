@@ -6,9 +6,9 @@ using System.Data;
 
 namespace SummonManager
 {
-    class DBCable :DB
+    class OLDDBCable :DB
     {
-        public DBCable() { }
+        public OLDDBCable() { }
         public DataTable GetAll()
         {
             DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..CABLELIST";

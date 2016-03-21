@@ -34,19 +34,18 @@ namespace SummonManager
                 tbNote.Text = clone.Note;
 
 
-                //pfComposition.tbPath.Text = clone.Composition.Substring(clone.Composition.LastIndexOf("\\") + 1);
-                //pfComposition.tbPath.Tag = clone.Composition;
-                //pfComposition.bOpen.Tag = clone.Composition;
-                //pfDimDrawing.tbPath.Text = clone.DimenDrawing.Substring(clone.DimenDrawing.LastIndexOf("\\") + 1);
-               // pfDimDrawing.tbPath.Tag = clone.DimenDrawing;
-               // pfDimDrawing.bOpen.Tag = clone.DimenDrawing;
-                pfComposition.Init(clone.Composition, false, true, false);
-                pfDimDrawing.Init(clone.DimenDrawing, false, true, false);
+                pfComposition.Init(clone.COMPOSITION, false, true, false);
+                pfDimDrawing.Init(clone.DIMENDRAWING, false, true, false);
 
             }
 
         }
-
+        private string AccessMode = "NEW";//NEW - форма переделывается под добавление нового изделия; EDIT - форма переделывается под редактирование
+        public NewWPN(WPNameVO wp,string _accessmode)
+        {
+            InitializeComponent();
+            this.AccessMode = _accessmode;
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             Close();
@@ -54,25 +53,48 @@ namespace SummonManager
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (tbName.Text == "")
+            if (AccessMode == "NEW")//вставляем
             {
-                MessageBox.Show("Введите наименование!");
-                return;
+                if (tbName.Text == "")
+                {
+                    MessageBox.Show("Введите наименование!");
+                    return;
+                }
+                WPNameVO wp = new WPNameVO();
+                wp.WPType = WPTYPE.WPNAMELIST;
+                //wp.ID = (int)r["ID"];
+                wp.WPName = tbName.Text;
+                wp.IDCat = Convert.ToInt32(cbCategory.SelectedValue);
+                wp.IDSubCat = (cbSubCategory.SelectedValue == null) ? 0 : (int)cbSubCategory.SelectedValue;
+                wp.DecNum = tbDecNum.Text;
+                wp.WIRINGDIAGRAM = (pfWIRINGDIAGRAM.FullPath == "<нет>") ? null : pfWIRINGDIAGRAM.FullPath;
+                wp.TECHREQ = (pfTECHREQ.FullPath == "<нет>") ? null : pfTECHREQ.FullPath;
+                wp.COMPOSITION = (pfComposition.FullPath == "<нет>") ? null : pfComposition.FullPath;
+                wp.CONFIGURATION = (pfCONFIGURATION.FullPath == "<нет>") ? null : pfCONFIGURATION.FullPath;
+                wp.DIMENDRAWING = (pfDimDrawing.FullPath == "<нет>") ? null : pfDimDrawing.FullPath; ;
+                wp.SBORKA3D = (pf3DSBORKA.FullPath == "<нет>") ? null : pf3DSBORKA.FullPath;
+                wp.MECHPARTS = (pfMECHPARTS.FullPath == "<нет>") ? null : pfMECHPARTS.FullPath;
+                wp.ZHGUTS = new DBZhgutList().GetPackageForVO(wp.ID);
+                wp.CABLES = new DBCableList().GetPackageForVO(wp.ID);
+                wp.SHILDS = (pfSHILDS.FullPath == "<нет>") ? null : pfSHILDS.FullPath;
+                wp.PLANKA = (pfPLANKA.FullPath == "<нет>") ? null : pfPLANKA.FullPath;
+                wp.SERIAL = (pfSERIAL.FullPath == "<нет>") ? null : pfSERIAL.FullPath;
+                wp.PACKAGING = (pfPACKAGING.FullPath == "<нет>") ? null : pfPACKAGING.FullPath;
+                wp.PASSPORT = (pfPASSPORT.FullPath == "<нет>") ? null : pfPASSPORT.FullPath;
+                wp.MANUAL = (pfMANUAL.FullPath == "<нет>") ? null : pfMANUAL.FullPath;
+                wp.PACKINGLIST = (pfPACKINGLIST.FullPath == "<нет>") ? null : pfPACKINGLIST.FullPath; r["MANUAL"].ToString();
+                wp.PowerSupply = tbPowerSupply.Text;
+                wp.Note = tbNote.Text;
+                
+                DBWPName dbwp = new DBWPName();
+                dbwp.AddNewWP(wp);
+                MessageBox.Show("Наименование успешно добавлено!");
+                Close();
             }
-            WPNameVO wp = new WPNameVO();
-            wp.WPName = tbName.Text;
-            wp.IDCat = Convert.ToInt32(cbCategory.SelectedValue);
-            wp.IDSubCat = (cbSubCategory.SelectedValue == null)? 0:(int)cbSubCategory.SelectedValue;
-            wp.DecNum = tbDecNum.Text;
-            wp.Composition = (pfComposition.FullPath == "<нет>") ? null : pfComposition.FullPath;
-            wp.DimenDrawing = (pfDimDrawing.FullPath == "<нет>") ? null : pfDimDrawing.FullPath;;
-            wp.PowerSupply = tbPowerSupply.Text;
-            //wp.Configuration = tbConfiguration.Text;
-            wp.Note = tbNote.Text;
-            DBWPName dbwp = new DBWPName();
-            dbwp.AddNewWP(wp);
-            MessageBox.Show("Наименование успешно добавлено!");
-            Close();
+            if (AccessMode == "EDIT")//редактируем
+            {
+
+            }
         }
 
         private void NewWPN_Load(object sender, EventArgs e)
