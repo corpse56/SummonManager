@@ -28,25 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgWP = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dgWP)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dgWP
-            // 
-            this.dgWP.AllowUserToAddRows = false;
-            this.dgWP.AllowUserToDeleteRows = false;
-            this.dgWP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgWP.Location = new System.Drawing.Point(12, 12);
-            this.dgWP.MultiSelect = false;
-            this.dgWP.Name = "dgWP";
-            this.dgWP.RowHeadersVisible = false;
-            this.dgWP.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgWP.Size = new System.Drawing.Size(579, 281);
-            this.dgWP.TabIndex = 0;
+
             // 
             // button1
             // 
@@ -86,7 +72,6 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.dgWP);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -94,14 +79,12 @@
             this.Name = "WPName";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Наименование кабеля";
-            ((System.ComponentModel.ISupportInitialize)(this.dgWP)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgWP;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;

@@ -12,8 +12,9 @@ namespace SummonManager.CLASSES
         {
             DA.SelectCommand.Parameters.AddWithValue("IDWP", IDWP);
             DA.SelectCommand.CommandText = " select A.ID id,A.ID nn,B.CABLENAME,A.CNT " +
+                                           " from " + Base.BaseName + "..CABLES A " +
                                            " left join " + Base.BaseName + "..CABLELIST B ON B.ID = A.IDCABLE " +
-                                           " from " + Base.BaseName + "..CABLES A where IDWP = @IDWP ";
+                                           "  where IDWP = @IDWP ";
             DA.Fill(DS, "t");
             return DS.Tables["t"];
         }
@@ -21,8 +22,9 @@ namespace SummonManager.CLASSES
         {
             DA.SelectCommand.Parameters.AddWithValue("IDWP", IDWP);
             DA.SelectCommand.CommandText = " select A.IDCABLE id,A.ID nn,B.CABLENAME,A.CNT " +
+                                           " from " + Base.BaseName + "..CABLES A "+
                                            " left join " + Base.BaseName + "..CABLELIST B ON B.ID = A.IDCABLE " +
-                                           " from " + Base.BaseName + "..CABLES A where IDWP = @IDWP ";
+                                           "  where IDWP = @IDWP ";
             DA.Fill(DS, "t");
             List<CableVO> ret = new List<CableVO>();
             foreach (DataRow r in DS.Tables["t"].Rows)

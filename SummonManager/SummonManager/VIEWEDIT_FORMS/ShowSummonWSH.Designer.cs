@@ -84,7 +84,7 @@ namespace SummonManager
             this.summonNotes1 = new SummonManager.SummonNotes();
             this.summonTransfer1 = new SummonManager.SummonTransfer();
             this.pathFileds1 = new SummonManager.PathFileds();
-            this.wpNameView1 = new SummonManager.Controls.WPNameView();
+            this.wpNameView1 = new SummonManager.Controls.WPNameView(SVO);
             this.label18 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.tbSerial = new System.Windows.Forms.Label();

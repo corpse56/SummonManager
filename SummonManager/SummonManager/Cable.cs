@@ -15,10 +15,10 @@ namespace SummonManager
         {
             InitializeComponent();
             OLDDBCable dbwp = new OLDDBCable();
-            dgWP.DataSource = dbwp.GetAll();
-            dgWP.Columns["ID"].Visible = false;
-            dgWP.Columns["CNAME"].HeaderText = "Наименование кабеля";
-            dgWP.Columns["CNAME"].Width = 350;
+            //dgWP.DataSource = dbwp.GetAll();
+            //dgWP.Columns["ID"].Visible = false;
+            //dgWP.Columns["CNAME"].HeaderText = "Наименование кабеля";
+            //dgWP.Columns["CNAME"].Width = 350;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -31,16 +31,16 @@ namespace SummonManager
             NewCable nwp = new NewCable();
             nwp.ShowDialog();
             OLDDBCable dbwp = new OLDDBCable();
-            dgWP.DataSource = dbwp.GetAll();
+            //dgWP.DataSource = dbwp.GetAll();
 
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            EditCable ew = new EditCable(dgWP.SelectedRows[0].Cells["ID"].Value.ToString());
-            ew.ShowDialog();
-            OLDDBCable dbwp = new OLDDBCable();
-            dgWP.DataSource = dbwp.GetAll();
+            //EditCable ew = new EditCable(dgWP.SelectedRows[0].Cells["ID"].Value.ToString());
+            //ew.ShowDialog();
+            //OLDDBCable dbwp = new OLDDBCable();
+            //dgWP.DataSource = dbwp.GetAll();
 
         }
     }

@@ -165,7 +165,7 @@ namespace SummonManager
         {
             WPNameVO wp = new WPNameVO();
             DA.SelectCommand.Parameters.AddWithValue("ID", id);
-            DA.SelectCommand.CommandText = " select * from " + Base.BaseName + "..WPNAME A where ID = @ID";
+            DA.SelectCommand.CommandText = " select * from " + Base.BaseName + "..WPNAMELIST A where ID = @ID";
             DA.Fill(DS, "t");
             DataRow r = DS.Tables["t"].Rows[0];
             
@@ -173,7 +173,7 @@ namespace SummonManager
             wp.ID = (int)r["ID"];
             wp.WPName = r["WPNAME"].ToString();
             wp.IDCat= (int)r["IDCATEGORY"];
-            wp.IDSubCat = (int)r["IDSUBCAT"];
+            wp.IDSubCat = (r["IDSUBCAT"] == DBNull.Value) ? 0 : (int)r["IDSUBCAT"];
             wp.DecNum = r["DECNUM"].ToString();
             wp.WIRINGDIAGRAM = r["WIRINGDIAGRAM"].ToString();
             wp.TECHREQ = r["TECHREQ"].ToString();
@@ -189,14 +189,14 @@ namespace SummonManager
             wp.SERIAL = r["SERIAL"].ToString();
             wp.PACKAGING = r["PACKAGING"].ToString();
             wp.PASSPORT = r["PASSPORT"].ToString();
-            wp.MANUAL = r[""].ToString();
-            wp.PACKINGLIST = r["MANUAL"].ToString();
-            wp.PowerSupply = r["PACKINGLIST"].ToString();
+            wp.MANUAL = r["MANUAL"].ToString();
+            wp.PACKINGLIST = r["PACKINGLIST"].ToString();
+            wp.PowerSupply = r["POWERSUPPLY"].ToString();
             wp.Note = r["NOTE"].ToString();
 
             wp.COMPOSITIONREQ = (bool)r["COMPOSITIONREQ"];
             wp.DIMENSIONALDRAWINGREQ = (bool)r["DIMENSIONALDRAWINGREQ"];
-            wp.POWERSUPPLYREQ = (bool)r["POWERSUPPLYREQ"];
+            //wp.POWERSUPPLYREQ = (bool)r["POWERSUPPLYREQ"];
             wp.CONFIGURATIONREQ = (bool)r["CONFIGURATIONREQ"];
             wp.WIRINGDIAGRAMREQ = (bool)r["WIRINGDIAGRAMREQ"];
             wp.TECHREQREQ = (bool)r["TECHREQREQ"];
@@ -205,10 +205,10 @@ namespace SummonManager
             wp.SHILDSREQ = (bool)r["SHILDSREQ"];
             wp.PLANKAREQ = (bool)r["PLANKAREQ"];
             wp.SERIALREQ = (bool)r["SERIALREQ"];
-            wp.PACKAGEREQ = (bool)r["PACKAGEREQ"];
+            wp.PACKAGINGREQ = (bool)r["PACKAGINGREQ"];
             wp.PASSPORTREQ = (bool)r["PASSPORTREQ"];
             wp.MANUALREQ = (bool)r["MANUALREQ"];
-            wp.PACKAGELISTREQ = (bool)r["PACKAGELISTREQ"];
+            wp.PACKINGLISTREQ = (bool)r["PACKINGLISTREQ"];
             wp.SOFTWAREREQ = (bool)r["SOFTWAREREQ"];
             wp.CABLELISTREQ = (bool)r["CABLELISTREQ"];
             wp.ZHGUTLISTREQ = (bool)r["ZHGUTLISTREQ"];

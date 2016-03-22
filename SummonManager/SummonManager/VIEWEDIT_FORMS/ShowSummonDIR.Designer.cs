@@ -91,7 +91,7 @@ namespace SummonManager
             this.pf3D = new SummonManager.Controls.PathField();
             this.pfPLANKA = new SummonManager.Controls.PathField();
             this.pfSHILD = new SummonManager.Controls.PathField();
-            this.wpNameView1 = new SummonManager.Controls.WPNameView();
+            this.wpNameView1 = new SummonManager.Controls.WPNameView(SVO);
             this.summonTransfer2 = new SummonManager.SummonTransfer();
             this.summonTransfer1 = new SummonManager.SummonTransfer();
             this.cbMountingKit = new SummonManager.RComboBox();

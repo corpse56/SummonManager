@@ -21,7 +21,7 @@ namespace SummonManager.Controls
 
         private void button1_Click(object sender, EventArgs e)
         {
-            WPName wp = new WPName(true,UVO);
+            WPName wp = new WPName(true,UVO, WPTYPE.WPNAMELIST);
             wp.ShowDialog();
             if (wp.PickedID == 0)
             {
@@ -29,7 +29,7 @@ namespace SummonManager.Controls
             }
             DBWPName dbw = new DBWPName();
 
-            WPNameVO WPVO = new WPNameVO(wp.PickedID);
+            WPNameVO WPVO = WPNameVO.WPNameVOByID(wp.PickedID);
             textBox1.Text = WPVO.WPName + " " + WPVO.DecNum;
             textBox1.Tag = wp.PickedID;
             this.PickedID = wp.PickedID;

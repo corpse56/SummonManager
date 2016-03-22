@@ -64,7 +64,7 @@ namespace SummonManager.Controls
                     bPath.Enabled = true;
                     bPathDel.Enabled = true;
                     bPathDel.BackgroundImage = Resources.delete_ok;
-                    chRequired.Enabled = true;
+                    //chRequired.Enabled = true;
                 }
                 else
                 {
@@ -72,7 +72,7 @@ namespace SummonManager.Controls
                     bPath.Enabled = false;
                     bPathDel.Enabled = false;
                     bPathDel.BackgroundImage = Resources.delete_disable;
-                    chRequired.Enabled = false;
+                    //chRequired.Enabled = false;
                 }
             }
         }

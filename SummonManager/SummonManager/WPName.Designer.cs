@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgWP = new System.Windows.Forms.DataGridView();
             this.bClose = new System.Windows.Forms.Button();
             this.bAdd = new System.Windows.Forms.Button();
             this.bEdit = new System.Windows.Forms.Button();
@@ -44,28 +43,11 @@
             this.bEditSubCategory = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.bView = new System.Windows.Forms.Button();
-            this.cbTYPE = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.dgWP = new System.Windows.Forms.DataGridView();
+            this.cbPRODUCTTYPE = new SummonManager.RComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgWP)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dgWP
-            // 
-            this.dgWP.AllowUserToAddRows = false;
-            this.dgWP.AllowUserToDeleteRows = false;
-            this.dgWP.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgWP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgWP.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgWP.Location = new System.Drawing.Point(12, 135);
-            this.dgWP.MultiSelect = false;
-            this.dgWP.Name = "dgWP";
-            this.dgWP.RowHeadersVisible = false;
-            this.dgWP.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgWP.Size = new System.Drawing.Size(1189, 315);
-            this.dgWP.TabIndex = 0;
-            this.dgWP.DoubleClick += new System.EventHandler(this.dgWP_DoubleClick);
             // 
             // bClose
             // 
@@ -76,7 +58,7 @@
             this.bClose.TabIndex = 1;
             this.bClose.Text = "Закрыть";
             this.bClose.UseVisualStyleBackColor = true;
-            this.bClose.Click += new System.EventHandler(this.button1_Click);
+            this.bClose.Click += new System.EventHandler(this.bClose_Click);
             // 
             // bAdd
             // 
@@ -87,7 +69,7 @@
             this.bAdd.TabIndex = 1;
             this.bAdd.Text = "Добавить";
             this.bAdd.UseVisualStyleBackColor = true;
-            this.bAdd.Click += new System.EventHandler(this.button2_Click);
+            this.bAdd.Click += new System.EventHandler(this.bAdd_Click);
             // 
             // bEdit
             // 
@@ -98,7 +80,7 @@
             this.bEdit.TabIndex = 1;
             this.bEdit.Text = "Изменить";
             this.bEdit.UseVisualStyleBackColor = true;
-            this.bEdit.Click += new System.EventHandler(this.button3_Click);
+            this.bEdit.Click += new System.EventHandler(this.bEdit_Click);
             // 
             // bClone
             // 
@@ -109,7 +91,7 @@
             this.bClone.TabIndex = 2;
             this.bClone.Text = "Клонировать";
             this.bClone.UseVisualStyleBackColor = true;
-            this.bClone.Click += new System.EventHandler(this.button4_Click);
+            this.bClone.Click += new System.EventHandler(this.bClone_Click);
             // 
             // bDelete
             // 
@@ -120,7 +102,7 @@
             this.bDelete.TabIndex = 3;
             this.bDelete.Text = "Удалить";
             this.bDelete.UseVisualStyleBackColor = true;
-            this.bDelete.Click += new System.EventHandler(this.button5_Click);
+            this.bDelete.Click += new System.EventHandler(this.bDelete_Click);
             // 
             // cbCAT
             // 
@@ -173,7 +155,7 @@
             this.bEditCategory.TabIndex = 8;
             this.bEditCategory.Text = "Редактировать категории";
             this.bEditCategory.UseVisualStyleBackColor = true;
-            this.bEditCategory.Click += new System.EventHandler(this.button6_Click);
+            this.bEditCategory.Click += new System.EventHandler(this.bEditCategory_Click);
             // 
             // bChoose
             // 
@@ -184,7 +166,7 @@
             this.bChoose.TabIndex = 9;
             this.bChoose.Text = "Выбрать";
             this.bChoose.UseVisualStyleBackColor = true;
-            this.bChoose.Click += new System.EventHandler(this.button7_Click);
+            this.bChoose.Click += new System.EventHandler(this.bChoose_Click);
             // 
             // cbSubCat
             // 
@@ -204,7 +186,7 @@
             this.bEditSubCategory.TabIndex = 10;
             this.bEditSubCategory.Text = "Редактировать подкатегории выбранной категории";
             this.bEditSubCategory.UseVisualStyleBackColor = true;
-            this.bEditSubCategory.Click += new System.EventHandler(this.button8_Click);
+            this.bEditSubCategory.Click += new System.EventHandler(this.bEditSubCategory_Click);
             // 
             // label2
             // 
@@ -226,16 +208,6 @@
             this.bView.UseVisualStyleBackColor = true;
             this.bView.Click += new System.EventHandler(this.bView_Click);
             // 
-            // cbTYPE
-            // 
-            this.cbTYPE.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbTYPE.FormattingEnabled = true;
-            this.cbTYPE.Location = new System.Drawing.Point(194, 12);
-            this.cbTYPE.Name = "cbTYPE";
-            this.cbTYPE.Size = new System.Drawing.Size(291, 24);
-            this.cbTYPE.TabIndex = 4;
-            this.cbTYPE.SelectedIndexChanged += new System.EventHandler(this.cbCAT_SelectedIndexChanged);
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -245,11 +217,40 @@
             this.label3.TabIndex = 5;
             this.label3.Text = "Выберите тип продукта";
             // 
+            // dgWP
+            // 
+            this.dgWP.AllowUserToAddRows = false;
+            this.dgWP.AllowUserToDeleteRows = false;
+            this.dgWP.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgWP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgWP.Location = new System.Drawing.Point(15, 132);
+            this.dgWP.Name = "dgWP";
+            this.dgWP.RowHeadersVisible = false;
+            this.dgWP.Size = new System.Drawing.Size(1186, 318);
+            this.dgWP.TabIndex = 12;
+            // 
+            // cbPRODUCTTYPE
+            // 
+            this.cbPRODUCTTYPE.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbPRODUCTTYPE.FormattingEnabled = true;
+            this.cbPRODUCTTYPE.Items.AddRange(new object[] {
+            "РАБОЧЕЕ ИЗДЕЛИЕ",
+            "ЖГУТЫ",
+            "КАБЕЛИ"});
+            this.cbPRODUCTTYPE.Location = new System.Drawing.Point(194, 12);
+            this.cbPRODUCTTYPE.Name = "cbPRODUCTTYPE";
+            this.cbPRODUCTTYPE.Size = new System.Drawing.Size(291, 24);
+            this.cbPRODUCTTYPE.TabIndex = 4;
+            this.cbPRODUCTTYPE.SelectedIndexChanged += new System.EventHandler(this.cbPRODUCTTYPE_SelectedIndexChanged);
+            // 
             // WPName
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1213, 483);
+            this.Controls.Add(this.dgWP);
             this.Controls.Add(this.bView);
             this.Controls.Add(this.bEditSubCategory);
             this.Controls.Add(this.bChoose);
@@ -260,14 +261,13 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbSubCat);
-            this.Controls.Add(this.cbTYPE);
+            this.Controls.Add(this.cbPRODUCTTYPE);
             this.Controls.Add(this.cbCAT);
             this.Controls.Add(this.bDelete);
             this.Controls.Add(this.bClone);
             this.Controls.Add(this.bEdit);
             this.Controls.Add(this.bAdd);
             this.Controls.Add(this.bClose);
-            this.Controls.Add(this.dgWP);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "WPName";
@@ -282,7 +282,6 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dgWP;
         private System.Windows.Forms.Button bClose;
         private System.Windows.Forms.Button bAdd;
         private System.Windows.Forms.Button bEdit;
@@ -298,7 +297,8 @@
         private System.Windows.Forms.Button bEditSubCategory;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button bView;
-        private System.Windows.Forms.ComboBox cbTYPE;
+        private SummonManager.RComboBox cbPRODUCTTYPE;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridView dgWP;
     }
 }

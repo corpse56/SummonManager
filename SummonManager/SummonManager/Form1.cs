@@ -304,7 +304,7 @@ namespace SummonManager
 
         private void наименованиеИзделияToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            WPName wp = new WPName(false,this.UVO);
+            WPName wp = new WPName(false,this.UVO, WPTYPE.WPNAMELIST);
             wp.ShowDialog();
         }
 
@@ -1268,7 +1268,7 @@ namespace SummonManager
 
         private void tsbWorkPart_Click(object sender, EventArgs e)
         {
-            WPName wp = new WPName(false, this.UVO);
+            WPName wp = new WPName(false, this.UVO, WPTYPE.WPNAMELIST);
             wp.ShowDialog();
         }
        

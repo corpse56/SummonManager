@@ -31,15 +31,16 @@ alter table WPNAMELIST add MECHPARTSREQ		bit default(0)
 alter table WPNAMELIST add SHILDSREQ		bit default(0)
 alter table WPNAMELIST add PLANKAREQ		bit default(0)
 alter table WPNAMELIST add SERIALREQ		bit default(0)
-alter table WPNAMELIST add PACKAGEREQ		bit default(0)
+alter table WPNAMELIST add PACKAGINGREQ		bit default(0)
 alter table WPNAMELIST add PASSPORTREQ		bit default(0)
 alter table WPNAMELIST add [MANUALREQ]		bit default(0)
-alter table WPNAMELIST add PACKAGELISTREQ		bit default(0)
+alter table WPNAMELIST add PACKINGLISTREQ		bit default(0)
 alter table WPNAMELIST add SOFTWAREREQ		bit default(0)
 alter table WPNAMELIST add CABLELISTREQ bit default(0)
 alter table WPNAMELIST add ZHGUTLISTREQ		bit default(0)
 alter table WPNAMELIST add RUNCARDLISTREQ		bit default(0)
 alter table WPNAMELIST add CIRCUITBOARDLISTREQ		bit default(0)
+
 
 alter table CATEGORYLIST add ENTITY nvarchar(100)
 --потом добавить значения в ENTITY потом сделать его не нулл

@@ -28,11 +28,49 @@ namespace SummonManager.Controls
                 checkBox1.Checked = this.REQ;
             }
         }
-        public void Init(WPTYPE wpt,int idwp,bool require)
+        public bool RequiredVisible
+        {
+            set
+            {
+                if (value)
+                {
+                    checkBox1.Visible = true;
+                }
+                else
+                {
+                    checkBox1.Visible = false;
+                }
+            }
+        }
+        bool EnabledPACKCONTROL = true;
+        public new bool Enabled
+        {
+            get { return EnabledPACKCONTROL; }
+            set
+            {
+                if (value)
+                {
+                    this.EnabledPACKCONTROL = true;
+                    button1.Enabled = true;
+                    dgv.Enabled = true;
+                    //checkBox1.Enabled = true;
+                }
+                else
+                {
+                    this.EnabledPACKCONTROL = false;
+                    button1.Enabled = false;
+                    dgv.Enabled = false;
+                    //checkBox1.Enabled = false;
+                }
+            }
+        }
+        public void Init(WPTYPE wpt,int idwp,bool require, bool enabled,bool require_visible)
         {
             this.WPT = wpt;
             this.IDWP = idwp;
             this.REQ = require;
+            this.RequiredVisible = require_visible;
+            this.EnabledPACKCONTROL = enabled;
             switch (WPT)
             {
                 case WPTYPE.CABLELIST:

@@ -48,7 +48,7 @@ namespace SummonManager.CLASSES
 
         public bool COMPOSITIONREQ;
         public bool DIMENSIONALDRAWINGREQ	;
-        public bool POWERSUPPLYREQ	;
+        //public bool POWERSUPPLYREQ	;
         public bool CONFIGURATIONREQ;	
         public bool WIRINGDIAGRAMREQ;	
         public bool TECHREQREQ	;
@@ -57,10 +57,10 @@ namespace SummonManager.CLASSES
         public bool SHILDSREQ	;
         public bool PLANKAREQ	;
         public bool SERIALREQ	;
-        public bool PACKAGEREQ	;
+        public bool PACKAGINGREQ	;
         public bool PASSPORTREQ	;
         public bool MANUALREQ	;
-        public bool PACKAGELISTREQ	;
+        public bool PACKINGLISTREQ	;
         public bool SOFTWAREREQ	;
         public bool CABLELISTREQ;	
         public bool ZHGUTLISTREQ;	

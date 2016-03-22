@@ -92,7 +92,7 @@ namespace SummonManager
             this.label14 = new System.Windows.Forms.Label();
             this.tbStatus = new System.Windows.Forms.TextBox();
             this.tbSubStatus = new System.Windows.Forms.TextBox();
-            this.wpNameView1 = new SummonManager.Controls.WPNameView();
+            this.wpNameView1 = new SummonManager.Controls.WPNameView(SVO);
             this.label18 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.tbSerial = new System.Windows.Forms.Label();

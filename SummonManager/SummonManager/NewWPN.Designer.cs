@@ -76,7 +76,7 @@
             this.label38 = new System.Windows.Forms.Label();
             this.label39 = new System.Windows.Forms.Label();
             this.label40 = new System.Windows.Forms.Label();
-            this.package1 = new SummonManager.Controls.Package();
+            this.packCABLE = new SummonManager.Controls.Package();
             this.packZHGUT = new SummonManager.Controls.Package();
             this.pfPACKINGLIST = new SummonManager.Controls.PathField();
             this.pfMANUAL = new SummonManager.Controls.PathField();
@@ -96,6 +96,7 @@
             // 
             // tbName
             // 
+            this.tbName.Enabled = false;
             this.tbName.Location = new System.Drawing.Point(299, 12);
             this.tbName.Name = "tbName";
             this.tbName.Size = new System.Drawing.Size(601, 22);
@@ -133,6 +134,7 @@
             // cbCategory
             // 
             this.cbCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCategory.Enabled = false;
             this.cbCategory.FormattingEnabled = true;
             this.cbCategory.Location = new System.Drawing.Point(299, 40);
             this.cbCategory.Name = "cbCategory";
@@ -151,6 +153,7 @@
             // 
             // tbDecNum
             // 
+            this.tbDecNum.Enabled = false;
             this.tbDecNum.Location = new System.Drawing.Point(299, 100);
             this.tbDecNum.Name = "tbDecNum";
             this.tbDecNum.Size = new System.Drawing.Size(601, 22);
@@ -167,6 +170,7 @@
             // 
             // tbPowerSupply
             // 
+            this.tbPowerSupply.Enabled = false;
             this.tbPowerSupply.Location = new System.Drawing.Point(295, 770);
             this.tbPowerSupply.Name = "tbPowerSupply";
             this.tbPowerSupply.Size = new System.Drawing.Size(601, 22);
@@ -174,6 +178,7 @@
             // 
             // tbNote
             // 
+            this.tbNote.Enabled = false;
             this.tbNote.Location = new System.Drawing.Point(295, 798);
             this.tbNote.Multiline = true;
             this.tbNote.Name = "tbNote";
@@ -237,12 +242,12 @@
             // cbSubCategory
             // 
             this.cbSubCategory.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSubCategory.Enabled = false;
             this.cbSubCategory.FormattingEnabled = true;
             this.cbSubCategory.Location = new System.Drawing.Point(299, 70);
             this.cbSubCategory.Name = "cbSubCategory";
             this.cbSubCategory.Size = new System.Drawing.Size(601, 24);
             this.cbSubCategory.TabIndex = 4;
-            this.cbSubCategory.SelectedIndexChanged += new System.EventHandler(this.cbSubCategory_SelectedIndexChanged);
             // 
             // label10
             // 
@@ -523,14 +528,14 @@
             this.label40.TabIndex = 3;
             this.label40.Text = "ВСЕ";
             // 
-            // package1
+            // packCABLE
             // 
-            this.package1.Location = new System.Drawing.Point(299, 445);
-            this.package1.Margin = new System.Windows.Forms.Padding(5);
-            this.package1.Name = "package1";
-            this.package1.Padding = new System.Windows.Forms.Padding(0, 0, 4, 4);
-            this.package1.Size = new System.Drawing.Size(599, 91);
-            this.package1.TabIndex = 7;
+            this.packCABLE.Location = new System.Drawing.Point(299, 445);
+            this.packCABLE.Margin = new System.Windows.Forms.Padding(5);
+            this.packCABLE.Name = "packCABLE";
+            this.packCABLE.Padding = new System.Windows.Forms.Padding(0, 0, 4, 4);
+            this.packCABLE.Size = new System.Drawing.Size(599, 91);
+            this.packCABLE.TabIndex = 7;
             // 
             // packZHGUT
             // 
@@ -700,7 +705,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1006, 896);
-            this.Controls.Add(this.package1);
+            this.Controls.Add(this.packCABLE);
             this.Controls.Add(this.packZHGUT);
             this.Controls.Add(this.pfPACKINGLIST);
             this.Controls.Add(this.pfMANUAL);
@@ -810,7 +815,7 @@
         private SummonManager.Controls.PathField pfSHILDS;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.Label label15;
-        private SummonManager.Controls.Package package1;
+        private SummonManager.Controls.Package packCABLE;
         private SummonManager.Controls.Package packZHGUT;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;

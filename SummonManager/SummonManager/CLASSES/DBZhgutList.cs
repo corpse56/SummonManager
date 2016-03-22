@@ -39,8 +39,9 @@ namespace SummonManager.CLASSES
         {
             DA.SelectCommand.Parameters.AddWithValue("IDWP", IDWP);
             DA.SelectCommand.CommandText = " select A.IDZHGUT id,A.ID nn,B.ZHGUTNAME,A.CNT " +
-                                           " left join " + Base.BaseName + "..ZHGUTLIST B ON B.ID = A.IDZHGUT " +
-                                           " from " + Base.BaseName + "..ZHGUTS A where IDWP = @IDWP ";
+                                           " from " + Base.BaseName + "..ZHGUTS A" +
+                                           " left join " + Base.BaseName + "..ZHGUTLIST B ON B.ID = A.IDZHGUT "+
+                                           "  where IDWP = @IDWP ";
             DA.Fill(DS, "t");
             List<ZhgutVO> ret = new List<ZhgutVO>();
             foreach (DataRow r in DS.Tables["t"].Rows)

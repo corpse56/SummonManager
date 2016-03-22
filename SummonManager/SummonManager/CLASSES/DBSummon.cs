@@ -99,7 +99,7 @@ namespace SummonManager
             SVO.SISP = (bool)dataRow["SISP"];
             SVO.TECHREQPATH = dataRow["TECHREQPATH"].ToString();
             SVO.IDWPNAME = (int)dataRow["IDWP"];
-            SVO.WPNAMEVO = new WPNameVO(SVO.IDWPNAME);
+            SVO.WPNAMEVO = WPNameVO.WPNameVOByID(SVO.IDWPNAME);
             SVO.WPNAME = SVO.WPNAMEVO.WPName + SVO.WPNAMEVO.DecNum;
             SVO.IDACCEPT = (int)dataRow["IDACCEPT"];
             SVO.IDPACKING = (int)dataRow["IDPACKING"];

@@ -14,9 +14,29 @@ namespace SummonManager
     {
         UserVO UVO;
         bool PICK = false;
-        public WPName(bool pick,UserVO uvo)
+        WPTYPE WPT;
+        public WPName(bool pick,UserVO uvo,WPTYPE wpt)
         {
             InitializeComponent();
+            this.WPT = wpt;
+
+            if (WPT == WPTYPE.WPNAMELIST)
+            {
+                cbPRODUCTTYPE.ReadOnly = false;
+                cbPRODUCTTYPE.SelectedIndex = 0;
+
+            }
+            if (WPT == WPTYPE.ZHGUTLIST)
+            {
+                cbPRODUCTTYPE.ReadOnly = true;
+                cbPRODUCTTYPE.SelectedIndex = 1;
+            }
+            if (WPT == WPTYPE.CABLELIST)
+            {
+                cbPRODUCTTYPE.ReadOnly = true;
+                cbPRODUCTTYPE.SelectedIndex = 2;
+            }
+
             if (pick)
             {
                 bChoose.Visible = true;
@@ -28,6 +48,7 @@ namespace SummonManager
                 bEditSubCategory.Visible = false;
                 bArchive.Visible = false;
                 bArcShow.Visible = false;
+                cbPRODUCTTYPE.Enabled = false;
             }
             else
             {
@@ -37,14 +58,14 @@ namespace SummonManager
             this.PICK = pick;
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void bClose_Click(object sender, EventArgs e)
         {
             Close();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void bAdd_Click(object sender, EventArgs e)//добавить
         {
-            NewWPN nwp = new NewWPN();
+            NewWPN nwp = new NewWPN(null,"NEW",UVO);
             nwp.ShowDialog();
             DBWPName dbwp = new DBWPName();
             int idsub = (cbSubCat.SelectedValue != null) ? (int)cbSubCat.SelectedValue : 0;
@@ -53,10 +74,10 @@ namespace SummonManager
 
         }
 
-        private void button3_Click(object sender, EventArgs e)//редактировать
+        private void bEdit_Click(object sender, EventArgs e)//редактировать
         {
             
-            NewWPN ew = new NewWPN(WPNameVO.WPNameVOByID(Convert.ToInt32(dgWP.SelectedRows[0].Cells["ID"].Value)),"EDIT");
+            NewWPN ew = new NewWPN(WPNameVO.WPNameVOByID(Convert.ToInt32(dgWP.SelectedRows[0].Cells["ID"].Value)),"EDIT",UVO);
             ew.ShowDialog();
             //DBWPName dbwp = new DBWPName();
             //dgWP.DataSource = dbwp.GetAllWPNames();
@@ -66,10 +87,10 @@ namespace SummonManager
 
         }
 
-        private void button4_Click(object sender, EventArgs e)//клонировать
+        private void bClone_Click(object sender, EventArgs e)//клонировать
         {
             WPNameVO wp = WPNameVO.WPNameVOByID(Convert.ToInt32(dgWP.SelectedRows[0].Cells["ID"].Value));
-            NewWPN nwp = new NewWPN(wp);
+            NewWPN nwp = new NewWPN(wp,"NEWCLONE",UVO);
             nwp.ShowDialog();
             int idsub = (cbSubCat.SelectedValue != null) ? (int)cbSubCat.SelectedValue : 0;
             cbCAT_SelectedIndexChanged(sender, e);
@@ -77,7 +98,7 @@ namespace SummonManager
 
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void bDelete_Click(object sender, EventArgs e)//удалить
         {
             
             if (MessageBox.Show("Вы действительно хотите удалить это наименование?", "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
@@ -107,14 +128,12 @@ namespace SummonManager
             ShowDGV();
             if (!PICK)
             {
-                if ((UVO.Role == Roles.Admin) || (UVO.Role == Roles.Inzhener) || (UVO.Role == Roles.Constructor))
+                if ((UVO.Role == Roles.Admin) || (UVO.Role == Roles.Inzhener))
                 {
                     bAdd.Enabled = true;
                     bEdit.Enabled = true;
                     bClone.Enabled = true;
                     bDelete.Enabled = true;
-                    bArchive.Enabled = true;
-                    bArcShow.Enabled = true;
                     bChoose.Enabled = false;
                     bEditCategory.Enabled = true;
                     bEditSubCategory.Enabled = true;
@@ -195,7 +214,7 @@ namespace SummonManager
             dialog.Multiselect = false;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                WPNameVO wpVO = new WPNameVO((int)dgWP.SelectedRows[0].Cells["ID"].Value);
+                WPNameVO wpVO = WPNameVO.WPNameVOByID((int)dgWP.SelectedRows[0].Cells["ID"].Value);
                 DBCOMPARC dbarc = new DBCOMPARC();
                 dbarc.AddNew(wpVO, dialog.FileName);
                 MessageBox.Show("Состав изделия успешно заархивирован!");
@@ -223,7 +242,7 @@ namespace SummonManager
             arc.ShowDialog();
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void bEditCategory_Click(object sender, EventArgs e)//редактировать категории
         {
             int selval = (int)cbCAT.SelectedValue;
             EditWPCategory ed = new EditWPCategory("WPNAMELIST");
@@ -237,7 +256,7 @@ namespace SummonManager
 
         }
         public int PickedID;
-        private void button7_Click(object sender, EventArgs e)
+        private void bChoose_Click(object sender, EventArgs e)//Выбрать
         {
             if (dgWP.SelectedRows.Count == 0)
             {
@@ -258,7 +277,7 @@ namespace SummonManager
 
         }
 
-        private void button8_Click(object sender, EventArgs e)
+        private void bEditSubCategory_Click(object sender, EventArgs e)//редактирование подкатегорий
         {
             int id = (int)cbCAT.SelectedValue;
             if ((id == 1) || (id == 2))
@@ -272,6 +291,10 @@ namespace SummonManager
             int idsub = (cbSubCat.SelectedValue != null) ? (int)cbSubCat.SelectedValue : 0;
             cbCAT_SelectedIndexChanged(sender, e);
             cbSubCat.SelectedValue = idsub;
+
+        }
+        private void cbPRODUCTTYPE_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
         }
         private void cbCAT_SelectedIndexChanged(object sender, EventArgs e)
@@ -306,14 +329,14 @@ namespace SummonManager
 
         }
 
-        private void bView_Click(object sender, EventArgs e)
+        private void bView_Click(object sender, EventArgs e)//просмотр
         {
-            EditWPN ew = new EditWPN(Convert.ToInt32(dgWP.SelectedRows[0].Cells["ID"].Value), false);
-            ew.Text = "Просмотр сведений об изделии";
-            ew.button2.Visible = false;
+            NewWPN ew = new NewWPN(WPNameVO.WPNameVOByID(Convert.ToInt32(dgWP.SelectedRows[0].Cells["ID"].Value)), "VIEWONLY", UVO);
             ew.ShowDialog();
 
         }
+
+
 
 
 

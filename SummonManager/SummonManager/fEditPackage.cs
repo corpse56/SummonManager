@@ -31,10 +31,10 @@ namespace SummonManager
 
         private void bAdd_Click(object sender, EventArgs e)
         {
-            fAddExtCableForPack faec = new fAddExtCableForPack(IDNEWSUMMON);
-            faec.ShowDialog();
-            fEditExtCablePack_Load(sender, e);
-            MessageBox.Show("Внешний кабель успешно добавлен в комплект!");
+            //fAddExtCableForPack faec = new fAddExtCableForPack(IDNEWSUMMON);
+            //faec.ShowDialog();
+            //fEditExtCablePack_Load(sender, e);
+            //MessageBox.Show("Внешний кабель успешно добавлен в комплект!");
 
         }
 

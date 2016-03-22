@@ -12,15 +12,22 @@ namespace SummonManager.Controls
 {
     public partial class WPNameView : UserControl
     {
-        public WPNameView()
+        SummonVO SVO;
+        public WPNameView(SummonVO svo)
         {
+            SVO = svo;
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            NewWPN ewp = new NewWPN(SelectedWPNameID, true);
-            ewp.ShowDialog();
+            if (SVO.WPNAMEVO.WPType == WPTYPE.WPNAMELIST)
+            {
+                WPNameVO.WPNameVOByID(SelectedWPNameID);
+                NewWPN ewp = new NewWPN(WPNameVO.WPNameVOByID(SelectedWPNameID), "VIEWONLY",null);
+                ewp.ShowDialog();
+            }
+
         }
         public void Init(int _SelectedWPNameID)
         {
