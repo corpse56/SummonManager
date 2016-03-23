@@ -225,11 +225,15 @@
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.dgWP.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgWP.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgWP.Location = new System.Drawing.Point(15, 132);
+            this.dgWP.MultiSelect = false;
             this.dgWP.Name = "dgWP";
             this.dgWP.RowHeadersVisible = false;
+            this.dgWP.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgWP.Size = new System.Drawing.Size(1186, 318);
             this.dgWP.TabIndex = 12;
+            this.dgWP.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgWP_CellDoubleClick);
             // 
             // cbPRODUCTTYPE
             // 

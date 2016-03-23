@@ -23,6 +23,8 @@ namespace SummonManager
 
         public NewWPN(WPNameVO wp, string accessmode_,UserVO uvo)
         {
+            InitializeComponent();
+
             this.AccessMode = accessmode_;
             this.UVO = uvo;
             RequireVisible = ((UVO.Role == Roles.Inzhener) || (UVO.Role == Roles.Admin)) ? true : false;
@@ -50,7 +52,6 @@ namespace SummonManager
                 button2.Visible = false;
             }
 
-            InitializeComponent();
 
         }
 
@@ -58,11 +59,17 @@ namespace SummonManager
         {
             RequireVisible = false;
             tbName.Text = wp.WPName;
+            tbName.Enabled = false;
             cbCategory.SelectedValue = wp.IDCat;
+            cbCategory.Enabled = false;
             cbSubCategory.SelectedValue = wp.IDSubCat;
+            cbSubCategory.Enabled = false;
             tbDecNum.Text = wp.DecNum;
+            tbDecNum.Enabled = false;
             tbPowerSupply.Text = wp.PowerSupply;
+            tbPowerSupply.Enabled = false;
             tbNote.Text = wp.Note;
+            tbNote.Enabled = false;
 
             pfWIRINGDIAGRAM.Init(wp.WIRINGDIAGRAM, wp.WIRINGDIAGRAMREQ, false, RequireVisible);
             pfTECHREQ.Init(wp.TECHREQ, wp.TECHREQREQ, false, RequireVisible);
@@ -80,17 +87,26 @@ namespace SummonManager
             pfPASSPORT.Init(wp.PASSPORT, wp.PASSPORTREQ, false, RequireVisible);
             pfMANUAL.Init(wp.MANUAL, wp.MANUALREQ, false, RequireVisible);
             pfPACKINGLIST.Init(wp.PACKINGLIST, wp.PACKINGLISTREQ, false, RequireVisible);
+
+            packZHGUT.Enabled = false;
+            packCABLE.Enabled = false;
         }
 
         private void InitEDIT(WPNameVO wp)
         {
             EditWP = wp;
             tbName.Text = wp.WPName;
+            tbName.Enabled = false;
             cbCategory.SelectedValue = wp.IDCat;
+            cbCategory.Enabled = false;
             cbSubCategory.SelectedValue = wp.IDSubCat;
+            cbSubCategory.Enabled = false;
             tbDecNum.Text = wp.DecNum;
+            tbDecNum.Enabled = false;
             tbPowerSupply.Text = wp.PowerSupply;
+            tbPowerSupply.Enabled = false;
             tbNote.Text = wp.Note;
+            tbNote.Enabled = false;
 
             pfWIRINGDIAGRAM.Init(wp.WIRINGDIAGRAM, wp.WIRINGDIAGRAMREQ, false, RequireVisible);
             pfTECHREQ.Init(wp.TECHREQ, wp.TECHREQREQ, false, RequireVisible);
@@ -108,6 +124,9 @@ namespace SummonManager
             pfPASSPORT.Init(wp.PASSPORT, wp.PASSPORTREQ, false, RequireVisible);
             pfMANUAL.Init(wp.MANUAL, wp.MANUALREQ, false, RequireVisible);
             pfPACKINGLIST.Init(wp.PACKINGLIST, wp.PACKINGLISTREQ, false, RequireVisible);
+
+            packZHGUT.Enabled = false;
+            packCABLE.Enabled = false;
 
             AllocateRoles();
 
@@ -131,7 +150,12 @@ namespace SummonManager
                 tbDecNum.Text = Clone.DecNum;
                 cbCategory.SelectedValue = Clone.IDCat;//CHECK!!!!!!!!
                 cbSubCategory.SelectedValue = Clone.IDSubCat;//CHECK!!!!!!!!!
-                
+                tbName.Enabled = false;
+                cbCategory.Enabled = false;
+                cbSubCategory.Enabled = false;
+                tbDecNum.Enabled = false;
+                tbPowerSupply.Enabled = false;
+                tbNote.Enabled = false;
                 
                 pfWIRINGDIAGRAM.Init(Clone.WIRINGDIAGRAM, false, false, RequireVisible);
                 pfTECHREQ.Init(Clone.TECHREQ, false, false, RequireVisible);
@@ -251,6 +275,8 @@ namespace SummonManager
             pfSHILDS.Enabled = true;
             pfPLANKA.Enabled = true;
             pfPACKAGING.Enabled = true;
+            packCABLE.Enabled = true;
+            packZHGUT.Enabled = true;
         }
 
         private void EnableAdmin()
@@ -281,12 +307,12 @@ namespace SummonManager
         }
 
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)//cancel
         {
             Close();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)//save
         {
             WPNameVO wp = new WPNameVO();
             if (tbName.Text == "")
@@ -319,7 +345,7 @@ namespace SummonManager
             wp.PACKINGLIST              = (pfPACKINGLIST.FullPath == "<нет>") ? null : pfPACKINGLIST.FullPath; 
             wp.PowerSupply              = tbPowerSupply.Text;
             wp.Note                     = tbNote.Text;
-
+            
             wp.COMPOSITIONREQ           = pfComposition.Required;
             wp.DIMENSIONALDRAWINGREQ    = pfDimDrawing.Required	;
             //wp.POWERSUPPLYREQ	        = pfpowe;
@@ -345,7 +371,13 @@ namespace SummonManager
             if (AccessMode == "EDIT")
             {
                 wp.ID = EditWP.ID;
-                dbwp.EditWP(wp);
+                if (UVO.Role == Roles.Admin)                                dbwp.EditWP(wp);
+                if (UVO.Role == Roles.Constructor)                          dbwp.EditWP_Constructor(wp);
+                if ((UVO.Role == Roles.Inzhener) ||
+                    (UVO.Role == Roles.SimpleInzhener))                     dbwp.EditWP_Inzhener(wp);
+                if (UVO.Role == Roles.Tehnolog)                             dbwp.EditWP_Tehnolog(wp);
+                if (UVO.Role == Roles.Shemotehnik)                          dbwp.EditWP_Shemotehnik(wp);
+
                 MessageBox.Show("Изделие успешно сохранено!");
             }
             if ((AccessMode == "NEW") || (AccessMode == "NEWCLONE"))

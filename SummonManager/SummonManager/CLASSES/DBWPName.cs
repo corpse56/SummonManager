@@ -13,7 +13,7 @@ namespace SummonManager
 
         public DataTable GetAllWPNames()
         {
-            DA.SelectCommand.CommandText = "select A.ID,A.WPNAME,B.CATEGORYNAME,isnull(C.SUBCATNAME,'Не присвоено') SUBCATNAME,A.DECNUM,A.COMPOSITION,A.DIMENSIONALDRAWING,A.POWERSUPPLY,A.CONFIGURATION,A.NOTE from " 
+            DA.SelectCommand.CommandText = "select A.ID,A.WPNAME,B.CATEGORYNAME,isnull(C.SUBCATNAME,'Не присвоено')  SUBCATNAME,A.DECNUM,A.TECHREQ,A.COMPOSITION,A.NOTE from "
                                             + Base.BaseName + "..WPNAMELIST A left join " + Base.BaseName + "..CATEGORYLIST B on B.ID = IDCATEGORY "+
                                            " left join " + Base.BaseName + "..SUBCATEGORYLIST C on C.ID = A.IDSUBCAT " +
                                            " order by WPNAME";
@@ -25,23 +25,23 @@ namespace SummonManager
         {
             if (IDCAT == 2) return this.GetAllWPNames();
             string sub = new DBSubCategory().GetNameByID(IDSUBCAT);
-            if (sub == "Все")
+            if (sub.ToUpper() == "ВСЕ")
             {
-                DA.SelectCommand.CommandText = "select A.ID,A.WPNAME,B.CATEGORYNAME,isnull(C.SUBCATNAME,'Не присвоено') SUBCATNAME,A.DECNUM,A.COMPOSITION,A.DIMENSIONALDRAWING,A.POWERSUPPLY,A.CONFIGURATION,A.NOTE from "
+                DA.SelectCommand.CommandText = "select A.ID,A.WPNAME,B.CATEGORYNAME,isnull(C.SUBCATNAME,'Не присвоено') SUBCATNAME,A.DECNUM,A.TECHREQ,A.COMPOSITION,A.NOTE from "
                                                 + Base.BaseName + "..WPNAMELIST A left join " + Base.BaseName + "..CATEGORYLIST B on B.ID = IDCATEGORY " +
                                                " left join " + Base.BaseName + "..SUBCATEGORYLIST C on C.ID = A.IDSUBCAT " +
                                                " where A.IDCATEGORY = " + IDCAT + " order by WPNAME";
             }
             else if (sub.ToUpper() == "НЕ ПРИСВОЕНО")
             {
-                DA.SelectCommand.CommandText = "select A.ID,A.WPNAME,B.CATEGORYNAME,isnull(C.SUBCATNAME,'Не присвоено') SUBCATNAME,A.DECNUM,A.COMPOSITION,A.DIMENSIONALDRAWING,A.POWERSUPPLY,A.CONFIGURATION,A.NOTE from "
+                DA.SelectCommand.CommandText = "select A.ID,A.WPNAME,B.CATEGORYNAME,isnull(C.SUBCATNAME,'Не присвоено') SUBCATNAME,A.DECNUM,A.TECHREQ,A.COMPOSITION,A.NOTE from "
                                                 + Base.BaseName + "..WPNAMELIST A left join " + Base.BaseName + "..CATEGORYLIST B on B.ID = IDCATEGORY " +
                                                " left join " + Base.BaseName + "..SUBCATEGORYLIST C on C.ID = A.IDSUBCAT " +
                                                " where A.IDCATEGORY = " + IDCAT + " and (A.IDSUBCAT is null)  order by WPNAME";
             }
             else
             {
-                DA.SelectCommand.CommandText = "select A.ID,A.WPNAME,B.CATEGORYNAME,isnull(C.SUBCATNAME,'Не присвоено') SUBCATNAME,A.DECNUM,A.COMPOSITION,A.DIMENSIONALDRAWING,A.POWERSUPPLY,A.CONFIGURATION,A.NOTE from "
+                DA.SelectCommand.CommandText = "select A.ID,A.WPNAME,B.CATEGORYNAME,isnull(C.SUBCATNAME,'Не присвоено') SUBCATNAME,A.DECNUM,A.TECHREQ,A.COMPOSITION,A.NOTE from "
                                                 + Base.BaseName + "..WPNAMELIST A left join " + Base.BaseName + "..CATEGORYLIST B on B.ID = IDCATEGORY " +
                                                " left join " + Base.BaseName + "..SUBCATEGORYLIST C on C.ID = A.IDSUBCAT " +
                                                " where A.IDCATEGORY = " + IDCAT + " and (A.IDSUBCAT = " + IDSUBCAT + ")  order by WPNAME";
@@ -54,7 +54,7 @@ namespace SummonManager
         public DataTable GetCategoryWPNames(int IDCAT)
         {
             if (IDCAT == 2) return this.GetAllWPNames();
-            DA.SelectCommand.CommandText = "select A.ID,A.WPNAME,B.CATEGORYNAME,isnull(C.SUBCATNAME,'Не присвоено') SUBCATNAME,A.DECNUM,A.COMPOSITION,A.DIMENSIONALDRAWING,A.POWERSUPPLY,A.CONFIGURATION,A.NOTE from "
+            DA.SelectCommand.CommandText = "select A.ID,A.WPNAME,B.CATEGORYNAME,isnull(C.SUBCATNAME,'Не присвоено') SUBCATNAME,A.DECNUM,A.TECHREQ,A.COMPOSITION,A.NOTE from "
                                             + Base.BaseName + "..WPNAMELIST A left join " + Base.BaseName + "..CATEGORYLIST B on B.ID = IDCATEGORY " +
                                            " left join " + Base.BaseName + "..SUBCATEGORYLIST C on C.ID = A.IDSUBCAT " +
                                            " where A.IDCATEGORY = " + IDCAT + " order by WPNAME";
@@ -70,39 +70,63 @@ namespace SummonManager
             DA.InsertCommand.Parameters.AddWithValue("IDCATEGORY", p.IDCat);
             DA.InsertCommand.Parameters.AddWithValue("IDSUBCAT", p.IDSubCat);
             DA.InsertCommand.Parameters.AddWithValue("DECNUM", p.DecNum);
+            DA.InsertCommand.Parameters.AddWithValue("WIRINGDIAGRAM", p.WIRINGDIAGRAM);
+            DA.InsertCommand.Parameters.AddWithValue("TECHREQ", p.TECHREQ);
+            DA.InsertCommand.Parameters.AddWithValue("COMPOSITION", ((object)p.COMPOSITION) ?? DBNull.Value);
             DA.InsertCommand.Parameters.AddWithValue("CONFIGURATION", ((object)p.CONFIGURATION) ?? DBNull.Value);
-            DA.InsertCommand.Parameters.AddWithValue("COMPOSITION", ((object)p.COMPOSITION ) ?? DBNull.Value);
-            DA.InsertCommand.Parameters.AddWithValue("DIMENSIONALDRAWING", ((object)p.DIMENDRAWING) ?? DBNull.Value);
+            DA.InsertCommand.Parameters.AddWithValue("DIMENSIONALDRAWING", p.DIMENDRAWING);
+            DA.InsertCommand.Parameters.AddWithValue("SBORKA3D", p.SBORKA3D);
+            DA.InsertCommand.Parameters.AddWithValue("MECHPARTS", p.MECHPARTS);
+            DA.InsertCommand.Parameters.AddWithValue("SHILDS", p.SHILDS);
+            DA.InsertCommand.Parameters.AddWithValue("PLANKA", p.PLANKA);
+            DA.InsertCommand.Parameters.AddWithValue("SERIAL", p.SERIAL);
+            DA.InsertCommand.Parameters.AddWithValue("PACKAGING", p.PACKAGING);
+            DA.InsertCommand.Parameters.AddWithValue("MANUAL", p.MANUAL);
+            DA.InsertCommand.Parameters.AddWithValue("PASSPORT", p.PASSPORT);
+            DA.InsertCommand.Parameters.AddWithValue("PACKINGLIST", p.PACKINGLIST);
             DA.InsertCommand.Parameters.AddWithValue("POWERSUPPLY", p.PowerSupply);
             DA.InsertCommand.Parameters.AddWithValue("NOTE", p.Note);
             DA.InsertCommand.Parameters.AddWithValue("CREATED", DateTime.Now);
-            DA.InsertCommand.CommandText = "insert into " + Base.BaseName + "..WPNAMELIST (WPNAME,IDCATEGORY,DECNUM,COMPOSITION,DIMENSIONALDRAWING,POWERSUPPLY, " +
-                                            "NOTE,CONFIGURATION,CREATED,IDSUBCAT) values (@WPNAME,@IDCATEGORY,@DECNUM,@COMPOSITION,@DIMENSIONALDRAWING,@POWERSUPPLY,@NOTE,@CONFIGURATION,@CREATED,@IDSUBCAT)";
+            DA.InsertCommand.Parameters.AddWithValue("COMPOSITIONREQ", p.COMPOSITIONREQ);
+            DA.InsertCommand.Parameters.AddWithValue("DIMENSIONALDRAWINGREQ", p.DIMENSIONALDRAWINGREQ);
+            DA.InsertCommand.Parameters.AddWithValue("CONFIGURATIONREQ", p.CONFIGURATIONREQ);
+            DA.InsertCommand.Parameters.AddWithValue("WIRINGDIAGRAMREQ", p.WIRINGDIAGRAMREQ);
+            DA.InsertCommand.Parameters.AddWithValue("TECHREQREQ", p.TECHREQREQ);
+            DA.InsertCommand.Parameters.AddWithValue("SBORKA3DREQ", p.SBORKA3DREQ);
+            DA.InsertCommand.Parameters.AddWithValue("MECHPARTSREQ", p.MECHPARTSREQ);
+            DA.InsertCommand.Parameters.AddWithValue("SHILDSREQ", p.SHILDSREQ);
+            DA.InsertCommand.Parameters.AddWithValue("PLANKAREQ", p.PLANKAREQ);
+            DA.InsertCommand.Parameters.AddWithValue("SERIALREQ", p.SERIALREQ);
+            DA.InsertCommand.Parameters.AddWithValue("PACKAGINGREQ", p.PACKAGINGREQ);
+            DA.InsertCommand.Parameters.AddWithValue("PASSPORTREQ", p.PASSPORTREQ);
+            DA.InsertCommand.Parameters.AddWithValue("MANUALREQ", p.MANUALREQ);
+            DA.InsertCommand.Parameters.AddWithValue("PACKINGLISTREQ", p.PACKINGLISTREQ);
+            DA.InsertCommand.Parameters.AddWithValue("SOFTWAREREQ", p.SOFTWAREREQ);
+            DA.InsertCommand.Parameters.AddWithValue("CABLELISTREQ", p.CABLELISTREQ);
+            DA.InsertCommand.Parameters.AddWithValue("ZHGUTLISTREQ", p.ZHGUTLISTREQ);
+            DA.InsertCommand.Parameters.AddWithValue("RUNCARDLISTREQ", p.RUNCARDLISTREQ);
+            DA.InsertCommand.Parameters.AddWithValue("CIRCUITBOARDLISTREQ", p.CIRCUITBOARDLISTREQ);
+
+            //wp.ZHGUTS = new DBZhgutList().GetPackageForVO(wp.ID);
+/////////////////////////////////////////////////////////////////////////////////    ЗАПРЕЩЕНО НАПОЛНЯТЬ ЖГУТЫ КОГДА СОЗДАЁШЬ ИЗДЕЛИЕ!!!!!!!!!!!!!!!!!
+            //wp.CABLES = new DBCableList().GetPackageForVO(wp.ID);
+
+            DA.InsertCommand.CommandText = "insert into " + Base.BaseName + "..WPNAMELIST "+
+                                           " (WPNAME,IDCATEGORY,IDSUBCAT,DECNUM,WIRINGDIAGRAM,TECHREQ,COMPOSITION,CONFIGURATION,DIMENSIONALDRAWING,SBORKA3D, " +
+                                           " MECHPARTS,SHILDS,PLANKA,SERIAL,PACKAGING,MANUAL,PASSPORT,PACKINGLIST,POWERSUPPLY,NOTE,CREATED,      "+
+                                           " COMPOSITIONREQ,DIMENSIONALDRAWINGREQ,CONFIGURATIONREQ,WIRINGDIAGRAMREQ," +
+                                           " TECHREQREQ,SBORKA3DREQ,MECHPARTSREQ,SHILDSREQ,PLANKAREQ,SERIALREQ,PACKAGINGREQ,PASSPORTREQ, "+
+                                           " MANUALREQ,PACKINGLISTREQ,SOFTWAREREQ,CABLELISTREQ,ZHGUTLISTREQ,RUNCARDLISTREQ,CIRCUITBOARDLISTREQ) " +
+                                           " values (@WPNAME,@IDCATEGORY,@IDSUBCAT,@DECNUM,@WIRINGDIAGRAM,@TECHREQ,@COMPOSITION,@CONFIGURATION,@DIMENSIONALDRAWING,@SBORKA3D, " +
+                                           " @MECHPARTS,@SHILDS,@PLANKA,@SERIAL,@PACKAGING,@MANUAL, @PASSPORT,@PACKINGLIST,@POWERSUPPLY,@NOTE,@CREATED,      " +
+                                           " @COMPOSITIONREQ,@DIMENSIONALDRAWINGREQ,@CONFIGURATIONREQ,@WIRINGDIAGRAMREQ," +
+                                           " @TECHREQREQ,@SBORKA3DREQ,@MECHPARTSREQ,@SHILDSREQ,@PLANKAREQ,@SERIALREQ,@PACKAGINGREQ,@PASSPORTREQ, " +
+                                           " @MANUALREQ,@PACKINGLISTREQ,@SOFTWAREREQ,@CABLELISTREQ,@ZHGUTLISTREQ,@RUNCARDLISTREQ,@CIRCUITBOARDLISTREQ)";
             DA.InsertCommand.Connection.Open();
             DA.InsertCommand.ExecuteNonQuery();
             DA.InsertCommand.Connection.Close();
         }
 
-        internal WPNameVO GetWP(int p)
-        {
-            DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..WPNAMELIST where ID = " +p;
-            DA.Fill(DS, "t");
-            WPNameVO wp = new WPNameVO();
-            wp.ID = Convert.ToInt32(DS.Tables["t"].Rows[0]["ID"]);
-            wp.WPName = DS.Tables["t"].Rows[0]["WPNAME"].ToString();
-            wp.IDCat = Convert.ToInt32(DS.Tables["t"].Rows[0]["IDCATEGORY"]);
-            if (DS.Tables["t"].Rows[0]["IDSUBCAT"] != DBNull.Value)
-                wp.IDSubCat = Convert.ToInt32(DS.Tables["t"].Rows[0]["IDSUBCAT"]);
-            else
-                wp.IDSubCat = 0;
-            wp.DecNum = DS.Tables["t"].Rows[0]["DECNUM"].ToString(); ;
-            wp.COMPOSITION = DS.Tables["t"].Rows[0]["COMPOSITION"].ToString();
-            wp.DIMENDRAWING = DS.Tables["t"].Rows[0]["DIMENSIONALDRAWING"].ToString();
-            wp.PowerSupply = DS.Tables["t"].Rows[0]["POWERSUPPLY"].ToString();
-            wp.CONFIGURATION = DS.Tables["t"].Rows[0]["CONFIGURATION"].ToString();
-            wp.Note = DS.Tables["t"].Rows[0]["NOTE"].ToString();
-            return wp;
-        }
 
         internal void EditWP(WPNameVO p)
         {
@@ -111,15 +135,52 @@ namespace SummonManager
             DA.UpdateCommand.Parameters.AddWithValue("IDCATEGORY", p.IDCat);
             DA.UpdateCommand.Parameters.AddWithValue("IDSUBCAT", p.IDSubCat);
             DA.UpdateCommand.Parameters.AddWithValue("DECNUM", p.DecNum);
-            DA.UpdateCommand.Parameters.AddWithValue("COMPOSITION", p.COMPOSITION);
-            DA.UpdateCommand.Parameters.AddWithValue("CONFIGURATION", p.CONFIGURATION);
-            DA.UpdateCommand.Parameters.AddWithValue("DIMENSIONALDRAWING", p.DIMENDRAWING);
+            DA.UpdateCommand.Parameters.AddWithValue("WIRINGDIAGRAM", ((object)p.WIRINGDIAGRAM) ?? DBNull.Value);
+            DA.UpdateCommand.Parameters.AddWithValue("TECHREQ", ((object)p.TECHREQ) ?? DBNull.Value);
+            DA.UpdateCommand.Parameters.AddWithValue("COMPOSITION", ((object)p.COMPOSITION) ?? DBNull.Value);
+            DA.UpdateCommand.Parameters.AddWithValue("CONFIGURATION", ((object)p.CONFIGURATION) ?? DBNull.Value);
+            DA.UpdateCommand.Parameters.AddWithValue("DIMENSIONALDRAWING", ((object)p.DIMENDRAWING) ?? DBNull.Value);
+            DA.UpdateCommand.Parameters.AddWithValue("SBORKA3D", ((object)p.SBORKA3D) ?? DBNull.Value);
+            DA.UpdateCommand.Parameters.AddWithValue("MECHPARTS", ((object)p.MECHPARTS) ?? DBNull.Value);
+            DA.UpdateCommand.Parameters.AddWithValue("SHILDS", ((object)p.SHILDS) ?? DBNull.Value);
+            DA.UpdateCommand.Parameters.AddWithValue("PLANKA", ((object)p.PLANKA) ?? DBNull.Value);
+            DA.UpdateCommand.Parameters.AddWithValue("SERIAL", ((object)p.SERIAL) ?? DBNull.Value);
+            DA.UpdateCommand.Parameters.AddWithValue("PACKAGING", ((object)p.PACKAGING) ?? DBNull.Value);
+            DA.UpdateCommand.Parameters.AddWithValue("PASSPORT", ((object)p.PASSPORT) ?? DBNull.Value);
+            DA.UpdateCommand.Parameters.AddWithValue("MANUAL", ((object)p.MANUAL) ?? DBNull.Value);
+            DA.UpdateCommand.Parameters.AddWithValue("PACKINGLIST", ((object)p.PACKINGLIST) ?? DBNull.Value);
             DA.UpdateCommand.Parameters.AddWithValue("POWERSUPPLY", p.PowerSupply);
             DA.UpdateCommand.Parameters.AddWithValue("NOTE", p.Note);
+            DA.UpdateCommand.Parameters.AddWithValue("COMPOSITIONREQ", p.COMPOSITIONREQ);
+            DA.UpdateCommand.Parameters.AddWithValue("DIMENSIONALDRAWINGREQ", p.DIMENSIONALDRAWINGREQ);
+            DA.UpdateCommand.Parameters.AddWithValue("CONFIGURATIONREQ", p.CONFIGURATIONREQ);
+            DA.UpdateCommand.Parameters.AddWithValue("WIRINGDIAGRAMREQ", p.WIRINGDIAGRAMREQ);
+            DA.UpdateCommand.Parameters.AddWithValue("TECHREQREQ", p.TECHREQREQ);
+            DA.UpdateCommand.Parameters.AddWithValue("SBORKA3DREQ", p.SBORKA3DREQ);
+            DA.UpdateCommand.Parameters.AddWithValue("MECHPARTSREQ", p.MECHPARTSREQ);
+            DA.UpdateCommand.Parameters.AddWithValue("SHILDSREQ", p.SHILDSREQ);
+            DA.UpdateCommand.Parameters.AddWithValue("PLANKAREQ", p.PLANKAREQ);
+            DA.UpdateCommand.Parameters.AddWithValue("SERIALREQ", p.SERIALREQ);
+            DA.UpdateCommand.Parameters.AddWithValue("PACKAGINGREQ", p.PACKAGINGREQ);
+            DA.UpdateCommand.Parameters.AddWithValue("PASSPORTREQ", p.PASSPORTREQ);
+            DA.UpdateCommand.Parameters.AddWithValue("MANUALREQ", p.MANUALREQ);
+            DA.UpdateCommand.Parameters.AddWithValue("PACKINGLISTREQ", p.PACKINGLISTREQ);
+            DA.UpdateCommand.Parameters.AddWithValue("SOFTWAREREQ", p.SOFTWAREREQ);
+            DA.UpdateCommand.Parameters.AddWithValue("CABLELISTREQ", p.CABLELISTREQ);
+            DA.UpdateCommand.Parameters.AddWithValue("ZHGUTLISTREQ", p.ZHGUTLISTREQ);
+            DA.UpdateCommand.Parameters.AddWithValue("RUNCARDLISTREQ", p.RUNCARDLISTREQ);
+            DA.UpdateCommand.Parameters.AddWithValue("CIRCUITBOARDLISTREQ", p.CIRCUITBOARDLISTREQ);
             DA.UpdateCommand.Parameters.AddWithValue("ID", p.ID);
 
-            DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..WPNAMELIST set WPNAME  = @WPNAME,IDCATEGORY = @IDCATEGORY,DECNUM = @DECNUM,COMPOSITION = @COMPOSITION,"+
-                                            " DIMENSIONALDRAWING = @DIMENSIONALDRAWING,POWERSUPPLY=@POWERSUPPLY,NOTE = @NOTE,CONFIGURATION = @CONFIGURATION,IDSUBCAT = @IDSUBCAT " +
+            DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..WPNAMELIST set WPNAME  = @WPNAME,IDCATEGORY = @IDCATEGORY,IDSUBCAT = @IDSUBCAT,DECNUM = @DECNUM, "+
+                                           " WIRINGDIAGRAM = @WIRINGDIAGRAM, TECHREQ=@TECHREQ,COMPOSITION = @COMPOSITION,CONFIGURATION=@CONFIGURATION, " +
+                                           " DIMENSIONALDRAWING=@DIMENSIONALDRAWING,SBORKA3D=@SBORKA3D,MECHPARTS=@MECHPARTS,SHILDS=@SHILDS,PLANKA=@PLANKA " +
+                                           " SERIAL=@SERIAL, PACKAGING=@PACKAGING, PASSPORT=@PASSPORT, MANUAL=@MANUAL, PACKINGLIST=@PACKINGLIST,POWERSUPPLY=@POWERSUPPLY," +
+                                           " NOTE = @NOTE,   COMPOSITIONREQ=@COMPOSITIONREQ, DIMENSIONALDRAWINGREQ=@DIMENSIONALDRAWINGREQ, CONFIGURATIONREQ=@CONFIGURATIONREQ, " +
+                                           " WIRINGDIAGRAMREQ=@WIRINGDIAGRAMREQ, TECHREQREQ=@TECHREQREQ, SBORKA3DREQ=@SBORKA3DREQ, MECHPARTSREQ=@MECHPARTSREQ, " +
+                                           " SHILDSREQ=@SHILDSREQ, PLANKAREQ=@PLANKAREQ, SERIALREQ=@SERIALREQ, PACKAGINGREQ=@PACKAGINGREQ," +
+                                           " PASSPORTREQ=@PASSPORTREQ, MANUALREQ=@MANUALREQ, PACKINGLISTREQ=@PACKINGLISTREQ, SOFTWAREREQ=@SOFTWAREREQ, " +
+                                           " CABLELISTREQ=@CABLELISTREQ,ZHGUTLISTREQ=@ZHGUTLISTREQ, RUNCARDLISTREQ=@RUNCARDLISTREQ,CIRCUITBOARDLISTREQ=@CIRCUITBOARDLISTREQ " +
                                             " where ID = @ID";
             DA.UpdateCommand.Connection.Open();
             DA.UpdateCommand.ExecuteNonQuery();
@@ -215,6 +276,52 @@ namespace SummonManager
             wp.RUNCARDLISTREQ = (bool)r["RUNCARDLISTREQ"];
             wp.CIRCUITBOARDLISTREQ = (bool)r["CIRCUITBOARDLISTREQ"];
             return wp;
+        }
+
+        internal void EditWP_Constructor(WPNameVO p)
+        {
+            DA.UpdateCommand.Parameters.Clear();
+            DA.UpdateCommand.Parameters.AddWithValue("WPNAME", p.WPName);
+            DA.UpdateCommand.Parameters.AddWithValue("IDCATEGORY", p.IDCat);
+            DA.UpdateCommand.Parameters.AddWithValue("IDSUBCAT", p.IDSubCat);
+            DA.UpdateCommand.Parameters.AddWithValue("DECNUM", p.DecNum);
+            DA.UpdateCommand.Parameters.AddWithValue("DIMENSIONALDRAWING", ((object)p.DIMENDRAWING) ?? DBNull.Value);
+            DA.UpdateCommand.Parameters.AddWithValue("SBORKA3D", ((object)p.SBORKA3D) ?? DBNull.Value);
+            DA.UpdateCommand.Parameters.AddWithValue("MECHPARTS", ((object)p.MECHPARTS) ?? DBNull.Value);
+            DA.UpdateCommand.Parameters.AddWithValue("SHILDS", ((object)p.SHILDS) ?? DBNull.Value);
+            DA.UpdateCommand.Parameters.AddWithValue("PLANKA", ((object)p.PLANKA) ?? DBNull.Value);
+            DA.UpdateCommand.Parameters.AddWithValue("PACKAGING", ((object)p.PACKAGING) ?? DBNull.Value);
+
+            DA.UpdateCommand.Parameters.AddWithValue("ID", p.ID);
+
+            DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..WPNAMELIST set WPNAME  = @WPNAME,IDCATEGORY = @IDCATEGORY,IDSUBCAT = @IDSUBCAT,DECNUM = @DECNUM, " +
+                                           " WIRINGDIAGRAM = @WIRINGDIAGRAM, TECHREQ=@TECHREQ,COMPOSITION = @COMPOSITION,CONFIGURATION=@CONFIGURATION, " +
+                                           " DIMENSIONALDRAWING=@DIMENSIONALDRAWING,SBORKA3D=@SBORKA3D,MECHPARTS=@MECHPARTS,SHILDS=@SHILDS,PLANKA=@PLANKA " +
+                                           " SERIAL=@SERIAL, PACKAGING=@PACKAGING, PASSPORT=@PASSPORT, PACKINGLIST=@PACKINGLIST,POWERSUPPLY=@POWERSUPPLY," +
+                                           " NOTE = @NOTE,   COMPOSITIONREQ=@COMPOSITIONREQ, DIMENSIONALDRAWINGREQ=@DIMENSIONALDRAWINGREQ, CONFIGURATIONREQ=@CONFIGURATIONREQ, " +
+                                           " WIRINGDIAGRAMREQ=@WIRINGDIAGRAMREQ, TECHREQREQ=@TECHREQREQ, SBORKA3DREQ=@SBORKA3DREQ, MECHPARTSREQ=@MECHPARTSREQ, " +
+                                           " SHILDSREQ=@SHILDSREQ, PLANKAREQ=@PLANKAREQ, SERIALREQ=@SERIALREQ, PACKAGINGREQ=@PACKAGINGREQ," +
+                                           " PASSPORTREQ=@PASSPORTREQ, MANUALREQ=@MANUALREQ, PACKINGLISTREQ=@PACKINGLISTREQ, SOFTWAREREQ=@SOFTWAREREQ, " +
+                                           " CABLELISTREQ=@CABLELISTREQ,ZHGUTLISTREQ=@ZHGUTLISTREQ, RUNCARDLISTREQ=@RUNCARDLISTREQ,CIRCUITBOARDLISTREQ=@CIRCUITBOARDLISTREQ " +
+                                            " where ID = @ID";
+            DA.UpdateCommand.Connection.Open();
+            DA.UpdateCommand.ExecuteNonQuery();
+            DA.UpdateCommand.Connection.Close();
+        }
+
+        internal void EditWP_Inzhener(WPNameVO wp)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void EditWP_Tehnolog(WPNameVO wp)
+        {
+            throw new NotImplementedException();
+        }
+
+        internal void EditWP_Shemotehnik(WPNameVO wp)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -36,7 +36,7 @@ namespace SummonManager
             }
             this.IDW = idw;
             DBWPName dbwp = new DBWPName();
-            WPNameVO wp = dbwp.GetWP(this.IDW);
+            WPNameVO wp = WPNameVO.WPNameVOByID(this.IDW);
             tbName.Text = wp.WPName;
             cbCategory.SelectedValue = wp.IDCat;
             cbSubCategory.SelectedValue = wp.IDSubCat;
@@ -90,7 +90,7 @@ namespace SummonManager
             cbCategory.DataSource = dbc.GetAllExceptAll();
 
             DBWPName dbwp = new DBWPName();
-            WPNameVO wp = dbwp.GetWP(this.IDW);
+            WPNameVO wp = WPNameVO.WPNameVOByID(this.IDW);
 
             cbCategory.SelectedValue = wp.IDCat;
 
@@ -115,7 +115,7 @@ namespace SummonManager
             cbSubCategory.DataSource = dbs.GetAllExceptAll(idCat);
 
             DBWPName dbwp = new DBWPName();
-            WPNameVO wp = dbwp.GetWP(this.IDW);
+            WPNameVO wp = WPNameVO.WPNameVOByID(this.IDW);
             cbSubCategory.SelectedValue = wp.IDSubCat;
             
         }

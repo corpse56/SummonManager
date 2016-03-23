@@ -58,5 +58,13 @@ namespace SummonManager
             DA.Fill(DS, "t");
             return DS.Tables["t"];
         }
+
+        internal int GetSubCatNE_PRISVOENO()
+        {
+            DA.SelectCommand.Parameters.AddWithValue("Entity", this.ENTITY);
+            DA.SelectCommand.CommandText = "select ID,CATEGORYNAME from " + Base.BaseName + "..CATEGORYLIST where CATEGORYNAME != 'ВСЕ' and ENTITY = @Entity";
+            DA.Fill(DS, "t");
+            return (int)DS.Tables["t"].Rows[0]["ID"];
+        }
     }
 }

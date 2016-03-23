@@ -61,7 +61,7 @@ namespace SummonManager
                 MessageBox.Show("Выберите строку!");
                 return;
             }
-            if ((dgWP.SelectedRows[0].Cells["CATEGORYNAME"].Value.ToString().ToUpper() == "ВСЕ") || (dgWP.SelectedRows[0].Cells["CATEGORYNAME"].Value.ToString() == "Не присвоено"))
+            if ((dgWP.SelectedRows[0].Cells["CATEGORYNAME"].Value.ToString().ToUpper() == "ВСЕ") || (dgWP.SelectedRows[0].Cells["CATEGORYNAME"].Value.ToString().ToUpper() == "Не присвоено"))
             {
                 MessageBox.Show("Вы не можете удалить эту категорию, так как она является системной!");
                 return;
@@ -79,7 +79,7 @@ namespace SummonManager
                 MessageBox.Show("Выберите строку!");
                 return;
             }
-            if ((dgWP.SelectedRows[0].Cells["CATEGORYNAME"].Value.ToString().ToUpper() == "ВСЕ") || (dgWP.SelectedRows[0].Cells["CATEGORYNAME"].Value.ToString() == "Не присвоено"))
+            if ((dgWP.SelectedRows[0].Cells["CATEGORYNAME"].Value.ToString().ToUpper() == "ВСЕ") || (dgWP.SelectedRows[0].Cells["CATEGORYNAME"].Value.ToString().ToUpper() == "Не присвоено"))
             {
                 MessageBox.Show("Вы не можете удалить эту категорию, так как она является системной!");
                 return;

@@ -447,21 +447,10 @@ end
 GO
 
 --------------------------------------------------------------------------------
-USE [ALPHA]
-GO
-
-/****** Object:  Trigger [dbo].[CATEGORY_INSERT]    Script Date: 03/20/2016 16:15:01 ******/
-SET ANSI_NULLS ON
-GO
-
-SET QUOTED_IDENTIFIER ON
-GO
-
-
 
 USE [ALPHA]
 GO
-/****** Object:  Trigger [dbo].[CATEGORY_INSERT]    Script Date: 03/21/2016 14:37:08 ******/
+/****** Object:  Trigger [dbo].[CATEGORY_INSERT]    Script Date: 03/23/2016 18:49:29 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -473,15 +462,17 @@ ALTER TRIGGER [dbo].[CATEGORY_INSERT] ON [dbo].[CATEGORYLIST]
 AS 
 set nocount on;
 
-insert into SUBCATEGORYLIST (IDCATEGORY,SUBCATNAME) 
-select inserted.ID,'ВСЕ' from inserted 
-where inserted.ENTITY != 'ВСЕ' and inserted.ENTITY != 'Не присвоено'
---NOt exists (select 1 from CATEGORYLIST A where A.CATEGORYNAME = 'ВСЕ' and A.ENTITY = inserted.ENTITY)
 
 insert into SUBCATEGORYLIST (IDCATEGORY,SUBCATNAME) 
-select inserted.ID,'Не присвоено' from inserted
-where inserted.ENTITY != 'ВСЕ' and inserted.ENTITY != 'Не присвоено'
+select inserted.ID,'НЕ ПРИСВОЕНО' from inserted
+where inserted.ENTITY != 'ВСЕ' and inserted.ENTITY != 'НЕ ПРИСВОЕНО'
 --NOt exists (select 1 from CATEGORYLIST A where A.CATEGORYNAME = 'Не присвоено' and A.ENTITY = inserted.ENTITY)
+
+insert into SUBCATEGORYLIST (IDCATEGORY,SUBCATNAME) 
+select inserted.ID,'ВСЕ' from inserted 
+where inserted.ENTITY != 'ВСЕ' and inserted.ENTITY != 'НЕ ПРИСВОЕНО'
+--NOt exists (select 1 from CATEGORYLIST A where A.CATEGORYNAME = 'ВСЕ' and A.ENTITY = inserted.ENTITY)
+
 
 
 

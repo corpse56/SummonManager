@@ -128,15 +128,28 @@ namespace SummonManager
             ShowDGV();
             if (!PICK)
             {
+                bChoose.Enabled = false;
+
                 if ((UVO.Role == Roles.Admin) || (UVO.Role == Roles.Inzhener))
                 {
                     bAdd.Enabled = true;
                     bEdit.Enabled = true;
                     bClone.Enabled = true;
                     bDelete.Enabled = true;
-                    bChoose.Enabled = false;
                     bEditCategory.Enabled = true;
                     bEditSubCategory.Enabled = true;
+                    bView.Enabled = true;
+                }
+                else if ((UVO.Role == Roles.Constructor) || (UVO.Role == Roles.Tehnolog) || (UVO.Role == Roles.Shemotehnik) || (UVO.Role == Roles.SimpleInzhener))
+                {
+                    bAdd.Enabled = false;
+                    bEdit.Enabled = true;
+                    bClone.Enabled = false;
+                    bDelete.Enabled = false;
+                    bArchive.Enabled = false;
+                    bArcShow.Enabled = false;
+                    bEditCategory.Enabled = false;
+                    bEditSubCategory.Enabled = false;
                     bView.Enabled = true;
                 }
                 else
@@ -147,7 +160,6 @@ namespace SummonManager
                     bDelete.Enabled = false;
                     bArchive.Enabled = false;
                     bArcShow.Enabled = false;
-                    bChoose.Enabled = false;
                     bEditCategory.Enabled = false;
                     bEditSubCategory.Enabled = false;
                     bView.Enabled = true;
@@ -160,43 +172,78 @@ namespace SummonManager
         private void ShowDGV()
         {
             dgWP.Columns["ID"].Visible = false;
-            dgWP.Columns["WPNAME"].HeaderText = "Наименование изделия";
             dgWP.Columns["CATEGORYNAME"].HeaderText = "Категория";
             dgWP.Columns["SUBCATNAME"].HeaderText = "Подкатегория";
             dgWP.Columns["DECNUM"].HeaderText = "Децимальный номер";
-            dgWP.Columns["COMPOSITION"].HeaderText = "Состав изделия";
-            dgWP.Columns["DIMENSIONALDRAWING"].HeaderText = "Габаритный чертёж";
-            dgWP.Columns["POWERSUPPLY"].HeaderText = "Электропитание";
-            dgWP.Columns["CONFIGURATION"].HeaderText = "Конфигурация";
             dgWP.Columns["NOTE"].HeaderText = "Примечание";
+            dgWP.Columns["SUBCATNAME"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgWP.Columns["CATEGORYNAME"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgWP.Columns["DECNUM"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgWP.Columns["NOTE"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgWP.Columns["CATEGORYNAME"].FillWeight = 100;
+            dgWP.Columns["SUBCATNAME"].FillWeight = 100;
+            dgWP.Columns["DECNUM"].FillWeight = 200;
+            dgWP.Columns["NOTE"].FillWeight = 200;
+
+        }
+        private void ShowDGV_WPNAME()
+        {
+            ShowDGV();
+            dgWP.Columns["WPNAME"].HeaderText = "Наименование изделия";
+            dgWP.Columns["COMPOSITION"].HeaderText = "Состав изделия";
+            dgWP.Columns["TECHREQ"].HeaderText = "Технические требования";
             foreach (DataGridViewRow r in dgWP.Rows)
             {
                 r.Cells["COMPOSITION"].Tag = r.Cells["COMPOSITION"].Value;
                 r.Cells["COMPOSITION"].Value = r.Cells["COMPOSITION"].Tag.ToString().Substring(r.Cells["COMPOSITION"].Tag.ToString().LastIndexOf("\\") + 1);
+                r.Cells["TECHREQ"].Tag = r.Cells["TECHREQ"].Value;
+                r.Cells["TECHREQ"].Value = r.Cells["TECHREQ"].Tag.ToString().Substring(r.Cells["TECHREQ"].Tag.ToString().LastIndexOf("\\") + 1);
+            }
+            dgWP.Columns["WPNAME"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgWP.Columns["COMPOSITION"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgWP.Columns["TECHREQ"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgWP.Columns["WPNAME"].FillWeight = 250;
+            dgWP.Columns["COMPOSITION"].FillWeight = 200;
+            dgWP.Columns["TECHREQ"].FillWeight = 200;
+        }
+        private void ShowDGV_ZHGUT()
+        {
+            ShowDGV();
+            dgWP.Columns["ZHGUTNAME"].HeaderText = "Наименование жгута";
+            dgWP.Columns["ZHGUTPATH"].HeaderText = "Путь к файлу жгута";
+            foreach (DataGridViewRow r in dgWP.Rows)
+            {
+                r.Cells["ZHGUTPATH"].Tag = r.Cells["ZHGUTPATH"].Value;
+                r.Cells["ZHGUTPATH"].Value = r.Cells["ZHGUTPATH"].Tag.ToString().Substring(r.Cells["ZHGUTPATH"].Tag.ToString().LastIndexOf("\\") + 1);
+            }
+            dgWP.Columns["ZHGUTNAME"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgWP.Columns["ZHGUTPATH"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgWP.Columns["ZHGUTNAME"].FillWeight = 250;
+            dgWP.Columns["ZHGUTPATH"].FillWeight = 250;
+        }
+        private void ShowDGV_CABLE()
+        {
+            ShowDGV();
+            dgWP.Columns["CABLENAME"].HeaderText = "Наименование кабеля";
+            dgWP.Columns["DIMENSIONALDRAWING"].HeaderText = "Сборочный чертёж";
+            dgWP.Columns["CONNECTORS"].HeaderText = "Соединители";
+            dgWP.Columns["CLENGTH"].HeaderText = "Длина";
+
+            foreach (DataGridViewRow r in dgWP.Rows)
+            {
                 r.Cells["DIMENSIONALDRAWING"].Tag = r.Cells["DIMENSIONALDRAWING"].Value;
                 r.Cells["DIMENSIONALDRAWING"].Value = r.Cells["DIMENSIONALDRAWING"].Tag.ToString().Substring(r.Cells["DIMENSIONALDRAWING"].Tag.ToString().LastIndexOf("\\") + 1);
             }
-            dgWP.Columns["WPNAME"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgWP.Columns["SUBCATNAME"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgWP.Columns["CATEGORYNAME"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgWP.Columns["DECNUM"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgWP.Columns["COMPOSITION"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgWP.Columns["CONNECTORS"].FillWeight = 150;
+            dgWP.Columns["CLENGTH"].FillWeight = 70;
+            dgWP.Columns["CABLENAME"].FillWeight = 250;
+            dgWP.Columns["DIMENSIONALDRAWING"].FillWeight = 250;
+            dgWP.Columns["CABLENAME"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgWP.Columns["DIMENSIONALDRAWING"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgWP.Columns["POWERSUPPLY"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgWP.Columns["CONFIGURATION"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgWP.Columns["NOTE"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgWP.Columns["WPNAME"].FillWeight = 250;
-            dgWP.Columns["CATEGORYNAME"].FillWeight = 100;
-            dgWP.Columns["SUBCATNAME"].FillWeight = 100;
-            dgWP.Columns["DECNUM"].FillWeight = 200;
-            dgWP.Columns["COMPOSITION"].FillWeight = 100;
-            dgWP.Columns["DIMENSIONALDRAWING"].FillWeight = 100;
-            dgWP.Columns["POWERSUPPLY"].FillWeight = 100;
-            dgWP.Columns["CONFIGURATION"].FillWeight = 150;
-            dgWP.Columns["NOTE"].FillWeight = 200;
+            dgWP.Columns["CONNECTORS"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgWP.Columns["CLENGTH"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
         }
-
 
 
         private void bArchive_Click(object sender, EventArgs e)
@@ -244,15 +291,45 @@ namespace SummonManager
 
         private void bEditCategory_Click(object sender, EventArgs e)//редактировать категории
         {
+            string Entity="";
+            if (cbPRODUCTTYPE.SelectedIndex == 0)
+            {
+                Entity = "WPNAMELIST";
+            }
+            if (cbPRODUCTTYPE.SelectedIndex == 1)
+            {
+                Entity = "ZHGUTLIST";
+            }
+            if (cbPRODUCTTYPE.SelectedIndex == 2)
+            {
+                Entity = "CABLELIST";
+            }
+
             int selval = (int)cbCAT.SelectedValue;
-            EditWPCategory ed = new EditWPCategory("WPNAMELIST");
+            EditWPCategory ed = new EditWPCategory(Entity);
             ed.ShowDialog();
-            DBCategory dbc = new DBCategory("WPNAMELIST");
+            DBCategory dbc = new DBCategory(Entity);
             cbCAT.ValueMember = "ID";
             cbCAT.DisplayMember = "CATEGORYNAME";
             cbCAT.DataSource = dbc.GetAll();
             cbCAT.SelectedValue = selval;
             cbCAT_SelectedIndexChanged(sender, e);
+
+        }
+        private void bEditSubCategory_Click(object sender, EventArgs e)//редактирование подкатегорий
+        {
+            int id = (int)cbCAT.SelectedValue;
+            if ((id == 1) || (id == 2))
+            {
+                MessageBox.Show("У выбранной категории не может быть подкатегорий, т.к. она является системной");
+                return;
+            }
+            EditWPSubCategory ed = new EditWPSubCategory(id, "WPNAMELIST");
+            ed.ShowDialog();
+            //dgWP.DataSource = new DBWPName().GetAllWPNames();
+            int idsub = (cbSubCat.SelectedValue != null) ? (int)cbSubCat.SelectedValue : 0;
+            cbCAT_SelectedIndexChanged(sender, e);
+            cbSubCat.SelectedValue = idsub;
 
         }
         public int PickedID;
@@ -277,29 +354,48 @@ namespace SummonManager
 
         }
 
-        private void bEditSubCategory_Click(object sender, EventArgs e)//редактирование подкатегорий
-        {
-            int id = (int)cbCAT.SelectedValue;
-            if ((id == 1) || (id == 2))
-            {
-                MessageBox.Show("У выбранной категории не может быть подкатегорий, т.к. она является системной");
-                return;
-            }
-            EditWPSubCategory ed = new EditWPSubCategory(id, "WPNAMELIST");
-            ed.ShowDialog();
-            //dgWP.DataSource = new DBWPName().GetAllWPNames();
-            int idsub = (cbSubCat.SelectedValue != null) ? (int)cbSubCat.SelectedValue : 0;
-            cbCAT_SelectedIndexChanged(sender, e);
-            cbSubCat.SelectedValue = idsub;
-
-        }
+       
         private void cbPRODUCTTYPE_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if (cbPRODUCTTYPE.SelectedIndex == 0) //"WPNAMELIST"
+            {
+                DBCategory dbc = new DBCategory("WPNAMELIST");
+                cbCAT.ValueMember = "ID";
+                cbCAT.DisplayMember = "CATEGORYNAME";
+                cbCAT.DataSource = dbc.GetAll();
+                //cbCAT.SelectedValue = dbc.GetSubCatNE_PRISVOENO();
+                cbCAT.SelectedIndex = 1;
+                FillDGV_WPNAMELIST();
+
+            }
+            if (cbPRODUCTTYPE.SelectedIndex == 1) //"ZHGUTLIST"
+            {
+                DBCategory dbc = new DBCategory("ZHGUTLIST");
+                cbCAT.ValueMember = "ID";
+                cbCAT.DisplayMember = "CATEGORYNAME";
+                cbCAT.DataSource = dbc.GetAll();
+                //cbCAT.SelectedValue = 2;
+                cbCAT.SelectedIndex = 1;
+                FillDGV_ZHGUTLIST();
+
+            }
+            if (cbPRODUCTTYPE.SelectedIndex == 2) //"CABLELIST"
+            {
+                DBCategory dbc = new DBCategory("CABLELIST");
+                cbCAT.ValueMember = "ID";
+                cbCAT.DisplayMember = "CATEGORYNAME";
+                cbCAT.DataSource = dbc.GetAll();
+                //cbCAT.SelectedValue = 2;
+                cbCAT.SelectedIndex = 1;
+                FillDGV_CABLELIST();
+
+            }
+            
 
         }
         private void cbCAT_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if ((Convert.ToInt32(cbCAT.SelectedValue) == 1) || (Convert.ToInt32(cbCAT.SelectedValue) == 2))
+            if ((cbCAT.Text.ToUpper() == "ВСЕ") || (cbCAT.Text.ToUpper() == "НЕ ПРИСВОЕНО"))
             {
                 cbSubCat.Text = "";
                 cbSubCat.Enabled = false;
@@ -311,8 +407,54 @@ namespace SummonManager
                 cbSubCat.ValueMember = "ID";
                 cbSubCat.DisplayMember = "SUBCATNAME";
                 cbSubCat.DataSource = dbs.GetAll(Convert.ToInt32(cbCAT.SelectedValue));
-                cbSubCat.SelectedItem = cbCAT.Items[0];
+                //cbSubCat.SelectedItem = cbCAT.Items[0];
+                cbSubCat.SelectedIndex = 1;
             }
+            switch (cbPRODUCTTYPE.SelectedIndex)
+            {
+                case 0://wpname
+                    FillDGV_WPNAMELIST();
+                    break;
+                case 1://zhgut
+                    FillDGV_ZHGUTLIST();
+                    break;
+                case 2://cable
+                    FillDGV_CABLELIST();
+                    break;
+            }
+
+        }
+        private void cbSubCat_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cbPRODUCTTYPE.SelectedIndex)
+            {
+                case 0://wpname
+                    dgWP.DataSource = new DBWPName().GetCategoryWPNames(Convert.ToInt32(cbCAT.SelectedValue), Convert.ToInt32(cbSubCat.SelectedValue));
+                    break;
+                case 1://zhgut
+                    dgWP.DataSource = new DBZhgutList().GetCategoryZhgutList(Convert.ToInt32(cbCAT.SelectedValue), Convert.ToInt32(cbSubCat.SelectedValue));
+                    break;
+                case 2://cable
+                    dgWP.DataSource = new DBCableList().GetCategoryCableList(Convert.ToInt32(cbCAT.SelectedValue), Convert.ToInt32(cbSubCat.SelectedValue));
+                    break;
+            }
+            
+
+        }
+
+        private void bView_Click(object sender, EventArgs e)//просмотр
+        {
+            if (dgWP.SelectedRows.Count == 0)
+            {
+                return;
+            }
+            NewWPN ew = new NewWPN(WPNameVO.WPNameVOByID(Convert.ToInt32(dgWP.SelectedRows[0].Cells["ID"].Value)), "VIEWONLY", UVO);
+            ew.ShowDialog();
+
+        }
+
+        private void FillDGV_WPNAMELIST()
+        {
             if (cbSubCat.Enabled)
             {
                 dgWP.DataSource = new DBWPName().GetCategoryWPNames(Convert.ToInt32(cbCAT.SelectedValue), Convert.ToInt32(cbSubCat.SelectedValue));
@@ -321,21 +463,44 @@ namespace SummonManager
             {
                 dgWP.DataSource = new DBWPName().GetCategoryWPNames(Convert.ToInt32(cbCAT.SelectedValue));
             }
-
+            ShowDGV_WPNAME();
         }
-        private void cbSubCat_SelectedIndexChanged(object sender, EventArgs e)
+        private void FillDGV_ZHGUTLIST()
+        {           
+            if (cbSubCat.Enabled)
+            {
+                dgWP.DataSource = new DBZhgutList().GetCategoryZhgutList(Convert.ToInt32(cbCAT.SelectedValue), Convert.ToInt32(cbSubCat.SelectedValue));
+            }
+            else
+            {
+                dgWP.DataSource = new DBZhgutList().GetCategoryZhgutList(Convert.ToInt32(cbCAT.SelectedValue));
+            }
+            ShowDGV_ZHGUT();
+        }
+        private void FillDGV_CABLELIST()
         {
-            dgWP.DataSource = new DBWPName().GetCategoryWPNames(Convert.ToInt32(cbCAT.SelectedValue), Convert.ToInt32(cbSubCat.SelectedValue));
-
+            if (cbSubCat.Enabled)
+            {
+                dgWP.DataSource = new DBCableList().GetCategoryCableList(Convert.ToInt32(cbCAT.SelectedValue), Convert.ToInt32(cbSubCat.SelectedValue));
+            }
+            else
+            {
+                dgWP.DataSource = new DBCableList().GetCategoryCableList(Convert.ToInt32(cbCAT.SelectedValue));
+            }
+            ShowDGV_CABLE();
         }
 
-        private void bView_Click(object sender, EventArgs e)//просмотр
+        private void dgWP_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            NewWPN ew = new NewWPN(WPNameVO.WPNameVOByID(Convert.ToInt32(dgWP.SelectedRows[0].Cells["ID"].Value)), "VIEWONLY", UVO);
-            ew.ShowDialog();
-
+            if (PICK)
+            {
+                bView_Click(sender ,e);
+            }
+            else
+            {
+                bEdit_Click(sender, e);
+            }
         }
-
 
 
 

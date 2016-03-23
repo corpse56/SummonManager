@@ -11,7 +11,7 @@ namespace SummonManager.CLASSES
         public DataTable GetPackage(int IDWP)
         {
             DA.SelectCommand.Parameters.AddWithValue("IDWP", IDWP);
-            DA.SelectCommand.CommandText = " select A.ID id,A.ID nn,B.CABLENAME,A.CNT " +
+            DA.SelectCommand.CommandText = " select A.ID id,A.ID nn,B.CABLENAME name,A.CNT " +
                                            " from " + Base.BaseName + "..CABLES A " +
                                            " left join " + Base.BaseName + "..CABLELIST B ON B.ID = A.IDCABLE " +
                                            "  where IDWP = @IDWP ";
@@ -21,7 +21,7 @@ namespace SummonManager.CLASSES
         public List<CableVO> GetPackageForVO(int IDWP)
         {
             DA.SelectCommand.Parameters.AddWithValue("IDWP", IDWP);
-            DA.SelectCommand.CommandText = " select A.IDCABLE id,A.ID nn,B.CABLENAME,A.CNT " +
+            DA.SelectCommand.CommandText = " select A.IDCABLE id,A.ID nn,B.CABLENAME name,A.CNT " +
                                            " from " + Base.BaseName + "..CABLES A "+
                                            " left join " + Base.BaseName + "..CABLELIST B ON B.ID = A.IDCABLE " +
                                            "  where IDWP = @IDWP ";
@@ -51,6 +51,62 @@ namespace SummonManager.CLASSES
             CVO.CLENGTH = r["CLENGTH"].ToString();
             CVO.NOTE = r["NOTE"].ToString();
             return CVO;
+        }
+        public DataTable GetAllCables()
+        {
+            DA.SelectCommand.CommandText = "select A.ID,A.CABLENAME,B.CATEGORYNAME,isnull(C.SUBCATNAME,'Не присвоено') SUBCATNAME,A.DECNUM,A.DIMENSIONALDRAWING,A.CONNECTORS,A.CLENGTH,A.NOTE from " +
+                                            Base.BaseName + "..CABLELIST A " +
+                                           " left join " + Base.BaseName + "..CATEGORYLIST B on B.ID = IDCATEGORY " +
+                                           " left join " + Base.BaseName + "..SUBCATEGORYLIST C on C.ID = A.IDSUBCAT " +
+                                           " order by CABLENAME";
+            DS = new DataSet();
+            int h = DA.Fill(DS, "t");
+            return DS.Tables["t"];
+        }
+        public DataTable GetCategoryCableList(int IDCAT, int IDSUBCAT)
+        {
+            if (IDCAT == 13) return this.GetAllCables();
+            string sub = new DBSubCategory().GetNameByID(IDSUBCAT);
+            if (sub.ToUpper() == "ВСЕ")
+            {
+                DA.SelectCommand.CommandText = "select A.ID,A.CABLENAME,B.CATEGORYNAME,isnull(C.SUBCATNAME,'Не присвоено') SUBCATNAME,A.DECNUM,A.DIMENSIONALDRAWING,A.CONNECTORS,A.CLENGTH,A.NOTE from " +
+                                                 Base.BaseName + "..CABLELIST A " +
+                                               " left join " + Base.BaseName + "..CATEGORYLIST B on B.ID = IDCATEGORY " +
+                                               " left join " + Base.BaseName + "..SUBCATEGORYLIST C on C.ID = A.IDSUBCAT " +
+                                               " where A.IDCATEGORY = " + IDCAT + " order by CABLENAME";
+            }
+            else if (sub.ToUpper() == "НЕ ПРИСВОЕНО")
+            {
+                DA.SelectCommand.CommandText = "select A.ID,A.CABLENAME,B.CATEGORYNAME,isnull(C.SUBCATNAME,'Не присвоено') SUBCATNAME,A.DECNUM,A.DIMENSIONALDRAWING,A.CONNECTORS,A.CLENGTH,A.NOTE from " +
+                                                Base.BaseName + "..CABLELIST A " +
+                                               " left join " + Base.BaseName + "..CATEGORYLIST B on B.ID = IDCATEGORY " +
+                                               " left join " + Base.BaseName + "..SUBCATEGORYLIST C on C.ID = A.IDSUBCAT " +
+                                               " where A.IDCATEGORY = " + IDCAT + " and (A.IDSUBCAT is null)  order by CABLENAME";
+            }
+            else
+            {
+                DA.SelectCommand.CommandText = "select A.ID,A.CABLENAME,B.CATEGORYNAME,isnull(C.SUBCATNAME,'Не присвоено') SUBCATNAME,A.DECNUM,A.DIMENSIONALDRAWING,A.CONNECTORS,A.CLENGTH,A.NOTE from " +
+                                                 Base.BaseName + "..CABLELIST A " +
+                                               " left join " + Base.BaseName + "..CATEGORYLIST B on B.ID = IDCATEGORY " +
+                                               " left join " + Base.BaseName + "..SUBCATEGORYLIST C on C.ID = A.IDSUBCAT " +
+                                               " where A.IDCATEGORY = " + IDCAT + " and (A.IDSUBCAT = " + IDSUBCAT + ")  order by CABLENAME";
+            }
+
+            DS = new DataSet();
+            int h = DA.Fill(DS, "t");
+            return DS.Tables["t"];
+        }
+        public DataTable GetCategoryCableList(int IDCAT)
+        {
+            if (IDCAT == 13) return this.GetAllCables();//13 это категория ВСЕ у CABLELIST
+            DA.SelectCommand.CommandText = "select A.ID,A.CABLENAME,B.CATEGORYNAME,isnull(C.SUBCATNAME,'Не присвоено') SUBCATNAME,A.DECNUM,A.DIMENSIONALDRAWING,A.CONNECTORS,A.CLENGTH,A.NOTE from " +
+                                            Base.BaseName + "..CABLELIST A " +
+                                           " left join " + Base.BaseName + "..CATEGORYLIST B on B.ID = IDCATEGORY " +
+                                           " left join " + Base.BaseName + "..SUBCATEGORYLIST C on C.ID = A.IDSUBCAT " +
+                                           " where A.IDCATEGORY = " + IDCAT + " order by CABLENAME";
+            DS = new DataSet();
+            int h = DA.Fill(DS, "t");
+            return DS.Tables["t"];
         }
     }
 }

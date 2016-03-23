@@ -58,8 +58,9 @@ namespace SummonManager
         internal string GetNameByID(int IDSUBCAT)
         {
             DA.SelectCommand.CommandText = "select ID,SUBCATNAME from " + Base.BaseName + "..SUBCATEGORYLIST where ID = " + IDSUBCAT;
-            DA.Fill(DS, "t");
-            return DS.Tables["t"].Rows[0]["SUBCATNAME"].ToString();
+            int i = DA.Fill(DS, "t");
+
+            return (i>0) ? DS.Tables["t"].Rows[0]["SUBCATNAME"].ToString():"";
         }
 
         internal object GetAllExceptAll(int idCat)
