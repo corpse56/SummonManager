@@ -61,7 +61,7 @@ namespace SummonManager
                 MessageBox.Show("Выберите строку!");
                 return;
             }
-            if ((dgWP.SelectedRows[0].Cells["CATEGORYNAME"].Value.ToString().ToUpper() == "ВСЕ") || (dgWP.SelectedRows[0].Cells["CATEGORYNAME"].Value.ToString().ToUpper() == "Не присвоено"))
+            if ((dgWP.SelectedRows[0].Cells["CATEGORYNAME"].Value.ToString().ToUpper() == "ВСЕ") || (dgWP.SelectedRows[0].Cells["CATEGORYNAME"].Value.ToString().ToUpper() == "НЕ ПРИСВОЕНО"))
             {
                 MessageBox.Show("Вы не можете удалить эту категорию, так как она является системной!");
                 return;
@@ -79,17 +79,17 @@ namespace SummonManager
                 MessageBox.Show("Выберите строку!");
                 return;
             }
-            if ((dgWP.SelectedRows[0].Cells["CATEGORYNAME"].Value.ToString().ToUpper() == "ВСЕ") || (dgWP.SelectedRows[0].Cells["CATEGORYNAME"].Value.ToString().ToUpper() == "Не присвоено"))
+            if ((dgWP.SelectedRows[0].Cells["CATEGORYNAME"].Value.ToString().ToUpper() == "ВСЕ") || (dgWP.SelectedRows[0].Cells["CATEGORYNAME"].Value.ToString().ToUpper() == "НЕ ПРИСВОЕНО"))
             {
                 MessageBox.Show("Вы не можете удалить эту категорию, так как она является системной!");
                 return;
             }
 
-            DialogResult dr = MessageBox.Show("После удаления категории все изделия этой категории получат категорию \"Не присвоено\", а также удалятся все подкатегории этой категории! Вы действительно хотите удалить категорию?", "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            DialogResult dr = MessageBox.Show("После удаления категории все изделия этой категории получат категорию \"НЕ ПРИСВОЕНО\", а также удалятся все подкатегории этой категории! Вы действительно хотите удалить категорию?", "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
             if (dr == DialogResult.Yes)
             {
                 new DBCategory(this.ENTITY).Delete(dgWP.SelectedRows[0].Cells["ID"].Value.ToString());
-                MessageBox.Show("Подкатегория успешно удалена!");
+                MessageBox.Show("Категория успешно удалена!");
             }
             dgWP.DataSource = new DBCategory(this.ENTITY).GetAll();
 

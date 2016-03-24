@@ -21,10 +21,6 @@ namespace SummonManager
             {
                 this.viewonly = viewOnly;
                 button2.Visible = false;
-                pfComposition.bPath.Enabled = false;
-                pfComposition.bPathDel.Enabled = false;
-                pfDimDrawing.bPath.Enabled = false;
-                pfDimDrawing.bPathDel.Enabled = false;
                 this.Text = "Просмотр сведений об изделии";
                 tbName.ReadOnly = true;
                 tbNote.ReadOnly = true;
@@ -44,10 +40,6 @@ namespace SummonManager
             tbPowerSupply.Text = wp.PowerSupply;
             tbConfiguration.Text = wp.CONFIGURATION;
             tbNote.Text = wp.Note;
-
-
-            pfComposition.Init(wp.COMPOSITION, false, true, false);
-            pfDimDrawing.Init(wp.DIMENDRAWING, false, true, false);
 
 
         }

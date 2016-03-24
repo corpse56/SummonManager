@@ -323,11 +323,11 @@
     <Compile Include="fSearchResults.Designer.cs">
       <DependentUpon>fSearchResults.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewCable.cs">
+    <Compile Include="NewCable_old.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="NewCable.Designer.cs">
-      <DependentUpon>NewCable.cs</DependentUpon>
+    <Compile Include="NewCable_old.Designer.cs">
+      <DependentUpon>NewCable_old.cs</DependentUpon>
     </Compile>
     <Compile Include="EditPacking.cs">
       <SubType>Form</SubType>
@@ -623,8 +623,8 @@
     <EmbeddedResource Include="fSearchResults.resx">
       <DependentUpon>fSearchResults.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewCable.resx">
-      <DependentUpon>NewCable.cs</DependentUpon>
+    <EmbeddedResource Include="NewCable_old.resx">
+      <DependentUpon>NewCable_old.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditPacking.resx">
       <DependentUpon>EditPacking.cs</DependentUpon>
@@ -738,6 +738,12 @@
     <EmbeddedResource Include="EditWPSubCategory.resx">
       <DependentUpon>EditWPSubCategory.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="NewCABLE.resx">
+      <DependentUpon>NewCABLE.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewZHGUT.resx">
+      <DependentUpon>NewZHGUT.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -813,6 +819,18 @@
     <Compile Include="EditWPSubCategory.Designer.cs">
       <DependentUpon>EditWPSubCategory.cs</DependentUpon>
     </Compile>
+    <Compile Include="NewCABLE.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewCABLE.Designer.cs">
+      <DependentUpon>NewCABLE.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NewZHGUT.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewZHGUT.Designer.cs">
+      <DependentUpon>NewZHGUT.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{967B4E0D-AD0C-4609-AB67-0FA40C0206D8}" />
@@ -850,6 +868,7 @@
     <None Include="ico\delete_ok.ico" />
     <Content Include="ico\document-open.ico" />
     <None Include="ico\product.png" />
+    <None Include="ico\edit-notes-gray.png" />
     <Content Include="ico\Refresh.ico" />
     <None Include="Resources\Список изменений.txt" />
     <None Include="Properties\app.manifest" />

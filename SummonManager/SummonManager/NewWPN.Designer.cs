@@ -534,6 +534,7 @@
             this.packCABLE.Margin = new System.Windows.Forms.Padding(5);
             this.packCABLE.Name = "packCABLE";
             this.packCABLE.Padding = new System.Windows.Forms.Padding(0, 0, 4, 4);
+            this.packCABLE.Required = false;
             this.packCABLE.Size = new System.Drawing.Size(599, 91);
             this.packCABLE.TabIndex = 7;
             // 
@@ -543,6 +544,7 @@
             this.packZHGUT.Margin = new System.Windows.Forms.Padding(5);
             this.packZHGUT.Name = "packZHGUT";
             this.packZHGUT.Padding = new System.Windows.Forms.Padding(0, 0, 4, 4);
+            this.packZHGUT.Required = false;
             this.packZHGUT.Size = new System.Drawing.Size(602, 88);
             this.packZHGUT.TabIndex = 7;
             // 
@@ -550,6 +552,7 @@
             // 
             this.pfPACKINGLIST.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfPACKINGLIST.FullPath = "<нет>";
+            this.pfPACKINGLIST.ISPATH = false;
             this.pfPACKINGLIST.Location = new System.Drawing.Point(301, 731);
             this.pfPACKINGLIST.Margin = new System.Windows.Forms.Padding(4);
             this.pfPACKINGLIST.Name = "pfPACKINGLIST";
@@ -561,6 +564,7 @@
             // 
             this.pfMANUAL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfMANUAL.FullPath = "<нет>";
+            this.pfMANUAL.ISPATH = false;
             this.pfMANUAL.Location = new System.Drawing.Point(301, 699);
             this.pfMANUAL.Margin = new System.Windows.Forms.Padding(4);
             this.pfMANUAL.Name = "pfMANUAL";
@@ -572,6 +576,7 @@
             // 
             this.pfPASSPORT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfPASSPORT.FullPath = "<нет>";
+            this.pfPASSPORT.ISPATH = false;
             this.pfPASSPORT.Location = new System.Drawing.Point(301, 669);
             this.pfPASSPORT.Margin = new System.Windows.Forms.Padding(4);
             this.pfPASSPORT.Name = "pfPASSPORT";
@@ -583,6 +588,7 @@
             // 
             this.pfPACKAGING.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfPACKAGING.FullPath = "<нет>";
+            this.pfPACKAGING.ISPATH = false;
             this.pfPACKAGING.Location = new System.Drawing.Point(301, 638);
             this.pfPACKAGING.Margin = new System.Windows.Forms.Padding(4);
             this.pfPACKAGING.Name = "pfPACKAGING";
@@ -594,6 +600,7 @@
             // 
             this.pfSERIAL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfSERIAL.FullPath = "<нет>";
+            this.pfSERIAL.ISPATH = false;
             this.pfSERIAL.Location = new System.Drawing.Point(301, 608);
             this.pfSERIAL.Margin = new System.Windows.Forms.Padding(4);
             this.pfSERIAL.Name = "pfSERIAL";
@@ -605,6 +612,7 @@
             // 
             this.pfPLANKA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfPLANKA.FullPath = "<нет>";
+            this.pfPLANKA.ISPATH = false;
             this.pfPLANKA.Location = new System.Drawing.Point(300, 574);
             this.pfPLANKA.Margin = new System.Windows.Forms.Padding(4);
             this.pfPLANKA.Name = "pfPLANKA";
@@ -616,6 +624,7 @@
             // 
             this.pfSHILDS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfSHILDS.FullPath = "<нет>";
+            this.pfSHILDS.ISPATH = false;
             this.pfSHILDS.Location = new System.Drawing.Point(299, 544);
             this.pfSHILDS.Margin = new System.Windows.Forms.Padding(4);
             this.pfSHILDS.Name = "pfSHILDS";
@@ -627,6 +636,7 @@
             // 
             this.pfMECHPARTS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfMECHPARTS.FullPath = "<нет>";
+            this.pfMECHPARTS.ISPATH = true;
             this.pfMECHPARTS.Location = new System.Drawing.Point(298, 316);
             this.pfMECHPARTS.Margin = new System.Windows.Forms.Padding(4);
             this.pfMECHPARTS.Name = "pfMECHPARTS";
@@ -638,6 +648,7 @@
             // 
             this.pf3DSBORKA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pf3DSBORKA.FullPath = "<нет>";
+            this.pf3DSBORKA.ISPATH = false;
             this.pf3DSBORKA.Location = new System.Drawing.Point(299, 286);
             this.pf3DSBORKA.Margin = new System.Windows.Forms.Padding(4);
             this.pf3DSBORKA.Name = "pf3DSBORKA";
@@ -649,6 +660,7 @@
             // 
             this.pfDimDrawing.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfDimDrawing.FullPath = "<нет>";
+            this.pfDimDrawing.ISPATH = false;
             this.pfDimDrawing.Location = new System.Drawing.Point(299, 254);
             this.pfDimDrawing.Margin = new System.Windows.Forms.Padding(4);
             this.pfDimDrawing.Name = "pfDimDrawing";
@@ -660,6 +672,7 @@
             // 
             this.pfWIRINGDIAGRAM.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfWIRINGDIAGRAM.FullPath = "<нет>";
+            this.pfWIRINGDIAGRAM.ISPATH = false;
             this.pfWIRINGDIAGRAM.Location = new System.Drawing.Point(299, 129);
             this.pfWIRINGDIAGRAM.Margin = new System.Windows.Forms.Padding(4);
             this.pfWIRINGDIAGRAM.Name = "pfWIRINGDIAGRAM";
@@ -671,6 +684,7 @@
             // 
             this.pfTECHREQ.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfTECHREQ.FullPath = "<нет>";
+            this.pfTECHREQ.ISPATH = false;
             this.pfTECHREQ.Location = new System.Drawing.Point(299, 160);
             this.pfTECHREQ.Margin = new System.Windows.Forms.Padding(4);
             this.pfTECHREQ.Name = "pfTECHREQ";
@@ -682,6 +696,7 @@
             // 
             this.pfCONFIGURATION.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfCONFIGURATION.FullPath = "<нет>";
+            this.pfCONFIGURATION.ISPATH = false;
             this.pfCONFIGURATION.Location = new System.Drawing.Point(299, 222);
             this.pfCONFIGURATION.Margin = new System.Windows.Forms.Padding(4);
             this.pfCONFIGURATION.Name = "pfCONFIGURATION";
@@ -693,6 +708,7 @@
             // 
             this.pfComposition.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfComposition.FullPath = "<нет>";
+            this.pfComposition.ISPATH = false;
             this.pfComposition.Location = new System.Drawing.Point(299, 192);
             this.pfComposition.Margin = new System.Windows.Forms.Padding(4);
             this.pfComposition.Name = "pfComposition";

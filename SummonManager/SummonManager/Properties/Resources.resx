@@ -133,6 +133,9 @@
   <data name="document_new" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\ico\document_new.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="product" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ico\product.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="endturn_9113" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\ico\endturn_9113.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -151,8 +154,8 @@
   <data name="delete_disable1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\ico\delete_disable.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Version_History" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Список изменений.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
+  <data name="old-edit-find_3642" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ico\old-edit-find_3642.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="document-open1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\ico\document-open.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -163,11 +166,11 @@
   <data name="binoculars_8272" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\ico\binoculars_8272.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="old-edit-find_3642" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\ico\old-edit-find_3642.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="delete_ok" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\ico\delete_ok.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Version_History" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Список изменений.txt;System.String, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-16</value>
   </data>
   <data name="document-open-disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\ico\document-open-disabled.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -175,7 +178,7 @@
   <data name="1437084170_emblem-people" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\ico\1437084170_emblem-people.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="product" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\ico\product.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="edit-notes-gray" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\ico\edit-notes-gray.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -20,6 +20,8 @@ namespace SummonManager.Controls
             //this.PATH = "<нет>";
             //tbPath.Text = "<нет>";
         }
+        Roles ResposibleRole,CurrentRole;
+        string tmpPATH = "<нет>";
         string PATH;
         public string FullPath
         {
@@ -84,6 +86,20 @@ namespace SummonManager.Controls
             {
                 this.REQ = value;
                 chRequired.Checked = this.REQ;
+                if ((ResposibleRole == CurrentRole) || (CurrentRole == Roles.Admin) || ((CurrentRole == Roles.SimpleInzhener) && (ResposibleRole == Roles.Inzhener)))
+                {
+                    this.Enabled = value;
+                }
+                if (!value)
+                {
+                    tmpPATH = this.FullPath;
+                    this.FullPath = "<нет>";
+                }
+                else
+                {
+                    if (tmpPATH != "<нет>")
+                    this.FullPath = tmpPATH;
+                }
             }
         }
         public bool RequiredVisible
@@ -98,6 +114,13 @@ namespace SummonManager.Controls
                 {
                     chRequired.Visible = false;
                 }
+            }
+        }
+        public bool RequiredEnabled
+        {
+            set
+            {
+                chRequired.Enabled = value;
             }
         }
         public bool ValueFromArchive
@@ -119,15 +142,17 @@ namespace SummonManager.Controls
             }
         }
         ToolTip tt;
-        public void Init(string path,bool req, bool enbl, bool reqvis)
+        public void Init(string path,bool req, bool enbl, bool reqvis, bool reqenbl, Roles resprole, Roles currole)
         {
             //this.PATH = path;
             //tbPath.Tag = path;
-
+            this.ResposibleRole = resprole;
+            this.CurrentRole = currole;
             this.FullPath = path;
-            this.Enabled = enbl;
             this.Required = req;
             this.RequiredVisible = reqvis;
+            this.chRequired.Enabled = reqenbl;
+            this.Enabled = enbl;
             tt = new ToolTip();
             tt.SetToolTip(this.tbPath, this.FullPath);
             //this.tbPath.
@@ -135,6 +160,11 @@ namespace SummonManager.Controls
             //SetIcons();
         }
         public bool IsPath = false;
+        public bool ISPATH
+        {
+            get { return IsPath; }
+            set { IsPath = value; }
+        }
         private void bPath_Click(object sender, EventArgs e)
         {
             if (IsPath)

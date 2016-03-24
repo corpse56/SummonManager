@@ -12,15 +12,15 @@ namespace SummonManager
 {
     public partial class fEditPackage : Form
     {
-        string IDNEWSUMMON;
         public WPTYPE WPT;
         public int IDWP;
-        public fEditPackage(WPTYPE wpt, int idwp)
+        UserVO UVO;
+        public fEditPackage(WPTYPE wpt, int idwp, UserVO uvo)
         {
+            InitializeComponent();
             this.WPT = wpt;
             this.IDWP = idwp;
-            InitializeComponent();
-            //IDNEWSUMMON = idnewsummon;
+            this.UVO = uvo;
             
         }
 
@@ -35,6 +35,17 @@ namespace SummonManager
             //faec.ShowDialog();
             //fEditExtCablePack_Load(sender, e);
             //MessageBox.Show("Внешний кабель успешно добавлен в комплект!");
+
+
+
+            WPName wp = new WPName(true, UVO, WPT);
+            wp.ShowDialog();
+            if (wp.PickedID == 0) return;
+            if (WPT == WPTYPE.CABLELIST)
+            {
+                DBCableList dbc = new DBCableList();
+                dbc.AddToPackage(IDWP, wp.PickedID,1);
+            }
 
         }
 
@@ -52,10 +63,10 @@ namespace SummonManager
             {
                 return;
             }
-            DBEXTCABLE dbec = new DBEXTCABLE();
-            dbec.RemoveEXTCABLEFromPack(dgv.SelectedRows[0].Cells["id"].Value.ToString());
-            fEditExtCablePack_Load(sender, e);
-            MessageBox.Show("Кабель успешно удалён!");
+            //DBEXTCABLE dbec = new DBEXTCABLE();
+            //dbec.RemoveEXTCABLEFromPack(dgv.SelectedRows[0].Cells["id"].Value.ToString());
+            //fEditExtCablePack_Load(sender, e);
+            //MessageBox.Show("Кабель успешно удалён!");
 
 
         }

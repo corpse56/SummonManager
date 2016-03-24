@@ -28,7 +28,7 @@ namespace SummonManager
 
         private void button2_Click(object sender, EventArgs e)
         {
-            NewCable nwp = new NewCable();
+            NewCable_old nwp = new NewCable_old();
             nwp.ShowDialog();
             OLDDBCable dbwp = new OLDDBCable();
             //dgWP.DataSource = dbwp.GetAll();

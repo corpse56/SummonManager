@@ -72,7 +72,7 @@ GO
 
 
 
-insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'Не присвоено',	'WPNAMELIST')
+insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'НЕ ПРИСВОЕНО',	'WPNAMELIST')
 insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'ВСЕ',	'WPNAMELIST')
 insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'ИБП',	'WPNAMELIST')
 insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'Кабели',	'WPNAMELIST')
@@ -83,13 +83,13 @@ insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'Рабочие станции',	'WP
 insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'Монохромный монитор',	'WPNAMELIST')
 insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'Плоскопанельный вычислитель',	'WPNAMELIST')
 insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'Жгуты',	'WPNAMELIST')
-insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'Не присвоено',	'CABLELIST')
+insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'НЕ ПРИСВОЕНО',	'CABLELIST')
 insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'ВСЕ',	'CABLELIST')
-insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'Не присвоено',	'ZHGUTLIST')
+insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'НЕ ПРИСВОЕНО',	'ZHGUTLIST')
 insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'ВСЕ',	'ZHGUTLIST')
-insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'Не присвоено',	'CIRCUITBOARDLIST')
+insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'НЕ ПРИСВОЕНО',	'CIRCUITBOARDLIST')
 insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'ВСЕ',	'CIRCUITBOARDLIST')
-insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'Не присвоено',	'RUNCARDLIST')
+insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'НЕ ПРИСВОЕНО',	'RUNCARDLIST')
 insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'ВСЕ',	'RUNCARDLIST')
 alter table CATEGORYLIST alter column ENTITY nvarchar(100) not null
 
@@ -371,26 +371,34 @@ GO
 
 ------------------------------------------------------------------------------
 
-alter TRIGGER [dbo].[CATEGORY_DELETE] ON [dbo].[CATEGORYLIST] 
+USE [ALPHA]
+GO
+/****** Object:  Trigger [dbo].[CATEGORY_DELETE]    Script Date: 03/24/2016 21:34:42 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER TRIGGER [dbo].[CATEGORY_DELETE] ON [dbo].[CATEGORYLIST] 
 	AFTER DELETE
 AS 
 set nocount on;
 
 DECLARE @delid int
-DECLARE @entity nvarchar
+DECLARE @entity nvarchar(max)
 DECLARE @neprisvoeno int
 set @delid = (select top 1 deleted.ID from deleted)
-set @entity = (select top 1 deleted.ENTITY from deleted)
+set @entity = (select deleted.ENTITY from deleted)
 
 delete SUBCATEGORYLIST from SUBCATEGORYLIST sc where IDCATEGORY = @delid;
+
 if @entity='WPNAMELIST'
 begin
 	update WPNAMELIST set IDSUBCAT = null 
 	where IDCATEGORY = @delid;--(select top 1 deleted.ID from deleted)
 	
 	
-	set @neprisvoeno = (select top 1 deleted.ID from deleted 
-						where deleted.CATEGORYNAME = 'Не присвоено'  and deleted.ENTITY = 'WPNAMELIST')
+	set @neprisvoeno = (select top 1 CATEGORYLIST.ID from CATEGORYLIST 
+						where CATEGORYLIST.CATEGORYNAME = 'НЕ ПРИСВОЕНО'  and CATEGORYLIST.ENTITY = 'WPNAMELIST')
 
 	update WPNAMELIST set IDCATEGORY = @neprisvoeno 
 	where IDCATEGORY = @delid;--(select top 1 deleted.ID from deleted);
@@ -400,8 +408,8 @@ begin
 	update CABLELIST set IDSUBCAT = null 
 	where IDCATEGORY = @delid;--(select top 1 deleted.ID from deleted)
 	
-	set @neprisvoeno = (select top 1 deleted.ID from deleted 
-						where deleted.CATEGORYNAME = 'Не присвоено'  and deleted.ENTITY = 'CABLELIST')
+	set @neprisvoeno = (select top 1 ID from CATEGORYLIST 
+						where CATEGORYLIST.CATEGORYNAME = 'НЕ ПРИСВОЕНО'  and CATEGORYLIST.ENTITY = 'CABLELIST')
 
 	update CABLELIST set IDCATEGORY = @neprisvoeno 
 	where IDCATEGORY = @delid;--(select top 1 deleted.ID from deleted);
@@ -411,8 +419,8 @@ begin
 	update ZHGUTLIST set IDSUBCAT = null 
 	where IDCATEGORY = @delid;--(select top 1 deleted.ID from deleted)
 	
-	set @neprisvoeno = (select top 1 deleted.ID from deleted 
-						where deleted.CATEGORYNAME = 'Не присвоено'  and deleted.ENTITY = 'ZHGUTLIST')
+	set @neprisvoeno = (select top 1 CATEGORYLIST.ID from CATEGORYLIST 
+						where CATEGORYLIST.CATEGORYNAME = 'НЕ ПРИСВОЕНО'  and CATEGORYLIST.ENTITY = 'ZHGUTLIST')
 
 	update ZHGUTLIST set IDCATEGORY = @neprisvoeno 
 	where IDCATEGORY = @delid;--(select top 1 deleted.ID from deleted);
@@ -443,9 +451,6 @@ end
 
 
 
-
-GO
-
 --------------------------------------------------------------------------------
 
 USE [ALPHA]
@@ -466,7 +471,7 @@ set nocount on;
 insert into SUBCATEGORYLIST (IDCATEGORY,SUBCATNAME) 
 select inserted.ID,'НЕ ПРИСВОЕНО' from inserted
 where inserted.ENTITY != 'ВСЕ' and inserted.ENTITY != 'НЕ ПРИСВОЕНО'
---NOt exists (select 1 from CATEGORYLIST A where A.CATEGORYNAME = 'Не присвоено' and A.ENTITY = inserted.ENTITY)
+--NOt exists (select 1 from CATEGORYLIST A where A.CATEGORYNAME = 'НЕ ПРИСВОЕНО' and A.ENTITY = inserted.ENTITY)
 
 insert into SUBCATEGORYLIST (IDCATEGORY,SUBCATNAME) 
 select inserted.ID,'ВСЕ' from inserted 
@@ -506,7 +511,7 @@ begin
 		set IDSUBCAT = (
 			select ID 
 			from SUBCATEGORYLIST 
-			where IDCATEGORY = @delidcat and SUBCATNAME = 'Не присвоено'
+			where IDCATEGORY = @delidcat and SUBCATNAME = 'НЕ ПРИСВОЕНО'
 		) 
 		where IDSUBCAT = @delid;--(select top 1 deleted.ID from deleted)
 end
@@ -516,7 +521,7 @@ begin
 		set IDSUBCAT = (
 			select ID 
 			from SUBCATEGORYLIST 
-			where IDCATEGORY = @delidcat and SUBCATNAME = 'Не присвоено'
+			where IDCATEGORY = @delidcat and SUBCATNAME = 'НЕ ПРИСВОЕНО'
 		) 
 		where IDSUBCAT = @delid;--(select top 1 deleted.ID from deleted)
 end
@@ -526,7 +531,7 @@ begin
 		set IDSUBCAT = (
 			select ID 
 			from SUBCATEGORYLIST 
-			where IDCATEGORY = @delidcat and SUBCATNAME = 'Не присвоено'
+			where IDCATEGORY = @delidcat and SUBCATNAME = 'НЕ ПРИСВОЕНО'
 		) 
 		where IDSUBCAT = @delid;--(select top 1 deleted.ID from deleted)
 end

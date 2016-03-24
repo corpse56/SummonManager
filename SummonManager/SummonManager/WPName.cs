@@ -19,26 +19,35 @@ namespace SummonManager
         {
             InitializeComponent();
             this.WPT = wpt;
-
             if (WPT == WPTYPE.WPNAMELIST)
             {
-                cbPRODUCTTYPE.ReadOnly = false;
+                cbPRODUCTTYPE.Enabled = false;
                 cbPRODUCTTYPE.SelectedIndex = 0;
-
             }
             if (WPT == WPTYPE.ZHGUTLIST)
             {
-                cbPRODUCTTYPE.ReadOnly = true;
+                cbPRODUCTTYPE.Enabled = false;
                 cbPRODUCTTYPE.SelectedIndex = 1;
             }
             if (WPT == WPTYPE.CABLELIST)
             {
-                cbPRODUCTTYPE.ReadOnly = true;
+                cbPRODUCTTYPE.Enabled = false;
                 cbPRODUCTTYPE.SelectedIndex = 2;
             }
 
+
             if (pick)
             {
+                if (WPT == WPTYPE.ZHGUTLIST)
+                {
+                    cbPRODUCTTYPE.Enabled = false;
+                    cbPRODUCTTYPE.SelectedIndex = 1;
+                }
+                if (WPT == WPTYPE.CABLELIST)
+                {
+                    cbPRODUCTTYPE.Enabled = false;
+                    cbPRODUCTTYPE.SelectedIndex = 2;
+                }
                 bChoose.Visible = true;
                 bAdd.Visible = false;
                 bEdit.Visible = false;
@@ -65,23 +74,47 @@ namespace SummonManager
 
         private void bAdd_Click(object sender, EventArgs e)//добавить
         {
-            NewWPN nwp = new NewWPN(null,"NEW",UVO);
-            nwp.ShowDialog();
-            DBWPName dbwp = new DBWPName();
+            if (cbPRODUCTTYPE.SelectedIndex == 0)
+            {
+                NewWPN nwp = new NewWPN(null, "NEW", UVO);
+                nwp.ShowDialog();
+            }
+            if (cbPRODUCTTYPE.SelectedIndex == 1)
+            {
+                NewZHGUT nwp = new NewZHGUT(null, "NEW", UVO);//zhguts
+                nwp.ShowDialog();
+            }
+            if (cbPRODUCTTYPE.SelectedIndex == 2)
+            {
+                NewCABLE nwp = new NewCABLE(null, "NEW", UVO);//cables
+                nwp.ShowDialog();
+            }
+
             int idsub = (cbSubCat.SelectedValue != null) ? (int)cbSubCat.SelectedValue : 0;
             cbCAT_SelectedIndexChanged(sender, e);
             cbSubCat.SelectedValue = idsub;
 
+            //MessageBox.Show("Успешно добавлено!");
         }
 
         private void bEdit_Click(object sender, EventArgs e)//редактировать
         {
-            
-            NewWPN ew = new NewWPN(WPNameVO.WPNameVOByID(Convert.ToInt32(dgWP.SelectedRows[0].Cells["ID"].Value)),"EDIT",UVO);
-            ew.ShowDialog();
-            //DBWPName dbwp = new DBWPName();
-            //dgWP.DataSource = dbwp.GetAllWPNames();
-            int idsub = (cbSubCat.SelectedValue != null)? (int)cbSubCat.SelectedValue : 0;
+            if (cbPRODUCTTYPE.SelectedIndex == 0)
+            {
+                NewWPN ew = new NewWPN(WPNameVO.WPNameVOByID(Convert.ToInt32(dgWP.SelectedRows[0].Cells["ID"].Value)), "EDIT", UVO);
+                ew.ShowDialog();
+            }
+            if (cbPRODUCTTYPE.SelectedIndex == 1)
+            {
+                NewZHGUT ew = new NewZHGUT(ZhgutVO.GetZhgutVOByID(Convert.ToInt32(dgWP.SelectedRows[0].Cells["ID"].Value)), "EDIT", UVO);
+                ew.ShowDialog();
+            }
+            if (cbPRODUCTTYPE.SelectedIndex == 2)
+            {
+                NewCABLE ew = new NewCABLE(CableVO.GetCableVOByID(Convert.ToInt32(dgWP.SelectedRows[0].Cells["ID"].Value)), "EDIT", UVO);
+                ew.ShowDialog();
+            }
+            int idsub = (cbSubCat.SelectedValue != null) ? (int)cbSubCat.SelectedValue : 0;
             cbCAT_SelectedIndexChanged(sender, e);
             cbSubCat.SelectedValue = idsub;
 
@@ -89,9 +122,22 @@ namespace SummonManager
 
         private void bClone_Click(object sender, EventArgs e)//клонировать
         {
-            WPNameVO wp = WPNameVO.WPNameVOByID(Convert.ToInt32(dgWP.SelectedRows[0].Cells["ID"].Value));
-            NewWPN nwp = new NewWPN(wp,"NEWCLONE",UVO);
-            nwp.ShowDialog();
+            if (cbPRODUCTTYPE.SelectedIndex == 0)
+            {
+                NewWPN ew = new NewWPN(WPNameVO.WPNameVOByID(Convert.ToInt32(dgWP.SelectedRows[0].Cells["ID"].Value)), "NEWCLONE", UVO);
+                ew.ShowDialog();
+            }
+            if (cbPRODUCTTYPE.SelectedIndex == 1)
+            {
+                NewZHGUT ew = new NewZHGUT(ZhgutVO.GetZhgutVOByID(Convert.ToInt32(dgWP.SelectedRows[0].Cells["ID"].Value)), "NEWCLONE", UVO);
+                ew.ShowDialog();
+            }
+            if (cbPRODUCTTYPE.SelectedIndex == 2)
+            {
+                NewCABLE ew = new NewCABLE(CableVO.GetCableVOByID(Convert.ToInt32(dgWP.SelectedRows[0].Cells["ID"].Value)), "NEWCLONE", UVO);
+                ew.ShowDialog();
+            }
+
             int idsub = (cbSubCat.SelectedValue != null) ? (int)cbSubCat.SelectedValue : 0;
             cbCAT_SelectedIndexChanged(sender, e);
             cbSubCat.SelectedValue = idsub;
@@ -105,13 +151,38 @@ namespace SummonManager
             {
                 return;
             }
-            DBWPName dbwp = new DBWPName();
-            if (dbwp.Exists(dgWP.SelectedRows[0].Cells["ID"].Value.ToString()))
+            if (cbPRODUCTTYPE.SelectedIndex == 0)
             {
-                MessageBox.Show("Вы не можете удалить это наименование поскольку существует извещение с таким наименованием!");
-                return;
+                DBWPName dbwp = new DBWPName();
+                if (dbwp.Exists(dgWP.SelectedRows[0].Cells["ID"].Value.ToString()))
+                {
+                    MessageBox.Show("Вы не можете удалить это наименование поскольку существует извещение с таким наименованием!");
+                    return;
+                }
+                dbwp.DeleteByID(dgWP.SelectedRows[0].Cells["ID"].Value.ToString());
             }
-            dbwp.DeleteByID(dgWP.SelectedRows[0].Cells["ID"].Value.ToString());
+            if (cbPRODUCTTYPE.SelectedIndex == 1)
+            {
+                DBZhgutList dbwp = new DBZhgutList();
+                if (dbwp.Exists(dgWP.SelectedRows[0].Cells["ID"].Value.ToString()))
+                {
+                    MessageBox.Show("Вы не можете удалить это наименование поскольку существует извещение с таким наименованием!");
+                    return;
+                }
+                dbwp.DeleteByID(dgWP.SelectedRows[0].Cells["ID"].Value.ToString());
+            }
+            if (cbPRODUCTTYPE.SelectedIndex == 2)
+            {
+                DBCableList dbwp = new DBCableList();
+                if (dbwp.Exists(dgWP.SelectedRows[0].Cells["ID"].Value.ToString()))
+                {
+                    MessageBox.Show("Вы не можете удалить это наименование поскольку существует извещение с таким наименованием!");
+                    return;
+                }
+                dbwp.DeleteByID(dgWP.SelectedRows[0].Cells["ID"].Value.ToString());
+            }
+
+
             cbCAT_SelectedIndexChanged(sender, e);
         }
 
@@ -140,7 +211,7 @@ namespace SummonManager
                     bEditSubCategory.Enabled = true;
                     bView.Enabled = true;
                 }
-                else if ((UVO.Role == Roles.Constructor) || (UVO.Role == Roles.Tehnolog) || (UVO.Role == Roles.Shemotehnik) || (UVO.Role == Roles.SimpleInzhener))
+                else if ((UVO.Role == Roles.Constructor) || /*(UVO.Role == Roles.Tehnolog) ||*/ (UVO.Role == Roles.Shemotehnik) || (UVO.Role == Roles.SimpleInzhener))
                 {
                     bAdd.Enabled = false;
                     bEdit.Enabled = true;
@@ -210,7 +281,7 @@ namespace SummonManager
         {
             ShowDGV();
             dgWP.Columns["ZHGUTNAME"].HeaderText = "Наименование жгута";
-            dgWP.Columns["ZHGUTPATH"].HeaderText = "Путь к файлу жгута";
+            dgWP.Columns["ZHGUTPATH"].HeaderText = "Жгут изготовление";
             foreach (DataGridViewRow r in dgWP.Rows)
             {
                 r.Cells["ZHGUTPATH"].Tag = r.Cells["ZHGUTPATH"].Value;
@@ -319,7 +390,7 @@ namespace SummonManager
         private void bEditSubCategory_Click(object sender, EventArgs e)//редактирование подкатегорий
         {
             int id = (int)cbCAT.SelectedValue;
-            if ((id == 1) || (id == 2))
+            if ((cbCAT.Text.ToUpper() == "ВСЕ") || (cbCAT.Text.ToUpper() == "НЕ ПРИСВОЕНО"))
             {
                 MessageBox.Show("У выбранной категории не может быть подкатегорий, т.к. она является системной");
                 return;
@@ -448,9 +519,21 @@ namespace SummonManager
             {
                 return;
             }
-            NewWPN ew = new NewWPN(WPNameVO.WPNameVOByID(Convert.ToInt32(dgWP.SelectedRows[0].Cells["ID"].Value)), "VIEWONLY", UVO);
-            ew.ShowDialog();
-
+            if (cbPRODUCTTYPE.SelectedIndex == 0)
+            {
+                NewWPN ew = new NewWPN(WPNameVO.WPNameVOByID(Convert.ToInt32(dgWP.SelectedRows[0].Cells["ID"].Value)), "VIEWONLY", UVO);
+                ew.ShowDialog();
+            }
+            if (cbPRODUCTTYPE.SelectedIndex == 1)
+            {
+                NewZHGUT ew = new NewZHGUT(ZhgutVO.GetZhgutVOByID(Convert.ToInt32(dgWP.SelectedRows[0].Cells["ID"].Value)), "VIEWONLY", UVO);
+                ew.ShowDialog();
+            }
+            if (cbPRODUCTTYPE.SelectedIndex == 2)
+            {
+                NewCABLE ew = new NewCABLE(CableVO.GetCableVOByID(Convert.ToInt32(dgWP.SelectedRows[0].Cells["ID"].Value)), "VIEWONLY", UVO);
+                ew.ShowDialog();
+            }
         }
 
         private void FillDGV_WPNAMELIST()

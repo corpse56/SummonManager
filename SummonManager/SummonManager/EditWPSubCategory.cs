@@ -71,7 +71,7 @@ namespace SummonManager
                 MessageBox.Show("Выберите строку!");
                 return;
             }
-            if ((dgWP.SelectedRows[0].Cells["SUBCATNAME"].Value.ToString().ToUpper() == "ВСЕ") || (dgWP.SelectedRows[0].Cells["SUBCATNAME"].Value.ToString() == "Не присвоено"))
+            if ((dgWP.SelectedRows[0].Cells["SUBCATNAME"].Value.ToString().ToUpper() == "ВСЕ") || (dgWP.SelectedRows[0].Cells["SUBCATNAME"].Value.ToString() == "НЕ ПРИСВОЕНО"))
             {
                 MessageBox.Show("Вы не можете изменить эту подкатегорию, так как она является системной!");
                 return;
@@ -89,7 +89,7 @@ namespace SummonManager
                 MessageBox.Show("Выберите строку!");
                 return;
             }
-            if ((dgWP.SelectedRows[0].Cells["SUBCATNAME"].Value.ToString().ToUpper() == "ВСЕ") || (dgWP.SelectedRows[0].Cells["SUBCATNAME"].Value.ToString() == "Не присвоено"))
+            if ((dgWP.SelectedRows[0].Cells["SUBCATNAME"].Value.ToString().ToUpper() == "ВСЕ") || (dgWP.SelectedRows[0].Cells["SUBCATNAME"].Value.ToString() == "НЕ ПРИСВОЕНО"))
             {
                 MessageBox.Show("Вы не можете удалить эту подкатегорию, так как она является системной!");
                 return;

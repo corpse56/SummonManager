@@ -136,7 +136,7 @@ namespace SummonManager
             SVO.STATUSNAME = new DBCurStatus().GetStatusNameByID(SVO.IDSTATUS);
             if (SVO.IDSUBST == 0)
             {
-                SVO.SUBSTATUSNAME = "Не присвоено";
+                SVO.SUBSTATUSNAME = "НЕ ПРИСВОЕНО";
             }
             else
             {

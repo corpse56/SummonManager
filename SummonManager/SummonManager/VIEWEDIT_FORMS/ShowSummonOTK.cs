@@ -163,14 +163,14 @@ namespace SummonManager
             summonTransfer2.InitSub(SVO, UVO, this);
 
             pathFileds1.Init(SVO, UVO);
-            pfSHILD.Init(SVO.SHILD, SVO.SHILDREQ, false, true);
-            pfPLANKA.Init(SVO.PLANKA, SVO.PLANKAREQ, false, true);
-            pf3D.Init(SVO.SBORKA3D, SVO.SBORKA3DREQ, false, true);
-            pfZHGUT.Init(SVO.ZHGUT, false, false, false);
-            pfSERIAL.Init(SVO.SERIAL, SVO.SERIALREQ, false, true);
-            pfCOMPOSITION.Init(SVO.COMPOSITION, SVO.COMPOSITIONREQ, false, true);
-            pfCOMPOSITION.ValueFromArchive = true;
-            pfMETAL.Init(SVO.METAL, SVO.METALREQ, false, true);
+            //pfSHILD.Init(SVO.SHILD, SVO.SHILDREQ, false, true, false);
+            //pfPLANKA.Init(SVO.PLANKA, SVO.PLANKAREQ, false, true, false);
+            //pf3D.Init(SVO.SBORKA3D, SVO.SBORKA3DREQ, false, true, false);
+            //pfZHGUT.Init(SVO.ZHGUT, false, false, false, false);
+            //pfSERIAL.Init(SVO.SERIAL, SVO.SERIALREQ, false, true, false);
+            //pfCOMPOSITION.Init(SVO.COMPOSITION, SVO.COMPOSITIONREQ, false, true, false);
+            //pfCOMPOSITION.ValueFromArchive = true;
+            //pfMETAL.Init(SVO.METAL, SVO.METALREQ, false, true, false);
             pfMETAL.IsPath = true;
 
         }

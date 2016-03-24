@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using SummonManager.CLASSES;
+using SummonManager.Properties;
 
 namespace SummonManager.Controls
 {
@@ -14,10 +15,12 @@ namespace SummonManager.Controls
     {
         WPTYPE WPT;
         int IDWP;
+        UserVO UVO;
         public Package()
         {
             InitializeComponent();
         }
+        Roles ResposibleRole, CurrentRole;
         bool REQ;
         public bool Required
         {
@@ -26,6 +29,10 @@ namespace SummonManager.Controls
             {
                 this.REQ = value;
                 checkBox1.Checked = this.REQ;
+                if ((ResposibleRole == CurrentRole) || (CurrentRole == Roles.Admin) || ((CurrentRole == Roles.SimpleInzhener) && (ResposibleRole == Roles.Inzhener)))
+                {
+                    this.Enabled = value;
+                }
             }
         }
         public bool RequiredVisible
@@ -42,6 +49,13 @@ namespace SummonManager.Controls
                 }
             }
         }
+        public bool RequiredEnabled
+        {
+            set
+            {
+                checkBox1.Enabled = value;
+            }
+        }
         bool EnabledPACKCONTROL = true;
         public new bool Enabled
         {
@@ -54,6 +68,7 @@ namespace SummonManager.Controls
                     button1.Enabled = true;
                     dgv.Enabled = true;
                     //checkBox1.Enabled = true;
+                    button1.BackgroundImage = Resources.edit1;
                 }
                 else
                 {
@@ -61,16 +76,21 @@ namespace SummonManager.Controls
                     button1.Enabled = false;
                     dgv.Enabled = false;
                     //checkBox1.Enabled = false;
+                    button1.BackgroundImage = Resources.edit_notes_gray;
                 }
             }
         }
-        public void Init(WPTYPE wpt,int idwp,bool require, bool enabled,bool require_visible)
+        public void Init(WPTYPE wpt, int idwp, bool require, bool enabled, bool require_visible, bool require_enabled, Roles resprole, Roles currole,UserVO uvo)
         {
+            this.ResposibleRole = resprole;
+            this.CurrentRole = currole;
             this.WPT = wpt;
             this.IDWP = idwp;
-            this.REQ = require;
+            this.Required = require;
             this.RequiredVisible = require_visible;
-            this.EnabledPACKCONTROL = enabled;
+            this.checkBox1.Enabled = require_enabled;
+            this.Enabled = enabled;
+            this.UVO = uvo;
             switch (WPT)
             {
                 case WPTYPE.CABLELIST:
@@ -80,8 +100,8 @@ namespace SummonManager.Controls
                     dgv.Columns["id"].Visible = false;
                     dgv.Columns["nn"].HeaderText = "№№";
                     dgv.Columns["nn"].FillWeight = 30;
-                    dgv.Columns["CABLENAME"].HeaderText = "Название кабеля";
-                    dgv.Columns["CABLENAME"].FillWeight = 400;
+                    dgv.Columns["name"].HeaderText = "Название кабеля";
+                    dgv.Columns["name"].FillWeight = 400;
                     dgv.Columns["CNT"].HeaderText = "Количество";
                     dgv.Columns["CNT"].FillWeight = 100;
                     int i = 0;
@@ -97,8 +117,8 @@ namespace SummonManager.Controls
                     dgv.Columns["id"].Visible = false;
                     dgv.Columns["nn"].HeaderText = "№№";
                     dgv.Columns["nn"].FillWeight = 30;
-                    dgv.Columns["ZHGUTNAME"].HeaderText = "Название жгута";
-                    dgv.Columns["ZHGUTNAME"].FillWeight = 400;
+                    dgv.Columns["name"].HeaderText = "Название жгута";
+                    dgv.Columns["name"].FillWeight = 400;
                     dgv.Columns["CNT"].HeaderText = "Количество";
                     dgv.Columns["CNT"].FillWeight = 100;
                     i = 0;
@@ -111,9 +131,14 @@ namespace SummonManager.Controls
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            fEditPackage fep = new fEditPackage(WPT, IDWP);
+            fEditPackage fep = new fEditPackage(WPT, IDWP, UVO);
             fep.ShowDialog();
 
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            this.Required = checkBox1.Checked;
         }
     }
 }

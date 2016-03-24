@@ -1,6 +1,6 @@
 ﻿namespace SummonManager
 {
-    partial class NewCABLE
+    partial class NewZHGUT
     {
         /// <summary>
         /// Required designer variable.
@@ -36,16 +36,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tbDecNum = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.tbCLENGTH = new System.Windows.Forms.TextBox();
             this.tbNote = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.cbSubCategory = new System.Windows.Forms.ComboBox();
-            this.pfDimDrawing = new SummonManager.Controls.PathField();
-            this.tbCONNECTORS = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.pfZHGUTPATH = new SummonManager.Controls.PathField();
             this.SuspendLayout();
             // 
             // tbName
@@ -57,7 +53,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(825, 289);
+            this.button1.Location = new System.Drawing.Point(821, 232);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 2;
@@ -67,7 +63,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(734, 289);
+            this.button2.Location = new System.Drawing.Point(730, 232);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(85, 23);
             this.button2.TabIndex = 2;
@@ -119,16 +115,9 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "Децимальный номер";
             // 
-            // tbCLENGTH
-            // 
-            this.tbCLENGTH.Location = new System.Drawing.Point(299, 197);
-            this.tbCLENGTH.Name = "tbCLENGTH";
-            this.tbCLENGTH.Size = new System.Drawing.Size(601, 22);
-            this.tbCLENGTH.TabIndex = 1;
-            // 
             // tbNote
             // 
-            this.tbNote.Location = new System.Drawing.Point(299, 225);
+            this.tbNote.Location = new System.Drawing.Point(295, 168);
             this.tbNote.Multiline = true;
             this.tbNote.Name = "tbNote";
             this.tbNote.Size = new System.Drawing.Size(601, 58);
@@ -139,23 +128,14 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(13, 135);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(133, 16);
+            this.label5.Size = new System.Drawing.Size(138, 16);
             this.label5.TabIndex = 3;
-            this.label5.Text = "Сборочный чертёж";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 200);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(49, 16);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "Длина";
+            this.label5.Text = "Жгут изготовление";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 228);
+            this.label8.Location = new System.Drawing.Point(8, 171);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(91, 16);
             this.label8.TabIndex = 3;
@@ -179,44 +159,27 @@
             this.cbSubCategory.Size = new System.Drawing.Size(601, 24);
             this.cbSubCategory.TabIndex = 4;
             // 
-            // pfDimDrawing
+            // pfZHGUTPATH
             // 
-            this.pfDimDrawing.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.pfDimDrawing.FullPath = "<нет>";
-            this.pfDimDrawing.Location = new System.Drawing.Point(295, 129);
-            this.pfDimDrawing.Margin = new System.Windows.Forms.Padding(4);
-            this.pfDimDrawing.Name = "pfDimDrawing";
-            this.pfDimDrawing.Required = false;
-            this.pfDimDrawing.Size = new System.Drawing.Size(601, 32);
-            this.pfDimDrawing.TabIndex = 6;
+            this.pfZHGUTPATH.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pfZHGUTPATH.FullPath = "<нет>";
+            this.pfZHGUTPATH.ISPATH = true;
+            this.pfZHGUTPATH.Location = new System.Drawing.Point(295, 129);
+            this.pfZHGUTPATH.Margin = new System.Windows.Forms.Padding(4);
+            this.pfZHGUTPATH.Name = "pfZHGUTPATH";
+            this.pfZHGUTPATH.Required = false;
+            this.pfZHGUTPATH.Size = new System.Drawing.Size(601, 32);
+            this.pfZHGUTPATH.TabIndex = 6;
             // 
-            // tbCONNECTORS
-            // 
-            this.tbCONNECTORS.Location = new System.Drawing.Point(299, 169);
-            this.tbCONNECTORS.Name = "tbCONNECTORS";
-            this.tbCONNECTORS.Size = new System.Drawing.Size(601, 22);
-            this.tbCONNECTORS.TabIndex = 1;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 172);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(96, 16);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Соединители";
-            // 
-            // NewCABLE
+            // NewZHGUT
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(913, 322);
-            this.Controls.Add(this.pfDimDrawing);
+            this.ClientSize = new System.Drawing.Size(913, 266);
+            this.Controls.Add(this.pfZHGUTPATH);
             this.Controls.Add(this.cbSubCategory);
             this.Controls.Add(this.cbCategory);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label3);
@@ -225,15 +188,13 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tbNote);
-            this.Controls.Add(this.tbCONNECTORS);
-            this.Controls.Add(this.tbCLENGTH);
             this.Controls.Add(this.tbDecNum);
             this.Controls.Add(this.tbName);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
-            this.Name = "NewCABLE";
+            this.Name = "NewZHGUT";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавление нового кабеля";
             this.Load += new System.EventHandler(this.NewWPN_Load);
@@ -252,15 +213,11 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox tbDecNum;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox tbCLENGTH;
         private System.Windows.Forms.TextBox tbNote;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
-        private SummonManager.Controls.PathField pfDimDrawing;
+        private SummonManager.Controls.PathField pfZHGUTPATH;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cbSubCategory;
-        private System.Windows.Forms.TextBox tbCONNECTORS;
-        private System.Windows.Forms.Label label4;
     }
 }
