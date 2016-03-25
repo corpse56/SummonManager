@@ -11,7 +11,7 @@ namespace SummonManager.CLASSES
         public DataTable GetPackage(int IDWP)
         {
             DA.SelectCommand.Parameters.AddWithValue("IDWP", IDWP);
-            DA.SelectCommand.CommandText = " select A.ID id,A.ID nn,B.CABLENAME name,A.CNT " +
+            DA.SelectCommand.CommandText = " select A.ID idc,A.ID nn,B.CABLENAME name,A.CNT " +
                                            " from " + Base.BaseName + "..CABLES A " +
                                            " left join " + Base.BaseName + "..CABLELIST B ON B.ID = A.IDCABLE " +
                                            "  where IDWP = @IDWP ";
@@ -187,6 +187,14 @@ namespace SummonManager.CLASSES
             DA.InsertCommand.Connection.Open();
             DA.InsertCommand.ExecuteNonQuery();
             DA.InsertCommand.Connection.Close();
+        }
+
+        internal void RemoveFromPackage(int p)
+        {
+            DA.DeleteCommand.CommandText = "delete from " + Base.BaseName + "..CABLES where ID = " + p;
+            DA.DeleteCommand.Connection.Open();
+            DA.DeleteCommand.ExecuteNonQuery();
+            DA.DeleteCommand.Connection.Close();
         }
     }
 }

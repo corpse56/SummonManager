@@ -21,33 +21,23 @@ namespace SummonManager
             this.WPT = wpt;
             if (WPT == WPTYPE.WPNAMELIST)
             {
-                cbPRODUCTTYPE.Enabled = false;
+                //cbPRODUCTTYPE.Enabled = false;
                 cbPRODUCTTYPE.SelectedIndex = 0;
             }
             if (WPT == WPTYPE.ZHGUTLIST)
             {
-                cbPRODUCTTYPE.Enabled = false;
+                //cbPRODUCTTYPE.Enabled = false;
                 cbPRODUCTTYPE.SelectedIndex = 1;
             }
             if (WPT == WPTYPE.CABLELIST)
             {
-                cbPRODUCTTYPE.Enabled = false;
+                //cbPRODUCTTYPE.Enabled = false;
                 cbPRODUCTTYPE.SelectedIndex = 2;
             }
 
 
             if (pick)
             {
-                if (WPT == WPTYPE.ZHGUTLIST)
-                {
-                    cbPRODUCTTYPE.Enabled = false;
-                    cbPRODUCTTYPE.SelectedIndex = 1;
-                }
-                if (WPT == WPTYPE.CABLELIST)
-                {
-                    cbPRODUCTTYPE.Enabled = false;
-                    cbPRODUCTTYPE.SelectedIndex = 2;
-                }
                 bChoose.Visible = true;
                 bAdd.Visible = false;
                 bEdit.Visible = false;
@@ -57,7 +47,7 @@ namespace SummonManager
                 bEditSubCategory.Visible = false;
                 bArchive.Visible = false;
                 bArcShow.Visible = false;
-                cbPRODUCTTYPE.Enabled = false;
+                //cbPRODUCTTYPE.Enabled = false;
             }
             else
             {
@@ -404,6 +394,7 @@ namespace SummonManager
 
         }
         public int PickedID;
+        public WPTYPE PickedType;
         private void bChoose_Click(object sender, EventArgs e)//Выбрать
         {
             if (dgWP.SelectedRows.Count == 0)
@@ -412,14 +403,45 @@ namespace SummonManager
                 return;
             }
             PickedID = (int)dgWP.SelectedRows[0].Cells["ID"].Value;
+            if (cbPRODUCTTYPE.SelectedIndex == 0)
+            {
+                PickedType = WPTYPE.WPNAMELIST;
+            }
+            if (cbPRODUCTTYPE.SelectedIndex == 1)
+            {
+                PickedType = WPTYPE.ZHGUTLIST;
+            }
+            if (cbPRODUCTTYPE.SelectedIndex == 2)
+            {
+                PickedType = WPTYPE.CABLELIST;
+            }
+
             Close();
         }
 
         private void dgWP_DoubleClick(object sender, EventArgs e)
         {
-            if (bChoose.Visible == true)
+            if (PICK == true)
             {
+                if (dgWP.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show("Выберите изделие!");
+                    return;
+                }
                 PickedID = (int)dgWP.SelectedRows[0].Cells["ID"].Value;
+                if (cbPRODUCTTYPE.SelectedIndex == 0)
+                {
+                    PickedType = WPTYPE.WPNAMELIST;
+                }
+                if (cbPRODUCTTYPE.SelectedIndex == 1)
+                {
+                    PickedType = WPTYPE.ZHGUTLIST;
+                }
+                if (cbPRODUCTTYPE.SelectedIndex == 2)
+                {
+                    PickedType = WPTYPE.CABLELIST;
+                }
+
                 Close();
             }
 
@@ -577,7 +599,7 @@ namespace SummonManager
         {
             if (PICK)
             {
-                bView_Click(sender ,e);
+                bChoose_Click(sender ,e);
             }
             else
             {

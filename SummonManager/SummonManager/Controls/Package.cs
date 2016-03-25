@@ -91,19 +91,25 @@ namespace SummonManager.Controls
             this.checkBox1.Enabled = require_enabled;
             this.Enabled = enabled;
             this.UVO = uvo;
+            ShowDGV();
+        }
+
+        private void ShowDGV()
+        {
             switch (WPT)
             {
                 case WPTYPE.CABLELIST:
                     DBCableList dbc = new DBCableList();
                     dgv.DataSource = dbc.GetPackage(IDWP);
                     dgv.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-                    dgv.Columns["id"].Visible = false;
+                    dgv.Columns["idc"].Visible = false;
+                    //dgv.Columns[0].Visible = false;
                     dgv.Columns["nn"].HeaderText = "№№";
-                    dgv.Columns["nn"].FillWeight = 30;
+                    dgv.Columns["nn"].Width = 30;
                     dgv.Columns["name"].HeaderText = "Название кабеля";
-                    dgv.Columns["name"].FillWeight = 400;
+                    dgv.Columns["name"].Width = 350;
                     dgv.Columns["CNT"].HeaderText = "Количество";
-                    dgv.Columns["CNT"].FillWeight = 100;
+                    dgv.Columns["CNT"].Width = 50;
                     int i = 0;
                     foreach (DataGridViewRow r in dgv.Rows)
                     {
@@ -114,13 +120,14 @@ namespace SummonManager.Controls
                     DBZhgutList dbz = new DBZhgutList();
                     dgv.DataSource = dbz.GetPackage(IDWP);
                     dgv.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-                    dgv.Columns["id"].Visible = false;
+                    dgv.Columns["idz"].Visible = false;
+                    //dgv.Columns[0].Visible = false;
                     dgv.Columns["nn"].HeaderText = "№№";
-                    dgv.Columns["nn"].FillWeight = 30;
+                    dgv.Columns["nn"].Width = 30;
                     dgv.Columns["name"].HeaderText = "Название жгута";
-                    dgv.Columns["name"].FillWeight = 400;
+                    dgv.Columns["name"].Width = 350;
                     dgv.Columns["CNT"].HeaderText = "Количество";
-                    dgv.Columns["CNT"].FillWeight = 100;
+                    dgv.Columns["CNT"].Width = 50;
                     i = 0;
                     foreach (DataGridViewRow r in dgv.Rows)
                     {
@@ -128,17 +135,23 @@ namespace SummonManager.Controls
                     }
                     break;
             }
+            dgv.Width = 450;
         }
         private void button1_Click(object sender, EventArgs e)
         {
             fEditPackage fep = new fEditPackage(WPT, IDWP, UVO);
             fep.ShowDialog();
-
+            ShowDGV();
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
             this.Required = checkBox1.Checked;
+        }
+
+        private void Package_Load(object sender, EventArgs e)
+        {
+            ShowDGV();
         }
     }
 }

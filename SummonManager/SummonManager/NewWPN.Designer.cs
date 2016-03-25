@@ -545,7 +545,7 @@
             this.packZHGUT.Name = "packZHGUT";
             this.packZHGUT.Padding = new System.Windows.Forms.Padding(0, 0, 4, 4);
             this.packZHGUT.Required = false;
-            this.packZHGUT.Size = new System.Drawing.Size(602, 88);
+            this.packZHGUT.Size = new System.Drawing.Size(598, 88);
             this.packZHGUT.TabIndex = 7;
             // 
             // pfPACKINGLIST

@@ -744,6 +744,9 @@
     <EmbeddedResource Include="NewZHGUT.resx">
       <DependentUpon>NewZHGUT.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PickIntoPackage.resx">
+      <DependentUpon>PickIntoPackage.cs</DependentUpon>
+    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -830,6 +833,12 @@
     </Compile>
     <Compile Include="NewZHGUT.Designer.cs">
       <DependentUpon>NewZHGUT.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PickIntoPackage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PickIntoPackage.Designer.cs">
+      <DependentUpon>PickIntoPackage.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

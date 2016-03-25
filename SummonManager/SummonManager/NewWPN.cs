@@ -451,7 +451,7 @@ namespace SummonManager
             if (AccessMode == "EDIT")
                 cbSubCategory.SelectedValue = EditWP.IDSubCat;
 
-
+            button1.Select();
 
         }
         private void LoadSubs(int idCat)

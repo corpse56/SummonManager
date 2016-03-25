@@ -31,43 +31,54 @@ namespace SummonManager
 
         private void bAdd_Click(object sender, EventArgs e)
         {
-            //fAddExtCableForPack faec = new fAddExtCableForPack(IDNEWSUMMON);
-            //faec.ShowDialog();
-            //fEditExtCablePack_Load(sender, e);
-            //MessageBox.Show("Внешний кабель успешно добавлен в комплект!");
 
+            PickIntoPackage pick = new PickIntoPackage(UVO, WPT);
+            pick.ShowDialog();
 
-
-            WPName wp = new WPName(true, UVO, WPT);
-            wp.ShowDialog();
-            if (wp.PickedID == 0) return;
+            if (pick.PickedID == 0) return;
             if (WPT == WPTYPE.CABLELIST)
             {
                 DBCableList dbc = new DBCableList();
-                dbc.AddToPackage(IDWP, wp.PickedID,1);
+                dbc.AddToPackage(IDWP, pick.PickedID, pick.getCount());
             }
-
+            if (WPT == WPTYPE.ZHGUTLIST)
+            {
+                DBZhgutList dbz = new DBZhgutList();
+                dbz.AddToPackage(IDWP, pick.PickedID, pick.getCount());
+            }
+            fEditExtCablePack_Load(sender, e);
         }
 
         private void bDel_Click(object sender, EventArgs e)
         {
             if (dgv.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Выберите кабель!");
+                MessageBox.Show("Ничего не выбрано!");
                 return;
             }
 
-            DialogResult dr = MessageBox.Show("Вы действительно хотите удалить кабель из комплекта?", "Внимание!", 
+            DialogResult dr = MessageBox.Show("Вы действительно хотите удалить выбранную позицию из комплекта?", "Внимание!", 
                 MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
             if (dr == DialogResult.No)
             {
                 return;
             }
-            //DBEXTCABLE dbec = new DBEXTCABLE();
-            //dbec.RemoveEXTCABLEFromPack(dgv.SelectedRows[0].Cells["id"].Value.ToString());
-            //fEditExtCablePack_Load(sender, e);
-            //MessageBox.Show("Кабель успешно удалён!");
+            if (WPT == WPTYPE.CABLELIST)
+            {
+                DBCableList dbcab = new DBCableList();
+                dbcab.RemoveFromPackage((int)dgv.SelectedRows[0].Cells["idc"].Value);
 
+            }
+            if (WPT == WPTYPE.ZHGUTLIST)
+            {
+                DBZhgutList dbz = new DBZhgutList();
+                dbz.RemoveFromPackage((int)dgv.SelectedRows[0].Cells["idz"].Value);
+
+            }
+
+            MessageBox.Show("Позиция успешно удалена!");
+
+            fEditExtCablePack_Load(sender, e);
 
         }
 
@@ -79,7 +90,18 @@ namespace SummonManager
                 DBCableList dbc = new DBCableList();
                 dgv.DataSource = dbc.GetPackage(this.IDWP);
                 dgv.Columns["name"].HeaderText = "Название кабеля";
-
+                dgv.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+                dgv.Columns["idc"].Visible = false;
+                dgv.Columns["nn"].HeaderText = "№№";
+                dgv.Columns["nn"].Width = 30;
+                dgv.Columns["name"].Width = 500;
+                dgv.Columns["CNT"].HeaderText = "Количество";
+                dgv.Columns["CNT"].Width = 150;
+                int i = 0;
+                foreach (DataGridViewRow r in dgv.Rows)
+                {
+                    r.Cells["nn"].Value = ++i;
+                }
             }
             if (WPT == WPTYPE.ZHGUTLIST)
             {
@@ -87,20 +109,20 @@ namespace SummonManager
                 DBZhgutList dbz = new DBZhgutList();
                 dgv.DataSource = dbz.GetPackage(this.IDWP);
                 dgv.Columns["name"].HeaderText = "Название жгута";
+                dgv.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+                dgv.Columns["idz"].Visible = false;
+                dgv.Columns["nn"].HeaderText = "№№";
+                dgv.Columns["nn"].Width = 30;
+                dgv.Columns["name"].Width = 500;
+                dgv.Columns["CNT"].HeaderText = "Количество";
+                dgv.Columns["CNT"].Width = 150;
+                int i = 0;
+                foreach (DataGridViewRow r in dgv.Rows)
+                {
+                    r.Cells["nn"].Value = ++i;
+                }
+            }
 
-            }
-            dgv.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            dgv.Columns["id"].Visible = false;
-            dgv.Columns["nn"].HeaderText = "№№";
-            dgv.Columns["nn"].Width = 30;
-            dgv.Columns["name"].Width = 500;
-            dgv.Columns["cnt"].HeaderText = "Количество";
-            dgv.Columns["cnt"].Width = 150;
-            int i = 0;
-            foreach (DataGridViewRow r in dgv.Rows)
-            {
-                r.Cells["nn"].Value = ++i;
-            }
         }
 
     }

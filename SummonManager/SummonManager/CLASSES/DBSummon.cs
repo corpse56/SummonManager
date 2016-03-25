@@ -423,8 +423,8 @@ namespace SummonManager
         }
         internal int AddNIPSummon()
         {
-            DA.InsertCommand.CommandText = "insert into " + Base.BaseName + "..SUMMON (IDS,IDSTATUS,QUANTITY) " +
-            " values ('',14,0);select SCOPE_IDENTITY()";
+            DA.InsertCommand.CommandText = "insert into " + Base.BaseName + "..SUMMON (IDS,IDSTATUS,QUANTITY,WPTYPE) " +
+            " values ('',14,0,'NaWP');select SCOPE_IDENTITY()";
             DA.InsertCommand.Connection.Open();
 
             int idresult = Convert.ToInt32(DA.InsertCommand.ExecuteScalar());

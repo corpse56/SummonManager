@@ -11,10 +11,11 @@ namespace SummonManager.CLASSES
         public DataTable GetPackage(int IDWP)
         {
             DA.SelectCommand.Parameters.AddWithValue("IDWP", IDWP);
-            DA.SelectCommand.CommandText = " select A.ID id,A.ID nn,B.ZHGUTNAME name,A.CNT " +
+            DA.SelectCommand.CommandText = " select A.ID idz,A.ID nn,B.ZHGUTNAME name,A.CNT CNT" +
                                            " from " + Base.BaseName + "..ZHGUTS A " +
                                            " left join " + Base.BaseName + "..ZHGUTLIST B ON B.ID = A.IDZHGUT " +
                                            " where IDWP = @IDWP ";
+            DS = new DataSet();
             DA.Fill(DS, "t");
             return DS.Tables["t"];
         }
@@ -169,6 +170,29 @@ namespace SummonManager.CLASSES
             DA.DeleteCommand.ExecuteNonQuery();
             DA.DeleteCommand.Connection.Close();
         }
-        
+
+
+        internal void RemoveFromPackage(int p)
+        {
+            DA.DeleteCommand.CommandText = "delete from " + Base.BaseName + "..ZHGUTS where ID = " + p;
+            DA.DeleteCommand.Connection.Open();
+            DA.DeleteCommand.ExecuteNonQuery();
+            DA.DeleteCommand.Connection.Close();
+        }
+
+        internal void AddToPackage(int IDWP, int IDCABLE,int CNT)
+        {
+            DA.InsertCommand.Parameters.Clear();
+            DA.InsertCommand.Parameters.AddWithValue("IDWP", IDWP);
+            DA.InsertCommand.Parameters.AddWithValue("IDCABLE", IDCABLE);
+            DA.InsertCommand.Parameters.AddWithValue("CNT", CNT);
+
+            DA.InsertCommand.CommandText = "insert into " + Base.BaseName + "..ZHGUTS " +
+                                           " (IDWP,IDZHGUT,CNT)      " +
+                                           " values (@IDWP,@IDCABLE,@CNT)";
+            DA.InsertCommand.Connection.Open();
+            DA.InsertCommand.ExecuteNonQuery();
+            DA.InsertCommand.Connection.Close();
+        }        
     }
 }

@@ -18,7 +18,14 @@ namespace SummonManager.Controls
             InitializeComponent();
             this.UVO = UVO_;
         }
-
+        public PickWPName()
+        {
+            InitializeComponent();
+        }
+        public void Init(UserVO uvo)
+        {
+            this.UVO = uvo;
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             WPName wp = new WPName(true,UVO, WPTYPE.WPNAMELIST);

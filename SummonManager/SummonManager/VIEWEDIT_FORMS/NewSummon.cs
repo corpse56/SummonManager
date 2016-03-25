@@ -59,12 +59,11 @@ namespace SummonManager
             cbMountingKit.DataSource = dbmk.GetAllDBMountingKitNames();
             cbMountingKit.SelectedIndex = 0;
 
-            tbTECHREQPATH.Text = "";
-            tbTECHREQPATH.Tag = "";
 
-            UIProc ui = new UIProc();
-            ui.LoadExtCables(dgv, this.IDNEWSUMMON.ToString());
+           // UIProc ui = new UIProc();
+            //ui.LoadExtCables(dgv, this.IDNEWSUMMON.ToString());
             //LoadExtCables();
+            pickWPName1.Init(UVO);
         }
         private void NewSummon_Load(object sender, EventArgs e)
         {
@@ -142,7 +141,7 @@ namespace SummonManager
                 SVO.SISP = false;
             else
                 SVO.SISP = true;
-            SVO.TECHREQPATH = tbTECHREQPATH.Tag.ToString();
+            //SVO.TECHREQPATH = tbTECHREQPATH.Tag.ToString();
             SVO.WPNAME = pickWPName1.textBox1.Text;//cbWPNAME.Text;
             SVO.IDACCEPT = (int)cbAccept.SelectedValue;
             //SVO.IDWPNAME = (int)cbWPNAME.SelectedValue;
@@ -174,20 +173,6 @@ namespace SummonManager
             this.Close();
         }
 
-        private void bPATH_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "All files (*.*)|*.*";
-            //dialog.InitialDirectory = @"\\10.177.150.135\server\поездки\карта";
-            dialog.InitialDirectory = @"c:\";
-            dialog.Title = "Выберите файл";
-            dialog.Multiselect = false;
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                tbTECHREQPATH.Text = dialog.FileName.Substring(dialog.FileName.LastIndexOf(@"\") + 1); ;
-                tbTECHREQPATH.Tag = dialog.FileName;
-            }
-        }
 
         private void bSave_Click(object sender, EventArgs e)
         {
@@ -221,7 +206,7 @@ namespace SummonManager
                 SVO.SISP = false;
             else
                 SVO.SISP = true;
-            SVO.TECHREQPATH = tbTECHREQPATH.Tag.ToString();
+            //SVO.TECHREQPATH = tbTECHREQPATH.Tag.ToString();
             SVO.WPNAME = pickWPName1.textBox1.Text;//cbWPNAME.Text;
             SVO.IDACCEPT = (int)cbAccept.SelectedValue;
             //SVO.IDWPNAME = (int)cbWPNAME.SelectedValue;
@@ -288,30 +273,12 @@ namespace SummonManager
             }
         }
 
-        private void tbTECHREQPATH_MouseEnter(object sender, EventArgs e)
+        private void dtpPTIME_ValueChanged(object sender, EventArgs e)
         {
-            tbTECHREQPATH.ForeColor = Color.Blue;
 
         }
 
-        private void tbTECHREQPATH_MouseLeave(object sender, EventArgs e)
-        {
-            tbTECHREQPATH.ForeColor = Color.Black;
-
-        }
-
-        private void tbTECHREQPATH_Click(object sender, EventArgs e)
-        {
-            if (tbTECHREQPATH.Tag != null)
-            {
-                if (tbTECHREQPATH.Tag.ToString() != "")
-                {
-                    //Process.Start(tbTECHREQPATH.Tag.ToString().Substring(0, tbTECHREQPATH.Tag.ToString().LastIndexOf(@"\")), @"\\select, " + @"C:\Users\corps\Documents\gp4600.doc");//tbTECHREQPATH.Tag.ToString().Replace("\\","/"));
-                    Process.Start("explorer.exe", @"/select, " + tbTECHREQPATH.Tag.ToString());
-                }
-            }
-        }
-
+       
 
 
     }
