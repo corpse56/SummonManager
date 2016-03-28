@@ -51,6 +51,7 @@ namespace SummonManager.CLASSES
             CVO.CONECTORS = r["CONNECTORS"].ToString();
             CVO.CLENGTH = r["CLENGTH"].ToString();
             CVO.NOTE = r["NOTE"].ToString();
+            CVO.WPType = WPTYPE.CABLELIST;
             return CVO;
         }
         public DataTable GetAllCables()

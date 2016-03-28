@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SummonManager.CLASSES;
 
 namespace SummonManager
 {
@@ -96,7 +97,8 @@ namespace SummonManager
                     cbStatus.SelectedValue = 16;
                     break;
                 case Roles.OTK:
-                    if (SVO.WPNAMEVO.IDCat == 4)
+                    //if (SVO.WPNAMEVO.IDCat == 4)//если кабель, то пускаем по малому кругу
+                    if (SVO.ProductVO.GetProductType() == WPTYPE.CABLELIST)
                     {
                         cbStatus.SelectedValue = 9;
                     }
@@ -122,7 +124,7 @@ namespace SummonManager
                     }
                     break;
                 case Roles.Ozis:
-                    if (SVO.WPNAMEVO.IDCat == 4)
+                    if (SVO.ProductVO.GetProductType() == WPTYPE.CABLELIST)
                     {
                         cbStatus.SelectedValue = 15;
                     }

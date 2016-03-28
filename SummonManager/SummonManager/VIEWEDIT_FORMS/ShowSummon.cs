@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
+using SummonManager.CLASSES;
 
 namespace SummonManager
 {
@@ -15,14 +16,13 @@ namespace SummonManager
         private DBSummon dbs;
         private SummonVO SVO;
         private string IDS;
-        private string IDSUMMON;
         private UserVO UVO;
-        public ShowSummon(string ids,UserVO uvo,string idsummon)
+        public ShowSummon(UserVO uvo,SummonVO svo)
         {
-            InitializeComponent();
             this.UVO = uvo;
-            this.IDS = ids;
-            this.IDSUMMON = idsummon;
+            this.SVO = svo;
+            InitializeComponent();
+
             LoadSummon();
             DisableAll();
         }
@@ -30,13 +30,8 @@ namespace SummonManager
         private void DisableAll()
         {
             
-           // pathFileds1.bCOMPOSITION.Enabled = false;
-          //  pathFileds1.bCompositionDel.Enabled = false;
 
             summonTransfer1.Enabled = true;
-            //cbWPNAME.ReadOnly = true;
-            //cbWPNAME.DropDownStyle = ComboBoxStyle.DropDown;
-            bPATH.Enabled = false;
             tbQUANTITY.ReadOnly = true;
             dtpPTIME.Enabled = false;
             tbSHIPPING.ReadOnly = true;
@@ -44,7 +39,6 @@ namespace SummonManager
             cbAccept.DropDownStyle = ComboBoxStyle.DropDown;
             tbCONTRACT.ReadOnly = true;
             tbDELIVERY.ReadOnly = true;
-            //tbNote.ReadOnly = true;
             cbCustomers.DropDownStyle = ComboBoxStyle.DropDown;
             cbCustomers.ReadOnly = true;
             tbPayStatus.ReadOnly = true;
@@ -53,26 +47,17 @@ namespace SummonManager
             bEdit.Enabled = true;
             bSave.Enabled = false;
             bPrint.Enabled = true;
-            //bAdd.Enabled = false;
             chbDeterm.Enabled = false;
             dtpAPPROX.Enabled = false;
-            //button1.Enabled = true;
             cbPacking.DropDownStyle = ComboBoxStyle.DropDown;
             cbPacking.ReadOnly = true;
-            //cbExtCable.DropDownStyle = ComboBoxStyle.DropDown;
-            //cbExtCable.ReadOnly = true;
             cbMountingKit.DropDownStyle = ComboBoxStyle.DropDown;
             cbMountingKit.ReadOnly = true;
-            bEditExtCablePack.Enabled = false;
             cbCustDept.ReadOnly = true;
-            //tbPrivateNote.ReadOnly = true;
         }
         private void EnableAll()
         {
             summonTransfer1.Enabled = false;
-            //cbWPNAME.ReadOnly = false;
-            //cbWPNAME.DropDownStyle = ComboBoxStyle.DropDownList;
-            bPATH.Enabled = true;
             tbQUANTITY.ReadOnly = false;
             dtpPTIME.Enabled = true;
             tbSHIPPING.ReadOnly = false;
@@ -80,7 +65,6 @@ namespace SummonManager
             cbAccept.DropDownStyle = ComboBoxStyle.DropDownList;
             tbCONTRACT.ReadOnly = false;
             tbDELIVERY.ReadOnly = false;
-            //tbNote.ReadOnly = false;
             cbCustomers.ReadOnly = false;
             cbCustomers.DropDownStyle = ComboBoxStyle.DropDownList;
             tbPayStatus.ReadOnly = false;
@@ -89,31 +73,21 @@ namespace SummonManager
             bEdit.Enabled = false;
             bSave.Enabled = true;
             bPrint.Enabled = true;
-            //bAdd.Enabled = true;
             chbDeterm.Enabled = true;
             if (chbDeterm.Checked)
                 dtpAPPROX.Enabled = false;
             else
                 dtpAPPROX.Enabled = true;
-            //button1.Enabled = false;
             cbPacking.DropDownStyle = ComboBoxStyle.DropDownList;
             cbPacking.ReadOnly = false;
-            //cbExtCable.DropDownStyle = ComboBoxStyle.DropDownList;
-            //cbExtCable.ReadOnly = false;
             cbMountingKit.DropDownStyle = ComboBoxStyle.DropDownList;
             cbMountingKit.ReadOnly = false;
-            bEditExtCablePack.Enabled = true;
-            cbCustDept.ReadOnly = false;
-           // pathFileds1.bCOMPOSITION.Enabled = true;
-           // pathFileds1.bCompositionDel.Enabled = true;
-            
-                
+            cbCustDept.ReadOnly = false;                
         }
 
         private void LoadSummon()
         {
-            dbs = new DBSummon();
-            SVO = dbs.GetSummonByIDS(IDS);
+            //SVO = SummonVO.SummonVOByID(SVO.ID);
 
             tbIDS.Text = SVO.IDS;
 
@@ -165,8 +139,6 @@ namespace SummonManager
             //tbNOTEPDB.Text = SVO.NOTEPDB;
             tbQUANTITY.Value = SVO.QUANTITY;
             tbSHIPPING.Text = SVO.SHIPPING;
-            tbTECHREQPATH.Text = SVO.TECHREQPATH.Substring(SVO.TECHREQPATH.LastIndexOf("\\") + 1);
-            tbTECHREQPATH.Tag = SVO.TECHREQPATH;
             dtpCREATED.Value = SVO.CREATED;
             dtpPTIME.Value = SVO.PTIME;
             tbPayStatus.Text = SVO.PAYSTATUS;
@@ -184,8 +156,6 @@ namespace SummonManager
 
             
             //LoadExtCables();
-            UIProc ui = new UIProc();
-            ui.LoadExtCables(dgv, this.IDSUMMON.ToString());
 
             //DBPrivateNote dbpn = new DBPrivateNote();
             //tbPrivateNote.Text = dbpn.GetPrivateNote(UVO.id, SVO.ID);
@@ -195,42 +165,10 @@ namespace SummonManager
 
             summonTransfer1.Init(SVO, UVO,this);
 
-            pathFileds1.Init(SVO, UVO);
-            //pfSHILD.Init(SVO.SHILD, SVO.SHILDREQ, false, true, false);
-            //pfPLANKA.Init(SVO.PLANKA, SVO.PLANKAREQ, false, true, false);
-            //pf3D.Init(SVO.SBORKA3D, SVO.SBORKA3DREQ, false, true, false);
-            //pfZHGUT.Init(SVO.ZHGUT, false, false, false, false);
-            //pfSERIAL.Init(SVO.SERIAL, SVO.SERIALREQ, false, true, false);
-            //pfCOMPOSITION.Init(SVO.COMPOSITION, SVO.COMPOSITIONREQ, false, true, false);
-            //pfCOMPOSITION.ValueFromArchive = true;
-            //pfMETAL.Init(SVO.METAL, SVO.METALREQ, false, true, false);
-            pfMETAL.IsPath = true;
 
         }
 
-        //private void LoadExtCables()
-        //{
-        //    DBEXTCABLE dbec = new DBEXTCABLE();
-        //    dgv.DataSource = dbec.GetEXTCABLEsForPack(this.IDSUMMON);
-        //    dgv.AutoGenerateColumns = true;
-        //    dgv.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-        //    dgv.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-
-        //    //dgv.Columns["id"].HeaderText = "Номер извещения";
-        //    dgv.Columns["id"].Visible = false;
-        //    dgv.Columns["nn"].HeaderText = "№№";
-        //    dgv.Columns["nn"].Width = 30;
-        //    dgv.Columns["name"].HeaderText = "Название кабеля";
-        //    dgv.Columns["name"].Width = 270;
-        //    dgv.Columns["cnt"].HeaderText = "Количество";
-        //    dgv.Columns["cnt"].Width = 90;
-        //    int i = 0;
-        //    foreach (DataGridViewRow r in dgv.Rows)
-        //    {
-        //        r.Cells["nn"].Value = ++i;
-        //    }
-
-        //}
+        
 
         private void cbCustomers_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -245,77 +183,6 @@ namespace SummonManager
 
         }
 
-        //private void bAdd_Click(object sender, EventArgs e)//сохранить и передать на подготовку в производство
-        //{
-        //    if ((this.SVO.IDSTATUS == 2))
-        //    {
-        //        MessageBox.Show("Вы не можете передать на подготовку в производство это извещение, так как оно уже на подготовке к производству!");
-        //        return;
-        //    }
-        //    if ((this.SVO.IDSTATUS == 11))
-        //    {
-        //        MessageBox.Show("Вы не можете передать на подготовку в производство это извещение, так как оно уже готово к отгрузке!");
-        //        return;
-        //    }
-
-        //    if (tbQUANTITY.Value == 0)
-        //    {
-        //        MessageBox.Show("Введите количество изделий!");
-        //        return;
-        //    }
-        //    if (MessageBox.Show("Вы действительно хотите сохранить и передать на подготовку в производство?", "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-        //    {
-        //        return;
-        //    }
-        //    DBSummon dbs = new DBSummon();
-        //    SummonVO SVO = new SummonVO();
-        //    SVO.ID = this.IDSUMMON;
-        //    SVO.IDS = tbIDS.Text;
-        //    SVO.ACCEPTANCE = cbAccept.Text;
-        //    SVO.CONTRACT = tbCONTRACT.Text;
-        //    SVO.CREATED = this.SVO.CREATED;
-        //    SVO.DELIVERY = tbDELIVERY.Text;
-        //    SVO.IDCUSTOMER = cbCustomers.SelectedValue.ToString();
-        //    SVO.IDCUSTOMERDEPT = (int)cbCustDept.SelectedValue;
-        //    SVO.PAYSTATUS = tbPayStatus.Text;
-        //    //SVO.IDSTATUS = 2;
-        //    //SVO.NOTE = tbNote.Text;
-        //    //SVO.NOTEPDB = tbNOTEPDB.Text;
-        //    SVO.PTIME = dtpPTIME.Value;
-        //    SVO.QUANTITY = (int)tbQUANTITY.Value;
-        //    SVO.SHIPPING = tbSHIPPING.Text;
-        //    if (cbSISP.SelectedIndex == 0)
-        //        SVO.SISP = false;
-        //    else
-        //        SVO.SISP = true;
-        //    SVO.TECHREQPATH = tbTECHREQPATH.Tag.ToString();
-        //    SVO.WPNAME = cbWPNAME.Text;
-            
-        //    SVO.IDWPNAME = (int)cbWPNAME.SelectedValue;
-        //    SVO.IDACCEPT = (int)cbAccept.SelectedValue;
-        //    SVO.PASSDATE = null;
-        //    SVO.IDPACKING = (int)cbPacking.SelectedValue;
-        //    SVO.IDMOUNTINGKIT = (int)cbMountingKit.SelectedValue;
-        //    SVO.VIEWED = false;
-        //    dbs.PassToPrepProduction(SVO,UVO.id);
-        //    //MessageBox.Show("Извещение успешно передано в ОЗиС!");
-        //    this.Close();
-        //}
-
-        private void bPATH_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "All files (*.*)|*.*";
-            //dialog.InitialDirectory = @"\\10.177.150.135\server\поездки\карта";
-            dialog.InitialDirectory = @"c:\";
-            dialog.Title = "Выберите файл";
-            dialog.Multiselect = false;
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                tbTECHREQPATH.Text = dialog.FileName.Substring(dialog.FileName.LastIndexOf(@"\") + 1); ;
-                tbTECHREQPATH.Tag = dialog.FileName;
-            }
-        }
 
         private void button1_Click(object sender, EventArgs e)//просто сохранить
         {
@@ -331,8 +198,8 @@ namespace SummonManager
             }
             DBSummon dbs = new DBSummon();
             SummonVO SVO = new SummonVO();
-            SVO = SummonVO.SummonVOByID(this.IDSUMMON);
-            SVO.ID = this.IDSUMMON;
+            SVO = SummonVO.SummonVOByID(this.SVO.ID);
+            SVO.ID = this.SVO.ID;
             SVO.IDS = tbIDS.Text;
             SVO.ACCEPTANCE = cbAccept.Text;
             SVO.CONTRACT = tbCONTRACT.Text;
@@ -342,8 +209,6 @@ namespace SummonManager
             SVO.IDCUSTOMERDEPT = (int)cbCustDept.SelectedValue;
             SVO.PAYSTATUS = tbPayStatus.Text;
             SVO.IDSTATUS = 1;
-            //SVO.NOTE = tbNote.Text;
-            //SVO.NOTEPDB = tbNOTEPDB.Text;
             SVO.PTIME = dtpPTIME.Value;
             SVO.QUANTITY = (int)tbQUANTITY.Value;
             SVO.SHIPPING = tbSHIPPING.Text;
@@ -351,26 +216,10 @@ namespace SummonManager
                 SVO.SISP = false;
             else
                 SVO.SISP = true;
-            SVO.TECHREQPATH = tbTECHREQPATH.Tag.ToString();
-            //SVO.WPNAME = cbWPNAME.Text;
-            //SVO.IDWPNAME = (int)cbWPNAME.SelectedValue;
+            //SVO.TECHREQPATH = tbTECHREQPATH.Tag.ToString();
             SVO.IDACCEPT = (int)cbAccept.SelectedValue;
             SVO.IDPACKING = (int)cbPacking.SelectedValue;
-            //SVO.IDEXTCABLE = (int)cbExtCable.SelectedValue;
             SVO.IDMOUNTINGKIT = (int)cbMountingKit.SelectedValue;
-            SVO.SHILD = pfSHILD.FullPath;
-            SVO.PLANKA = pfPLANKA.FullPath;
-            SVO.SBORKA3D = pf3D.FullPath;
-            SVO.ZHGUT = pfZHGUT.FullPath;
-            SVO.SERIAL = pfSERIAL.FullPath;
-            SVO.METAL = pfMETAL.FullPath;
-            SVO.COMPOSITION = pfCOMPOSITION.FullPath;
-            SVO.SHILDREQ = pfSHILD.Required;
-            SVO.PLANKAREQ = pfPLANKA.Required;
-            SVO.SBORKA3DREQ = pf3D.Required;
-            SVO.SERIALREQ = pfSERIAL.Required;
-            SVO.COMPOSITIONREQ = pfCOMPOSITION.Required;
-            SVO.METALREQ = pfMETAL.Required;
             if (chbDeterm.Checked)
             {
                 SVO.PASSDATE = null;
@@ -407,12 +256,6 @@ namespace SummonManager
             }
         }
 
-        private void EnableCOMPOSITION()
-        {
-            pathFileds1.bCOMPOSITION.Enabled = true;
-            bSave.Enabled = true;
-            bEdit.Enabled = false;
-        }
 
         private void chbDeterm_CheckedChanged(object sender, EventArgs e)
         {
@@ -467,16 +310,6 @@ namespace SummonManager
 
         }
 
-        //private void bEditExtCablePack_Click(object sender, EventArgs e)
-        //{
-        //    fEditExtCablePack fecp = new fEditExtCablePack(this.IDSUMMON);
-        //    fecp.ShowDialog();
-        //    UIProc ui = new UIProc();
-        //    ui.LoadExtCables(dgv, this.IDSUMMON);
-
-        //}
-
-
         private DateTime? dtpApproxAtLoad;
         private void ShowSummon_Load(object sender, EventArgs e)
         {
@@ -493,67 +326,26 @@ namespace SummonManager
             DBSummon dbs = new DBSummon();
             if ((SVO.IDSTATUS == 1) ||(SVO.IDSTATUS == 11) ||(SVO.IDSTATUS == 2))
             {
-                dbs.SetViewed(this.IDSUMMON);
+                dbs.SetViewed(this.SVO.ID);
             }
             dbs.AddSummonView(SVO, UVO);
             dtpApproxAtLoad = SVO.PASSDATE;
 
-            wpNameView1.Init(SVO.IDWPNAME);
+            wpNameView1.Init(SVO.IDWPNAME, SVO.WPTYPE, UVO, SVO);
+
+            InitTableLayout();
+
         }
 
-
-
-
-
-        private void tbTECHREQPATH_Click_1(object sender, EventArgs e)
+        private void InitTableLayout()
         {
-            if (tbTECHREQPATH.Tag != null)
-            {
-                if (tbTECHREQPATH.Tag.ToString() != "")
-                {
-                    //Process.Start(tbTECHREQPATH.Tag.ToString().Substring(0, tbTECHREQPATH.Tag.ToString().LastIndexOf(@"\")), @"\\select, " + @"C:\Users\corps\Documents\gp4600.doc");//tbTECHREQPATH.Tag.ToString().Replace("\\","/"));
-                    Process.Start("explorer.exe", @"/select, " + tbTECHREQPATH.Tag.ToString());
-                }
-            }
+            tableLayoutPanel1.RowStyles[0].Height = 40F;
+            IProduct product = ProductFactory.Create(SVO.ProductVO.GetID(),SVO.WPTYPE);
+            product.FillTableLayoutPanel(tableLayoutPanel1,UVO);
         }
 
 
 
-        private void tbTECHREQPATH_MouseEnter(object sender, EventArgs e)
-        {
-            tbTECHREQPATH.ForeColor = Color.Blue;
-        }
-
-        private void tbTECHREQPATH_MouseLeave(object sender, EventArgs e)
-        {
-            tbTECHREQPATH.ForeColor = Color.Black;
-        }
-
-        private void bAddPrivateNote_Click(object sender, EventArgs e)
-        {
-            fEditPrivateNote fepn = new fEditPrivateNote(SVO.ID, UVO.id);
-            fepn.ShowDialog();
-
-            //DBPrivateNote dbpn = new DBPrivateNote();
-            //tbPrivateNote.Text = dbpn.GetPrivateNote(UVO.id, SVO.ID);
-        }
-
-        private void ShowSummon_Scroll(object sender, ScrollEventArgs e)
-        {
-
-        }
-
-        private void summonTransfer1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pathFileds1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-       
 
     }
 }

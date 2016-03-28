@@ -92,9 +92,8 @@ namespace SummonManager
             this.pf3D = new SummonManager.Controls.PathField();
             this.pfPLANKA = new SummonManager.Controls.PathField();
             this.pfSHILD = new SummonManager.Controls.PathField();
-            this.wpNameView1 = new SummonManager.Controls.WPNameView(SVO);
+            this.wpNameView1 = new SummonManager.Controls.WPNameView();
             this.summonTransfer2 = new SummonManager.SummonTransfer();
-            this.pathFileds1 = new SummonManager.PathFileds();
             this.summonTransfer1 = new SummonManager.SummonTransfer();
             this.cbMountingKit = new SummonManager.RComboBox();
             this.cbCustDept = new SummonManager.RComboBox();
@@ -631,16 +630,6 @@ namespace SummonManager
             this.summonTransfer2.Size = new System.Drawing.Size(477, 96);
             this.summonTransfer2.TabIndex = 74;
             // 
-            // pathFileds1
-            // 
-            this.pathFileds1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.pathFileds1.Location = new System.Drawing.Point(718, 129);
-            this.pathFileds1.Margin = new System.Windows.Forms.Padding(4);
-            this.pathFileds1.Name = "pathFileds1";
-            this.pathFileds1.Size = new System.Drawing.Size(412, 219);
-            this.pathFileds1.TabIndex = 69;
-            this.pathFileds1.Visible = false;
-            // 
             // summonTransfer1
             // 
             this.summonTransfer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -755,7 +744,6 @@ namespace SummonManager
             this.Controls.Add(this.tbStatus);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.pathFileds1);
             this.Controls.Add(this.summonTransfer1);
             this.Controls.Add(this.bEditExtCablePack);
             this.Controls.Add(this.dgv);
@@ -861,7 +849,6 @@ namespace SummonManager
         private RComboBox cbMountingKit;
         private SummonNotes summonNotes1;
         private SummonTransfer summonTransfer1;
-        private PathFileds pathFileds1;
         private TextBox tbSubStatus;
         private TextBox tbStatus;
         private Label label14;

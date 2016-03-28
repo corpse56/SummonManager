@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
+using SummonManager.CLASSES;
 
 namespace SummonManager
 {
@@ -170,7 +171,7 @@ namespace SummonManager
                     DefaultStatus = 16;
                     break;
                 case Roles.OTK:
-                    if (SVO.WPNAMEVO.IDCat == 4)
+                    if (SVO.ProductVO.GetProductType() == WPTYPE.CABLELIST)
                     {
                         DA.SelectCommand.CommandText = "select ID, SNAME from " + Base.BaseName +
                         "..STATUSLIST where ID in (8,9,18)";
@@ -209,7 +210,7 @@ namespace SummonManager
                     }
                     break;
                 case Roles.Ozis:
-                    if (SVO.WPNAMEVO.IDCat == 4) //если кабель
+                    if (SVO.ProductVO.GetProductType() == WPTYPE.CABLELIST)                    //если кабель
                     {
                         DA.SelectCommand.CommandText = "select ID, 'Монтажники' SNAME " +
                                                                 " from " + Base.BaseName +

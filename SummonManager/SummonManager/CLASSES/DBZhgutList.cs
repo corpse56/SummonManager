@@ -35,6 +35,7 @@ namespace SummonManager.CLASSES
             ZVO.DecNum = r["DECNUM"].ToString();
             ZVO.ZHGUTPATH = r["ZHGUTPATH"].ToString();
             ZVO.NOTE = r["NOTE"].ToString();
+            ZVO.WPType = WPTYPE.ZHGUTLIST;
             return ZVO;
         }
 

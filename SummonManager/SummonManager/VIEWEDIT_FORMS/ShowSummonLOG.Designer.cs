@@ -74,7 +74,6 @@ namespace SummonManager
             this.label21 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.bEditExtCablePack = new System.Windows.Forms.Button();
-            this.pathFileds1 = new SummonManager.PathFileds();
             this.summonTransfer1 = new SummonManager.SummonTransfer();
             this.cbMountingKit = new SummonManager.RComboBox();
             this.cbCustDept = new SummonManager.RComboBox();
@@ -84,7 +83,7 @@ namespace SummonManager
             this.cbSISP = new SummonManager.RComboBox();
             this.cbCustomers = new SummonManager.RComboBox();
             this.summonNotes1 = new SummonManager.SummonNotes();
-            this.wpNameView1 = new SummonManager.Controls.WPNameView(SVO);
+            this.wpNameView1 = new SummonManager.Controls.WPNameView();
             this.label8 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.tbSerial = new System.Windows.Forms.Label();
@@ -437,16 +436,6 @@ namespace SummonManager
             this.bEditExtCablePack.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.bEditExtCablePack.UseVisualStyleBackColor = true;
             // 
-            // pathFileds1
-            // 
-            this.pathFileds1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.pathFileds1.Location = new System.Drawing.Point(647, 106);
-            this.pathFileds1.Margin = new System.Windows.Forms.Padding(4);
-            this.pathFileds1.Name = "pathFileds1";
-            this.pathFileds1.Size = new System.Drawing.Size(412, 204);
-            this.pathFileds1.TabIndex = 71;
-            this.pathFileds1.Visible = false;
-            // 
             // summonTransfer1
             // 
             this.summonTransfer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -705,7 +694,6 @@ namespace SummonManager
             this.Controls.Add(this.pfPLANKA);
             this.Controls.Add(this.pfSHILD);
             this.Controls.Add(this.wpNameView1);
-            this.Controls.Add(this.pathFileds1);
             this.Controls.Add(this.summonTransfer1);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.cbMountingKit);
@@ -811,7 +799,6 @@ namespace SummonManager
         private RComboBox cbMountingKit;
         private SummonNotes summonNotes1;
         private SummonTransfer summonTransfer1;
-        private PathFileds pathFileds1;
         private SummonManager.Controls.WPNameView wpNameView1;
         private Label label8;
         private Label label14;

@@ -80,7 +80,7 @@ namespace SummonManager
             switch (mf.UVO.Role)
             {
                 case Roles.Manager:
-                    ShowSummon ss = new ShowSummon(svo.IDS, mf.UVO,svo.ID);
+                    ShowSummon ss = new ShowSummon(mf.UVO,svo);
                     ss.ShowDialog();
                     break;
                 case Roles.Ozis:

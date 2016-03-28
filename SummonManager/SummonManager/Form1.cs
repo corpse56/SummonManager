@@ -134,7 +134,6 @@ namespace SummonManager
             пользователиToolStripMenuItem.Enabled = false;
             наименованиеИзделияToolStripMenuItem.Enabled = true;//открыто всем на чтение
             упаковкаToolStripMenuItem.Enabled = false;
-            внешниеКабелиToolStripMenuItem.Enabled = false;
         }
         public void SpravochnikiEnable()
         {
@@ -143,7 +142,6 @@ namespace SummonManager
             пользователиToolStripMenuItem.Enabled = true;
             наименованиеИзделияToolStripMenuItem.Enabled = true;
             упаковкаToolStripMenuItem.Enabled = true;
-            внешниеКабелиToolStripMenuItem.Enabled = true;
         }
         PreviousState ps = null;
         bool InitialReload = true;
@@ -374,7 +372,7 @@ namespace SummonManager
             switch (UVO.Role)
             {
                 case Roles.Manager:
-                    ShowSummon ss = new ShowSummon(svo.IDS, UVO,svo.ID);
+                    ShowSummon ss = new ShowSummon(UVO,svo);
                     ss.ShowDialog();
                     break;
                 case Roles.Ozis:
@@ -900,12 +898,6 @@ namespace SummonManager
         private void dgSummon_SortCompare(object sender, DataGridViewSortCompareEventArgs e)
         {
 
-        }
-
-        private void ExtCableToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            EXTCABLE fextcab = new EXTCABLE();
-            fextcab.ShowDialog();
         }
 
         private void CustDeptsToolStripMenuItem_Click(object sender, EventArgs e)

@@ -34,13 +34,10 @@ namespace SummonManager.Controls
             {
                 return;
             }
-            DBWPName dbw = new DBWPName();
 
-            WPNameVO WPVO = WPNameVO.WPNameVOByID(wp.PickedID);
-            textBox1.Text = WPVO.WPName + " " + WPVO.DecNum;
-            textBox1.Tag = wp.PickedID;
-            this.PickedID = wp.PickedID;
+            PickedProduct = ProductFactory.Create(wp.PickedID, wp.PickedType);
+            textBox1.Text = PickedProduct.GetName();
         }
-        public int PickedID;
+        public IProduct PickedProduct;
     }
 }

@@ -83,8 +83,7 @@ namespace SummonManager
             this.cbCustomers = new SummonManager.RComboBox();
             this.summonNotes1 = new SummonManager.SummonNotes();
             this.summonTransfer1 = new SummonManager.SummonTransfer();
-            this.pathFileds1 = new SummonManager.PathFileds();
-            this.wpNameView1 = new SummonManager.Controls.WPNameView(SVO);
+            this.wpNameView1 = new SummonManager.Controls.WPNameView();
             this.label18 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.tbSerial = new System.Windows.Forms.Label();
@@ -524,16 +523,6 @@ namespace SummonManager
             this.summonTransfer1.Size = new System.Drawing.Size(477, 153);
             this.summonTransfer1.TabIndex = 66;
             // 
-            // pathFileds1
-            // 
-            this.pathFileds1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.pathFileds1.Location = new System.Drawing.Point(674, 164);
-            this.pathFileds1.Margin = new System.Windows.Forms.Padding(4);
-            this.pathFileds1.Name = "pathFileds1";
-            this.pathFileds1.Size = new System.Drawing.Size(418, 208);
-            this.pathFileds1.TabIndex = 67;
-            this.pathFileds1.Visible = false;
-            // 
             // wpNameView1
             // 
             this.wpNameView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -693,7 +682,6 @@ namespace SummonManager
             this.Controls.Add(this.pfPLANKA);
             this.Controls.Add(this.pfSHILD);
             this.Controls.Add(this.wpNameView1);
-            this.Controls.Add(this.pathFileds1);
             this.Controls.Add(this.summonTransfer1);
             this.Controls.Add(this.cbCustDept);
             this.Controls.Add(this.label22);
@@ -799,7 +787,6 @@ namespace SummonManager
         private Label label22;
         private SummonNotes summonNotes1;
         private SummonTransfer summonTransfer1;
-        private PathFileds pathFileds1;
         private SummonManager.Controls.WPNameView wpNameView1;
         private Label label18;
         private Label label23;

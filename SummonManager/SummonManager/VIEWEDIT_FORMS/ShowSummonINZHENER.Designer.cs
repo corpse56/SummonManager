@@ -88,8 +88,7 @@ namespace SummonManager
             this.pf3D = new SummonManager.Controls.PathField();
             this.pfPLANKA = new SummonManager.Controls.PathField();
             this.pfSHILD = new SummonManager.Controls.PathField();
-            this.wpNameView1 = new SummonManager.Controls.WPNameView(SVO);
-            this.pathFileds1 = new SummonManager.PathFileds();
+            this.wpNameView1 = new SummonManager.Controls.WPNameView();
             this.cbCustDept = new SummonManager.RComboBox();
             this.cbMountingKit = new SummonManager.RComboBox();
             this.cbPacking = new SummonManager.RComboBox();
@@ -583,16 +582,7 @@ namespace SummonManager
             this.wpNameView1.Name = "wpNameView1";
             this.wpNameView1.Size = new System.Drawing.Size(417, 31);
             this.wpNameView1.TabIndex = 68;
-            // 
-            // pathFileds1
-            // 
-            this.pathFileds1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.pathFileds1.Location = new System.Drawing.Point(668, 188);
-            this.pathFileds1.Margin = new System.Windows.Forms.Padding(4);
-            this.pathFileds1.Name = "pathFileds1";
-            this.pathFileds1.Size = new System.Drawing.Size(413, 212);
-            this.pathFileds1.TabIndex = 67;
-            this.pathFileds1.Visible = false;
+
             // 
             // cbCustDept
             // 
@@ -694,7 +684,6 @@ namespace SummonManager
             this.Controls.Add(this.pfPLANKA);
             this.Controls.Add(this.pfSHILD);
             this.Controls.Add(this.wpNameView1);
-            this.Controls.Add(this.pathFileds1);
             this.Controls.Add(this.cbCustDept);
             this.Controls.Add(this.label22);
             this.Controls.Add(this.bEditExtCablePack);
@@ -798,7 +787,6 @@ namespace SummonManager
         private RComboBox cbCustDept;
         private Label label22;
         private SummonNotes summonNotes1;
-        private PathFileds pathFileds1;
         private SummonManager.Controls.WPNameView wpNameView1;
         private Label label8;
         private Label label14;

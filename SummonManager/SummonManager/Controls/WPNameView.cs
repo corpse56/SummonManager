@@ -13,28 +13,34 @@ namespace SummonManager.Controls
     public partial class WPNameView : UserControl
     {
         SummonVO SVO;
-        public WPNameView(SummonVO svo)
+        UserVO UVO;
+        public WPNameView()
         {
-            SVO = svo;
+            //SVO = svo;
+            //UVO = UVO_;
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (SVO.WPNAMEVO.WPType == WPTYPE.WPNAMELIST)
-            {
-                WPNameVO.WPNameVOByID(SelectedWPNameID);
-                NewWPN ewp = new NewWPN(WPNameVO.WPNameVOByID(SelectedWPNameID), "VIEWONLY",null);
-                ewp.ShowDialog();
-            }
+
+            SVO.ProductVO.ViewOnly(UVO);
 
         }
-        public void Init(int _SelectedWPNameID)
+        public void Init(int ID,WPTYPE WPT, UserVO uvo,SummonVO svo)
         {
-            this.SelectedWPNameID = _SelectedWPNameID;
-            WPNameVO vo = WPNameVO.WPNameVOByID(_SelectedWPNameID);
-            textBox1.Text = vo.WPName + " " + vo.DecNum;
+            PickedProduct = ProductFactory.Create(ID, WPT);
+            textBox1.Text = PickedProduct.GetName();
+            this.UVO = uvo;
+            this.SVO = svo;
         }
-        public int SelectedWPNameID;
+        public void Init(int ID, string WPT, UserVO uvo, SummonVO svo)
+        {
+            PickedProduct = ProductFactory.Create(ID, WPT);
+            textBox1.Text = PickedProduct.GetName();
+            this.UVO = uvo;
+            this.SVO = svo;
+        }
+        public IProduct PickedProduct;
     }
 }

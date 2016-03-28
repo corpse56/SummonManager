@@ -10,8 +10,7 @@ namespace SummonManager
     {
         public string ID;
         public string IDS;
-        public string WPNAME;
-        public string TECHREQPATH;
+        //public string WPNAME;
         public int QUANTITY;
         public DateTime PTIME;
         public string ACCEPTANCE;
@@ -39,7 +38,6 @@ namespace SummonManager
         public string STATUSNAME;
         public string SISPNAME;
         public int IDACCEPT;
-        public int IDWPNAME;
         public DateTime? PASSDATE;
         public string PASSDATETEXT;
         public string PACKINGNAME;
@@ -47,21 +45,10 @@ namespace SummonManager
         public string MOUNTINGKITNAME;
         public string DEPTNAME;
         public bool VIEWED;
-        public string OTKCOMMENT;
-        public string SHILD;
-        public string PLANKA;
-        public string SBORKA3D;
-        public string ZHGUT;
-        public string SERIAL;
-        public string COMPOSITION;
-        public string METAL;
-        public bool SHILDREQ;
-        public bool PLANKAREQ;
-        public bool SBORKA3DREQ;
-        public bool SERIALREQ;
-        public bool COMPOSITIONREQ;
-        public bool METALREQ;
-        public WPNameVO WPNAMEVO;
+
+        public int IDWPNAME;
+        public string WPTYPE;
+        public IProduct ProductVO;
         public int IDSUBST;
         public bool BILLPAYED;
         public bool DOCSREADY;
@@ -100,7 +87,7 @@ namespace SummonManager
             else
                 this.SISPNAME = "НЕТ";
             this.PACKINGNAME = new DBPacking().Get(this.IDPACKING.ToString());
-            this.EXTCABLENAMES = new DBEXTCABLE().GetEXTCABLEsForPackReport(this.ID.ToString());
+            //this.EXTCABLENAMES = new DBEXTCABLE().GetEXTCABLEsForPackReport(this.ID.ToString());
             this.MOUNTINGKITNAME = new DBMountingKit().GetMOUNTINGKIT(this.IDMOUNTINGKIT.ToString());
             return this;
         }

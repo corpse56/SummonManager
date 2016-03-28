@@ -78,7 +78,6 @@ namespace SummonManager
             this.label8 = new System.Windows.Forms.Label();
             this.chbDocsRdy = new System.Windows.Forms.CheckBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.pathFileds1 = new SummonManager.PathFileds();
             this.cbMountingKit = new SummonManager.RComboBox();
             this.cbCustDept = new SummonManager.RComboBox();
             this.cbPacking = new SummonManager.RComboBox();
@@ -87,7 +86,7 @@ namespace SummonManager
             this.cbSISP = new SummonManager.RComboBox();
             this.cbCustomers = new SummonManager.RComboBox();
             this.summonNotes1 = new SummonManager.SummonNotes();
-            this.wpNameView1 = new SummonManager.Controls.WPNameView(SVO);
+            this.wpNameView1 = new SummonManager.Controls.WPNameView();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.tbSerial = new System.Windows.Forms.Label();
@@ -482,16 +481,6 @@ namespace SummonManager
             this.label14.TabIndex = 72;
             this.label14.Text = "Ориентировочная дата сдачи";
             // 
-            // pathFileds1
-            // 
-            this.pathFileds1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.pathFileds1.Location = new System.Drawing.Point(683, 106);
-            this.pathFileds1.Margin = new System.Windows.Forms.Padding(4);
-            this.pathFileds1.Name = "pathFileds1";
-            this.pathFileds1.Size = new System.Drawing.Size(392, 204);
-            this.pathFileds1.TabIndex = 71;
-            this.pathFileds1.Visible = false;
-            // 
             // cbMountingKit
             // 
             this.cbMountingKit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -741,7 +730,6 @@ namespace SummonManager
             this.Controls.Add(this.pfSHILD);
             this.Controls.Add(this.wpNameView1);
             this.Controls.Add(this.label14);
-            this.Controls.Add(this.pathFileds1);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.cbMountingKit);
             this.Controls.Add(this.bEditExtCablePack);
@@ -848,7 +836,6 @@ namespace SummonManager
         private Label label20;
         private RComboBox cbMountingKit;
         private SummonNotes summonNotes1;
-        private PathFileds pathFileds1;
         private CheckBox chbBillPayed;
         private Label label8;
         private CheckBox chbDocsRdy;

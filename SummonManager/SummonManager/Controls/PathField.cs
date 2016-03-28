@@ -102,6 +102,26 @@ namespace SummonManager.Controls
                 }
             }
         }
+        bool DELVISIBLE;
+        public bool bDelVisible
+        {
+            get { return DELVISIBLE; }
+            set
+            {
+                DELVISIBLE = value;
+                bPathDel.Visible = value;
+            }
+        }
+        bool BPATHVISIBLE;
+        public bool bPathVisible
+        {
+            get { return BPATHVISIBLE; }
+            set
+            {
+                BPATHVISIBLE = value;
+                bPath.Visible = value;
+            }
+        }
         public bool RequiredVisible
         {
             set

@@ -101,8 +101,6 @@ namespace SummonManager
 
         private void bCancel_Click(object sender, EventArgs e)
         {
-            DBEXTCABLE dbec = new DBEXTCABLE();
-            dbec.RemoveAllEXTCABLEFromPackByID(this.IDNEWSUMMON.ToString());
             Close();
         }
 
@@ -141,32 +139,18 @@ namespace SummonManager
                 SVO.SISP = false;
             else
                 SVO.SISP = true;
-            //SVO.TECHREQPATH = tbTECHREQPATH.Tag.ToString();
-            SVO.WPNAME = pickWPName1.textBox1.Text;//cbWPNAME.Text;
+            SVO.IDWPNAME = pickWPName1.PickedProduct.GetID();
+            SVO.WPTYPE = pickWPName1.PickedProduct.GetProductType().ToString();
             SVO.IDACCEPT = (int)cbAccept.SelectedValue;
-            //SVO.IDWPNAME = (int)cbWPNAME.SelectedValue;
-            SVO.IDWPNAME = pickWPName1.PickedID;
             SVO.IDPACKING = (int)cbPacking.SelectedValue;
             SVO.IDMOUNTINGKIT = (int)cbMountingKit.SelectedValue;
             SVO.IDCUSTOMERDEPT = (int)cbCustDept.SelectedValue;
             SVO.PASSDATE = null;
             SVO.VIEWED = false;
             SVO.NOTEPDB = "";
-            SVO.SHILD = "";
-            SVO.PLANKA = "";
-            SVO.SBORKA3D = "";
-            SVO.ZHGUT = "";
-            SVO.SERIAL = "";
-            SVO.METAL = "";
-            SVO.COMPOSITION = "";
-            SVO.SHILDREQ = true;
-            SVO.PLANKAREQ = true;
-            SVO.SBORKA3DREQ = true;
-            SVO.SERIALREQ = true;
-            SVO.COMPOSITIONREQ = true;
-            SVO.METALREQ = true;
             SVO.DOCSREADY = false;
             SVO.BILLPAYED = false;
+
             dbs.AddNewSummon(SVO,UVO);
             alow_delete_cablepack = false;
             //MessageBox.Show("Извещение успешно создано и передано в ОЗиС!");
@@ -207,29 +191,16 @@ namespace SummonManager
             else
                 SVO.SISP = true;
             //SVO.TECHREQPATH = tbTECHREQPATH.Tag.ToString();
-            SVO.WPNAME = pickWPName1.textBox1.Text;//cbWPNAME.Text;
             SVO.IDACCEPT = (int)cbAccept.SelectedValue;
             //SVO.IDWPNAME = (int)cbWPNAME.SelectedValue;
-            SVO.IDWPNAME = pickWPName1.PickedID;
+            SVO.IDWPNAME = pickWPName1.PickedProduct.GetID();
+            SVO.WPTYPE = pickWPName1.PickedProduct.GetProductType().ToString();
             SVO.IDPACKING = (int)cbPacking.SelectedValue;
             //SVO.IDEXTCABLE = (int)cbExtCable.SelectedValue;
             SVO.IDMOUNTINGKIT = (int)cbMountingKit.SelectedValue;
             SVO.IDCUSTOMERDEPT = (int)cbCustDept.SelectedValue;
             SVO.VIEWED = true;
             SVO.NOTEPDB = "";
-            SVO.SHILD = "";
-            SVO.PLANKA = "";
-            SVO.SBORKA3D = "";
-            SVO.ZHGUT = "";
-            SVO.SERIAL = "";
-            SVO.METAL = "";
-            SVO.COMPOSITION = "";
-            SVO.SHILDREQ = true;
-            SVO.PLANKAREQ = true;
-            SVO.SBORKA3DREQ = true;
-            SVO.SERIALREQ = true;
-            SVO.COMPOSITIONREQ = true;
-            SVO.METALREQ = true;
             SVO.BILLPAYED = false;
             SVO.DOCSREADY = false;
             if (chbDeterm.Checked)
@@ -264,14 +235,6 @@ namespace SummonManager
 ////            LoadExtCables();
 //        }
 
-        private void NewSummon_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (alow_delete_cablepack)
-            {
-                DBEXTCABLE dbec = new DBEXTCABLE();
-                dbec.RemoveAllEXTCABLEFromPackByID(this.IDNEWSUMMON.ToString());
-            }
-        }
 
         private void dtpPTIME_ValueChanged(object sender, EventArgs e)
         {

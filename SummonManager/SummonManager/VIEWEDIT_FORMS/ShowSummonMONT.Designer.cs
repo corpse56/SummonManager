@@ -77,7 +77,6 @@ namespace SummonManager
             this.tbStatus = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.pathFileds1 = new SummonManager.PathFileds();
             this.summonTransfer2 = new SummonManager.SummonTransfer();
             this.cbMountingKit = new SummonManager.RComboBox();
             this.cbCustDept = new SummonManager.RComboBox();
@@ -88,7 +87,7 @@ namespace SummonManager
             this.cbCustomers = new SummonManager.RComboBox();
             this.summonNotes1 = new SummonManager.SummonNotes();
             this.summonTransfer1 = new SummonManager.SummonTransfer();
-            this.wpNameView1 = new SummonManager.Controls.WPNameView(SVO);
+            this.wpNameView1 = new SummonManager.Controls.WPNameView();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.tbSerial = new System.Windows.Forms.Label();
@@ -465,16 +464,6 @@ namespace SummonManager
             this.label8.TabIndex = 62;
             this.label8.Text = "Текущий статус";
             // 
-            // pathFileds1
-            // 
-            this.pathFileds1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.pathFileds1.Location = new System.Drawing.Point(670, 137);
-            this.pathFileds1.Margin = new System.Windows.Forms.Padding(4);
-            this.pathFileds1.Name = "pathFileds1";
-            this.pathFileds1.Size = new System.Drawing.Size(412, 211);
-            this.pathFileds1.TabIndex = 60;
-            this.pathFileds1.Visible = false;
-            // 
             // summonTransfer2
             // 
             this.summonTransfer2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
@@ -747,7 +736,6 @@ namespace SummonManager
             this.Controls.Add(this.tbStatus);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.pathFileds1);
             this.Controls.Add(this.summonTransfer2);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.bEditExtCablePack);
@@ -850,7 +838,6 @@ namespace SummonManager
         private RComboBox cbMountingKit;
         private Button button2;
         private SummonNotes summonNotes1;
-        private PathFileds pathFileds1;
         private TextBox tbSubStatus;
         private TextBox tbStatus;
         private Label label14;

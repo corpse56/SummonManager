@@ -19,7 +19,6 @@ namespace SummonManager
             this.ENTITY = ENTITY_;
             InitializeComponent();
             
-            DBCOMPARC dbarc = new DBCOMPARC();
             DBCategory dbc = new DBCategory(this.ENTITY);
             dgWP.DataSource = dbc.GetAll();
             dgWP.Columns["ID"].Visible = false;

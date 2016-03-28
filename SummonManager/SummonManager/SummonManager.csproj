@@ -113,16 +113,17 @@
     <Compile Include="Cable.Designer.cs">
       <DependentUpon>Cable.cs</DependentUpon>
     </Compile>
-    <Compile Include="CLASSES\CableVO.cs" />
+    <Compile Include="CLASSES\IProduct\CableVO.cs" />
     <Compile Include="CLASSES\DBCableList.cs" />
     <Compile Include="CLASSES\DBCategory.cs" />
-    <Compile Include="CLASSES\DBCOMPARC.cs" />
     <Compile Include="CLASSES\DBVersion.cs" />
+    <Compile Include="CLASSES\IProduct\IProduct.cs" />
     <Compile Include="CLASSES\StatusStripIndicator.cs" />
-    <Compile Include="CLASSES\WPNameVO.cs" />
+    <Compile Include="CLASSES\IProduct\WPNameVO.cs" />
     <Compile Include="CLASSES\DBSubCategory.cs" />
     <Compile Include="CLASSES\DBZhgutList.cs" />
-    <Compile Include="CLASSES\ZhgutVO.cs" />
+    <Compile Include="CLASSES\IProduct\ZhgutVO.cs" />
+    <Compile Include="CLASSES\UIWorks.cs" />
     <Compile Include="Controls\ColorSelectControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -192,25 +193,12 @@
     <Compile Include="fEditNote.Designer.cs">
       <DependentUpon>fEditNote.cs</DependentUpon>
     </Compile>
-    <Compile Include="CLASSES\DBPrivateNote.cs" />
-    <Compile Include="fEditPrivateNote.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="fEditPrivateNote.Designer.cs">
-      <DependentUpon>fEditPrivateNote.cs</DependentUpon>
-    </Compile>
     <Compile Include="CLASSES\DBPreferences.cs" />
     <Compile Include="OTKComment.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="OTKComment.Designer.cs">
       <DependentUpon>OTKComment.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Controls\PathFileds.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Controls\PathFileds.Designer.cs">
-      <DependentUpon>PathFileds.cs</DependentUpon>
     </Compile>
     <Compile Include="Preferences.cs">
       <SubType>Form</SubType>
@@ -237,18 +225,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="CLASSES\DBMountingKit.cs" />
-    <Compile Include="EditEXTCABLENAME.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EditEXTCABLENAME.Designer.cs">
-      <DependentUpon>EditEXTCABLENAME.cs</DependentUpon>
-    </Compile>
-    <Compile Include="fAddExtCableForPack.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="fAddExtCableForPack.Designer.cs">
-      <DependentUpon>fAddExtCableForPack.cs</DependentUpon>
-    </Compile>
     <Compile Include="fAddCustomerDept.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -279,24 +255,11 @@
     <Compile Include="fTimeInDeptPieChartStat.Designer.cs">
       <DependentUpon>fTimeInDeptPieChartStat.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewEXTCABLENAME.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NewEXTCABLENAME.Designer.cs">
-      <DependentUpon>NewEXTCABLENAME.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CLASSES\DBEXTCABLE.cs" />
     <Compile Include="Copy of RepSummon.cs">
       <DependentUpon>Copy of RepSummon.rpt</DependentUpon>
       <AutoGen>True</AutoGen>
       <SubType>Component</SubType>
       <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="EXTCABLEName.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EXTCABLEName.Designer.cs">
-      <DependentUpon>EXTCABLEName.cs</DependentUpon>
     </Compile>
     <Compile Include="CLASSES\DBSearch.cs" />
     <Compile Include="EditCable.cs">
@@ -304,12 +267,6 @@
     </Compile>
     <Compile Include="EditCable.Designer.cs">
       <DependentUpon>EditCable.cs</DependentUpon>
-    </Compile>
-    <Compile Include="fEditNotePDB.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="fEditNotePDB.Designer.cs">
-      <DependentUpon>fEditNotePDB.cs</DependentUpon>
     </Compile>
     <Compile Include="fSearchConditions.cs">
       <SubType>Form</SubType>
@@ -391,7 +348,6 @@
     <Compile Include="Controls\SummonTransfer.Designer.cs">
       <DependentUpon>SummonTransfer.cs</DependentUpon>
     </Compile>
-    <Compile Include="CLASSES\UIProc.cs" />
     <Compile Include="Users.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -561,14 +517,8 @@
     <EmbeddedResource Include="fEditNote.resx">
       <DependentUpon>fEditNote.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="fEditPrivateNote.resx">
-      <DependentUpon>fEditPrivateNote.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="OTKComment.resx">
       <DependentUpon>OTKComment.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Controls\PathFileds.resx">
-      <DependentUpon>PathFileds.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Preferences.resx">
       <DependentUpon>Preferences.cs</DependentUpon>
@@ -579,12 +529,6 @@
     <EmbeddedResource Include="CrystalReport2.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>CrystalReport2.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="EditEXTCABLENAME.resx">
-      <DependentUpon>EditEXTCABLENAME.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="fAddExtCableForPack.resx">
-      <DependentUpon>fAddExtCableForPack.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fAddCustomerDept.resx">
       <DependentUpon>fAddCustomerDept.cs</DependentUpon>
@@ -601,21 +545,12 @@
     <EmbeddedResource Include="fTimeInDeptPieChartStat.resx">
       <DependentUpon>fTimeInDeptPieChartStat.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NewEXTCABLENAME.resx">
-      <DependentUpon>NewEXTCABLENAME.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Copy of RepSummon.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Copy of RepSummon.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="EXTCABLEName.resx">
-      <DependentUpon>EXTCABLEName.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="EditCable.resx">
       <DependentUpon>EditCable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="fEditNotePDB.resx">
-      <DependentUpon>fEditNotePDB.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fSearchConditions.resx">
       <DependentUpon>fSearchConditions.cs</DependentUpon>
@@ -723,9 +658,6 @@
     <EmbeddedResource Include="WPName.resx">
       <DependentUpon>WPName.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WPCOMPOSITIONARCHIVE.resx">
-      <DependentUpon>WPCOMPOSITIONARCHIVE.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="EditWPCategory.resx">
       <DependentUpon>EditWPCategory.cs</DependentUpon>
     </EmbeddedResource>
@@ -791,12 +723,6 @@
     </Compile>
     <Compile Include="WPName.Designer.cs">
       <DependentUpon>WPName.cs</DependentUpon>
-    </Compile>
-    <Compile Include="WPCOMPOSITIONARCHIVE.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WPCOMPOSITIONARCHIVE.Designer.cs">
-      <DependentUpon>WPCOMPOSITIONARCHIVE.cs</DependentUpon>
     </Compile>
     <Compile Include="EditWPCategory.cs">
       <SubType>Form</SubType>

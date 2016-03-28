@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
+using SummonManager.CLASSES;
 
 namespace SummonManager
 {
@@ -268,8 +269,8 @@ namespace SummonManager
             //tbNOTEPDB.Text = SVO.NOTEPDB;
             tbQUANTITY.Value = SVO.QUANTITY;
             tbSHIPPING.Text = SVO.SHIPPING;
-            tbTECHREQPATH.Text = SVO.TECHREQPATH.Substring(SVO.TECHREQPATH.LastIndexOf("\\") + 1);
-            tbTECHREQPATH.Tag = SVO.TECHREQPATH;
+            //tbTECHREQPATH.Text = SVO.TECHREQPATH.Substring(SVO.TECHREQPATH.LastIndexOf("\\") + 1);
+            //tbTECHREQPATH.Tag = SVO.TECHREQPATH;
             dtpCREATED.Value = SVO.CREATED;
             dtpPTIME.Value = SVO.PTIME;
             tbPAYSTATUS.Text = SVO.PAYSTATUS;
@@ -286,15 +287,12 @@ namespace SummonManager
             }
 
 
-            //LoadExtCables();
-            UIProc ui = new UIProc();
-            ui.LoadExtCables(dgv, this.IDSUMMON.ToString());
 
             summonNotes1.Init(SVO.ID, UVO, SVO);
             summonNotes1.Reload();
 
             summonTransfer1.Init(SVO, UVO, this);
-            if (SVO.WPNAMEVO.IDCat == 4)
+            if (SVO.ProductVO.GetProductType() == WPTYPE.CABLELIST)
             {
                 summonTransfer2.Visible = false;
             }
@@ -353,7 +351,7 @@ namespace SummonManager
                 SVO.SISP = true;
             else
                 SVO.SISP = false;
-            SVO.TECHREQPATH = tbTECHREQPATH.Tag.ToString();
+            //SVO.TECHREQPATH = tbTECHREQPATH.Tag.ToString();
             //SVO.WPNAME = cbWPNAME.Text;
             //SVO.IDWPNAME = (int)cbWPNAME.SelectedValue;
             SVO.IDACCEPT = (int)cbAccept.SelectedValue;
@@ -374,19 +372,19 @@ namespace SummonManager
             //SVO.SERIALREQ = pathFileds1.chSERIAL.Checked;
             //SVO.COMPOSITIONREQ = pathFileds1.chCOMPOSITION.Checked;
             //SVO.METALREQ = pathFileds1.chMETAL.Checked;
-            SVO.SHILD = pfSHILD.FullPath;
-            SVO.PLANKA = pfPLANKA.FullPath;
-            SVO.SBORKA3D = pf3D.FullPath;
-            SVO.ZHGUT = pfZHGUT.FullPath;
-            SVO.SERIAL = pfSERIAL.FullPath;
-            SVO.METAL = pfMETAL.FullPath;
-            SVO.COMPOSITION = pfCOMPOSITION.FullPath;
-            SVO.SHILDREQ = pfSHILD.Required;
-            SVO.PLANKAREQ = pfPLANKA.Required;
-            SVO.SBORKA3DREQ = pf3D.Required;
-            SVO.SERIALREQ = pfSERIAL.Required;
-            SVO.COMPOSITIONREQ = pfCOMPOSITION.Required;
-            SVO.METALREQ = pfMETAL.Required;
+            //SVO.SHILD = pfSHILD.FullPath;
+            //SVO.PLANKA = pfPLANKA.FullPath;
+            //SVO.SBORKA3D = pf3D.FullPath;
+            //SVO.ZHGUT = pfZHGUT.FullPath;
+            //SVO.SERIAL = pfSERIAL.FullPath;
+            //SVO.METAL = pfMETAL.FullPath;
+            //SVO.COMPOSITION = pfCOMPOSITION.FullPath;
+            //SVO.SHILDREQ = pfSHILD.Required;
+            //SVO.PLANKAREQ = pfPLANKA.Required;
+            //SVO.SBORKA3DREQ = pf3D.Required;
+            //SVO.SERIALREQ = pfSERIAL.Required;
+            //SVO.COMPOSITIONREQ = pfCOMPOSITION.Required;
+            //SVO.METALREQ = pfMETAL.Required;
 
             if (chbDeterm.Checked)
             {
@@ -470,7 +468,7 @@ namespace SummonManager
                 dbs.AddSummonView(SVO, UVO);
             }
             dtpApproxAtLoad = SVO.PASSDATE;
-            wpNameView1.Init(SVO.IDWPNAME);
+            wpNameView1.Init(SVO.IDWPNAME, SVO.WPTYPE, UVO, SVO);
 
         }
 

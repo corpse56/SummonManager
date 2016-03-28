@@ -128,8 +128,8 @@ namespace SummonManager
             tbDELIVERY.Text = SVO.DELIVERY;
             tbQUANTITY.Value = SVO.QUANTITY;
             tbSHIPPING.Text = SVO.SHIPPING;
-            tbTECHREQPATH.Text = SVO.TECHREQPATH.Substring(SVO.TECHREQPATH.LastIndexOf("\\") + 1);
-            tbTECHREQPATH.Tag = SVO.TECHREQPATH;
+            //tbTECHREQPATH.Text = SVO.TECHREQPATH.Substring(SVO.TECHREQPATH.LastIndexOf("\\") + 1);
+            //tbTECHREQPATH.Tag = SVO.TECHREQPATH;
             dtpCREATED.Value = SVO.CREATED;
             dtpPTIME.Value = SVO.PTIME;
             tbPAYSTATUS.Text = SVO.PAYSTATUS;
@@ -144,15 +144,13 @@ namespace SummonManager
                 dtpAPPROX.Enabled = true;
                 dtpAPPROX.Value = (DateTime)SVO.PASSDATE;
             }
-            UIProc ui = new UIProc();
-            ui.LoadExtCables(dgv, this.IDSUMMON.ToString());
 
             summonNotes1.Init(SVO.ID, UVO, SVO);
             summonNotes1.Reload();
 
             //summonTransfer1.Init(SVO, UVO, this);
 
-            pathFileds1.Init(SVO, UVO);
+            //pathFileds1.Init(SVO, UVO);
             //pfSHILD.Init(SVO.SHILD, SVO.SHILDREQ, false, true, false);
             //pfPLANKA.Init(SVO.PLANKA, SVO.PLANKAREQ, false, true, false);
             //pf3D.Init(SVO.SBORKA3D, SVO.SBORKA3DREQ, false, true, false);
@@ -218,26 +216,26 @@ namespace SummonManager
                 SVO.SISP = true;
             else
                 SVO.SISP = false;
-            SVO.TECHREQPATH = tbTECHREQPATH.Tag.ToString();
+            //SVO.TECHREQPATH = tbTECHREQPATH.Tag.ToString();
             //SVO.WPNAME = cbWPNAME.Text;
             //SVO.IDWPNAME = (int)cbWPNAME.SelectedValue;
             SVO.IDACCEPT = (int)cbAccept.SelectedValue;
             SVO.IDPACKING = (int)cbPacking.SelectedValue;
             SVO.IDMOUNTINGKIT = (int)cbMountingKit.SelectedValue;
             SVO.VIEWED = true;
-            SVO.SHILD = pfSHILD.FullPath;
-            SVO.PLANKA = pfPLANKA.FullPath;
-            SVO.SBORKA3D = pf3D.FullPath;
-            SVO.ZHGUT = pfZHGUT.FullPath;
-            SVO.SERIAL = pfSERIAL.FullPath;
-            SVO.METAL = pfMETAL.FullPath;
-            SVO.COMPOSITION = pfCOMPOSITION.FullPath;
-            SVO.SHILDREQ = pfSHILD.Required;
-            SVO.PLANKAREQ = pfPLANKA.Required;
-            SVO.SBORKA3DREQ = pf3D.Required;
-            SVO.SERIALREQ = pfSERIAL.Required;
-            SVO.COMPOSITIONREQ = pfCOMPOSITION.Required;
-            SVO.METALREQ = pfMETAL.Required;
+            //SVO.SHILD = pfSHILD.FullPath;
+            //SVO.PLANKA = pfPLANKA.FullPath;
+            //SVO.SBORKA3D = pf3D.FullPath;
+            //SVO.ZHGUT = pfZHGUT.FullPath;
+            //SVO.SERIAL = pfSERIAL.FullPath;
+            //SVO.METAL = pfMETAL.FullPath;
+            //SVO.COMPOSITION = pfCOMPOSITION.FullPath;
+            //SVO.SHILDREQ = pfSHILD.Required;
+            //SVO.PLANKAREQ = pfPLANKA.Required;
+            //SVO.SBORKA3DREQ = pf3D.Required;
+            //SVO.SERIALREQ = pfSERIAL.Required;
+            //SVO.COMPOSITIONREQ = pfCOMPOSITION.Required;
+            //SVO.METALREQ = pfMETAL.Required;
 
 
             if (chbDeterm.Checked)
@@ -331,7 +329,7 @@ namespace SummonManager
             }
             dbs.AddSummonView(SVO, UVO);
             dtpApproxAtLoad = SVO.PASSDATE;
-            wpNameView1.Init(SVO.IDWPNAME);
+            wpNameView1.Init(SVO.IDWPNAME, SVO.WPTYPE, UVO, SVO);
 
         }
         private DateTime? dtpApproxAtLoad;
@@ -358,12 +356,7 @@ namespace SummonManager
             tbTECHREQPATH.ForeColor = Color.Black;
         }
 
-        private void bAddPrivateNote_Click(object sender, EventArgs e)
-        {
-            fEditPrivateNote fepn = new fEditPrivateNote(SVO.ID, UVO.id);
-            fepn.ShowDialog();
-
-        }
+       
 
         private void tbTECHREQPATH_Click(object sender, EventArgs e)
         {

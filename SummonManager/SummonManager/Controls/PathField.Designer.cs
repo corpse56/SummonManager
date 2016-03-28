@@ -103,8 +103,8 @@
 
         public System.Windows.Forms.Button bPathDel;
         public System.Windows.Forms.Button bPath;
-        private System.Windows.Forms.TextBox tbPath;
         private System.Windows.Forms.CheckBox chRequired;
+        public System.Windows.Forms.TextBox tbPath;
 
 
     }

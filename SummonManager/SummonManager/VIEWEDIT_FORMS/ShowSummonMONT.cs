@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
+using SummonManager.CLASSES;
 
 namespace SummonManager
 {
@@ -173,8 +174,8 @@ namespace SummonManager
             tbDELIVERY.Text = SVO.DELIVERY;
             tbQUANTITY.Value = SVO.QUANTITY;
             tbSHIPPING.Text = SVO.SHIPPING;
-            tbTECHREQPATH.Text = SVO.TECHREQPATH.Substring(SVO.TECHREQPATH.LastIndexOf("\\") + 1);
-            tbTECHREQPATH.Tag = SVO.TECHREQPATH;
+            //tbTECHREQPATH.Text = SVO.TECHREQPATH.Substring(SVO.TECHREQPATH.LastIndexOf("\\") + 1);
+            //tbTECHREQPATH.Tag = SVO.TECHREQPATH;
             dtpCREATED.Value = SVO.CREATED;
             dtpPTIME.Value = SVO.PTIME;
             tbPAYSTATUS.Text = SVO.PAYSTATUS;
@@ -192,19 +193,15 @@ namespace SummonManager
             tbStatus.Text = SVO.STATUSNAME;
             tbSubStatus.Text = SVO.SUBSTATUSNAME;
 
-            //LoadExtCables();
-            UIProc ui = new UIProc();
-            ui.LoadExtCables(dgv, this.IDSUMMON.ToString());
-
             summonNotes1.Init(SVO.ID, UVO, SVO);
             summonNotes1.Reload();
 
-            if (SVO.WPNAMEVO.IDCat == 4)
+            if (SVO.ProductVO.GetProductType() == WPTYPE.CABLELIST)
                 summonTransfer2.Visible = false;
             summonTransfer1.Init(SVO, UVO, this);
             summonTransfer2.InitSub(SVO, UVO, this);
 
-            pathFileds1.Init(SVO, UVO);
+            //pathFileds1.Init(SVO, UVO);
             //pfSHILD.Init(SVO.SHILD, SVO.SHILDREQ, false, true, false);
             //pfPLANKA.Init(SVO.PLANKA, SVO.PLANKAREQ, false, true, false);
             //pf3D.Init(SVO.SBORKA3D, SVO.SBORKA3DREQ, false, true, false);
@@ -255,7 +252,7 @@ namespace SummonManager
                 SVO.SISP = true;
             else
                 SVO.SISP = false;
-            SVO.TECHREQPATH = tbTECHREQPATH.Tag.ToString();
+            //SVO.TECHREQPATH = tbTECHREQPATH.Tag.ToString();
             //SVO.WPNAME = cbWPNAME.Text;
             //SVO.IDWPNAME = (int)cbWPNAME.SelectedValue;
             SVO.IDACCEPT = (int)cbAccept.SelectedValue;
@@ -344,7 +341,8 @@ namespace SummonManager
                 dbs.SetViewed(this.IDSUMMON);
             }
             dbs.AddSummonView(SVO, UVO);
-            wpNameView1.Init(SVO.IDWPNAME);
+            wpNameView1.Init(SVO.IDWPNAME, SVO.WPTYPE, UVO, SVO);
+            ;
 
         }
 

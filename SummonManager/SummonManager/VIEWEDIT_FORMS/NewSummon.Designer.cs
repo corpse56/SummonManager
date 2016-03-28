@@ -480,7 +480,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Добавление нового извещения";
             this.Load += new System.EventHandler(this.NewSummon_Load);
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.NewSummon_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.tbQUANTITY)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

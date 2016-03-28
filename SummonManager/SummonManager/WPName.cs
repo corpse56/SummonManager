@@ -45,9 +45,6 @@ namespace SummonManager
                 bDelete.Visible = false;
                 bEditCategory.Visible = false;
                 bEditSubCategory.Visible = false;
-                bArchive.Visible = false;
-                bArcShow.Visible = false;
-                //cbPRODUCTTYPE.Enabled = false;
             }
             else
             {
@@ -207,8 +204,6 @@ namespace SummonManager
                     bEdit.Enabled = true;
                     bClone.Enabled = false;
                     bDelete.Enabled = false;
-                    bArchive.Enabled = false;
-                    bArcShow.Enabled = false;
                     bEditCategory.Enabled = false;
                     bEditSubCategory.Enabled = false;
                     bView.Enabled = true;
@@ -219,8 +214,6 @@ namespace SummonManager
                     bEdit.Enabled = false;
                     bClone.Enabled = false;
                     bDelete.Enabled = false;
-                    bArchive.Enabled = false;
-                    bArcShow.Enabled = false;
                     bEditCategory.Enabled = false;
                     bEditSubCategory.Enabled = false;
                     bView.Enabled = true;
@@ -307,48 +300,9 @@ namespace SummonManager
         }
 
 
-        private void bArchive_Click(object sender, EventArgs e)
-        {
-            int cat = (int)cbCAT.SelectedValue;
-            if (dgWP.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Выберите строку!");
-                return;
-            }
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "All files (*.*)|*.*";
-            dialog.InitialDirectory = @"c:\";
-            dialog.Title = "Перед архивированием выберите новый состав изделия!";
-            dialog.Multiselect = false;
-            if (dialog.ShowDialog() == DialogResult.OK)
-            {
-                WPNameVO wpVO = WPNameVO.WPNameVOByID((int)dgWP.SelectedRows[0].Cells["ID"].Value);
-                DBCOMPARC dbarc = new DBCOMPARC();
-                dbarc.AddNew(wpVO, dialog.FileName);
-                MessageBox.Show("Состав изделия успешно заархивирован!");
-                DBWPName dbwp = new DBWPName();
-                dgWP.DataSource = dbwp.GetAllWPNames();
-                ShowDGV();
-                cbCAT.SelectedValue = cat;
-            }
-            else
-            {
-                return;
-            }
 
-        }
 
-        private void bArcShow_Click(object sender, EventArgs e)
-        {
-            if (dgWP.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Выберите строку!");
-                return;
-            }
-
-            WPCOMPOSITIONARCHIVE arc = new WPCOMPOSITIONARCHIVE(dgWP.SelectedRows[0].Cells["ID"].Value.ToString());
-            arc.ShowDialog();
-        }
+       
 
         private void bEditCategory_Click(object sender, EventArgs e)//редактировать категории
         {

@@ -47,7 +47,6 @@
             this.пользователиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.наименованиеИзделияToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.упаковкаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.внешниеКабелиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.статистикаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.общаяПродолжительностьПребыванияИзвещенияПоОтделамToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -201,8 +200,7 @@
             this.заказчикиToolStripMenuItem,
             this.пользователиToolStripMenuItem,
             this.наименованиеИзделияToolStripMenuItem,
-            this.упаковкаToolStripMenuItem,
-            this.внешниеКабелиToolStripMenuItem});
+            this.упаковкаToolStripMenuItem});
             this.справочникиToolStripMenuItem.Name = "справочникиToolStripMenuItem";
             this.справочникиToolStripMenuItem.Size = new System.Drawing.Size(200, 22);
             this.справочникиToolStripMenuItem.Text = "Справочники";
@@ -210,37 +208,30 @@
             // заказчикиToolStripMenuItem
             // 
             this.заказчикиToolStripMenuItem.Name = "заказчикиToolStripMenuItem";
-            this.заказчикиToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.заказчикиToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.заказчикиToolStripMenuItem.Text = "Заказчики";
             this.заказчикиToolStripMenuItem.Click += new System.EventHandler(this.заказчикиToolStripMenuItem_Click);
             // 
             // пользователиToolStripMenuItem
             // 
             this.пользователиToolStripMenuItem.Name = "пользователиToolStripMenuItem";
-            this.пользователиToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.пользователиToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.пользователиToolStripMenuItem.Text = "Пользователи";
             this.пользователиToolStripMenuItem.Click += new System.EventHandler(this.пользователиToolStripMenuItem_Click);
             // 
             // наименованиеИзделияToolStripMenuItem
             // 
             this.наименованиеИзделияToolStripMenuItem.Name = "наименованиеИзделияToolStripMenuItem";
-            this.наименованиеИзделияToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.наименованиеИзделияToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.наименованиеИзделияToolStripMenuItem.Text = "Изделия";
             this.наименованиеИзделияToolStripMenuItem.Click += new System.EventHandler(this.наименованиеИзделияToolStripMenuItem_Click);
             // 
             // упаковкаToolStripMenuItem
             // 
             this.упаковкаToolStripMenuItem.Name = "упаковкаToolStripMenuItem";
-            this.упаковкаToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
+            this.упаковкаToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.упаковкаToolStripMenuItem.Text = "Упаковка";
             this.упаковкаToolStripMenuItem.Click += new System.EventHandler(this.упаковкаToolStripMenuItem_Click);
-            // 
-            // внешниеКабелиToolStripMenuItem
-            // 
-            this.внешниеКабелиToolStripMenuItem.Name = "внешниеКабелиToolStripMenuItem";
-            this.внешниеКабелиToolStripMenuItem.Size = new System.Drawing.Size(167, 22);
-            this.внешниеКабелиToolStripMenuItem.Text = "Внешние кабели";
-            this.внешниеКабелиToolStripMenuItem.Click += new System.EventHandler(this.ExtCableToolStripMenuItem_Click);
             // 
             // статистикаToolStripMenuItem
             // 
@@ -607,7 +598,6 @@
         private System.Windows.Forms.ToolStripMenuItem SearchToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStripMenuItem обновитьToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem внешниеКабелиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem статистикаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem общаяПродолжительностьПребыванияИзвещенияПоОтделамToolStripMenuItem;
         private System.Windows.Forms.Timer timer1;

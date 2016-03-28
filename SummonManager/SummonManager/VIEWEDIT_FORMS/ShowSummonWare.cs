@@ -120,8 +120,8 @@ namespace SummonManager
             tbDELIVERY.Text = SVO.DELIVERY;
             tbQUANTITY.Value = SVO.QUANTITY;
             tbSHIPPING.Text = SVO.SHIPPING;
-            tbTECHREQPATH.Text = SVO.TECHREQPATH.Substring(SVO.TECHREQPATH.LastIndexOf("\\") + 1);
-            tbTECHREQPATH.Tag = SVO.TECHREQPATH;
+            //tbTECHREQPATH.Text = SVO.TECHREQPATH.Substring(SVO.TECHREQPATH.LastIndexOf("\\") + 1);
+            //tbTECHREQPATH.Tag = SVO.TECHREQPATH;
             dtpCREATED.Value = SVO.CREATED;
             dtpPTIME.Value = SVO.PTIME;
             tbPAYSTATUS.Text = SVO.PAYSTATUS;
@@ -136,15 +136,13 @@ namespace SummonManager
                 dtpAPPROX.Enabled = true;
                 dtpAPPROX.Value = (DateTime)SVO.PASSDATE;
             }
-            UIProc ui = new UIProc();
-            ui.LoadExtCables(dgv, this.IDSUMMON.ToString());
 
             summonNotes1.Init(SVO.ID, UVO, SVO);
             summonNotes1.Reload();
 
             summonTransfer1.Init(SVO, UVO, this);
 
-            pathFileds1.Init(SVO, UVO);
+            //pathFileds1.Init(SVO, UVO);
             //pfSHILD.Init(SVO.SHILD, SVO.SHILDREQ, false, true, false);
             //pfPLANKA.Init(SVO.PLANKA, SVO.PLANKAREQ, false, true, false);
             //pf3D.Init(SVO.SBORKA3D, SVO.SBORKA3DREQ, false, true, false);
@@ -210,26 +208,26 @@ namespace SummonManager
                 SVO.SISP = true;
             else
                 SVO.SISP = false;
-            SVO.TECHREQPATH = tbTECHREQPATH.Tag.ToString();
+           // SVO.TECHREQPATH = tbTECHREQPATH.Tag.ToString();
             //SVO.WPNAME = cbWPNAME.Text;
             //SVO.IDWPNAME = (int)cbWPNAME.SelectedValue;
             SVO.IDACCEPT = (int)cbAccept.SelectedValue;
             SVO.IDPACKING = (int)cbPacking.SelectedValue;
             SVO.IDMOUNTINGKIT = (int)cbMountingKit.SelectedValue;
             SVO.VIEWED = true;
-            SVO.SHILD = pfSHILD.FullPath;//pathFileds1.bSHILDOpen.Tag.ToString();
-            SVO.PLANKA = pfPLANKA.FullPath;//pathFileds1.bPLANKAOpen.Tag.ToString();
-            SVO.SBORKA3D = pf3D.FullPath;//pathFileds1.b3DOpen.Tag.ToString();
-            SVO.ZHGUT = pfZHGUT.FullPath;//pathFileds1.bZHGUTOpen.Tag.ToString();
-            SVO.SERIAL = pfSERIAL.FullPath;//pathFileds1.bSERIALOpen.Tag.ToString();
-            SVO.METAL = pfMETAL.FullPath;//pathFileds1.bMETALOpen.Tag.ToString();
-            SVO.COMPOSITION = pfCOMPOSITION.FullPath;//pathFileds1.bCOMPOSITIONOpen.Tag.ToString();
-            SVO.SHILDREQ = pfSHILD.Required;//pathFileds1.chSHILD.Checked;
-            SVO.PLANKAREQ = pfPLANKA.Required;//pathFileds1.chPLANKA.Checked;
-            SVO.SBORKA3DREQ = pf3D.Required;//pathFileds1.ch3D.Checked;
-            SVO.SERIALREQ = pfSERIAL.Required;//pathFileds1.chSERIAL.Checked;
-            SVO.COMPOSITIONREQ = pfCOMPOSITION.Required;//pathFileds1.chCOMPOSITION.Checked;
-            SVO.METALREQ = pfMETAL.Required;//pathFileds1.chMETAL.Checked;
+            //SVO.SHILD = pfSHILD.FullPath;//pathFileds1.bSHILDOpen.Tag.ToString();
+            //SVO.PLANKA = pfPLANKA.FullPath;//pathFileds1.bPLANKAOpen.Tag.ToString();
+            //SVO.SBORKA3D = pf3D.FullPath;//pathFileds1.b3DOpen.Tag.ToString();
+            //SVO.ZHGUT = pfZHGUT.FullPath;//pathFileds1.bZHGUTOpen.Tag.ToString();
+            //SVO.SERIAL = pfSERIAL.FullPath;//pathFileds1.bSERIALOpen.Tag.ToString();
+            //SVO.METAL = pfMETAL.FullPath;//pathFileds1.bMETALOpen.Tag.ToString();
+            //SVO.COMPOSITION = pfCOMPOSITION.FullPath;//pathFileds1.bCOMPOSITIONOpen.Tag.ToString();
+            //SVO.SHILDREQ = pfSHILD.Required;//pathFileds1.chSHILD.Checked;
+            //SVO.PLANKAREQ = pfPLANKA.Required;//pathFileds1.chPLANKA.Checked;
+            //SVO.SBORKA3DREQ = pf3D.Required;//pathFileds1.ch3D.Checked;
+            //SVO.SERIALREQ = pfSERIAL.Required;//pathFileds1.chSERIAL.Checked;
+            //SVO.COMPOSITIONREQ = pfCOMPOSITION.Required;//pathFileds1.chCOMPOSITION.Checked;
+            //SVO.METALREQ = pfMETAL.Required;//pathFileds1.chMETAL.Checked;
 
             if (chbDeterm.Checked)
             {
@@ -299,7 +297,8 @@ namespace SummonManager
             dbs.AddSummonView(SVO, UVO);
 
             dtpApproxAtLoad = SVO.PASSDATE;
-            wpNameView1.Init(SVO.IDWPNAME);
+            wpNameView1.Init(SVO.IDWPNAME, SVO.WPTYPE, UVO, SVO);
+            ;
 
         }
         private DateTime? dtpApproxAtLoad;

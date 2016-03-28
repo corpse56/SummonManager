@@ -82,8 +82,8 @@ namespace SummonManager
             this.SISP = VO.SISP;
             this.SISPNAME = VO.SISPNAME;
             this.STATUSNAME = VO.STATUSNAME;
-            this.TECHREQPATH = VO.TECHREQPATH;
-            this.WPNAME = VO.WPNAME;
+            this.TECHREQPATH = "NotImplemented";//VO.TECHREQPATH;
+            this.WPNAME = VO.ProductVO.GetName();
             this.PACKINGNAME = VO.PACKINGNAME;
             this.EXTCABLENAMES = VO.EXTCABLENAMES;
             this.MOUNTINGKITNAME = VO.MOUNTINGKITNAME;
