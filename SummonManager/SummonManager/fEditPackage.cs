@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using SummonManager.CLASSES;
+using SummonManager.CLASSES.IRole_namespace;
 
 namespace SummonManager
 {
@@ -14,8 +15,8 @@ namespace SummonManager
     {
         public WPTYPE WPT;
         public int IDWP;
-        UserVO UVO;
-        public fEditPackage(WPTYPE wpt, int idwp, UserVO uvo)
+        IRole UVO;
+        public fEditPackage(WPTYPE wpt, int idwp, IRole uvo)
         {
             InitializeComponent();
             this.WPT = wpt;

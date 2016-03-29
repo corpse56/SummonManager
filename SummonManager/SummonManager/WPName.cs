@@ -7,15 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using SummonManager.CLASSES;
+using SummonManager.CLASSES.IRole_namespace;
 
 namespace SummonManager
 {
     public partial class WPName : Form
     {
-        UserVO UVO;
+        IRole UVO;
         bool PICK = false;
         WPTYPE WPT;
-        public WPName(bool pick,UserVO uvo,WPTYPE wpt)
+        public WPName(bool pick, IRole uvo, WPTYPE wpt)
         {
             InitializeComponent();
             this.WPT = wpt;

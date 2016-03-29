@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using SummonManager.CLASSES;
+using SummonManager.CLASSES.IRole_namespace;
 
 namespace SummonManager
 {
@@ -23,7 +24,7 @@ namespace SummonManager
         //public static string ConnectionString = "Data Source=127.0.0.1;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
         public static string ConnectionString = "Data Source=127.0.0.1\\SQL2008R2;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
        // public static string ConnectionString = "Data Source=10.177.100.7,2301;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
-        public UserVO UVO;
+        public IRole UVO;
         public int PrivateNoteColor;
         public int RefreshTime;
         public static string ProgramVersion = "1.87";
@@ -369,61 +370,64 @@ namespace SummonManager
             DBSummon dbs = new DBSummon();
             SummonVO svo = dbs.GetSummonByIDS(dgSummon.SelectedRows[0].Cells["ids"].Value.ToString());
             PreviousState ps = new PreviousState(dgSummon,TStbs.Text);
-            switch (UVO.Role)
-            {
-                case Roles.Manager:
-                    ShowSummon ss = new ShowSummon(UVO,svo);
-                    ss.ShowDialog();
-                    break;
-                case Roles.Ozis:
-                    ShowSummonOZIS ssozis = new ShowSummonOZIS(svo.IDS, UVO,svo.ID);
-                    ssozis.ShowDialog();
-                    break;
-                case Roles.Prod:
-                    ShowSummonPROD ssprod = new ShowSummonPROD(svo.IDS, UVO,svo.ID);
-                    ssprod.ShowDialog();
-                    break;
-                case Roles.OTK:
-                    ShowSummonOTK ssotk = new ShowSummonOTK(svo.IDS, UVO,svo.ID);
-                    ssotk.ShowDialog();
-                    break;
-                case Roles.Ware:
-                    ShowSummonWare ssware = new ShowSummonWare(svo.IDS, UVO,svo.ID);
-                    ssware.ShowDialog();
-                    break;
-                case Roles.Logist:
-                    ShowSummonLOG ssLOG = new ShowSummonLOG(svo.IDS, UVO,svo.ID);
-                    ssLOG.ShowDialog();
-                    break;
-                case Roles.Director:
-                    ShowSummonDIR ssDIR = new ShowSummonDIR(svo.IDS, UVO,svo.ID);
-                    ssDIR.ShowDialog();
-                    break;
-                case Roles.Wsh:
-                    ShowSummonWSH ssWSH = new ShowSummonWSH(svo.IDS, UVO,svo.ID);
-                    ssWSH.ShowDialog();
-                    break;
-                case Roles.Admin:
-                    ShowSummonDIR ssadmin = new ShowSummonDIR(svo.IDS, UVO, svo.ID);
-                    ssadmin.ShowDialog();
-                    break;
-                case Roles.Montage:
-                    ShowSummonMONT ssmont = new ShowSummonMONT(svo.IDS, UVO, svo.ID);
-                    ssmont.ShowDialog();
-                    break;
-                case Roles.Constructor:
-                    ShowSummonCONSTR ssconstr = new ShowSummonCONSTR(svo.IDS, UVO, svo.ID);
-                    ssconstr.ShowDialog();
-                    break;
-                case Roles.Inzhener:
-                    ShowSummonINZHENER ssinzh = new ShowSummonINZHENER(svo.IDS, UVO, svo.ID);
-                    ssinzh.ShowDialog();
-                    break;
-                case Roles.Buhgalter:
-                    ShowSummonBUH ssbuh = new ShowSummonBUH(svo.IDS, UVO, svo.ID);
-                    ssbuh.ShowDialog();
-                    break;
-            }
+            ShowSummon ss = new ShowSummon(UVO, svo);
+            ss.ShowDialog();
+
+            //switch (UVO.Role)
+            //{
+            //    case Roles.Manager:
+            //        ShowSummon ss = new ShowSummon(UVO,svo);
+            //        ss.ShowDialog();
+            //        break;
+            //    case Roles.Ozis:
+            //        ShowSummonOZIS ssozis = new ShowSummonOZIS(svo.IDS, UVO,svo.ID);
+            //        ssozis.ShowDialog();
+            //        break;
+            //    case Roles.Prod:
+            //        ShowSummonPROD ssprod = new ShowSummonPROD(svo.IDS, UVO,svo.ID);
+            //        ssprod.ShowDialog();
+            //        break;
+            //    case Roles.OTK:
+            //        ShowSummonOTK ssotk = new ShowSummonOTK(svo.IDS, UVO,svo.ID);
+            //        ssotk.ShowDialog();
+            //        break;
+            //    case Roles.Ware:
+            //        ShowSummonWare ssware = new ShowSummonWare(svo.IDS, UVO,svo.ID);
+            //        ssware.ShowDialog();
+            //        break;
+            //    case Roles.Logist:
+            //        ShowSummonLOG ssLOG = new ShowSummonLOG(svo.IDS, UVO,svo.ID);
+            //        ssLOG.ShowDialog();
+            //        break;
+            //    case Roles.Director:
+            //        ShowSummonDIR ssDIR = new ShowSummonDIR(svo.IDS, UVO,svo.ID);
+            //        ssDIR.ShowDialog();
+            //        break;
+            //    case Roles.Wsh:
+            //        ShowSummonWSH ssWSH = new ShowSummonWSH(svo.IDS, UVO,svo.ID);
+            //        ssWSH.ShowDialog();
+            //        break;
+            //    case Roles.Admin:
+            //        ShowSummonDIR ssadmin = new ShowSummonDIR(svo.IDS, UVO, svo.ID);
+            //        ssadmin.ShowDialog();
+            //        break;
+            //    case Roles.Montage:
+            //        ShowSummonMONT ssmont = new ShowSummonMONT(svo.IDS, UVO, svo.ID);
+            //        ssmont.ShowDialog();
+            //        break;
+            //    case Roles.Constructor:
+            //        ShowSummonCONSTR ssconstr = new ShowSummonCONSTR(svo.IDS, UVO, svo.ID);
+            //        ssconstr.ShowDialog();
+            //        break;
+            //    case Roles.Inzhener:
+            //        ShowSummonINZHENER ssinzh = new ShowSummonINZHENER(svo.IDS, UVO, svo.ID);
+            //        ssinzh.ShowDialog();
+            //        break;
+            //    case Roles.Buhgalter:
+            //        ShowSummonBUH ssbuh = new ShowSummonBUH(svo.IDS, UVO, svo.ID);
+            //        ssbuh.ShowDialog();
+            //        break;
+            //}
             ReloadData();
             ps.Restore();
             PaintDG();

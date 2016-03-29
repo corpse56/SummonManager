@@ -7,13 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using SummonManager.CLASSES;
+using SummonManager.CLASSES.IRole_namespace;
 
 namespace SummonManager.Controls
 {
     public partial class PickWPName : UserControl
     {
-        UserVO UVO;
-        public PickWPName(UserVO UVO_)
+        IRole UVO;
+        public PickWPName(IRole UVO_)
         {
             InitializeComponent();
             this.UVO = UVO_;
@@ -22,7 +23,7 @@ namespace SummonManager.Controls
         {
             InitializeComponent();
         }
-        public void Init(UserVO uvo)
+        public void Init(IRole uvo)
         {
             this.UVO = uvo;
         }

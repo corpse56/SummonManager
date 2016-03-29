@@ -6,15 +6,16 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SummonManager.CLASSES.IRole_namespace;
 
 namespace SummonManager
 {
     public partial class SummonNotes : UserControl
     {
         public string ID = "0";
-        public UserVO UVO;
+        public IRole UVO;
         public SummonVO SVO;
-        public void Init(string ID_,UserVO UVO_,SummonVO SVO_)
+        public void Init(string ID_,IRole UVO_,SummonVO SVO_)
         {
             this.ID = ID_;
             this.UVO = UVO_;
@@ -45,6 +46,10 @@ namespace SummonManager
             dgNote.Columns["FIO"].Width = 90;
             dgNote.Columns["NOTE"].HeaderText = "Примечание";
             dgNote.Columns["NOTE"].Width = 260;
+            if (dgNote.RowCount >= 1)
+            {
+                dgNote.FirstDisplayedScrollingRowIndex = dgNote.RowCount - 1;
+            }
         }
 
         private void SummonNotes_Load(object sender, EventArgs e)
@@ -67,8 +72,6 @@ namespace SummonManager
             fAddNote fan = new fAddNote(this.ID,this.UVO.id);
             fan.ShowDialog();
             this.Reload();
-            DBSummon dbs = new DBSummon();
-            dbs.AddSummonView(SVO, UVO);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -82,6 +85,11 @@ namespace SummonManager
             fEditNote fen = new fEditNote(dgNote.SelectedRows[0].Cells["ID"].Value.ToString(),dgNote.SelectedRows[0].Cells["NOTE"].Value.ToString());
             fen.ShowDialog();
             Reload();
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+
         }
 
 

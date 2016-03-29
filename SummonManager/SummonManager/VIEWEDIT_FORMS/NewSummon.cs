@@ -7,15 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
+using SummonManager.CLASSES.IRole_namespace;
 
 namespace SummonManager
 {
     public partial class NewSummon : Form
     {
         private DBSummon dbs;
-        private UserVO UVO;
+        private IRole UVO;
         private int IDNEWSUMMON;
-        public NewSummon(UserVO uvo)
+        public NewSummon(IRole uvo)
         {
             InitializeComponent();
             this.UVO = uvo;

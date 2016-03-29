@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using SummonManager.CLASSES;
+using SummonManager.CLASSES.IRole_namespace;
 
 namespace SummonManager
 {
@@ -14,14 +15,14 @@ namespace SummonManager
     {
 
         SummonVO SVO;
-        UserVO UVO;
+        IRole UVO;
         Form FORM;
         bool sub = false;
         public SummonTransfer()
         {
             InitializeComponent();
         }
-        public void Init(SummonVO svo, UserVO uvo, Form form)
+        public void Init(SummonVO svo, IRole uvo, Form form)
         {
         //    InitializeComponent();
             this.SVO = svo;
@@ -40,7 +41,7 @@ namespace SummonManager
             //SetDefaults();
 
         }
-        internal void InitSub(SummonVO SVO, UserVO UVO, Form form)
+        internal void InitSub(SummonVO SVO, IRole UVO, Form form)
         {
             this.SVO = SVO;
             this.UVO = UVO;

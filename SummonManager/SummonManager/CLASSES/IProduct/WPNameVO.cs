@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using SummonManager.Controls;
+using SummonManager.CLASSES.IRole_namespace;
 
 namespace SummonManager.CLASSES
 {
@@ -100,12 +101,17 @@ namespace SummonManager.CLASSES
         {
             return this.ID;
         }
-        void IProduct.ViewOnly(UserVO UVO)
+        void IProduct.ViewOnly(IRole UVO)
         {
             NewWPN f = new NewWPN(this, "VIEWONLY", UVO);
             f.ShowDialog();
         }
-        void IProduct.FillTableLayoutPanel(TableLayoutPanel TLP, UserVO UVO)
+        void IProduct.ViewEdit(IRole UVO)
+        {
+            NewWPN f = new NewWPN(this, "EDIT", UVO);
+            f.ShowDialog();
+        }
+        void IProduct.FillTableLayoutPanel(TableLayoutPanel TLP, IRole UVO)
         {
             //===============================================================Inzhener
             WPNameVO wp = (WPNameVO)this;

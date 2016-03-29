@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
+using SummonManager.CLASSES.IRole_namespace;
 
 namespace SummonManager
 {
@@ -16,8 +17,8 @@ namespace SummonManager
         private SummonVO SVO;
         private string IDS;
         private string IDSUMMON;
-        private UserVO UVO;
-        public ShowSummonLOG(string ids,UserVO uvo,string idsummon)
+        private IRole UVO;
+        public ShowSummonLOG(string ids, IRole uvo, string idsummon)
         {
             InitializeComponent();
             this.UVO = uvo;
@@ -295,7 +296,6 @@ namespace SummonManager
                 
                 dbs.SetViewed(this.IDSUMMON);
             }
-            dbs.AddSummonView(SVO, UVO);
 
             dtpApproxAtLoad = SVO.PASSDATE;
             wpNameView1.Init(SVO.IDWPNAME, SVO.WPTYPE, UVO, SVO);

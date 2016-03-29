@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using SummonManager.CLASSES;
 using SummonManager.Controls;
+using SummonManager.CLASSES.IRole_namespace;
 
 namespace SummonManager
 {
@@ -18,12 +19,12 @@ namespace SummonManager
         //NEW - форма переделывается под добавление нового изделия; EDIT - форма переделывается под редактирование; NEWCLONE - добавление на основе существующего
         private string AccessMode = "";
 
-        UserVO UVO;
+        IRole UVO;
         bool RequireVisible = true;
         bool RequireEnabled = false;
 
 
-        public NewZHGUT(ZhgutVO wp, string accessmode_, UserVO uvo)
+        public NewZHGUT(ZhgutVO wp, string accessmode_, IRole uvo)
         {
             InitializeComponent();
 

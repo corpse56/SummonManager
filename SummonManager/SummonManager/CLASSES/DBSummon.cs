@@ -5,6 +5,7 @@ using System.Text;
 using System.Data;
 using System.Data.SqlTypes;
 using SummonManager.CLASSES;
+using SummonManager.CLASSES.IRole_namespace;
 
 namespace SummonManager
 {
@@ -38,14 +39,14 @@ namespace SummonManager
             return nextIDS + "-"+DateTime.Now.ToString("yy");
         }
 
-        internal void AddNewSummon(SummonVO SVO,UserVO UVO)
+        internal void AddNewSummon(SummonVO SVO, IRole UVO)
         {
             this.SaveSummon(SVO);
             DBCurStatus dbcs = new DBCurStatus();
             dbcs.AddNewCurstatus(SVO.IDS, UVO.id);
         }
 
-        internal void SaveNewSummon(SummonVO SVO,UserVO UVO)
+        internal void SaveNewSummon(SummonVO SVO, IRole UVO)
         {
             this.SaveSummon(SVO);
             DBCurStatus dbcs = new DBCurStatus();
@@ -441,12 +442,12 @@ namespace SummonManager
 
 
 
-        internal void AddSummonView(SummonVO SVO, UserVO UVO)
+        internal void AddSummonView(SummonVO SVO, IRole UVO)
         {
             DA.InsertCommand = new System.Data.SqlClient.SqlCommand();
             DA.InsertCommand.Connection = new System.Data.SqlClient.SqlConnection(MainF.ConnectionString);
-            DA.InsertCommand.CommandText = "insert into " + Base.BaseName + "..SUMMONVIEWS (IDSUMMON,DATEVIEWED,IDUSER) values "+
-                "("+SVO.ID+",getdate(),"+UVO.id+") ";
+            DA.InsertCommand.CommandText = "insert into " + Base.BaseName + "..SUMMONVIEWS (IDSUMMON,DATEVIEWED,IDUSER) values " +
+                "(" + SVO.ID + ",getdate()," + UVO.id + ") ";
             DA.InsertCommand.Connection.Open();
             DA.InsertCommand.ExecuteNonQuery();
             DA.InsertCommand.Connection.Close();

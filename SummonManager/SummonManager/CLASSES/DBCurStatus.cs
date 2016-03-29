@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data;
 using SummonManager.CLASSES;
+using SummonManager.CLASSES.IRole_namespace;
 
 namespace SummonManager
 {
@@ -145,7 +146,7 @@ namespace SummonManager
         //}
         public int DefaultStatus = 0;
         public int DefaultSubStatus = 0;
-        internal object GetAllStatuses(UserVO UVO, SummonVO SVO)
+        internal object GetAllStatuses(IRole UVO, SummonVO SVO)
         {
             DS = new DataSet();
             switch (UVO.Role)
@@ -291,7 +292,7 @@ namespace SummonManager
         }
 
 
-        internal object GetAllSubStatuses(UserVO UVO, SummonVO SVO)
+        internal object GetAllSubStatuses(IRole UVO, SummonVO SVO)
         {
             DS = new DataSet();
             switch (UVO.Role)

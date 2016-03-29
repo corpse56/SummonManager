@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SummonManager.CLASSES.IRole_namespace;
 
 namespace SummonManager.CLASSES
 {
@@ -11,9 +12,10 @@ namespace SummonManager.CLASSES
         string GetName();
         WPTYPE GetProductType();
         int GetID();
-        void ViewOnly(UserVO UVO);
+        void ViewOnly(IRole UVO);
+        void ViewEdit(IRole UVO);
 
-        void FillTableLayoutPanel(TableLayoutPanel TLP,UserVO UVO);
+        void FillTableLayoutPanel(TableLayoutPanel TLP, IRole UVO);
     }
     class ProductFactory
     {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
+using SummonManager.CLASSES.IRole_namespace;
 
 namespace SummonManager
 {
@@ -12,7 +13,7 @@ namespace SummonManager
         {
 
         }
-        public DataTable GetMainView(Roles role,UserVO uvo)
+        public DataTable GetMainView(Roles role,IRole uvo)
         {
             //DS = new DataSet();
             switch (role)
@@ -88,7 +89,7 @@ namespace SummonManager
             int i = DA.Fill(DS, "t");
             return DS.Tables["t"];
         }
-        internal object GetMainViewMy(Roles roles,UserVO uvo)
+        internal object GetMainViewMy(Roles roles, IRole uvo)
         {
             switch (roles)
             {

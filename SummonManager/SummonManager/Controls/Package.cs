@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using SummonManager.CLASSES;
 using SummonManager.Properties;
+using SummonManager.CLASSES.IRole_namespace;
 
 namespace SummonManager.Controls
 {
@@ -15,7 +16,7 @@ namespace SummonManager.Controls
     {
         WPTYPE WPT;
         int IDWP;
-        UserVO UVO;
+        IRole UVO;
         public Package()
         {
             InitializeComponent();
@@ -80,7 +81,7 @@ namespace SummonManager.Controls
                 }
             }
         }
-        public void Init(WPTYPE wpt, int idwp, bool require, bool enabled, bool require_visible, bool require_enabled, Roles resprole, Roles currole,UserVO uvo)
+        public void Init(WPTYPE wpt, int idwp, bool require, bool enabled, bool require_visible, bool require_enabled, Roles resprole, Roles currole, IRole uvo)
         {
             this.ResposibleRole = resprole;
             this.CurrentRole = currole;

@@ -6,14 +6,15 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SummonManager.CLASSES.IRole_namespace;
 
 namespace SummonManager
 {
     public partial class fAdminChangeStatus : Form
     {
         SummonVO SVO;
-        UserVO UVO;
-        public fAdminChangeStatus(SummonVO svo, UserVO uvo)
+        IRole UVO;
+        public fAdminChangeStatus(SummonVO svo, IRole uvo)
         {
             InitializeComponent();
             

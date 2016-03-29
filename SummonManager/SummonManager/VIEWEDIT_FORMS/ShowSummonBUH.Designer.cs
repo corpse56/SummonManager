@@ -554,7 +554,7 @@ namespace SummonManager
             // summonNotes1
             // 
             this.summonNotes1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.summonNotes1.Location = new System.Drawing.Point(618, 15);
+            this.summonNotes1.Location = new System.Drawing.Point(621, 9);
             this.summonNotes1.Margin = new System.Windows.Forms.Padding(4);
             this.summonNotes1.Name = "summonNotes1";
             this.summonNotes1.Size = new System.Drawing.Size(550, 694);
@@ -634,8 +634,11 @@ namespace SummonManager
             // 
             // pfMETAL
             // 
+            this.pfMETAL.bDelVisible = false;
+            this.pfMETAL.bPathVisible = false;
             this.pfMETAL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfMETAL.FullPath = "<нет>";
+            this.pfMETAL.ISPATH = false;
             this.pfMETAL.Location = new System.Drawing.Point(198, 759);
             this.pfMETAL.Margin = new System.Windows.Forms.Padding(4);
             this.pfMETAL.Name = "pfMETAL";
@@ -645,8 +648,11 @@ namespace SummonManager
             // 
             // pfCOMPOSITION
             // 
+            this.pfCOMPOSITION.bDelVisible = false;
+            this.pfCOMPOSITION.bPathVisible = false;
             this.pfCOMPOSITION.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfCOMPOSITION.FullPath = "<нет>";
+            this.pfCOMPOSITION.ISPATH = false;
             this.pfCOMPOSITION.Location = new System.Drawing.Point(198, 731);
             this.pfCOMPOSITION.Margin = new System.Windows.Forms.Padding(4);
             this.pfCOMPOSITION.Name = "pfCOMPOSITION";
@@ -656,8 +662,11 @@ namespace SummonManager
             // 
             // pfSERIAL
             // 
+            this.pfSERIAL.bDelVisible = false;
+            this.pfSERIAL.bPathVisible = false;
             this.pfSERIAL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfSERIAL.FullPath = "<нет>";
+            this.pfSERIAL.ISPATH = false;
             this.pfSERIAL.Location = new System.Drawing.Point(198, 703);
             this.pfSERIAL.Margin = new System.Windows.Forms.Padding(4);
             this.pfSERIAL.Name = "pfSERIAL";
@@ -667,8 +676,11 @@ namespace SummonManager
             // 
             // pfZHGUT
             // 
+            this.pfZHGUT.bDelVisible = false;
+            this.pfZHGUT.bPathVisible = false;
             this.pfZHGUT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfZHGUT.FullPath = "<нет>";
+            this.pfZHGUT.ISPATH = false;
             this.pfZHGUT.Location = new System.Drawing.Point(198, 675);
             this.pfZHGUT.Margin = new System.Windows.Forms.Padding(4);
             this.pfZHGUT.Name = "pfZHGUT";
@@ -678,8 +690,11 @@ namespace SummonManager
             // 
             // pf3D
             // 
+            this.pf3D.bDelVisible = false;
+            this.pf3D.bPathVisible = false;
             this.pf3D.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pf3D.FullPath = "<нет>";
+            this.pf3D.ISPATH = false;
             this.pf3D.Location = new System.Drawing.Point(199, 647);
             this.pf3D.Margin = new System.Windows.Forms.Padding(4);
             this.pf3D.Name = "pf3D";
@@ -689,8 +704,11 @@ namespace SummonManager
             // 
             // pfPLANKA
             // 
+            this.pfPLANKA.bDelVisible = false;
+            this.pfPLANKA.bPathVisible = false;
             this.pfPLANKA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfPLANKA.FullPath = "<нет>";
+            this.pfPLANKA.ISPATH = false;
             this.pfPLANKA.Location = new System.Drawing.Point(198, 616);
             this.pfPLANKA.Margin = new System.Windows.Forms.Padding(4);
             this.pfPLANKA.Name = "pfPLANKA";
@@ -700,8 +718,11 @@ namespace SummonManager
             // 
             // pfSHILD
             // 
+            this.pfSHILD.bDelVisible = false;
+            this.pfSHILD.bPathVisible = false;
             this.pfSHILD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfSHILD.FullPath = "<нет>";
+            this.pfSHILD.ISPATH = false;
             this.pfSHILD.Location = new System.Drawing.Point(198, 589);
             this.pfSHILD.Margin = new System.Windows.Forms.Padding(4);
             this.pfSHILD.Name = "pfSHILD";

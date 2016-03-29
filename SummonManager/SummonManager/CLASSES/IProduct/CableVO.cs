@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SummonManager.CLASSES.IRole_namespace;
 
 namespace SummonManager.CLASSES
 {
@@ -42,12 +43,18 @@ namespace SummonManager.CLASSES
         {
             return this.ID;
         }
-        void IProduct.ViewOnly(UserVO UVO)
+        void IProduct.ViewOnly(IRole UVO)
         {
             NewCABLE f = new NewCABLE(this, "VIEWONLY", UVO);
             f.ShowDialog();
         }
-        void IProduct.FillTableLayoutPanel(TableLayoutPanel TLP, UserVO UVO)
+        void IProduct.ViewEdit(IRole UVO)
+        {
+            NewCABLE f = new NewCABLE(this, "EDIT", UVO);
+            f.ShowDialog();
+        }
+
+        void IProduct.FillTableLayoutPanel(TableLayoutPanel TLP, IRole UVO)
         {
         }
 

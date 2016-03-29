@@ -7,14 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using SummonManager.CLASSES;
+using SummonManager.CLASSES.IRole_namespace;
 
 namespace SummonManager
 {
     public partial class PickIntoPackage : Form
     {
-        UserVO UVO;
+        IRole UVO;
         WPTYPE WPT;
-        public PickIntoPackage(UserVO uvo, WPTYPE wpt)
+        public PickIntoPackage(IRole uvo, WPTYPE wpt)
         {
             InitializeComponent();
             this.WPT = wpt;

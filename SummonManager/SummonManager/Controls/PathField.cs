@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using SummonManager.Properties;
 using System.IO;
+using SummonManager.CLASSES.IRole_namespace;
 
 namespace SummonManager.Controls
 {

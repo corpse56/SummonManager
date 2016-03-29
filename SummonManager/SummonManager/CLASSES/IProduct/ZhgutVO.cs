@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SummonManager.CLASSES.IRole_namespace;
 
 namespace SummonManager.CLASSES
 {
@@ -36,12 +37,17 @@ namespace SummonManager.CLASSES
         {
             return this.ID;
         }
-        void IProduct.ViewOnly(UserVO UVO)
+        void IProduct.ViewOnly(IRole UVO)
         {
             NewZHGUT f = new NewZHGUT(this, "VIEWONLY", UVO);
             f.ShowDialog();
         }
-        void IProduct.FillTableLayoutPanel(TableLayoutPanel TLP,UserVO UVO)
+        void IProduct.ViewEdit(IRole UVO)
+        {
+            NewZHGUT f = new NewZHGUT(this, "EDIT", UVO);
+            f.ShowDialog();
+        }
+        void IProduct.FillTableLayoutPanel(TableLayoutPanel TLP, IRole UVO)
         {
         }
 

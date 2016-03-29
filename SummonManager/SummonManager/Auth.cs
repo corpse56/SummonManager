@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Microsoft.Win32;
+using SummonManager.CLASSES.IRole_namespace;
 
 namespace SummonManager
 {
     public partial class Auth : Form
     {
-        public UserVO UVO;
+        public IRole UVO;
         public Auth()
         {
             InitializeComponent();

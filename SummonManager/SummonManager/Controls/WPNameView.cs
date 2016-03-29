@@ -7,13 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using SummonManager.CLASSES;
+using SummonManager.CLASSES.IRole_namespace;
 
 namespace SummonManager.Controls
 {
     public partial class WPNameView : UserControl
     {
         SummonVO SVO;
-        UserVO UVO;
+        IRole UVO;
         public WPNameView()
         {
             //SVO = svo;
@@ -27,14 +28,14 @@ namespace SummonManager.Controls
             SVO.ProductVO.ViewOnly(UVO);
 
         }
-        public void Init(int ID,WPTYPE WPT, UserVO uvo,SummonVO svo)
+        public void Init(int ID, WPTYPE WPT, IRole uvo, SummonVO svo)
         {
             PickedProduct = ProductFactory.Create(ID, WPT);
             textBox1.Text = PickedProduct.GetName();
             this.UVO = uvo;
             this.SVO = svo;
         }
-        public void Init(int ID, string WPT, UserVO uvo, SummonVO svo)
+        public void Init(int ID, string WPT, IRole uvo, SummonVO svo)
         {
             PickedProduct = ProductFactory.Create(ID, WPT);
             textBox1.Text = PickedProduct.GetName();

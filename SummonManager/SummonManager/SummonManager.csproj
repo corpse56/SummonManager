@@ -118,6 +118,10 @@
     <Compile Include="CLASSES\DBCategory.cs" />
     <Compile Include="CLASSES\DBVersion.cs" />
     <Compile Include="CLASSES\IProduct\IProduct.cs" />
+    <Compile Include="CLASSES\IRole\IRole.cs" />
+    <Compile Include="CLASSES\IRole\UVO_ADMIN.cs" />
+    <Compile Include="CLASSES\IRole\UVO_DIRECTOR.cs" />
+    <Compile Include="CLASSES\IRole\UVO_MANAGER.cs" />
     <Compile Include="CLASSES\StatusStripIndicator.cs" />
     <Compile Include="CLASSES\IProduct\WPNameVO.cs" />
     <Compile Include="CLASSES\DBSubCategory.cs" />
@@ -711,7 +715,6 @@
     </Compile>
     <Compile Include="CLASSES\SummonVO.cs" />
     <Compile Include="CLASSES\SummonVOForReport.cs" />
-    <Compile Include="CLASSES\UserVO.cs" />
     <Compile Include="VersionHistory.cs">
       <SubType>Form</SubType>
     </Compile>

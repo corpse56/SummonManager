@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
+using SummonManager.CLASSES.IRole_namespace;
 
 namespace SummonManager
 {
@@ -10,7 +11,7 @@ namespace SummonManager
     {
         public DBUser() { }
 
-        public UserVO Login(string login,string pass)
+        public IRole Login(string login,string pass)
         {
             DA.SelectCommand.Parameters.Clear();
             DA.SelectCommand.Parameters.AddWithValue("login", login);
@@ -18,13 +19,16 @@ namespace SummonManager
             DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..USERS where [LOGIN] = @login and [PASS] = @pass";
             if (DA.Fill(DS, "t") == 0)
                 return null;
-            UserVO UVO = new UserVO();
+
+            int i = int.Parse(DS.Tables["t"].Rows[0]["ROLE"].ToString());
+            IRole UVO;
+            UVO = UserFactory.CreateUser((Roles)i);
+
+            //UVO.Role = (Roles)i;
             UVO.id = DS.Tables["t"].Rows[0]["ID"].ToString();
             UVO.Fio = DS.Tables["t"].Rows[0]["FIO"].ToString();
             UVO.Login = DS.Tables["t"].Rows[0]["LOGIN"].ToString();
             UVO.Pass = DS.Tables["t"].Rows[0]["PASS"].ToString();
-            int i = int.Parse(DS.Tables["t"].Rows[0]["ROLE"].ToString());
-            UVO.Role = (Roles)i;
             DA.SelectCommand.Parameters.Clear();
             return UVO;
         }

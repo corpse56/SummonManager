@@ -22,5 +22,12 @@ namespace SummonManager.CLASSES
             TLP.Controls.Add(pf, 1, TLP.RowCount - 1);
         }
 
+
+
+
+        internal static void ManagerLoad()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
