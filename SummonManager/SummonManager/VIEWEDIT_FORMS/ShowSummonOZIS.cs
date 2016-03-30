@@ -148,7 +148,7 @@ namespace SummonManager
             summonNotes1.Reload();
 
             summonTransfer1.Init(SVO, UVO, this);
-            if (SVO.ProductVO.GetProductType() == WPTYPE.CABLELIST)
+            if ((SVO.ProductVO.GetProductType() == WPTYPE.CABLELIST) || (SVO.ProductVO.GetProductType() == WPTYPE.ZHGUTLIST))
                 summonTransfer2.Visible = false;
             summonTransfer2.InitSub(SVO, UVO, this);
 

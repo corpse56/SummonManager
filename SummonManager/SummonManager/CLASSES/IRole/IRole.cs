@@ -100,8 +100,8 @@ namespace SummonManager.CLASSES.IRole_namespace
             ss.bEditWP.Enabled = false;
             ss.bPurchMat.Enabled = false;
 
-            ss.summonTransfer1.Enabled = false;
-            ss.summonTransfer2.Enabled = false;
+            ss.summonTransfer1.Enabled = true;
+            ss.summonTransfer2.Enabled = true;
 
             //ss.summonNotes1.button1.Enabled = false;
 
@@ -156,7 +156,7 @@ namespace SummonManager.CLASSES.IRole_namespace
             else
             {
                 ss.chbDeterm.Checked = false;
-                ss.dtpAPPROX.Enabled = true;
+                ss.dtpAPPROX.Enabled = false;
                 ss.dtpAPPROX.Value = (DateTime)ss.SVO.PASSDATE;
             }
             ss.tbStatus.Text = ss.SVO.STATUSNAME;
@@ -164,18 +164,36 @@ namespace SummonManager.CLASSES.IRole_namespace
             ss.chbBillPayed.Checked = ss.SVO.BILLPAYED;
             ss.chbDocsRdy.Checked = ss.SVO.DOCSREADY;
 
-            ss.summonNotes1.Init(ss.SVO.ID, this, ss.SVO);
-            ss.summonNotes1.Reload();
+            if ((ss.Tag != null) &&(ss.Tag.ToString() == "finished"))           
 
-            ss.summonTransfer1.Init(ss.SVO, this, ss);
-            if (ss.SVO.ProductVO.GetProductType() == WPTYPE.CABLELIST)
             {
+                ss.summonTransfer1.Visible = false;
                 ss.summonTransfer2.Visible = false;
             }
-            ss.summonTransfer2.InitSub(ss.SVO, this, ss);
+            else
+            {
+                ss.summonNotes1.Init(ss.SVO.ID, this, ss.SVO);
+                ss.summonNotes1.Reload();
 
+                ss.summonTransfer1.Init(ss.SVO, this, ss);
+                if ((ss.SVO.ProductVO.GetProductType() == WPTYPE.CABLELIST) || (ss.SVO.ProductVO.GetProductType() == WPTYPE.ZHGUTLIST))
+                {
+                    ss.summonTransfer2.Visible = false;
+                }
+                ss.summonTransfer2.InitSub(ss.SVO, this, ss);
+            }
             ss.wpNameView1.Init(ss.SVO.ProductVO.GetID(), ss.SVO.ProductVO.GetProductType(), this, ss.SVO);
 
+            ss.cbCustDept.ValueMember = "ID";
+            ss.cbCustDept.DisplayMember = "DEPTNAME";
+            ss.cbCustDept.DataSource = dbc.GetDeptsByIDCustomer(ss.cbCustomers.SelectedValue.ToString());
+            ss.cbCustDept.SelectedValue = ss.SVO.IDCUSTOMERDEPT;
+            if ((ss.Tag == null) )
+            {
+                DBSummon dbs = new DBSummon();
+                dbs.AddSummonView(ss.SVO, this);
+            }
+            ss.dtpApproxAtLoad = ss.SVO.PASSDATE;
 
             //pfMETAL.IsPath = true;
         }//эта тоже
@@ -230,6 +248,7 @@ namespace SummonManager.CLASSES.IRole_namespace
             }
             SVO.BILLPAYED = ss.chbBillPayed.Checked;
             SVO.DOCSREADY = ss.chbDocsRdy.Checked;
+            SVO.VIEWED = true;
             dbs.SaveSummon(SVO);
             if (ss.dtpApproxAtLoad != SVO.PASSDATE)
             {
@@ -254,34 +273,49 @@ namespace SummonManager.CLASSES.IRole_namespace
                     result = new UVO_MANAGER();
                     break;
                 case Roles.Ozis:
+                    result = new UVO_PDB();
                     break;
                 case Roles.Prod:
+                    result = new UVO_PROD();
                     break;
                 case Roles.Wsh:
+                    result = new UVO_WSH();
                     break;
                 case Roles.OTK:
+                    result = new UVO_OTK();
                     break;
                 case Roles.Constructor:
+                    result = new UVO_CONSTR();
                     break;
                 case Roles.Logist:
+                    result = new UVO_LOGIST();
                     break;
                 case Roles.Buhgalter:
+                    result = new UVO_BUH();
                     break;
                 case Roles.Director:
                     result = new UVO_DIRECTOR();
                     break;
                 case Roles.Inzhener:
+                    result = new UVO_INZH();
+                    break;
                 case Roles.SimpleInzhener:
+                    result = new UVO_SIMPLEINZH();
                     break;
                 case Roles.Montage:
+                    result = new UVO_MONT();
                     break;
                 case Roles.OTD:
+                    result = new UVO_OTD();
                     break;
                 case Roles.Shemotehnik:
+                    result = new UVO_SCHEM();
                     break;
                 case Roles.Ware:
+                    result = new UVO_WARE();
                     break;
                 case Roles.Tehnolog:
+                    result = new UVO_TECHNO();
                     break;
                 case Roles.Admin:
                     result = new UVO_ADMIN();

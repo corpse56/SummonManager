@@ -90,6 +90,7 @@ namespace SummonManager
             this.bCancel = new System.Windows.Forms.Button();
             this.chbDeterm = new System.Windows.Forms.CheckBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.bViewWP = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.bEditWP = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -626,6 +627,7 @@ namespace SummonManager
             this.chbDeterm.TabIndex = 277;
             this.chbDeterm.Text = "Не определено";
             this.chbDeterm.UseVisualStyleBackColor = true;
+            this.chbDeterm.CheckedChanged += new System.EventHandler(this.chbDeterm_CheckedChanged);
             // 
             // splitContainer2
             // 
@@ -637,6 +639,7 @@ namespace SummonManager
             // 
             // splitContainer2.Panel1
             // 
+            this.splitContainer2.Panel1.Controls.Add(this.bViewWP);
             this.splitContainer2.Panel1.Controls.Add(this.label3);
             this.splitContainer2.Panel1.Controls.Add(this.bEditWP);
             this.splitContainer2.Panel1.Controls.Add(this.tableLayoutPanel1);
@@ -647,6 +650,16 @@ namespace SummonManager
             this.splitContainer2.Size = new System.Drawing.Size(553, 891);
             this.splitContainer2.SplitterDistance = 471;
             this.splitContainer2.TabIndex = 0;
+            // 
+            // bViewWP
+            // 
+            this.bViewWP.Location = new System.Drawing.Point(456, 5);
+            this.bViewWP.Name = "bViewWP";
+            this.bViewWP.Size = new System.Drawing.Size(84, 23);
+            this.bViewWP.TabIndex = 43;
+            this.bViewWP.Text = "Просмотр";
+            this.bViewWP.UseVisualStyleBackColor = true;
+            this.bViewWP.Click += new System.EventHandler(this.bViewWP_Click);
             // 
             // label3
             // 
@@ -781,5 +794,6 @@ namespace SummonManager
         public Button bEditWP;
         public TextBox tbIDS;
         public DateTimePicker dtpCREATED;
+        private Button bViewWP;
     }
 }

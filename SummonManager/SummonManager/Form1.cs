@@ -22,12 +22,12 @@ namespace SummonManager
         //public static string EConnectionString = "metadata=res://*/SM.csdl|res://*/SM.ssdl|res://*/SM.msl;provider=System.Data.SqlClient;provider connection string=\"Data Source=CORPS-ПК\\SQLEXPRESS;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True\"";
         //public static string ConnectionString = "Data Source=CORPS-ПК\\SQLEXPRESS;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
         //public static string ConnectionString = "Data Source=127.0.0.1;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
-        public static string ConnectionString = "Data Source=127.0.0.1\\SQL2008R2;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
-       // public static string ConnectionString = "Data Source=10.177.100.7,2301;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
+        //public static string ConnectionString = "Data Source=127.0.0.1\\SQL2008R2;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
+        public static string ConnectionString = "Data Source=10.177.100.7,2301;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
         public IRole UVO;
         public int PrivateNoteColor;
         public int RefreshTime;
-        public static string ProgramVersion = "1.87";
+        public static string ProgramVersion = "2.00";
         public static int VersionNumber = 187;
         public MainF()
         {
@@ -126,6 +126,30 @@ namespace SummonManager
                     toolStripButton1.Enabled = false;
                     //MySummonsTSB.Enabled = false;
                     break;
+                case Roles.SimpleInzhener:
+                    SpravochnikiDisable();
+                    NewMenuItem.Enabled = false;
+                    toolStripButton1.Enabled = false;
+                    //MySummonsTSB.Enabled = false;
+                    break;
+                case Roles.Tehnolog:
+                    SpravochnikiDisable();
+                    NewMenuItem.Enabled = false;
+                    toolStripButton1.Enabled = false;
+                    //MySummonsTSB.Enabled = false;
+                    break;
+                case Roles.Shemotehnik:
+                    SpravochnikiDisable();
+                    NewMenuItem.Enabled = false;
+                    toolStripButton1.Enabled = false;
+                    //MySummonsTSB.Enabled = false;
+                    break;
+                case Roles.OTD:
+                    SpravochnikiDisable();
+                    NewMenuItem.Enabled = false;
+                    toolStripButton1.Enabled = false;
+                    //MySummonsTSB.Enabled = false;
+                    break;
             }
         }
         public void SpravochnikiDisable()
@@ -192,8 +216,10 @@ namespace SummonManager
             dgSummon.Columns["paint_constr"].Visible = false;
             dgSummon.Columns["paint_inzh"].Visible = false;
             dgSummon.Columns["paint_otk"].Visible = false;
-            dgSummon.Columns["shild_ordered"].Visible = false;
+            dgSummon.Columns["shild_ordered"].Visible = false;//paint_ozis
             dgSummon.Columns["idsubst"].Visible = false;
+            dgSummon.Columns["paint_shemotehnik"].Visible = false;
+            dgSummon.Columns["paint_OTD"].Visible = false;
             
             //dgSummon.Columns["qty"].Width = 50;
             //dgSummon.Columns["cause"].Width = 130;
@@ -370,64 +396,10 @@ namespace SummonManager
             DBSummon dbs = new DBSummon();
             SummonVO svo = dbs.GetSummonByIDS(dgSummon.SelectedRows[0].Cells["ids"].Value.ToString());
             PreviousState ps = new PreviousState(dgSummon,TStbs.Text);
+
             ShowSummon ss = new ShowSummon(UVO, svo);
             ss.ShowDialog();
 
-            //switch (UVO.Role)
-            //{
-            //    case Roles.Manager:
-            //        ShowSummon ss = new ShowSummon(UVO,svo);
-            //        ss.ShowDialog();
-            //        break;
-            //    case Roles.Ozis:
-            //        ShowSummonOZIS ssozis = new ShowSummonOZIS(svo.IDS, UVO,svo.ID);
-            //        ssozis.ShowDialog();
-            //        break;
-            //    case Roles.Prod:
-            //        ShowSummonPROD ssprod = new ShowSummonPROD(svo.IDS, UVO,svo.ID);
-            //        ssprod.ShowDialog();
-            //        break;
-            //    case Roles.OTK:
-            //        ShowSummonOTK ssotk = new ShowSummonOTK(svo.IDS, UVO,svo.ID);
-            //        ssotk.ShowDialog();
-            //        break;
-            //    case Roles.Ware:
-            //        ShowSummonWare ssware = new ShowSummonWare(svo.IDS, UVO,svo.ID);
-            //        ssware.ShowDialog();
-            //        break;
-            //    case Roles.Logist:
-            //        ShowSummonLOG ssLOG = new ShowSummonLOG(svo.IDS, UVO,svo.ID);
-            //        ssLOG.ShowDialog();
-            //        break;
-            //    case Roles.Director:
-            //        ShowSummonDIR ssDIR = new ShowSummonDIR(svo.IDS, UVO,svo.ID);
-            //        ssDIR.ShowDialog();
-            //        break;
-            //    case Roles.Wsh:
-            //        ShowSummonWSH ssWSH = new ShowSummonWSH(svo.IDS, UVO,svo.ID);
-            //        ssWSH.ShowDialog();
-            //        break;
-            //    case Roles.Admin:
-            //        ShowSummonDIR ssadmin = new ShowSummonDIR(svo.IDS, UVO, svo.ID);
-            //        ssadmin.ShowDialog();
-            //        break;
-            //    case Roles.Montage:
-            //        ShowSummonMONT ssmont = new ShowSummonMONT(svo.IDS, UVO, svo.ID);
-            //        ssmont.ShowDialog();
-            //        break;
-            //    case Roles.Constructor:
-            //        ShowSummonCONSTR ssconstr = new ShowSummonCONSTR(svo.IDS, UVO, svo.ID);
-            //        ssconstr.ShowDialog();
-            //        break;
-            //    case Roles.Inzhener:
-            //        ShowSummonINZHENER ssinzh = new ShowSummonINZHENER(svo.IDS, UVO, svo.ID);
-            //        ssinzh.ShowDialog();
-            //        break;
-            //    case Roles.Buhgalter:
-            //        ShowSummonBUH ssbuh = new ShowSummonBUH(svo.IDS, UVO, svo.ID);
-            //        ssbuh.ShowDialog();
-            //        break;
-            //}
             ReloadData();
             ps.Restore();
             PaintDG();
@@ -608,7 +580,7 @@ namespace SummonManager
                                 //notifyIcon1.Icon = Icon.
                             }
                         }
-                        if ((int)r.Cells["shild_ordered"].Value == 0)
+                        if ((int)r.Cells["shild_ordered"].Value == 0)//а-ля paint_ozis
                         {
                             r.Cells["ids"].Style.BackColor = Color.Red;
                         }
@@ -761,6 +733,45 @@ namespace SummonManager
                         }
                     }
                     break;
+                case Roles.SimpleInzhener:
+                    foreach (DataGridViewRow r in dgSummon.Rows)
+                    {
+                        int paint = (int)r.Cells["paint_inzh"].Value;
+                        if (paint == 1)
+                        {
+                            r.Cells["ids"].Style.BackColor = Color.Red;
+
+                            //r.DefaultCellStyle.BackColor = Color.Red;
+                        }
+                    }
+                    break;
+                case Roles.OTD:
+                    foreach (DataGridViewRow r in dgSummon.Rows)
+                    {
+                        int paint = (int)r.Cells["paint_OTD"].Value;
+                        if (paint == 1)
+                        {
+                            r.Cells["ids"].Style.BackColor = Color.Red;
+
+                            //r.DefaultCellStyle.BackColor = Color.Red;
+                        }
+                    }
+                    break;
+                case Roles.Shemotehnik:
+                    foreach (DataGridViewRow r in dgSummon.Rows)
+                    {
+                        int paint = (int)r.Cells["paint_shemotehnik"].Value;
+                        if (paint == 1)
+                        {
+                            r.Cells["ids"].Style.BackColor = Color.Red;
+
+                            //r.DefaultCellStyle.BackColor = Color.Red;
+                        }
+                    }
+                    break;
+                case Roles.Tehnolog:
+                    
+                    break;
             }
             PaintNotesAndPassDateChanged();
             PaintSISP();
@@ -895,6 +906,7 @@ namespace SummonManager
             {
                 
             }
+            dgSummon.DefaultCellStyle = new DataGridViewCellStyle();
             PaintDG();
             TStbs_TextChanged(sender, e);
         }
@@ -1031,12 +1043,12 @@ namespace SummonManager
             List<Notification> ln = dbn.GetNotByTYPE("2");
             if (ln.Count == 0) return;
 
-            string message = "Просьба заполнить поля \"Шильды\" и \"Планка\" в извещении(ях): ";
+            string message = "Просьба заполнить ответственные поля в извещении(ях): ";
             foreach (Notification n in ln)
             {
                     message += n.IDS + "; ";
             }
-            if (message == "Просьба заполнить поля \"Шильды\" и \"Планка\" в извещении(ях): ") return;
+            if (message == "Просьба заполнить ответственные поля в извещении(ях): ") return;
             message = message.Remove(message.Length - 2);
             message += ".";
             notifyIcon1.Visible = true;

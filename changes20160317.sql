@@ -42,9 +42,7 @@ alter table WPNAMELIST add RUNCARDLISTREQ		bit default(0)
 alter table WPNAMELIST add CIRCUITBOARDLISTREQ		bit default(0)
 
 
-alter table CATEGORYLIST add ENTITY nvarchar(100)
---потом добавить значения в ENTITY потом сделать его не нулл
---а для начала дроп и создать чтоб ШВ с единички начинались
+--Категории дроп и создать чтоб ID с единички начинались
 USE [ALPHA]
 GO
 
@@ -91,7 +89,6 @@ insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'НЕ ПРИСВОЕНО',	'CIRCU
 insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'ВСЕ',	'CIRCUITBOARDLIST')
 insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'НЕ ПРИСВОЕНО',	'RUNCARDLIST')
 insert into CATEGORYLIST (	CATEGORYNAME,	ENTITY) values (	'ВСЕ',	'RUNCARDLIST')
-alter table CATEGORYLIST alter column ENTITY nvarchar(100) not null
 
 update STATUSLIST set SNAME = 'Рекламация (цех)' where ID = 8
 
@@ -304,10 +301,10 @@ update WPNAMELIST set
       ,[SHILDSREQ] = 0
       ,[PLANKAREQ] = 0
       ,[SERIALREQ] = 0
-      ,[PACKAGEREQ] = 0
+      ,[PACKAGINGREQ] = 0
       ,[PASSPORTREQ] = 0
       ,[MANUALREQ] = 0
-      ,[PACKAGELISTREQ] = 0
+      ,[PACKINGLISTREQ] = 0
       ,[SOFTWAREREQ] = 0
       ,[CABLELISTREQ] = 0
       ,[ZHGUTLISTREQ] = 0
@@ -325,10 +322,10 @@ alter table WPNAMELIST alter column          [DIMENSIONALDRAWINGREQ]  bit not nu
       alter table WPNAMELIST alter column    [SHILDSREQ]  bit not null
       alter table WPNAMELIST alter column    [PLANKAREQ]  bit not null
       alter table WPNAMELIST alter column    [SERIALREQ]  bit not null
-      alter table WPNAMELIST alter column    [PACKAGEREQ]  bit not null
+      alter table WPNAMELIST alter column    [PACKAGINGREQ]  bit not null
       alter table WPNAMELIST alter column    [PASSPORTREQ]  bit not null
       alter table WPNAMELIST alter column    [MANUALREQ]  bit not null
-      alter table WPNAMELIST alter column    [PACKAGELISTREQ]  bit not null
+      alter table WPNAMELIST alter column    [PACKINGLISTREQ]  bit not null
       alter table WPNAMELIST alter column    [SOFTWAREREQ]  bit not null
       alter table WPNAMELIST alter column    [CABLELISTREQ]  bit not null
       alter table WPNAMELIST alter column    [ZHGUTLISTREQ]  bit not null
@@ -378,7 +375,7 @@ SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
 GO
-ALTER TRIGGER [dbo].[CATEGORY_DELETE] ON [dbo].[CATEGORYLIST] 
+CREATE TRIGGER [dbo].[CATEGORY_DELETE] ON [dbo].[CATEGORYLIST] 
 	AFTER DELETE
 AS 
 set nocount on;
@@ -462,7 +459,7 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
-ALTER TRIGGER [dbo].[CATEGORY_INSERT] ON [dbo].[CATEGORYLIST] 
+CREATE TRIGGER [dbo].[CATEGORY_INSERT] ON [dbo].[CATEGORYLIST] 
 	AFTER INSERT
 AS 
 set nocount on;
@@ -588,9 +585,9 @@ where ID in (select A.ID from SUMMON A
 use ALPHA
 go
 
---удаляем подкатегории категории кабели
+--удаляем подкатегории категории жгуты
 delete from ALPHA..SUBCATEGORYLIST where ID in (27,28)
---переносим подкатегории кабелей
+--переносим подкатегории жгутов
 update ALPHA..SUBCATEGORYLIST set IDCATEGORY = 14 where IDCATEGORY = 11
 --удаляем категорию кабели
 delete from ALPHA..CATEGORYLIST where ID = 11
@@ -718,5 +715,117 @@ alter table ALPHA..ZHGUTS add CNT int not null
 
 --удалить ненужные таблицы COMPARCHIVE, PRIVATENOTES
 
---написать скрипт, исправляющий имена изделий в таблице извещений. хотя эта колокнка
---уже больше не будет использоваться
+----------------------------------------------------------------------------------------------
+--апдейтим поле WPTYPE, так как уже присутствовали кабели в производстве
+
+  update A
+  set  A.IDWP = B.ID
+  from [ALPHA].[dbo].[SUMMON] A
+  left join ALPHA..CABLELIST B ON A.WPNAME = B.CABLENAME
+  where A.WPNAME = B.CABLENAME
+  
+    update A
+  set  A.IDWP = B.ID
+  from [ALPHA].[dbo].[SUMMON] A
+  left join ALPHA..CABLELIST B ON A.WPNAME = B.CABLENAME + ' ' +B.DECNUM
+  where A.WPNAME = B.CABLENAME + ' ' +B.DECNUM
+  
+  update [ALPHA].[dbo].[SUMMON] 
+  set IDWP = 105 where IDWP = 198
+  update [ALPHA].[dbo].[SUMMON] 
+  set IDWP = 107 where IDWP = 208
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+----------------------------------------------------------------------------------------------
+USE ALPHA
+GO
+/****** Object:  UserDefinedFunction [dbo].[f_MAINVIEW]    Script Date: 03/30/2016 20:02:11 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+ALTER FUNCTION [dbo].[f_MAINVIEW] (@IDUSER INT)
+RETURNS TABLE
+AS
+RETURN
+   
+
+select A.ID id, A.IDS ids,
+ case when W.WPNAME IS not null then W.WPNAME + ' ' +ISNULL(W.DECNUM,'') else
+ case when ZHG.ZHGUTNAME is not null then ZHG.ZHGUTNAME + ' ' + ISNULL(ZHG.DECNUM,'') else
+ CAB.CABLENAME + ' ' +isnull(CAB.DECNUM,'') end  end wname,
+ 
+  B.CNAME cust,
+  D.SNAME sts, 
+case when A.IDSUBST = 0 then 'Не присвоено' else SUB.SNAME end subst,
+
+case when A.SISP = 0 then 'Нет' else 'Да' end sisp,W.TECHREQ techreq,
+
+ N.NOTE note,
+A.PTIME ptime,
+case when A.PASSDATE is null then 'не определено' else  CONVERT(VARCHAR(11), A.PASSDATE, 104) end passd,
+
+A.IDSTATUS idstatus,
+A.IDSUBST idsubst,
+cast(SUBSTRING(A.IDS,6,2)+SUBSTRING(A.IDS,1,4) as int) ids_srt,
+A.VIEWED vw,
+A.QUANTITY qty
+,SV.DATEVIEWED dview,
+ A.PASSDATECHANGED pdc,
+ N.CREATED ncre,
+case when (W.SHILDS is null and W.SHILDSREQ = 1
+or W.PLANKA is null and W.PLANKAREQ =1
+or W.SBORKA3D is null and W.SBORKA3DREQ =1
+or W.MECHPARTS is null  and W.MECHPARTSREQ =1
+or W.DIMENSIONALDRAWING is null  and W.DIMENSIONALDRAWINGREQ =1
+or W.PACKAGING is null  and W.PACKAGINGREQ =1) and A.IDSTATUS not in (1,2,13,14)
+then 1 else 0 end paint_constr,
+case when (W.COMPOSITION is null and W.COMPOSITIONREQ=1 
+or W.TECHREQ is null and W.TECHREQREQ =1
+or W.CONFIGURATION is null and W.CONFIGURATIONREQ =1) and A.IDSTATUS not in (1,2,13,14) 
+then 1 else 0 end paint_inzh,
+case when W.SERIAL is null and W.SERIALREQ = 1 and A.IDSTATUS not in (1,2,13,14) then 1 else 0 end paint_otk,
+case when PM.SHILDSFORORDER is null or PM.SHILDSFORORDER=0 and A.IDSTATUS not in (1,2,13,14) then 0 else PM.SHILDSFORORDER end shild_ordered,
+case when (W.WIRINGDIAGRAM is null) and W.WIRINGDIAGRAMREQ=1 and A.IDSTATUS not in (1,2,13,14) then 1 else 0 end paint_shemotehnik,
+case when (W.PASSPORT is null and W.PASSPORTREQ=1 
+or  W.[MANUAL] is null and W.MANUALREQ=1 
+or  W.PACKINGLIST is null and W.PACKINGLISTREQ=1 ) and A.IDSTATUS not in (1,2,13,14)
+then 1 else 0 end paint_OTD
+--case when (W.WIRINGDIAGRAM is null) and W.WIRINGDIAGRAMREQ=1 then 1 else 0 end paint_tehnolog,
+
+from dbo.SUMMON A
+left join dbo.CUSTOMERS B on A.IDCUSTOMER = B.ID
+left join dbo.CURSTATUS C on A.IDS = C.IDS and 
+		   C.ID = (select max(ID) from dbo.CURSTATUS SS where SS.IDS = A.IDS)
+left join dbo.STATUSLIST D on C.STATID = D.ID
+left join dbo.STATUSLIST SUB on A.IDSUBST = SUB.ID
+left join dbo.WPNAMELIST W on A.IDWP = W.ID and A.WPTYPE = 'WPNAMELIST'
+left join dbo.ZHGUTLIST ZHG on A.IDWP = ZHG.ID and A.WPTYPE = 'ZHGUTLIST'
+left join dbo.CABLELIST CAB on A.IDWP = CAB.ID and A.WPTYPE = 'CABLELIST'
+left join dbo.NOTES N on N.IDSUMMON = A.ID
+left join dbo.SUMMONVIEWS SV on SV.IDSUMMON = A.ID and SV.IDUSER = @IDUSER
+left join dbo.PURCHASEDMATERIALS PM on A.ID = PM.IDS
+where (N.CREATED = (select top 1 MAX(CREATED) from dbo.NOTES NN where NN.IDSUMMON = A.ID )
+ or N.CREATED is null)
+and (SV.DATEVIEWED = 
+(select MAX(SVV.DATEVIEWED) from dbo.SUMMONVIEWS SVV where SVV.IDSUMMON = A.ID and SVV.IDUSER = @IDUSER) or SV.DATEVIEWED is null)
+   
+
+   

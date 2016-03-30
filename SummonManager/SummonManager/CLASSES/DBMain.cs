@@ -83,6 +83,9 @@ namespace SummonManager
                     //DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..MAINVIEW where idstatus != 13 and idstatus != 14 order by ids";
                     DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..f_MAINVIEW(" + uvo.id + ") where idstatus != 13 and idstatus != 14 order by ids";
                     break;
+                default:
+                    DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..f_MAINVIEW(" + uvo.id + ") where idstatus != 13 and idstatus != 14 order by ids";
+                    break;
             }
             //DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..MAINVIEW where idstatus != 'Завершено' order by ids";
 
@@ -132,6 +135,10 @@ namespace SummonManager
                 case Roles.Buhgalter:
                     DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..f_MAINVIEW(" + uvo.id + ") where idstatus in (9,12) order by ids";
                     break;
+                default:
+                    DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..f_MAINVIEW(" + uvo.id + ") where idstatus != 13 and idstatus != 14  order by ids";
+                    break;
+
             }
 
             int i = DA.Fill(DS, "t");

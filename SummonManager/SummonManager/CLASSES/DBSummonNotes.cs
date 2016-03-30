@@ -17,7 +17,7 @@ namespace SummonManager
                                             " left join " + Base.BaseName + "..ROLES C on B.ROLE = C.ID " +
                                             "where A.IDSUMMON = " + id+
                                             " order by A.CREATED";
-            DA.Fill(DS, "t");
+            int i = DA.Fill(DS, "t");
             return DS.Tables["t"];
         }
 

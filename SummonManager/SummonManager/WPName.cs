@@ -307,6 +307,12 @@ namespace SummonManager
 
         private void bEditCategory_Click(object sender, EventArgs e)//редактировать категории
         {
+            if (cbCAT.Text == "")
+            {
+                MessageBox.Show("Выберите категорию!");
+                return;
+            }
+                
             string Entity="";
             if (cbPRODUCTTYPE.SelectedIndex == 0)
             {
@@ -456,7 +462,8 @@ namespace SummonManager
                 cbSubCat.DisplayMember = "SUBCATNAME";
                 cbSubCat.DataSource = dbs.GetAll(Convert.ToInt32(cbCAT.SelectedValue));
                 //cbSubCat.SelectedItem = cbCAT.Items[0];
-                cbSubCat.SelectedIndex = 1;
+                if (cbCAT.Text != "")
+                    cbSubCat.SelectedIndex = 1;
             }
             switch (cbPRODUCTTYPE.SelectedIndex)
             {

@@ -1,4 +1,5 @@
-﻿namespace SummonManager
+﻿using SummonManager.CLASSES.IRole_namespace;
+namespace SummonManager
 {
     partial class NewWPN
     {
@@ -550,6 +551,8 @@
             // 
             // pfPACKINGLIST
             // 
+            this.pfPACKINGLIST.bDelVisible = true;
+            this.pfPACKINGLIST.bPathVisible = true;
             this.pfPACKINGLIST.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfPACKINGLIST.FullPath = "<нет>";
             this.pfPACKINGLIST.ISPATH = false;
@@ -559,9 +562,12 @@
             this.pfPACKINGLIST.Required = false;
             this.pfPACKINGLIST.Size = new System.Drawing.Size(601, 32);
             this.pfPACKINGLIST.TabIndex = 6;
+            this.pfPACKINGLIST.Tag = SummonManager.CLASSES.IRole_namespace.Roles.OTD;
             // 
             // pfMANUAL
             // 
+            this.pfMANUAL.bDelVisible = true;
+            this.pfMANUAL.bPathVisible = true;
             this.pfMANUAL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfMANUAL.FullPath = "<нет>";
             this.pfMANUAL.ISPATH = false;
@@ -571,9 +577,12 @@
             this.pfMANUAL.Required = false;
             this.pfMANUAL.Size = new System.Drawing.Size(601, 32);
             this.pfMANUAL.TabIndex = 6;
+            this.pfMANUAL.Tag = SummonManager.CLASSES.IRole_namespace.Roles.OTD;
             // 
             // pfPASSPORT
             // 
+            this.pfPASSPORT.bDelVisible = true;
+            this.pfPASSPORT.bPathVisible = true;
             this.pfPASSPORT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfPASSPORT.FullPath = "<нет>";
             this.pfPASSPORT.ISPATH = false;
@@ -583,9 +592,12 @@
             this.pfPASSPORT.Required = false;
             this.pfPASSPORT.Size = new System.Drawing.Size(601, 32);
             this.pfPASSPORT.TabIndex = 6;
+            this.pfPASSPORT.Tag = SummonManager.CLASSES.IRole_namespace.Roles.OTD;
             // 
             // pfPACKAGING
             // 
+            this.pfPACKAGING.bDelVisible = true;
+            this.pfPACKAGING.bPathVisible = true;
             this.pfPACKAGING.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfPACKAGING.FullPath = "<нет>";
             this.pfPACKAGING.ISPATH = false;
@@ -595,9 +607,12 @@
             this.pfPACKAGING.Required = false;
             this.pfPACKAGING.Size = new System.Drawing.Size(601, 32);
             this.pfPACKAGING.TabIndex = 6;
+            this.pfPACKAGING.Tag = SummonManager.CLASSES.IRole_namespace.Roles.Constructor;
             // 
             // pfSERIAL
             // 
+            this.pfSERIAL.bDelVisible = true;
+            this.pfSERIAL.bPathVisible = true;
             this.pfSERIAL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfSERIAL.FullPath = "<нет>";
             this.pfSERIAL.ISPATH = false;
@@ -607,9 +622,12 @@
             this.pfSERIAL.Required = false;
             this.pfSERIAL.Size = new System.Drawing.Size(601, 32);
             this.pfSERIAL.TabIndex = 6;
+            this.pfSERIAL.Tag = SummonManager.CLASSES.IRole_namespace.Roles.OTK;
             // 
             // pfPLANKA
             // 
+            this.pfPLANKA.bDelVisible = true;
+            this.pfPLANKA.bPathVisible = true;
             this.pfPLANKA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfPLANKA.FullPath = "<нет>";
             this.pfPLANKA.ISPATH = false;
@@ -619,9 +637,12 @@
             this.pfPLANKA.Required = false;
             this.pfPLANKA.Size = new System.Drawing.Size(601, 32);
             this.pfPLANKA.TabIndex = 6;
+            this.pfPLANKA.Tag = SummonManager.CLASSES.IRole_namespace.Roles.Constructor;
             // 
             // pfSHILDS
             // 
+            this.pfSHILDS.bDelVisible = true;
+            this.pfSHILDS.bPathVisible = true;
             this.pfSHILDS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfSHILDS.FullPath = "<нет>";
             this.pfSHILDS.ISPATH = false;
@@ -631,9 +652,12 @@
             this.pfSHILDS.Required = false;
             this.pfSHILDS.Size = new System.Drawing.Size(601, 31);
             this.pfSHILDS.TabIndex = 6;
+            this.pfSHILDS.Tag = SummonManager.CLASSES.IRole_namespace.Roles.Constructor;
             // 
             // pfMECHPARTS
             // 
+            this.pfMECHPARTS.bDelVisible = true;
+            this.pfMECHPARTS.bPathVisible = true;
             this.pfMECHPARTS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfMECHPARTS.FullPath = "<нет>";
             this.pfMECHPARTS.ISPATH = true;
@@ -643,9 +667,12 @@
             this.pfMECHPARTS.Required = false;
             this.pfMECHPARTS.Size = new System.Drawing.Size(601, 32);
             this.pfMECHPARTS.TabIndex = 6;
+            this.pfMECHPARTS.Tag = SummonManager.CLASSES.IRole_namespace.Roles.Constructor;
             // 
             // pf3DSBORKA
             // 
+            this.pf3DSBORKA.bDelVisible = true;
+            this.pf3DSBORKA.bPathVisible = true;
             this.pf3DSBORKA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pf3DSBORKA.FullPath = "<нет>";
             this.pf3DSBORKA.ISPATH = false;
@@ -655,9 +682,12 @@
             this.pf3DSBORKA.Required = false;
             this.pf3DSBORKA.Size = new System.Drawing.Size(601, 32);
             this.pf3DSBORKA.TabIndex = 6;
+            this.pf3DSBORKA.Tag = SummonManager.CLASSES.IRole_namespace.Roles.Constructor;
             // 
             // pfDimDrawing
             // 
+            this.pfDimDrawing.bDelVisible = true;
+            this.pfDimDrawing.bPathVisible = true;
             this.pfDimDrawing.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfDimDrawing.FullPath = "<нет>";
             this.pfDimDrawing.ISPATH = false;
@@ -667,9 +697,12 @@
             this.pfDimDrawing.Required = false;
             this.pfDimDrawing.Size = new System.Drawing.Size(601, 32);
             this.pfDimDrawing.TabIndex = 6;
+            this.pfDimDrawing.Tag = SummonManager.CLASSES.IRole_namespace.Roles.Constructor;
             // 
             // pfWIRINGDIAGRAM
             // 
+            this.pfWIRINGDIAGRAM.bDelVisible = true;
+            this.pfWIRINGDIAGRAM.bPathVisible = true;
             this.pfWIRINGDIAGRAM.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfWIRINGDIAGRAM.FullPath = "<нет>";
             this.pfWIRINGDIAGRAM.ISPATH = false;
@@ -679,9 +712,12 @@
             this.pfWIRINGDIAGRAM.Required = false;
             this.pfWIRINGDIAGRAM.Size = new System.Drawing.Size(601, 32);
             this.pfWIRINGDIAGRAM.TabIndex = 5;
+            this.pfWIRINGDIAGRAM.Tag = SummonManager.CLASSES.IRole_namespace.Roles.Shemotehnik;
             // 
             // pfTECHREQ
             // 
+            this.pfTECHREQ.bDelVisible = true;
+            this.pfTECHREQ.bPathVisible = true;
             this.pfTECHREQ.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfTECHREQ.FullPath = "<нет>";
             this.pfTECHREQ.ISPATH = false;
@@ -691,9 +727,12 @@
             this.pfTECHREQ.Required = false;
             this.pfTECHREQ.Size = new System.Drawing.Size(601, 32);
             this.pfTECHREQ.TabIndex = 5;
+            this.pfTECHREQ.Tag = SummonManager.CLASSES.IRole_namespace.Roles.Inzhener;
             // 
             // pfCONFIGURATION
             // 
+            this.pfCONFIGURATION.bDelVisible = true;
+            this.pfCONFIGURATION.bPathVisible = true;
             this.pfCONFIGURATION.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfCONFIGURATION.FullPath = "<нет>";
             this.pfCONFIGURATION.ISPATH = false;
@@ -703,9 +742,12 @@
             this.pfCONFIGURATION.Required = false;
             this.pfCONFIGURATION.Size = new System.Drawing.Size(601, 32);
             this.pfCONFIGURATION.TabIndex = 5;
+            this.pfCONFIGURATION.Tag = SummonManager.CLASSES.IRole_namespace.Roles.Inzhener;
             // 
             // pfComposition
             // 
+            this.pfComposition.bDelVisible = true;
+            this.pfComposition.bPathVisible = true;
             this.pfComposition.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfComposition.FullPath = "<нет>";
             this.pfComposition.ISPATH = false;
@@ -715,6 +757,7 @@
             this.pfComposition.Required = false;
             this.pfComposition.Size = new System.Drawing.Size(601, 32);
             this.pfComposition.TabIndex = 5;
+            this.pfComposition.Tag = SummonManager.CLASSES.IRole_namespace.Roles.Inzhener;
             // 
             // NewWPN
             // 

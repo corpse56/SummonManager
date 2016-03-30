@@ -20,6 +20,20 @@ namespace SummonManager.Controls
             InitializeComponent();
             //this.PATH = "<нет>";
             //tbPath.Text = "<нет>";
+            PaintRed();
+        }
+        public void PaintRed()
+        {
+            if ((chRequired.Checked) && (tbPath.Text == "<нет>")
+                && (this.CurrentRole == (Roles)this.Tag)
+                || ((this.CurrentRole == Roles.SimpleInzhener) && ((Roles)this.Tag == Roles.Inzhener)))
+            {
+                tbPath.BackColor = Color.Tomato;
+            }
+            else
+            {
+                tbPath.BackColor = SystemColors.ControlLight;
+            }
         }
         Roles ResposibleRole,CurrentRole;
         string tmpPATH = "<нет>";
@@ -101,6 +115,7 @@ namespace SummonManager.Controls
                     if (tmpPATH != "<нет>")
                     this.FullPath = tmpPATH;
                 }
+                PaintRed();
             }
         }
         bool DELVISIBLE;
@@ -168,6 +183,7 @@ namespace SummonManager.Controls
             //this.PATH = path;
             //tbPath.Tag = path;
             this.ResposibleRole = resprole;
+            this.Tag = ResposibleRole;
             this.CurrentRole = currole;
             this.FullPath = path;
             this.Required = req;

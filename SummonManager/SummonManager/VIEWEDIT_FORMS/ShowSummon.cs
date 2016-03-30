@@ -30,10 +30,7 @@ namespace SummonManager
 
         }
 
-        private void button1_Click(object sender, EventArgs e)//просто сохранить
-        {
 
-        }
         private void bSave_Click(object sender, EventArgs e)
         {
             UVO.SaveSummon(this);
@@ -44,9 +41,6 @@ namespace SummonManager
         private void bEdit_Click(object sender, EventArgs e)
         {
             UVO.EnableEdit(this);
-
-
-
         }
 
 
@@ -63,25 +57,22 @@ namespace SummonManager
 
         private void ShowSummon_Load(object sender, EventArgs e)
         {
+
             UVO.ssLoad(this);
-
-            DBCustomer dbc = new DBCustomer();
-            cbCustDept.ValueMember = "ID";
-            cbCustDept.DisplayMember = "DEPTNAME";
-            cbCustDept.DataSource = dbc.GetDeptsByIDCustomer(cbCustomers.SelectedValue.ToString());
-            cbCustDept.SelectedValue = SVO.IDCUSTOMERDEPT;
-
-            DBSummon dbs = new DBSummon();
-            dbs.AddSummonView(SVO, UVO);
-            dtpApproxAtLoad = SVO.PASSDATE;
-
-            wpNameView1.Init(SVO.IDWPNAME, SVO.WPTYPE, UVO, SVO);
 
             InitTableLayout();
 
-            this.Text = "Просмотр извещения (" + UVO.GetRoleName() + ")";
-
-            UVO.EnableInitial(this);
+            if ((this.Tag != null) && (this.Tag.ToString() == "finished"))
+            {
+                this.Text = "Просмотр завершённого извещения";
+                this.summonNotes1.button1.Enabled = false;
+                this.summonNotes1.button2.Enabled = false;
+                this.summonNotes1.button3.Enabled = false;
+            }
+            else
+            {
+                this.Text = "Просмотр извещения (" + UVO.GetRoleName() + ")";
+            }
 
         }
 
@@ -91,7 +82,9 @@ namespace SummonManager
 
         private void InitTableLayout()
         {
+            tableLayoutPanel1.Controls.Clear();
             tableLayoutPanel1.RowStyles.Clear();
+            tableLayoutPanel1.RowCount = 0;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
             //tableLayoutPanel1.RowStyles[0].Height = 40F;
             IProduct product = ProductFactory.Create(SVO.ProductVO.GetID(),SVO.WPTYPE);
@@ -185,8 +178,19 @@ namespace SummonManager
         {
             IProduct pr = SVO.ProductVO;
             pr.ViewEdit(UVO);
+            SVO.ProductVO = ProductFactory.Create(SVO.IDWPNAME, SVO.WPTYPE);
             InitTableLayout();
+            
         }
+
+        private void bViewWP_Click(object sender, EventArgs e)
+        {
+            IProduct pr = SVO.ProductVO;
+            pr.ViewOnly(UVO);
+
+        }
+
+       
 
 
 

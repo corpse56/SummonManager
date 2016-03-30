@@ -378,5 +378,22 @@ namespace SummonManager
             DA.UpdateCommand.ExecuteNonQuery();
             DA.UpdateCommand.Connection.Close();
         }
+
+        internal void EditWP_OTD(WPNameVO p)
+        {
+            DA.UpdateCommand.Parameters.Clear();
+            DA.UpdateCommand.Parameters.AddWithValue("PASSPORT", ((object)p.PASSPORT) ?? DBNull.Value);
+            DA.UpdateCommand.Parameters.AddWithValue("MANUAL", ((object)p.MANUAL) ?? DBNull.Value);
+            DA.UpdateCommand.Parameters.AddWithValue("PACKINGLIST", ((object)p.PACKINGLIST) ?? DBNull.Value);
+            DA.UpdateCommand.Parameters.AddWithValue("NOTE", p.Note);
+
+            DA.UpdateCommand.Parameters.AddWithValue("ID", p.ID);
+
+            DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..WPNAMELIST set PASSPORT  = @PASSPORT,MANUAL=@MANUAL,PACKINGLIST=@PACKINGLIST,  NOTE=@NOTE" +
+                                            " where ID = @ID";
+            DA.UpdateCommand.Connection.Open();
+            DA.UpdateCommand.ExecuteNonQuery();
+            DA.UpdateCommand.Connection.Close();
+        }
     }
 }

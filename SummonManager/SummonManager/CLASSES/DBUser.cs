@@ -23,7 +23,8 @@ namespace SummonManager
             int i = int.Parse(DS.Tables["t"].Rows[0]["ROLE"].ToString());
             IRole UVO;
             UVO = UserFactory.CreateUser((Roles)i);
-
+            
+            
             //UVO.Role = (Roles)i;
             UVO.id = DS.Tables["t"].Rows[0]["ID"].ToString();
             UVO.Fio = DS.Tables["t"].Rows[0]["FIO"].ToString();

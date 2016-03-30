@@ -11,18 +11,23 @@ using SummonManager.CLASSES;
 namespace SummonManager
 {
 
-    public class UVO_DIRECTOR  :  IRole
+    public class UVO_BUH  :  IRole
     {
 
 
         public override string GetRoleName()
         {
-            return "Директор";
+            return "Бухгалтерия";
         }
 
         public override void ssLoad(ShowSummon ss)
         {
+            DBSummon dbs = new DBSummon();
+            if (ss.SVO.IDSTATUS == 12)
+            {
 
+                dbs.SetViewed(ss.SVO.ID);
+            }
             DisableAbsolute(ss);
             LoadSummon(ss);
             EnableInitial(ss);
@@ -31,8 +36,9 @@ namespace SummonManager
 
         public override void EnableInitial(ShowSummon ss)
         {
+            ss.bEdit.Enabled = true;
             ss.summonTransfer1.Enabled = false;
-            ss.summonTransfer1.Enabled = false;
+            ss.summonTransfer2.Enabled = false;
         }
         public override void EnableEdit(ShowSummon ss)
         {
@@ -40,8 +46,14 @@ namespace SummonManager
         }
         private void EnableAll(ShowSummon ss)
         {
+            ss.chbDocsRdy.Enabled = true;
+            ss.chbBillPayed.Enabled = true;
 
+            ss.bEdit.Enabled = false;
+            ss.bSave.Enabled = true;
         }
+
+
 
     }
 }

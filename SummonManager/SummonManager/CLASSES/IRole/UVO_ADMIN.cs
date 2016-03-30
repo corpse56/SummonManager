@@ -23,23 +23,18 @@ namespace SummonManager
             DisableAbsolute(ss);
             LoadSummon(ss);
             EnableInitial(ss);
-
+            
         }
         public override void EnableInitial(ShowSummon ss)
         {
 
             ss.bEdit.Enabled = true;
             ss.bSave.Enabled = false;
-            ss.bPrint.Enabled = true;
             ss.bDelSummon.Enabled = true;
             ss.bEditCustomers.Enabled = true;
             ss.bEditWP.Enabled = true;
             ss.bPurchMat.Enabled = true;
 
-            ss.summonTransfer1.Enabled = true;
-            ss.summonTransfer2.Enabled = true;
-
-            ss.summonNotes1.button1.Enabled = true;
         }
         public override void EnableEdit(ShowSummon ss)
         {
@@ -71,8 +66,8 @@ namespace SummonManager
 
             ss.bEdit.Enabled = false;
             ss.bSave.Enabled = true;
-            ss.summonTransfer1.Enabled = true;
-            ss.summonTransfer2.Enabled = true;
+            ss.summonTransfer1.Enabled = false;
+            ss.summonTransfer2.Enabled = false;
 
             ss.chbBillPayed.Enabled = true;
             ss.chbDocsRdy.Enabled = true;

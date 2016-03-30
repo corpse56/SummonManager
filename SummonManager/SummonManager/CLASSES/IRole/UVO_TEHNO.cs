@@ -11,18 +11,17 @@ using SummonManager.CLASSES;
 namespace SummonManager
 {
 
-    public class UVO_DIRECTOR  :  IRole
+    public class UVO_TECHNO  :  IRole
     {
 
 
         public override string GetRoleName()
         {
-            return "Директор";
+            return "Технолог";
         }
 
         public override void ssLoad(ShowSummon ss)
         {
-
             DisableAbsolute(ss);
             LoadSummon(ss);
             EnableInitial(ss);
@@ -33,13 +32,16 @@ namespace SummonManager
         {
             ss.summonTransfer1.Enabled = false;
             ss.summonTransfer1.Enabled = false;
+            ss.bEditWP.Enabled = true;
         }
         public override void EnableEdit(ShowSummon ss)
         {
-            EnableAll(ss);
+           // EnableAll(ss);
         }
         private void EnableAll(ShowSummon ss)
         {
+            //ss.bEdit.Enabled = false;
+            //ss.bSave.Enabled = true;
 
         }
 

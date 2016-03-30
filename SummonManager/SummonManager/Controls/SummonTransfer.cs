@@ -31,6 +31,18 @@ namespace SummonManager
             cbStatus.Enabled = false;
             done = false;
 
+            if ((UVO.Role == Roles.Buhgalter) ||
+               (UVO.Role == Roles.Constructor) ||
+               (UVO.Role == Roles.Director) ||
+               (UVO.Role == Roles.Inzhener) ||
+               (UVO.Role == Roles.OTD) ||
+               (UVO.Role == Roles.Shemotehnik) ||
+               (UVO.Role == Roles.SimpleInzhener) ||
+               (UVO.Role == Roles.Tehnolog))
+            {
+                return;
+            }
+
             DBCurStatus dbcs = new DBCurStatus();
             cbStatus.ValueMember = "ID";
             cbStatus.DisplayMember = "SNAME";
@@ -99,7 +111,7 @@ namespace SummonManager
                     break;
                 case Roles.OTK:
                     //if (SVO.WPNAMEVO.IDCat == 4)//если кабель, то пускаем по малому кругу
-                    if (SVO.ProductVO.GetProductType() == WPTYPE.CABLELIST)
+                    if ((SVO.ProductVO.GetProductType() == WPTYPE.CABLELIST) || (SVO.ProductVO.GetProductType() == WPTYPE.ZHGUTLIST))
                     {
                         cbStatus.SelectedValue = 9;
                     }
@@ -125,7 +137,7 @@ namespace SummonManager
                     }
                     break;
                 case Roles.Ozis:
-                    if (SVO.ProductVO.GetProductType() == WPTYPE.CABLELIST)
+                    if ((SVO.ProductVO.GetProductType() == WPTYPE.CABLELIST) || (SVO.ProductVO.GetProductType() == WPTYPE.ZHGUTLIST))
                     {
                         cbStatus.SelectedValue = 15;
                     }
@@ -408,7 +420,7 @@ namespace SummonManager
         }
         private bool MontageSubSwitch()
         {
-            if (SVO.IDSUBST != 15)
+            if ((SVO.IDSUBST != 15)&& (SVO.IDSUBST != 18))
             {
                 MessageBox.Show("Вы не можете изменить субстатус, так как не являетесь в данный момент ответственным лицом за текущий субстатус!");
                 return false;

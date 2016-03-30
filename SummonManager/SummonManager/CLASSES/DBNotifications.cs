@@ -81,32 +81,40 @@ namespace SummonManager
 
 
             DA.InsertCommand.CommandText =  "  insert into [ALPHA].[dbo].[NOTIFICATIONS] (IDNTYPE,IDSUMMON) " +
-                          "select 1,ID from [ALPHA].[dbo].SUMMON A where (SERIAL is null or SERIAL = '') and SERIALREQ = 1 " +
+                          "select 1,A.ID from [ALPHA].[dbo].SUMMON A "+
+                          " left join [ALPHA].[dbo].WPNAMELIST W on A.IDWP = W.ID and A.WPTYPE = 'WPNAMELIST'" +
+                          "  where W.SERIAL is null and W.SERIALREQ = 1 " +
                           " and A.IDSTATUS not in (1,2,13,14) " +
                          " and NOT exists (select 1 from [ALPHA].[dbo].[NOTIFICATIONS] B " +
 					                      "  where B.IDNTYPE = 1 and B.IDSUMMON = A.ID)";
             DA.InsertCommand.Connection.Open();
-            DA.InsertCommand.ExecuteNonQuery();//вставляем оповещения для OTK
+            DA.InsertCommand.ExecuteNonQuery();//вставляем оповещения для OTK (IDNTYPE = 1)
             //DA.InsertCommand.Connection.Close();
 
             DA.InsertCommand.CommandText = "  insert into [ALPHA].[dbo].[NOTIFICATIONS] (IDNTYPE,IDSUMMON) " +
-             "select 2,ID from [ALPHA].[dbo].SUMMON A where ((SERIAL is not null and SERIAL != '' and SERIAL != '<нет>') or SERIALREQ = 0) " +
-             " and ((SHILD is null or SHILD = '' and SHILD != '<нет>') and SHILDREQ=1 or (PLANKA is null or PLANKA = '' and PLANKA != '<нет>') and PLANKAREQ = 1)" +
+             " select 2,A.ID from [ALPHA].[dbo].SUMMON A "+
+             " left join [ALPHA].[dbo].WPNAMELIST W on A.IDWP = W.ID and A.WPTYPE = 'WPNAMELIST'" +
+             //" left join [ALPHA].[dbo].ZHGUTLIST ZH on A.IDWP = ZH.ID and A.WPTYPE = 'ZHGUTLIST'" + потом с андрюхой обсудить
+             //" left join [ALPHA].[dbo].CABLELIST CA on A.IDWP = CA.ID and A.WPTYPE = 'CABLELIST'" +
+             " where (W.SHILDS is null  and W.SHILDSREQ=1 or W.PLANKA is null and W.PLANKAREQ = 1 or W.SBORKA3D is null and W.SBORKA3DREQ =1 " +
+             " or W.MECHPARTS is null  and W.MECHPARTSREQ =1 or W.DIMENSIONALDRAWING is null  and W.DIMENSIONALDRAWINGREQ =1 or W.PACKAGING is null  and W.PACKAGINGREQ =1) " +
              " and A.IDSTATUS not in (1,2,13,14) " +
             " and NOT exists (select 1 from [ALPHA].[dbo].[NOTIFICATIONS] B " +
-                             "  where B.IDNTYPE = 2 and B.IDSUMMON = A.ID)";
+                             "  where B.IDNTYPE = 2 and B.IDSUMMON = A.ID) ";
             //DA.InsertCommand.Connection.Open();
-            DA.InsertCommand.ExecuteNonQuery();//вставляем оповещения для конструктора
+            DA.InsertCommand.ExecuteNonQuery();//вставляем оповещения для конструктора (IDNTYPE = 2)
 
             DA.InsertCommand.CommandText = "  insert into [ALPHA].[dbo].[NOTIFICATIONS] (IDNTYPE,IDSUMMON) " +
-             "select 3,A.ID from [ALPHA].[dbo].SUMMON A left join [ALPHA].[dbo].PURCHASEDMATERIALS pm on A.ID = pm.IDS where  " +
-             " ((SHILD is not null and SHILD != '' and SHILD != '<нет>') and SHILDREQ=1 and (PLANKA is not null and PLANKA != ''  and PLANKA != '<нет>') and PLANKAREQ = 1)" +
+             " select 3,A.ID from [ALPHA].[dbo].SUMMON A "+
+             " left join [ALPHA].[dbo].PURCHASEDMATERIALS pm on A.ID = pm.IDS   " +
+             " left join [ALPHA].[dbo].WPNAMELIST W on A.IDWP = W.ID and A.WPTYPE = 'WPNAMELIST'" +
+             " where W.SHILDS is not null  and W.SHILDSREQ=1 and W.PLANKA is not null and W.PLANKAREQ = 1" +
              " and (pm.SHILDORDERED = 0 or pm.SHILDORDERED is null) " +
              " and A.IDSTATUS not in (1,2,13,14) " +
-            " and NOT exists (select 1 from [ALPHA].[dbo].[NOTIFICATIONS] B " +
+            "  and NOT exists (select 1 from [ALPHA].[dbo].[NOTIFICATIONS] B " +
                              "  where B.IDNTYPE = 3 and B.IDSUMMON = A.ID)";
             //DA.InsertCommand.Connection.Open();
-            DA.InsertCommand.ExecuteNonQuery();//вставляем оповещения для ПДБ
+            DA.InsertCommand.ExecuteNonQuery();//вставляем оповещения для ПДБ (IDNTYPE = 3 )
 
             DA.InsertCommand.CommandText = "  insert into [ALPHA].[dbo].[NOTIFICATIONS] (IDNTYPE,IDSUMMON) " +
              "select 4,A.ID from [ALPHA].[dbo].SUMMON A where  " +
@@ -115,7 +123,7 @@ namespace SummonManager
             " and NOT exists (select 1 from [ALPHA].[dbo].[NOTIFICATIONS] B " +
                              "  where B.IDNTYPE = 4 and B.IDSUMMON = A.ID)";
             //DA.InsertCommand.Connection.Open();
-            DA.InsertCommand.ExecuteNonQuery();//вставляем оповещения для Бухгалтера
+            DA.InsertCommand.ExecuteNonQuery();//вставляем оповещения для Бухгалтера (IDNTYPE = 4)
 
             DA.InsertCommand.Connection.Close();
         }
@@ -156,7 +164,7 @@ namespace SummonManager
                          " and NOT exists (select 1 from [ALPHA].[dbo].[NOTIFICATIONS] B " +
                                           "  where B.IDNTYPE = 5 and B.IDSUMMON = A.ID)";
             DA.InsertCommand.Connection.Open();
-            DA.InsertCommand.ExecuteNonQuery();//вставляем оповещения для менеджера
+            DA.InsertCommand.ExecuteNonQuery();//вставляем оповещения для менеджера (IDNTYPE = 5)
         }
     }
 }

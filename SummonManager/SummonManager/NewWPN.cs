@@ -400,7 +400,8 @@ namespace SummonManager
                 if ((UVO.Role == Roles.Inzhener) ||
                     (UVO.Role == Roles.SimpleInzhener))                     dbwp.EditWP_Inzhener(wp);
                 if (UVO.Role == Roles.Tehnolog)                             dbwp.EditWP_Tehnolog(wp);
-                if (UVO.Role == Roles.Shemotehnik)                          dbwp.EditWP_Shemotehnik(wp);
+                if (UVO.Role == Roles.Shemotehnik) dbwp.EditWP_Shemotehnik(wp);
+                if (UVO.Role == Roles.OTD) dbwp.EditWP_OTD(wp);
 
                 MessageBox.Show("Изделие успешно сохранено!");
             }

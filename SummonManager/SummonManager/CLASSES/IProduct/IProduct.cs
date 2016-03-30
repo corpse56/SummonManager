@@ -16,6 +16,7 @@ namespace SummonManager.CLASSES
         void ViewEdit(IRole UVO);
 
         void FillTableLayoutPanel(TableLayoutPanel TLP, IRole UVO);
+
     }
     class ProductFactory
     {

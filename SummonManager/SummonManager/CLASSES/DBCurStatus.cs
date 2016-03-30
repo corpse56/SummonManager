@@ -172,7 +172,7 @@ namespace SummonManager
                     DefaultStatus = 16;
                     break;
                 case Roles.OTK:
-                    if (SVO.ProductVO.GetProductType() == WPTYPE.CABLELIST)
+                    if ((SVO.ProductVO.GetProductType() == WPTYPE.CABLELIST) || (SVO.ProductVO.GetProductType() == WPTYPE.ZHGUTLIST))
                     {
                         DA.SelectCommand.CommandText = "select ID, SNAME from " + Base.BaseName +
                         "..STATUSLIST where ID in (8,9,18)";
@@ -211,7 +211,7 @@ namespace SummonManager
                     }
                     break;
                 case Roles.Ozis:
-                    if (SVO.ProductVO.GetProductType() == WPTYPE.CABLELIST)                    //если кабель
+                    if ((SVO.ProductVO.GetProductType() == WPTYPE.CABLELIST) || (SVO.ProductVO.GetProductType() == WPTYPE.ZHGUTLIST))
                     {
                         DA.SelectCommand.CommandText = "select ID, 'Монтажники' SNAME " +
                                                                 " from " + Base.BaseName +
@@ -284,6 +284,13 @@ namespace SummonManager
                         "..STATUSLIST where ID in (7)";
                         DefaultStatus = 7;
                     }
+                    break;
+                default:
+                    DA.SelectCommand.CommandText = "select ID, 'ОТК' SNAME" +
+                                    " from " + Base.BaseName +
+                    "..STATUSLIST where ID in (7777)";
+                    DefaultStatus = 0;
+
                     break;
             }
             //DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..STATUSLIST where ID != 14";

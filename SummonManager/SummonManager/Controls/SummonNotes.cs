@@ -46,10 +46,7 @@ namespace SummonManager
             dgNote.Columns["FIO"].Width = 90;
             dgNote.Columns["NOTE"].HeaderText = "Примечание";
             dgNote.Columns["NOTE"].Width = 260;
-            if (dgNote.RowCount >= 1)
-            {
-                dgNote.FirstDisplayedScrollingRowIndex = dgNote.RowCount - 1;
-            }
+
         }
 
         private void SummonNotes_Load(object sender, EventArgs e)
@@ -60,6 +57,10 @@ namespace SummonManager
         {
             DBSummonNotes DBSN = new DBSummonNotes();
             dgNote.DataSource = DBSN.GetAllNotesByIDSummon(ID);
+            if (dgNote.RowCount >= 1)
+            {
+                dgNote.FirstDisplayedScrollingRowIndex = dgNote.RowCount - 1;
+            }
 
         }
         private void button2_Click(object sender, EventArgs e)

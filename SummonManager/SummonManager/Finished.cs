@@ -68,7 +68,7 @@ namespace SummonManager
             dgSummon.Columns["passd"].HeaderText = "Ориенти ровочная дата передачи";
             dgSummon.Columns["passd"].Visible = false;
             dgSummon.Columns["passd"].DefaultCellStyle.Format = "dd.MM.yyyy";
-            dgSummon.Columns["cause"].HeaderText = "Технические требования";
+            dgSummon.Columns["techreq"].HeaderText = "Технические требования";
             dgSummon.Columns["qty"].HeaderText = "Кол-во";
             dgSummon.Columns["idstatus"].Visible = false;
             dgSummon.Columns["ids_srt"].Visible = false;
@@ -84,6 +84,8 @@ namespace SummonManager
             dgSummon.Columns["paint_otk"].Visible = false;
             dgSummon.Columns["shild_ordered"].Visible = false;
             dgSummon.Columns["idsubst"].Visible = false;
+            dgSummon.Columns["paint_OTD"].Visible = false;
+            dgSummon.Columns["paint_shemotehnik"].Visible = false;
 
             //dgSummon.Columns["qty"].Width = 50;
             //dgSummon.Columns["cause"].Width = 130;
@@ -97,7 +99,7 @@ namespace SummonManager
             //dgSummon.Columns["sts"].Width = 100;
 
             dgSummon.Columns["qty"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgSummon.Columns["cause"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dgSummon.Columns["techreq"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgSummon.Columns["passd"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgSummon.Columns["ptime"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dgSummon.Columns["note"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
@@ -109,7 +111,7 @@ namespace SummonManager
             dgSummon.Columns["subst"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
             dgSummon.Columns["qty"].FillWeight = 50;
-            dgSummon.Columns["cause"].FillWeight = 130;
+            dgSummon.Columns["techreq"].FillWeight = 130;
             dgSummon.Columns["passd"].FillWeight = 85;
             dgSummon.Columns["ptime"].FillWeight = 100;
             dgSummon.Columns["note"].FillWeight = 250;
@@ -166,8 +168,12 @@ namespace SummonManager
             DBSummon dbs = new DBSummon();
             SummonVO svo = dbs.GetSummonByIDS(dgSummon.SelectedRows[0].Cells["ids"].Value.ToString());
 
-            ShowSummonDIR ssDIR = new ShowSummonDIR(svo.IDS, null, svo.ID);
-            ssDIR.ShowDialog();
+
+            ShowSummon ss = new ShowSummon(new UVO_DIRECTOR(),svo);
+            ss.Tag = "finished";
+            ss.ShowDialog();
+            //ShowSummonDIR ssDIR = new ShowSummonDIR(svo.IDS, null, svo.ID);
+            //ssDIR.ShowDialog();
         }
     }
 }
