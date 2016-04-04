@@ -39,32 +39,22 @@ namespace SummonManager
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.chbDocsRdy = new System.Windows.Forms.CheckBox();
             this.chbBillPayed = new System.Windows.Forms.CheckBox();
             this.label19 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.summonTransfer2 = new SummonManager.SummonTransfer();
             this.label1 = new System.Windows.Forms.Label();
             this.tbSubStatus = new System.Windows.Forms.TextBox();
             this.tbStatus = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.summonTransfer1 = new SummonManager.SummonTransfer();
-            this.wpNameView1 = new SummonManager.Controls.WPNameView();
-            this.cbCustDept = new SummonManager.RComboBox();
             this.label20 = new System.Windows.Forms.Label();
-            this.cbPacking = new SummonManager.RComboBox();
-            this.label18 = new System.Windows.Forms.Label();
             this.bEditCustomers = new System.Windows.Forms.Button();
-            this.dtpAPPROX = new System.Windows.Forms.DateTimePicker();
-            this.label16 = new System.Windows.Forms.Label();
-            this.cbAccept = new SummonManager.RComboBox();
-            this.tbQUANTITY = new SummonManager.RNumericUpDown();
             this.dtpPTIME = new System.Windows.Forms.DateTimePicker();
             this.dtpCREATED = new System.Windows.Forms.DateTimePicker();
-            this.cbMountingKit = new SummonManager.RComboBox();
-            this.cbSISP = new SummonManager.RComboBox();
-            this.cbCustomers = new SummonManager.RComboBox();
             this.tbDELIVERY = new System.Windows.Forms.TextBox();
             this.tbSHIPPING = new System.Windows.Forms.TextBox();
             this.tbPayStatus = new System.Windows.Forms.TextBox();
@@ -88,20 +78,31 @@ namespace SummonManager
             this.bSave = new System.Windows.Forms.Button();
             this.bPrint = new System.Windows.Forms.Button();
             this.bCancel = new System.Windows.Forms.Button();
-            this.chbDeterm = new System.Windows.Forms.CheckBox();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.bViewWP = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.bEditWP = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.pfSERIAL = new SummonManager.Controls.PathField();
+            this.pfPLANKA = new SummonManager.Controls.PathField();
+            this.cbCONTRACTTYPE = new SummonManager.RComboBox();
+            this.summonTransfer2 = new SummonManager.SummonTransfer();
+            this.summonTransfer1 = new SummonManager.SummonTransfer();
+            this.wpNameView1 = new SummonManager.Controls.WPNameView();
+            this.cbCustDept = new SummonManager.RComboBox();
+            this.cbPacking = new SummonManager.RComboBox();
+            this.cbAccept = new SummonManager.RComboBox();
+            this.tbQUANTITY = new SummonManager.RNumericUpDown();
+            this.cbSISP = new SummonManager.RComboBox();
+            this.cbCustomers = new SummonManager.RComboBox();
             this.summonNotes1 = new SummonManager.SummonNotes();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tbQUANTITY)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tbQUANTITY)).BeginInit();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -113,6 +114,12 @@ namespace SummonManager
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.pfSERIAL);
+            this.splitContainer1.Panel1.Controls.Add(this.pfPLANKA);
+            this.splitContainer1.Panel1.Controls.Add(this.label18);
+            this.splitContainer1.Panel1.Controls.Add(this.label22);
+            this.splitContainer1.Panel1.Controls.Add(this.cbCONTRACTTYPE);
+            this.splitContainer1.Panel1.Controls.Add(this.label16);
             this.splitContainer1.Panel1.Controls.Add(this.chbDocsRdy);
             this.splitContainer1.Panel1.Controls.Add(this.chbBillPayed);
             this.splitContainer1.Panel1.Controls.Add(this.label19);
@@ -128,15 +135,11 @@ namespace SummonManager
             this.splitContainer1.Panel1.Controls.Add(this.cbCustDept);
             this.splitContainer1.Panel1.Controls.Add(this.label20);
             this.splitContainer1.Panel1.Controls.Add(this.cbPacking);
-            this.splitContainer1.Panel1.Controls.Add(this.label18);
             this.splitContainer1.Panel1.Controls.Add(this.bEditCustomers);
-            this.splitContainer1.Panel1.Controls.Add(this.dtpAPPROX);
-            this.splitContainer1.Panel1.Controls.Add(this.label16);
             this.splitContainer1.Panel1.Controls.Add(this.cbAccept);
             this.splitContainer1.Panel1.Controls.Add(this.tbQUANTITY);
             this.splitContainer1.Panel1.Controls.Add(this.dtpPTIME);
             this.splitContainer1.Panel1.Controls.Add(this.dtpCREATED);
-            this.splitContainer1.Panel1.Controls.Add(this.cbMountingKit);
             this.splitContainer1.Panel1.Controls.Add(this.cbSISP);
             this.splitContainer1.Panel1.Controls.Add(this.cbCustomers);
             this.splitContainer1.Panel1.Controls.Add(this.tbDELIVERY);
@@ -162,7 +165,6 @@ namespace SummonManager
             this.splitContainer1.Panel1.Controls.Add(this.bSave);
             this.splitContainer1.Panel1.Controls.Add(this.bPrint);
             this.splitContainer1.Panel1.Controls.Add(this.bCancel);
-            this.splitContainer1.Panel1.Controls.Add(this.chbDeterm);
             // 
             // splitContainer1.Panel2
             // 
@@ -171,12 +173,39 @@ namespace SummonManager
             this.splitContainer1.SplitterDistance = 618;
             this.splitContainer1.TabIndex = 277;
             // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(7, 491);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(126, 16);
+            this.label18.TabIndex = 330;
+            this.label18.Text = "Серийные номера";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(7, 462);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(135, 16);
+            this.label22.TabIndex = 331;
+            this.label22.Text = "Планка фирменная";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(6, 307);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(98, 16);
+            this.label16.TabIndex = 328;
+            this.label16.Text = "Тип договора";
+            // 
             // chbDocsRdy
             // 
             this.chbDocsRdy.AutoSize = true;
             this.chbDocsRdy.Checked = true;
             this.chbDocsRdy.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbDocsRdy.Location = new System.Drawing.Point(190, 567);
+            this.chbDocsRdy.Location = new System.Drawing.Point(198, 615);
             this.chbDocsRdy.Name = "chbDocsRdy";
             this.chbDocsRdy.Size = new System.Drawing.Size(149, 20);
             this.chbDocsRdy.TabIndex = 326;
@@ -188,7 +217,7 @@ namespace SummonManager
             this.chbBillPayed.AutoSize = true;
             this.chbBillPayed.Checked = true;
             this.chbBillPayed.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbBillPayed.Location = new System.Drawing.Point(190, 539);
+            this.chbBillPayed.Location = new System.Drawing.Point(198, 587);
             this.chbBillPayed.Name = "chbBillPayed";
             this.chbBillPayed.Size = new System.Drawing.Size(154, 20);
             this.chbBillPayed.TabIndex = 327;
@@ -197,7 +226,7 @@ namespace SummonManager
             // 
             // label19
             // 
-            this.label19.Location = new System.Drawing.Point(6, 567);
+            this.label19.Location = new System.Drawing.Point(14, 615);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(174, 18);
             this.label19.TabIndex = 324;
@@ -205,20 +234,11 @@ namespace SummonManager
             // 
             // label21
             // 
-            this.label21.Location = new System.Drawing.Point(6, 539);
+            this.label21.Location = new System.Drawing.Point(14, 587);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(120, 18);
             this.label21.TabIndex = 325;
             this.label21.Text = "Состояние счёта";
-            // 
-            // summonTransfer2
-            // 
-            this.summonTransfer2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.summonTransfer2.Location = new System.Drawing.Point(4, 736);
-            this.summonTransfer2.Margin = new System.Windows.Forms.Padding(4);
-            this.summonTransfer2.Name = "summonTransfer2";
-            this.summonTransfer2.Size = new System.Drawing.Size(477, 96);
-            this.summonTransfer2.TabIndex = 323;
             // 
             // label1
             // 
@@ -231,14 +251,14 @@ namespace SummonManager
             // 
             // tbSubStatus
             // 
-            this.tbSubStatus.Location = new System.Drawing.Point(189, 507);
+            this.tbSubStatus.Location = new System.Drawing.Point(197, 555);
             this.tbSubStatus.Name = "tbSubStatus";
             this.tbSubStatus.Size = new System.Drawing.Size(284, 22);
             this.tbSubStatus.TabIndex = 320;
             // 
             // tbStatus
             // 
-            this.tbStatus.Location = new System.Drawing.Point(189, 479);
+            this.tbStatus.Location = new System.Drawing.Point(197, 527);
             this.tbStatus.Name = "tbStatus";
             this.tbStatus.Size = new System.Drawing.Size(284, 22);
             this.tbStatus.TabIndex = 321;
@@ -246,7 +266,7 @@ namespace SummonManager
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(4, 507);
+            this.label14.Location = new System.Drawing.Point(13, 555);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(135, 16);
             this.label14.TabIndex = 318;
@@ -255,69 +275,25 @@ namespace SummonManager
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(4, 482);
+            this.label8.Location = new System.Drawing.Point(14, 530);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(112, 16);
             this.label8.TabIndex = 319;
             this.label8.Text = "Текущий статус";
             // 
-            // summonTransfer1
-            // 
-            this.summonTransfer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.summonTransfer1.Location = new System.Drawing.Point(1, 636);
-            this.summonTransfer1.Margin = new System.Windows.Forms.Padding(4);
-            this.summonTransfer1.Name = "summonTransfer1";
-            this.summonTransfer1.Size = new System.Drawing.Size(488, 92);
-            this.summonTransfer1.TabIndex = 316;
-            // 
-            // wpNameView1
-            // 
-            this.wpNameView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.wpNameView1.Location = new System.Drawing.Point(191, 70);
-            this.wpNameView1.Margin = new System.Windows.Forms.Padding(4);
-            this.wpNameView1.Name = "wpNameView1";
-            this.wpNameView1.Size = new System.Drawing.Size(417, 31);
-            this.wpNameView1.TabIndex = 317;
-            // 
-            // cbCustDept
-            // 
-            this.cbCustDept.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbCustDept.FormattingEnabled = true;
-            this.cbCustDept.Location = new System.Drawing.Point(195, 277);
-            this.cbCustDept.Name = "cbCustDept";
-            this.cbCustDept.Size = new System.Drawing.Size(393, 24);
-            this.cbCustDept.TabIndex = 315;
-            // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(6, 277);
+            this.label20.Location = new System.Drawing.Point(6, 249);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(138, 16);
             this.label20.TabIndex = 314;
             this.label20.Text = "Отдел организации";
             // 
-            // cbPacking
-            // 
-            this.cbPacking.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbPacking.FormattingEnabled = true;
-            this.cbPacking.Location = new System.Drawing.Point(194, 134);
-            this.cbPacking.Name = "cbPacking";
-            this.cbPacking.Size = new System.Drawing.Size(413, 24);
-            this.cbPacking.TabIndex = 313;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(6, 107);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(149, 16);
-            this.label18.TabIndex = 312;
-            this.label18.Text = "Монтажный комплект";
-            // 
             // bEditCustomers
             // 
-            this.bEditCustomers.Location = new System.Drawing.Point(594, 247);
+            this.bEditCustomers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bEditCustomers.Location = new System.Drawing.Point(594, 219);
             this.bEditCustomers.Name = "bEditCustomers";
             this.bEditCustomers.Size = new System.Drawing.Size(16, 55);
             this.bEditCustomers.TabIndex = 311;
@@ -325,45 +301,9 @@ namespace SummonManager
             this.bEditCustomers.UseVisualStyleBackColor = true;
             this.bEditCustomers.Click += new System.EventHandler(this.bEditCustomers_Click);
             // 
-            // dtpAPPROX
-            // 
-            this.dtpAPPROX.Enabled = false;
-            this.dtpAPPROX.Location = new System.Drawing.Point(192, 449);
-            this.dtpAPPROX.Name = "dtpAPPROX";
-            this.dtpAPPROX.Size = new System.Drawing.Size(200, 22);
-            this.dtpAPPROX.TabIndex = 310;
-            // 
-            // label16
-            // 
-            this.label16.Location = new System.Drawing.Point(4, 449);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(186, 36);
-            this.label16.TabIndex = 309;
-            this.label16.Text = "Ориентировочная дата сдачи";
-            // 
-            // cbAccept
-            // 
-            this.cbAccept.FormattingEnabled = true;
-            this.cbAccept.Location = new System.Drawing.Point(194, 219);
-            this.cbAccept.Name = "cbAccept";
-            this.cbAccept.Size = new System.Drawing.Size(416, 24);
-            this.cbAccept.TabIndex = 308;
-            // 
-            // tbQUANTITY
-            // 
-            this.tbQUANTITY.Location = new System.Drawing.Point(193, 164);
-            this.tbQUANTITY.Maximum = new decimal(new int[] {
-            1000000,
-            0,
-            0,
-            0});
-            this.tbQUANTITY.Name = "tbQUANTITY";
-            this.tbQUANTITY.Size = new System.Drawing.Size(201, 22);
-            this.tbQUANTITY.TabIndex = 307;
-            // 
             // dtpPTIME
             // 
-            this.dtpPTIME.Location = new System.Drawing.Point(194, 191);
+            this.dtpPTIME.Location = new System.Drawing.Point(194, 163);
             this.dtpPTIME.Name = "dtpPTIME";
             this.dtpPTIME.Size = new System.Drawing.Size(200, 22);
             this.dtpPTIME.TabIndex = 306;
@@ -376,42 +316,10 @@ namespace SummonManager
             this.dtpCREATED.Size = new System.Drawing.Size(200, 22);
             this.dtpCREATED.TabIndex = 305;
             // 
-            // cbMountingKit
-            // 
-            this.cbMountingKit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbMountingKit.FormattingEnabled = true;
-            this.cbMountingKit.Items.AddRange(new object[] {
-            "ДА",
-            "НЕТ"});
-            this.cbMountingKit.Location = new System.Drawing.Point(193, 104);
-            this.cbMountingKit.Name = "cbMountingKit";
-            this.cbMountingKit.Size = new System.Drawing.Size(415, 24);
-            this.cbMountingKit.TabIndex = 304;
-            // 
-            // cbSISP
-            // 
-            this.cbSISP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbSISP.FormattingEnabled = true;
-            this.cbSISP.Items.AddRange(new object[] {
-            "НЕТ",
-            "ДА"});
-            this.cbSISP.Location = new System.Drawing.Point(192, 419);
-            this.cbSISP.Name = "cbSISP";
-            this.cbSISP.Size = new System.Drawing.Size(415, 24);
-            this.cbSISP.TabIndex = 303;
-            // 
-            // cbCustomers
-            // 
-            this.cbCustomers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbCustomers.FormattingEnabled = true;
-            this.cbCustomers.Location = new System.Drawing.Point(194, 247);
-            this.cbCustomers.Name = "cbCustomers";
-            this.cbCustomers.Size = new System.Drawing.Size(394, 24);
-            this.cbCustomers.TabIndex = 302;
-            this.cbCustomers.SelectedIndexChanged += new System.EventHandler(this.cbCustomers_SelectedIndexChanged);
-            // 
             // tbDELIVERY
             // 
+            this.tbDELIVERY.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.tbDELIVERY.Location = new System.Drawing.Point(193, 393);
             this.tbDELIVERY.Name = "tbDELIVERY";
             this.tbDELIVERY.Size = new System.Drawing.Size(415, 22);
@@ -419,6 +327,8 @@ namespace SummonManager
             // 
             // tbSHIPPING
             // 
+            this.tbSHIPPING.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.tbSHIPPING.Location = new System.Drawing.Point(193, 365);
             this.tbSHIPPING.Name = "tbSHIPPING";
             this.tbSHIPPING.Size = new System.Drawing.Size(415, 22);
@@ -426,6 +336,8 @@ namespace SummonManager
             // 
             // tbPayStatus
             // 
+            this.tbPayStatus.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.tbPayStatus.Location = new System.Drawing.Point(193, 337);
             this.tbPayStatus.Name = "tbPayStatus";
             this.tbPayStatus.Size = new System.Drawing.Size(415, 22);
@@ -433,7 +345,9 @@ namespace SummonManager
             // 
             // tbCONTRACT
             // 
-            this.tbCONTRACT.Location = new System.Drawing.Point(193, 304);
+            this.tbCONTRACT.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.tbCONTRACT.Location = new System.Drawing.Point(193, 276);
             this.tbCONTRACT.Name = "tbCONTRACT";
             this.tbCONTRACT.Size = new System.Drawing.Size(415, 22);
             this.tbCONTRACT.TabIndex = 300;
@@ -477,7 +391,7 @@ namespace SummonManager
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(5, 307);
+            this.label9.Location = new System.Drawing.Point(5, 279);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(141, 16);
             this.label9.TabIndex = 287;
@@ -486,7 +400,7 @@ namespace SummonManager
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 250);
+            this.label7.Location = new System.Drawing.Point(6, 222);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(160, 16);
             this.label7.TabIndex = 288;
@@ -495,7 +409,7 @@ namespace SummonManager
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(6, 222);
+            this.label6.Location = new System.Drawing.Point(6, 194);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(66, 16);
             this.label6.TabIndex = 295;
@@ -504,7 +418,7 @@ namespace SummonManager
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 194);
+            this.label5.Location = new System.Drawing.Point(6, 166);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(140, 16);
             this.label5.TabIndex = 296;
@@ -513,7 +427,7 @@ namespace SummonManager
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 166);
+            this.label4.Location = new System.Drawing.Point(6, 138);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(91, 16);
             this.label4.TabIndex = 297;
@@ -531,7 +445,7 @@ namespace SummonManager
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(5, 142);
+            this.label17.Location = new System.Drawing.Point(5, 114);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(71, 16);
             this.label17.TabIndex = 293;
@@ -616,19 +530,6 @@ namespace SummonManager
             this.bCancel.UseVisualStyleBackColor = true;
             this.bCancel.Click += new System.EventHandler(this.bCancel_Click);
             // 
-            // chbDeterm
-            // 
-            this.chbDeterm.AutoSize = true;
-            this.chbDeterm.Checked = true;
-            this.chbDeterm.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbDeterm.Location = new System.Drawing.Point(398, 449);
-            this.chbDeterm.Name = "chbDeterm";
-            this.chbDeterm.Size = new System.Drawing.Size(128, 20);
-            this.chbDeterm.TabIndex = 277;
-            this.chbDeterm.Text = "Не определено";
-            this.chbDeterm.UseVisualStyleBackColor = true;
-            this.chbDeterm.CheckedChanged += new System.EventHandler(this.chbDeterm_CheckedChanged);
-            // 
             // splitContainer2
             // 
             this.splitContainer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -699,6 +600,153 @@ namespace SummonManager
             this.tableLayoutPanel1.Size = new System.Drawing.Size(545, 420);
             this.tableLayoutPanel1.TabIndex = 38;
             // 
+            // pfSERIAL
+            // 
+            this.pfSERIAL.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.pfSERIAL.bDelVisible = true;
+            this.pfSERIAL.bPathVisible = true;
+            this.pfSERIAL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pfSERIAL.FullPath = "<нет>";
+            this.pfSERIAL.ISPATH = false;
+            this.pfSERIAL.Location = new System.Drawing.Point(162, 484);
+            this.pfSERIAL.Margin = new System.Windows.Forms.Padding(4);
+            this.pfSERIAL.Name = "pfSERIAL";
+            this.pfSERIAL.Required = false;
+            this.pfSERIAL.Size = new System.Drawing.Size(449, 32);
+            this.pfSERIAL.TabIndex = 332;
+            this.pfSERIAL.Tag = SummonManager.CLASSES.IRole_namespace.Roles.OTK;
+            // 
+            // pfPLANKA
+            // 
+            this.pfPLANKA.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.pfPLANKA.bDelVisible = true;
+            this.pfPLANKA.bPathVisible = true;
+            this.pfPLANKA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.pfPLANKA.FullPath = "<нет>";
+            this.pfPLANKA.ISPATH = false;
+            this.pfPLANKA.Location = new System.Drawing.Point(161, 450);
+            this.pfPLANKA.Margin = new System.Windows.Forms.Padding(4);
+            this.pfPLANKA.Name = "pfPLANKA";
+            this.pfPLANKA.Required = false;
+            this.pfPLANKA.Size = new System.Drawing.Size(449, 32);
+            this.pfPLANKA.TabIndex = 333;
+            this.pfPLANKA.Tag = SummonManager.CLASSES.IRole_namespace.Roles.Constructor;
+            // 
+            // cbCONTRACTTYPE
+            // 
+            this.cbCONTRACTTYPE.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbCONTRACTTYPE.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCONTRACTTYPE.FormattingEnabled = true;
+            this.cbCONTRACTTYPE.Items.AddRange(new object[] {
+            "Стандартный",
+            "По 275 ФЗ"});
+            this.cbCONTRACTTYPE.Location = new System.Drawing.Point(193, 307);
+            this.cbCONTRACTTYPE.Name = "cbCONTRACTTYPE";
+            this.cbCONTRACTTYPE.Size = new System.Drawing.Size(415, 24);
+            this.cbCONTRACTTYPE.TabIndex = 329;
+            // 
+            // summonTransfer2
+            // 
+            this.summonTransfer2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.summonTransfer2.Location = new System.Drawing.Point(4, 736);
+            this.summonTransfer2.Margin = new System.Windows.Forms.Padding(4);
+            this.summonTransfer2.Name = "summonTransfer2";
+            this.summonTransfer2.Size = new System.Drawing.Size(477, 96);
+            this.summonTransfer2.TabIndex = 323;
+            // 
+            // summonTransfer1
+            // 
+            this.summonTransfer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.summonTransfer1.Location = new System.Drawing.Point(1, 636);
+            this.summonTransfer1.Margin = new System.Windows.Forms.Padding(4);
+            this.summonTransfer1.Name = "summonTransfer1";
+            this.summonTransfer1.Size = new System.Drawing.Size(488, 92);
+            this.summonTransfer1.TabIndex = 316;
+            // 
+            // wpNameView1
+            // 
+            this.wpNameView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.wpNameView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.wpNameView1.Location = new System.Drawing.Point(191, 70);
+            this.wpNameView1.Margin = new System.Windows.Forms.Padding(4);
+            this.wpNameView1.Name = "wpNameView1";
+            this.wpNameView1.Size = new System.Drawing.Size(417, 31);
+            this.wpNameView1.TabIndex = 317;
+            // 
+            // cbCustDept
+            // 
+            this.cbCustDept.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbCustDept.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCustDept.FormattingEnabled = true;
+            this.cbCustDept.Location = new System.Drawing.Point(195, 249);
+            this.cbCustDept.Name = "cbCustDept";
+            this.cbCustDept.Size = new System.Drawing.Size(393, 24);
+            this.cbCustDept.TabIndex = 315;
+            // 
+            // cbPacking
+            // 
+            this.cbPacking.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbPacking.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbPacking.FormattingEnabled = true;
+            this.cbPacking.Location = new System.Drawing.Point(194, 106);
+            this.cbPacking.Name = "cbPacking";
+            this.cbPacking.Size = new System.Drawing.Size(413, 24);
+            this.cbPacking.TabIndex = 313;
+            // 
+            // cbAccept
+            // 
+            this.cbAccept.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbAccept.FormattingEnabled = true;
+            this.cbAccept.Location = new System.Drawing.Point(194, 191);
+            this.cbAccept.Name = "cbAccept";
+            this.cbAccept.Size = new System.Drawing.Size(416, 24);
+            this.cbAccept.TabIndex = 308;
+            // 
+            // tbQUANTITY
+            // 
+            this.tbQUANTITY.Location = new System.Drawing.Point(193, 136);
+            this.tbQUANTITY.Maximum = new decimal(new int[] {
+            1000000,
+            0,
+            0,
+            0});
+            this.tbQUANTITY.Name = "tbQUANTITY";
+            this.tbQUANTITY.Size = new System.Drawing.Size(201, 22);
+            this.tbQUANTITY.TabIndex = 307;
+            // 
+            // cbSISP
+            // 
+            this.cbSISP.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbSISP.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbSISP.FormattingEnabled = true;
+            this.cbSISP.Items.AddRange(new object[] {
+            "НЕТ",
+            "ДА"});
+            this.cbSISP.Location = new System.Drawing.Point(192, 419);
+            this.cbSISP.Name = "cbSISP";
+            this.cbSISP.Size = new System.Drawing.Size(415, 24);
+            this.cbSISP.TabIndex = 303;
+            // 
+            // cbCustomers
+            // 
+            this.cbCustomers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.cbCustomers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCustomers.FormattingEnabled = true;
+            this.cbCustomers.Location = new System.Drawing.Point(194, 219);
+            this.cbCustomers.Name = "cbCustomers";
+            this.cbCustomers.Size = new System.Drawing.Size(394, 24);
+            this.cbCustomers.TabIndex = 302;
+            this.cbCustomers.SelectedIndexChanged += new System.EventHandler(this.cbCustomers_SelectedIndexChanged);
+            // 
             // summonNotes1
             // 
             this.summonNotes1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -718,7 +766,6 @@ namespace SummonManager
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(4);
-            this.MaximizeBox = false;
             this.Name = "ShowSummon";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Просмотр извещения (менеджер)";
@@ -727,11 +774,11 @@ namespace SummonManager
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.tbQUANTITY)).EndInit();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel1.PerformLayout();
             this.splitContainer2.Panel2.ResumeLayout(false);
             this.splitContainer2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.tbQUANTITY)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -743,8 +790,6 @@ namespace SummonManager
         private Label label14;
         private Label label8;
         private Label label20;
-        private Label label18;
-        private Label label16;
         private Label label13;
         private Label label12;
         private Label label11;
@@ -768,11 +813,9 @@ namespace SummonManager
         public RComboBox cbCustDept;
         public RComboBox cbPacking;
         public Button bEditCustomers;
-        public DateTimePicker dtpAPPROX;
         public RComboBox cbAccept;
         public RNumericUpDown tbQUANTITY;
         public DateTimePicker dtpPTIME;
-        public RComboBox cbMountingKit;
         public RComboBox cbSISP;
         public RComboBox cbCustomers;
         public TextBox tbDELIVERY;
@@ -785,7 +828,6 @@ namespace SummonManager
         public Button bSave;
         public Button bPrint;
         public Button bCancel;
-        public CheckBox chbDeterm;
         public TableLayoutPanel tableLayoutPanel1;
         public SummonNotes summonNotes1;
         public SummonTransfer summonTransfer2;
@@ -795,5 +837,11 @@ namespace SummonManager
         public TextBox tbIDS;
         public DateTimePicker dtpCREATED;
         private Button bViewWP;
+        private Label label16;
+        private Label label18;
+        private Label label22;
+        public RComboBox cbCONTRACTTYPE;
+        public SummonManager.Controls.PathField pfSERIAL;
+        public SummonManager.Controls.PathField pfPLANKA;
     }
 }

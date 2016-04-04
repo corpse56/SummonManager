@@ -38,29 +38,28 @@ namespace SummonManager
         {
             ss.summonTransfer1.Enabled = true;
             ss.summonTransfer1.Enabled = true;
-            ss.bEdit.Enabled = true;
+            ss.bEdit.Enabled = false;
             
         }
         public override void EnableEdit(ShowSummon ss)
         {
-            if (ss.SVO.IDSTATUS != 12)
+            /*if (ss.SVO.IDSTATUS != 12)
             {
                 MessageBox.Show("Вы не можете редактировать это извещение, так как не являетесь в данный момент ответственным лицом за это извещение!");
                 return;
             }
-            EnableAll(ss);
+            EnableAll(ss);*/
         }
         private void EnableAll(ShowSummon ss)
         {
             ss.summonTransfer1.Enabled = false;
             ss.bEdit.Enabled = false;
             ss.bSave.Enabled = true;
-            ss.bPrint.Enabled = true;
-            ss.chbDeterm.Enabled = true;
+            /*ss.chbDeterm.Enabled = true;
             if (ss.chbDeterm.Checked)
                 ss.dtpAPPROX.Enabled = false;
             else
-                ss.dtpAPPROX.Enabled = true;
+                ss.dtpAPPROX.Enabled = true;*/
         }
 
     }

@@ -35,6 +35,7 @@ namespace SummonManager
             ss.bEditWP.Enabled = true;
             ss.bPurchMat.Enabled = true;
 
+
         }
         public override void EnableEdit(ShowSummon ss)
         {
@@ -53,16 +54,17 @@ namespace SummonManager
             ss.cbCustomers.ReadOnly = false;
             ss.cbSISP.ReadOnly = false;
             ss.cbPacking.ReadOnly = false;
-            ss.cbMountingKit.ReadOnly = false;
+            //ss.cbMountingKit.ReadOnly = false;
             ss.cbCustDept.ReadOnly = false;
+            ss.cbCONTRACTTYPE.ReadOnly = false;
 
             ss.dtpPTIME.Enabled = true;
-            ss.chbDeterm.Enabled = true;
+            /*ss.chbDeterm.Enabled = true;
 
             if (ss.chbDeterm.Checked)
                 ss.dtpAPPROX.Enabled = false;
             else
-                ss.dtpAPPROX.Enabled = true;
+                ss.dtpAPPROX.Enabled = true;*/
 
             ss.bEdit.Enabled = false;
             ss.bSave.Enabled = true;

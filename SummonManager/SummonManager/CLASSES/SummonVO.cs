@@ -26,7 +26,7 @@ namespace SummonManager
         public int IDCURSTATUS;
         public DateTime CREATED;
         public int IDPACKING;
-        public int IDMOUNTINGKIT;
+        //public int IDMOUNTINGKIT;
         public int IDCUSTOMERDEPT;
         public int IDEXTCABLE;
         //fields for report
@@ -38,7 +38,7 @@ namespace SummonManager
         public string STATUSNAME;
         public string SISPNAME;
         public int IDACCEPT;
-        public DateTime? PASSDATE;
+        //public DateTime? PASSDATE;
         public string PASSDATETEXT;
         public string PACKINGNAME;
         public string EXTCABLENAMES;
@@ -53,6 +53,13 @@ namespace SummonManager
         public bool BILLPAYED;
         public bool DOCSREADY;
         public string SUBSTATUSNAME;
+
+        public string CONTRACTTYPE;
+        public string PLANKA;
+        public string SERIAL;
+        public bool PLANKAREQ;
+        public bool SERIALREQ;
+
         public SummonVO()
         {
 
@@ -88,7 +95,7 @@ namespace SummonManager
                 this.SISPNAME = "НЕТ";
             this.PACKINGNAME = new DBPacking().Get(this.IDPACKING.ToString());
             //this.EXTCABLENAMES = new DBEXTCABLE().GetEXTCABLEsForPackReport(this.ID.ToString());
-            this.MOUNTINGKITNAME = new DBMountingKit().GetMOUNTINGKIT(this.IDMOUNTINGKIT.ToString());
+            this.MOUNTINGKITNAME = "Удалено";//new DBMountingKit().GetMOUNTINGKIT(this.IDMOUNTINGKIT.ToString());
             return this;
         }
 

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using SummonManager.CLASSES.IRole_namespace;
+using SummonManager.Controls;
 
 namespace SummonManager.CLASSES
 {
@@ -56,6 +57,32 @@ namespace SummonManager.CLASSES
 
         void IProduct.FillTableLayoutPanel(TableLayoutPanel TLP, IRole UVO)
         {
+            CableVO wp = (CableVO)this;
+            
+            PathField pf = new PathField();
+            pf.Tag = Roles.Inzhener;
+            pf.Init(wp.DIMENDRAWING, true, false, false, true, Roles.Inzhener, UVO.Role, "VIEWONLY");
+            pf.bDelVisible = false;
+            pf.bPathVisible = false;
+            pf.tbPath.Width += 150;
+            pf.tbPath.Dock = DockStyle.Fill;
+            pf.Dock = DockStyle.Fill;
+            UIWorks.AddToTLP(TLP, "Сборочный чертёж", pf);
+
+            TextBox tb = new TextBox();
+            tb.Text = wp.CONECTORS;
+            tb.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            tb.ReadOnly = true;
+            tb.Dock = DockStyle.Fill;
+            UIWorks.AddToTLP(TLP, "Соединители", tb);
+
+            tb = new TextBox();
+            tb.Text = wp.CLENGTH;
+            tb.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            tb.ReadOnly = true;
+            tb.Dock = DockStyle.Fill;
+            UIWorks.AddToTLP(TLP, "Длина", tb);
+
         }
 
     }

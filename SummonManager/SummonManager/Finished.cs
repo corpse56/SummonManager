@@ -157,8 +157,10 @@ namespace SummonManager
             DBSummon dbs = new DBSummon();
             SummonVO svo = dbs.GetSummonByIDS(dgSummon.SelectedRows[0].Cells["ids"].Value.ToString());
 
-            ShowSummonDIR ssDIR = new ShowSummonDIR(svo.IDS, null, svo.ID);
-            ssDIR.ShowDialog();
+
+
+            //ShowSummonDIR ssDIR = new ShowSummonDIR(svo.IDS, null, svo.ID);
+            //ssDIR.ShowDialog();
 
         }
 

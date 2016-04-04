@@ -39,21 +39,21 @@ namespace SummonManager
         public override void EnableInitial(ShowSummon ss)
         {
             ss.bEdit.Enabled = true;
-            ss.bEditWP.Enabled = true;
+
 
         }
         public override void EnableEdit(ShowSummon ss)
         {
-            if ((ss.SVO.IDSTATUS != 7) && (ss.SVO.IDSTATUS != 16))
-            {
-                MessageBox.Show("Вы не можете редактировать это извещение, так как не являетесь в данный момент ответственным лицом за это извещение или оно пришло от монтажников!");
+            //if ((ss.SVO.IDSTATUS != 7) && (ss.SVO.IDSTATUS != 16))
+            //{
+                //MessageBox.Show("Вы не можете редактировать это извещение, так как не являетесь в данный момент ответственным лицом за это извещение или оно пришло от монтажников!");
                 //MessageBox.Show("Вы можете редактировать только поле \"Серийные номера\", так как не являетесь в данный момент ответственным лицом за это извещение или оно пришло от монтажников!");
-                return;
-            }
-            else
-            {
+                //return;
+            //}
+            //else
+            //{
                 EnableAll(ss);
-            }
+            //}
         }
         private void EnableAll(ShowSummon ss)
         {
@@ -61,11 +61,17 @@ namespace SummonManager
             ss.summonTransfer2.Enabled = false;
             ss.bEdit.Enabled = false;
             ss.bSave.Enabled = true;
-            ss.chbDeterm.Enabled = true;
+
+            
+            ss.pfSERIAL.ACCESSMODE = "EDIT";
+            ss.pfSERIAL.Enabled = true;
+
+
+            /*ss.chbDeterm.Enabled = true;
             if (ss.chbDeterm.Checked)
                 ss.dtpAPPROX.Enabled = false;
             else
-                ss.dtpAPPROX.Enabled = true;
+                ss.dtpAPPROX.Enabled = true;*/
         }
 
     }

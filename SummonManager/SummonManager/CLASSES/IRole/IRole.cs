@@ -79,16 +79,17 @@ namespace SummonManager.CLASSES.IRole_namespace
 
 
             ss.cbPacking.ReadOnly = true;
-            ss.cbMountingKit.ReadOnly = true;
+            //ss.cbMountingKit.ReadOnly = true;
             ss.cbCustDept.ReadOnly = true;
             ss.cbAccept.ReadOnly = true;
             ss.cbCustomers.ReadOnly = true;
             ss.cbSISP.ReadOnly = true;
+            ss.cbCONTRACTTYPE.ReadOnly = true;
 
             ss.dtpPTIME.Enabled = false;
-            ss.dtpAPPROX.Enabled = false;
+            //ss.dtpAPPROX.Enabled = false;
 
-            ss.chbDeterm.Enabled = false;
+            //ss.chbDeterm.Enabled = false;
             ss.chbBillPayed.Enabled = false;
             ss.chbDocsRdy.Enabled = false;
 
@@ -103,6 +104,8 @@ namespace SummonManager.CLASSES.IRole_namespace
             ss.summonTransfer1.Enabled = true;
             ss.summonTransfer2.Enabled = true;
 
+            ss.pfPLANKA.Init(ss.SVO.PLANKA, ss.SVO.PLANKAREQ, false, true, false, Roles.Constructor, this.Role, "VIEWONLY");
+            ss.pfSERIAL.Init(ss.SVO.SERIAL, ss.SVO.SERIALREQ, false, true, false, Roles.OTK, this.Role, "VIEWONLY");
             //ss.summonNotes1.button1.Enabled = false;
 
 
@@ -134,11 +137,11 @@ namespace SummonManager.CLASSES.IRole_namespace
             ss.cbPacking.DataSource = dbp.GetAll();
             ss.cbPacking.SelectedValue = ss.SVO.IDPACKING;
 
-            DBMountingKit dbmk = new DBMountingKit();
-            ss.cbMountingKit.ValueMember = "ID";
-            ss.cbMountingKit.DisplayMember = "MOUNTINGKITNAME";
-            ss.cbMountingKit.DataSource = dbmk.GetAllDBMountingKitNames();
-            ss.cbMountingKit.SelectedValue = ss.SVO.IDMOUNTINGKIT;
+            //DBMountingKit dbmk = new DBMountingKit();
+            //ss.cbMountingKit.ValueMember = "ID";
+            //ss.cbMountingKit.DisplayMember = "MOUNTINGKITNAME";
+            //ss.cbMountingKit.DataSource = dbmk.GetAllDBMountingKitNames();
+            //ss.cbMountingKit.SelectedValue = ss.SVO.IDMOUNTINGKIT;
 
 
             ss.tbCONTRACT.Text = ss.SVO.CONTRACT;
@@ -148,7 +151,7 @@ namespace SummonManager.CLASSES.IRole_namespace
             ss.dtpCREATED.Value = ss.SVO.CREATED;
             ss.dtpPTIME.Value = ss.SVO.PTIME;
             ss.tbPayStatus.Text = ss.SVO.PAYSTATUS;
-            if (ss.SVO.PASSDATE == null)
+            /*if (ss.SVO.PASSDATE == null)
             {
                 ss.chbDeterm.Checked = true;
                 ss.dtpAPPROX.Enabled = false;
@@ -158,7 +161,7 @@ namespace SummonManager.CLASSES.IRole_namespace
                 ss.chbDeterm.Checked = false;
                 ss.dtpAPPROX.Enabled = false;
                 ss.dtpAPPROX.Value = (DateTime)ss.SVO.PASSDATE;
-            }
+            }*/
             ss.tbStatus.Text = ss.SVO.STATUSNAME;
             ss.tbSubStatus.Text = ss.SVO.SUBSTATUSNAME;
             ss.chbBillPayed.Checked = ss.SVO.BILLPAYED;
@@ -193,7 +196,11 @@ namespace SummonManager.CLASSES.IRole_namespace
                 DBSummon dbs = new DBSummon();
                 dbs.AddSummonView(ss.SVO, this);
             }
-            ss.dtpApproxAtLoad = ss.SVO.PASSDATE;
+            //ss.dtpApproxAtLoad = ss.SVO.PASSDATE;
+
+            ss.cbCONTRACTTYPE.Text = ss.SVO.CONTRACTTYPE;
+
+
 
             //pfMETAL.IsPath = true;
         }//эта тоже
@@ -237,7 +244,7 @@ namespace SummonManager.CLASSES.IRole_namespace
                 SVO.SISP = true;
             SVO.IDACCEPT = (int)ss.cbAccept.SelectedValue;
             SVO.IDPACKING = (int)ss.cbPacking.SelectedValue;
-            SVO.IDMOUNTINGKIT = (int)ss.cbMountingKit.SelectedValue;
+            /*SVO.IDMOUNTINGKIT = (int)ss.cbMountingKit.SelectedValue;
             if (ss.chbDeterm.Checked)
             {
                 SVO.PASSDATE = null;
@@ -245,15 +252,22 @@ namespace SummonManager.CLASSES.IRole_namespace
             else
             {
                 SVO.PASSDATE = ss.dtpAPPROX.Value;
-            }
+            }*/
             SVO.BILLPAYED = ss.chbBillPayed.Checked;
             SVO.DOCSREADY = ss.chbDocsRdy.Checked;
             SVO.VIEWED = true;
+            SVO.CONTRACTTYPE = ss.cbCONTRACTTYPE.Text;
+            SVO.PLANKA = ss.pfPLANKA.FullPath;
+            SVO.PLANKAREQ = ss.pfPLANKA.Required;
+            SVO.SERIAL = ss.pfSERIAL.FullPath;
+            SVO.SERIALREQ = ss.pfSERIAL.Required;
+
             dbs.SaveSummon(SVO);
-            if (ss.dtpApproxAtLoad != SVO.PASSDATE)
+            ss.SVO = SVO;
+            /*if (ss.dtpApproxAtLoad != SVO.PASSDATE)
             {
                 dbs.PassDateChanged(SVO.ID);
-            }
+            }*/
             MessageBox.Show("Извещение успешно сохранено!");
 
 

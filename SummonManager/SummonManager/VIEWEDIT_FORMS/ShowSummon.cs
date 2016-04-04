@@ -46,10 +46,10 @@ namespace SummonManager
 
         private void chbDeterm_CheckedChanged(object sender, EventArgs e)
         {
-            if (chbDeterm.Checked)
+            /*if (chbDeterm.Checked)
                 dtpAPPROX.Enabled = false;
             else
-                dtpAPPROX.Enabled = true;
+                dtpAPPROX.Enabled = true;*/
         }
 
 
@@ -86,9 +86,7 @@ namespace SummonManager
             tableLayoutPanel1.RowStyles.Clear();
             tableLayoutPanel1.RowCount = 0;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
-            //tableLayoutPanel1.RowStyles[0].Height = 40F;
-            IProduct product = ProductFactory.Create(SVO.ProductVO.GetID(),SVO.WPTYPE);
-            product.FillTableLayoutPanel(tableLayoutPanel1,UVO);
+            SVO.ProductVO.FillTableLayoutPanel(tableLayoutPanel1,UVO);
         }
 
         private void bPurchMat_Click(object sender, EventArgs e)
@@ -179,6 +177,7 @@ namespace SummonManager
             IProduct pr = SVO.ProductVO;
             pr.ViewEdit(UVO);
             SVO.ProductVO = ProductFactory.Create(SVO.IDWPNAME, SVO.WPTYPE);
+
             InitTableLayout();
             
         }

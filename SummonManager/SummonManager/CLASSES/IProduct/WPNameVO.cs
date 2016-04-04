@@ -58,8 +58,6 @@ namespace SummonManager.CLASSES
         public List<ZhgutVO> ZHGUTS;
         public List<CableVO> CABLES;
         public string SHILDS;
-        public string PLANKA;
-        public string SERIAL;
         public string PACKAGING;
         public string PASSPORT;
         public string MANUAL;
@@ -76,8 +74,6 @@ namespace SummonManager.CLASSES
         public bool SBORKA3DREQ	;
         public bool MECHPARTSREQ;	
         public bool SHILDSREQ	;
-        public bool PLANKAREQ	;
-        public bool SERIALREQ	;
         public bool PACKAGINGREQ	;
         public bool PASSPORTREQ	;
         public bool MANUALREQ	;
@@ -119,30 +115,34 @@ namespace SummonManager.CLASSES
             {
                 PathField pf = new PathField();
                 pf.Tag = Roles.Inzhener;
-                pf.Init(wp.COMPOSITION, true, false, false, true, Roles.Inzhener, UVO.Role);
+                pf.Init(wp.COMPOSITION, true, false, false, true, Roles.Inzhener, UVO.Role, "VIEWONLY");
                 pf.bDelVisible = false;
                 pf.bPathVisible = false;
-                pf.tbPath.Width += 150;
+                pf.tbPath.Dock = DockStyle.Fill;
+                pf.Dock = DockStyle.Fill;
+
                 UIWorks.AddToTLP(TLP, "Состав изделия", pf);
             }
             if (wp.TECHREQREQ)
             {
                 PathField pf = new PathField();
                 pf.Tag = Roles.Inzhener;
-                pf.Init(wp.TECHREQ, true, false, false, true, Roles.Inzhener, UVO.Role);
+                pf.Init(wp.TECHREQ, true, false, false, true, Roles.Inzhener, UVO.Role, "VIEWONLY");
                 pf.bDelVisible = false;
                 pf.bPathVisible = false;
-                pf.tbPath.Width += 150;
+                pf.tbPath.Dock = DockStyle.Fill;
+                pf.Dock = DockStyle.Fill;
                 UIWorks.AddToTLP(TLP, "Технические требования", pf);
             }
             if (wp.CONFIGURATIONREQ)
             {
                 PathField pf = new PathField();
                 pf.Tag = Roles.Inzhener;
-                pf.Init(wp.CONFIGURATION, true, false, false, true, Roles.Inzhener, UVO.Role);
+                pf.Init(wp.CONFIGURATION, true, false, false, true, Roles.Inzhener, UVO.Role, "VIEWONLY");
                 pf.bDelVisible = false;
                 pf.bPathVisible = false;
-                pf.tbPath.Width += 150;
+                pf.tbPath.Dock = DockStyle.Fill;
+                pf.Dock = DockStyle.Fill;
                 UIWorks.AddToTLP(TLP, "Конфигурация", pf);
             }
             //===============================================================Constructor
@@ -150,43 +150,47 @@ namespace SummonManager.CLASSES
             {
                 PathField pf = new PathField();
                 pf.Tag = Roles.Constructor;
-                pf.Init(wp.DIMENDRAWING, true, false, false, true, Roles.Constructor, UVO.Role);
+                pf.Init(wp.DIMENDRAWING, true, false, false, true, Roles.Constructor, UVO.Role, "VIEWONLY");
                 pf.bDelVisible = false;
                 pf.bPathVisible = false;
-                pf.tbPath.Width += 150;
+                pf.tbPath.Dock = DockStyle.Fill;
+                pf.Dock = DockStyle.Fill;
                 UIWorks.AddToTLP(TLP, "Габаритный чертёж", pf);
             }
             if (wp.SBORKA3DREQ)
             {
                 PathField pf = new PathField();
                 pf.Tag = Roles.Constructor;
-                pf.Init(wp.SBORKA3D, true, false, false, true, Roles.Constructor, UVO.Role);
+                pf.Init(wp.SBORKA3D, true, false, false, true, Roles.Constructor, UVO.Role, "VIEWONLY");
                 pf.bDelVisible = false;
                 pf.bPathVisible = false;
-                pf.tbPath.Width += 150;
+                pf.tbPath.Dock = DockStyle.Fill;
+                pf.Dock = DockStyle.Fill;
                 UIWorks.AddToTLP(TLP, "3Д сборка", pf);
             }
             if (wp.MECHPARTSREQ)
             {
                 PathField pf = new PathField();
                 pf.Tag = Roles.Constructor;
-                pf.Init(wp.MECHPARTS, true, false, false, true, Roles.Constructor, UVO.Role);
+                pf.Init(wp.MECHPARTS, true, false, false, true, Roles.Constructor, UVO.Role, "VIEWONLY");
                 pf.bDelVisible = false;
                 pf.bPathVisible = false;
-                pf.tbPath.Width += 150;
+                pf.tbPath.Dock = DockStyle.Fill;
+                pf.Dock = DockStyle.Fill;
                 UIWorks.AddToTLP(TLP, "Проект механических деталей", pf);
             }
             if (wp.SHILDSREQ)
             {
                 PathField pf = new PathField();
                 pf.Tag = Roles.Constructor;
-                pf.Init(wp.SHILDS, true, false, false, true, Roles.Constructor, UVO.Role);
+                pf.Init(wp.SHILDS, true, false, false, true, Roles.Constructor, UVO.Role, "VIEWONLY");
                 pf.bDelVisible = false;
                 pf.bPathVisible = false;
-                pf.tbPath.Width += 150;
+                pf.tbPath.Dock = DockStyle.Fill;
+                pf.Dock = DockStyle.Fill;
                 UIWorks.AddToTLP(TLP, "Шильды", pf);
             }
-            if (wp.PLANKAREQ)
+            /*if (wp.PLANKAREQ)
             {
                 PathField pf = new PathField();
                 pf.Tag = Roles.Constructor;
@@ -195,15 +199,16 @@ namespace SummonManager.CLASSES
                 pf.bPathVisible = false;
                 pf.tbPath.Width += 150;
                 UIWorks.AddToTLP(TLP, "Планка фирменная", pf);
-            }
+            }*/
             if (wp.PACKAGINGREQ)
             {
                 PathField pf = new PathField();
                 pf.Tag = Roles.Constructor;
-                pf.Init(wp.PACKAGING, true, false, false, true, Roles.Constructor, UVO.Role);
+                pf.Init(wp.PACKAGING, true, false, false, true, Roles.Constructor, UVO.Role, "VIEWONLY");
                 pf.bDelVisible = false;
                 pf.bPathVisible = false;
-                pf.tbPath.Width += 150;
+                pf.tbPath.Dock = DockStyle.Fill;
+                pf.Dock = DockStyle.Fill;
                 UIWorks.AddToTLP(TLP, "Упаковка", pf);
             }
             //===================================================================================TEHNOLOG
@@ -213,16 +218,17 @@ namespace SummonManager.CLASSES
             {
                 PathField pf = new PathField();
                 pf.Tag = Roles.Shemotehnik;
-                pf.Init(wp.WIRINGDIAGRAM, true, false, false, true, Roles.Shemotehnik, UVO.Role);
+                pf.Init(wp.WIRINGDIAGRAM, true, false, false, true, Roles.Shemotehnik, UVO.Role, "VIEWONLY");
                 pf.bDelVisible = false;
                 pf.bPathVisible = false;
-                pf.tbPath.Width += 150;
+                pf.tbPath.Dock = DockStyle.Fill;
+                pf.Dock = DockStyle.Fill;
                 UIWorks.AddToTLP(TLP, "Схема электрическая монтажная", pf);
             }
 
 
             //===================================================================================OTK
-            if (wp.SERIALREQ)
+            /*if (wp.SERIALREQ)
             {
                 PathField pf = new PathField();
                 pf.Tag = Roles.OTK;
@@ -231,37 +237,40 @@ namespace SummonManager.CLASSES
                 pf.bPathVisible = false;
                 pf.tbPath.Width += 150;
                 UIWorks.AddToTLP(TLP, "Серийные номера", pf);
-            }
+            }*/
 
             //===================================================================================OTD
             if (wp.PASSPORTREQ)
             {
                 PathField pf = new PathField();
                 pf.Tag = Roles.OTD;
-                pf.Init(wp.PASSPORT, true, false, false, true, Roles.OTD, UVO.Role);
+                pf.Init(wp.PASSPORT, true, false, false, true, Roles.OTD, UVO.Role, "VIEWONLY");
                 pf.bDelVisible = false;
                 pf.bPathVisible = false;
-                pf.tbPath.Width += 150;
+                pf.tbPath.Dock = DockStyle.Fill;
+                pf.Dock = DockStyle.Fill;
                 UIWorks.AddToTLP(TLP, "Паспорт/ЭТ", pf);
             }
             if (wp.MANUALREQ)
             {
                 PathField pf = new PathField();
                 pf.Tag = Roles.OTD;
-                pf.Init(wp.MANUAL, true, false, false, true, Roles.OTD, UVO.Role);
+                pf.Init(wp.MANUAL, true, false, false, true, Roles.OTD, UVO.Role, "VIEWONLY");
                 pf.bDelVisible = false;
                 pf.bPathVisible = false;
-                pf.tbPath.Width += 150;
+                pf.tbPath.Dock = DockStyle.Fill;
+                pf.Dock = DockStyle.Fill;
                 UIWorks.AddToTLP(TLP, "РЭ", pf);
             }
             if (wp.PACKINGLISTREQ)
             {
                 PathField pf = new PathField();
                 pf.Tag = Roles.OTD;
-                pf.Init(wp.PACKINGLIST, true, false, false, true, Roles.OTD, UVO.Role);
+                pf.Init(wp.PACKINGLIST, true, false, false, true, Roles.OTD, UVO.Role, "VIEWONLY");
                 pf.bDelVisible = false;
                 pf.bPathVisible = false;
-                pf.tbPath.Width += 150;
+                pf.tbPath.Dock = DockStyle.Fill;
+                pf.Dock = DockStyle.Fill;
                 UIWorks.AddToTLP(TLP, "Лист упаковочный", pf);
             }
 

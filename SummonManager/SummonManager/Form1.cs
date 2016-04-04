@@ -23,12 +23,14 @@ namespace SummonManager
         //public static string ConnectionString = "Data Source=CORPS-ПК\\SQLEXPRESS;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
         //public static string ConnectionString = "Data Source=127.0.0.1;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
         //public static string ConnectionString = "Data Source=127.0.0.1\\SQL2008R2;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
+        
+        
         public static string ConnectionString = "Data Source=10.177.100.7,2301;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
         public IRole UVO;
         public int PrivateNoteColor;
         public int RefreshTime;
-        public static string ProgramVersion = "2.00";
-        public static int VersionNumber = 187;
+        public static string ProgramVersion = "2.01";
+        public static int VersionNumber = 201;
         public MainF()
         {
             InitializeComponent();
@@ -172,15 +174,21 @@ namespace SummonManager
         bool InitialReload = true;
         private void ReloadData()
         {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
             if (!InitialReload)
             {
                 ps = new PreviousState(dgSummon,TStbs.Text);
             }
+            sw.Stop();
+            //MessageBox.Show("ps = new PreviousState(dgSummon,TStbs.Text);" + (sw.ElapsedMilliseconds / 100.0).ToString());
 
             DBMain dbMain = new DBMain();
             dgSummon.RowTemplate.DefaultCellStyle.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             dgSummon.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgSummon.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            sw.Reset();
+            sw.Start();
             if (MySummonsTSB.Checked)
             {
                 dgSummon.DataSource = dbMain.GetMainViewMy(UVO.Role,UVO);
@@ -189,82 +197,108 @@ namespace SummonManager
             {
                 dgSummon.DataSource = dbMain.GetMainView(UVO.Role,UVO);
             }
-            dgSummon.Columns["id"].Visible = false;
-            dgSummon.Columns["ids"].HeaderText = "Номер извещения";
-            dgSummon.Columns["wname"].HeaderText = "Наименование изделия";
-            dgSummon.Columns["cust"].HeaderText = "Заказчик";
-            dgSummon.Columns["sts"].HeaderText = "Статус";
-            dgSummon.Columns["subst"].HeaderText = "Субстатус";
-            dgSummon.Columns["sisp"].HeaderText = "СИ и СП";
-            dgSummon.Columns["note"].HeaderText = "Примечание";
-            dgSummon.Columns["ptime"].HeaderText = "Срок сдачи изделия";
-            dgSummon.Columns["ptime"].DefaultCellStyle.Format = "dd.MM.yyyy HH:mm";
-            dgSummon.Columns["passd"].HeaderText = "Ориенти ровочная дата передачи";
-            dgSummon.Columns["passd"].ValueType = typeof(string);
-            dgSummon.Columns["passd"].DefaultCellStyle.Format = "dd.MM.yyyy";
-            dgSummon.Columns["techreq"].HeaderText = "Технические требования";
-            dgSummon.Columns["qty"].HeaderText = "Кол-во";
-            dgSummon.Columns["idstatus"].Visible = false;
-            dgSummon.Columns["ids_srt"].Visible = false;
-            dgSummon.Columns["vw"].Visible = false;
-            dgSummon.Columns["dview"].Visible = false;
-            dgSummon.Columns["dview"].ValueType = typeof(DateTime);
-            dgSummon.Columns["pdc"].Visible = false;
-            dgSummon.Columns["pdc"].ValueType = typeof(DateTime);
-            dgSummon.Columns["ncre"].Visible = false;
-            dgSummon.Columns["ncre"].ValueType = typeof(DateTime);
-            dgSummon.Columns["paint_constr"].Visible = false;
-            dgSummon.Columns["paint_inzh"].Visible = false;
-            dgSummon.Columns["paint_otk"].Visible = false;
-            dgSummon.Columns["shild_ordered"].Visible = false;//paint_ozis
-            dgSummon.Columns["idsubst"].Visible = false;
-            dgSummon.Columns["paint_shemotehnik"].Visible = false;
-            dgSummon.Columns["paint_OTD"].Visible = false;
-            
-            //dgSummon.Columns["qty"].Width = 50;
-            //dgSummon.Columns["cause"].Width = 130;
-            //dgSummon.Columns["passd"].Width = 85;
-            //dgSummon.Columns["ptime"].Width = 130;
-            //dgSummon.Columns["note"].Width = 250;
-            //dgSummon.Columns["dt"].Width = 130;
-            //dgSummon.Columns["ids"].Width = 80;
-            //dgSummon.Columns["wname"].Width = 140;
-            //dgSummon.Columns["cust"].Width = 190;
-            //dgSummon.Columns["sts"].Width = 100;
-            
-            dgSummon.Columns["qty"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgSummon.Columns["techreq"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgSummon.Columns["passd"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgSummon.Columns["ptime"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgSummon.Columns["note"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgSummon.Columns["sisp"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgSummon.Columns["ids"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgSummon.Columns["wname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgSummon.Columns["cust"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgSummon.Columns["sts"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dgSummon.Columns["subst"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            sw.Stop();
+            //MessageBox.Show("dgSummon.DataSource = dbMain.GetMainView" + (sw.ElapsedMilliseconds / 100.0).ToString());
+            if (InitialReload)
+            {
+                dgSummon.Columns["id"].Visible = false;
+                dgSummon.Columns["ids"].HeaderText = "Номер извещения";
+                dgSummon.Columns["contract_type"].HeaderText = "Тип договора";
+                dgSummon.Columns["wname"].HeaderText = "Наименование изделия";
+                dgSummon.Columns["cust"].HeaderText = "Заказчик";
+                dgSummon.Columns["sts"].HeaderText = "Статус";
+                dgSummon.Columns["subst"].HeaderText = "Субстатус";
+                dgSummon.Columns["sisp"].HeaderText = "СИ и СП";
+                dgSummon.Columns["note"].HeaderText = "Примечание";
+                dgSummon.Columns["ptime"].HeaderText = "Срок сдачи изделия";
+                dgSummon.Columns["ptime"].DefaultCellStyle.Format = "dd.MM.yyyy HH:mm";
+                //dgSummon.Columns["passd"].HeaderText = "Ориенти ровочная дата передачи";
+                //dgSummon.Columns["passd"].ValueType = typeof(string);
+                //dgSummon.Columns["passd"].DefaultCellStyle.Format = "dd.MM.yyyy";
+                dgSummon.Columns["techreq"].HeaderText = "Технические требования";
+                dgSummon.Columns["qty"].HeaderText = "Кол-во";
+                dgSummon.Columns["idstatus"].Visible = false;
+                dgSummon.Columns["ids_srt"].Visible = false;
+                dgSummon.Columns["vw"].Visible = false;
+                dgSummon.Columns["dview"].Visible = false;
+                dgSummon.Columns["dview"].ValueType = typeof(DateTime);
+                dgSummon.Columns["pdc"].Visible = false;
+                dgSummon.Columns["pdc"].ValueType = typeof(DateTime);
+                dgSummon.Columns["ncre"].Visible = false;
+                dgSummon.Columns["ncre"].ValueType = typeof(DateTime);
+                dgSummon.Columns["paint_constr"].Visible = false;
+                dgSummon.Columns["paint_inzh"].Visible = false;
+                dgSummon.Columns["paint_otk"].Visible = false;
+                dgSummon.Columns["shild_ordered"].Visible = false;//paint_ozis
+                dgSummon.Columns["idsubst"].Visible = false;
+                dgSummon.Columns["paint_shemotehnik"].Visible = false;
+                dgSummon.Columns["paint_OTD"].Visible = false;
+                dgSummon.Columns["passd"].Visible = false;
 
-            dgSummon.Columns["qty"].FillWeight = 50;
-            dgSummon.Columns["techreq"].FillWeight = 130;
-            dgSummon.Columns["passd"].FillWeight = 85;
-            dgSummon.Columns["ptime"].FillWeight = 100;
-            dgSummon.Columns["note"].FillWeight = 250;
-            dgSummon.Columns["sisp"].FillWeight = 50;
-            dgSummon.Columns["ids"].FillWeight = 80;
-            dgSummon.Columns["wname"].FillWeight = 140;
-            dgSummon.Columns["cust"].FillWeight = 190;
-            dgSummon.Columns["sts"].FillWeight = 100;
-            dgSummon.Columns["subst"].FillWeight = 100;
 
+                //dgSummon.Columns["qty"].Width = 50;
+                //dgSummon.Columns["cause"].Width = 130;
+                //dgSummon.Columns["passd"].Width = 85;
+                //dgSummon.Columns["ptime"].Width = 130;
+                //dgSummon.Columns["note"].Width = 250;
+                //dgSummon.Columns["dt"].Width = 130;
+                //dgSummon.Columns["ids"].Width = 80;
+                //dgSummon.Columns["wname"].Width = 140;
+                //dgSummon.Columns["cust"].Width = 190;
+                //dgSummon.Columns["sts"].Width = 100;
+                sw.Reset();
+                sw.Start();
+                
+                dgSummon.Columns["qty"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgSummon.Columns["techreq"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                //dgSummon.Columns["passd"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgSummon.Columns["ptime"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgSummon.Columns["note"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgSummon.Columns["sisp"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgSummon.Columns["ids"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgSummon.Columns["wname"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgSummon.Columns["cust"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgSummon.Columns["sts"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgSummon.Columns["subst"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+                dgSummon.Columns["contract_type"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+
+
+                dgSummon.Columns["qty"].FillWeight = 50;
+                dgSummon.Columns["techreq"].FillWeight = 130;
+                //dgSummon.Columns["passd"].FillWeight = 85;
+                dgSummon.Columns["ptime"].FillWeight = 100;
+                dgSummon.Columns["note"].FillWeight = 250;
+                dgSummon.Columns["sisp"].FillWeight = 50;
+                dgSummon.Columns["ids"].FillWeight = 80;
+                dgSummon.Columns["wname"].FillWeight = 140;
+                dgSummon.Columns["cust"].FillWeight = 190;
+                dgSummon.Columns["sts"].FillWeight = 100;
+                dgSummon.Columns["subst"].FillWeight = 100;
+                dgSummon.Columns["contract_type"].FillWeight = 60;
+                
+            }
             foreach (DataGridViewRow r in dgSummon.Rows)
             {
                 r.Cells["techreq"].Tag = r.Cells["techreq"].Value;
                 r.Cells["techreq"].Value = r.Cells["techreq"].Tag.ToString().Substring(r.Cells["techreq"].Tag.ToString().LastIndexOf("\\") + 1); 
             }
+            sw.Stop();
+            //MessageBox.Show("dgSummon.FillWeight=" + (sw.ElapsedMilliseconds / 100.0).ToString());
+
+
             InitialSort();//это надо потом убрать и заняться восстановлением предыдущего состояния грид
+            sw.Reset();
+            sw.Start();
+
             PaintDG();
+            sw.Stop();
+            //MessageBox.Show("PaintDG();" + (sw.ElapsedMilliseconds / 100.0).ToString());
+
+            sw.Reset();
+            sw.Start();
 
 ///////////////////////////////////////////////
+
             FillNotifications();
             if (UVO == null) return;
 
@@ -287,11 +321,20 @@ namespace SummonManager
                     break;
             }
 /////////////////////////////////////////////// это нужно рефакторить
+            sw.Stop();
+            //MessageBox.Show("FillNotifications();" + (sw.ElapsedMilliseconds / 100.0).ToString());
+
+            sw.Reset();
+            sw.Start();
+
             if (!InitialReload)
             {
                 ps.Restore();
             }
             InitialReload = false;
+            sw.Stop();
+            //MessageBox.Show("ps.Restore();" + (sw.ElapsedMilliseconds / 100.0).ToString());
+
         }
 
 
@@ -401,8 +444,6 @@ namespace SummonManager
             ss.ShowDialog();
 
             ReloadData();
-            ps.Restore();
-            PaintDG();
         }
 
         private void FinishedMenuItem_Click(object sender, EventArgs e)
@@ -774,16 +815,20 @@ namespace SummonManager
                     break;
             }
             PaintNotesAndPassDateChanged();
-            PaintSISP();
+            PaintSISPandContractType();
         }
 
-        private void PaintSISP()
+        private void PaintSISPandContractType()
         {
             foreach (DataGridViewRow r in dgSummon.Rows)
             {
                 if (r.Cells["sisp"].Value.ToString() == "Да")
                 {
                     r.Cells["sisp"].Style.BackColor = Color.Plum;
+                }
+                if (r.Cells["contract_type"].Value.ToString() != "Стандартный")
+                {
+                    r.Cells["contract_type"].Style.BackColor = Color.Plum;
                 }
             }
         }
@@ -1090,7 +1135,7 @@ namespace SummonManager
         public void SetNoteColor(int color)
         {
             this.PrivateNoteColor = color;
-            ReloadData();
+            //ReloadData();
         }
 
         private void сменитьПользователяToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1101,6 +1146,7 @@ namespace SummonManager
 
         private void MySummonsTSB_Click(object sender, EventArgs e)
         {
+            
             ReloadData();
         }
 
@@ -1271,6 +1317,7 @@ namespace SummonManager
 
         private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
+            ReloadData();
 
         }
 
@@ -1278,6 +1325,10 @@ namespace SummonManager
         {
             WPName wp = new WPName(false, this.UVO, WPTYPE.WPNAMELIST);
             wp.ShowDialog();
+        }
+
+        private void bkwReloadData_DoWork(object sender, DoWorkEventArgs e)
+        {
         }
        
 

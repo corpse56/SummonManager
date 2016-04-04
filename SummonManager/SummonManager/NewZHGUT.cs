@@ -14,7 +14,7 @@ namespace SummonManager
 {
     public partial class NewZHGUT : Form
     {
-        ZhgutVO Clone, EditWP;
+        ZhgutVO Clone, EditWP,ViewWP;
         //ACCESSMODE: NEW,NEWCLONE,EDIT
         //NEW - форма переделывается под добавление нового изделия; EDIT - форма переделывается под редактирование; NEWCLONE - добавление на основе существующего
         private string AccessMode = "";
@@ -60,6 +60,7 @@ namespace SummonManager
 
         private void InitVIEWONLY(ZhgutVO wp)
         {
+            ViewWP = wp;
             RequireVisible = true;
             tbName.Text = wp.WPName;
             tbName.Enabled = false;
@@ -71,7 +72,7 @@ namespace SummonManager
             tbDecNum.Enabled = false;
             tbNote.Text = wp.NOTE;
             tbNote.Enabled = false;
-            pfZHGUTPATH.Init(wp.ZHGUTPATH, true, false, false, RequireEnabled, Roles.Constructor, UVO.Role);
+            pfZHGUTPATH.Init(wp.ZHGUTPATH, true, false, false, RequireEnabled, Roles.Constructor, UVO.Role, "VIEWONLY");
 
         }
 
@@ -84,7 +85,7 @@ namespace SummonManager
             tbDecNum.Text = wp.DecNum;
             tbNote.Text = wp.NOTE;
 
-            pfZHGUTPATH.Init(wp.ZHGUTPATH, true, true, false, RequireEnabled, Roles.Constructor, UVO.Role);
+            pfZHGUTPATH.Init(wp.ZHGUTPATH, true, true, false, RequireEnabled, Roles.Constructor, UVO.Role, "EDIT");
 
 
             //AllocateRoles();
@@ -106,7 +107,7 @@ namespace SummonManager
                 tbDecNum.Text = Clone.DecNum;
                 cbCategory.SelectedValue = Clone.IDCat;//CHECK!!!!!!!!
                 cbSubCategory.SelectedValue = Clone.IDSubCat;//CHECK!!!!!!!!!
-                pfZHGUTPATH.Init(Clone.ZHGUTPATH, true, true, false, RequireEnabled, Roles.Constructor, UVO.Role);
+                pfZHGUTPATH.Init(Clone.ZHGUTPATH, true, true, false, RequireEnabled, Roles.Constructor, UVO.Role, "NEWCLONE");
                 tbNote.Text = Clone.NOTE;
                 //AllocateRoles();
             }
@@ -114,7 +115,7 @@ namespace SummonManager
 
         private void InitNEW()
         {
-            pfZHGUTPATH.Init("", true, true, false, RequireEnabled, Roles.Constructor, UVO.Role);
+            pfZHGUTPATH.Init("", true, true, false, RequireEnabled, Roles.Constructor, UVO.Role, "NEW");
         }
 
 
@@ -190,31 +191,37 @@ namespace SummonManager
                 }
 
             }
+            if (AccessMode == "VIEWONLY")
+            {
+                if (ViewWP.IDCat != 0)
+                {
+                    cbCategory.SelectedValue = ViewWP.IDCat;
+                }
+                else
+                {
+                    cbCategory.SelectedIndex = 0;
+                }
+
+            }
             LoadSubs((int)cbCategory.SelectedValue);
             if (AccessMode == "NEWCLONE")
                 cbSubCategory.SelectedValue = Clone.IDSubCat;
             if (AccessMode == "EDIT")
                 cbSubCategory.SelectedValue = EditWP.IDSubCat;
+            if (AccessMode == "VIEWONLY")
+            {
+                cbSubCategory.SelectedValue = ViewWP.IDSubCat;
+            }
 
 
 
         }
         private void LoadSubs(int idCat)
         {
-            if ((cbCategory.Text.ToUpper() == "ВСЕ") || (cbCategory.Text.ToUpper() == "НЕ ПРИСВОЕНО"))
-            {
-                cbSubCategory.Text = "";
-                cbSubCategory.Enabled = false;
-            }
-            else
-            {
-                cbSubCategory.Enabled = true;
-                DBSubCategory dbs = new DBSubCategory();
-                cbSubCategory.ValueMember = "ID";
-                cbSubCategory.DisplayMember = "SUBCATNAME";
-                cbSubCategory.DataSource = dbs.GetAllExceptAll(idCat);
-
-            }
+            DBSubCategory dbs = new DBSubCategory();
+            cbSubCategory.ValueMember = "ID";
+            cbSubCategory.DisplayMember = "SUBCATNAME";
+            cbSubCategory.DataSource = dbs.GetAllExceptAll(idCat);
         }
         private void cbCategory_SelectedIndexChanged(object sender, EventArgs e)
         {

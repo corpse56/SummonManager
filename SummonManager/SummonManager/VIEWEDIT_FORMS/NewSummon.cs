@@ -54,17 +54,19 @@ namespace SummonManager
             //cbExtCable.DisplayMember = "EXTCABLENAME";
             //cbExtCable.DataSource = dbec.GetAllEXTCABLENames();
 
-            DBMountingKit dbmk = new DBMountingKit();
-            cbMountingKit.ValueMember = "ID";
-            cbMountingKit.DisplayMember = "MOUNTINGKITNAME";
-            cbMountingKit.DataSource = dbmk.GetAllDBMountingKitNames();
-            cbMountingKit.SelectedIndex = 0;
+            //DBMountingKit dbmk = new DBMountingKit();
+            //cbMountingKit.ValueMember = "ID";
+            //cbMountingKit.DisplayMember = "MOUNTINGKITNAME";
+            //cbMountingKit.DataSource = dbmk.GetAllDBMountingKitNames();
+            //cbMountingKit.SelectedIndex = 0;
 
 
            // UIProc ui = new UIProc();
             //ui.LoadExtCables(dgv, this.IDNEWSUMMON.ToString());
             //LoadExtCables();
             pickWPName1.Init(UVO);
+            cbCONTRACTTYPE.SelectedIndex = 0;
+
         }
         private void NewSummon_Load(object sender, EventArgs e)
         {
@@ -144,14 +146,14 @@ namespace SummonManager
             SVO.WPTYPE = pickWPName1.PickedProduct.GetProductType().ToString();
             SVO.IDACCEPT = (int)cbAccept.SelectedValue;
             SVO.IDPACKING = (int)cbPacking.SelectedValue;
-            SVO.IDMOUNTINGKIT = (int)cbMountingKit.SelectedValue;
+            //SVO.IDMOUNTINGKIT = (int)cbMountingKit.SelectedValue;
             SVO.IDCUSTOMERDEPT = (int)cbCustDept.SelectedValue;
-            SVO.PASSDATE = null;
+            //SVO.PASSDATE = null;
             SVO.VIEWED = false;
             SVO.NOTEPDB = "";
             SVO.DOCSREADY = false;
             SVO.BILLPAYED = false;
-
+            SVO.CONTRACTTYPE = cbCONTRACTTYPE.Text;
             dbs.AddNewSummon(SVO,UVO);
             alow_delete_cablepack = false;
             //MessageBox.Show("Извещение успешно создано и передано в ОЗиС!");
@@ -198,16 +200,17 @@ namespace SummonManager
             SVO.WPTYPE = pickWPName1.PickedProduct.GetProductType().ToString();
             SVO.IDPACKING = (int)cbPacking.SelectedValue;
             //SVO.IDEXTCABLE = (int)cbExtCable.SelectedValue;
-            SVO.IDMOUNTINGKIT = (int)cbMountingKit.SelectedValue;
+            //SVO.IDMOUNTINGKIT = (int)cbMountingKit.SelectedValue;
             SVO.IDCUSTOMERDEPT = (int)cbCustDept.SelectedValue;
             SVO.VIEWED = true;
             SVO.NOTEPDB = "";
             SVO.BILLPAYED = false;
             SVO.DOCSREADY = false;
-            if (chbDeterm.Checked)
+            SVO.CONTRACTTYPE = cbCONTRACTTYPE.Text;
+            /*if (chbDeterm.Checked)
                 SVO.PASSDATE = null;
             else
-                SVO.PASSDATE = dtpAPPROX.Value;
+                SVO.PASSDATE = dtpAPPROX.Value;*/
 
             dbs.SaveNewSummon(SVO,UVO);
             tbIDS.Text = SVO.IDS;
@@ -218,10 +221,10 @@ namespace SummonManager
         bool alow_delete_cablepack = true;
         private void chbDeterm_CheckedChanged(object sender, EventArgs e)
         {
-            if (chbDeterm.Checked)
+            /*if (chbDeterm.Checked)
                 dtpAPPROX.Enabled = false;
             else
-                dtpAPPROX.Enabled = true;
+                dtpAPPROX.Enabled = true;*/
 
         }
 

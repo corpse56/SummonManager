@@ -23,11 +23,17 @@ namespace SummonManager.CLASSES
         }
 
 
-
-
-        internal static void ManagerLoad()
+        internal static void AddToTLP(TableLayoutPanel TLP, string LableText, TextBox tb)
         {
-            throw new NotImplementedException();
+            TLP.RowCount = TLP.RowCount + 1;
+            TLP.RowStyles.Add(new RowStyle(SizeType.Absolute, 40F));
+            Label l = new Label();
+            l.Text = LableText;
+            l.AutoSize = false;
+            l.Size = new System.Drawing.Size(174, 38);
+
+            TLP.Controls.Add(l, 0, TLP.RowCount - 1);
+            TLP.Controls.Add(tb, 1, TLP.RowCount - 1);
         }
     }
 }

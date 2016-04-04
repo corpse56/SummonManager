@@ -107,12 +107,6 @@
     <Compile Include="Cause.Designer.cs">
       <DependentUpon>Cause.cs</DependentUpon>
     </Compile>
-    <Compile Include="Cable.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Cable.Designer.cs">
-      <DependentUpon>Cable.cs</DependentUpon>
-    </Compile>
     <Compile Include="CLASSES\IProduct\CableVO.cs" />
     <Compile Include="CLASSES\DBCableList.cs" />
     <Compile Include="CLASSES\DBCategory.cs" />
@@ -180,24 +174,6 @@
     <Compile Include="PurchasedMaterials.Designer.cs">
       <DependentUpon>PurchasedMaterials.cs</DependentUpon>
     </Compile>
-    <Compile Include="VIEWEDIT_FORMS\ShowSummonBUH.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VIEWEDIT_FORMS\ShowSummonBUH.Designer.cs">
-      <DependentUpon>ShowSummonBUH.cs</DependentUpon>
-    </Compile>
-    <Compile Include="VIEWEDIT_FORMS\ShowSummonINZHENER.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VIEWEDIT_FORMS\ShowSummonINZHENER.Designer.cs">
-      <DependentUpon>ShowSummonINZHENER.cs</DependentUpon>
-    </Compile>
-    <Compile Include="VIEWEDIT_FORMS\ShowSummonCONSTR.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VIEWEDIT_FORMS\ShowSummonCONSTR.Designer.cs">
-      <DependentUpon>ShowSummonCONSTR.cs</DependentUpon>
-    </Compile>
     <Compile Include="fAddNote.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -229,12 +205,6 @@
     </Compile>
     <Compile Include="Controls\RefreshTimeSelectControl.Designer.cs">
       <DependentUpon>RefreshTimeSelectControl.cs</DependentUpon>
-    </Compile>
-    <Compile Include="VIEWEDIT_FORMS\ShowSummonMONT.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VIEWEDIT_FORMS\ShowSummonMONT.Designer.cs">
-      <DependentUpon>ShowSummonMONT.cs</DependentUpon>
     </Compile>
     <Compile Include="CrystalReport2.cs">
       <AutoGen>True</AutoGen>
@@ -280,12 +250,6 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="CLASSES\DBSearch.cs" />
-    <Compile Include="EditCable.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EditCable.Designer.cs">
-      <DependentUpon>EditCable.cs</DependentUpon>
-    </Compile>
     <Compile Include="fSearchConditions.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -297,12 +261,6 @@
     </Compile>
     <Compile Include="fSearchResults.Designer.cs">
       <DependentUpon>fSearchResults.cs</DependentUpon>
-    </Compile>
-    <Compile Include="NewCable_old.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NewCable_old.Designer.cs">
-      <DependentUpon>NewCable_old.cs</DependentUpon>
     </Compile>
     <Compile Include="EditPacking.cs">
       <SubType>Form</SubType>
@@ -322,14 +280,7 @@
     <Compile Include="Packing.Designer.cs">
       <DependentUpon>Packing.cs</DependentUpon>
     </Compile>
-    <Compile Include="CLASSES\OLDDBCable.cs" />
     <Compile Include="CLASSES\DBPacking.cs" />
-    <Compile Include="VIEWEDIT_FORMS\ShowSummonWSH.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VIEWEDIT_FORMS\ShowSummonWSH.Designer.cs">
-      <DependentUpon>ShowSummonWSH.cs</DependentUpon>
-    </Compile>
     <Compile Include="EditWPN.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -385,12 +336,6 @@
     <Compile Include="ShowReport.Designer.cs">
       <DependentUpon>ShowReport.cs</DependentUpon>
     </Compile>
-    <Compile Include="VIEWEDIT_FORMS\ShowSummonDIR.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VIEWEDIT_FORMS\ShowSummonDIR.Designer.cs">
-      <DependentUpon>ShowSummonDIR.cs</DependentUpon>
-    </Compile>
     <Compile Include="CLASSES\DBAccept.cs" />
     <Compile Include="CLASSES\DBWPName.cs" />
     <Compile Include="Finished.cs">
@@ -406,41 +351,11 @@
       <DependentUpon>RepSummon.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="VIEWEDIT_FORMS\ShowSummonLOG.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VIEWEDIT_FORMS\ShowSummonLOG.Designer.cs">
-      <DependentUpon>ShowSummonLOG.cs</DependentUpon>
-    </Compile>
-    <Compile Include="VIEWEDIT_FORMS\ShowSummonWare.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VIEWEDIT_FORMS\ShowSummonWare.Designer.cs">
-      <DependentUpon>ShowSummonWare.cs</DependentUpon>
-    </Compile>
-    <Compile Include="VIEWEDIT_FORMS\ShowSummonOTK.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VIEWEDIT_FORMS\ShowSummonOTK.Designer.cs">
-      <DependentUpon>ShowSummonOTK.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controls\RNumericUpDown.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\RNumericUpDown.Designer.cs">
       <DependentUpon>RNumericUpDown.cs</DependentUpon>
-    </Compile>
-    <Compile Include="VIEWEDIT_FORMS\ShowSummonPROD.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VIEWEDIT_FORMS\ShowSummonPROD.Designer.cs">
-      <DependentUpon>ShowSummonPROD.cs</DependentUpon>
-    </Compile>
-    <Compile Include="VIEWEDIT_FORMS\ShowSummonOZIS.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="VIEWEDIT_FORMS\ShowSummonOZIS.Designer.cs">
-      <DependentUpon>ShowSummonOZIS.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\RComboBox.cs">
       <SubType>Component</SubType>
@@ -502,9 +417,6 @@
     <EmbeddedResource Include="Cause.resx">
       <DependentUpon>Cause.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Cable.resx">
-      <DependentUpon>Cable.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Controls\Package.resx">
       <DependentUpon>Package.cs</DependentUpon>
     </EmbeddedResource>
@@ -520,15 +432,6 @@
     <EmbeddedResource Include="PurchasedMaterials.resx">
       <DependentUpon>PurchasedMaterials.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VIEWEDIT_FORMS\ShowSummonBUH.resx">
-      <DependentUpon>ShowSummonBUH.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VIEWEDIT_FORMS\ShowSummonINZHENER.resx">
-      <DependentUpon>ShowSummonINZHENER.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VIEWEDIT_FORMS\ShowSummonCONSTR.resx">
-      <DependentUpon>ShowSummonCONSTR.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="fAddNote.resx">
       <DependentUpon>fAddNote.cs</DependentUpon>
     </EmbeddedResource>
@@ -540,9 +443,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Preferences.resx">
       <DependentUpon>Preferences.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VIEWEDIT_FORMS\ShowSummonMONT.resx">
-      <DependentUpon>ShowSummonMONT.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CrystalReport2.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -567,17 +467,11 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Copy of RepSummon.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditCable.resx">
-      <DependentUpon>EditCable.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="fSearchConditions.resx">
       <DependentUpon>fSearchConditions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="fSearchResults.resx">
       <DependentUpon>fSearchResults.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NewCable_old.resx">
-      <DependentUpon>NewCable_old.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditPacking.resx">
       <DependentUpon>EditPacking.cs</DependentUpon>
@@ -587,9 +481,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Packing.resx">
       <DependentUpon>Packing.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VIEWEDIT_FORMS\ShowSummonWSH.resx">
-      <DependentUpon>ShowSummonWSH.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditWPN.resx">
       <DependentUpon>EditWPN.cs</DependentUpon>
@@ -619,30 +510,12 @@
     <EmbeddedResource Include="ShowReport.resx">
       <DependentUpon>ShowReport.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="VIEWEDIT_FORMS\ShowSummonDIR.resx">
-      <DependentUpon>ShowSummonDIR.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Finished.resx">
       <DependentUpon>Finished.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RepSummon.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>RepSummon.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VIEWEDIT_FORMS\ShowSummonLOG.resx">
-      <DependentUpon>ShowSummonLOG.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VIEWEDIT_FORMS\ShowSummonWare.resx">
-      <DependentUpon>ShowSummonWare.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VIEWEDIT_FORMS\ShowSummonOTK.resx">
-      <DependentUpon>ShowSummonOTK.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VIEWEDIT_FORMS\ShowSummonPROD.resx">
-      <DependentUpon>ShowSummonPROD.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="VIEWEDIT_FORMS\ShowSummonOZIS.resx">
-      <DependentUpon>ShowSummonOZIS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="VIEWEDIT_FORMS\ShowSummon.resx">
       <DependentUpon>ShowSummon.cs</DependentUpon>

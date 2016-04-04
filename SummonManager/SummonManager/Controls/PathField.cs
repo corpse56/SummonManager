@@ -15,6 +15,7 @@ namespace SummonManager.Controls
 {
     public partial class PathField : UserControl
     {
+        public string ACCESSMODE;
         public PathField()
         {
             InitializeComponent();
@@ -53,6 +54,7 @@ namespace SummonManager.Controls
                     this.PATH = value;
                     tbPath.Text = this.FileName;
                 }
+                PaintRed();
             }
         }
         public string FileName
@@ -89,6 +91,12 @@ namespace SummonManager.Controls
                     bPath.Enabled = false;
                     bPathDel.Enabled = false;
                     bPathDel.BackgroundImage = Resources.delete_disable;
+
+                    if ((ACCESSMODE != "VIEWONLY") && (CurrentRole == Roles.Inzhener))
+                    {
+                        bPathDel.Enabled = true;
+                        bPathDel.BackgroundImage = Resources.delete_ok;
+                    }
                     //chRequired.Enabled = false;
                 }
             }
@@ -159,29 +167,14 @@ namespace SummonManager.Controls
                 chRequired.Enabled = value;
             }
         }
-        public bool ValueFromArchive
-        {
-            set
-            {
-                if (value)
-                {
-                    chRequired.Visible = false;
-                    bPath.Visible = false;
-                    bPathDel.Visible = false;
-                }
-                else
-                {
-                    chRequired.Visible = false;
-                    bPath.Visible = false;
-                    bPathDel.Visible = false;
-                }
-            }
-        }
+        
+
         ToolTip tt;
-        public void Init(string path,bool req, bool enbl, bool reqvis, bool reqenbl, Roles resprole, Roles currole)
+        public void Init(string path,bool req, bool enbl, bool reqvis, bool reqenbl, Roles resprole, Roles currole, string access_mode)
         {
             //this.PATH = path;
             //tbPath.Tag = path;
+            this.ACCESSMODE = access_mode;
             this.ResposibleRole = resprole;
             this.Tag = ResposibleRole;
             this.CurrentRole = currole;

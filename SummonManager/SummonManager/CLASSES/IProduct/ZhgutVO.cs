@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using SummonManager.CLASSES.IRole_namespace;
+using SummonManager.Controls;
 
 namespace SummonManager.CLASSES
 {
@@ -49,6 +50,17 @@ namespace SummonManager.CLASSES
         }
         void IProduct.FillTableLayoutPanel(TableLayoutPanel TLP, IRole UVO)
         {
+            ZhgutVO wp = (ZhgutVO)this;
+
+            PathField pf = new PathField();
+            pf.Tag = Roles.Inzhener;
+            pf.Init(wp.ZHGUTPATH, true, false, false, true, Roles.Inzhener, UVO.Role, "VIEWONLY");
+            pf.bDelVisible = false;
+            pf.bPathVisible = false;
+            pf.tbPath.Dock = DockStyle.Fill;
+            pf.Dock = DockStyle.Fill;
+            UIWorks.AddToTLP(TLP, "Изготовление жгута", pf);
+
         }
 
         

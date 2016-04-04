@@ -53,8 +53,6 @@ namespace SummonManager
             this.label14 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
@@ -69,8 +67,6 @@ namespace SummonManager
             this.label30 = new System.Windows.Forms.Label();
             this.label31 = new System.Windows.Forms.Label();
             this.label32 = new System.Windows.Forms.Label();
-            this.label33 = new System.Windows.Forms.Label();
-            this.label34 = new System.Windows.Forms.Label();
             this.label35 = new System.Windows.Forms.Label();
             this.label36 = new System.Windows.Forms.Label();
             this.label37 = new System.Windows.Forms.Label();
@@ -83,8 +79,6 @@ namespace SummonManager
             this.pfMANUAL = new SummonManager.Controls.PathField();
             this.pfPASSPORT = new SummonManager.Controls.PathField();
             this.pfPACKAGING = new SummonManager.Controls.PathField();
-            this.pfSERIAL = new SummonManager.Controls.PathField();
-            this.pfPLANKA = new SummonManager.Controls.PathField();
             this.pfSHILDS = new SummonManager.Controls.PathField();
             this.pfMECHPARTS = new SummonManager.Controls.PathField();
             this.pf3DSBORKA = new SummonManager.Controls.PathField();
@@ -105,7 +99,7 @@ namespace SummonManager
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(821, 862);
+            this.button1.Location = new System.Drawing.Point(819, 801);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 2;
@@ -115,7 +109,7 @@ namespace SummonManager
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(730, 862);
+            this.button2.Location = new System.Drawing.Point(728, 801);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(85, 23);
             this.button2.TabIndex = 2;
@@ -172,7 +166,7 @@ namespace SummonManager
             // tbPowerSupply
             // 
             this.tbPowerSupply.Enabled = false;
-            this.tbPowerSupply.Location = new System.Drawing.Point(295, 770);
+            this.tbPowerSupply.Location = new System.Drawing.Point(293, 709);
             this.tbPowerSupply.Name = "tbPowerSupply";
             this.tbPowerSupply.Size = new System.Drawing.Size(601, 22);
             this.tbPowerSupply.TabIndex = 1;
@@ -180,7 +174,7 @@ namespace SummonManager
             // tbNote
             // 
             this.tbNote.Enabled = false;
-            this.tbNote.Location = new System.Drawing.Point(295, 798);
+            this.tbNote.Location = new System.Drawing.Point(293, 737);
             this.tbNote.Multiline = true;
             this.tbNote.Name = "tbNote";
             this.tbNote.Size = new System.Drawing.Size(601, 58);
@@ -207,7 +201,7 @@ namespace SummonManager
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 773);
+            this.label6.Location = new System.Drawing.Point(13, 712);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(119, 16);
             this.label6.TabIndex = 3;
@@ -225,7 +219,7 @@ namespace SummonManager
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(8, 801);
+            this.label8.Location = new System.Drawing.Point(14, 740);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(91, 16);
             this.label8.TabIndex = 3;
@@ -313,28 +307,10 @@ namespace SummonManager
             this.label16.TabIndex = 3;
             this.label16.Text = "Комплект кабелей";
             // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(16, 586);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(135, 16);
-            this.label17.TabIndex = 3;
-            this.label17.Text = "Планка фирменная";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(16, 615);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(126, 16);
-            this.label18.TabIndex = 3;
-            this.label18.Text = "Серийные номера";
-            // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(16, 645);
+            this.label19.Location = new System.Drawing.Point(14, 584);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(71, 16);
             this.label19.TabIndex = 3;
@@ -343,7 +319,7 @@ namespace SummonManager
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(16, 676);
+            this.label20.Location = new System.Drawing.Point(14, 615);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(87, 16);
             this.label20.TabIndex = 3;
@@ -352,7 +328,7 @@ namespace SummonManager
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(16, 706);
+            this.label21.Location = new System.Drawing.Point(14, 645);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(27, 16);
             this.label21.TabIndex = 3;
@@ -361,7 +337,7 @@ namespace SummonManager
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(16, 738);
+            this.label22.Location = new System.Drawing.Point(14, 677);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(130, 16);
             this.label22.TabIndex = 3;
@@ -457,28 +433,10 @@ namespace SummonManager
             this.label32.TabIndex = 3;
             this.label32.Text = "Конструктор";
             // 
-            // label33
-            // 
-            this.label33.AutoSize = true;
-            this.label33.Location = new System.Drawing.Point(904, 586);
-            this.label33.Name = "label33";
-            this.label33.Size = new System.Drawing.Size(92, 16);
-            this.label33.TabIndex = 3;
-            this.label33.Text = "Конструктор";
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(904, 618);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(35, 16);
-            this.label34.TabIndex = 3;
-            this.label34.Text = "ОТК";
-            // 
             // label35
             // 
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(904, 649);
+            this.label35.Location = new System.Drawing.Point(902, 588);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(92, 16);
             this.label35.TabIndex = 3;
@@ -487,7 +445,7 @@ namespace SummonManager
             // label36
             // 
             this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(904, 679);
+            this.label36.Location = new System.Drawing.Point(902, 618);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(36, 16);
             this.label36.TabIndex = 3;
@@ -496,7 +454,7 @@ namespace SummonManager
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(904, 711);
+            this.label37.Location = new System.Drawing.Point(902, 650);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(36, 16);
             this.label37.TabIndex = 3;
@@ -505,7 +463,7 @@ namespace SummonManager
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(904, 742);
+            this.label38.Location = new System.Drawing.Point(902, 681);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(36, 16);
             this.label38.TabIndex = 3;
@@ -514,7 +472,7 @@ namespace SummonManager
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(904, 774);
+            this.label39.Location = new System.Drawing.Point(902, 713);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(86, 16);
             this.label39.TabIndex = 3;
@@ -523,7 +481,7 @@ namespace SummonManager
             // label40
             // 
             this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(905, 810);
+            this.label40.Location = new System.Drawing.Point(903, 749);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(37, 16);
             this.label40.TabIndex = 3;
@@ -556,7 +514,7 @@ namespace SummonManager
             this.pfPACKINGLIST.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfPACKINGLIST.FullPath = "<нет>";
             this.pfPACKINGLIST.ISPATH = false;
-            this.pfPACKINGLIST.Location = new System.Drawing.Point(301, 731);
+            this.pfPACKINGLIST.Location = new System.Drawing.Point(299, 670);
             this.pfPACKINGLIST.Margin = new System.Windows.Forms.Padding(4);
             this.pfPACKINGLIST.Name = "pfPACKINGLIST";
             this.pfPACKINGLIST.Required = false;
@@ -571,7 +529,7 @@ namespace SummonManager
             this.pfMANUAL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfMANUAL.FullPath = "<нет>";
             this.pfMANUAL.ISPATH = false;
-            this.pfMANUAL.Location = new System.Drawing.Point(301, 699);
+            this.pfMANUAL.Location = new System.Drawing.Point(299, 638);
             this.pfMANUAL.Margin = new System.Windows.Forms.Padding(4);
             this.pfMANUAL.Name = "pfMANUAL";
             this.pfMANUAL.Required = false;
@@ -586,7 +544,7 @@ namespace SummonManager
             this.pfPASSPORT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfPASSPORT.FullPath = "<нет>";
             this.pfPASSPORT.ISPATH = false;
-            this.pfPASSPORT.Location = new System.Drawing.Point(301, 669);
+            this.pfPASSPORT.Location = new System.Drawing.Point(299, 608);
             this.pfPASSPORT.Margin = new System.Windows.Forms.Padding(4);
             this.pfPASSPORT.Name = "pfPASSPORT";
             this.pfPASSPORT.Required = false;
@@ -601,43 +559,13 @@ namespace SummonManager
             this.pfPACKAGING.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfPACKAGING.FullPath = "<нет>";
             this.pfPACKAGING.ISPATH = false;
-            this.pfPACKAGING.Location = new System.Drawing.Point(301, 638);
+            this.pfPACKAGING.Location = new System.Drawing.Point(299, 577);
             this.pfPACKAGING.Margin = new System.Windows.Forms.Padding(4);
             this.pfPACKAGING.Name = "pfPACKAGING";
             this.pfPACKAGING.Required = false;
             this.pfPACKAGING.Size = new System.Drawing.Size(601, 32);
             this.pfPACKAGING.TabIndex = 6;
             this.pfPACKAGING.Tag = SummonManager.CLASSES.IRole_namespace.Roles.Constructor;
-            // 
-            // pfSERIAL
-            // 
-            this.pfSERIAL.bDelVisible = true;
-            this.pfSERIAL.bPathVisible = true;
-            this.pfSERIAL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.pfSERIAL.FullPath = "<нет>";
-            this.pfSERIAL.ISPATH = false;
-            this.pfSERIAL.Location = new System.Drawing.Point(301, 608);
-            this.pfSERIAL.Margin = new System.Windows.Forms.Padding(4);
-            this.pfSERIAL.Name = "pfSERIAL";
-            this.pfSERIAL.Required = false;
-            this.pfSERIAL.Size = new System.Drawing.Size(601, 32);
-            this.pfSERIAL.TabIndex = 6;
-            this.pfSERIAL.Tag = SummonManager.CLASSES.IRole_namespace.Roles.OTK;
-            // 
-            // pfPLANKA
-            // 
-            this.pfPLANKA.bDelVisible = true;
-            this.pfPLANKA.bPathVisible = true;
-            this.pfPLANKA.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.pfPLANKA.FullPath = "<нет>";
-            this.pfPLANKA.ISPATH = false;
-            this.pfPLANKA.Location = new System.Drawing.Point(300, 574);
-            this.pfPLANKA.Margin = new System.Windows.Forms.Padding(4);
-            this.pfPLANKA.Name = "pfPLANKA";
-            this.pfPLANKA.Required = false;
-            this.pfPLANKA.Size = new System.Drawing.Size(601, 32);
-            this.pfPLANKA.TabIndex = 6;
-            this.pfPLANKA.Tag = SummonManager.CLASSES.IRole_namespace.Roles.Constructor;
             // 
             // pfSHILDS
             // 
@@ -763,15 +691,13 @@ namespace SummonManager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1006, 896);
+            this.ClientSize = new System.Drawing.Size(1006, 828);
             this.Controls.Add(this.packCABLE);
             this.Controls.Add(this.packZHGUT);
             this.Controls.Add(this.pfPACKINGLIST);
             this.Controls.Add(this.pfMANUAL);
             this.Controls.Add(this.pfPASSPORT);
             this.Controls.Add(this.pfPACKAGING);
-            this.Controls.Add(this.pfSERIAL);
-            this.Controls.Add(this.pfPLANKA);
             this.Controls.Add(this.pfSHILDS);
             this.Controls.Add(this.pfMECHPARTS);
             this.Controls.Add(this.pf3DSBORKA);
@@ -792,8 +718,6 @@ namespace SummonManager
             this.Controls.Add(this.label37);
             this.Controls.Add(this.label36);
             this.Controls.Add(this.label35);
-            this.Controls.Add(this.label34);
-            this.Controls.Add(this.label33);
             this.Controls.Add(this.label32);
             this.Controls.Add(this.label31);
             this.Controls.Add(this.label30);
@@ -807,9 +731,7 @@ namespace SummonManager
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label16);
-            this.Controls.Add(this.label18);
             this.Controls.Add(this.label15);
-            this.Controls.Add(this.label17);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label13);
@@ -877,10 +799,6 @@ namespace SummonManager
         private SummonManager.Controls.Package packCABLE;
         private SummonManager.Controls.Package packZHGUT;
         private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.Label label17;
-        private SummonManager.Controls.PathField pfPLANKA;
-        private System.Windows.Forms.Label label18;
-        private SummonManager.Controls.PathField pfSERIAL;
         private System.Windows.Forms.Label label19;
         private SummonManager.Controls.PathField pfPACKAGING;
         private System.Windows.Forms.Label label20;
@@ -899,8 +817,6 @@ namespace SummonManager
         private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label31;
         private System.Windows.Forms.Label label32;
-        private System.Windows.Forms.Label label33;
-        private System.Windows.Forms.Label label34;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.Label label37;

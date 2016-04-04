@@ -39,6 +39,7 @@ namespace SummonManager
             ss.bEdit.Enabled = true;
             ss.summonTransfer1.Enabled = false;
             ss.summonTransfer2.Enabled = false;
+
         }
         public override void EnableEdit(ShowSummon ss)
         {

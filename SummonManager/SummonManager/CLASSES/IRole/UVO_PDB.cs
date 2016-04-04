@@ -38,13 +38,13 @@ namespace SummonManager
 
         public override void EnableInitial(ShowSummon ss)
         {
-            ss.bEdit.Enabled = true;
+            //ss.bEdit.Enabled = true;
             ss.bPurchMat.Enabled = true;
 
         }
         public override void EnableEdit(ShowSummon ss)
         {
-            if ((ss.SVO.IDSTATUS != 2) && (ss.SVO.IDSTATUS != 3) && (ss.SVO.IDSTATUS != 17))
+            /*if ((ss.SVO.IDSTATUS != 2) && (ss.SVO.IDSTATUS != 3) && (ss.SVO.IDSTATUS != 17))
             {
                 MessageBox.Show("Вы не можете редактировать это извещение, так как не являетесь в данный момент ответственным лицом за это извещение!");
                 return;
@@ -52,7 +52,7 @@ namespace SummonManager
             else
             {
                 EnableAll(ss);
-            }
+            }*/
 
         }
         private void EnableAll(ShowSummon ss)
@@ -61,12 +61,11 @@ namespace SummonManager
             ss.summonTransfer2.Enabled = false;
             ss.bEdit.Enabled = false;
             ss.bSave.Enabled = true;
-            ss.bPrint.Enabled = true;
-            ss.chbDeterm.Enabled = true;
+            /*ss.chbDeterm.Enabled = true;
             if (ss.chbDeterm.Checked)
                 ss.dtpAPPROX.Enabled = false;
             else
-                ss.dtpAPPROX.Enabled = true;
+                ss.dtpAPPROX.Enabled = true;*/
             //ss.bPurchMat.Enabled = false;
 
         }

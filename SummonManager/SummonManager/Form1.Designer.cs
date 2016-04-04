@@ -79,6 +79,7 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.bkwReloadData = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -530,6 +531,10 @@
             this.timer2.Interval = 3600000;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
+            // bkwReloadData
+            // 
+            this.bkwReloadData.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkwReloadData_DoWork);
+            // 
             // MainF
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -613,6 +618,7 @@
         private System.Windows.Forms.ToolStripMenuItem историяВерсийToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem открытьТТToolStripMenuItem;
         private System.Windows.Forms.ToolStripButton tsbWorkPart;
+        private System.ComponentModel.BackgroundWorker bkwReloadData;
     }
 }
 

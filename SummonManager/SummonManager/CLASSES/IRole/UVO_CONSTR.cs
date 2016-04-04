@@ -33,15 +33,22 @@ namespace SummonManager
             ss.summonTransfer1.Enabled = false;
             ss.summonTransfer1.Enabled = false;
             ss.bEditWP.Enabled = true;
+            ss.bEdit.Enabled = true;
+
+
         }
         public override void EnableEdit(ShowSummon ss)
         {
-            //EnableAll(ss);
+            EnableAll(ss);
         }
         private void EnableAll(ShowSummon ss)
         {
-           // ss.bEdit.Enabled = false;
-           // ss.bSave.Enabled = true;
+            ss.bEdit.Enabled = false;
+            ss.bSave.Enabled = true;
+
+            ss.pfPLANKA.Enabled = true;
+            ss.pfPLANKA.ACCESSMODE = "EDIT";
+
 
         }
 

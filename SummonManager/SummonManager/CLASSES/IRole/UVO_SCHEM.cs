@@ -32,7 +32,10 @@ namespace SummonManager
         {
             ss.summonTransfer1.Enabled = false;
             ss.summonTransfer1.Enabled = false;
-            ss.bEditWP.Enabled = true;
+            if (ss.SVO.WPTYPE == "WPNAMELIST")
+            {
+                ss.bEditWP.Enabled = true;
+            }
         }
         public override void EnableEdit(ShowSummon ss)
         {

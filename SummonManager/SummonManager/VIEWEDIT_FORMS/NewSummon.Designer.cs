@@ -55,18 +55,15 @@
             this.tbQUANTITY = new System.Windows.Forms.NumericUpDown();
             this.bSave = new System.Windows.Forms.Button();
             this.cbAccept = new System.Windows.Forms.ComboBox();
-            this.dtpAPPROX = new System.Windows.Forms.DateTimePicker();
-            this.label16 = new System.Windows.Forms.Label();
-            this.chbDeterm = new System.Windows.Forms.CheckBox();
             this.label17 = new System.Windows.Forms.Label();
             this.tbPAYSTATUS = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
-            this.cbMountingKit = new System.Windows.Forms.ComboBox();
-            this.label18 = new System.Windows.Forms.Label();
             this.cbCustDept = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.cbPacking = new SummonManager.RComboBox();
             this.pickWPName1 = new SummonManager.Controls.PickWPName();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cbCONTRACTTYPE = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.tbQUANTITY)).BeginInit();
             this.SuspendLayout();
             // 
@@ -99,28 +96,28 @@
             // 
             // tbCONTRACT
             // 
-            this.tbCONTRACT.Location = new System.Drawing.Point(200, 309);
+            this.tbCONTRACT.Location = new System.Drawing.Point(202, 279);
             this.tbCONTRACT.Name = "tbCONTRACT";
             this.tbCONTRACT.Size = new System.Drawing.Size(415, 22);
             this.tbCONTRACT.TabIndex = 3;
             // 
             // tbSHIPPING
             // 
-            this.tbSHIPPING.Location = new System.Drawing.Point(200, 365);
+            this.tbSHIPPING.Location = new System.Drawing.Point(201, 368);
             this.tbSHIPPING.Name = "tbSHIPPING";
             this.tbSHIPPING.Size = new System.Drawing.Size(415, 22);
             this.tbSHIPPING.TabIndex = 3;
             // 
             // tbDELIVERY
             // 
-            this.tbDELIVERY.Location = new System.Drawing.Point(200, 393);
+            this.tbDELIVERY.Location = new System.Drawing.Point(201, 396);
             this.tbDELIVERY.Name = "tbDELIVERY";
             this.tbDELIVERY.Size = new System.Drawing.Size(415, 22);
             this.tbDELIVERY.TabIndex = 3;
             // 
             // tbNote
             // 
-            this.tbNote.Location = new System.Drawing.Point(200, 450);
+            this.tbNote.Location = new System.Drawing.Point(201, 453);
             this.tbNote.Multiline = true;
             this.tbNote.Name = "tbNote";
             this.tbNote.Size = new System.Drawing.Size(415, 79);
@@ -130,7 +127,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(12, 170);
+            this.label4.Location = new System.Drawing.Point(14, 140);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(91, 16);
             this.label4.TabIndex = 2;
@@ -139,7 +136,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 198);
+            this.label5.Location = new System.Drawing.Point(14, 168);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(140, 16);
             this.label5.TabIndex = 2;
@@ -148,7 +145,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(12, 226);
+            this.label6.Location = new System.Drawing.Point(14, 196);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(66, 16);
             this.label6.TabIndex = 2;
@@ -157,7 +154,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 254);
+            this.label7.Location = new System.Drawing.Point(14, 224);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(160, 16);
             this.label7.TabIndex = 2;
@@ -166,7 +163,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(12, 312);
+            this.label9.Location = new System.Drawing.Point(14, 282);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(141, 16);
             this.label9.TabIndex = 2;
@@ -175,7 +172,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(12, 340);
+            this.label10.Location = new System.Drawing.Point(13, 343);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(105, 16);
             this.label10.TabIndex = 2;
@@ -184,7 +181,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(12, 368);
+            this.label11.Location = new System.Drawing.Point(13, 371);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(126, 16);
             this.label11.TabIndex = 2;
@@ -193,7 +190,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(12, 396);
+            this.label12.Location = new System.Drawing.Point(13, 399);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(127, 16);
             this.label12.TabIndex = 2;
@@ -202,7 +199,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(12, 424);
+            this.label13.Location = new System.Drawing.Point(13, 427);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(60, 16);
             this.label13.TabIndex = 2;
@@ -211,7 +208,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(12, 453);
+            this.label14.Location = new System.Drawing.Point(13, 456);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(91, 16);
             this.label14.TabIndex = 2;
@@ -242,7 +239,7 @@
             // 
             this.cbCustomers.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCustomers.FormattingEnabled = true;
-            this.cbCustomers.Location = new System.Drawing.Point(200, 251);
+            this.cbCustomers.Location = new System.Drawing.Point(202, 221);
             this.cbCustomers.Name = "cbCustomers";
             this.cbCustomers.Size = new System.Drawing.Size(393, 24);
             this.cbCustomers.TabIndex = 6;
@@ -272,14 +269,14 @@
             this.cbSISP.Items.AddRange(new object[] {
             "НЕТ",
             "ДА"});
-            this.cbSISP.Location = new System.Drawing.Point(199, 419);
+            this.cbSISP.Location = new System.Drawing.Point(200, 422);
             this.cbSISP.Name = "cbSISP";
             this.cbSISP.Size = new System.Drawing.Size(415, 24);
             this.cbSISP.TabIndex = 6;
             // 
             // dtpPTIME
             // 
-            this.dtpPTIME.Location = new System.Drawing.Point(200, 195);
+            this.dtpPTIME.Location = new System.Drawing.Point(202, 165);
             this.dtpPTIME.Name = "dtpPTIME";
             this.dtpPTIME.Size = new System.Drawing.Size(200, 22);
             this.dtpPTIME.TabIndex = 10;
@@ -287,7 +284,7 @@
             // 
             // tbQUANTITY
             // 
-            this.tbQUANTITY.Location = new System.Drawing.Point(199, 168);
+            this.tbQUANTITY.Location = new System.Drawing.Point(201, 138);
             this.tbQUANTITY.Maximum = new decimal(new int[] {
             1000000,
             0,
@@ -311,44 +308,15 @@
             // 
             this.cbAccept.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAccept.FormattingEnabled = true;
-            this.cbAccept.Location = new System.Drawing.Point(199, 223);
+            this.cbAccept.Location = new System.Drawing.Point(201, 193);
             this.cbAccept.Name = "cbAccept";
             this.cbAccept.Size = new System.Drawing.Size(416, 24);
             this.cbAccept.TabIndex = 14;
             // 
-            // dtpAPPROX
-            // 
-            this.dtpAPPROX.Enabled = false;
-            this.dtpAPPROX.Location = new System.Drawing.Point(200, 535);
-            this.dtpAPPROX.Name = "dtpAPPROX";
-            this.dtpAPPROX.Size = new System.Drawing.Size(200, 22);
-            this.dtpAPPROX.TabIndex = 10;
-            // 
-            // label16
-            // 
-            this.label16.Location = new System.Drawing.Point(8, 535);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(186, 36);
-            this.label16.TabIndex = 2;
-            this.label16.Text = "Ориентировочная дата сдачи";
-            // 
-            // chbDeterm
-            // 
-            this.chbDeterm.AutoSize = true;
-            this.chbDeterm.Checked = true;
-            this.chbDeterm.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbDeterm.Location = new System.Drawing.Point(406, 535);
-            this.chbDeterm.Name = "chbDeterm";
-            this.chbDeterm.Size = new System.Drawing.Size(128, 20);
-            this.chbDeterm.TabIndex = 15;
-            this.chbDeterm.Text = "Не определено";
-            this.chbDeterm.UseVisualStyleBackColor = true;
-            this.chbDeterm.CheckedChanged += new System.EventHandler(this.chbDeterm_CheckedChanged);
-            // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(10, 141);
+            this.label17.Location = new System.Drawing.Point(12, 111);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(71, 16);
             this.label17.TabIndex = 23;
@@ -356,14 +324,14 @@
             // 
             // tbPAYSTATUS
             // 
-            this.tbPAYSTATUS.Location = new System.Drawing.Point(199, 337);
+            this.tbPAYSTATUS.Location = new System.Drawing.Point(200, 340);
             this.tbPAYSTATUS.Name = "tbPAYSTATUS";
             this.tbPAYSTATUS.Size = new System.Drawing.Size(415, 22);
             this.tbPAYSTATUS.TabIndex = 3;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(598, 251);
+            this.button2.Location = new System.Drawing.Point(600, 221);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(15, 52);
             this.button2.TabIndex = 25;
@@ -371,32 +339,11 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // cbMountingKit
-            // 
-            this.cbMountingKit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbMountingKit.FormattingEnabled = true;
-            this.cbMountingKit.Items.AddRange(new object[] {
-            "ДА",
-            "НЕТ"});
-            this.cbMountingKit.Location = new System.Drawing.Point(200, 108);
-            this.cbMountingKit.Name = "cbMountingKit";
-            this.cbMountingKit.Size = new System.Drawing.Size(415, 24);
-            this.cbMountingKit.TabIndex = 6;
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(13, 116);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(149, 16);
-            this.label18.TabIndex = 2;
-            this.label18.Text = "Монтажный комплект";
-            // 
             // cbCustDept
             // 
             this.cbCustDept.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCustDept.FormattingEnabled = true;
-            this.cbCustDept.Location = new System.Drawing.Point(200, 279);
+            this.cbCustDept.Location = new System.Drawing.Point(202, 249);
             this.cbCustDept.Name = "cbCustDept";
             this.cbCustDept.Size = new System.Drawing.Size(393, 24);
             this.cbCustDept.TabIndex = 6;
@@ -404,7 +351,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(11, 279);
+            this.label8.Location = new System.Drawing.Point(13, 249);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(138, 16);
             this.label8.TabIndex = 2;
@@ -414,7 +361,7 @@
             // 
             this.cbPacking.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPacking.FormattingEnabled = true;
-            this.cbPacking.Location = new System.Drawing.Point(199, 138);
+            this.cbPacking.Location = new System.Drawing.Point(201, 108);
             this.cbPacking.Name = "cbPacking";
             this.cbPacking.Size = new System.Drawing.Size(413, 24);
             this.cbPacking.TabIndex = 24;
@@ -428,6 +375,27 @@
             this.pickWPName1.Size = new System.Drawing.Size(417, 26);
             this.pickWPName1.TabIndex = 26;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(14, 310);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(98, 16);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Тип договора";
+            // 
+            // cbCONTRACTTYPE
+            // 
+            this.cbCONTRACTTYPE.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbCONTRACTTYPE.FormattingEnabled = true;
+            this.cbCONTRACTTYPE.Items.AddRange(new object[] {
+            "Стандартный",
+            "По 275 ФЗ"});
+            this.cbCONTRACTTYPE.Location = new System.Drawing.Point(201, 310);
+            this.cbCONTRACTTYPE.Name = "cbCONTRACTTYPE";
+            this.cbCONTRACTTYPE.Size = new System.Drawing.Size(415, 24);
+            this.cbCONTRACTTYPE.TabIndex = 6;
+            // 
             // NewSummon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -437,14 +405,12 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.cbPacking);
             this.Controls.Add(this.label17);
-            this.Controls.Add(this.chbDeterm);
             this.Controls.Add(this.cbAccept);
             this.Controls.Add(this.bSave);
             this.Controls.Add(this.tbQUANTITY);
-            this.Controls.Add(this.dtpAPPROX);
             this.Controls.Add(this.dtpPTIME);
             this.Controls.Add(this.dtpCREATED);
-            this.Controls.Add(this.cbMountingKit);
+            this.Controls.Add(this.cbCONTRACTTYPE);
             this.Controls.Add(this.cbSISP);
             this.Controls.Add(this.cbCustDept);
             this.Controls.Add(this.cbCustomers);
@@ -455,13 +421,12 @@
             this.Controls.Add(this.tbSHIPPING);
             this.Controls.Add(this.tbPAYSTATUS);
             this.Controls.Add(this.tbCONTRACT);
-            this.Controls.Add(this.label16);
-            this.Controls.Add(this.label18);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
@@ -515,17 +480,14 @@
         private System.Windows.Forms.NumericUpDown tbQUANTITY;
         private System.Windows.Forms.Button bSave;
         private System.Windows.Forms.ComboBox cbAccept;
-        private System.Windows.Forms.DateTimePicker dtpAPPROX;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.CheckBox chbDeterm;
         private RComboBox cbPacking;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox tbPAYSTATUS;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.ComboBox cbMountingKit;
-        private System.Windows.Forms.Label label18;
         private System.Windows.Forms.ComboBox cbCustDept;
         private System.Windows.Forms.Label label8;
         private SummonManager.Controls.PickWPName pickWPName1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cbCONTRACTTYPE;
     }
 }

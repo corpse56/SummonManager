@@ -104,10 +104,10 @@ namespace SummonManager
             SVO.IDACCEPT = (int)dataRow["IDACCEPT"];
             SVO.IDPACKING = (int)dataRow["IDPACKING"];
             SVO.IDEXTCABLE = (int)dataRow["IDEXTCABLE"];
-            SVO.IDMOUNTINGKIT = (int)dataRow["IDMOUNTINGKIT"];
+            //SVO.IDMOUNTINGKIT = (int)dataRow["IDMOUNTINGKIT"];
             SVO.IDCUSTOMERDEPT = (int)dataRow["IDCUSTOMERDEPT"];
             SVO.VIEWED = (bool)dataRow["VIEWED"];
-            if (dataRow["PASSDATE"] == DBNull.Value)
+            /*if (dataRow["PASSDATE"] == DBNull.Value)
             {
                 SVO.PASSDATE = null;
                 SVO.PASSDATETEXT = "Не определено";
@@ -116,7 +116,7 @@ namespace SummonManager
             {
                 SVO.PASSDATE = (DateTime)dataRow["PASSDATE"];
                 SVO.PASSDATETEXT = ((DateTime)dataRow["PASSDATE"]).ToString("dd.MM.yyyy");
-            }
+            }*/
             SVO.IDSUBST = (int)dataRow["IDSUBST"];
             SVO.BILLPAYED = (bool)dataRow["BILLPAYED"];
             SVO.DOCSREADY = (bool)dataRow["DOCSREADY"];
@@ -129,6 +129,13 @@ namespace SummonManager
             {
                 SVO.SUBSTATUSNAME = new DBCurStatus().GetStatusNameByID(SVO.IDSUBST);
             }
+            SVO.CONTRACTTYPE = dataRow["CONTRACTTYPE"].ToString();
+            SVO.PLANKA = dataRow["PLANKA"].ToString();
+            SVO.PLANKAREQ = (bool)dataRow["PLANKAREQ"];
+            SVO.SERIAL = dataRow["SERIAL"].ToString();
+            SVO.SERIALREQ = (bool)dataRow["SERIALREQ"];
+
+
             return SVO;
         }
 
@@ -172,19 +179,31 @@ namespace SummonManager
             DA.UpdateCommand.Parameters["IDACCEPT"].Value = SVO.IDACCEPT;
             DA.UpdateCommand.Parameters.Add("IDPACKING", SqlDbType.Int);
             DA.UpdateCommand.Parameters["IDPACKING"].Value = SVO.IDPACKING;
-            DA.UpdateCommand.Parameters.Add("IDMOUNTINGKIT", SqlDbType.Int);
-            DA.UpdateCommand.Parameters["IDMOUNTINGKIT"].Value = SVO.IDMOUNTINGKIT;
+            //DA.UpdateCommand.Parameters.Add("IDMOUNTINGKIT", SqlDbType.Int);
+            //DA.UpdateCommand.Parameters["IDMOUNTINGKIT"].Value = SVO.IDMOUNTINGKIT;
             DA.UpdateCommand.Parameters.Add("IDCUSTOMERDEPT", SqlDbType.Int);
             DA.UpdateCommand.Parameters["IDCUSTOMERDEPT"].Value = SVO.IDCUSTOMERDEPT;
             DA.UpdateCommand.Parameters.Add("VIEWED", SqlDbType.Bit);
             DA.UpdateCommand.Parameters["VIEWED"].Value = SVO.VIEWED;
+            DA.UpdateCommand.Parameters.Add("CONTRACTTYPE", SqlDbType.NVarChar);
+            DA.UpdateCommand.Parameters["CONTRACTTYPE"].Value = SVO.CONTRACTTYPE;
+
+            DA.UpdateCommand.Parameters.Add("PLANKA", SqlDbType.NVarChar);
+            DA.UpdateCommand.Parameters["PLANKA"].Value = (((object)SVO.PLANKA) ?? DBNull.Value);
+            DA.UpdateCommand.Parameters.Add("PLANKAREQ", SqlDbType.Bit);
+            DA.UpdateCommand.Parameters["PLANKAREQ"].Value = SVO.PLANKAREQ;
+
+            DA.UpdateCommand.Parameters.Add("SERIAL", SqlDbType.NVarChar);
+            DA.UpdateCommand.Parameters["SERIAL"].Value = (((object)SVO.SERIAL) ?? DBNull.Value);
+            DA.UpdateCommand.Parameters.Add("SERIALREQ", SqlDbType.Bit);
+            DA.UpdateCommand.Parameters["SERIALREQ"].Value = SVO.SERIALREQ;
 
 
-            DA.UpdateCommand.Parameters.Add("PASSDATE", SqlDbType.DateTime);
-            if (SVO.PASSDATE == null)
-                DA.UpdateCommand.Parameters["PASSDATE"].Value = SqlDateTime.Null;
-            else
-                DA.UpdateCommand.Parameters["PASSDATE"].Value = SVO.PASSDATE;
+            //DA.UpdateCommand.Parameters.Add("PASSDATE", SqlDbType.DateTime);
+            //if (SVO.PASSDATE == null)
+            //    DA.UpdateCommand.Parameters["PASSDATE"].Value = SqlDateTime.Null;
+            //else
+            //    DA.UpdateCommand.Parameters["PASSDATE"].Value = SVO.PASSDATE;
             
             DA.UpdateCommand.Parameters.Add("IDSUBST", SqlDbType.Int);
             DA.UpdateCommand.Parameters["IDSUBST"].Value = SVO.IDSUBST;
@@ -196,9 +215,10 @@ namespace SummonManager
             //если что-то добавляешь сюда , то добавь и в функцию get summon by ids
             DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..SUMMON set ACCEPTANCE=@ACCEPTANCE,CONTRACT=@CONTRACT,DELIVERY=@DELIVERY,IDCUSTOMER=@IDCUSTOMER,PAYSTATUS=@PAYSTATUS, " +
             "NOTE=@NOTE,PTIME=@PTIME,QUANTITY=@QUANTITY,SHIPPING=@SHIPPING,SISP=@SISP,  " +
-            " IDWP = @IDWP,IDACCEPT = @IDACCEPT,PASSDATE = @PASSDATE,IDPACKING = @IDPACKING, CREATED = @CREATED " +
-            " , IDMOUNTINGKIT = @IDMOUNTINGKIT, IDCUSTOMERDEPT = @IDCUSTOMERDEPT, VIEWED = @VIEWED , IDS = @IDS " +
-            " , IDSUBST = @IDSUBST,BILLPAYED=@BILLPAYED,DOCSREADY=@DOCSREADY, WPTYPE = @WPTYPE " +
+            " IDWP = @IDWP,IDACCEPT = @IDACCEPT,IDPACKING = @IDPACKING, CREATED = @CREATED " +
+            " , IDCUSTOMERDEPT = @IDCUSTOMERDEPT, VIEWED = @VIEWED , IDS = @IDS " +
+            " , IDSUBST = @IDSUBST,BILLPAYED=@BILLPAYED,DOCSREADY=@DOCSREADY, WPTYPE = @WPTYPE, CONTRACTTYPE=@CONTRACTTYPE " +
+            " , PLANKA=@PLANKA, PLANKAREQ = @PLANKAREQ, SERIAL = @SERIAL, SERIALREQ=@SERIALREQ "+
             " where ID = @ID";
             DA.UpdateCommand.Connection.Open();
             DA.UpdateCommand.ExecuteNonQuery();
@@ -371,8 +391,8 @@ namespace SummonManager
         }
         internal int AddNIPSummon()
         {
-            DA.InsertCommand.CommandText = "insert into " + Base.BaseName + "..SUMMON (IDS,IDSTATUS,QUANTITY,WPTYPE) " +
-            " values ('',14,0,'NaWP');select SCOPE_IDENTITY()";
+            DA.InsertCommand.CommandText = "insert into " + Base.BaseName + "..SUMMON (IDS,IDSTATUS,QUANTITY,WPTYPE,CONTRACTTYPE) " +
+            " values ('',14,0,'NaWP','Стандартный');select SCOPE_IDENTITY()";
             DA.InsertCommand.Connection.Open();
 
             int idresult = Convert.ToInt32(DA.InsertCommand.ExecuteScalar());

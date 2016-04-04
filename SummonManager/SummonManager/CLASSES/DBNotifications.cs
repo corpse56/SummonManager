@@ -83,7 +83,7 @@ namespace SummonManager
             DA.InsertCommand.CommandText =  "  insert into [ALPHA].[dbo].[NOTIFICATIONS] (IDNTYPE,IDSUMMON) " +
                           "select 1,A.ID from [ALPHA].[dbo].SUMMON A "+
                           " left join [ALPHA].[dbo].WPNAMELIST W on A.IDWP = W.ID and A.WPTYPE = 'WPNAMELIST'" +
-                          "  where W.SERIAL is null and W.SERIALREQ = 1 " +
+                          "  where A.SERIAL is null and A.SERIALREQ = 1 " +
                           " and A.IDSTATUS not in (1,2,13,14) " +
                          " and NOT exists (select 1 from [ALPHA].[dbo].[NOTIFICATIONS] B " +
 					                      "  where B.IDNTYPE = 1 and B.IDSUMMON = A.ID)";
@@ -96,7 +96,7 @@ namespace SummonManager
              " left join [ALPHA].[dbo].WPNAMELIST W on A.IDWP = W.ID and A.WPTYPE = 'WPNAMELIST'" +
              //" left join [ALPHA].[dbo].ZHGUTLIST ZH on A.IDWP = ZH.ID and A.WPTYPE = 'ZHGUTLIST'" + потом с андрюхой обсудить
              //" left join [ALPHA].[dbo].CABLELIST CA on A.IDWP = CA.ID and A.WPTYPE = 'CABLELIST'" +
-             " where (W.SHILDS is null  and W.SHILDSREQ=1 or W.PLANKA is null and W.PLANKAREQ = 1 or W.SBORKA3D is null and W.SBORKA3DREQ =1 " +
+             " where (W.SHILDS is null  and W.SHILDSREQ=1 or A.PLANKA is null and A.PLANKAREQ = 1 or W.SBORKA3D is null and W.SBORKA3DREQ =1 " +
              " or W.MECHPARTS is null  and W.MECHPARTSREQ =1 or W.DIMENSIONALDRAWING is null  and W.DIMENSIONALDRAWINGREQ =1 or W.PACKAGING is null  and W.PACKAGINGREQ =1) " +
              " and A.IDSTATUS not in (1,2,13,14) " +
             " and NOT exists (select 1 from [ALPHA].[dbo].[NOTIFICATIONS] B " +
