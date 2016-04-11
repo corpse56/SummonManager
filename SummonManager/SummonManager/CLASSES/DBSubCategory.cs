@@ -69,5 +69,12 @@ namespace SummonManager
             int i = DA.Fill(DS, "t");
             return DS.Tables["t"];
         }
+
+        internal string GetName(int ID)
+        {
+            DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..SUBCATEGORYLIST where ID = " + ID;
+            DA.Fill(DS, "t");
+            return DS.Tables["t"].Rows[0]["SUBCATNAME"].ToString();
+        }
     }
 }

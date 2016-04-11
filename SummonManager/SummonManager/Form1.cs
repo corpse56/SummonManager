@@ -21,6 +21,7 @@ namespace SummonManager
     {
         //public static string EConnectionString = "metadata=res://*/SM.csdl|res://*/SM.ssdl|res://*/SM.msl;provider=System.Data.SqlClient;provider connection string=\"Data Source=CORPS-ПК\\SQLEXPRESS;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True\"";
         //public static string ConnectionString = "Data Source=CORPS-ПК\\SQLEXPRESS;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
+        
         //public static string ConnectionString = "Data Source=127.0.0.1;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
         //public static string ConnectionString = "Data Source=127.0.0.1\\SQL2008R2;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
         
@@ -29,8 +30,8 @@ namespace SummonManager
         public IRole UVO;
         public int PrivateNoteColor;
         public int RefreshTime;
-        public static string ProgramVersion = "2.01";
-        public static int VersionNumber = 201;
+        public static string ProgramVersion = "2.03";
+        public static int VersionNumber = 203;
         public MainF()
         {
             InitializeComponent();
@@ -372,7 +373,7 @@ namespace SummonManager
 
         private void наименованиеИзделияToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            WPName wp = new WPName(false,this.UVO, WPTYPE.WPNAMELIST);
+            WPName wp = new WPName(false,this.UVO, WPTYPE.WPNAMELIST,false);
             wp.ShowDialog();
         }
 
@@ -1323,7 +1324,7 @@ namespace SummonManager
 
         private void tsbWorkPart_Click(object sender, EventArgs e)
         {
-            WPName wp = new WPName(false, this.UVO, WPTYPE.WPNAMELIST);
+            WPName wp = new WPName(false, this.UVO, WPTYPE.WPNAMELIST,false);
             wp.ShowDialog();
         }
 

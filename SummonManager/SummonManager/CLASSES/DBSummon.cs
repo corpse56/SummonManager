@@ -99,6 +99,7 @@ namespace SummonManager
             SVO.SISP = (bool)dataRow["SISP"];
             SVO.IDWPNAME = (int)dataRow["IDWP"];
             SVO.WPTYPE = dataRow["WPTYPE"].ToString();
+            
             SVO.ProductVO = ProductFactory.Create(SVO.IDWPNAME,SVO.WPTYPE);
             //SVO.WPNAME = SVO.ProductVO.GetName();
             SVO.IDACCEPT = (int)dataRow["IDACCEPT"];
@@ -134,7 +135,7 @@ namespace SummonManager
             SVO.PLANKAREQ = (bool)dataRow["PLANKAREQ"];
             SVO.SERIAL = dataRow["SERIAL"].ToString();
             SVO.SERIALREQ = (bool)dataRow["SERIALREQ"];
-
+            SVO.BILLNUMBER = dataRow["BILLNUMBER"].ToString();
 
             return SVO;
         }
@@ -211,6 +212,9 @@ namespace SummonManager
             DA.UpdateCommand.Parameters["BILLPAYED"].Value = SVO.BILLPAYED;
             DA.UpdateCommand.Parameters.Add("DOCSREADY", SqlDbType.Bit);
             DA.UpdateCommand.Parameters["DOCSREADY"].Value = SVO.DOCSREADY;
+            DA.UpdateCommand.Parameters.Add("BILLNUMBER", SqlDbType.NVarChar);
+            DA.UpdateCommand.Parameters["BILLNUMBER"].Value = SVO.BILLNUMBER;
+
 
             //если что-то добавляешь сюда , то добавь и в функцию get summon by ids
             DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..SUMMON set ACCEPTANCE=@ACCEPTANCE,CONTRACT=@CONTRACT,DELIVERY=@DELIVERY,IDCUSTOMER=@IDCUSTOMER,PAYSTATUS=@PAYSTATUS, " +
@@ -218,7 +222,7 @@ namespace SummonManager
             " IDWP = @IDWP,IDACCEPT = @IDACCEPT,IDPACKING = @IDPACKING, CREATED = @CREATED " +
             " , IDCUSTOMERDEPT = @IDCUSTOMERDEPT, VIEWED = @VIEWED , IDS = @IDS " +
             " , IDSUBST = @IDSUBST,BILLPAYED=@BILLPAYED,DOCSREADY=@DOCSREADY, WPTYPE = @WPTYPE, CONTRACTTYPE=@CONTRACTTYPE " +
-            " , PLANKA=@PLANKA, PLANKAREQ = @PLANKAREQ, SERIAL = @SERIAL, SERIALREQ=@SERIALREQ "+
+            " , PLANKA=@PLANKA, PLANKAREQ = @PLANKAREQ, SERIAL = @SERIAL, SERIALREQ=@SERIALREQ, BILLNUMBER = @BILLNUMBER "+
             " where ID = @ID";
             DA.UpdateCommand.Connection.Open();
             DA.UpdateCommand.ExecuteNonQuery();

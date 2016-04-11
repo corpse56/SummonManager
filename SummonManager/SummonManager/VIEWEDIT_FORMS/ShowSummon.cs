@@ -189,6 +189,26 @@ namespace SummonManager
 
         }
 
+        private void bChangeProduct_Click(object sender, EventArgs e)
+        {
+            WPName wp = new WPName(true, UVO, SVO.ProductVO.GetProductType(),true);
+            wp.ShowDialog();
+            if (wp.PickedID == 0)
+            {
+                return;
+            }
+
+            var PickedProduct = ProductFactory.Create(wp.PickedID, wp.PickedType);
+
+            SVO.ProductVO = PickedProduct;
+            SVO.IDWPNAME = PickedProduct.GetID();
+            DBSummon dbs = new DBSummon();
+            dbs.SaveSummon(SVO);
+            ShowSummon_Load(sender, e);
+
+            
+        }
+
        
 
 

@@ -45,10 +45,10 @@
             // button1
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.button1.Location = new System.Drawing.Point(335, -1);
+            this.button1.Location = new System.Drawing.Point(334, 2);
             this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(77, 28);
+            this.button1.Size = new System.Drawing.Size(77, 22);
             this.button1.TabIndex = 16;
             this.button1.Text = "Выбрать";
             this.button1.UseVisualStyleBackColor = true;

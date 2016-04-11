@@ -13,7 +13,7 @@ namespace SummonManager
 
         public DataTable GetAllWPNames()
         {
-            DA.SelectCommand.CommandText = "select A.ID,A.WPNAME,B.CATEGORYNAME,isnull(C.SUBCATNAME,'НЕ ПРИСВОЕНО')  SUBCATNAME,A.DECNUM,A.TECHREQ,A.COMPOSITION,A.NOTE from "
+            DA.SelectCommand.CommandText = "select A.ID,A.WPNAME WPNAME,B.CATEGORYNAME,isnull(C.SUBCATNAME,'НЕ ПРИСВОЕНО')  SUBCATNAME,A.DECNUM,A.TECHREQ,A.COMPOSITION,A.NOTE from "
                                             + Base.BaseName + "..WPNAMELIST A left join " + Base.BaseName + "..CATEGORYLIST B on B.ID = IDCATEGORY "+
                                            " left join " + Base.BaseName + "..SUBCATEGORYLIST C on C.ID = A.IDSUBCAT " +
                                            " order by WPNAME";
@@ -115,7 +115,7 @@ namespace SummonManager
                                            " (WPNAME,IDCATEGORY,IDSUBCAT,DECNUM,WIRINGDIAGRAM,TECHREQ,COMPOSITION,CONFIGURATION,DIMENSIONALDRAWING,SBORKA3D, " +
                                            " MECHPARTS,SHILDS,PACKAGING,MANUAL,PASSPORT,PACKINGLIST,POWERSUPPLY,NOTE,CREATED,      "+
                                            " COMPOSITIONREQ,DIMENSIONALDRAWINGREQ,CONFIGURATIONREQ,WIRINGDIAGRAMREQ," +
-                                           " TECHREQREQ,SBORKA3DREQ,MECHPARTSREQ,SHILDSREQ,PLANKAREQ,SERIALREQ,PACKAGINGREQ,PASSPORTREQ, "+
+                                           " TECHREQREQ,SBORKA3DREQ,MECHPARTSREQ,SHILDSREQ,PACKAGINGREQ,PASSPORTREQ, "+
                                            " MANUALREQ,PACKINGLISTREQ,SOFTWAREREQ,CABLELISTREQ,ZHGUTLISTREQ,RUNCARDLISTREQ,CIRCUITBOARDLISTREQ) " +
                                            " values (@WPNAME,@IDCATEGORY,@IDSUBCAT,@DECNUM,@WIRINGDIAGRAM,@TECHREQ,@COMPOSITION,@CONFIGURATION,@DIMENSIONALDRAWING,@SBORKA3D, " +
                                            " @MECHPARTS,@SHILDS,@PACKAGING,@MANUAL, @PASSPORT,@PACKINGLIST,@POWERSUPPLY,@NOTE,@CREATED,      " +

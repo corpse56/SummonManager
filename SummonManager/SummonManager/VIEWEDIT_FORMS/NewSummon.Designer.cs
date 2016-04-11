@@ -64,6 +64,8 @@
             this.pickWPName1 = new SummonManager.Controls.PickWPName();
             this.label3 = new System.Windows.Forms.Label();
             this.cbCONTRACTTYPE = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.tbBillNumber = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.tbQUANTITY)).BeginInit();
             this.SuspendLayout();
             // 
@@ -103,21 +105,21 @@
             // 
             // tbSHIPPING
             // 
-            this.tbSHIPPING.Location = new System.Drawing.Point(201, 368);
+            this.tbSHIPPING.Location = new System.Drawing.Point(200, 399);
             this.tbSHIPPING.Name = "tbSHIPPING";
             this.tbSHIPPING.Size = new System.Drawing.Size(415, 22);
             this.tbSHIPPING.TabIndex = 3;
             // 
             // tbDELIVERY
             // 
-            this.tbDELIVERY.Location = new System.Drawing.Point(201, 396);
+            this.tbDELIVERY.Location = new System.Drawing.Point(200, 427);
             this.tbDELIVERY.Name = "tbDELIVERY";
             this.tbDELIVERY.Size = new System.Drawing.Size(415, 22);
             this.tbDELIVERY.TabIndex = 3;
             // 
             // tbNote
             // 
-            this.tbNote.Location = new System.Drawing.Point(201, 453);
+            this.tbNote.Location = new System.Drawing.Point(200, 484);
             this.tbNote.Multiline = true;
             this.tbNote.Name = "tbNote";
             this.tbNote.Size = new System.Drawing.Size(415, 79);
@@ -165,14 +167,14 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(14, 282);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(141, 16);
+            this.label9.Size = new System.Drawing.Size(88, 16);
             this.label9.TabIndex = 2;
-            this.label9.Text = "№ Счёта и договора";
+            this.label9.Text = "№ Договора";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(13, 343);
+            this.label10.Location = new System.Drawing.Point(12, 374);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(105, 16);
             this.label10.TabIndex = 2;
@@ -181,7 +183,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(13, 371);
+            this.label11.Location = new System.Drawing.Point(12, 402);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(126, 16);
             this.label11.TabIndex = 2;
@@ -190,7 +192,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(13, 399);
+            this.label12.Location = new System.Drawing.Point(12, 430);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(127, 16);
             this.label12.TabIndex = 2;
@@ -199,7 +201,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(13, 427);
+            this.label13.Location = new System.Drawing.Point(12, 458);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(60, 16);
             this.label13.TabIndex = 2;
@@ -208,7 +210,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(13, 456);
+            this.label14.Location = new System.Drawing.Point(12, 487);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(91, 16);
             this.label14.TabIndex = 2;
@@ -269,7 +271,7 @@
             this.cbSISP.Items.AddRange(new object[] {
             "НЕТ",
             "ДА"});
-            this.cbSISP.Location = new System.Drawing.Point(200, 422);
+            this.cbSISP.Location = new System.Drawing.Point(199, 453);
             this.cbSISP.Name = "cbSISP";
             this.cbSISP.Size = new System.Drawing.Size(415, 24);
             this.cbSISP.TabIndex = 6;
@@ -324,7 +326,7 @@
             // 
             // tbPAYSTATUS
             // 
-            this.tbPAYSTATUS.Location = new System.Drawing.Point(200, 340);
+            this.tbPAYSTATUS.Location = new System.Drawing.Point(199, 371);
             this.tbPAYSTATUS.Name = "tbPAYSTATUS";
             this.tbPAYSTATUS.Size = new System.Drawing.Size(415, 22);
             this.tbPAYSTATUS.TabIndex = 3;
@@ -378,7 +380,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 310);
+            this.label3.Location = new System.Drawing.Point(13, 341);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(98, 16);
             this.label3.TabIndex = 2;
@@ -391,10 +393,26 @@
             this.cbCONTRACTTYPE.Items.AddRange(new object[] {
             "Стандартный",
             "По 275 ФЗ"});
-            this.cbCONTRACTTYPE.Location = new System.Drawing.Point(201, 310);
+            this.cbCONTRACTTYPE.Location = new System.Drawing.Point(199, 338);
             this.cbCONTRACTTYPE.Name = "cbCONTRACTTYPE";
             this.cbCONTRACTTYPE.Size = new System.Drawing.Size(415, 24);
             this.cbCONTRACTTYPE.TabIndex = 6;
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(14, 310);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(65, 16);
+            this.label16.TabIndex = 2;
+            this.label16.Text = "№ Счёта";
+            // 
+            // tbBillNumber
+            // 
+            this.tbBillNumber.Location = new System.Drawing.Point(202, 307);
+            this.tbBillNumber.Name = "tbBillNumber";
+            this.tbBillNumber.Size = new System.Drawing.Size(415, 22);
+            this.tbBillNumber.TabIndex = 3;
             // 
             // NewSummon
             // 
@@ -420,12 +438,14 @@
             this.Controls.Add(this.tbDELIVERY);
             this.Controls.Add(this.tbSHIPPING);
             this.Controls.Add(this.tbPAYSTATUS);
+            this.Controls.Add(this.tbBillNumber);
             this.Controls.Add(this.tbCONTRACT);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.label13);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
+            this.Controls.Add(this.label16);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
@@ -489,5 +509,7 @@
         private SummonManager.Controls.PickWPName pickWPName1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbCONTRACTTYPE;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox tbBillNumber;
     }
 }

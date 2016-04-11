@@ -58,6 +58,7 @@ namespace SummonManager
             ss.tbCONTRACT.ReadOnly = false;
             ss.tbDELIVERY.ReadOnly = false;
             ss.tbPayStatus.ReadOnly = false;
+            ss.tbBillNumber.ReadOnly = false;
 
             ss.cbAccept.ReadOnly = false;
             ss.cbCustomers.ReadOnly = false;

@@ -58,7 +58,23 @@ namespace SummonManager.CLASSES
         void IProduct.FillTableLayoutPanel(TableLayoutPanel TLP, IRole UVO)
         {
             CableVO wp = (CableVO)this;
-            
+
+            TextBox tb = new TextBox();
+            DBCategory dbc = new DBCategory("CABLELIST");
+            tb.Text = dbc.GetName(wp.IDCat);
+            tb.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            tb.ReadOnly = true;
+            tb.Dock = DockStyle.Fill;
+            UIWorks.AddToTLP(TLP, "Категория", tb);
+
+            tb = new TextBox();
+            DBSubCategory dbsc = new DBSubCategory();
+            tb.Text = dbsc.GetName(wp.IDCat);
+            tb.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            tb.ReadOnly = true;
+            tb.Dock = DockStyle.Fill;
+            UIWorks.AddToTLP(TLP, "Подкатегория", tb);
+
             PathField pf = new PathField();
             pf.Tag = Roles.Inzhener;
             pf.Init(wp.DIMENDRAWING, true, false, false, true, Roles.Inzhener, UVO.Role, "VIEWONLY");
@@ -69,7 +85,7 @@ namespace SummonManager.CLASSES
             pf.Dock = DockStyle.Fill;
             UIWorks.AddToTLP(TLP, "Сборочный чертёж", pf);
 
-            TextBox tb = new TextBox();
+            tb = new TextBox();
             tb.Text = wp.CONECTORS;
             tb.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             tb.ReadOnly = true;

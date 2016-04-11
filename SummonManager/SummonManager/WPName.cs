@@ -16,7 +16,7 @@ namespace SummonManager
         IRole UVO;
         bool PICK = false;
         WPTYPE WPT;
-        public WPName(bool pick, IRole uvo, WPTYPE wpt)
+        public WPName(bool pick, IRole uvo, WPTYPE wpt,bool pick_for_change)
         {
             InitializeComponent();
             this.WPT = wpt;
@@ -50,6 +50,10 @@ namespace SummonManager
             else
             {
                 bChoose.Visible = false;
+            }
+            if (pick_for_change)
+            {
+                cbPRODUCTTYPE.Enabled = false;
             }
             this.UVO = uvo;
             this.PICK = pick;
@@ -176,15 +180,17 @@ namespace SummonManager
 
         private void WPName_Load(object sender, EventArgs e)
         {
-            DBCategory dbc = new DBCategory("WPNAMELIST");
+            /*DBCategory dbc = new DBCategory("WPNAMELIST");
             cbCAT.ValueMember = "ID";
             cbCAT.DisplayMember = "CATEGORYNAME";
             cbCAT.DataSource = dbc.GetAll();
-            cbCAT.SelectedValue = 2;
+            cbCAT.SelectedValue = 2;*/
 
-            DBWPName dbwp = new DBWPName();
+            /*DBWPName dbwp = new DBWPName();
             dgWP.DataSource = dbwp.GetAllWPNames();
-            ShowDGV();
+            ShowDGV();*/
+            cbPRODUCTTYPE_SelectedIndexChanged(sender, e);
+            
             if (!PICK)
             {
                 bChoose.Enabled = false;

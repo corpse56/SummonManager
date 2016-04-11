@@ -52,6 +52,22 @@ namespace SummonManager.CLASSES
         {
             ZhgutVO wp = (ZhgutVO)this;
 
+            TextBox tb = new TextBox();
+            DBCategory dbc = new DBCategory("ZHGUTLIST");
+            tb.Text = dbc.GetName(wp.IDCat);
+            tb.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            tb.ReadOnly = true;
+            tb.Dock = DockStyle.Fill;
+            UIWorks.AddToTLP(TLP, "Категория", tb);
+
+            tb = new TextBox();
+            DBSubCategory dbsc = new DBSubCategory();
+            tb.Text = dbsc.GetName(wp.IDCat);
+            tb.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            tb.ReadOnly = true;
+            tb.Dock = DockStyle.Fill;
+            UIWorks.AddToTLP(TLP, "Подкатегория", tb);
+
             PathField pf = new PathField();
             pf.Tag = Roles.Inzhener;
             pf.Init(wp.ZHGUTPATH, true, false, false, true, Roles.Inzhener, UVO.Role, "VIEWONLY");

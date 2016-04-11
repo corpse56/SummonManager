@@ -27,7 +27,7 @@ namespace SummonManager
             dgWP.Columns["SUBCATNAME"].HeaderText = "Наименование подкатегории";
             dgWP.Columns["SUBCATNAME"].Width = 200;
 
-            this.Text = "Подкатегории категории \"" + new DBCategory(this.ENTITY).Get(IDCat) + "\"";
+            this.Text = "Подкатегории категории \"" + new DBCategory(this.ENTITY).GetName(IDCat) + "\"";
             switch (this.ENTITY)
             {
                 case "WPNAMELIST":

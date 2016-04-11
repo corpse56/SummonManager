@@ -34,7 +34,7 @@ namespace SummonManager
             ss.bEditCustomers.Enabled = true;
             ss.bEditWP.Enabled = true;
             ss.bPurchMat.Enabled = true;
-
+            ss.bChangeProduct.Enabled = true;
 
         }
         public override void EnableEdit(ShowSummon ss)
@@ -49,6 +49,7 @@ namespace SummonManager
             ss.tbCONTRACT.ReadOnly = false;
             ss.tbDELIVERY.ReadOnly = false;
             ss.tbPayStatus.ReadOnly = false;
+            ss.tbBillNumber.ReadOnly = false;
 
             ss.cbAccept.ReadOnly = false;
             ss.cbCustomers.ReadOnly = false;
@@ -68,6 +69,7 @@ namespace SummonManager
 
             ss.bEdit.Enabled = false;
             ss.bSave.Enabled = true;
+            ss.bChangeProduct.Enabled = false;
             ss.summonTransfer1.Enabled = false;
             ss.summonTransfer2.Enabled = false;
 

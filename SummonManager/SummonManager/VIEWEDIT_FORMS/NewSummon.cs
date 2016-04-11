@@ -154,8 +154,8 @@ namespace SummonManager
             SVO.DOCSREADY = false;
             SVO.BILLPAYED = false;
             SVO.CONTRACTTYPE = cbCONTRACTTYPE.Text;
+            SVO.BILLNUMBER = tbBillNumber.Text;
             dbs.AddNewSummon(SVO,UVO);
-            alow_delete_cablepack = false;
             //MessageBox.Show("Извещение успешно создано и передано в ОЗиС!");
             this.Close();
         }
@@ -164,6 +164,11 @@ namespace SummonManager
         private void bSave_Click(object sender, EventArgs e)
         {
 
+            if (pickWPName1.textBox1.Text == "")
+            {
+                MessageBox.Show("Выбеоите изделие!");
+                return;
+            }
             if (tbQUANTITY.Value == 0)
             {
                 MessageBox.Show("Введите количество изделий!");
@@ -207,6 +212,7 @@ namespace SummonManager
             SVO.BILLPAYED = false;
             SVO.DOCSREADY = false;
             SVO.CONTRACTTYPE = cbCONTRACTTYPE.Text;
+            SVO.BILLNUMBER = tbBillNumber.Text;
             /*if (chbDeterm.Checked)
                 SVO.PASSDATE = null;
             else
@@ -215,10 +221,8 @@ namespace SummonManager
             dbs.SaveNewSummon(SVO,UVO);
             tbIDS.Text = SVO.IDS;
             MessageBox.Show("Извещение успешно создано! Извещению присвоен номер: "+SVO.IDS);
-            alow_delete_cablepack = false;
             this.Close();
         }
-        bool alow_delete_cablepack = true;
         private void chbDeterm_CheckedChanged(object sender, EventArgs e)
         {
             /*if (chbDeterm.Checked)
@@ -245,6 +249,7 @@ namespace SummonManager
 
         }
 
+      
        
 
 

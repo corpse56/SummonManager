@@ -29,7 +29,7 @@ namespace SummonManager.Controls
         }
         private void button1_Click(object sender, EventArgs e)
         {
-            WPName wp = new WPName(true,UVO, WPTYPE.WPNAMELIST);
+            WPName wp = new WPName(true,UVO, WPTYPE.WPNAMELIST,false);
             wp.ShowDialog();
             if (wp.PickedID == 0)
             {

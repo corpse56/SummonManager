@@ -60,6 +60,8 @@ namespace SummonManager
         public bool PLANKAREQ;
         public bool SERIALREQ;
 
+        public string BILLNUMBER;
+
         public SummonVO()
         {
 

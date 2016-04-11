@@ -30,7 +30,7 @@ namespace SummonManager
             DA.InsertCommand.ExecuteNonQuery();
             DA.InsertCommand.Connection.Close();
         }
-        internal string Get(int ID)
+        internal string GetName(int ID)
         {
             DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..CATEGORYLIST where ID = " + ID;
             DA.Fill(DS, "t");

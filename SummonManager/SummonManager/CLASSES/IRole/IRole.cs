@@ -76,7 +76,7 @@ namespace SummonManager.CLASSES.IRole_namespace
             ss.tbPayStatus.ReadOnly = true;
             ss.tbStatus.ReadOnly = true;
             ss.tbSubStatus.ReadOnly = true;
-
+            ss.tbBillNumber.ReadOnly = true;
 
             ss.cbPacking.ReadOnly = true;
             //ss.cbMountingKit.ReadOnly = true;
@@ -100,6 +100,7 @@ namespace SummonManager.CLASSES.IRole_namespace
             ss.bEditCustomers.Enabled = false;
             ss.bEditWP.Enabled = false;
             ss.bPurchMat.Enabled = false;
+            ss.bChangeProduct.Enabled = false;
 
             ss.summonTransfer1.Enabled = true;
             ss.summonTransfer2.Enabled = true;
@@ -151,6 +152,7 @@ namespace SummonManager.CLASSES.IRole_namespace
             ss.dtpCREATED.Value = ss.SVO.CREATED;
             ss.dtpPTIME.Value = ss.SVO.PTIME;
             ss.tbPayStatus.Text = ss.SVO.PAYSTATUS;
+            ss.tbBillNumber.Text = ss.SVO.BILLNUMBER;
             /*if (ss.SVO.PASSDATE == null)
             {
                 ss.chbDeterm.Checked = true;
@@ -261,6 +263,7 @@ namespace SummonManager.CLASSES.IRole_namespace
             SVO.PLANKAREQ = ss.pfPLANKA.Required;
             SVO.SERIAL = ss.pfSERIAL.FullPath;
             SVO.SERIALREQ = ss.pfSERIAL.Required;
+            SVO.BILLNUMBER = ss.tbBillNumber.Text;
 
             dbs.SaveSummon(SVO);
             ss.SVO = SVO;
