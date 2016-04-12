@@ -161,7 +161,14 @@ namespace SummonManager
                     MessageBox.Show("Вы не можете удалить это наименование поскольку существует извещение с таким наименованием!");
                     return;
                 }
-                dbwp.DeleteByID(dgWP.SelectedRows[0].Cells["ID"].Value.ToString());
+                try
+                {
+                    dbwp.DeleteByID(dgWP.SelectedRows[0].Cells["ID"].Value.ToString());
+                }
+                catch
+                {
+                    MessageBox.Show("Вы не можете удалить это наименование, поскольку оно присутствует в комплекте для изделия.");
+                }
             }
             if (cbPRODUCTTYPE.SelectedIndex == 2)
             {
@@ -171,7 +178,14 @@ namespace SummonManager
                     MessageBox.Show("Вы не можете удалить это наименование поскольку существует извещение с таким наименованием!");
                     return;
                 }
-                dbwp.DeleteByID(dgWP.SelectedRows[0].Cells["ID"].Value.ToString());
+                try
+                {
+                    dbwp.DeleteByID(dgWP.SelectedRows[0].Cells["ID"].Value.ToString());
+                }
+                catch
+                {
+                    MessageBox.Show("Вы не можете удалить это наименование, поскольку оно присутствует в комплекте для изделия.");
+                }
             }
 
 

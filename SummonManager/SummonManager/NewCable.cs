@@ -87,6 +87,7 @@ namespace SummonManager
             cbCategory.SelectedValue = wp.IDCat;
             cbSubCategory.SelectedValue = wp.IDSubCat;
             tbDecNum.Text = wp.DecNum;
+            tbCONNECTORS.Text = wp.CONECTORS;
             tbCLENGTH.Text = wp.CLENGTH;
             tbNote.Text = wp.NOTE;
 
