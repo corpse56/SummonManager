@@ -259,9 +259,9 @@ namespace SummonManager.CLASSES.IRole_namespace
             SVO.DOCSREADY = ss.chbDocsRdy.Checked;
             SVO.VIEWED = true;
             SVO.CONTRACTTYPE = ss.cbCONTRACTTYPE.Text;
-            SVO.PLANKA = ss.pfPLANKA.FullPath;
+            SVO.PLANKA = (ss.pfPLANKA.FullPath == "<нет>") ? null : ss.pfPLANKA.FullPath; 
             SVO.PLANKAREQ = ss.pfPLANKA.Required;
-            SVO.SERIAL = ss.pfSERIAL.FullPath;
+            SVO.SERIAL = (ss.pfSERIAL.FullPath == "<нет>") ? null : ss.pfSERIAL.FullPath;
             SVO.SERIALREQ = ss.pfSERIAL.Required;
             SVO.BILLNUMBER = ss.tbBillNumber.Text;
 

@@ -69,7 +69,7 @@ namespace SummonManager.CLASSES
 
             tb = new TextBox();
             DBSubCategory dbsc = new DBSubCategory();
-            tb.Text = dbsc.GetName(wp.IDCat);
+            tb.Text = dbsc.GetName(wp.IDSubCat);
             tb.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             tb.ReadOnly = true;
             tb.Dock = DockStyle.Fill;

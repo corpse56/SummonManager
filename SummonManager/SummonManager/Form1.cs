@@ -30,8 +30,8 @@ namespace SummonManager
         public IRole UVO;
         public int PrivateNoteColor;
         public int RefreshTime;
-        public static string ProgramVersion = "2.05";
-        public static int VersionNumber = 205;
+        public static string ProgramVersion = "2.06";
+        public static int VersionNumber = 206;
         public MainF()
         {
             InitializeComponent();
@@ -291,7 +291,6 @@ namespace SummonManager
             sw.Reset();
             sw.Start();
 
-            PaintDG();
             sw.Stop();
             //MessageBox.Show("PaintDG();" + (sw.ElapsedMilliseconds / 100.0).ToString());
 
@@ -334,6 +333,8 @@ namespace SummonManager
             }
             InitialReload = false;
             sw.Stop();
+            PaintDG();
+
             //MessageBox.Show("ps.Restore();" + (sw.ElapsedMilliseconds / 100.0).ToString());
 
         }
@@ -583,7 +584,7 @@ namespace SummonManager
                     if (ntfy.TrimEnd().LastIndexOf("№") != ntfy.Length - 2)
                     {
                         ntfy = ntfy.Remove(ntfy.LastIndexOf(","));
-                        notifyIcon1.ShowBalloonTip(29000, "Новое извещение!", "Вы стали ответственным за извещение № " + ntfy, ToolTipIcon.Warning);
+                        notifyIcon1.ShowBalloonTip(29000, "Новое извещение!", ntfy, ToolTipIcon.Warning);
                     }
                     break;
                 case Roles.Prod:
@@ -604,7 +605,7 @@ namespace SummonManager
                     if (ntfy.TrimEnd().LastIndexOf("№") != ntfy.Length - 2)
                     {
                         ntfy = ntfy.Remove(ntfy.LastIndexOf(","));
-                        notifyIcon1.ShowBalloonTip(29000, "Новое извещение!", "Вы стали ответственным за извещение № " + ntfy, ToolTipIcon.Warning);
+                        notifyIcon1.ShowBalloonTip(29000, "Новое извещение!",  ntfy, ToolTipIcon.Warning);
                     }
                     break;
                 case Roles.Ozis:
@@ -630,7 +631,7 @@ namespace SummonManager
                     if (ntfy.TrimEnd().LastIndexOf("№") != ntfy.Length - 2)
                     {
                         ntfy = ntfy.Remove(ntfy.LastIndexOf(","));
-                        notifyIcon1.ShowBalloonTip(29000, "Новое извещение!", "Вы стали ответственным за извещение № " + ntfy, ToolTipIcon.Warning);
+                        notifyIcon1.ShowBalloonTip(29000, "Новое извещение!",  ntfy, ToolTipIcon.Warning);
                     }
                     break;
                 case Roles.Wsh:
@@ -651,7 +652,7 @@ namespace SummonManager
                     if (ntfy.TrimEnd().LastIndexOf("№") != ntfy.Length - 2)
                     {
                         ntfy = ntfy.Remove(ntfy.LastIndexOf(","));
-                        notifyIcon1.ShowBalloonTip(29000, "Новое извещение!", "Вы стали ответственным за извещение № " + ntfy, ToolTipIcon.Warning);
+                        notifyIcon1.ShowBalloonTip(29000, "Новое извещение!", ntfy, ToolTipIcon.Warning);
                     }
                     break;
                 case Roles.Ware:
@@ -672,7 +673,7 @@ namespace SummonManager
                     if (ntfy.TrimEnd().LastIndexOf("№") != ntfy.Length - 2)
                     {
                         ntfy = ntfy.Remove(ntfy.LastIndexOf(","));
-                        notifyIcon1.ShowBalloonTip(29000, "Новое извещение!", "Вы стали ответственным за извещение № " + ntfy, ToolTipIcon.Warning);
+                        notifyIcon1.ShowBalloonTip(29000, "Новое извещение!", ntfy, ToolTipIcon.Warning);
                     }
                     break;
                 case Roles.OTK:
@@ -705,7 +706,7 @@ namespace SummonManager
                     if (ntfy.TrimEnd().LastIndexOf("№") != ntfy.Length - 2)
                     {
                         ntfy = ntfy.Remove(ntfy.LastIndexOf(","));
-                        notifyIcon1.ShowBalloonTip(29000, "Новое извещение!", "Вы стали ответственным за извещение № " + ntfy, ToolTipIcon.Warning);
+                        notifyIcon1.ShowBalloonTip(29000, "Новое извещение!",  ntfy, ToolTipIcon.Warning);
                     }
                     break;
                 case Roles.Logist:
@@ -726,7 +727,7 @@ namespace SummonManager
                     if (ntfy.TrimEnd().LastIndexOf("№") != ntfy.Length-2)
                     {
                         ntfy = ntfy.Remove(ntfy.LastIndexOf(","));
-                        notifyIcon1.ShowBalloonTip(29000, "Новое извещение!", "Вы стали ответственным за извещение № " + ntfy, ToolTipIcon.Warning);
+                        notifyIcon1.ShowBalloonTip(29000, "Новое извещение!",  ntfy, ToolTipIcon.Warning);
                     }
                     break;
                 case Roles.Montage:
@@ -748,7 +749,7 @@ namespace SummonManager
                     if (ntfy.TrimEnd().LastIndexOf("№") != ntfy.Length-2)
                     {
                         ntfy = ntfy.Remove(ntfy.LastIndexOf(","));
-                        notifyIcon1.ShowBalloonTip(29000, "Новое извещение!", "Вы стали ответственным за извещение № " + ntfy, ToolTipIcon.Warning);
+                        notifyIcon1.ShowBalloonTip(29000, "Новое извещение!",  ntfy, ToolTipIcon.Warning);
                     }
                     break;
                 case Roles.Constructor:
