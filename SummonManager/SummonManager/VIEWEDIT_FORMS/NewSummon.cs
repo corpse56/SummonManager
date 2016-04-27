@@ -109,6 +109,12 @@ namespace SummonManager
 
         private void bAdd_Click(object sender, EventArgs e)
         {
+
+            if (pickWPName1.textBox1.Text == "")
+            {
+                MessageBox.Show("Выбеоите изделие!");
+                return;
+            }
             if (tbQUANTITY.Value == 0)
             {
                 MessageBox.Show("Введите количество изделий!");

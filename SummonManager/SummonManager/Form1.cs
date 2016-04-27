@@ -30,8 +30,8 @@ namespace SummonManager
         public IRole UVO;
         public int PrivateNoteColor;
         public int RefreshTime;
-        public static string ProgramVersion = "2.04";
-        public static int VersionNumber = 204;
+        public static string ProgramVersion = "2.05";
+        public static int VersionNumber = 205;
         public MainF()
         {
             InitializeComponent();
