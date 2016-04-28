@@ -204,14 +204,10 @@ namespace SummonManager
                 SVO.SISP = false;
             else
                 SVO.SISP = true;
-            //SVO.TECHREQPATH = tbTECHREQPATH.Tag.ToString();
             SVO.IDACCEPT = (int)cbAccept.SelectedValue;
-            //SVO.IDWPNAME = (int)cbWPNAME.SelectedValue;
             SVO.IDWPNAME = pickWPName1.PickedProduct.GetID();
             SVO.WPTYPE = pickWPName1.PickedProduct.GetProductType().ToString();
             SVO.IDPACKING = (int)cbPacking.SelectedValue;
-            //SVO.IDEXTCABLE = (int)cbExtCable.SelectedValue;
-            //SVO.IDMOUNTINGKIT = (int)cbMountingKit.SelectedValue;
             SVO.IDCUSTOMERDEPT = (int)cbCustDept.SelectedValue;
             SVO.VIEWED = true;
             SVO.NOTEPDB = "";

@@ -26,9 +26,7 @@ namespace SummonManager
         public int IDCURSTATUS;
         public DateTime CREATED;
         public int IDPACKING;
-        //public int IDMOUNTINGKIT;
         public int IDCUSTOMERDEPT;
-        public int IDEXTCABLE;
         //fields for report
         public string CUSTOMERNAME;
         public string CUSTOMERCONTACT;
@@ -48,6 +46,7 @@ namespace SummonManager
 
         public int IDWPNAME;
         public string WPTYPE;
+        public WPTYPE WPTYPEENUM;
         public IProduct ProductVO;
         public int IDSUBST;
         public bool BILLPAYED;

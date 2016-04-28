@@ -10,8 +10,6 @@ namespace SummonManager
         public string IDS;
         public string WPNAME;
         public int IDPACKING;
-        public int IDEXTCABLE;
-        public int IDMOUNTINGKIT;
         public int IDCUSTOMERDEPT;
 
         public string TECHREQPATH;

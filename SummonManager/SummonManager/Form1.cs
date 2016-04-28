@@ -30,8 +30,8 @@ namespace SummonManager
         public IRole UVO;
         public int PrivateNoteColor;
         public int RefreshTime;
-        public static string ProgramVersion = "2.06";
-        public static int VersionNumber = 206;
+        public static string ProgramVersion = "2.07";
+        public static int VersionNumber = 207;
         public MainF()
         {
             InitializeComponent();
@@ -413,9 +413,38 @@ namespace SummonManager
             FinishedMenuItem_Click(sender, e);
         }
 
+        public void ViewHistory()
+        {
+            if (dgSummon.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Извещение не выбрано!");
+                return;
+            }
+            StatusHistory sh = new StatusHistory(dgSummon.SelectedRows[0].Cells["ids"].Value.ToString());
+            sh.ShowDialog();
+        }
+        public void HistoryMenuItem_Click(object sender, EventArgs e)
+        {
+
+            ViewHistory();
+        }
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            ViewHistory();
+        }
         private void HistorytoolStripButton_Click(object sender, EventArgs e)
         {
-            HistoryMenuItem_Click(sender, e);
+            if (dgSummon.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Извещение не выбрано!");
+                return;
+            }
+            StatusHistory sh = new StatusHistory(dgSummon.SelectedRows[0].Cells["ids"].Value.ToString());
+            sh.ShowDialog();
+        }
+        private void просмотрИсторииСтатусовToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ViewHistory();
         }
 
         private void PrinttoolStripButton_Click(object sender, EventArgs e)
@@ -455,17 +484,7 @@ namespace SummonManager
 
         }
 
-        public void HistoryMenuItem_Click(object sender, EventArgs e)
-        {
-            if (dgSummon.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Извещение не выбрано!");
-                return;
-            }
-            StatusHistory sh = new StatusHistory(dgSummon.SelectedRows[0].Cells["ids"].Value.ToString());
-            sh.ShowDialog();
 
-        }
 
         public void PrintMenuItem_Click(object sender, EventArgs e)
         {
@@ -897,11 +916,7 @@ namespace SummonManager
             PrintMenuItem_Click(sender, e);
         }
 
-        private void просмотрИсторииСтатусовToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            HistoryMenuItem_Click(sender, e);
-        }
-
+      
         private void SearchToolStripMenuItem_Click(object sender, EventArgs e)
         {
             fSearchConditions fs = new fSearchConditions(this);
@@ -1319,7 +1334,7 @@ namespace SummonManager
 
         private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
-            ReloadData();
+            //ReloadData();
 
         }
 
@@ -1332,6 +1347,10 @@ namespace SummonManager
         private void bkwReloadData_DoWork(object sender, DoWorkEventArgs e)
         {
         }
+
+       
+
+
        
 
 

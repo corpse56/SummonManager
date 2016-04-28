@@ -20,6 +20,9 @@ namespace SummonManager
         {
             InitializeComponent();
             this.WPT = wpt;
+            this.UVO = uvo;
+            this.PICK = pick;
+
             if (WPT == WPTYPE.WPNAMELIST)
             {
                 //cbPRODUCTTYPE.Enabled = false;
@@ -55,8 +58,6 @@ namespace SummonManager
             {
                 cbPRODUCTTYPE.Enabled = false;
             }
-            this.UVO = uvo;
-            this.PICK = pick;
         }
 
         private void bClose_Click(object sender, EventArgs e)
@@ -191,54 +192,59 @@ namespace SummonManager
 
             cbCAT_SelectedIndexChanged(sender, e);
         }
+        public void SetPermissions()
+        {
+            bChoose.Enabled = false;
 
+            if ((UVO.Role == Roles.Admin) || (UVO.Role == Roles.Inzhener))
+            {
+                bAdd.Enabled = true;
+                bEdit.Enabled = true;
+                bClone.Enabled = true;
+                bDelete.Enabled = true;
+                bEditCategory.Enabled = true;
+                bEditSubCategory.Enabled = true;
+                bView.Enabled = true;
+            }
+            else if ((UVO.Role == Roles.Constructor) || /*(UVO.Role == Roles.Tehnolog) ||*/ (UVO.Role == Roles.Shemotehnik) || (UVO.Role == Roles.SimpleInzhener))
+            {
+                bAdd.Enabled = false;
+                bEdit.Enabled = true;
+                bClone.Enabled = false;
+                bDelete.Enabled = false;
+                bEditCategory.Enabled = false;
+                bEditSubCategory.Enabled = false;
+                bView.Enabled = true;
+            }
+            else if ((UVO.Role == Roles.MainMontage) && ((cbPRODUCTTYPE.SelectedIndex == 1) || (cbPRODUCTTYPE.SelectedIndex == 2)))//главный монтажник может добавлять изменять удалять кабели и жгуты
+            {
+                bAdd.Enabled = true;
+                bEdit.Enabled = true;
+                bClone.Enabled = true;
+                bDelete.Enabled = true;
+                bEditCategory.Enabled = true;
+                bEditSubCategory.Enabled = true;
+                bView.Enabled = true;
+            }
+            else
+            {
+                bAdd.Enabled = false;
+                bEdit.Enabled = false;
+                bClone.Enabled = false;
+                bDelete.Enabled = false;
+                bEditCategory.Enabled = false;
+                bEditSubCategory.Enabled = false;
+                bView.Enabled = true;
+            }
+        }
         private void WPName_Load(object sender, EventArgs e)
         {
-            /*DBCategory dbc = new DBCategory("WPNAMELIST");
-            cbCAT.ValueMember = "ID";
-            cbCAT.DisplayMember = "CATEGORYNAME";
-            cbCAT.DataSource = dbc.GetAll();
-            cbCAT.SelectedValue = 2;*/
-
-            /*DBWPName dbwp = new DBWPName();
-            dgWP.DataSource = dbwp.GetAllWPNames();
-            ShowDGV();*/
+            
             cbPRODUCTTYPE_SelectedIndexChanged(sender, e);
             
             if (!PICK)
             {
-                bChoose.Enabled = false;
-
-                if ((UVO.Role == Roles.Admin) || (UVO.Role == Roles.Inzhener))
-                {
-                    bAdd.Enabled = true;
-                    bEdit.Enabled = true;
-                    bClone.Enabled = true;
-                    bDelete.Enabled = true;
-                    bEditCategory.Enabled = true;
-                    bEditSubCategory.Enabled = true;
-                    bView.Enabled = true;
-                }
-                else if ((UVO.Role == Roles.Constructor) || /*(UVO.Role == Roles.Tehnolog) ||*/ (UVO.Role == Roles.Shemotehnik) || (UVO.Role == Roles.SimpleInzhener))
-                {
-                    bAdd.Enabled = false;
-                    bEdit.Enabled = true;
-                    bClone.Enabled = false;
-                    bDelete.Enabled = false;
-                    bEditCategory.Enabled = false;
-                    bEditSubCategory.Enabled = false;
-                    bView.Enabled = true;
-                }
-                else
-                {
-                    bAdd.Enabled = false;
-                    bEdit.Enabled = false;
-                    bClone.Enabled = false;
-                    bDelete.Enabled = false;
-                    bEditCategory.Enabled = false;
-                    bEditSubCategory.Enabled = false;
-                    bView.Enabled = true;
-                }
+                SetPermissions();
             }
 
 
@@ -464,7 +470,7 @@ namespace SummonManager
                 FillDGV_CABLELIST();
 
             }
-            
+            SetPermissions();
 
         }
         private void cbCAT_SelectedIndexChanged(object sender, EventArgs e)

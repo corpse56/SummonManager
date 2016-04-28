@@ -99,12 +99,17 @@ namespace SummonManager
             SVO.SISP = (bool)dataRow["SISP"];
             SVO.IDWPNAME = (int)dataRow["IDWP"];
             SVO.WPTYPE = dataRow["WPTYPE"].ToString();
-            
+            if (SVO.WPTYPE == "WPNAMELIST")
+                SVO.WPTYPEENUM = WPTYPE.WPNAMELIST;
+            if (SVO.WPTYPE == "ZHGUTLIST")
+                SVO.WPTYPEENUM = WPTYPE.ZHGUTLIST;
+            if (SVO.WPTYPE == "CABLELIST")
+                SVO.WPTYPEENUM = WPTYPE.CABLELIST;
+
             SVO.ProductVO = ProductFactory.Create(SVO.IDWPNAME,SVO.WPTYPE);
             //SVO.WPNAME = SVO.ProductVO.GetName();
             SVO.IDACCEPT = (int)dataRow["IDACCEPT"];
             SVO.IDPACKING = (int)dataRow["IDPACKING"];
-            SVO.IDEXTCABLE = (int)dataRow["IDEXTCABLE"];
             //SVO.IDMOUNTINGKIT = (int)dataRow["IDMOUNTINGKIT"];
             SVO.IDCUSTOMERDEPT = (int)dataRow["IDCUSTOMERDEPT"];
             SVO.VIEWED = (bool)dataRow["VIEWED"];

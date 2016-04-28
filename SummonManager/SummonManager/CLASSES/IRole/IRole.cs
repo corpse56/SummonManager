@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace SummonManager.CLASSES.IRole_namespace
 {
-    public enum Roles { nol, Manager, Ozis, Prod, OTK, Ware, Logist, Admin, Director, Wsh, Montage, Constructor,Inzhener, Buhgalter, SimpleInzhener, Shemotehnik, Tehnolog, OTD}
+    public enum Roles { nol, Manager, Ozis, Prod, OTK, Ware, Logist, Admin, Director, Wsh, Montage, Constructor,Inzhener, Buhgalter, SimpleInzhener, Shemotehnik, Tehnolog, OTD, MainMontage}
 
     public class IRole
     {
@@ -336,6 +336,9 @@ namespace SummonManager.CLASSES.IRole_namespace
                     break;
                 case Roles.Admin:
                     result = new UVO_ADMIN();
+                    break;
+                case Roles.MainMontage:
+                    result = new UVO_MAINMONTAGE();
                     break;
                 default:
                     result = new UVO_DIRECTOR();

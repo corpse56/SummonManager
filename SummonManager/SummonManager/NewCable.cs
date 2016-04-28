@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using SummonManager.CLASSES;
 using SummonManager.Controls;
 using SummonManager.CLASSES.IRole_namespace;
+using System.Data.SqlClient;
 
 namespace SummonManager
 {
@@ -161,7 +162,26 @@ namespace SummonManager
             }
             if ((AccessMode == "NEW") || (AccessMode == "NEWCLONE"))
             {
-                dbc.AddNewCable(wp);
+                try
+                {
+                    dbc.AddNewCable(wp);
+                }
+                catch (SqlException exc)
+                {
+                    if (exc.Message.ToLower().Contains("unique"))
+                    {
+                        MessageBox.Show("Значение децимального номера должно быть уникальным среди всех кабелей!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ошибка базы данных. Невозможно добавить кабель");
+                    }
+                    return;
+                }
+                catch
+                {
+                    MessageBox.Show("Ошибка базы данных. Невозможно добавить кабель");
+                }
                 MessageBox.Show("Кабель успешно добавлен!");
             }
             Close();
