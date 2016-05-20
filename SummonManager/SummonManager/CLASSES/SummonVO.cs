@@ -61,6 +61,18 @@ namespace SummonManager
 
         public string BILLNUMBER;
 
+        public string PASSPORT;
+        public string MANUAL;
+        public string PACKINGLIST;
+        public bool PASSPORTREQ;
+        public bool MANUALREQ;
+        public bool PACKINGLISTREQ;
+
+        //public string LENGTH;
+        //public string WIDTH;
+        //public string HEIGHT;
+        //public string WEIGHT;
+
         public SummonVO()
         {
 

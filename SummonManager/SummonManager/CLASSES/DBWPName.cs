@@ -106,6 +106,11 @@ namespace SummonManager
             DA.InsertCommand.Parameters.AddWithValue("ZHGUTLISTREQ", p.ZHGUTLISTREQ);
             DA.InsertCommand.Parameters.AddWithValue("RUNCARDLISTREQ", p.RUNCARDLISTREQ);
             DA.InsertCommand.Parameters.AddWithValue("CIRCUITBOARDLISTREQ", p.CIRCUITBOARDLISTREQ);
+            DA.InsertCommand.Parameters.AddWithValue("LENGTH", p.LENGTH);
+            DA.InsertCommand.Parameters.AddWithValue("WIDTH", p.WIDTH);
+            DA.InsertCommand.Parameters.AddWithValue("HEIGHT", p.HEIGHT);
+            DA.InsertCommand.Parameters.AddWithValue("WEIGHT", p.WEIGHT);
+
 
             //wp.ZHGUTS = new DBZhgutList().GetPackageForVO(wp.ID);
 /////////////////////////////////////////////////////////////////////////////////    ЗАПРЕЩЕНО НАПОЛНЯТЬ ЖГУТЫ КОГДА СОЗДАЁШЬ ИЗДЕЛИЕ!!!!!!!!!!!!!!!!!
@@ -116,12 +121,14 @@ namespace SummonManager
                                            " MECHPARTS,SHILDS,PACKAGING,MANUAL,PASSPORT,PACKINGLIST,POWERSUPPLY,NOTE,CREATED,      "+
                                            " COMPOSITIONREQ,DIMENSIONALDRAWINGREQ,CONFIGURATIONREQ,WIRINGDIAGRAMREQ," +
                                            " TECHREQREQ,SBORKA3DREQ,MECHPARTSREQ,SHILDSREQ,PACKAGINGREQ,PASSPORTREQ, "+
-                                           " MANUALREQ,PACKINGLISTREQ,SOFTWAREREQ,CABLELISTREQ,ZHGUTLISTREQ,RUNCARDLISTREQ,CIRCUITBOARDLISTREQ) " +
+                                           " MANUALREQ,PACKINGLISTREQ,SOFTWAREREQ,CABLELISTREQ,ZHGUTLISTREQ,RUNCARDLISTREQ,CIRCUITBOARDLISTREQ "+
+                                           " ,LENGHT,WIDTH,HEIGHT,WEIGHT) " +
                                            " values (@WPNAME,@IDCATEGORY,@IDSUBCAT,@DECNUM,@WIRINGDIAGRAM,@TECHREQ,@COMPOSITION,@CONFIGURATION,@DIMENSIONALDRAWING,@SBORKA3D, " +
                                            " @MECHPARTS,@SHILDS,@PACKAGING,@MANUAL, @PASSPORT,@PACKINGLIST,@POWERSUPPLY,@NOTE,@CREATED,      " +
                                            " @COMPOSITIONREQ,@DIMENSIONALDRAWINGREQ,@CONFIGURATIONREQ,@WIRINGDIAGRAMREQ," +
                                            " @TECHREQREQ,@SBORKA3DREQ,@MECHPARTSREQ,@SHILDSREQ,@PACKAGINGREQ,@PASSPORTREQ, " +
-                                           " @MANUALREQ,@PACKINGLISTREQ,@SOFTWAREREQ,@CABLELISTREQ,@ZHGUTLISTREQ,@RUNCARDLISTREQ,@CIRCUITBOARDLISTREQ)";
+                                           " @MANUALREQ,@PACKINGLISTREQ,@SOFTWAREREQ,@CABLELISTREQ,@ZHGUTLISTREQ,@RUNCARDLISTREQ,@CIRCUITBOARDLISTREQ "+
+                                           " ,@LENGHT,@WIDTH,@HEIGHT,@WEIGHT)";
             DA.InsertCommand.Connection.Open();
             DA.InsertCommand.ExecuteNonQuery();
             DA.InsertCommand.Connection.Close();
@@ -217,6 +224,12 @@ namespace SummonManager
             wp.ZHGUTLISTREQ = (bool)r["ZHGUTLISTREQ"];
             wp.RUNCARDLISTREQ = (bool)r["RUNCARDLISTREQ"];
             wp.CIRCUITBOARDLISTREQ = (bool)r["CIRCUITBOARDLISTREQ"];
+
+            wp.LENGTH = r["LENGTH"].ToString();
+            wp.WIDTH = r["WIDTH"].ToString();
+            wp.HEIGHT = r["HEIGHT"].ToString();
+            wp.WEIGHT = r["WEIGHT"].ToString();
+
             return wp;
         }
         internal void EditWP(WPNameVO p)
@@ -263,6 +276,12 @@ namespace SummonManager
             DA.UpdateCommand.Parameters.AddWithValue("CIRCUITBOARDLISTREQ", p.CIRCUITBOARDLISTREQ);
             DA.UpdateCommand.Parameters.AddWithValue("ID", p.ID);
 
+            DA.UpdateCommand.Parameters.AddWithValue("LENGTH", p.LENGTH);
+            DA.UpdateCommand.Parameters.AddWithValue("WIDTH", p.WIDTH);
+            DA.UpdateCommand.Parameters.AddWithValue("HEIGHT", p.HEIGHT);
+            DA.UpdateCommand.Parameters.AddWithValue("WEIGHT", p.WEIGHT);
+
+
             DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..WPNAMELIST set WPNAME  = @WPNAME,IDCATEGORY = @IDCATEGORY,IDSUBCAT = @IDSUBCAT,DECNUM = @DECNUM, " +
                                            " WIRINGDIAGRAM = @WIRINGDIAGRAM, TECHREQ=@TECHREQ,COMPOSITION = @COMPOSITION,CONFIGURATION=@CONFIGURATION, " +
                                            " DIMENSIONALDRAWING=@DIMENSIONALDRAWING,SBORKA3D=@SBORKA3D,MECHPARTS=@MECHPARTS,SHILDS=@SHILDS, " +
@@ -272,6 +291,7 @@ namespace SummonManager
                                            " SHILDSREQ=@SHILDSREQ,  PACKAGINGREQ=@PACKAGINGREQ," +
                                            " PASSPORTREQ=@PASSPORTREQ, MANUALREQ=@MANUALREQ, PACKINGLISTREQ=@PACKINGLISTREQ, SOFTWAREREQ=@SOFTWAREREQ, " +
                                            " CABLELISTREQ=@CABLELISTREQ,ZHGUTLISTREQ=@ZHGUTLISTREQ, RUNCARDLISTREQ=@RUNCARDLISTREQ,CIRCUITBOARDLISTREQ=@CIRCUITBOARDLISTREQ " +
+                                            " , LENGTH=@LENGTH WIDTH=@WIDTH, HEIGHT=@HEIGHT, WEIGHT=@WEIGHT " +
                                             " where ID = @ID";
             DA.UpdateCommand.Connection.Open();
             DA.UpdateCommand.ExecuteNonQuery();
@@ -405,6 +425,23 @@ namespace SummonManager
             DA.UpdateCommand.Parameters.AddWithValue("ID", p.ID);
 
             DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..WPNAMELIST set PASSPORT  = @PASSPORT,MANUAL=@MANUAL,PACKINGLIST=@PACKINGLIST,  NOTE=@NOTE" +
+                                            " where ID = @ID";
+            DA.UpdateCommand.Connection.Open();
+            DA.UpdateCommand.ExecuteNonQuery();
+            DA.UpdateCommand.Connection.Close();
+        }
+        internal void EditWP_OTK(WPNameVO p)
+        {
+            DA.UpdateCommand.Parameters.Clear();
+            DA.UpdateCommand.Parameters.AddWithValue("LENGTH", p.LENGTH);
+            DA.UpdateCommand.Parameters.AddWithValue("WIDTH", p.WIDTH);
+            DA.UpdateCommand.Parameters.AddWithValue("HEIGHT", p.HEIGHT);
+            DA.UpdateCommand.Parameters.AddWithValue("WEIGHT", p.WEIGHT);
+            DA.UpdateCommand.Parameters.AddWithValue("NOTE", p.Note);
+
+            DA.UpdateCommand.Parameters.AddWithValue("ID", p.ID);
+
+            DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..WPNAMELIST set LENGTH=@LENGTH,WIDTH=@WIDTH,HEIGHT=@HEIGHT,WEIGHT=@WEIGHT  NOTE=@NOTE" +
                                             " where ID = @ID";
             DA.UpdateCommand.Connection.Open();
             DA.UpdateCommand.ExecuteNonQuery();

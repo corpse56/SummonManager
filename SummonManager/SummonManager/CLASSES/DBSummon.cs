@@ -142,6 +142,17 @@ namespace SummonManager
             SVO.SERIALREQ = (bool)dataRow["SERIALREQ"];
             SVO.BILLNUMBER = dataRow["BILLNUMBER"].ToString();
 
+            SVO.PASSPORT = dataRow["PASSPORT"].ToString();
+            SVO.MANUAL = dataRow["MANUAL"].ToString();
+            SVO.PACKINGLIST = dataRow["PACKINGLIST"].ToString();
+            SVO.PASSPORTREQ = (bool)dataRow["PASSPORTREQ"];
+            SVO.MANUALREQ = (bool)dataRow["MANUALREQ"];
+            SVO.PACKINGLISTREQ = (bool)dataRow["PACKINGLISTREQ"];
+            //SVO.LENGTH = dataRow["LENGTH"].ToString();
+            //SVO.WIDTH = dataRow["WIDTH"].ToString();
+            //SVO.HEIGHT = dataRow["HEIGHT"].ToString();
+            //SVO.WEIGHT = dataRow["WEIGHT"].ToString();
+
             return SVO;
         }
 
@@ -221,6 +232,20 @@ namespace SummonManager
             DA.UpdateCommand.Parameters["BILLNUMBER"].Value = SVO.BILLNUMBER;
 
 
+            //DA.UpdateCommand.Parameters.AddWithValue("PASSPORT", ((object)SVO.PASSPORT) ?? DBNull.Value);
+            //DA.UpdateCommand.Parameters.AddWithValue("MANUAL", ((object)SVO.MANUAL) ?? DBNull.Value);
+            //DA.UpdateCommand.Parameters.AddWithValue("PACKINGLIST", ((object)SVO.PACKINGLIST) ?? DBNull.Value);
+            //DA.UpdateCommand.Parameters.AddWithValue("PASSPORTREQ", SVO.PASSPORTREQ);
+            //DA.UpdateCommand.Parameters.AddWithValue("MANUALREQ", SVO.MANUALREQ);
+            //DA.UpdateCommand.Parameters.AddWithValue("PACKINGLISTREQ", SVO.PACKINGLISTREQ);
+
+            //DA.UpdateCommand.Parameters.AddWithValue("LENGTH", SVO.LENGTH);
+            //DA.UpdateCommand.Parameters.AddWithValue("WIDTH", SVO.WIDTH);
+            //DA.UpdateCommand.Parameters.AddWithValue("HEIGHT", SVO.HEIGHT);
+            //DA.UpdateCommand.Parameters.AddWithValue("WEIGHT", SVO.WEIGHT);
+
+
+
             //если что-то добавляешь сюда , то добавь и в функцию get summon by ids
             DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..SUMMON set ACCEPTANCE=@ACCEPTANCE,CONTRACT=@CONTRACT,DELIVERY=@DELIVERY,IDCUSTOMER=@IDCUSTOMER,PAYSTATUS=@PAYSTATUS, " +
             "NOTE=@NOTE,PTIME=@PTIME,QUANTITY=@QUANTITY,SHIPPING=@SHIPPING,SISP=@SISP,  " +
@@ -228,6 +253,8 @@ namespace SummonManager
             " , IDCUSTOMERDEPT = @IDCUSTOMERDEPT, VIEWED = @VIEWED , IDS = @IDS " +
             " , IDSUBST = @IDSUBST,BILLPAYED=@BILLPAYED,DOCSREADY=@DOCSREADY, WPTYPE = @WPTYPE, CONTRACTTYPE=@CONTRACTTYPE " +
             " , PLANKA=@PLANKA, PLANKAREQ = @PLANKAREQ, SERIAL = @SERIAL, SERIALREQ=@SERIALREQ, BILLNUMBER = @BILLNUMBER "+
+            " , PASSPORT=@PASSPORT, MANUAL=@MANUAL, PACKINGLIST=@PACKINGLIST, PASSPORTREQ=@PASSPORTREQ, MANUALREQ=@MANUALREQ, PACKINGLISTREQ=@PACKINGLISTREQ" +
+            //" , LENGTH=@LENGTH WIDTH=@WIDTH, HEIGHT=@HEIGHT, WEIGHT=@WEIGHT" +
             " where ID = @ID";
             DA.UpdateCommand.Connection.Open();
             DA.UpdateCommand.ExecuteNonQuery();

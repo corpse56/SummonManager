@@ -95,6 +95,9 @@ namespace SummonManager
 
             packZHGUT.Enabled = false;
             packCABLE.Enabled = false;
+
+            tbLENGTH.Text = wp.LENGTH;
+            tbWIDTH.Text = wp
         }
 
         private void InitEDIT(WPNameVO wp)
@@ -394,6 +397,10 @@ namespace SummonManager
             wp.ZHGUTLISTREQ             = packZHGUT.Required;	
             //wp.RUNCARDLISTREQ	;
             //wp.CIRCUITBOARDLISTREQ;
+            wp.LENGTH = tbLENGTH.Text;
+            wp.WIDTH = tbWIDTH.Text;
+            wp.HEIGHT = tbHEIGHT.Text;
+            wp.WEIGHT = tbWEIGHT.Text;
 
 
             DBWPName dbwp = new DBWPName();
@@ -407,6 +414,7 @@ namespace SummonManager
                 if (UVO.Role == Roles.Tehnolog)                             dbwp.EditWP_Tehnolog(wp);
                 if (UVO.Role == Roles.Shemotehnik) dbwp.EditWP_Shemotehnik(wp);
                 if (UVO.Role == Roles.OTD) dbwp.EditWP_OTD(wp);
+                if (UVO.Role == Roles.OTK) dbwp.EditWP_OTK(wp);
 
                 MessageBox.Show("Изделие успешно сохранено!");
             }

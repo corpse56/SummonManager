@@ -109,6 +109,13 @@ namespace SummonManager.CLASSES.IRole_namespace
             ss.pfSERIAL.Init(ss.SVO.SERIAL, ss.SVO.SERIALREQ, false, true, false, Roles.OTK, this.Role, "VIEWONLY");
             //ss.summonNotes1.button1.Enabled = false;
 
+            ss.pfPASSPORT.Init(ss.SVO.PASSPORT, ss.SVO.PASSPORTREQ, false, true, false, Roles.OTK, this.Role, "VIEWONLY");
+            ss.pfMANUAL.Init(ss.SVO.MANUAL, ss.SVO.MANUALREQ, false, true, false, Roles.OTK, this.Role, "VIEWONLY");
+            ss.pfPACKINGLIST.Init(ss.SVO.PACKINGLIST, ss.SVO.PACKINGLISTREQ, false, true, false, Roles.OTK, this.Role, "VIEWONLY");
+            //ss.tbLENGTH.Enabled = false;
+            //ss.tbWIDTH.Enabled = false;
+            //ss.tbHEIGHT.Enabled = false;
+            //ss.tbWEIGHT.Enabled = false;
 
         }//эта невиртуальная потому что для всех ролей одинаковый код
         protected void LoadSummon(ShowSummon ss)
@@ -264,6 +271,17 @@ namespace SummonManager.CLASSES.IRole_namespace
             SVO.SERIAL = (ss.pfSERIAL.FullPath == "<нет>") ? null : ss.pfSERIAL.FullPath;
             SVO.SERIALREQ = ss.pfSERIAL.Required;
             SVO.BILLNUMBER = ss.tbBillNumber.Text;
+
+            SVO.PASSPORT = (ss.pfPASSPORT.FullPath == "<нет>") ? null : ss.pfPASSPORT.FullPath;
+            SVO.PASSPORTREQ = ss.pfPASSPORT.Required;
+            SVO.MANUAL = (ss.pfMANUAL.FullPath == "<нет>") ? null : ss.pfMANUAL.FullPath;
+            SVO.MANUALREQ = ss.pfMANUAL.Required;
+            SVO.PACKINGLIST = (ss.pfPACKINGLIST.FullPath == "<нет>") ? null : ss.pfPACKINGLIST.FullPath;
+            SVO.PACKINGLISTREQ = ss.pfPACKINGLIST.Required;
+            //SVO.LENGTH = ss.tbLENGTH.Text;
+            //SVO.WIDTH = ss.tbWIDTH.Text;
+            //SVO.HEIGHT = ss.tbHEIGHT.Text;
+            //SVO.WEIGHT = ss.tbWEIGHT.Text;
 
             dbs.SaveSummon(SVO);
             ss.SVO = SVO;

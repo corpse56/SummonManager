@@ -84,6 +84,11 @@ namespace SummonManager.CLASSES
         public bool RUNCARDLISTREQ	;
         public bool CIRCUITBOARDLISTREQ;
 
+        public string LENGTH;
+        public string WIDTH;
+        public string HEIGHT;
+        public string WEIGHT;
+
 
         string IProduct.GetName()
         {
@@ -240,40 +245,40 @@ namespace SummonManager.CLASSES
             }*/
 
             //===================================================================================OTD
-            if (wp.PASSPORTREQ)
-            {
-                PathField pf = new PathField();
-                pf.Tag = Roles.OTD;
-                pf.Init(wp.PASSPORT, true, false, false, true, Roles.OTD, UVO.Role, "VIEWONLY");
-                pf.bDelVisible = false;
-                pf.bPathVisible = false;
-                pf.tbPath.Dock = DockStyle.Fill;
-                pf.Dock = DockStyle.Fill;
-                UIWorks.AddToTLP(TLP, "Паспорт/ЭТ", pf);
-            }
-            if (wp.MANUALREQ)
-            {
-                PathField pf = new PathField();
-                pf.Tag = Roles.OTD;
-                pf.Init(wp.MANUAL, true, false, false, true, Roles.OTD, UVO.Role, "VIEWONLY");
-                pf.bDelVisible = false;
-                pf.bPathVisible = false;
-                pf.tbPath.Dock = DockStyle.Fill;
-                pf.Dock = DockStyle.Fill;
-                UIWorks.AddToTLP(TLP, "РЭ", pf);
-            }
-            if (wp.PACKINGLISTREQ)
-            {
-                PathField pf = new PathField();
-                pf.Tag = Roles.OTD;
-                pf.Init(wp.PACKINGLIST, true, false, false, true, Roles.OTD, UVO.Role, "VIEWONLY");
-                pf.bDelVisible = false;
-                pf.bPathVisible = false;
-                pf.tbPath.Dock = DockStyle.Fill;
-                pf.Dock = DockStyle.Fill;
-                UIWorks.AddToTLP(TLP, "Лист упаковочный", pf);
-            }
-
+            //if (wp.PASSPORTREQ)
+            //{
+            //    PathField pf = new PathField();
+            //    pf.Tag = Roles.OTD;
+            //    pf.Init(wp.PASSPORT, true, false, false, true, Roles.OTD, UVO.Role, "VIEWONLY");
+            //    pf.bDelVisible = false;
+            //    pf.bPathVisible = false;
+            //    pf.tbPath.Dock = DockStyle.Fill;
+            //    pf.Dock = DockStyle.Fill;
+            //    UIWorks.AddToTLP(TLP, "Паспорт/ЭТ", pf);
+            //}
+            //if (wp.MANUALREQ)
+            //{
+            //    PathField pf = new PathField();
+            //    pf.Tag = Roles.OTD;
+            //    pf.Init(wp.MANUAL, true, false, false, true, Roles.OTD, UVO.Role, "VIEWONLY");
+            //    pf.bDelVisible = false;
+            //    pf.bPathVisible = false;
+            //    pf.tbPath.Dock = DockStyle.Fill;
+            //    pf.Dock = DockStyle.Fill;
+            //    UIWorks.AddToTLP(TLP, "РЭ", pf);
+            //}
+            //if (wp.PACKINGLISTREQ)
+            //{
+            //    PathField pf = new PathField();
+            //    pf.Tag = Roles.OTD;
+            //    pf.Init(wp.PACKINGLIST, true, false, false, true, Roles.OTD, UVO.Role, "VIEWONLY");
+            //    pf.bDelVisible = false;
+            //    pf.bPathVisible = false;
+            //    pf.tbPath.Dock = DockStyle.Fill;
+            //    pf.Dock = DockStyle.Fill;
+            //    UIWorks.AddToTLP(TLP, "Лист упаковочный", pf);
+            //}
+            
 
         }
 

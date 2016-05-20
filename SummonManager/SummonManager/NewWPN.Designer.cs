@@ -87,6 +87,18 @@ namespace SummonManager
             this.pfTECHREQ = new SummonManager.Controls.PathField();
             this.pfCONFIGURATION = new SummonManager.Controls.PathField();
             this.pfComposition = new SummonManager.Controls.PathField();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label33 = new System.Windows.Forms.Label();
+            this.label34 = new System.Windows.Forms.Label();
+            this.tbWIDTH = new System.Windows.Forms.TextBox();
+            this.tbHEIGHT = new System.Windows.Forms.TextBox();
+            this.tbWEIGHT = new System.Windows.Forms.TextBox();
+            this.tbLENGTH = new System.Windows.Forms.TextBox();
+            this.label41 = new System.Windows.Forms.Label();
+            this.label42 = new System.Windows.Forms.Label();
+            this.label43 = new System.Windows.Forms.Label();
+            this.label44 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // tbName
@@ -99,7 +111,7 @@ namespace SummonManager
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(819, 801);
+            this.button1.Location = new System.Drawing.Point(825, 820);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 2;
@@ -109,7 +121,7 @@ namespace SummonManager
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(728, 801);
+            this.button2.Location = new System.Drawing.Point(726, 820);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(85, 23);
             this.button2.TabIndex = 2;
@@ -166,7 +178,7 @@ namespace SummonManager
             // tbPowerSupply
             // 
             this.tbPowerSupply.Enabled = false;
-            this.tbPowerSupply.Location = new System.Drawing.Point(293, 709);
+            this.tbPowerSupply.Location = new System.Drawing.Point(299, 728);
             this.tbPowerSupply.Name = "tbPowerSupply";
             this.tbPowerSupply.Size = new System.Drawing.Size(601, 22);
             this.tbPowerSupply.TabIndex = 1;
@@ -174,7 +186,7 @@ namespace SummonManager
             // tbNote
             // 
             this.tbNote.Enabled = false;
-            this.tbNote.Location = new System.Drawing.Point(293, 737);
+            this.tbNote.Location = new System.Drawing.Point(299, 756);
             this.tbNote.Multiline = true;
             this.tbNote.Name = "tbNote";
             this.tbNote.Size = new System.Drawing.Size(601, 58);
@@ -201,7 +213,7 @@ namespace SummonManager
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 712);
+            this.label6.Location = new System.Drawing.Point(14, 732);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(119, 16);
             this.label6.TabIndex = 3;
@@ -219,7 +231,7 @@ namespace SummonManager
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(14, 740);
+            this.label8.Location = new System.Drawing.Point(13, 759);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(91, 16);
             this.label8.TabIndex = 3;
@@ -319,29 +331,32 @@ namespace SummonManager
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(14, 615);
+            this.label20.Location = new System.Drawing.Point(39, 906);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(87, 16);
             this.label20.TabIndex = 3;
             this.label20.Text = "Паспорт/ЭТ";
+            this.label20.Visible = false;
             // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(14, 645);
+            this.label21.Location = new System.Drawing.Point(39, 938);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(27, 16);
             this.label21.TabIndex = 3;
             this.label21.Text = "РЭ";
+            this.label21.Visible = false;
             // 
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(14, 677);
+            this.label22.Location = new System.Drawing.Point(-4, 969);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(130, 16);
             this.label22.TabIndex = 3;
             this.label22.Text = "Лист упаковочный";
+            this.label22.Visible = false;
             // 
             // label23
             // 
@@ -445,34 +460,37 @@ namespace SummonManager
             // label36
             // 
             this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(902, 618);
+            this.label36.Location = new System.Drawing.Point(391, 906);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(36, 16);
             this.label36.TabIndex = 3;
             this.label36.Text = "ОТД";
+            this.label36.Visible = false;
             // 
             // label37
             // 
             this.label37.AutoSize = true;
-            this.label37.Location = new System.Drawing.Point(902, 650);
+            this.label37.Location = new System.Drawing.Point(391, 938);
             this.label37.Name = "label37";
             this.label37.Size = new System.Drawing.Size(36, 16);
             this.label37.TabIndex = 3;
             this.label37.Text = "ОТД";
+            this.label37.Visible = false;
             // 
             // label38
             // 
             this.label38.AutoSize = true;
-            this.label38.Location = new System.Drawing.Point(902, 681);
+            this.label38.Location = new System.Drawing.Point(391, 969);
             this.label38.Name = "label38";
             this.label38.Size = new System.Drawing.Size(36, 16);
             this.label38.TabIndex = 3;
             this.label38.Text = "ОТД";
+            this.label38.Visible = false;
             // 
             // label39
             // 
             this.label39.AutoSize = true;
-            this.label39.Location = new System.Drawing.Point(902, 713);
+            this.label39.Location = new System.Drawing.Point(908, 732);
             this.label39.Name = "label39";
             this.label39.Size = new System.Drawing.Size(86, 16);
             this.label39.TabIndex = 3;
@@ -481,7 +499,7 @@ namespace SummonManager
             // label40
             // 
             this.label40.AutoSize = true;
-            this.label40.Location = new System.Drawing.Point(903, 749);
+            this.label40.Location = new System.Drawing.Point(909, 768);
             this.label40.Name = "label40";
             this.label40.Size = new System.Drawing.Size(37, 16);
             this.label40.TabIndex = 3;
@@ -514,13 +532,14 @@ namespace SummonManager
             this.pfPACKINGLIST.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfPACKINGLIST.FullPath = "<нет>";
             this.pfPACKINGLIST.ISPATH = false;
-            this.pfPACKINGLIST.Location = new System.Drawing.Point(299, 670);
+            this.pfPACKINGLIST.Location = new System.Drawing.Point(133, 958);
             this.pfPACKINGLIST.Margin = new System.Windows.Forms.Padding(4);
             this.pfPACKINGLIST.Name = "pfPACKINGLIST";
             this.pfPACKINGLIST.Required = false;
-            this.pfPACKINGLIST.Size = new System.Drawing.Size(601, 32);
+            this.pfPACKINGLIST.Size = new System.Drawing.Size(256, 32);
             this.pfPACKINGLIST.TabIndex = 6;
             this.pfPACKINGLIST.Tag = SummonManager.CLASSES.IRole_namespace.Roles.OTD;
+            this.pfPACKINGLIST.Visible = false;
             // 
             // pfMANUAL
             // 
@@ -529,13 +548,14 @@ namespace SummonManager
             this.pfMANUAL.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfMANUAL.FullPath = "<нет>";
             this.pfMANUAL.ISPATH = false;
-            this.pfMANUAL.Location = new System.Drawing.Point(299, 638);
+            this.pfMANUAL.Location = new System.Drawing.Point(133, 926);
             this.pfMANUAL.Margin = new System.Windows.Forms.Padding(4);
             this.pfMANUAL.Name = "pfMANUAL";
             this.pfMANUAL.Required = false;
-            this.pfMANUAL.Size = new System.Drawing.Size(601, 32);
+            this.pfMANUAL.Size = new System.Drawing.Size(256, 32);
             this.pfMANUAL.TabIndex = 6;
             this.pfMANUAL.Tag = SummonManager.CLASSES.IRole_namespace.Roles.OTD;
+            this.pfMANUAL.Visible = false;
             // 
             // pfPASSPORT
             // 
@@ -544,13 +564,14 @@ namespace SummonManager
             this.pfPASSPORT.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfPASSPORT.FullPath = "<нет>";
             this.pfPASSPORT.ISPATH = false;
-            this.pfPASSPORT.Location = new System.Drawing.Point(299, 608);
+            this.pfPASSPORT.Location = new System.Drawing.Point(133, 896);
             this.pfPASSPORT.Margin = new System.Windows.Forms.Padding(4);
             this.pfPASSPORT.Name = "pfPASSPORT";
             this.pfPASSPORT.Required = false;
-            this.pfPASSPORT.Size = new System.Drawing.Size(601, 32);
+            this.pfPASSPORT.Size = new System.Drawing.Size(256, 32);
             this.pfPASSPORT.TabIndex = 6;
             this.pfPASSPORT.Tag = SummonManager.CLASSES.IRole_namespace.Roles.OTD;
+            this.pfPASSPORT.Visible = false;
             // 
             // pfPACKAGING
             // 
@@ -687,11 +708,119 @@ namespace SummonManager
             this.pfComposition.TabIndex = 5;
             this.pfComposition.Tag = SummonManager.CLASSES.IRole_namespace.Roles.Inzhener;
             // 
+            // label17
+            // 
+            this.label17.Location = new System.Drawing.Point(14, 700);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(120, 18);
+            this.label17.TabIndex = 395;
+            this.label17.Text = "Вес";
+            // 
+            // label18
+            // 
+            this.label18.Location = new System.Drawing.Point(14, 676);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(120, 18);
+            this.label18.TabIndex = 394;
+            this.label18.Text = "Высота";
+            // 
+            // label33
+            // 
+            this.label33.Location = new System.Drawing.Point(14, 648);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(120, 18);
+            this.label33.TabIndex = 393;
+            this.label33.Text = "Ширина";
+            // 
+            // label34
+            // 
+            this.label34.Location = new System.Drawing.Point(14, 622);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(120, 18);
+            this.label34.TabIndex = 392;
+            this.label34.Text = "Длина";
+            // 
+            // tbWIDTH
+            // 
+            this.tbWIDTH.Location = new System.Drawing.Point(300, 644);
+            this.tbWIDTH.Name = "tbWIDTH";
+            this.tbWIDTH.Size = new System.Drawing.Size(598, 22);
+            this.tbWIDTH.TabIndex = 391;
+            // 
+            // tbHEIGHT
+            // 
+            this.tbHEIGHT.Location = new System.Drawing.Point(300, 672);
+            this.tbHEIGHT.Name = "tbHEIGHT";
+            this.tbHEIGHT.Size = new System.Drawing.Size(598, 22);
+            this.tbHEIGHT.TabIndex = 390;
+            // 
+            // tbWEIGHT
+            // 
+            this.tbWEIGHT.Location = new System.Drawing.Point(299, 700);
+            this.tbWEIGHT.Name = "tbWEIGHT";
+            this.tbWEIGHT.Size = new System.Drawing.Size(599, 22);
+            this.tbWEIGHT.TabIndex = 389;
+            // 
+            // tbLENGTH
+            // 
+            this.tbLENGTH.Location = new System.Drawing.Point(300, 616);
+            this.tbLENGTH.Name = "tbLENGTH";
+            this.tbLENGTH.Size = new System.Drawing.Size(598, 22);
+            this.tbLENGTH.TabIndex = 388;
+            // 
+            // label41
+            // 
+            this.label41.AutoSize = true;
+            this.label41.Location = new System.Drawing.Point(904, 622);
+            this.label41.Name = "label41";
+            this.label41.Size = new System.Drawing.Size(35, 16);
+            this.label41.TabIndex = 396;
+            this.label41.Text = "ОТК";
+            // 
+            // label42
+            // 
+            this.label42.AutoSize = true;
+            this.label42.Location = new System.Drawing.Point(904, 648);
+            this.label42.Name = "label42";
+            this.label42.Size = new System.Drawing.Size(35, 16);
+            this.label42.TabIndex = 396;
+            this.label42.Text = "ОТК";
+            // 
+            // label43
+            // 
+            this.label43.AutoSize = true;
+            this.label43.Location = new System.Drawing.Point(904, 676);
+            this.label43.Name = "label43";
+            this.label43.Size = new System.Drawing.Size(35, 16);
+            this.label43.TabIndex = 396;
+            this.label43.Text = "ОТК";
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(904, 706);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(35, 16);
+            this.label44.TabIndex = 396;
+            this.label44.Text = "ОТК";
+            // 
             // NewWPN
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1006, 828);
+            this.ClientSize = new System.Drawing.Size(1006, 853);
+            this.Controls.Add(this.label44);
+            this.Controls.Add(this.label43);
+            this.Controls.Add(this.label42);
+            this.Controls.Add(this.label41);
+            this.Controls.Add(this.label17);
+            this.Controls.Add(this.label18);
+            this.Controls.Add(this.label33);
+            this.Controls.Add(this.label34);
+            this.Controls.Add(this.tbWIDTH);
+            this.Controls.Add(this.tbHEIGHT);
+            this.Controls.Add(this.tbWEIGHT);
+            this.Controls.Add(this.tbLENGTH);
             this.Controls.Add(this.packCABLE);
             this.Controls.Add(this.packZHGUT);
             this.Controls.Add(this.pfPACKINGLIST);
@@ -823,5 +952,17 @@ namespace SummonManager
         private System.Windows.Forms.Label label38;
         private System.Windows.Forms.Label label39;
         private System.Windows.Forms.Label label40;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Label label34;
+        public System.Windows.Forms.TextBox tbWIDTH;
+        public System.Windows.Forms.TextBox tbHEIGHT;
+        public System.Windows.Forms.TextBox tbWEIGHT;
+        public System.Windows.Forms.TextBox tbLENGTH;
+        private System.Windows.Forms.Label label41;
+        private System.Windows.Forms.Label label42;
+        private System.Windows.Forms.Label label43;
+        private System.Windows.Forms.Label label44;
     }
 }
