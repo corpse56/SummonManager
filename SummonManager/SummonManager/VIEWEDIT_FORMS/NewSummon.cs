@@ -172,7 +172,7 @@ namespace SummonManager
 
             if (pickWPName1.textBox1.Text == "")
             {
-                MessageBox.Show("Выбеоите изделие!");
+                MessageBox.Show("Выберите изделие!");
                 return;
             }
             if (tbQUANTITY.Value == 0)

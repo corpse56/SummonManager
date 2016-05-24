@@ -97,7 +97,13 @@ namespace SummonManager
             packCABLE.Enabled = false;
 
             tbLENGTH.Text = wp.LENGTH;
-            tbWIDTH.Text = wp
+            tbLENGTH.Enabled = false;
+            tbWIDTH.Text = wp.WIDTH;
+            tbWIDTH.Enabled = false;
+            tbHEIGHT.Text = wp.HEIGHT;
+            tbHEIGHT.Enabled = false;
+            tbWEIGHT.Text = wp.WEIGHT;
+            tbWEIGHT.Enabled = false;
         }
 
         private void InitEDIT(WPNameVO wp)
@@ -132,6 +138,11 @@ namespace SummonManager
             pfPASSPORT.Init(wp.PASSPORT, wp.PASSPORTREQ, false, RequireVisible, RequireEnabled, Roles.OTD, UVO.Role, "EDIT");
             pfMANUAL.Init(wp.MANUAL, wp.MANUALREQ, false, RequireVisible, RequireEnabled, Roles.OTD, UVO.Role, "EDIT");
             pfPACKINGLIST.Init(wp.PACKINGLIST, wp.PACKINGLISTREQ, false, RequireVisible, RequireEnabled, Roles.OTD, UVO.Role, "EDIT");
+
+            tbLENGTH.Text = wp.LENGTH;
+            tbWIDTH.Text = wp.WIDTH;
+            tbHEIGHT.Text = wp.HEIGHT;
+            tbWEIGHT.Text = wp.WEIGHT;
 
             AllocateRoles();
 
@@ -177,6 +188,13 @@ namespace SummonManager
                 pfPACKINGLIST.Init(Clone.PACKINGLIST, Clone.PACKINGLISTREQ, false, RequireVisible, RequireEnabled, Roles.OTD, UVO.Role, "NEWCLONE");
                 tbPowerSupply.Text = Clone.PowerSupply;
                 tbNote.Text = Clone.Note;
+
+                tbLENGTH.Text = Clone.LENGTH;
+                tbWIDTH.Text = Clone.WIDTH;
+                tbHEIGHT.Text = Clone.HEIGHT;
+                tbWEIGHT.Text = Clone.WEIGHT;
+
+
                 AllocateRoles();
             }
         }
@@ -226,7 +244,20 @@ namespace SummonManager
                 case Roles.OTD:
                     EnableOTD();
                     break;
+                case Roles.OTK:
+                    EnableOTK();
+                    break;
             }
+        }
+
+        private void EnableOTK()
+        {
+            tbNote.Enabled = true;
+            tbLENGTH.Enabled = true;
+            tbWIDTH.Enabled = true;
+            tbHEIGHT.Enabled = true;
+            tbWEIGHT.Enabled = true;
+
         }
 
 
@@ -334,6 +365,11 @@ namespace SummonManager
             packCABLE.RequiredEnabled = true;
             packZHGUT.RequiredEnabled = true;
 
+            tbLENGTH.Enabled = true;
+            tbWIDTH.Enabled = true;
+            tbHEIGHT.Enabled = true;
+            tbWEIGHT.Enabled = true;
+
 
         }
 
@@ -412,8 +448,9 @@ namespace SummonManager
                 if ((UVO.Role == Roles.Inzhener) ||
                     (UVO.Role == Roles.SimpleInzhener))                     dbwp.EditWP_Inzhener(wp);
                 if (UVO.Role == Roles.Tehnolog)                             dbwp.EditWP_Tehnolog(wp);
-                if (UVO.Role == Roles.Shemotehnik) dbwp.EditWP_Shemotehnik(wp);
-                if (UVO.Role == Roles.OTD) dbwp.EditWP_OTD(wp);
+                if (UVO.Role == Roles.Shemotehnik)                          dbwp.EditWP_Shemotehnik(wp);
+                if (UVO.Role == Roles.OTD)                                  dbwp.EditWP_OTD(wp);
+                if (UVO.Role == Roles.OTK)                                  dbwp.EditWP_OTK(wp);
                 if (UVO.Role == Roles.OTK) dbwp.EditWP_OTK(wp);
 
                 MessageBox.Show("Изделие успешно сохранено!");

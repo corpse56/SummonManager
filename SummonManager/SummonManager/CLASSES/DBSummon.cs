@@ -232,12 +232,12 @@ namespace SummonManager
             DA.UpdateCommand.Parameters["BILLNUMBER"].Value = SVO.BILLNUMBER;
 
 
-            //DA.UpdateCommand.Parameters.AddWithValue("PASSPORT", ((object)SVO.PASSPORT) ?? DBNull.Value);
-            //DA.UpdateCommand.Parameters.AddWithValue("MANUAL", ((object)SVO.MANUAL) ?? DBNull.Value);
-            //DA.UpdateCommand.Parameters.AddWithValue("PACKINGLIST", ((object)SVO.PACKINGLIST) ?? DBNull.Value);
-            //DA.UpdateCommand.Parameters.AddWithValue("PASSPORTREQ", SVO.PASSPORTREQ);
-            //DA.UpdateCommand.Parameters.AddWithValue("MANUALREQ", SVO.MANUALREQ);
-            //DA.UpdateCommand.Parameters.AddWithValue("PACKINGLISTREQ", SVO.PACKINGLISTREQ);
+            DA.UpdateCommand.Parameters.AddWithValue("PASSPORT", ((object)SVO.PASSPORT) ?? DBNull.Value);
+            DA.UpdateCommand.Parameters.AddWithValue("MANUAL", ((object)SVO.MANUAL) ?? DBNull.Value);
+            DA.UpdateCommand.Parameters.AddWithValue("PACKINGLIST", ((object)SVO.PACKINGLIST) ?? DBNull.Value);
+            DA.UpdateCommand.Parameters.AddWithValue("PASSPORTREQ", SVO.PASSPORTREQ);
+            DA.UpdateCommand.Parameters.AddWithValue("MANUALREQ", SVO.MANUALREQ);
+            DA.UpdateCommand.Parameters.AddWithValue("PACKINGLISTREQ", SVO.PACKINGLISTREQ);
 
             //DA.UpdateCommand.Parameters.AddWithValue("LENGTH", SVO.LENGTH);
             //DA.UpdateCommand.Parameters.AddWithValue("WIDTH", SVO.WIDTH);

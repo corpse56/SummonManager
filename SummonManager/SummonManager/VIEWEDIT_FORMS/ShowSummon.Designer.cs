@@ -39,22 +39,11 @@ namespace SummonManager
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tbIDS = new System.Windows.Forms.TextBox();
-            this.bPurchMat = new System.Windows.Forms.Button();
-            this.bDelSummon = new System.Windows.Forms.Button();
-            this.bEdit = new System.Windows.Forms.Button();
-            this.bSave = new System.Windows.Forms.Button();
-            this.bPrint = new System.Windows.Forms.Button();
-            this.bChangeProduct = new System.Windows.Forms.Button();
-            this.bCancel = new System.Windows.Forms.Button();
-            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
-            this.bViewWP = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.bEditWP = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -88,9 +77,20 @@ namespace SummonManager
             this.label15 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tbIDS = new System.Windows.Forms.TextBox();
+            this.bPurchMat = new System.Windows.Forms.Button();
+            this.bDelSummon = new System.Windows.Forms.Button();
+            this.bEdit = new System.Windows.Forms.Button();
+            this.bSave = new System.Windows.Forms.Button();
+            this.bPrint = new System.Windows.Forms.Button();
+            this.bChangeProduct = new System.Windows.Forms.Button();
+            this.bCancel = new System.Windows.Forms.Button();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.bViewWP = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.bEditWP = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.pfPACKINGLIST = new SummonManager.Controls.PathField();
             this.pfMANUAL = new SummonManager.Controls.PathField();
             this.pfPASSPORT = new SummonManager.Controls.PathField();
@@ -110,11 +110,11 @@ namespace SummonManager
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.splitContainer2.Panel1.SuspendLayout();
             this.splitContainer2.Panel2.SuspendLayout();
             this.splitContainer2.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbQUANTITY)).BeginInit();
             this.SuspendLayout();
             // 
@@ -147,167 +147,11 @@ namespace SummonManager
             this.splitContainer1.SplitterDistance = 680;
             this.splitContainer1.TabIndex = 277;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(145, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 16);
-            this.label1.TabIndex = 322;
-            this.label1.Text = "Извещение №";
-            // 
-            // tbIDS
-            // 
-            this.tbIDS.BackColor = System.Drawing.SystemColors.InactiveBorder;
-            this.tbIDS.Location = new System.Drawing.Point(255, 6);
-            this.tbIDS.Name = "tbIDS";
-            this.tbIDS.ReadOnly = true;
-            this.tbIDS.Size = new System.Drawing.Size(133, 22);
-            this.tbIDS.TabIndex = 285;
-            // 
-            // bPurchMat
-            // 
-            this.bPurchMat.Location = new System.Drawing.Point(239, 833);
-            this.bPurchMat.Name = "bPurchMat";
-            this.bPurchMat.Size = new System.Drawing.Size(90, 49);
-            this.bPurchMat.TabIndex = 284;
-            this.bPurchMat.Text = "Покупные материалы";
-            this.bPurchMat.UseVisualStyleBackColor = true;
-            this.bPurchMat.Click += new System.EventHandler(this.bPurchMat_Click);
-            // 
-            // bDelSummon
-            // 
-            this.bDelSummon.Location = new System.Drawing.Point(335, 833);
-            this.bDelSummon.Name = "bDelSummon";
-            this.bDelSummon.Size = new System.Drawing.Size(90, 49);
-            this.bDelSummon.TabIndex = 283;
-            this.bDelSummon.Text = "Удалить извещение";
-            this.bDelSummon.UseVisualStyleBackColor = true;
-            this.bDelSummon.Click += new System.EventHandler(this.bDelSummon_Click);
-            // 
-            // bEdit
-            // 
-            this.bEdit.Location = new System.Drawing.Point(71, 833);
-            this.bEdit.Name = "bEdit";
-            this.bEdit.Size = new System.Drawing.Size(71, 49);
-            this.bEdit.TabIndex = 281;
-            this.bEdit.Text = "Редактировать";
-            this.bEdit.UseVisualStyleBackColor = true;
-            this.bEdit.Click += new System.EventHandler(this.bEdit_Click);
-            // 
-            // bSave
-            // 
-            this.bSave.Location = new System.Drawing.Point(148, 833);
-            this.bSave.Name = "bSave";
-            this.bSave.Size = new System.Drawing.Size(85, 49);
-            this.bSave.TabIndex = 280;
-            this.bSave.Text = "Сохранить";
-            this.bSave.UseVisualStyleBackColor = true;
-            this.bSave.Click += new System.EventHandler(this.bSave_Click);
-            // 
-            // bPrint
-            // 
-            this.bPrint.Enabled = false;
-            this.bPrint.Location = new System.Drawing.Point(1, 833);
-            this.bPrint.Name = "bPrint";
-            this.bPrint.Size = new System.Drawing.Size(64, 49);
-            this.bPrint.TabIndex = 279;
-            this.bPrint.Text = "Печать";
-            this.bPrint.UseVisualStyleBackColor = true;
-            this.bPrint.Click += new System.EventHandler(this.bPrint_Click);
-            // 
-            // bChangeProduct
-            // 
-            this.bChangeProduct.Location = new System.Drawing.Point(428, 833);
-            this.bChangeProduct.Name = "bChangeProduct";
-            this.bChangeProduct.Size = new System.Drawing.Size(105, 49);
-            this.bChangeProduct.TabIndex = 278;
-            this.bChangeProduct.Text = "Изменить продукт";
-            this.bChangeProduct.UseVisualStyleBackColor = true;
-            this.bChangeProduct.Click += new System.EventHandler(this.bChangeProduct_Click);
-            // 
-            // bCancel
-            // 
-            this.bCancel.Location = new System.Drawing.Point(539, 833);
-            this.bCancel.Name = "bCancel";
-            this.bCancel.Size = new System.Drawing.Size(68, 49);
-            this.bCancel.TabIndex = 278;
-            this.bCancel.Text = "Отмена";
-            this.bCancel.UseVisualStyleBackColor = true;
-            this.bCancel.Click += new System.EventHandler(this.bCancel_Click);
-            // 
-            // splitContainer2
-            // 
-            this.splitContainer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer2.Name = "splitContainer2";
-            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer2.Panel1
-            // 
-            this.splitContainer2.Panel1.Controls.Add(this.bViewWP);
-            this.splitContainer2.Panel1.Controls.Add(this.label3);
-            this.splitContainer2.Panel1.Controls.Add(this.bEditWP);
-            this.splitContainer2.Panel1.Controls.Add(this.tableLayoutPanel1);
-            // 
-            // splitContainer2.Panel2
-            // 
-            this.splitContainer2.Panel2.Controls.Add(this.summonNotes1);
-            this.splitContainer2.Size = new System.Drawing.Size(610, 891);
-            this.splitContainer2.SplitterDistance = 471;
-            this.splitContainer2.TabIndex = 0;
-            // 
-            // bViewWP
-            // 
-            this.bViewWP.Location = new System.Drawing.Point(456, 5);
-            this.bViewWP.Name = "bViewWP";
-            this.bViewWP.Size = new System.Drawing.Size(84, 23);
-            this.bViewWP.TabIndex = 43;
-            this.bViewWP.Text = "Просмотр";
-            this.bViewWP.UseVisualStyleBackColor = true;
-            this.bViewWP.Click += new System.EventHandler(this.bViewWP_Click);
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(166, 9);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(239, 16);
-            this.label3.TabIndex = 42;
-            this.label3.Text = "Необходимые сведения о продукте";
-            // 
-            // bEditWP
-            // 
-            this.bEditWP.Location = new System.Drawing.Point(3, 6);
-            this.bEditWP.Name = "bEditWP";
-            this.bEditWP.Size = new System.Drawing.Size(122, 23);
-            this.bEditWP.TabIndex = 41;
-            this.bEditWP.Text = "Редактировать";
-            this.bEditWP.UseVisualStyleBackColor = true;
-            this.bEditWP.Click += new System.EventHandler(this.bEditWP_Click);
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
-            this.tableLayoutPanel1.AutoScroll = true;
-            this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 46);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 484F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(602, 420);
-            this.tableLayoutPanel1.TabIndex = 38;
-            // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Location = new System.Drawing.Point(11, 34);
             this.groupBox1.Name = "groupBox1";
@@ -373,6 +217,31 @@ namespace SummonManager
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(658, 628);
             this.panel1.TabIndex = 0;
+            this.panel1.MouseEnter += new System.EventHandler(this.panel1_MouseEnter);
+            // 
+            // label30
+            // 
+            this.label30.Location = new System.Drawing.Point(10, 703);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(137, 18);
+            this.label30.TabIndex = 389;
+            this.label30.Text = "Лист упаковочный";
+            // 
+            // label28
+            // 
+            this.label28.Location = new System.Drawing.Point(15, 635);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(120, 18);
+            this.label28.TabIndex = 389;
+            this.label28.Text = "Паспорт";
+            // 
+            // label29
+            // 
+            this.label29.Location = new System.Drawing.Point(14, 667);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(120, 18);
+            this.label29.TabIndex = 389;
+            this.label29.Text = "РЭ";
             // 
             // label18
             // 
@@ -485,7 +354,7 @@ namespace SummonManager
             // bEditCustomers
             // 
             this.bEditCustomers.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.bEditCustomers.Location = new System.Drawing.Point(621, 182);
+            this.bEditCustomers.Location = new System.Drawing.Point(604, 182);
             this.bEditCustomers.Name = "bEditCustomers";
             this.bEditCustomers.Size = new System.Drawing.Size(16, 55);
             this.bEditCustomers.TabIndex = 358;
@@ -513,7 +382,7 @@ namespace SummonManager
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.tbDELIVERY.Location = new System.Drawing.Point(183, 379);
             this.tbDELIVERY.Name = "tbDELIVERY";
-            this.tbDELIVERY.Size = new System.Drawing.Size(432, 22);
+            this.tbDELIVERY.Size = new System.Drawing.Size(415, 22);
             this.tbDELIVERY.TabIndex = 348;
             // 
             // tbSHIPPING
@@ -522,7 +391,7 @@ namespace SummonManager
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.tbSHIPPING.Location = new System.Drawing.Point(183, 351);
             this.tbSHIPPING.Name = "tbSHIPPING";
-            this.tbSHIPPING.Size = new System.Drawing.Size(432, 22);
+            this.tbSHIPPING.Size = new System.Drawing.Size(415, 22);
             this.tbSHIPPING.TabIndex = 347;
             // 
             // tbPayStatus
@@ -531,7 +400,7 @@ namespace SummonManager
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.tbPayStatus.Location = new System.Drawing.Point(183, 323);
             this.tbPayStatus.Name = "tbPayStatus";
-            this.tbPayStatus.Size = new System.Drawing.Size(432, 22);
+            this.tbPayStatus.Size = new System.Drawing.Size(415, 22);
             this.tbPayStatus.TabIndex = 351;
             // 
             // tbBillNumber
@@ -540,7 +409,7 @@ namespace SummonManager
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.tbBillNumber.Location = new System.Drawing.Point(185, 265);
             this.tbBillNumber.Name = "tbBillNumber";
-            this.tbBillNumber.Size = new System.Drawing.Size(430, 22);
+            this.tbBillNumber.Size = new System.Drawing.Size(413, 22);
             this.tbBillNumber.TabIndex = 350;
             // 
             // tbCONTRACT
@@ -549,7 +418,7 @@ namespace SummonManager
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.tbCONTRACT.Location = new System.Drawing.Point(185, 237);
             this.tbCONTRACT.Name = "tbCONTRACT";
-            this.tbCONTRACT.Size = new System.Drawing.Size(430, 22);
+            this.tbCONTRACT.Size = new System.Drawing.Size(413, 22);
             this.tbCONTRACT.TabIndex = 349;
             // 
             // label13
@@ -669,29 +538,172 @@ namespace SummonManager
             this.label2.TabIndex = 343;
             this.label2.Text = "Наименование продукта";
             // 
-            // label29
+            // label1
             // 
-            this.label29.Location = new System.Drawing.Point(14, 667);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(120, 18);
-            this.label29.TabIndex = 389;
-            this.label29.Text = "РЭ";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(145, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(100, 16);
+            this.label1.TabIndex = 322;
+            this.label1.Text = "Извещение №";
             // 
-            // label30
+            // tbIDS
             // 
-            this.label30.Location = new System.Drawing.Point(10, 703);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(137, 18);
-            this.label30.TabIndex = 389;
-            this.label30.Text = "Лист упаковочный";
+            this.tbIDS.BackColor = System.Drawing.SystemColors.InactiveBorder;
+            this.tbIDS.Location = new System.Drawing.Point(255, 6);
+            this.tbIDS.Name = "tbIDS";
+            this.tbIDS.ReadOnly = true;
+            this.tbIDS.Size = new System.Drawing.Size(133, 22);
+            this.tbIDS.TabIndex = 285;
             // 
-            // label28
+            // bPurchMat
             // 
-            this.label28.Location = new System.Drawing.Point(15, 635);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(120, 18);
-            this.label28.TabIndex = 389;
-            this.label28.Text = "Паспорт";
+            this.bPurchMat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.bPurchMat.Location = new System.Drawing.Point(239, 833);
+            this.bPurchMat.Name = "bPurchMat";
+            this.bPurchMat.Size = new System.Drawing.Size(90, 49);
+            this.bPurchMat.TabIndex = 284;
+            this.bPurchMat.Text = "Покупные материалы";
+            this.bPurchMat.UseVisualStyleBackColor = true;
+            this.bPurchMat.Click += new System.EventHandler(this.bPurchMat_Click);
+            // 
+            // bDelSummon
+            // 
+            this.bDelSummon.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.bDelSummon.Location = new System.Drawing.Point(335, 833);
+            this.bDelSummon.Name = "bDelSummon";
+            this.bDelSummon.Size = new System.Drawing.Size(90, 49);
+            this.bDelSummon.TabIndex = 283;
+            this.bDelSummon.Text = "Удалить извещение";
+            this.bDelSummon.UseVisualStyleBackColor = true;
+            this.bDelSummon.Click += new System.EventHandler(this.bDelSummon_Click);
+            // 
+            // bEdit
+            // 
+            this.bEdit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.bEdit.Location = new System.Drawing.Point(71, 833);
+            this.bEdit.Name = "bEdit";
+            this.bEdit.Size = new System.Drawing.Size(71, 49);
+            this.bEdit.TabIndex = 281;
+            this.bEdit.Text = "Редактировать";
+            this.bEdit.UseVisualStyleBackColor = true;
+            this.bEdit.Click += new System.EventHandler(this.bEdit_Click);
+            // 
+            // bSave
+            // 
+            this.bSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.bSave.Location = new System.Drawing.Point(148, 833);
+            this.bSave.Name = "bSave";
+            this.bSave.Size = new System.Drawing.Size(85, 49);
+            this.bSave.TabIndex = 280;
+            this.bSave.Text = "Сохранить";
+            this.bSave.UseVisualStyleBackColor = true;
+            this.bSave.Click += new System.EventHandler(this.bSave_Click);
+            // 
+            // bPrint
+            // 
+            this.bPrint.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.bPrint.Enabled = false;
+            this.bPrint.Location = new System.Drawing.Point(1, 833);
+            this.bPrint.Name = "bPrint";
+            this.bPrint.Size = new System.Drawing.Size(64, 49);
+            this.bPrint.TabIndex = 279;
+            this.bPrint.Text = "Печать";
+            this.bPrint.UseVisualStyleBackColor = true;
+            this.bPrint.Click += new System.EventHandler(this.bPrint_Click);
+            // 
+            // bChangeProduct
+            // 
+            this.bChangeProduct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.bChangeProduct.Location = new System.Drawing.Point(428, 833);
+            this.bChangeProduct.Name = "bChangeProduct";
+            this.bChangeProduct.Size = new System.Drawing.Size(105, 49);
+            this.bChangeProduct.TabIndex = 278;
+            this.bChangeProduct.Text = "Изменить продукт";
+            this.bChangeProduct.UseVisualStyleBackColor = true;
+            this.bChangeProduct.Click += new System.EventHandler(this.bChangeProduct_Click);
+            // 
+            // bCancel
+            // 
+            this.bCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.bCancel.Location = new System.Drawing.Point(539, 833);
+            this.bCancel.Name = "bCancel";
+            this.bCancel.Size = new System.Drawing.Size(68, 49);
+            this.bCancel.TabIndex = 278;
+            this.bCancel.Text = "Отмена";
+            this.bCancel.UseVisualStyleBackColor = true;
+            this.bCancel.Click += new System.EventHandler(this.bCancel_Click);
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Name = "splitContainer2";
+            this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.bViewWP);
+            this.splitContainer2.Panel1.Controls.Add(this.label3);
+            this.splitContainer2.Panel1.Controls.Add(this.bEditWP);
+            this.splitContainer2.Panel1.Controls.Add(this.tableLayoutPanel1);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.summonNotes1);
+            this.splitContainer2.Size = new System.Drawing.Size(610, 891);
+            this.splitContainer2.SplitterDistance = 471;
+            this.splitContainer2.TabIndex = 0;
+            // 
+            // bViewWP
+            // 
+            this.bViewWP.Location = new System.Drawing.Point(456, 5);
+            this.bViewWP.Name = "bViewWP";
+            this.bViewWP.Size = new System.Drawing.Size(84, 23);
+            this.bViewWP.TabIndex = 43;
+            this.bViewWP.Text = "Просмотр";
+            this.bViewWP.UseVisualStyleBackColor = true;
+            this.bViewWP.Click += new System.EventHandler(this.bViewWP_Click);
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(166, 9);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(239, 16);
+            this.label3.TabIndex = 42;
+            this.label3.Text = "Необходимые сведения о продукте";
+            // 
+            // bEditWP
+            // 
+            this.bEditWP.Location = new System.Drawing.Point(3, 6);
+            this.bEditWP.Name = "bEditWP";
+            this.bEditWP.Size = new System.Drawing.Size(122, 23);
+            this.bEditWP.TabIndex = 41;
+            this.bEditWP.Text = "Редактировать";
+            this.bEditWP.UseVisualStyleBackColor = true;
+            this.bEditWP.Click += new System.EventHandler(this.bEditWP_Click);
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.AutoScroll = true;
+            this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 46);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 484F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(602, 420);
+            this.tableLayoutPanel1.TabIndex = 38;
+            this.tableLayoutPanel1.MouseEnter += new System.EventHandler(this.tableLayoutPanel1_MouseEnter);
             // 
             // pfPACKINGLIST
             // 
@@ -706,9 +718,9 @@ namespace SummonManager
             this.pfPACKINGLIST.Margin = new System.Windows.Forms.Padding(4);
             this.pfPACKINGLIST.Name = "pfPACKINGLIST";
             this.pfPACKINGLIST.Required = false;
-            this.pfPACKINGLIST.Size = new System.Drawing.Size(485, 32);
+            this.pfPACKINGLIST.Size = new System.Drawing.Size(468, 32);
             this.pfPACKINGLIST.TabIndex = 379;
-            this.pfPACKINGLIST.Tag = SummonManager.CLASSES.IRole_namespace.Roles.OTK;
+            this.pfPACKINGLIST.Tag = SummonManager.CLASSES.IRole_namespace.Roles.OTD;
             // 
             // pfMANUAL
             // 
@@ -723,9 +735,9 @@ namespace SummonManager
             this.pfMANUAL.Margin = new System.Windows.Forms.Padding(4);
             this.pfMANUAL.Name = "pfMANUAL";
             this.pfMANUAL.Required = false;
-            this.pfMANUAL.Size = new System.Drawing.Size(485, 32);
+            this.pfMANUAL.Size = new System.Drawing.Size(468, 32);
             this.pfMANUAL.TabIndex = 378;
-            this.pfMANUAL.Tag = SummonManager.CLASSES.IRole_namespace.Roles.OTK;
+            this.pfMANUAL.Tag = SummonManager.CLASSES.IRole_namespace.Roles.OTD;
             // 
             // pfPASSPORT
             // 
@@ -740,9 +752,9 @@ namespace SummonManager
             this.pfPASSPORT.Margin = new System.Windows.Forms.Padding(4);
             this.pfPASSPORT.Name = "pfPASSPORT";
             this.pfPASSPORT.Required = false;
-            this.pfPASSPORT.Size = new System.Drawing.Size(485, 32);
+            this.pfPASSPORT.Size = new System.Drawing.Size(468, 32);
             this.pfPASSPORT.TabIndex = 377;
-            this.pfPASSPORT.Tag = SummonManager.CLASSES.IRole_namespace.Roles.OTK;
+            this.pfPASSPORT.Tag = SummonManager.CLASSES.IRole_namespace.Roles.OTD;
             // 
             // pfSERIAL
             // 
@@ -757,7 +769,7 @@ namespace SummonManager
             this.pfSERIAL.Margin = new System.Windows.Forms.Padding(4);
             this.pfSERIAL.Name = "pfSERIAL";
             this.pfSERIAL.Required = false;
-            this.pfSERIAL.Size = new System.Drawing.Size(485, 32);
+            this.pfSERIAL.Size = new System.Drawing.Size(468, 32);
             this.pfSERIAL.TabIndex = 375;
             this.pfSERIAL.Tag = SummonManager.CLASSES.IRole_namespace.Roles.OTK;
             // 
@@ -774,7 +786,7 @@ namespace SummonManager
             this.pfPLANKA.Margin = new System.Windows.Forms.Padding(4);
             this.pfPLANKA.Name = "pfPLANKA";
             this.pfPLANKA.Required = false;
-            this.pfPLANKA.Size = new System.Drawing.Size(486, 32);
+            this.pfPLANKA.Size = new System.Drawing.Size(469, 32);
             this.pfPLANKA.TabIndex = 376;
             this.pfPLANKA.Tag = SummonManager.CLASSES.IRole_namespace.Roles.Constructor;
             // 
@@ -789,7 +801,7 @@ namespace SummonManager
             "По 275 ФЗ"});
             this.cbCONTRACTTYPE.Location = new System.Drawing.Point(183, 293);
             this.cbCONTRACTTYPE.Name = "cbCONTRACTTYPE";
-            this.cbCONTRACTTYPE.Size = new System.Drawing.Size(432, 24);
+            this.cbCONTRACTTYPE.Size = new System.Drawing.Size(415, 24);
             this.cbCONTRACTTYPE.TabIndex = 372;
             // 
             // wpNameView1
@@ -800,7 +812,7 @@ namespace SummonManager
             this.wpNameView1.Location = new System.Drawing.Point(182, 31);
             this.wpNameView1.Margin = new System.Windows.Forms.Padding(4);
             this.wpNameView1.Name = "wpNameView1";
-            this.wpNameView1.Size = new System.Drawing.Size(455, 31);
+            this.wpNameView1.Size = new System.Drawing.Size(438, 31);
             this.wpNameView1.TabIndex = 362;
             // 
             // cbCustDept
@@ -811,7 +823,7 @@ namespace SummonManager
             this.cbCustDept.FormattingEnabled = true;
             this.cbCustDept.Location = new System.Drawing.Point(187, 210);
             this.cbCustDept.Name = "cbCustDept";
-            this.cbCustDept.Size = new System.Drawing.Size(428, 24);
+            this.cbCustDept.Size = new System.Drawing.Size(411, 24);
             this.cbCustDept.TabIndex = 361;
             // 
             // cbPacking
@@ -822,7 +834,7 @@ namespace SummonManager
             this.cbPacking.FormattingEnabled = true;
             this.cbPacking.Location = new System.Drawing.Point(186, 67);
             this.cbPacking.Name = "cbPacking";
-            this.cbPacking.Size = new System.Drawing.Size(451, 24);
+            this.cbPacking.Size = new System.Drawing.Size(434, 24);
             this.cbPacking.TabIndex = 359;
             // 
             // cbAccept
@@ -832,7 +844,7 @@ namespace SummonManager
             this.cbAccept.FormattingEnabled = true;
             this.cbAccept.Location = new System.Drawing.Point(186, 152);
             this.cbAccept.Name = "cbAccept";
-            this.cbAccept.Size = new System.Drawing.Size(429, 24);
+            this.cbAccept.Size = new System.Drawing.Size(412, 24);
             this.cbAccept.TabIndex = 357;
             // 
             // tbQUANTITY
@@ -858,7 +870,7 @@ namespace SummonManager
             "ДА"});
             this.cbSISP.Location = new System.Drawing.Point(182, 405);
             this.cbSISP.Name = "cbSISP";
-            this.cbSISP.Size = new System.Drawing.Size(433, 24);
+            this.cbSISP.Size = new System.Drawing.Size(416, 24);
             this.cbSISP.TabIndex = 353;
             // 
             // cbCustomers
@@ -869,11 +881,12 @@ namespace SummonManager
             this.cbCustomers.FormattingEnabled = true;
             this.cbCustomers.Location = new System.Drawing.Point(186, 180);
             this.cbCustomers.Name = "cbCustomers";
-            this.cbCustomers.Size = new System.Drawing.Size(429, 24);
+            this.cbCustomers.Size = new System.Drawing.Size(412, 24);
             this.cbCustomers.TabIndex = 352;
             // 
             // summonTransfer2
             // 
+            this.summonTransfer2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.summonTransfer2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.summonTransfer2.Location = new System.Drawing.Point(1, 754);
             this.summonTransfer2.Margin = new System.Windows.Forms.Padding(4);
@@ -883,6 +896,7 @@ namespace SummonManager
             // 
             // summonTransfer1
             // 
+            this.summonTransfer1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.summonTransfer1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.summonTransfer1.Location = new System.Drawing.Point(4, 682);
             this.summonTransfer1.Margin = new System.Windows.Forms.Padding(4);
@@ -916,13 +930,13 @@ namespace SummonManager
             this.splitContainer1.Panel1.PerformLayout();
             this.splitContainer1.Panel2.ResumeLayout(false);
             this.splitContainer1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.splitContainer2.Panel1.ResumeLayout(false);
             this.splitContainer2.Panel1.PerformLayout();
             this.splitContainer2.Panel2.ResumeLayout(false);
             this.splitContainer2.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tbQUANTITY)).EndInit();
             this.ResumeLayout(false);
 

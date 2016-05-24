@@ -39,6 +39,7 @@ namespace SummonManager
         public override void EnableInitial(ShowSummon ss)
         {
             ss.bEdit.Enabled = true;
+            ss.bEditWP.Enabled = true;
 
 
         }
@@ -62,9 +63,11 @@ namespace SummonManager
             ss.bEdit.Enabled = false;
             ss.bSave.Enabled = true;
 
-            
-            ss.pfSERIAL.ACCESSMODE = "EDIT";
-            ss.pfSERIAL.Enabled = true;
+            if (ss.pfSERIAL.Required)
+            {
+                ss.pfSERIAL.ACCESSMODE = "EDIT";
+                ss.pfSERIAL.Enabled = true;
+            }
 
 
             /*ss.chbDeterm.Enabled = true;

@@ -52,6 +52,18 @@ namespace SummonManager
             ss.pfSERIAL.ACCESSMODE = "EDIT";
             ss.pfSERIAL.Enabled = false;
 
+            ss.pfPASSPORT.RequiredEnabled = true;
+            ss.pfPASSPORT.ACCESSMODE = "EDIT";
+            ss.pfPASSPORT.Enabled = false;
+            ss.pfMANUAL.RequiredEnabled = true;
+            ss.pfMANUAL.ACCESSMODE = "EDIT";
+            ss.pfMANUAL.Enabled = false;
+            ss.pfPACKINGLIST.RequiredEnabled = true;
+            ss.pfPACKINGLIST.ACCESSMODE = "EDIT";
+            ss.pfPACKINGLIST.Enabled = false;
+
+
+
         }
 
     }

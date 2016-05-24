@@ -166,7 +166,7 @@ namespace SummonManager
                         "..STATUSLIST where  ID in (3)";
                     DefaultStatus = 3;
                     break;
-                case Roles.Montage:
+                case Roles.Montage: case Roles.MainMontage:
                     DA.SelectCommand.CommandText = "select ID,'В ОТК от монтажников' SNAME from " + Base.BaseName +
                     "..STATUSLIST where ID in (16)";
                     DefaultStatus = 16;
@@ -317,7 +317,7 @@ namespace SummonManager
                                                     "..STATUSLIST where ID in (15)";
                     DefaultSubStatus = 15;
                     break;
-                case Roles.Montage:
+                case Roles.Montage: case Roles.MainMontage:
                     DA.SelectCommand.CommandText = "select ID, 'ОТК' SNAME from " + Base.BaseName +
                         "..STATUSLIST where ID in (16)";
                     DefaultSubStatus = 16;

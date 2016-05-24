@@ -441,7 +441,7 @@ namespace SummonManager
 
             DA.UpdateCommand.Parameters.AddWithValue("ID", p.ID);
 
-            DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..WPNAMELIST set LENGTH=@LENGTH,WIDTH=@WIDTH,HEIGHT=@HEIGHT,WEIGHT=@WEIGHT  NOTE=@NOTE" +
+            DA.UpdateCommand.CommandText = "update " + Base.BaseName + "..WPNAMELIST set LENGTH=@LENGTH,WIDTH=@WIDTH,HEIGHT=@HEIGHT,WEIGHT=@WEIGHT,  NOTE=@NOTE" +
                                             " where ID = @ID";
             DA.UpdateCommand.Connection.Open();
             DA.UpdateCommand.ExecuteNonQuery();

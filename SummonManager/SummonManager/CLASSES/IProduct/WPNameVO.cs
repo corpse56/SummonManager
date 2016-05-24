@@ -5,6 +5,7 @@ using System.Text;
 using System.Windows.Forms;
 using SummonManager.Controls;
 using SummonManager.CLASSES.IRole_namespace;
+using System.Drawing;
 
 namespace SummonManager.CLASSES
 {
@@ -232,17 +233,7 @@ namespace SummonManager.CLASSES
             }
 
 
-            //===================================================================================OTK
-            /*if (wp.SERIALREQ)
-            {
-                PathField pf = new PathField();
-                pf.Tag = Roles.OTK;
-                pf.Init(wp.SERIAL, true, false, false, true, Roles.OTK, UVO.Role);
-                pf.bDelVisible = false;
-                pf.bPathVisible = false;
-                pf.tbPath.Width += 150;
-                UIWorks.AddToTLP(TLP, "Серийные номера", pf);
-            }*/
+
 
             //===================================================================================OTD
             //if (wp.PASSPORTREQ)
@@ -278,7 +269,67 @@ namespace SummonManager.CLASSES
             //    pf.Dock = DockStyle.Fill;
             //    UIWorks.AddToTLP(TLP, "Лист упаковочный", pf);
             //}
+
             
+            //===================================================================================OTK
+            /*if (wp.SERIALREQ)
+            {
+                PathField pf = new PathField();
+                pf.Tag = Roles.OTK;
+                pf.Init(wp.SERIAL, true, false, false, true, Roles.OTK, UVO.Role);
+                pf.bDelVisible = false;
+                pf.bPathVisible = false;
+                pf.tbPath.Width += 150;
+                UIWorks.AddToTLP(TLP, "Серийные номера", pf);
+            }*/
+
+            TextBox tb = new TextBox();
+            tb.Tag = Roles.OTK;
+            tb.Text = wp.LENGTH;
+            tb.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            tb.ReadOnly = true;
+            tb.Dock = DockStyle.Fill;
+            if ((tb.Text == "") && (UVO.Role == Roles.OTK))
+            {
+                tb.BackColor = Color.Tomato;
+            }
+            UIWorks.AddToTLP(TLP, "Длина", tb);
+
+            tb = new TextBox();
+            tb.Tag = Roles.OTK;
+            tb.Text = wp.WIDTH;
+            tb.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            tb.ReadOnly = true;
+            tb.Dock = DockStyle.Fill;
+            if ((tb.Text == "") && (UVO.Role == Roles.OTK))
+            {
+                tb.BackColor = Color.Tomato;
+            }
+            UIWorks.AddToTLP(TLP, "Ширина", tb);
+
+            tb = new TextBox();
+            tb.Tag = Roles.OTK;
+            tb.Text = wp.HEIGHT;
+            tb.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            tb.ReadOnly = true;
+            tb.Dock = DockStyle.Fill;
+            if ((tb.Text == "") && (UVO.Role == Roles.OTK))
+            {
+                tb.BackColor = Color.Tomato;
+            }
+            UIWorks.AddToTLP(TLP, "Высота", tb);
+
+            tb = new TextBox();
+            tb.Tag = Roles.OTK;
+            tb.Text = wp.WEIGHT;
+            tb.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            tb.ReadOnly = true;
+            tb.Dock = DockStyle.Fill;
+            if ((tb.Text == "") && (UVO.Role == Roles.OTK))
+            {
+                tb.BackColor = Color.Tomato;
+            }
+            UIWorks.AddToTLP(TLP, "Вес", tb);
 
         }
 

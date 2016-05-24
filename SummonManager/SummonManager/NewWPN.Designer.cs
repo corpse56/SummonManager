@@ -609,7 +609,7 @@ namespace SummonManager
             this.pfMECHPARTS.bPathVisible = true;
             this.pfMECHPARTS.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.pfMECHPARTS.FullPath = "<нет>";
-            this.pfMECHPARTS.ISPATH = true;
+            this.pfMECHPARTS.ISPATH = false;
             this.pfMECHPARTS.Location = new System.Drawing.Point(298, 316);
             this.pfMECHPARTS.Margin = new System.Windows.Forms.Padding(4);
             this.pfMECHPARTS.Name = "pfMECHPARTS";

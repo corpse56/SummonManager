@@ -209,6 +209,16 @@ namespace SummonManager
             
         }
 
+        private void panel1_MouseEnter(object sender, EventArgs e)
+        {
+            panel1.Focus();
+        }
+
+        private void tableLayoutPanel1_MouseEnter(object sender, EventArgs e)
+        {
+            tableLayoutPanel1.Focus();
+        }
+
        
 
 

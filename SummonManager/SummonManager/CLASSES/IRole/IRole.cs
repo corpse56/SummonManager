@@ -109,9 +109,9 @@ namespace SummonManager.CLASSES.IRole_namespace
             ss.pfSERIAL.Init(ss.SVO.SERIAL, ss.SVO.SERIALREQ, false, true, false, Roles.OTK, this.Role, "VIEWONLY");
             //ss.summonNotes1.button1.Enabled = false;
 
-            ss.pfPASSPORT.Init(ss.SVO.PASSPORT, ss.SVO.PASSPORTREQ, false, true, false, Roles.OTK, this.Role, "VIEWONLY");
-            ss.pfMANUAL.Init(ss.SVO.MANUAL, ss.SVO.MANUALREQ, false, true, false, Roles.OTK, this.Role, "VIEWONLY");
-            ss.pfPACKINGLIST.Init(ss.SVO.PACKINGLIST, ss.SVO.PACKINGLISTREQ, false, true, false, Roles.OTK, this.Role, "VIEWONLY");
+            ss.pfPASSPORT.Init(ss.SVO.PASSPORT, ss.SVO.PASSPORTREQ, false, true, false, Roles.OTD, this.Role, "VIEWONLY");
+            ss.pfMANUAL.Init(ss.SVO.MANUAL, ss.SVO.MANUALREQ, false, true, false, Roles.OTD, this.Role, "VIEWONLY");
+            ss.pfPACKINGLIST.Init(ss.SVO.PACKINGLIST, ss.SVO.PACKINGLISTREQ, false, true, false, Roles.OTD, this.Role, "VIEWONLY");
             //ss.tbLENGTH.Enabled = false;
             //ss.tbWIDTH.Enabled = false;
             //ss.tbHEIGHT.Enabled = false;

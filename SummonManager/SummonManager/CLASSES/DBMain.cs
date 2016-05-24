@@ -63,7 +63,7 @@ namespace SummonManager
                     //DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..MAINVIEW where idstatus != 13 and idstatus != 14 order by ids";
                     DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..f_MAINVIEW(" + uvo.id + ") where idstatus != 13 and idstatus != 14 order by ids";
                     break;
-                case Roles.Montage:
+                case Roles.Montage: case Roles.MainMontage:
                     //DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..MAINVIEW where idstatus != 13 order by ids";
                     //DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..MAINVIEW where idstatus != 13 and idstatus != 14 order by ids";
                     DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..f_MAINVIEW(" + uvo.id + ") where idstatus != 13 and idstatus != 14 order by ids";
@@ -123,7 +123,7 @@ namespace SummonManager
                 case Roles.Director:
                     DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..f_MAINVIEW(" + uvo.id + ") where idstatus != 13 and idstatus != 14 order by ids";
                     break;
-                case Roles.Montage:
+                case Roles.Montage: case Roles.MainMontage:
                     DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..f_MAINVIEW(" + uvo.id + ") where  idsubst in (15,18) order by ids";
                     break;
                 case Roles.Constructor:

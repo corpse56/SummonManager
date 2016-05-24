@@ -25,13 +25,14 @@ namespace SummonManager
         //public static string ConnectionString = "Data Source=127.0.0.1;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
         public static string ConnectionString = "Data Source=127.0.0.1\\SQL2008R2;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
         //branch1
+        //branch1
         
-        //public static string ConnectionString = "Data Source=10.177.100.7,2301;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
+        public static string ConnectionString = "Data Source=10.177.100.7,2301;Initial Catalog=" + Base.BaseName + ";Persist Security Info=True;User ID=summon;Password=summon;MultipleActiveResultSets=True";
         public IRole UVO;
         public int PrivateNoteColor;
         public int RefreshTime;
-        public static string ProgramVersion = "2.07";
-        public static int VersionNumber = 207;
+        public static string ProgramVersion = "2.10";
+        public static int VersionNumber = 210;
         public MainF()
         {
             InitializeComponent();
@@ -48,7 +49,7 @@ namespace SummonManager
                     пользователиToolStripMenuItem.Enabled = true;
 
                     break;
-                case Roles.Montage:
+                case Roles.Montage: case Roles.MainMontage:
                     SpravochnikiDisable();
                     NewMenuItem.Enabled = false;
                     toolStripButton1.Enabled = false;

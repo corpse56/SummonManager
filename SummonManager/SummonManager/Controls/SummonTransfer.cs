@@ -60,7 +60,7 @@ namespace SummonManager
             this.FORM = form;
             cbStatus.Enabled = false;
             done = false;
-            if ((UVO.Role != Roles.OTK) && (UVO.Role != Roles.Montage) && (UVO.Role != Roles.Ozis) && (UVO.Role != Roles.Admin))
+            if ((UVO.Role != Roles.OTK) && (UVO.Role != Roles.Montage) && (UVO.Role != Roles.MainMontage) && (UVO.Role != Roles.Ozis) && (UVO.Role != Roles.Admin))
             {
                 this.Visible = false;
                 return;
@@ -90,7 +90,7 @@ namespace SummonManager
                 case Roles.Ozis:
                     cbStatus.SelectedValue = 15;
                     break;
-                case Roles.Montage:
+                case Roles.Montage: case Roles.MainMontage:
                     cbStatus.SelectedValue = 16;
                     break;
 
@@ -106,7 +106,7 @@ namespace SummonManager
                 case Roles.Manager:
                     cbStatus.SelectedValue = 3;
                     break;
-                case Roles.Montage:
+                case Roles.Montage: case Roles.MainMontage:
                     cbStatus.SelectedValue = 16;
                     break;
                 case Roles.OTK:
@@ -221,7 +221,7 @@ namespace SummonManager
                         }
                         else return;
                         break;
-                    case Roles.Montage:
+                    case Roles.Montage: case Roles.MainMontage:
                         if (MontageSwitch())
                         {
                             if (!Change())
@@ -317,7 +317,7 @@ namespace SummonManager
                         }
                         else return;
                         break;
-                    case Roles.Montage:
+                    case Roles.Montage: case Roles.MainMontage:
                         if (MontageSubSwitch())
                         {
                             if (!ChangeSub())

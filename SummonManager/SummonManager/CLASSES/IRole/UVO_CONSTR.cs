@@ -46,8 +46,12 @@ namespace SummonManager
             ss.bEdit.Enabled = false;
             ss.bSave.Enabled = true;
 
-            ss.pfPLANKA.Enabled = true;
-            ss.pfPLANKA.ACCESSMODE = "EDIT";
+
+            if (ss.pfPLANKA.Required)
+            {
+                ss.pfPLANKA.Enabled = true;
+                ss.pfPLANKA.ACCESSMODE = "EDIT";
+            }
 
 
         }

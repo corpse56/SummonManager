@@ -43,6 +43,7 @@ namespace SummonManager
             if (pick)
             {
                 bChoose.Visible = true;
+                bChoose.Enabled = true;
                 bAdd.Visible = false;
                 bEdit.Visible = false;
                 bClone.Visible = false;
@@ -195,6 +196,10 @@ namespace SummonManager
         public void SetPermissions()
         {
             bChoose.Enabled = false;
+
+            if (PICK)
+                bChoose.Enabled = true;
+
 
             if ((UVO.Role == Roles.Admin) || (UVO.Role == Roles.Inzhener))
             {

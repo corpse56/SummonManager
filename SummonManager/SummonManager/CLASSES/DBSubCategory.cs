@@ -72,6 +72,8 @@ namespace SummonManager
 
         internal string GetName(int ID)
         {
+            if (ID == 0) return "НЕ ПРИСВОЕНО";
+            
             DA.SelectCommand.CommandText = "select * from " + Base.BaseName + "..SUBCATEGORYLIST where ID = " + ID;
             DA.Fill(DS, "t");
             return DS.Tables["t"].Rows[0]["SUBCATNAME"].ToString();

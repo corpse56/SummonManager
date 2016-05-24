@@ -32,20 +32,41 @@ namespace SummonManager
         {
             ss.summonTransfer1.Enabled = false;
             ss.summonTransfer1.Enabled = false;
-            if (ss.SVO.WPTYPE == "WPNAMELIST")
+
+            ss.bEdit.Enabled = true;
+
+            /*if (ss.SVO.WPTYPE == "WPNAMELIST")
             {
                 ss.bEditWP.Enabled = true;
-            }
+            }*/ //так как поля, за которые ответственна эта роль ОТД переехали в извещение, то соответственно редактировать ничего не надо.
         }
         public override void EnableEdit(ShowSummon ss)
         {
-           // EnableAll(ss);
+            EnableAll(ss);
         }
         private void EnableAll(ShowSummon ss)
         {
             //ss.bEdit.Enabled = false;
             //ss.bSave.Enabled = true;
+            
+            ss.bEdit.Enabled = false;
+            ss.bSave.Enabled = true;
 
+            if (ss.pfPASSPORT.Required)
+            {
+                ss.pfPASSPORT.ACCESSMODE = "EDIT";
+                ss.pfPASSPORT.Enabled = true;
+            }
+            if (ss.pfMANUAL.Required)
+            {
+                ss.pfMANUAL.ACCESSMODE = "EDIT";
+                ss.pfMANUAL.Enabled = true;
+            }
+            if (ss.pfPACKINGLIST.Required)
+            {
+                ss.pfPACKINGLIST.ACCESSMODE = "EDIT";
+                ss.pfPACKINGLIST.Enabled = true;
+            }
         }
 
     }
